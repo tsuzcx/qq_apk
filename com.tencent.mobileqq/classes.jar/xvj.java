@@ -1,39 +1,68 @@
-import android.os.MessageQueue.IdleHandler;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import com.tencent.mobileqq.activity.richmedia.view.CameraGLSurfaceView;
-import com.tencent.mobileqq.shortvideo.mediadevice.CameraCompatibleList;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Rect;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.ImageView;
+import com.tencent.av.widget.shimmer.ShimmerTextView;
+import com.tencent.device.msg.activities.DeviceTipActivity;
 
 public class xvj
-  implements MessageQueue.IdleHandler
+  implements View.OnTouchListener
 {
-  public xvj(FlowCameraActivity2 paramFlowCameraActivity2) {}
+  public xvj(DeviceTipActivity paramDeviceTipActivity) {}
   
-  public boolean queueIdle()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (CameraCompatibleList.d(CameraCompatibleList.b)) {
-      this.a.b(true);
+    switch (paramMotionEvent.getAction())
+    {
     }
     for (;;)
     {
-      if ((this.a.g) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraGLSurfaceView != null)) {
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraGLSurfaceView.onResume();
+      return true;
+      this.a.jdField_b_of_type_Int = ((int)paramMotionEvent.getRawX());
+      DeviceTipActivity.b(this.a);
+      continue;
+      int i = (int)paramMotionEvent.getRawX() - this.a.jdField_b_of_type_Int;
+      if (i > 2)
+      {
+        this.a.jdField_a_of_type_ComTencentAvWidgetShimmerShimmerTextView.setVisibility(4);
+        this.a.jdField_b_of_type_AndroidWidgetImageView.setVisibility(4);
       }
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a();
-      this.a.c.setEnabled(false);
-      if (QLog.isColorLevel()) {
-        QLog.i("PEAK_CAMERA", 2, "Added camera view.");
+      paramView = this.a.jdField_a_of_type_AndroidGraphicsRect;
+      paramView.left += i;
+      paramView = this.a.jdField_a_of_type_AndroidGraphicsRect;
+      paramView.right = (i + paramView.right);
+      if (this.a.jdField_a_of_type_AndroidGraphicsRect.right >= this.a.d)
+      {
+        this.a.jdField_a_of_type_AndroidGraphicsRect.right = this.a.d;
+        this.a.jdField_a_of_type_AndroidGraphicsRect.left = (this.a.jdField_a_of_type_AndroidGraphicsRect.right - this.a.jdField_a_of_type_AndroidWidgetImageView.getWidth());
       }
-      return false;
-      this.a.i();
+      if (this.a.jdField_a_of_type_AndroidGraphicsRect.left <= this.a.e)
+      {
+        this.a.jdField_a_of_type_AndroidGraphicsRect.left = this.a.e;
+        this.a.jdField_a_of_type_AndroidGraphicsRect.right = (this.a.jdField_a_of_type_AndroidGraphicsRect.left + this.a.jdField_a_of_type_AndroidWidgetImageView.getWidth());
+      }
+      this.a.jdField_a_of_type_AndroidWidgetImageView.layout(this.a.jdField_a_of_type_AndroidGraphicsRect.left, this.a.jdField_b_of_type_AndroidGraphicsRect.top, this.a.jdField_a_of_type_AndroidGraphicsRect.right, this.a.jdField_b_of_type_AndroidGraphicsRect.bottom);
+      this.a.jdField_c_of_type_AndroidWidgetImageView.layout(this.a.jdField_a_of_type_AndroidGraphicsRect.left - this.a.e, this.a.jdField_c_of_type_AndroidGraphicsRect.top, this.a.jdField_c_of_type_AndroidGraphicsRect.right, this.a.jdField_c_of_type_AndroidGraphicsRect.bottom);
+      this.a.jdField_b_of_type_Int = ((int)paramMotionEvent.getRawX());
+      continue;
+      if (this.a.jdField_a_of_type_AndroidGraphicsRect.right == this.a.d)
+      {
+        this.a.b();
+      }
+      else if (this.a.jdField_a_of_type_AndroidGraphicsRect.right < this.a.d)
+      {
+        this.a.jdField_a_of_type_AndroidWidgetImageView.layout(this.a.jdField_b_of_type_AndroidGraphicsRect.left, this.a.jdField_b_of_type_AndroidGraphicsRect.top, this.a.jdField_b_of_type_AndroidGraphicsRect.right, this.a.jdField_b_of_type_AndroidGraphicsRect.bottom);
+        this.a.jdField_c_of_type_AndroidWidgetImageView.layout(this.a.jdField_c_of_type_AndroidGraphicsRect.left, this.a.jdField_c_of_type_AndroidGraphicsRect.top, this.a.jdField_c_of_type_AndroidGraphicsRect.right, this.a.jdField_c_of_type_AndroidGraphicsRect.bottom);
+        this.a.jdField_a_of_type_ComTencentAvWidgetShimmerShimmerTextView.setVisibility(0);
+        this.a.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     xvj
  * JD-Core Version:    0.7.0.1
  */

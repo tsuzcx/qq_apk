@@ -3,12 +3,12 @@ package com.dataline.util.file;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import dm;
+import ex;
 
 public class ImageInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new dm();
+  public static final Parcelable.Creator<ImageInfo> CREATOR = new ex();
   private long jdField_a_of_type_Long;
   private String jdField_a_of_type_JavaLangString;
   private long jdField_b_of_type_Long;
@@ -61,7 +61,7 @@ public class ImageInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.dataline.util.file.ImageInfo
  * JD-Core Version:    0.7.0.1
  */

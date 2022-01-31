@@ -1,25 +1,38 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.lyric.widget.LyricViewInternal;
+import android.content.Context;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.net.URL;
 
-public class aelm
-  extends Handler
+public abstract interface aelm
+  extends aell
 {
-  public aelm(LyricViewInternal paramLyricViewInternal, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public abstract URLDrawable.URLDrawableOptions a();
   
-  public void handleMessage(Message paramMessage)
-  {
-    this.a.requestLayout();
-    this.a.invalidate();
-  }
+  public abstract URLDrawable a(URL paramURL, URLDrawable.URLDrawableOptions paramURLDrawableOptions);
+  
+  public abstract String a();
+  
+  public abstract URL a();
+  
+  public abstract void a(QQAppInterface paramQQAppInterface);
+  
+  public abstract void a(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo);
+  
+  public abstract boolean a();
+  
+  public abstract String b();
+  
+  public abstract boolean b();
+  
+  public abstract String c();
+  
+  public abstract boolean c();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aelm
  * JD-Core Version:    0.7.0.1
  */

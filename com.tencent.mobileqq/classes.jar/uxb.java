@@ -1,58 +1,67 @@
-import com.tencent.mobileqq.activity.aio.doodle.DoodleMsgTranslator;
-import com.tencent.mobileqq.activity.aio.doodle.DoodleMsgTranslator.TranslatorListener;
-import com.tencent.mobileqq.activity.aio.doodle.DoodlePanel;
-import java.io.OutputStream;
-import msg.aio_doodle.DoodleMsgProto.DoodleData;
-import msg.aio_doodle.DoodleMsgProto.DoodleHeader;
+import com.tencent.biz.qqstory.takevideo.artfilter.ArtFilterManager;
+import java.io.File;
+import org.json.JSONObject;
 
 public class uxb
-  implements DoodleMsgTranslator.TranslatorListener
+  implements Cloneable
 {
-  public uxb(DoodlePanel paramDoodlePanel, OutputStream paramOutputStream) {}
+  public static final String a;
+  public int a;
+  public int b;
+  public String b;
+  public String c;
   
-  public boolean a(DoodleMsgProto.DoodleData paramDoodleData)
+  static
   {
-    if (paramDoodleData == null) {
-      return false;
-    }
-    paramDoodleData = paramDoodleData.toByteArray();
-    byte[] arrayOfByte = DoodleMsgTranslator.a(paramDoodleData.length);
-    try
-    {
-      this.jdField_a_of_type_JavaIoOutputStream.write(arrayOfByte);
-      this.jdField_a_of_type_JavaIoOutputStream.write(paramDoodleData);
-      label33:
-      return true;
-    }
-    catch (Exception paramDoodleData)
-    {
-      break label33;
-    }
+    jdField_a_of_type_JavaLangString = ArtFilterManager.jdField_b_of_type_JavaLangString + "loading" + File.separator;
   }
   
-  public boolean a(DoodleMsgProto.DoodleHeader paramDoodleHeader)
+  public static uxb a(JSONObject paramJSONObject)
   {
-    if (paramDoodleHeader == null) {
-      return false;
-    }
-    paramDoodleHeader = paramDoodleHeader.toByteArray();
-    byte[] arrayOfByte = DoodleMsgTranslator.a(paramDoodleHeader.length);
-    try
+    uxb localuxb = new uxb();
+    localuxb.jdField_b_of_type_Int = paramJSONObject.getInt("version");
+    localuxb.jdField_a_of_type_Int = paramJSONObject.getInt("picNum");
+    localuxb.c = paramJSONObject.getString("url");
+    localuxb.jdField_b_of_type_JavaLangString = paramJSONObject.getString("md5");
+    return localuxb;
+  }
+  
+  public String a()
+  {
+    Object localObject = new File(c());
+    if ((((File)localObject).exists()) && (((File)localObject).isDirectory()))
     {
-      this.jdField_a_of_type_JavaIoOutputStream.write(arrayOfByte);
-      this.jdField_a_of_type_JavaIoOutputStream.write(paramDoodleHeader);
-      label33:
-      return true;
+      localObject = ((File)localObject).listFiles();
+      if ((localObject != null) && (localObject.length == this.jdField_a_of_type_Int)) {
+        return c();
+      }
     }
-    catch (Exception paramDoodleHeader)
-    {
-      break label33;
-    }
+    return null;
+  }
+  
+  public String b()
+  {
+    return jdField_a_of_type_JavaLangString + this.jdField_b_of_type_Int + ".zip";
+  }
+  
+  public String c()
+  {
+    return jdField_a_of_type_JavaLangString + this.jdField_b_of_type_Int + File.separator;
+  }
+  
+  public Object clone()
+  {
+    return super.clone();
+  }
+  
+  public String d()
+  {
+    return "loading" + File.separator + this.jdField_b_of_type_Int + ".zip";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     uxb
  * JD-Core Version:    0.7.0.1
  */

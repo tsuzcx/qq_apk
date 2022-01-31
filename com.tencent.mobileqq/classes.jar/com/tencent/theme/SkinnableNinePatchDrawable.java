@@ -16,30 +16,29 @@ public class SkinnableNinePatchDrawable
   extends Drawable
 {
   private static final boolean a = true;
-  private a b;
+  private SkinnableNinePatchDrawable.a b;
   private NinePatch c;
   private Rect d;
-  private Paint e;
-  private boolean f;
-  private int g = 160;
+  private boolean e;
+  private int f = 160;
+  private int g;
   private int h;
-  private int i;
   
   SkinnableNinePatchDrawable() {}
   
   public SkinnableNinePatchDrawable(Resources paramResources, Bitmap paramBitmap, byte[] paramArrayOfByte, Rect paramRect, String paramString)
   {
-    this(new a(new NinePatch(paramBitmap, paramArrayOfByte, paramString), paramBitmap, paramRect), paramResources);
-    this.b.q = this.g;
+    this(new SkinnableNinePatchDrawable.a(new NinePatch(paramBitmap, paramArrayOfByte, paramString), paramBitmap, paramRect), paramResources);
+    this.b.q = this.f;
   }
   
   @Deprecated
   public SkinnableNinePatchDrawable(Bitmap paramBitmap, byte[] paramArrayOfByte, Rect paramRect, String paramString)
   {
-    this(new a(new NinePatch(paramBitmap, paramArrayOfByte, paramString), paramBitmap, paramRect), null);
+    this(new SkinnableNinePatchDrawable.a(new NinePatch(paramBitmap, paramArrayOfByte, paramString), paramBitmap, paramRect), null);
   }
   
-  SkinnableNinePatchDrawable(a parama, Resources paramResources)
+  SkinnableNinePatchDrawable(SkinnableNinePatchDrawable.a parama, Resources paramResources)
   {
     a(parama, paramResources);
   }
@@ -50,21 +49,21 @@ public class SkinnableNinePatchDrawable
     if (this.b.k != null)
     {
       localObject = this.b.k;
-      this.h = b.a(localObject[0], localObject[2], this.g);
-      this.h = b.a(localObject[1], localObject[2], this.g);
+      this.g = a.a(localObject[0], localObject[2], this.f);
+      this.g = a.a(localObject[1], localObject[2], this.f);
       this.d.set(0, 0, 0, 0);
       return;
     }
-    int j = this.c.getDensity();
-    int k = this.g;
-    if (j == k)
+    int i = this.c.getDensity();
+    int j = this.f;
+    if (i == j)
     {
-      this.h = this.c.getWidth();
-      this.i = this.c.getHeight();
+      this.g = this.c.getWidth();
+      this.h = this.c.getHeight();
       return;
     }
-    this.h = b.a(this.c.getWidth(), j, k);
-    this.i = b.a(this.c.getHeight(), j, k);
+    this.g = a.a(this.c.getWidth(), i, j);
+    this.h = a.a(this.c.getHeight(), i, j);
     Rect localRect1 = this.d;
     Rect localRect2 = this.b.m;
     Object localObject = localRect1;
@@ -73,21 +72,21 @@ public class SkinnableNinePatchDrawable
       localObject = new Rect(localRect2);
       this.d = ((Rect)localObject);
     }
-    ((Rect)localObject).left = b.a(localRect2.left, j, k);
-    ((Rect)localObject).top = b.a(localRect2.top, j, k);
-    ((Rect)localObject).right = b.a(localRect2.right, j, k);
-    ((Rect)localObject).bottom = b.a(localRect2.bottom, j, k);
+    ((Rect)localObject).left = a.a(localRect2.left, i, j);
+    ((Rect)localObject).top = a.a(localRect2.top, i, j);
+    ((Rect)localObject).right = a.a(localRect2.right, i, j);
+    ((Rect)localObject).bottom = a.a(localRect2.bottom, i, j);
   }
   
-  private void a(a parama, Resources paramResources)
+  private void a(SkinnableNinePatchDrawable.a parama, Resources paramResources)
   {
     this.b = parama;
     this.c = parama.l;
     this.d = parama.m;
     if (paramResources != null) {}
-    for (int j = paramResources.getDisplayMetrics().densityDpi;; j = parama.q)
+    for (int i = paramResources.getDisplayMetrics().densityDpi;; i = parama.q)
     {
-      this.g = j;
+      this.f = i;
       if (true != parama.o) {
         setDither(parama.o);
       }
@@ -107,8 +106,8 @@ public class SkinnableNinePatchDrawable
       if (this.b.k != null)
       {
         localObject = this.b.k;
-        this.h = b.a(localObject[0], localObject[2], this.g);
-        this.h = b.a(localObject[1], localObject[2], this.g);
+        this.g = a.a(localObject[0], localObject[2], this.f);
+        this.g = a.a(localObject[1], localObject[2], this.f);
         this.d.set(0, 0, 0, 0);
       }
     }
@@ -116,16 +115,16 @@ public class SkinnableNinePatchDrawable
     {
       return;
     }
-    int j = this.c.getDensity();
-    int k = this.g;
-    if (j == k)
+    int i = this.c.getDensity();
+    int j = this.f;
+    if (i == j)
     {
-      this.h = this.c.getWidth();
-      this.i = this.c.getHeight();
+      this.g = this.c.getWidth();
+      this.h = this.c.getHeight();
       return;
     }
-    this.h = b.a(this.c.getWidth(), j, k);
-    this.i = b.a(this.c.getHeight(), j, k);
+    this.g = a.a(this.c.getWidth(), i, j);
+    this.h = a.a(this.c.getHeight(), i, j);
     Rect localRect1 = this.d;
     Rect localRect2 = this.b.m;
     Object localObject = localRect1;
@@ -134,10 +133,10 @@ public class SkinnableNinePatchDrawable
       localObject = new Rect(localRect2);
       this.d = ((Rect)localObject);
     }
-    ((Rect)localObject).left = b.a(localRect2.left, j, k);
-    ((Rect)localObject).top = b.a(localRect2.top, j, k);
-    ((Rect)localObject).right = b.a(localRect2.right, j, k);
-    ((Rect)localObject).bottom = b.a(localRect2.bottom, j, k);
+    ((Rect)localObject).left = a.a(localRect2.left, i, j);
+    ((Rect)localObject).top = a.a(localRect2.top, i, j);
+    ((Rect)localObject).right = a.a(localRect2.right, i, j);
+    ((Rect)localObject).bottom = a.a(localRect2.bottom, i, j);
   }
   
   boolean a(Rect paramRect)
@@ -159,13 +158,13 @@ public class SkinnableNinePatchDrawable
       Rect localRect = getBounds();
       try
       {
-        this.c.draw(paramCanvas, localRect, this.e);
+        this.c.draw(paramCanvas, localRect, this.b.s);
         if (!this.b.j) {
           continue;
         }
-        paramCanvas.drawRect(localRect, b.b);
-        paramCanvas.drawLine(localRect.left, localRect.top, localRect.right, localRect.bottom, b.a);
-        paramCanvas.drawLine(localRect.right, localRect.top, localRect.left, localRect.bottom, b.a);
+        paramCanvas.drawRect(localRect, a.b);
+        paramCanvas.drawLine(localRect.left, localRect.top, localRect.right, localRect.bottom, a.a);
+        paramCanvas.drawLine(localRect.right, localRect.top, localRect.left, localRect.bottom, a.a);
         return;
       }
       catch (Exception localException)
@@ -197,31 +196,31 @@ public class SkinnableNinePatchDrawable
   public int getIntrinsicHeight()
   {
     b();
-    return this.i;
+    return this.h;
   }
   
   public int getIntrinsicWidth()
   {
     b();
-    return this.h;
+    return this.g;
   }
   
   public int getMinimumHeight()
   {
     b();
-    return this.i;
+    return this.h;
   }
   
   public int getMinimumWidth()
   {
     b();
-    return this.h;
+    return this.g;
   }
   
   public int getOpacity()
   {
     b();
-    if ((this.c == null) || (this.c.hasAlpha()) || ((this.e != null) && (this.e.getAlpha() < 255))) {
+    if ((this.c == null) || (this.c.hasAlpha()) || (this.b.s.getAlpha() < 255)) {
       return -3;
     }
     return -1;
@@ -236,12 +235,7 @@ public class SkinnableNinePatchDrawable
   
   public Paint getPaint()
   {
-    if (this.e == null)
-    {
-      this.e = new Paint();
-      this.e.setDither(true);
-    }
-    return this.e;
+    return this.b.s;
   }
   
   public Region getTransparentRegion()
@@ -276,11 +270,11 @@ public class SkinnableNinePatchDrawable
   public void setTargetDensity(int paramInt)
   {
     b();
-    int j = paramInt;
+    int i = paramInt;
     if (paramInt == 0) {
-      j = 160;
+      i = 160;
     }
-    this.g = j;
+    this.f = i;
     if (this.c != null) {
       a();
     }
@@ -294,58 +288,9 @@ public class SkinnableNinePatchDrawable
   public void setTargetDensity(DisplayMetrics paramDisplayMetrics)
   {
     b();
-    this.g = paramDisplayMetrics.densityDpi;
+    this.f = paramDisplayMetrics.densityDpi;
     if (this.c != null) {
       a();
-    }
-  }
-  
-  static final class a
-    extends b
-  {
-    NinePatch l;
-    Rect m;
-    Rect n;
-    final boolean o;
-    int p;
-    int q = 160;
-    Bitmap r;
-    
-    a(NinePatch paramNinePatch, Bitmap paramBitmap, Rect paramRect)
-    {
-      this(paramNinePatch, paramBitmap, paramRect, true);
-    }
-    
-    a(NinePatch paramNinePatch, Bitmap paramBitmap, Rect paramRect, boolean paramBoolean)
-    {
-      this.r = paramBitmap;
-      this.l = paramNinePatch;
-      this.m = paramRect;
-      this.o = paramBoolean;
-    }
-    
-    a(a parama)
-    {
-      this.l = parama.l;
-      this.m = parama.m;
-      this.o = parama.o;
-      this.p = parama.p;
-      this.q = parama.q;
-    }
-    
-    public int getChangingConfigurations()
-    {
-      return this.p;
-    }
-    
-    public Drawable newDrawable()
-    {
-      return new SkinnableNinePatchDrawable(this, null);
-    }
-    
-    public Drawable newDrawable(Resources paramResources)
-    {
-      return new SkinnableNinePatchDrawable(this, paramResources);
     }
   }
 }

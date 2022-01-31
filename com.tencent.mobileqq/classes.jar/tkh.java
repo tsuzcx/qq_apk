@@ -1,21 +1,29 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
+import com.tribe.async.async.ThreadOffFunction;
+import com.tribe.async.reactive.Stream;
 
-class tkh
-  implements DialogInterface.OnCancelListener
+public class tkh
+  implements tjz
 {
-  tkh(tkf paramtkf) {}
+  private final tkg a;
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public tkh(tkg paramtkg)
   {
-    this.a.a.setResult(4003);
-    this.a.a.finish();
+    this.a = paramtkg;
+  }
+  
+  public void a(tka paramtka)
+  {
+    Stream localStream2 = Stream.of(this.a.a).map(new ThreadOffFunction("Q.qqstory.player.data.MsgTabPlayPageLoader", 2)).map(new stc("Q.qqstory.player.data.MsgTabPlayPageLoader", this.a.c, this.a.d, this.a));
+    Stream localStream1 = localStream2;
+    if (this.a.a.a == 5) {
+      localStream1 = localStream2.map(new ssz()).map(new ssp(this.a.a));
+    }
+    localStream1.subscribe(new tki(this, paramtka));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tkh
  * JD-Core Version:    0.7.0.1
  */

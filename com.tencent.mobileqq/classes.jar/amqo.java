@@ -1,35 +1,41 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
-import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand.OnInvokeFinishLinstener;
-import cooperation.buscard.BuscardPluginRemoteCommand;
+import android.graphics.Canvas;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-public class amqo
-  extends SosoInterface.OnLocationListener
+public abstract class amqo<D extends ampo>
 {
-  public amqo(BuscardPluginRemoteCommand paramBuscardPluginRemoteCommand, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString, Bundle paramBundle, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener)
-  {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
-  }
+  private ArrayList<amqt> a;
   
-  public void a(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  private void c(Canvas paramCanvas, D paramD, ampx paramampx, float paramFloat1, float paramFloat2)
   {
-    if ((paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null))
+    if (this.a != null)
     {
-      String str = paramSosoLbsInfo.a.d;
-      paramSosoLbsInfo = paramSosoLbsInfo.a.e;
-      this.jdField_a_of_type_AndroidOsBundle.putString("province", str);
-      this.jdField_a_of_type_AndroidOsBundle.putString("city", paramSosoLbsInfo);
-      if (this.jdField_a_of_type_ComTencentMobileqqPluginsdkIpcRemoteCommand$OnInvokeFinishLinstener != null) {
-        this.jdField_a_of_type_ComTencentMobileqqPluginsdkIpcRemoteCommand$OnInvokeFinishLinstener.onInvokeFinish(this.jdField_a_of_type_AndroidOsBundle);
+      Iterator localIterator = this.a.iterator();
+      while (localIterator.hasNext()) {
+        ((amqt)localIterator.next()).a(paramCanvas, paramD, paramampx, paramFloat1, paramFloat2);
       }
     }
   }
+  
+  public abstract amrm a(D paramD);
+  
+  public void a() {}
+  
+  public void a(D paramD) {}
+  
+  public final void a(Canvas paramCanvas, D paramD, ampx paramampx, float paramFloat1, float paramFloat2)
+  {
+    b(paramCanvas, paramD, paramampx, paramFloat1, paramFloat2);
+    c(paramCanvas, paramD, paramampx, paramFloat1, paramFloat2);
+  }
+  
+  public abstract boolean a(ampo paramampo);
+  
+  public abstract void b(Canvas paramCanvas, D paramD, ampx paramampx, float paramFloat1, float paramFloat2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amqo
  * JD-Core Version:    0.7.0.1
  */

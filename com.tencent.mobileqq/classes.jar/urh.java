@@ -1,20 +1,16 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.widget.ActionSheet.OnDismissListener;
-
-public final class urh
-  implements ActionSheet.OnDismissListener
+public class urh
 {
-  public urh(QQAppInterface paramQQAppInterface) {}
-  
-  public void onDismiss()
+  public static String a(String paramString)
   {
-    ReportController.b(this.a, "CliOper", "", "", "0X8004864", "0X8004864", 0, 0, "", "", "", "");
+    if (paramString != null) {
+      return "file://" + paramString;
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     urh
  * JD-Core Version:    0.7.0.1
  */

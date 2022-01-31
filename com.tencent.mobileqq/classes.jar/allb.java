@@ -1,20 +1,14 @@
-import android.app.Activity;
-import android.os.Bundle;
-import com.tencent.open.downloadnew.MyAppApi;
-
-class allb
-  implements Runnable
+public abstract interface allb
 {
-  allb(alla paramalla, Bundle paramBundle) {}
+  public abstract void a();
   
-  public void run()
-  {
-    MyAppApi.a().a(this.jdField_a_of_type_Alla.jdField_a_of_type_AndroidAppActivity.getApplicationContext(), this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_Alla.jdField_a_of_type_Boolean, false);
-  }
+  public abstract void a(int paramInt);
+  
+  public abstract void b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     allb
  * JD-Core Version:    0.7.0.1
  */

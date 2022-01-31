@@ -30,7 +30,7 @@ public class DailySignInWebviewPlugin
     callJs(paramString1, new String[] { paramString2 });
   }
   
-  protected boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
     boolean bool2 = true;
     boolean bool1;
@@ -45,7 +45,7 @@ public class DailySignInWebviewPlugin
         {
           return bool1;
           if (QLog.isColorLevel()) {
-            QLog.i("DailySignIn", 2, "url=" + paramString1 + " pkg=" + paramString2 + " method=" + paramString3);
+            QLog.i("DailySignIn", 2, "handleJsRequest url=" + paramString1 + " pkg=" + paramString2 + " method=" + paramString3);
           }
           bool1 = bool2;
         } while (!paramString2.equals("signIn"));
@@ -62,6 +62,9 @@ public class DailySignInWebviewPlugin
           paramJsBridgeListener.putInt("type", i);
           paramJsBridgeListener.putInt("result", j);
           paramJsBridgeListener.putInt("day", k);
+          if (QLog.isColorLevel()) {
+            QLog.i("DailySignIn", 2, "handleJsRequest type=" + i + " result=" + j + " day=" + k);
+          }
           QIPCClientHelper.getInstance().getClient().callServer("SignInModule", "action.userSignInForSettingMe", paramJsBridgeListener);
           return true;
         }
@@ -92,7 +95,7 @@ public class DailySignInWebviewPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.DailySignInWebviewPlugin
  * JD-Core Version:    0.7.0.1
  */

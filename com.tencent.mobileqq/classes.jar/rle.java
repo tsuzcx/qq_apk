@@ -1,22 +1,25 @@
-import com.tencent.mobileqq.activity.AccountManageActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.subaccount.datamanager.SubAccountManager;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
 
 public class rle
-  implements Runnable
+  implements rji
 {
-  public rle(AccountManageActivity paramAccountManageActivity) {}
+  public rle(BridgeModule paramBridgeModule, String paramString) {}
   
-  public void run()
+  public void a()
   {
-    long l = this.a.app.a();
-    SubAccountManager localSubAccountManager = (SubAccountManager)this.a.app.getManager(60);
-    this.a.runOnUiThread(new rlf(this, l));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeCallJS(this.jdField_a_of_type_JavaLangString, null);
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void b()
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeErrorCallJS(this.jdField_a_of_type_JavaLangString, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     rle
  * JD-Core Version:    0.7.0.1
  */

@@ -1,37 +1,37 @@
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileAppTabView;
-import java.util.Iterator;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Set;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.aio.item.ApolloItemBuilder;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 
-class aczw
-  implements Runnable
+public class aczw
+  implements View.OnClickListener
 {
-  aczw(aczv paramaczv) {}
+  public aczw(ApolloItemBuilder paramApolloItemBuilder) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (this.a.a.b != null)
+    if (aifg.a(this.a.a.getApplication()))
     {
-      Iterator localIterator = this.a.a.b.keySet().iterator();
-      while (localIterator.hasNext())
-      {
-        String str = (String)localIterator.next();
-        if (((List)this.a.a.b.get(str)).size() == 0) {
-          localIterator.remove();
-        }
-      }
+      ApolloUtil.a(paramView.getContext(), null, "aio", aiys.ah, null);
+      return;
     }
-    this.a.a.a.putAll(this.a.a.b);
-    this.a.a.i();
-    this.a.a.setSelect(0);
-    this.a.a.b.clear();
-    this.a.a.a(true);
+    if (!aifg.b(this.a.a.getApplication())) {}
+    for (String str = aiys.U;; str = aiys.V + bezd.b)
+    {
+      Intent localIntent = new Intent(paramView.getContext(), QQBrowserActivity.class);
+      localIntent.putExtra("big_brother_source_key", "biz_src_zf_lmx");
+      VasWebviewUtil.openQQBrowserActivity(paramView.getContext(), str, -1L, localIntent, false, -1);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aczw
  * JD-Core Version:    0.7.0.1
  */

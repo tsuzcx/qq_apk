@@ -1,30 +1,34 @@
-import com.tencent.mobileqq.app.MessageObserver;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AssociatedAccountActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
 public class aaag
-  implements Runnable
+  implements View.OnClickListener
 {
-  public aaag(QQMessageFacade paramQQMessageFacade, MessageRecord paramMessageRecord, MessageObserver paramMessageObserver, boolean paramBoolean) {}
+  public aaag(AssociatedAccountActivity paramAssociatedAccountActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    try
+    boolean bool = false;
+    awqx.b(this.a.app, "CliOper", "", "", "0X8007144", "0X8007144", 0, 0, "", "", "", "");
+    paramView = (axat)this.a.app.getManager(61);
+    if ((paramView != null) && (paramView.a() >= 2)) {}
+    for (;;)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade.c(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver, this.jdField_a_of_type_Boolean);
+      if (QLog.isColorLevel()) {
+        QLog.d("AssociatedAccountActivity", 2, "click top right manage btn underTwo = " + bool);
+      }
+      AssociatedAccountActivity.a(this.a, bool);
       return;
-    }
-    catch (RuntimeException localRuntimeException)
-    {
-      QLog.e("Q.msg.QQMessageFacade", 1, "smr error :", localRuntimeException);
-      throw localRuntimeException;
+      bool = true;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aaag
  * JD-Core Version:    0.7.0.1
  */

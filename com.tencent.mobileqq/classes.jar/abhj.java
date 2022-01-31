@@ -1,23 +1,19 @@
-import com.tencent.mobileqq.armap.ARMapActivity;
-import com.tencent.mobileqq.armap.map.ARMapEngine;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class abhj
-  implements Runnable
+class abhj
+  implements DialogInterface.OnClickListener
 {
-  public abhj(ARMapActivity paramARMapActivity) {}
+  abhj(abhe paramabhe) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ARMapActivity", 2, "doOnActivityResult nativeRequestPOIList");
-    }
-    ARMapEngine.nativeRequestPOIList();
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abhj
  * JD-Core Version:    0.7.0.1
  */

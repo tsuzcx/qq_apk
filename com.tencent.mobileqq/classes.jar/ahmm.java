@@ -1,23 +1,19 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.richmedia.capture.data.SegmentKeeper;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public final class ahmm
-  implements Parcelable.Creator
+final class ahmm
+  implements ahmn
 {
-  public SegmentKeeper a(Parcel paramParcel)
-  {
-    return new SegmentKeeper(paramParcel);
-  }
+  ahmm(QQAppInterface paramQQAppInterface, int paramInt, String paramString) {}
   
-  public SegmentKeeper[] a(int paramInt)
+  public boolean a(int paramInt1, int paramInt2, String paramString, int paramInt3, int paramInt4)
   {
-    return new SegmentKeeper[paramInt];
+    ahml.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, paramString);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ahmm
  * JD-Core Version:    0.7.0.1
  */

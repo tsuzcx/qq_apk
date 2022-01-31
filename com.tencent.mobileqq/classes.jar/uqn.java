@@ -1,23 +1,35 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.aio.ForwardUtils.Section_Text;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-public final class uqn
-  implements Parcelable.Creator
+public class uqn
+  extends QQUIEventReceiver<upw, sxr>
 {
-  public ForwardUtils.Section_Text a(Parcel paramParcel)
+  public uqn(@NonNull upw paramupw)
   {
-    return new ForwardUtils.Section_Text(paramParcel);
+    super(paramupw);
   }
   
-  public ForwardUtils.Section_Text[] a(int paramInt)
+  public void a(@NonNull upw paramupw, @NonNull sxr paramsxr)
   {
-    return new ForwardUtils.Section_Text[paramInt];
+    if ((paramsxr == null) || (paramsxr.a == null) || (TextUtils.isEmpty(paramsxr.a.headUrl))) {
+      urk.c(this.TAG, "GetUserInfoHandler return headUrl is null!", new IllegalStateException());
+    }
+    while (!paramsxr.a.isMe()) {
+      return;
+    }
+    upw.b(paramupw);
+  }
+  
+  public Class acceptEventClass()
+  {
+    return sxr.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     uqn
  * JD-Core Version:    0.7.0.1
  */

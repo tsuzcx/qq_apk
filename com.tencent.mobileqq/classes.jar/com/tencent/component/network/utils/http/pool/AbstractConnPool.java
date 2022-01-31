@@ -13,26 +13,22 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
-import ppy;
-import ppz;
-import pqa;
-import pqb;
 
-public abstract class AbstractConnPool
-  implements ConnPool, ConnPoolControl
+public abstract class AbstractConnPool<T, C, E extends PoolEntry<T, C>>
+  implements ConnPool<T, E>, ConnPoolControl<T>
 {
-  private volatile int jdField_a_of_type_Int;
-  private final ConnFactory jdField_a_of_type_ComTencentComponentNetworkUtilsHttpPoolConnFactory;
-  private final LinkedList jdField_a_of_type_JavaUtilLinkedList;
-  private final Map jdField_a_of_type_JavaUtilMap;
-  private final Set jdField_a_of_type_JavaUtilSet;
-  private final Lock jdField_a_of_type_JavaUtilConcurrentLocksLock;
-  private volatile boolean jdField_a_of_type_Boolean;
-  private volatile int jdField_b_of_type_Int;
-  private final LinkedList jdField_b_of_type_JavaUtilLinkedList;
-  private final Map jdField_b_of_type_JavaUtilMap;
+  private final LinkedList<E> available;
+  private final ConnFactory<T, C> connFactory;
+  private volatile int defaultMaxPerRoute;
+  private volatile boolean isShutDown;
+  private final Set<E> leased;
+  private final Lock lock;
+  private final Map<T, Integer> maxPerRoute;
+  private volatile int maxTotal;
+  private final LinkedList<PoolEntryFuture<E>> pending;
+  private final Map<T, RouteSpecificPool<T, C, E>> routeToPool;
   
-  public AbstractConnPool(ConnFactory paramConnFactory, int paramInt1, int paramInt2)
+  public AbstractConnPool(ConnFactory<T, C> paramConnFactory, int paramInt1, int paramInt2)
   {
     if (paramConnFactory == null) {
       throw new IllegalArgumentException("Connection factory may not null");
@@ -43,71 +39,83 @@ public abstract class AbstractConnPool
     if (paramInt2 <= 0) {
       throw new IllegalArgumentException("Max total value may not be negative or zero");
     }
-    this.jdField_a_of_type_JavaUtilConcurrentLocksLock = new ReentrantLock();
-    this.jdField_a_of_type_ComTencentComponentNetworkUtilsHttpPoolConnFactory = paramConnFactory;
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
-    this.jdField_a_of_type_JavaUtilSet = new HashSet();
-    this.jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
-    this.jdField_b_of_type_JavaUtilLinkedList = new LinkedList();
-    this.jdField_b_of_type_JavaUtilMap = new HashMap();
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
+    this.lock = new ReentrantLock();
+    this.connFactory = paramConnFactory;
+    this.routeToPool = new HashMap();
+    this.leased = new HashSet();
+    this.available = new LinkedList();
+    this.pending = new LinkedList();
+    this.maxPerRoute = new HashMap();
+    this.defaultMaxPerRoute = paramInt1;
+    this.maxTotal = paramInt2;
   }
   
-  private int a(Object paramObject)
+  private int getMax(T paramT)
   {
-    paramObject = (Integer)this.jdField_b_of_type_JavaUtilMap.get(paramObject);
-    if (paramObject != null) {
-      return paramObject.intValue();
+    paramT = (Integer)this.maxPerRoute.get(paramT);
+    if (paramT != null) {
+      return paramT.intValue();
     }
-    return this.jdField_a_of_type_Int;
+    return this.defaultMaxPerRoute;
   }
   
-  private PoolEntry a(Object paramObject1, Object paramObject2, long paramLong, TimeUnit paramTimeUnit, pqa parampqa)
+  private RouteSpecificPool<T, C, E> getPool(T paramT)
+  {
+    RouteSpecificPool localRouteSpecificPool = (RouteSpecificPool)this.routeToPool.get(paramT);
+    Object localObject = localRouteSpecificPool;
+    if (localRouteSpecificPool == null)
+    {
+      localObject = new AbstractConnPool.1(this, paramT, paramT);
+      this.routeToPool.put(paramT, localObject);
+    }
+    return localObject;
+  }
+  
+  private E getPoolEntryBlocking(T paramT, Object paramObject, long paramLong, TimeUnit paramTimeUnit, PoolEntryFuture<E> paramPoolEntryFuture)
   {
     Date localDate = null;
     if (paramLong > 0L) {
       localDate = new Date(System.currentTimeMillis() + paramTimeUnit.toMillis(paramLong));
     }
-    this.jdField_a_of_type_JavaUtilConcurrentLocksLock.lock();
+    this.lock.lock();
     for (;;)
     {
-      pqb localpqb;
+      RouteSpecificPool localRouteSpecificPool;
       try
       {
-        localpqb = a(paramObject1);
+        localRouteSpecificPool = getPool(paramT);
         paramTimeUnit = null;
         if (paramTimeUnit != null) {
           break label463;
         }
-        if (this.jdField_a_of_type_Boolean) {
+        if (this.isShutDown) {
           throw new IllegalStateException("Connection pool shut down");
         }
       }
       finally
       {
-        this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
+        this.lock.unlock();
       }
       Object localObject;
       do
       {
-        if ((!((PoolEntry)localObject).a()) && (!((PoolEntry)localObject).a(System.currentTimeMillis()))) {
+        if ((!((PoolEntry)localObject).isClosed()) && (!((PoolEntry)localObject).isExpired(System.currentTimeMillis()))) {
           break;
         }
-        ((PoolEntry)localObject).b();
-        this.jdField_a_of_type_JavaUtilLinkedList.remove(localObject);
-        localpqb.a((PoolEntry)localObject, false);
-        localObject = localpqb.b(paramObject2);
+        ((PoolEntry)localObject).close();
+        this.available.remove(localObject);
+        localRouteSpecificPool.free((PoolEntry)localObject, false);
+        localObject = localRouteSpecificPool.getFree(paramObject);
       } while (localObject != null);
       if (localObject != null)
       {
-        this.jdField_a_of_type_JavaUtilLinkedList.remove(localObject);
-        this.jdField_a_of_type_JavaUtilSet.add(localObject);
-        this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
+        this.available.remove(localObject);
+        this.leased.add(localObject);
+        this.lock.unlock();
         return localObject;
       }
-      int j = a(paramObject1);
-      int k = Math.max(0, localpqb.a() + 1 - j);
+      int j = getMax(paramT);
+      int k = Math.max(0, localRouteSpecificPool.getAllocatedCount() + 1 - j);
       int i;
       if (k > 0) {
         i = 0;
@@ -116,42 +124,42 @@ public abstract class AbstractConnPool
       {
         if (i < k)
         {
-          paramTimeUnit = localpqb.a();
+          paramTimeUnit = localRouteSpecificPool.getLastUsed();
           if (paramTimeUnit != null) {}
         }
         else
         {
-          if (localpqb.a() >= j) {
+          if (localRouteSpecificPool.getAllocatedCount() >= j) {
             break;
           }
-          i = this.jdField_a_of_type_JavaUtilSet.size();
-          i = Math.max(this.jdField_b_of_type_Int - i, 0);
+          i = this.leased.size();
+          i = Math.max(this.maxTotal - i, 0);
           if (i <= 0) {
             break;
           }
-          if ((this.jdField_a_of_type_JavaUtilLinkedList.size() > i - 1) && (!this.jdField_a_of_type_JavaUtilLinkedList.isEmpty()))
+          if ((this.available.size() > i - 1) && (!this.available.isEmpty()))
           {
-            paramObject2 = (PoolEntry)this.jdField_a_of_type_JavaUtilLinkedList.removeLast();
-            paramObject2.b();
-            a(paramObject2.a()).a(paramObject2);
+            paramObject = (PoolEntry)this.available.removeLast();
+            paramObject.close();
+            getPool(paramObject.getRoute()).remove(paramObject);
           }
-          paramObject1 = localpqb.c(this.jdField_a_of_type_ComTencentComponentNetworkUtilsHttpPoolConnFactory.a(paramObject1));
-          this.jdField_a_of_type_JavaUtilSet.add(paramObject1);
-          this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
-          return paramObject1;
+          paramT = localRouteSpecificPool.add(this.connFactory.create(paramT));
+          this.leased.add(paramT);
+          this.lock.unlock();
+          return paramT;
         }
-        paramTimeUnit.b();
-        this.jdField_a_of_type_JavaUtilLinkedList.remove(paramTimeUnit);
-        localpqb.a(paramTimeUnit);
+        paramTimeUnit.close();
+        this.available.remove(paramTimeUnit);
+        localRouteSpecificPool.remove(paramTimeUnit);
         i += 1;
       }
       try
       {
-        localpqb.a(parampqa);
-        this.jdField_b_of_type_JavaUtilLinkedList.add(parampqa);
-        boolean bool = parampqa.a(localDate);
-        localpqb.b(parampqa);
-        this.jdField_b_of_type_JavaUtilLinkedList.remove(parampqa);
+        localRouteSpecificPool.queue(paramPoolEntryFuture);
+        this.pending.add(paramPoolEntryFuture);
+        boolean bool = paramPoolEntryFuture.await(localDate);
+        localRouteSpecificPool.unqueue(paramPoolEntryFuture);
+        this.pending.remove(paramPoolEntryFuture);
         paramTimeUnit = (TimeUnit)localObject;
         if (bool) {
           continue;
@@ -169,108 +177,55 @@ public abstract class AbstractConnPool
       }
       finally
       {
-        localpqb.b(parampqa);
-        this.jdField_b_of_type_JavaUtilLinkedList.remove(parampqa);
+        localRouteSpecificPool.unqueue(paramPoolEntryFuture);
+        this.pending.remove(paramPoolEntryFuture);
       }
     }
   }
   
-  private pqb a(Object paramObject)
+  private void notifyPending(RouteSpecificPool<T, C, E> paramRouteSpecificPool)
   {
-    pqb localpqb = (pqb)this.jdField_a_of_type_JavaUtilMap.get(paramObject);
-    Object localObject = localpqb;
-    if (localpqb == null)
-    {
-      localObject = new ppy(this, paramObject, paramObject);
-      this.jdField_a_of_type_JavaUtilMap.put(paramObject, localObject);
-    }
-    return localObject;
-  }
-  
-  private void a(pqb parampqb)
-  {
-    parampqb = parampqb.a();
-    if (parampqb != null) {
-      this.jdField_b_of_type_JavaUtilLinkedList.remove(parampqb);
+    paramRouteSpecificPool = paramRouteSpecificPool.nextPending();
+    if (paramRouteSpecificPool != null) {
+      this.pending.remove(paramRouteSpecificPool);
     }
     for (;;)
     {
-      if (parampqb != null) {
-        parampqb.a();
+      if (paramRouteSpecificPool != null) {
+        paramRouteSpecificPool.wakeup();
       }
       return;
-      parampqb = (pqa)this.jdField_b_of_type_JavaUtilLinkedList.poll();
+      paramRouteSpecificPool = (PoolEntryFuture)this.pending.poll();
     }
   }
   
-  public abstract PoolEntry a(Object paramObject1, Object paramObject2);
-  
-  public Future a(Object paramObject1, Object paramObject2)
+  public void closeExpired()
   {
-    return a(paramObject1, paramObject2, null);
-  }
-  
-  public Future a(Object paramObject1, Object paramObject2, FutureCallback paramFutureCallback)
-  {
-    if (paramObject1 == null) {
-      throw new IllegalArgumentException("Route may not be null");
-    }
-    if (this.jdField_a_of_type_Boolean) {
-      throw new IllegalStateException("Connection pool shut down");
-    }
-    return new ppz(this, this.jdField_a_of_type_JavaUtilConcurrentLocksLock, paramFutureCallback, paramObject1, paramObject2);
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_JavaUtilConcurrentLocksLock.lock();
+    long l = System.currentTimeMillis();
+    this.lock.lock();
     try
     {
-      Iterator localIterator1 = this.jdField_a_of_type_JavaUtilLinkedList.iterator();
-      while (localIterator1.hasNext()) {
-        ((PoolEntry)localIterator1.next()).b();
+      Iterator localIterator = this.available.iterator();
+      while (localIterator.hasNext())
+      {
+        PoolEntry localPoolEntry = (PoolEntry)localIterator.next();
+        if (localPoolEntry.isExpired(l))
+        {
+          localPoolEntry.close();
+          RouteSpecificPool localRouteSpecificPool = getPool(localPoolEntry.getRoute());
+          localRouteSpecificPool.remove(localPoolEntry);
+          localIterator.remove();
+          notifyPending(localRouteSpecificPool);
+        }
       }
-      localIterator2 = this.jdField_a_of_type_JavaUtilSet.iterator();
     }
     finally
     {
-      this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
-    }
-    while (localIterator2.hasNext()) {
-      ((PoolEntry)localIterator2.next()).b();
-    }
-    Iterator localIterator2 = this.jdField_a_of_type_JavaUtilMap.values().iterator();
-    while (localIterator2.hasNext()) {
-      ((pqb)localIterator2.next()).a();
-    }
-    this.jdField_a_of_type_JavaUtilMap.clear();
-    this.jdField_a_of_type_JavaUtilSet.clear();
-    this.jdField_a_of_type_JavaUtilLinkedList.clear();
-    this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
-  }
-  
-  public void a(int paramInt)
-  {
-    if (paramInt <= 0) {
-      throw new IllegalArgumentException("Max value may not be negative or zero");
-    }
-    this.jdField_a_of_type_JavaUtilConcurrentLocksLock.lock();
-    try
-    {
-      this.jdField_b_of_type_Int = paramInt;
-      return;
-    }
-    finally
-    {
-      this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
+      this.lock.unlock();
     }
   }
   
-  public void a(long paramLong, TimeUnit paramTimeUnit)
+  public void closeIdle(long paramLong, TimeUnit paramTimeUnit)
   {
     long l = 0L;
     if (paramTimeUnit == null) {
@@ -283,83 +238,183 @@ public abstract class AbstractConnPool
     for (;;)
     {
       l = System.currentTimeMillis();
-      this.jdField_a_of_type_JavaUtilConcurrentLocksLock.lock();
+      this.lock.lock();
       try
       {
-        paramTimeUnit = this.jdField_a_of_type_JavaUtilLinkedList.iterator();
+        paramTimeUnit = this.available.iterator();
         while (paramTimeUnit.hasNext())
         {
           PoolEntry localPoolEntry = (PoolEntry)paramTimeUnit.next();
-          if (localPoolEntry.a() <= l - paramLong)
+          if (localPoolEntry.getUpdated() <= l - paramLong)
           {
-            localPoolEntry.b();
-            pqb localpqb = a(localPoolEntry.a());
-            localpqb.a(localPoolEntry);
+            localPoolEntry.close();
+            RouteSpecificPool localRouteSpecificPool = getPool(localPoolEntry.getRoute());
+            localRouteSpecificPool.remove(localPoolEntry);
             paramTimeUnit.remove();
-            a(localpqb);
+            notifyPending(localRouteSpecificPool);
           }
         }
       }
       finally
       {
-        this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
+        this.lock.unlock();
       }
       return;
     }
   }
   
+  protected abstract E createEntry(T paramT, C paramC);
+  
+  public int getDefaultMaxPerRoute()
+  {
+    this.lock.lock();
+    try
+    {
+      int i = this.defaultMaxPerRoute;
+      return i;
+    }
+    finally
+    {
+      this.lock.unlock();
+    }
+  }
+  
+  public int getMaxPerRoute(T paramT)
+  {
+    if (paramT == null) {
+      throw new IllegalArgumentException("Route may not be null");
+    }
+    this.lock.lock();
+    try
+    {
+      int i = getMax(paramT);
+      return i;
+    }
+    finally
+    {
+      this.lock.unlock();
+    }
+  }
+  
+  public int getMaxTotal()
+  {
+    this.lock.lock();
+    try
+    {
+      int i = this.maxTotal;
+      return i;
+    }
+    finally
+    {
+      this.lock.unlock();
+    }
+  }
+  
+  public PoolStats getStats(T paramT)
+  {
+    if (paramT == null) {
+      throw new IllegalArgumentException("Route may not be null");
+    }
+    this.lock.lock();
+    try
+    {
+      RouteSpecificPool localRouteSpecificPool = getPool(paramT);
+      paramT = new PoolStats(localRouteSpecificPool.getLeasedCount(), localRouteSpecificPool.getPendingCount(), localRouteSpecificPool.getAvailableCount(), getMax(paramT));
+      return paramT;
+    }
+    finally
+    {
+      this.lock.unlock();
+    }
+  }
+  
+  public PoolStats getTotalStats()
+  {
+    this.lock.lock();
+    try
+    {
+      PoolStats localPoolStats = new PoolStats(this.leased.size(), this.pending.size(), this.available.size(), this.maxTotal);
+      return localPoolStats;
+    }
+    finally
+    {
+      this.lock.unlock();
+    }
+  }
+  
+  public boolean isShutdown()
+  {
+    return this.isShutDown;
+  }
+  
+  public Future<E> lease(T paramT, Object paramObject)
+  {
+    return lease(paramT, paramObject, null);
+  }
+  
+  public Future<E> lease(T paramT, Object paramObject, FutureCallback<E> paramFutureCallback)
+  {
+    if (paramT == null) {
+      throw new IllegalArgumentException("Route may not be null");
+    }
+    if (this.isShutDown) {
+      throw new IllegalStateException("Connection pool shut down");
+    }
+    return new AbstractConnPool.2(this, this.lock, paramFutureCallback, paramT, paramObject);
+  }
+  
   /* Error */
-  public void a(PoolEntry paramPoolEntry, boolean paramBoolean)
+  public void release(E paramE, boolean paramBoolean)
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 38	com/tencent/component/network/utils/http/pool/AbstractConnPool:jdField_a_of_type_JavaUtilConcurrentLocksLock	Ljava/util/concurrent/locks/Lock;
-    //   4: invokeinterface 103 1 0
+    //   1: getfield 53	com/tencent/component/network/utils/http/pool/AbstractConnPool:lock	Ljava/util/concurrent/locks/Lock;
+    //   4: invokeinterface 137 1 0
     //   9: aload_0
-    //   10: getfield 50	com/tencent/component/network/utils/http/pool/AbstractConnPool:jdField_a_of_type_JavaUtilSet	Ljava/util/Set;
+    //   10: getfield 65	com/tencent/component/network/utils/http/pool/AbstractConnPool:leased	Ljava/util/Set;
     //   13: aload_1
-    //   14: invokeinterface 267 2 0
+    //   14: invokeinterface 319 2 0
     //   19: ifeq +42 -> 61
     //   22: aload_0
     //   23: aload_1
-    //   24: invokevirtual 169	com/tencent/component/network/utils/http/pool/PoolEntry:a	()Ljava/lang/Object;
-    //   27: invokespecial 106	com/tencent/component/network/utils/http/pool/AbstractConnPool:a	(Ljava/lang/Object;)Lpqb;
+    //   24: invokevirtual 208	com/tencent/component/network/utils/http/pool/PoolEntry:getRoute	()Ljava/lang/Object;
+    //   27: invokespecial 139	com/tencent/component/network/utils/http/pool/AbstractConnPool:getPool	(Ljava/lang/Object;)Lcom/tencent/component/network/utils/http/pool/RouteSpecificPool;
     //   30: astore_3
     //   31: aload_3
     //   32: aload_1
     //   33: iload_2
-    //   34: invokevirtual 135	pqb:a	(Lcom/tencent/component/network/utils/http/pool/PoolEntry;Z)V
+    //   34: invokevirtual 170	com/tencent/component/network/utils/http/pool/RouteSpecificPool:free	(Lcom/tencent/component/network/utils/http/pool/PoolEntry;Z)V
     //   37: iload_2
     //   38: ifeq +33 -> 71
     //   41: aload_0
-    //   42: getfield 108	com/tencent/component/network/utils/http/pool/AbstractConnPool:jdField_a_of_type_Boolean	Z
+    //   42: getfield 141	com/tencent/component/network/utils/http/pool/AbstractConnPool:isShutDown	Z
     //   45: ifne +26 -> 71
     //   48: aload_0
-    //   49: getfield 55	com/tencent/component/network/utils/http/pool/AbstractConnPool:jdField_a_of_type_JavaUtilLinkedList	Ljava/util/LinkedList;
+    //   49: getfield 70	com/tencent/component/network/utils/http/pool/AbstractConnPool:available	Ljava/util/LinkedList;
     //   52: aload_1
-    //   53: invokevirtual 271	java/util/LinkedList:addFirst	(Ljava/lang/Object;)V
+    //   53: invokevirtual 323	java/util/LinkedList:addFirst	(Ljava/lang/Object;)V
     //   56: aload_0
     //   57: aload_3
-    //   58: invokespecial 266	com/tencent/component/network/utils/http/pool/AbstractConnPool:a	(Lpqb;)V
+    //   58: invokespecial 271	com/tencent/component/network/utils/http/pool/AbstractConnPool:notifyPending	(Lcom/tencent/component/network/utils/http/pool/RouteSpecificPool;)V
     //   61: aload_0
-    //   62: getfield 38	com/tencent/component/network/utils/http/pool/AbstractConnPool:jdField_a_of_type_JavaUtilConcurrentLocksLock	Ljava/util/concurrent/locks/Lock;
-    //   65: invokeinterface 116 1 0
+    //   62: getfield 53	com/tencent/component/network/utils/http/pool/AbstractConnPool:lock	Ljava/util/concurrent/locks/Lock;
+    //   65: invokeinterface 149 1 0
     //   70: return
     //   71: aload_1
-    //   72: invokevirtual 126	com/tencent/component/network/utils/http/pool/PoolEntry:b	()V
+    //   72: invokevirtual 162	com/tencent/component/network/utils/http/pool/PoolEntry:close	()V
     //   75: goto -19 -> 56
     //   78: astore_1
     //   79: aload_0
-    //   80: getfield 38	com/tencent/component/network/utils/http/pool/AbstractConnPool:jdField_a_of_type_JavaUtilConcurrentLocksLock	Ljava/util/concurrent/locks/Lock;
-    //   83: invokeinterface 116 1 0
+    //   80: getfield 53	com/tencent/component/network/utils/http/pool/AbstractConnPool:lock	Ljava/util/concurrent/locks/Lock;
+    //   83: invokeinterface 149 1 0
     //   88: aload_1
     //   89: athrow
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	90	0	this	AbstractConnPool
-    //   0	90	1	paramPoolEntry	PoolEntry
+    //   0	90	1	paramE	E
     //   0	90	2	paramBoolean	boolean
-    //   30	28	3	localpqb	pqb
+    //   30	28	3	localRouteSpecificPool	RouteSpecificPool
     // Exception table:
     //   from	to	target	type
     //   9	37	78	finally
@@ -368,58 +423,101 @@ public abstract class AbstractConnPool
     //   71	75	78	finally
   }
   
-  public void b()
-  {
-    long l = System.currentTimeMillis();
-    this.jdField_a_of_type_JavaUtilConcurrentLocksLock.lock();
-    try
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedList.iterator();
-      while (localIterator.hasNext())
-      {
-        PoolEntry localPoolEntry = (PoolEntry)localIterator.next();
-        if (localPoolEntry.a(l))
-        {
-          localPoolEntry.b();
-          pqb localpqb = a(localPoolEntry.a());
-          localpqb.a(localPoolEntry);
-          localIterator.remove();
-          a(localpqb);
-        }
-      }
-    }
-    finally
-    {
-      this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
-    }
-  }
-  
-  public void b(int paramInt)
+  public void setDefaultMaxPerRoute(int paramInt)
   {
     if (paramInt <= 0) {
       throw new IllegalArgumentException("Max value may not be negative or zero");
     }
-    this.jdField_a_of_type_JavaUtilConcurrentLocksLock.lock();
+    this.lock.lock();
     try
     {
-      this.jdField_a_of_type_Int = paramInt;
+      this.defaultMaxPerRoute = paramInt;
       return;
     }
     finally
     {
-      this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
+      this.lock.unlock();
     }
+  }
+  
+  public void setMaxPerRoute(T paramT, int paramInt)
+  {
+    if (paramT == null) {
+      throw new IllegalArgumentException("Route may not be null");
+    }
+    if (paramInt <= 0) {
+      throw new IllegalArgumentException("Max value may not be negative or zero");
+    }
+    this.lock.lock();
+    try
+    {
+      this.maxPerRoute.put(paramT, Integer.valueOf(paramInt));
+      return;
+    }
+    finally
+    {
+      this.lock.unlock();
+    }
+  }
+  
+  public void setMaxTotal(int paramInt)
+  {
+    if (paramInt <= 0) {
+      throw new IllegalArgumentException("Max value may not be negative or zero");
+    }
+    this.lock.lock();
+    try
+    {
+      this.maxTotal = paramInt;
+      return;
+    }
+    finally
+    {
+      this.lock.unlock();
+    }
+  }
+  
+  public void shutdown()
+  {
+    if (this.isShutDown) {
+      return;
+    }
+    this.isShutDown = true;
+    this.lock.lock();
+    try
+    {
+      Iterator localIterator1 = this.available.iterator();
+      while (localIterator1.hasNext()) {
+        ((PoolEntry)localIterator1.next()).close();
+      }
+      localIterator2 = this.leased.iterator();
+    }
+    finally
+    {
+      this.lock.unlock();
+    }
+    while (localIterator2.hasNext()) {
+      ((PoolEntry)localIterator2.next()).close();
+    }
+    Iterator localIterator2 = this.routeToPool.values().iterator();
+    while (localIterator2.hasNext()) {
+      ((RouteSpecificPool)localIterator2.next()).shutdown();
+    }
+    this.routeToPool.clear();
+    this.leased.clear();
+    this.available.clear();
+    this.lock.unlock();
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("[leased: ");
-    localStringBuilder.append(this.jdField_a_of_type_JavaUtilSet);
+    localStringBuilder.append(this.leased);
     localStringBuilder.append("][available: ");
-    localStringBuilder.append(this.jdField_a_of_type_JavaUtilLinkedList);
+    localStringBuilder.append(this.available);
     localStringBuilder.append("][pending: ");
-    localStringBuilder.append(this.jdField_b_of_type_JavaUtilLinkedList);
+    localStringBuilder.append(this.pending);
     localStringBuilder.append("]");
     return localStringBuilder.toString();
   }

@@ -1,0 +1,46 @@
+{
+    "Readinjoy_article_interaction_float_view_cell": {
+    "view_type": "cell",
+    "direction": "vertical",
+    "default_visible": "YES",
+    "height": {
+        "type": "wrap_content"
+    },
+    "width": {
+        "type": "relative",
+        "value": "375"
+    },
+    "subviews": [
+        {
+            "view_type":"container",
+            "layout_type":"layout_relative",
+            "height":{
+                "type": "wrap_content"
+            },
+            "width":{
+                "type":"match_parent"
+            },
+            "subviews":[
+                {
+                    "view_type": "ReadInJoyLikeBiuFusionFloatView",
+                    "view_id": "id_interaction_like_biu_fusion",
+                    "default_visible": "YES",
+                    "event_type":"cmd_like_biu_fusion_click",
+                    "align_parent_left": "YES",
+                    "align_parent_top": "YES",
+                    "height":{
+                        "type":"wrap_content"
+                    },
+                    "width":{
+                        "type":"match_parent"
+                    },
+                    "attributes": {
+                        "setFrameString:": "-1",
+                        "setLikeBiuArticleMiddleFloatViewModel:":"$like_biu_float_view_model"
+                    }
+                }
+                ]
+        }
+        ]
+    }
+}

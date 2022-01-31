@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBField;
 
 public final class ArticleComment$CreateArticleCommentRespond
-  extends MessageMicro
+  extends MessageMicro<CreateArticleCommentRespond>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField comment_id = PBField.initBytes(ByteStringMicro.EMPTY);

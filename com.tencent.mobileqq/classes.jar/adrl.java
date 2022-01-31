@@ -1,29 +1,37 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.CheckBox;
-import com.tencent.mobileqq.filemanager.activity.fileassistant.IBaseTabViewEvent;
-import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
+import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
 
-public class adrl
-  implements View.OnClickListener
+class adrl
+  implements Animation.AnimationListener
 {
-  public adrl(SendBottomBar paramSendBottomBar) {}
+  adrl(adrj paramadrj, adrn paramadrn, CharSequence paramCharSequence) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (SendBottomBar.a(this.a).isChecked())
-    {
-      SendBottomBar.a(this.a).r();
-      SendBottomBar.a(this.a).setText("取消全选");
-      return;
-    }
-    SendBottomBar.a(this.a).s();
-    SendBottomBar.a(this.a).setText("全选");
+    this.jdField_a_of_type_Adrn.d.setText(this.jdField_a_of_type_JavaLangCharSequence);
+    this.jdField_a_of_type_Adrn.d.startAnimation(this.jdField_a_of_type_Adrj.a);
+    this.jdField_a_of_type_Adrn.a.requestLayout();
+    this.jdField_a_of_type_Adrn.g = 0;
+    paramAnimation = (RelativeLayout.LayoutParams)this.jdField_a_of_type_Adrn.a.getLayoutParams();
+    paramAnimation.width = -2;
+    paramAnimation.height = -2;
+    this.jdField_a_of_type_Adrn.a.setAnimation(null);
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    this.jdField_a_of_type_Adrn.g = 0;
+    this.jdField_a_of_type_Adrn.d.startAnimation(this.jdField_a_of_type_Adrj.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     adrl
  * JD-Core Version:    0.7.0.1
  */

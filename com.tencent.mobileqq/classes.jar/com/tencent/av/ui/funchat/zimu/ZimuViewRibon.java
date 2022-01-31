@@ -4,49 +4,52 @@ import android.content.Context;
 import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.util.AttributeSet;
-import com.tencent.av.AVLog;
 import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.business.handler.SentenceInfo;
-import com.tencent.av.core.VcSystemInfo;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import krx;
+import kws;
+import lbk;
+import mda;
+import mdb;
+import mdh;
 
 public class ZimuViewRibon
   extends ZimuViewMotion
 {
-  WeakReference jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(this);
+  WeakReference<ZimuView> jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(this);
   Random jdField_a_of_type_JavaUtilRandom = new Random();
   int[] jdField_a_of_type_ArrayOfInt = { 86, 60, 56, 44, 32 };
-  IZimuItemView.FontPara[] jdField_a_of_type_ArrayOfComTencentAvUiFunchatZimuIZimuItemView$FontPara = { new IZimuItemView.FontPara(Color.parseColor("#cc8de1"), Color.parseColor("#ffffff"), 7), new IZimuItemView.FontPara(Color.parseColor("#57d4d9"), Color.parseColor("#ffffff"), 7), new IZimuItemView.FontPara(Color.parseColor("#ffc903"), Color.parseColor("#ffffff"), 7) };
+  mda[] jdField_a_of_type_ArrayOfMda = { new mda(Color.parseColor("#cc8de1"), Color.parseColor("#ffffff"), 7), new mda(Color.parseColor("#57d4d9"), Color.parseColor("#ffffff"), 7), new mda(Color.parseColor("#ffc903"), Color.parseColor("#ffffff"), 7) };
   private int e = this.jdField_a_of_type_JavaUtilRandom.nextInt() & 0x1;
   private int f;
   
-  public ZimuViewRibon(VideoAppInterface paramVideoAppInterface, Context paramContext, AttributeSet paramAttributeSet)
+  public ZimuViewRibon(long paramLong, VideoAppInterface paramVideoAppInterface, Context paramContext, AttributeSet paramAttributeSet)
   {
-    super(paramVideoAppInterface, paramContext, paramAttributeSet);
+    super(paramLong, paramVideoAppInterface, paramContext, paramAttributeSet);
   }
   
   @NonNull
-  private ZimuItemViewRibon a(SentenceInfo paramSentenceInfo, int paramInt1, int paramInt2, boolean paramBoolean, ZimuItemViewRibon paramZimuItemViewRibon)
+  private mdh a(kws paramkws, int paramInt1, int paramInt2, boolean paramBoolean, mdh parammdh)
   {
     int j = this.jdField_a_of_type_ArrayOfInt.length;
-    int i = this.jdField_a_of_type_ArrayOfComTencentAvUiFunchatZimuIZimuItemView$FontPara.length;
+    int i = this.jdField_a_of_type_ArrayOfMda.length;
     j = paramInt1 % j;
-    paramZimuItemViewRibon.a(paramBoolean);
-    paramZimuItemViewRibon.a(this.jdField_a_of_type_AndroidGraphicsTypeface, this.jdField_a_of_type_ArrayOfInt[j], this.jdField_a_of_type_ArrayOfComTencentAvUiFunchatZimuIZimuItemView$FontPara[(paramInt1 % i)]);
-    paramZimuItemViewRibon.a(paramSentenceInfo);
-    i = a(this.jdField_c_of_type_Int * (paramInt1 % 4), paramZimuItemViewRibon.d());
-    paramZimuItemViewRibon.a(this.jdField_a_of_type_Int, i);
-    AVLog.c("ZimuViewRibon", "onCreateItemView:" + paramInt1 + "|" + paramInt2 + "|" + i + "|" + this.jdField_c_of_type_Int + "|" + this.jdField_a_of_type_ArrayOfInt[j]);
-    paramZimuItemViewRibon.a(paramInt2);
-    return paramZimuItemViewRibon;
+    parammdh.a(paramBoolean);
+    parammdh.a(this.jdField_a_of_type_AndroidGraphicsTypeface, this.jdField_a_of_type_ArrayOfInt[j], this.jdField_a_of_type_ArrayOfMda[(paramInt1 % i)]);
+    parammdh.a(paramkws);
+    i = a(this.jdField_c_of_type_Int * (paramInt1 % 4), parammdh.d());
+    parammdh.a(this.jdField_a_of_type_Int, i);
+    krx.c("ZimuViewRibon", "onCreateItemView:" + paramInt1 + "|" + paramInt2 + "|" + i + "|" + this.jdField_c_of_type_Int + "|" + this.jdField_a_of_type_ArrayOfInt[j]);
+    parammdh.a(paramInt2);
+    return parammdh;
   }
   
   long a()
   {
-    long l = VcSystemInfo.c();
+    long l = lbk.c();
     if (l > 1800000L) {
       this.jdField_c_of_type_Long = 50L;
     }
@@ -66,11 +69,11 @@ public class ZimuViewRibon
     return "ribbon";
   }
   
-  protected List a(SentenceInfo paramSentenceInfo, boolean paramBoolean)
+  protected List<mdb> a(kws paramkws, boolean paramBoolean)
   {
     c();
     ArrayList localArrayList = new ArrayList();
-    ZimuItemViewRibon localZimuItemViewRibon;
+    mdh localmdh;
     int k;
     if (this.f % 3 == 0)
     {
@@ -78,16 +81,16 @@ public class ZimuViewRibon
       if ((i & 0x1) == 1)
       {
         j = 1;
-        localZimuItemViewRibon = new ZimuItemViewRibon(getContext(), this.jdField_a_of_type_JavaLangRefWeakReference, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_Float);
+        localmdh = new mdh(getContext(), this.jdField_a_of_type_JavaLangRefWeakReference, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_Float);
         int m = this.e;
         if (j == 0) {
           break label243;
         }
         k = i;
         label86:
-        localArrayList.add(a(paramSentenceInfo, m, k, paramBoolean, localZimuItemViewRibon));
+        localArrayList.add(a(paramkws, m, k, paramBoolean, localmdh));
         this.e += 1;
-        localZimuItemViewRibon = new ZimuItemViewRibon(getContext(), this.jdField_a_of_type_JavaLangRefWeakReference, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_Float);
+        localmdh = new mdh(getContext(), this.jdField_a_of_type_JavaLangRefWeakReference, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_Float);
         k = this.e;
         if (j != 0) {
           break label249;
@@ -95,8 +98,8 @@ public class ZimuViewRibon
       }
       for (;;)
       {
-        localArrayList.add(a(paramSentenceInfo, k, i, paramBoolean, localZimuItemViewRibon));
-        AVLog.c("ZimuViewRibon", "onCreateItemView random 00 :" + this.e + "||" + paramSentenceInfo.a);
+        localArrayList.add(a(paramkws, k, i, paramBoolean, localmdh));
+        krx.c("ZimuViewRibon", "onCreateItemView random 00 :" + this.e + "||" + paramkws.a);
         this.e += 1;
         this.f += 1;
         return localArrayList;
@@ -114,7 +117,7 @@ public class ZimuViewRibon
     {
       i = 1;
       label276:
-      localZimuItemViewRibon = new ZimuItemViewRibon(getContext(), this.jdField_a_of_type_JavaLangRefWeakReference, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_Float);
+      localmdh = new mdh(getContext(), this.jdField_a_of_type_JavaLangRefWeakReference, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_Float);
       k = this.e;
       if (i == 0) {
         break label384;
@@ -123,8 +126,8 @@ public class ZimuViewRibon
     label384:
     for (int i = j;; i = 0)
     {
-      localArrayList.add(a(paramSentenceInfo, k, i, paramBoolean, localZimuItemViewRibon));
-      AVLog.c("ZimuViewRibon", "onCreateItemView random zz :" + this.e + "|" + paramSentenceInfo.a);
+      localArrayList.add(a(paramkws, k, i, paramBoolean, localmdh));
+      krx.c("ZimuViewRibon", "onCreateItemView random zz :" + this.e + "|" + paramkws.a);
       break;
       i = 0;
       break label276;
@@ -142,30 +145,30 @@ public class ZimuViewRibon
       this.jdField_a_of_type_ArrayOfInt[i] = ((int)(this.jdField_a_of_type_ArrayOfInt[i] * f1));
       i += 1;
     }
-    k = this.jdField_a_of_type_ArrayOfComTencentAvUiFunchatZimuIZimuItemView$FontPara.length;
+    k = this.jdField_a_of_type_ArrayOfMda.length;
     i = j;
     while (i < k)
     {
-      this.jdField_a_of_type_ArrayOfComTencentAvUiFunchatZimuIZimuItemView$FontPara[i].jdField_a_of_type_Float *= f1;
+      this.jdField_a_of_type_ArrayOfMda[i].jdField_a_of_type_Float *= f1;
       i += 1;
     }
     a();
     super.b();
   }
   
-  protected void b(ZimuItemView paramZimuItemView)
+  protected void b(mdb parammdb)
   {
-    super.b(paramZimuItemView);
-    paramZimuItemView.d();
-    SentenceInfo localSentenceInfo = paramZimuItemView.a;
-    paramZimuItemView = (ZimuItemViewRibon)paramZimuItemView;
-    a(localSentenceInfo, this.e, 0, true, paramZimuItemView);
+    super.b(parammdb);
+    parammdb.d();
+    kws localkws = parammdb.a;
+    parammdb = (mdh)parammdb;
+    a(localkws, this.e, 0, true, parammdb);
     this.e += 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.av.ui.funchat.zimu.ZimuViewRibon
  * JD-Core Version:    0.7.0.1
  */

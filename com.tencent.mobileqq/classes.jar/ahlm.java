@@ -1,30 +1,130 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.richmedia.capture.adapter.PtvTemplateAdapter;
-import com.tencent.mobileqq.shortvideo.PtvTemplateManager.IPtvTemplateDownloadListener;
-import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import com.tencent.qphone.base.util.QLog;
 
-public class ahlm
-  implements PtvTemplateManager.IPtvTemplateDownloadListener
+class ahlm
+  implements INetInfoHandler
 {
-  public ahlm(PtvTemplateAdapter paramPtvTemplateAdapter) {}
+  ahlm(ahll paramahll) {}
   
-  public void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, int paramInt)
+  public void onNetMobile2None()
   {
-    if (this.a.a != null) {
-      this.a.a.runOnUiThread(new ahlo(this, paramPtvTemplateInfo, paramInt));
+    boolean bool = true;
+    synchronized (this.a)
+    {
+      if (ahll.a(this.a) == null) {
+        return;
+      }
+      if (ahll.a(this.a).a == null) {
+        return;
+      }
+    }
+    ahll localahll2 = this.a;
+    if (!ahll.a(this.a).c) {}
+    for (;;)
+    {
+      localahll2.a(bool, true);
+      return;
+      bool = false;
     }
   }
   
-  public void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, boolean paramBoolean)
+  public void onNetMobile2Wifi(String arg1)
   {
-    if (this.a.a != null) {
-      this.a.a.runOnUiThread(new ahln(this, paramPtvTemplateInfo, paramBoolean));
+    if (QLog.isColorLevel()) {
+      QLog.d(ahll.a(), 2, "onNetMobile2Wifi, AutoTranslate:  ");
+    }
+    synchronized (this.a)
+    {
+      if (ahll.a(this.a) == null) {
+        return;
+      }
+      if (ahll.a(this.a).a == null) {
+        return;
+      }
+    }
+    this.a.a(false, true);
+    ahll.a(this.a);
+  }
+  
+  public void onNetNone2Mobile(String arg1)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(ahll.a(), 2, "onNetNone2Mobile ");
+    }
+    synchronized (this.a)
+    {
+      if (ahll.a(this.a) == null) {
+        return;
+      }
+      if (ahll.a(this.a).a == null) {
+        return;
+      }
+    }
+    this.a.a(false, true);
+    ahll.a(this.a);
+  }
+  
+  public void onNetNone2Wifi(String arg1)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(ahll.a(), 2, "onNetNone2Wifi, AutoTranslate:  ");
+    }
+    synchronized (this.a)
+    {
+      if (ahll.a(this.a) == null) {
+        return;
+      }
+      if (ahll.a(this.a).a == null) {
+        return;
+      }
+    }
+    this.a.a(false, true);
+    ahll.a(this.a);
+  }
+  
+  public void onNetWifi2Mobile(String arg1)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(ahll.a(), 2, "onNetWifi2Mobile, need restore:  ");
+    }
+    synchronized (this.a)
+    {
+      if (ahll.a(this.a) == null) {
+        return;
+      }
+      if (ahll.a(this.a).a == null) {
+        return;
+      }
+    }
+    this.a.a(false, true);
+    ahll.a(this.a);
+  }
+  
+  public void onNetWifi2None()
+  {
+    boolean bool = true;
+    synchronized (this.a)
+    {
+      if (ahll.a(this.a) == null) {
+        return;
+      }
+      if (ahll.a(this.a).a == null) {
+        return;
+      }
+    }
+    ahll localahll2 = this.a;
+    if (!ahll.a(this.a).c) {}
+    for (;;)
+    {
+      localahll2.a(bool, true);
+      return;
+      bool = false;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ahlm
  * JD-Core Version:    0.7.0.1
  */

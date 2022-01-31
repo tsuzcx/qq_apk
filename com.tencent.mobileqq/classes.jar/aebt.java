@@ -1,53 +1,49 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.intervideo.groupvideo.GVideoWebPlugin;
-import com.tencent.mobileqq.intervideo.groupvideo.IVPluginLoader;
-import com.tencent.mobileqq.intervideo.huayang.HuayangJsPlugin;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.aio.rebuild.BusinessCmrTmpChatPie.2.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.EqqDetail;
+import com.tencent.mobileqq.mp.mobileqq_mp.GetEqqAccountDetailInfoResponse;
+import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
+import mqq.os.MqqHandler;
 
 public class aebt
-  extends BroadcastReceiver
+  implements BusinessObserver
 {
-  public aebt(GVideoWebPlugin paramGVideoWebPlugin) {}
+  aebt(aebk paramaebk) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    paramContext = paramIntent.getAction();
-    int j = paramIntent.getIntExtra("key_state", -1);
-    int k;
-    int i;
-    if (paramContext.equals(HuayangJsPlugin.a("com.tencent.od")))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("GroupVideoManager.GVideoWebPlugin", 2, "state:" + j);
-      }
-      paramContext = IVPluginLoader.a;
-      k = paramContext.length;
-      i = 0;
+    if (QLog.isColorLevel()) {
+      QLog.d("BusinessChatPie", 2, "success:" + String.valueOf(paramBoolean));
     }
-    for (;;)
+    mobileqq_mp.GetEqqAccountDetailInfoResponse localGetEqqAccountDetailInfoResponse;
+    if (paramBoolean)
     {
-      if ((i >= k) || ((j == paramContext[i]) && (GVideoWebPlugin.a(this.a).isShowing()))) {}
-      try
-      {
-        GVideoWebPlugin.a(this.a).dismiss();
-        label105:
-        i += 1;
-        continue;
-        return;
-      }
-      catch (Throwable paramIntent)
-      {
-        break label105;
+      paramBundle = paramBundle.getByteArray("data");
+      if (paramBundle != null) {
+        localGetEqqAccountDetailInfoResponse = new mobileqq_mp.GetEqqAccountDetailInfoResponse();
       }
     }
+    try
+    {
+      localGetEqqAccountDetailInfoResponse.mergeFrom(paramBundle);
+      if (((mobileqq_mp.RetInfo)localGetEqqAccountDetailInfoResponse.ret_info.get()).ret_code.get() == 0)
+      {
+        paramBundle = new EqqDetail(localGetEqqAccountDetailInfoResponse);
+        ThreadManager.getFileThreadHandler().post(new BusinessCmrTmpChatPie.2.1(this, paramBundle));
+      }
+      return;
+    }
+    catch (InvalidProtocolBufferMicroException paramBundle) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aebt
  * JD-Core Version:    0.7.0.1
  */

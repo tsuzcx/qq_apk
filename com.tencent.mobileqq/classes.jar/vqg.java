@@ -1,33 +1,25 @@
-import android.app.Activity;
-import android.os.Build.VERSION;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.Window;
-import android.view.animation.AnimationSet;
-import com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.view.widget.LeftTabBarView;
 
 public class vqg
-  implements Runnable
+  implements View.OnClickListener
 {
-  public vqg(UnlimitedBladeWorks paramUnlimitedBladeWorks, Activity paramActivity, int paramInt) {}
+  public vqg(LeftTabBarView paramLeftTabBarView, int paramInt) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (((Build.VERSION.SDK_INT > 16) && (this.jdField_a_of_type_AndroidAppActivity.isDestroyed())) || (this.jdField_a_of_type_AndroidAppActivity.isFinishing())) {}
-    View localView;
-    AnimationSet localAnimationSet;
-    do
-    {
+    long l = System.currentTimeMillis();
+    if (l - LeftTabBarView.a(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetLeftTabBarView) < 500L) {
       return;
-      localView = ((ViewGroup)this.jdField_a_of_type_AndroidAppActivity.getWindow().getDecorView()).getChildAt(0).findViewById(2131363510);
-      localAnimationSet = UnlimitedBladeWorks.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks, this.jdField_a_of_type_Int);
-    } while (localView == null);
-    localView.startAnimation(localAnimationSet);
+    }
+    LeftTabBarView.a(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetLeftTabBarView, l);
+    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetLeftTabBarView.setSelectedTab(this.jdField_a_of_type_Int, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vqg
  * JD-Core Version:    0.7.0.1
  */

@@ -1,57 +1,36 @@
-import com.dataline.activities.LiteActivity;
-import com.dataline.activities.PrinterActivity;
-import com.dataline.util.PrinterSessionAdapter;
-import com.tencent.litetransfersdk.Session;
-import com.tencent.mobileqq.app.DataLineObserver;
-import com.tencent.mobileqq.app.PrinterHandler;
+import com.tencent.commonsdk.pool.RecyclablePool.Recyclable;
 
-public class zqn
-  extends DataLineObserver
+public final class zqn
+  extends RecyclablePool.Recyclable
 {
-  public zqn(PrinterHandler paramPrinterHandler) {}
+  public long a;
+  public String a;
+  public long[] a;
+  public long b;
+  public long c;
   
-  protected void a(Session paramSession)
+  public zqn()
   {
-    this.a.a(3, paramSession, 0.0D, false);
-    if (this.a.a != null)
+    this.jdField_a_of_type_ArrayOfLong = new long[6];
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Long = 0L;
+    this.b = 0L;
+    int i = 0;
+    while (i < this.jdField_a_of_type_ArrayOfLong.length)
     {
-      this.a.a.c();
-      this.a.a.notifyDataSetChanged();
-      LiteActivity.a(this.a.a.a.jdField_a_of_type_ComTencentMobileqqWidgetScrollerRunnable, this.a.a.a.jdField_a_of_type_ComTencentWidgetXListView);
-      LiteActivity.a(this.a.a.a.jdField_a_of_type_ComTencentWidgetXListView);
+      this.jdField_a_of_type_ArrayOfLong[i] = 0L;
+      i += 1;
     }
+    this.c = 0L;
   }
   
-  protected void a(Session paramSession, float paramFloat)
+  public void recycle()
   {
-    this.a.a(1, paramSession, paramFloat, false);
-    if (this.a.a != null) {
-      this.a.a.notifyDataSetChanged();
-    }
-  }
-  
-  protected void a(Session paramSession, boolean paramBoolean)
-  {
-    this.a.a(2, paramSession, 0.0D, paramBoolean);
-    if (this.a.a != null) {
-      this.a.a.notifyDataSetChanged();
-    }
-  }
-  
-  protected void a(boolean paramBoolean, Long paramLong)
-  {
-    this.a.a(paramLong, paramBoolean);
-    if (this.a.a != null) {
-      this.a.a.notifyDataSetChanged();
-    }
-  }
-  
-  protected void b(Session paramSession)
-  {
-    this.a.a(0, paramSession, 0.0D, false);
-    if (this.a.a != null) {
-      this.a.a.notifyDataSetChanged();
-    }
+    super.recycle();
+    a();
   }
 }
 

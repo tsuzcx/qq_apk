@@ -1,22 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.subscribe.widget.commodity.CommodityBean;
 
-public class wgi
-  implements DialogInterface.OnClickListener
+public final class wgi
+  implements Parcelable.Creator<CommodityBean>
 {
-  public wgi(TroopChatPie paramTroopChatPie, ChatMessage paramChatMessage) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public CommodityBean a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildTroopChatPie.e(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
-    paramDialogInterface.dismiss();
+    return new CommodityBean(paramParcel);
+  }
+  
+  public CommodityBean[] a(int paramInt)
+  {
+    return new CommodityBean[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wgi
  * JD-Core Version:    0.7.0.1
  */

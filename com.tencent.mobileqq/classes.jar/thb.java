@@ -1,20 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.NotificationActivity;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.qqstory.playvideo.MyVideoVisiblePersonPageView;
+import java.util.Comparator;
 
 public class thb
-  implements DialogInterface.OnClickListener
+  implements Comparator<QQUserUIItem>
 {
-  public thb(NotificationActivity paramNotificationActivity) {}
+  public thb(MyVideoVisiblePersonPageView paramMyVideoVisiblePersonPageView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public int a(QQUserUIItem paramQQUserUIItem1, QQUserUIItem paramQQUserUIItem2)
   {
-    NotificationActivity.a(this.a, false);
+    return ajgh.a(paramQQUserUIItem1.mComparePartInt, paramQQUserUIItem1.mCompareSpell, paramQQUserUIItem2.mComparePartInt, paramQQUserUIItem2.mCompareSpell);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     thb
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,25 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.observer.GameCenterObserver;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.LinearLayout;
+import com.tencent.biz.qqstory.playvideo.player.ExploreAnimalView;
 
 public class tqe
-  extends GameCenterObserver
+  implements Animation.AnimationListener
 {
-  public tqe(QQSettingMe paramQQSettingMe) {}
+  public tqe(ExploreAnimalView paramExploreAnimalView) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (this.a.c)
-    {
-      this.a.k();
-      return;
-    }
-    QQSettingMe.a(this.a, true);
+    this.a.a.startAnimation(this.a.b);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tqe
  * JD-Core Version:    0.7.0.1
  */

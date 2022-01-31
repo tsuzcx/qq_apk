@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBEnumField;
 import com.tencent.mobileqq.pb.PBField;
 
 public final class Qworkflow$Operation
-  extends MessageMicro
+  extends MessageMicro<Operation>
 {
   public static final int LOCAL = 1;
   public static final int URL_BACKGROUND = 3;

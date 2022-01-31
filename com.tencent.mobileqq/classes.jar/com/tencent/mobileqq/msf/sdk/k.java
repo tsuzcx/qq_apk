@@ -15,11 +15,10 @@ import android.os.DeadObjectException;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.Process;
-import android.os.RemoteException;
 import android.text.format.Formatter;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.msf.core.c.e;
-import com.tencent.mobileqq.msf.core.c.e.a;
+import com.tencent.mobileqq.msf.core.c.f;
+import com.tencent.mobileqq.msf.core.c.f.a;
 import com.tencent.mobileqq.msf.sdk.handler.IErrorHandler;
 import com.tencent.mobileqq.msf.sdk.handler.IMsfProxy;
 import com.tencent.mobileqq.msf.sdk.report.IMTAReporter;
@@ -44,11 +43,11 @@ public class k
   implements IMsfProxy
 {
   private static final String t = "MSF.D.Proxy";
-  private static int u;
+  private static int u = 0;
   private static long v = -1L;
-  private static boolean w;
+  private static boolean w = false;
   MsfServiceSdk a;
-  protected volatile boolean b;
+  protected volatile boolean b = false;
   
   public k(String paramString)
   {
@@ -59,9 +58,18 @@ public class k
   {
     paramEditor.putString("availMem", j());
     paramEditor.putString("lowMem", k());
-    paramEditor.putString("time", new Date().toString());
-    paramEditor.putString("process", h());
-    paramEditor.putString("state", l());
+    try
+    {
+      paramEditor.putString("time", new Date().toString());
+      label43:
+      paramEditor.putString("process", h());
+      paramEditor.putString("state", l());
+      return;
+    }
+    catch (AssertionError localAssertionError)
+    {
+      break label43;
+    }
   }
   
   private void a(FromServiceMsg paramFromServiceMsg)
@@ -78,7 +86,7 @@ public class k
         NetConnInfoCenter.GUID = (byte[])paramFromServiceMsg.getAttribute("_attr_deviceGUID");
         NetConnInfoCenter.sAppTimeoutConfig = ((Integer)paramFromServiceMsg.getAttribute("_attr_app_timeout")).intValue();
         if ((paramFromServiceMsg != null) && (paramFromServiceMsg.getServiceCmd() != null) && (paramFromServiceMsg.getServiceCmd().equals("SharpSvr.s2c"))) {
-          e.a().a(e.a.c, paramFromServiceMsg.getWupBuffer(), 17);
+          f.a().a(f.a.c, paramFromServiceMsg.getWupBuffer(), 17);
         }
       }
     }
@@ -93,13 +101,13 @@ public class k
           return;
         }
         if ((paramFromServiceMsg != null) && (paramFromServiceMsg.getServiceCmd() != null) && (paramFromServiceMsg.getServiceCmd().equals("SharpSvr.s2c"))) {
-          e.a().a(e.a.c, paramFromServiceMsg.getWupBuffer(), 16);
+          f.a().a(f.a.c, paramFromServiceMsg.getWupBuffer(), 16);
         }
       } while (!QLog.isColorLevel());
       QLog.d("MSF.D.Proxy", 2, " close msfServiceConn. push msg is droped." + paramFromServiceMsg);
       return;
     }
-    e.a().a(e.a.c, paramFromServiceMsg.getWupBuffer(), 15);
+    f.a().a(f.a.c, paramFromServiceMsg.getWupBuffer(), 15);
   }
   
   public static void a(String paramString, boolean paramBoolean)
@@ -114,7 +122,7 @@ public class k
     {
       bool1 = true;
       if ((bool3) || (!bool1)) {
-        break label321;
+        break label326;
       }
       i = 1;
     }
@@ -124,12 +132,12 @@ public class k
       if ("com.tencent.mobileqq".equals(localObject)) {
         label83:
         if (Build.VERSION.SDK_INT < 21) {
-          break label369;
+          break label374;
         }
       }
       Properties localProperties;
-      label321:
-      label369:
+      label326:
+      label374:
       for (str = "android5.0+";; str = "android4.x")
       {
         localProperties = new Properties();
@@ -139,7 +147,7 @@ public class k
         localProperties.setProperty("mainProcess", String.valueOf(bool2));
         localProperties.setProperty("sdkver", str);
         if (!paramBoolean) {
-          break label377;
+          break label382;
         }
         if (QLog.isColorLevel()) {
           QLog.d("MSF.D.Proxy", 2, "MTA is not initConfig or unsupported.");
@@ -167,14 +175,14 @@ public class k
           break label73;
         }
         if ((!bool3) || (bool1)) {
-          break label530;
+          break label537;
         }
         i = 4;
         break label73;
         bool2 = false;
         break label83;
       }
-      label377:
+      label382:
       if (MTAReportManager.getMtaReporter() != null) {
         MTAReportManager.getMtaReporter().reportKVEvent("pullMsfReportQQ_V4", localProperties);
       }
@@ -188,7 +196,7 @@ public class k
       a((SharedPreferences.Editor)localObject);
       ((SharedPreferences.Editor)localObject).commit();
       return;
-      label530:
+      label537:
       i = 0;
     }
   }
@@ -380,7 +388,6 @@ public class k
   }
   
   protected int a(ToServiceMsg paramToServiceMsg)
-    throws RemoteException
   {
     int i;
     if (paramToServiceMsg == null) {
@@ -416,12 +423,12 @@ public class k
       localIntent.setComponent(localComponentName);
       localIntent.putExtra("to_SenderProcessName", this.a.processName);
       BaseApplication.getContext().startService(localIntent);
-      QLog.d("MSF.D.Proxy", 1, "start service finish");
+      QLog.d("MSF.D.Proxy", 1, "MSF_Alive_Log start service finish");
       return;
     }
     catch (Exception localException)
     {
-      QLog.d("MSF.D.Proxy", 1, " " + localException, localException);
+      QLog.d("MSF.D.Proxy", 1, "MSF_Alive_Log " + localException, localException);
     }
   }
   
@@ -609,7 +616,9 @@ public class k
                 g();
                 QLog.d("MSF.D.Proxy", 1, "pullmsf to stop and unbind service above android 5");
               }
-              BaseApplication.getContext().sendBroadcast(new Intent("com.tencent.mobileqq.msf.startmsf"));
+              Intent localIntent = new Intent("com.tencent.mobileqq.msf.startmsf");
+              localIntent.setPackage(BaseApplication.getContext().getPackageName());
+              BaseApplication.getContext().sendBroadcast(localIntent);
               this.l = 1;
               QLog.d("MSF.D.Proxy", 1, "start MsfService through Broadcast, " + u);
             }
@@ -656,7 +665,7 @@ public class k
     paramMsfServiceSdk.msfServiceName = this.o;
     if (this.i == null)
     {
-      paramMsfServiceSdk = new HandlerThread("Timeout-Checker", 5);
+      paramMsfServiceSdk = new HandlerThread("MsfServiceTimeoutChecker", 5);
       paramMsfServiceSdk.start();
       this.i = new Handler(paramMsfServiceSdk.getLooper());
       if (this.r != null)
@@ -756,7 +765,7 @@ public class k
           {
             if (this.i == null)
             {
-              HandlerThread localHandlerThread = new HandlerThread("Timeout-Checker", 5);
+              HandlerThread localHandlerThread = new HandlerThread("MsfServiceTimeoutChecker", 5);
               localHandlerThread.start();
               this.i = new Handler(localHandlerThread.getLooper());
             }
@@ -850,7 +859,12 @@ public class k
   
   public boolean serviceConnected()
   {
-    return true;
+    return m();
+  }
+  
+  public void startMsfService()
+  {
+    a();
   }
   
   public void stopMsfService()

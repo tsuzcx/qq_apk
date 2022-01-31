@@ -1,4 +1,11 @@
-#extension GL_OES_EGL_image_external : require
+#if defined(SURFACE_TEXTURE)
+#if defined(VIDEO_YUV)
+#include "android_head_2video.frag"
+#else
+#include "android_head.frag"
+#endif
+#else
+
 #ifdef OPENGL_ES
 #ifdef GL_FRAGMENT_PRECISION_HIGH
 precision highp float;
@@ -6,6 +13,7 @@ precision highp float;
 precision mediump float;
 #endif
 #endif
+
 
 #ifndef DIRECTIONAL_LIGHT_COUNT
 #define DIRECTIONAL_LIGHT_COUNT 0
@@ -24,19 +32,37 @@ precision mediump float;
 // Uniforms
 uniform vec3 u_ambientColor;
 
+//uniform sampler2D u_diffuseTexture;
+
+// Uniforms
 #if defined(TEXTURECUBE)
 uniform samplerCube u_diffuseTexture;
 #else
     #if defined(SURFACE_TEXTURE)
-      uniform samplerExternalOES u_diffuseTexture;
+    uniform samplerExternalOES u_diffuseTexture;
     #else
-      uniform sampler2D u_diffuseTexture;
+    uniform sampler2D u_diffuseTexture;
     #endif
 #endif
 
-#if defined(ANDROIDLATED_COLOR)
-uniform vec3 u_androidlatedColor;
+#if defined(TEXTURE_CUBE_MAP)
+uniform float u_zNormalOffset;
+uniform float u_cubeBlendFactor;
+uniform sampler2D u_cubeTexture;
 #endif
+
+#if defined(CUBE_MAP_BLEND_MODE)
+uniform float u_blendMode;
+#endif
+
+#if defined(YUV_420)
+uniform int videoFormat;
+uniform sampler2D u_diffuseTextureY;
+uniform sampler2D u_diffuseTextureUV;
+uniform mat4 COLOR_MATRIX;
+#endif
+
+
 #if defined(LIGHTMAP)
 uniform sampler2D u_lightmapTexture;
 #endif
@@ -83,6 +109,29 @@ uniform vec4 u_modulateColor;
 #if defined(MODULATE_ALPHA)
 uniform float u_modulateAlpha;
 #endif
+
+///////////////////////////////////////////////////////////
+// chroma key algrithm uniforms
+#if defined(CHROMA_KEY)
+uniform vec4 u_screenColor;
+
+#if defined(SCREEN_WEIGHT)
+uniform float u_screenWeight;
+#endif
+
+#if defined(BALANCE)
+uniform float u_balance;
+#endif
+
+#if defined(CLIP_BLACK)
+uniform float u_clipBlack;
+#endif
+
+#if defined(CLIP_WHITE)
+uniform float u_clipWhite;
+#endif
+#endif
+///////////////////////////////////////////////////////////
 
 ///////////////////////////////////////////////////////////
 // Variables
@@ -133,39 +182,96 @@ varying vec3 v_cameraDirection;
 varying float v_clipDistance;
 #endif
 
-///////////////////////////////////////////////////////////
-// chroma key algrithm uniforms
-#if defined(CHROMA_KEY)
-uniform vec4 u_screenColor;
-
-#if defined(SCREEN_WEIGHT)
-uniform float u_screenWeight;
-#endif
-
-#if defined(BALANCE)
-uniform float u_balance;
-#endif
-
-#if defined(CLIP_BLACK)
-uniform float u_clipBlack;
-#endif
-
-#if defined(CLIP_WHITE)
-uniform float u_clipWhite;
-#endif
-#endif
-
-
 void main()
 {
     #if defined(CLIP_PLANE)
     if(v_clipDistance < 0.0) discard;
     #endif
 
-#if defined(TEXTURECUBE)
-    _baseColor = textureCube(u_diffuseTexture, v_texCoord);
+
+#if defined(YUV_420)
+
+    vec4 yuvData;
+    yuvData.x = texture2D(u_diffuseTextureY, v_texCoord).x;
+   	vec2 uv = texture2D(u_diffuseTextureUV, v_texCoord).ra;
+   	if(videoFormat == 17){//nv12
+   	  yuvData.z = uv.x;
+	  yuvData.y = uv.y;
+   	}else{//nv21
+   	  yuvData.z = uv.y;
+	  yuvData.y = uv.x;
+   	}
+
+	yuvData.w = 1.0;
+    _baseColor =  COLOR_MATRIX * yuvData;
+
 #else
-    _baseColor = texture2D(u_diffuseTexture, v_texCoord);
+#if defined(TEXTURE_CUBE_MAP)
+    vec3 I = normalize(v_cameraDirection * -1.0);
+    //float scale = 1. / v_normalVector.z;
+    //vec3 adjustNormal = vec3(v_normalVector.x * scale, v_normalVector.y * scale, 1. + u_zNormalOffset);
+    vec3 adjustNormal = vec3(v_normalVector.x, v_normalVector.y, v_normalVector.z * u_zNormalOffset);
+    vec3 R = reflect(I, normalize(adjustNormal));
+    //_baseColor = textureCube(u_cubeTexture, R);
+    //vec4 cubeTextureColor = textureCube(u_cubeTexture, R);
+    //float theta = acos(R.z / sqrt(R.x * R.x + R.y * R.y + R.z * R.z));
+    //float cosTheta2 = cos(theta / 8.0);
+    //R.z = sqrt((R.x * R.x + R.y * R.y) / ( 1.0 / (cosTheta2 * cosTheta2) - 1.0));
+    //R = normalize(R);
+    float vp1 = 0.0;
+    float vp2 = 0.0;
+    float vp3 = -1.0;
+    float n1 = 0.0;
+    float n2 = 0.0;
+    float n3 = 0.5;
+    float v1 = R.x;
+    float v2 = R.y;
+    float v3 = R.z;
+    float m1 = 0.0;
+    float m2 = 0.0;
+    float m3 = 0.0;
+    float vpt = v1 * vp1 + v2 * vp2 + v3 * vp3;
+    float t = ((n1 - m1) * vp1 + (n2 - m2) * vp2 + (n3 - m3) * vp3) / vpt;
+    vec4 cubeTextureColor = vec4(1.0, 1.0, 1.0, 1.0);
+    float r = m1 + v1 * t;
+    float g = m2 + v2 * t;
+    //if (r < 0.0) {
+    //    r = -r;
+    //}
+    //if (g < 0.0) {
+    //    g = -g;
+    //}
+    //cubeTextureColor.r = r;
+    //cubeTextureColor.g = g;
+    //cubeTextureColor.b = 0.0;
+    //cubeTextureColor.a = 1.0;
+#if defined(NO_REFLECT_MAP)
+    cubeTextureColor = texture2D(u_cubeTexture, vec2(v_texCoord.x, 1.0 - v_texCoord.y));
+#else
+    cubeTextureColor = texture2D(u_cubeTexture, vec2(r + 0.5, 1.0 - (g + 0.5)));
+#endif
+
+    vec4 diffuseTextureColor = texture2D(u_diffuseTexture, v_texCoord);
+    if(diffuseTextureColor.a > 0.0) {
+        #if defined(CUBE_MAP_BLEND_MODE)
+            // u_blendMode理论上用int就行了，但在一些机型上，用int的时候不知为何值传不进来，一直是0，用float就好了，所以下面写成这样
+            if (0.5 < u_blendMode && u_blendMode < 1.5) {
+                vec3 vOne = vec3(1.0, 1.0, 1.0);
+                _baseColor = vec4(vOne - (vOne - diffuseTextureColor.rgb) * (vOne - cubeTextureColor.rgb), 1.0);
+                _baseColor = mix(diffuseTextureColor, _baseColor, u_cubeBlendFactor);
+            } else {
+                _baseColor = mix(diffuseTextureColor, cubeTextureColor, u_cubeBlendFactor);
+            }
+        #else
+            _baseColor = mix(diffuseTextureColor, cubeTextureColor, u_cubeBlendFactor);
+        #endif
+    } else{
+        _baseColor = diffuseTextureColor;
+    }
+
+#else
+    _baseColor =  texture2D(u_diffuseTexture, v_texCoord);
+#endif
 #endif
 
     gl_FragColor.a = _baseColor.a;
@@ -194,25 +300,6 @@ void main()
     #if defined(MODULATE_ALPHA)
     gl_FragColor.a *= u_modulateAlpha;
     #endif
-
-#if defined(FORCE_GRAY)
-    float gray = dot(gl_FragColor.rgb, vec3(0.299, 0.587, 0.114));
-    gl_FragColor.r = gray;
-    gl_FragColor.g = gray;
-    gl_FragColor.b = gray;
-#endif
-
-#if defined(ANDROIDLATED_COLOR)
-    float maskY = 0.2989 * u_androidlatedColor.r + 0.5866 * u_androidlatedColor.g + 0.1145 * u_androidlatedColor.b;
-    float maskCr = 0.7132 * (u_androidlatedColor.r - maskY);
-    float maskCb = 0.5647 * (u_androidlatedColor.b - maskY);
-
-    float Y = 0.2989 * gl_FragColor.r + 0.5866 * gl_FragColor.g + 0.1145 * gl_FragColor.b;
-    float Cr = 0.7132 * (gl_FragColor.r - Y);
-    float Cb = 0.5647 * (gl_FragColor.b - Y);
-
-    gl_FragColor.a *= smoothstep(0.34, 0.5, distance(vec2(Cr, Cb), vec2(maskCr, maskCb)));//0.34 + 0.1,
-#endif
 
 #if defined(CHROMA_KEY)
     //chroma key算法，从github上抄的 brianchirls/Seriously.js/effects/seriously.chroma.js
@@ -263,6 +350,8 @@ void main()
 
     vec4 pixel = mix(semiTransparentPixel, gl_FragColor, solid);
 
-    gl_FragColor = pixel;
+    gl_FragColor = vec4(1.0, 1.0, 0.0, 1.0);
 #endif
 }
+
+#endif

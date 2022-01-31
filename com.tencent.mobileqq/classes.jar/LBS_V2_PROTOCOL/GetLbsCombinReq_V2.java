@@ -12,8 +12,8 @@ public final class GetLbsCombinReq_V2
   static GeoInfo_V2 cache_stGeoInfo;
   static GPS_V2 cache_stGps;
   static Date cache_stUserDate;
-  static ArrayList cache_vCellData;
-  static ArrayList cache_vWifiData;
+  static ArrayList<Cell_V2> cache_vCellData;
+  static ArrayList<Wifi_V2> cache_vWifiData;
   public int iAccuracy;
   public int iAppID;
   public int iLocateCostTime;
@@ -25,18 +25,18 @@ public final class GetLbsCombinReq_V2
   public GPS_V2 stGps;
   public Date stUserDate;
   public String strClientIP = "";
-  public ArrayList vCellData;
-  public ArrayList vWifiData;
+  public ArrayList<Cell_V2> vCellData;
+  public ArrayList<Wifi_V2> vWifiData;
   
   public GetLbsCombinReq_V2() {}
   
-  public GetLbsCombinReq_V2(ReqCommon_V2 paramReqCommon_V2, String paramString, GPS_V2 paramGPS_V2, ArrayList paramArrayList1, ArrayList paramArrayList2, int paramInt1, int paramInt2, int paramInt3, int paramInt4, GeoInfo_V2 paramGeoInfo_V2, long paramLong, int paramInt5, Date paramDate)
+  public GetLbsCombinReq_V2(ReqCommon_V2 paramReqCommon_V2, String paramString, GPS_V2 paramGPS_V2, ArrayList<Cell_V2> paramArrayList, ArrayList<Wifi_V2> paramArrayList1, int paramInt1, int paramInt2, int paramInt3, int paramInt4, GeoInfo_V2 paramGeoInfo_V2, long paramLong, int paramInt5, Date paramDate)
   {
     this.stCommon = paramReqCommon_V2;
     this.strClientIP = paramString;
     this.stGps = paramGPS_V2;
-    this.vCellData = paramArrayList1;
-    this.vWifiData = paramArrayList2;
+    this.vCellData = paramArrayList;
+    this.vWifiData = paramArrayList1;
     this.iReqNum = paramInt1;
     this.iAccuracy = paramInt2;
     this.iLocateCostTime = paramInt3;

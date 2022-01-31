@@ -1,19 +1,12 @@
-import com.tencent.mobileqq.nearby.now.view.viewmodel.PlayOperationViewModel;
-import com.tencent.widget.ActionSheet.OnDismissListener;
-
-public class afex
-  implements ActionSheet.OnDismissListener
+public abstract interface afex
 {
-  public afex(PlayOperationViewModel paramPlayOperationViewModel) {}
+  public abstract void a(int paramInt, boolean paramBoolean, Object paramObject);
   
-  public void onDismiss()
-  {
-    this.a.b = false;
-  }
+  public abstract void ap_();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     afex
  * JD-Core Version:    0.7.0.1
  */

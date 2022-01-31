@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:id="@id/esn" android:background="@null" style="@style/qj">
+        <LinearLayout android:layout_marginLeft="10.0dip" android:layout_weight="100.0" style="@style/midas_wrap">
+            <TextView android:id="@id/esp" android:text=" 200书币" style="@style/r2" />
+            <TextView android:textColor="@color/n_" android:id="@id/eso" android:text="(送10)" style="@style/r7" />
+        </LinearLayout>
+        <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip">
+            <TextView android:id="@id/esm" android:text="100.00" android:layout_centerVertical="true" style="@style/midas_tx.price" />
+            <TextView android:text="@string/o5t" style="@style/midas_tx.price" />
+        </LinearLayout>
+        <ImageView android:layout_marginRight="10.0dip" style="@style/pz" />
+    </LinearLayout>
+</LinearLayout>

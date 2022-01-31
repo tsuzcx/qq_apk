@@ -1,63 +1,56 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.nearby.now.view.widget.StartLiveTopicLabelListView;
-import com.tencent.mobileqq.nearby.now.view.widget.TopicViewItem;
-import java.util.List;
+import android.text.TextUtils;
 
 public class affz
-  extends BaseAdapter
 {
-  public affz(StartLiveTopicLabelListView paramStartLiveTopicLabelListView) {}
+  public int a;
+  public Object a;
+  public String a;
+  public short a;
+  public boolean a;
+  public int b;
+  public String b;
+  public boolean b;
+  public String c;
+  public boolean c;
+  public String d;
+  public boolean d;
+  public String e;
+  public boolean e;
   
-  public int getCount()
+  public boolean a()
   {
-    if ((StartLiveTopicLabelListView.a(this.a) == null) || (StartLiveTopicLabelListView.a(this.a).size() == 0)) {
-      return 0;
-    }
-    return StartLiveTopicLabelListView.a(this.a).size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return null;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (paramView == null)
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {}
+    boolean bool2;
+    for (boolean bool1 = true;; bool1 = false)
     {
-      paramViewGroup = new afgb(this.a, null);
-      paramView = new TopicViewItem(StartLiveTopicLabelListView.a(this.a));
-      paramView.setTag(paramViewGroup);
-      paramViewGroup.a = ((String)StartLiveTopicLabelListView.a(this.a).get(paramInt));
-      if (!"+标签".equals(paramViewGroup.a)) {
-        break label130;
+      bool2 = bool1;
+      if (bool1) {
+        bool2 = this.c;
       }
-      paramView.setBackgroundResource(StartLiveTopicLabelListView.a(this.a));
-      ((TopicViewItem)paramView).setTextColor(StartLiveTopicLabelListView.b(this.a));
+      if (!bool2) {
+        return bool2;
+      }
+      switch (this.jdField_a_of_type_Int)
+      {
+      default: 
+        if (this.jdField_a_of_type_Short == 0) {
+          break;
+        }
+      case 1: 
+      case 2: 
+      case 3: 
+      case 4: 
+      case 5: 
+        return true;
+      }
     }
-    for (;;)
-    {
-      paramView.setOnClickListener(new afga(this));
-      ((TopicViewItem)paramView).setText(paramViewGroup.a);
-      return paramView;
-      paramViewGroup = (afgb)paramView.getTag();
-      break;
-      label130:
-      paramView.setBackgroundResource(StartLiveTopicLabelListView.c(this.a));
-      ((TopicViewItem)paramView).setTextColor(StartLiveTopicLabelListView.d(this.a));
-    }
+    return false;
+    return bool2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     affz
  * JD-Core Version:    0.7.0.1
  */

@@ -1,43 +1,13 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.widget.TextView;
-import com.tencent.mobileqq.richmedia.capture.fragment.EffectsCameraCaptureFragment;
-import com.tencent.mobileqq.richmedia.capture.view.EffectsCameraCaptureView;
+import android.graphics.Bitmap;
 
 public class ahnk
-  extends Handler
 {
-  public ahnk(EffectsCameraCaptureFragment paramEffectsCameraCaptureFragment, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      super.handleMessage(paramMessage);
-      return;
-      if (((paramMessage.obj instanceof Boolean)) && (((Boolean)paramMessage.obj).booleanValue()))
-      {
-        EffectsCameraCaptureFragment.f(this.a, false);
-        EffectsCameraCaptureFragment.c(this.a).setVisibility(8);
-        this.a.a.u();
-      }
-      else
-      {
-        EffectsCameraCaptureFragment.c(this.a).setVisibility(8);
-      }
-    }
-  }
+  public int a;
+  public Bitmap a;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ahnk
  * JD-Core Version:    0.7.0.1
  */

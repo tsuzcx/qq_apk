@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.activity.qwallet.widget;
 
+import ajjy;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.TextUtils;
@@ -23,14 +24,14 @@ public class NumAnim
   public static final int REGION_PREFFIX = 1;
   public static final int REGION_SUFFIX = 3;
   private static final String TAG = "NumAnim";
-  public static final String WAN = "万";
+  public static final String WAN = ajjy.a(2131641894);
   static DecimalFormat decimalFormatTo1;
   static DecimalFormat decimalFormatTo2 = new DecimalFormat("0.00");
   final boolean changeDip;
   private int curr_index;
   final int fontSize;
   NumAnim.AnimListener mAnimListener = null;
-  SparseArray mBold = new SparseArray();
+  SparseArray<Boolean> mBold = new SparseArray();
   NumAnim.Ruler mRuler = new NumAnim.1(this);
   private double[] nums;
   private long pertime;
@@ -69,11 +70,11 @@ public class NumAnim
     {
       i = 1;
       if (i == 0) {
-        break label91;
+        break label92;
       }
       d = paramDouble / 10000.0D;
       if ((paramDouble < 1000000.0D) || (paramDouble >= 10000000.0D)) {
-        break label96;
+        break label97;
       }
       str1 = decimalFormatTo1.format(d);
     }
@@ -81,15 +82,15 @@ public class NumAnim
     {
       String str2 = str1;
       if (i != 0) {
-        str2 = str1 + "万";
+        str2 = str1 + WAN;
       }
       return str2;
       i = 0;
       break;
-      label91:
+      label92:
       d = paramDouble;
       break label26;
-      label96:
+      label97:
       if (paramDouble >= 10000000.0D) {
         str1 = (int)d + "";
       } else {
@@ -181,48 +182,48 @@ public class NumAnim
   public void start(double paramDouble1, double paramDouble2, long paramLong)
   {
     // Byte code:
-    //   0: invokestatic 254	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
+    //   0: invokestatic 262	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
     //   3: ifeq +50 -> 53
     //   6: ldc 19
     //   8: iconst_4
-    //   9: new 131	java/lang/StringBuilder
+    //   9: new 139	java/lang/StringBuilder
     //   12: dup
-    //   13: invokespecial 132	java/lang/StringBuilder:<init>	()V
-    //   16: ldc_w 282
-    //   19: invokevirtual 136	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   13: invokespecial 140	java/lang/StringBuilder:<init>	()V
+    //   16: ldc_w 290
+    //   19: invokevirtual 144	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   22: dload_1
-    //   23: invokevirtual 285	java/lang/StringBuilder:append	(D)Ljava/lang/StringBuilder;
-    //   26: ldc_w 287
-    //   29: invokevirtual 136	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   23: invokevirtual 293	java/lang/StringBuilder:append	(D)Ljava/lang/StringBuilder;
+    //   26: ldc_w 295
+    //   29: invokevirtual 144	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   32: dload_3
-    //   33: invokevirtual 285	java/lang/StringBuilder:append	(D)Ljava/lang/StringBuilder;
-    //   36: ldc_w 289
-    //   39: invokevirtual 136	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   33: invokevirtual 293	java/lang/StringBuilder:append	(D)Ljava/lang/StringBuilder;
+    //   36: ldc_w 297
+    //   39: invokevirtual 144	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   42: lload 5
-    //   44: invokevirtual 265	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   47: invokevirtual 140	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   50: invokestatic 269	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   44: invokevirtual 273	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   47: invokevirtual 148	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   50: invokestatic 277	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   53: aload_0
-    //   54: invokestatic 262	java/lang/System:currentTimeMillis	()J
-    //   57: putfield 109	com/tencent/mobileqq/activity/qwallet/widget/NumAnim:startTime	J
+    //   54: invokestatic 270	java/lang/System:currentTimeMillis	()J
+    //   57: putfield 117	com/tencent/mobileqq/activity/qwallet/widget/NumAnim:startTime	J
     //   60: aload_0
-    //   61: getfield 111	com/tencent/mobileqq/activity/qwallet/widget/NumAnim:view	Landroid/widget/TextView;
+    //   61: getfield 119	com/tencent/mobileqq/activity/qwallet/widget/NumAnim:view	Landroid/widget/TextView;
     //   64: ifnonnull +4 -> 68
     //   67: return
     //   68: aload_0
-    //   69: getfield 111	com/tencent/mobileqq/activity/qwallet/widget/NumAnim:view	Landroid/widget/TextView;
+    //   69: getfield 119	com/tencent/mobileqq/activity/qwallet/widget/NumAnim:view	Landroid/widget/TextView;
     //   72: aload_0
-    //   73: invokevirtual 238	android/widget/TextView:removeCallbacks	(Ljava/lang/Runnable;)Z
+    //   73: invokevirtual 246	android/widget/TextView:removeCallbacks	(Ljava/lang/Runnable;)Z
     //   76: pop
-    //   77: ldc2_w 290
+    //   77: ldc2_w 298
     //   80: dload_1
     //   81: dmul
-    //   82: invokestatic 156	com/tencent/mobileqq/activity/qwallet/widget/NumAnim:trimMax	(D)D
+    //   82: invokestatic 164	com/tencent/mobileqq/activity/qwallet/widget/NumAnim:trimMax	(D)D
     //   85: dstore 7
-    //   87: ldc2_w 290
+    //   87: ldc2_w 298
     //   90: dload_3
     //   91: dmul
-    //   92: invokestatic 156	com/tencent/mobileqq/activity/qwallet/widget/NumAnim:trimMax	(D)D
+    //   92: invokestatic 164	com/tencent/mobileqq/activity/qwallet/widget/NumAnim:trimMax	(D)D
     //   95: dstore 9
     //   97: dload_1
     //   98: dload_3
@@ -236,16 +237,16 @@ public class NumAnim
     //   113: dload 7
     //   115: dsub
     //   116: dstore_1
-    //   117: ldc2_w 292
+    //   117: ldc2_w 300
     //   120: lload 5
     //   122: lmul
     //   123: l2f
-    //   124: ldc_w 294
+    //   124: ldc_w 302
     //   127: fdiv
     //   128: f2i
     //   129: istore 12
     //   131: dload_1
-    //   132: ldc2_w 295
+    //   132: ldc2_w 303
     //   135: dcmpg
     //   136: ifgt +7 -> 143
     //   139: dload_1
@@ -278,7 +279,7 @@ public class NumAnim
     //   181: aload 14
     //   183: iload 13
     //   185: dload_3
-    //   186: ldc2_w 290
+    //   186: ldc2_w 298
     //   189: ddiv
     //   190: dastore
     //   191: iload 13
@@ -302,14 +303,14 @@ public class NumAnim
     //   223: aload 14
     //   225: iload 12
     //   227: dload 9
-    //   229: ldc2_w 290
+    //   229: ldc2_w 298
     //   232: ddiv
     //   233: dastore
     //   234: aload_0
     //   235: monitorenter
     //   236: aload_0
     //   237: aload 14
-    //   239: putfield 154	com/tencent/mobileqq/activity/qwallet/widget/NumAnim:nums	[D
+    //   239: putfield 162	com/tencent/mobileqq/activity/qwallet/widget/NumAnim:nums	[D
     //   242: aload 14
     //   244: arraylength
     //   245: iconst_1
@@ -324,16 +325,16 @@ public class NumAnim
     //   259: iload 11
     //   261: i2l
     //   262: ldiv
-    //   263: putfield 240	com/tencent/mobileqq/activity/qwallet/widget/NumAnim:pertime	J
+    //   263: putfield 248	com/tencent/mobileqq/activity/qwallet/widget/NumAnim:pertime	J
     //   266: aload_0
     //   267: iconst_0
-    //   268: putfield 152	com/tencent/mobileqq/activity/qwallet/widget/NumAnim:curr_index	I
+    //   268: putfield 160	com/tencent/mobileqq/activity/qwallet/widget/NumAnim:curr_index	I
     //   271: aload_0
     //   272: monitorexit
     //   273: aload_0
-    //   274: getfield 111	com/tencent/mobileqq/activity/qwallet/widget/NumAnim:view	Landroid/widget/TextView;
+    //   274: getfield 119	com/tencent/mobileqq/activity/qwallet/widget/NumAnim:view	Landroid/widget/TextView;
     //   277: aload_0
-    //   278: invokevirtual 299	android/widget/TextView:post	(Ljava/lang/Runnable;)Z
+    //   278: invokevirtual 307	android/widget/TextView:post	(Ljava/lang/Runnable;)Z
     //   281: pop
     //   282: return
     //   283: aload 14
@@ -376,7 +377,7 @@ public class NumAnim
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.widget.NumAnim
  * JD-Core Version:    0.7.0.1
  */

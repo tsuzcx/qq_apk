@@ -2,17 +2,17 @@ package com.tencent.mobileqq.voicechange;
 
 import android.content.Context;
 import android.os.SystemClock;
-import com.tencent.mobileqq.ptt.PttSoLoader;
-import com.tencent.mobileqq.ptt.processor.IPttProcessor.ProcessData;
-import com.tencent.mobileqq.ptt.processor.PttComponentProcessor;
-import com.tencent.mobileqq.transfile.PttInfoCollector;
-import com.tencent.mobileqq.utils.RecordParams;
+import auct;
+import audm;
+import audo;
+import axte;
+import bahn;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.io.PipedInputStream;
 
 public class VoiceChange
-  extends PttComponentProcessor
+  extends audo
 {
   private static boolean jdField_a_of_type_Boolean;
   private long jdField_a_of_type_Long;
@@ -27,7 +27,7 @@ public class VoiceChange
     super(paramContext);
     if (!jdField_a_of_type_Boolean)
     {
-      PttSoLoader.a(paramContext, "codecsilk");
+      auct.a(paramContext, "codecsilk");
       jdField_a_of_type_Boolean = true;
     }
     this.jdField_c_of_type_Int = paramInt;
@@ -45,7 +45,7 @@ public class VoiceChange
   
   public native int Release(int paramInt);
   
-  public IPttProcessor.ProcessData a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  public audm a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
     long l = SystemClock.uptimeMillis();
     paramArrayOfByte = super.a(paramArrayOfByte, paramInt1, paramInt2);
@@ -61,7 +61,7 @@ public class VoiceChange
   public void a()
   {
     if ((this.jdField_a_of_type_Long > 0L) && (this.d > 0) && (this.jdField_c_of_type_Int > 0)) {
-      PttInfoCollector.a(this.jdField_a_of_type_Long, this.d, this.jdField_b_of_type_Long, this.jdField_c_of_type_Int + 2);
+      axte.a(this.jdField_a_of_type_Long, this.d, this.jdField_b_of_type_Long, this.jdField_c_of_type_Int + 2);
     }
     Release(this.jdField_b_of_type_Int);
     this.jdField_b_of_type_Int = 0;
@@ -75,7 +75,7 @@ public class VoiceChange
     this.jdField_a_of_type_Long = 0L;
     this.d = 0;
     this.jdField_b_of_type_Long = 0L;
-    this.jdField_a_of_type_Int = RecordParams.a(paramInt1);
+    this.jdField_a_of_type_Int = bahn.a(paramInt1);
     this.jdField_b_of_type_Int = Create(this.jdField_a_of_type_JavaLangString);
     if (this.jdField_b_of_type_Int == 0) {
       QLog.e("QQVoiceChanger", 1, "Create voiceChanger error with:" + this.jdField_a_of_type_JavaLangString);
@@ -91,7 +91,7 @@ public class VoiceChange
       this.jdField_a_of_type_ArrayOfByte = new byte[this.jdField_a_of_type_Int];
       this.jdField_b_of_type_ArrayOfByte = new byte[this.jdField_a_of_type_Int * 10];
       this.jdField_c_of_type_ArrayOfByte = new byte[this.jdField_b_of_type_ArrayOfByte.length * 2];
-      this.jdField_a_of_type_ComTencentMobileqqPttProcessorIPttProcessor$ProcessData = new IPttProcessor.ProcessData(this.jdField_c_of_type_ArrayOfByte, 0);
+      this.jdField_a_of_type_Audm = new audm(this.jdField_c_of_type_ArrayOfByte, 0);
       return;
       if (this.jdField_c_of_type_Int == 2)
       {
@@ -194,7 +194,7 @@ public class VoiceChange
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.mobileqq.voicechange.VoiceChange
  * JD-Core Version:    0.7.0.1
  */

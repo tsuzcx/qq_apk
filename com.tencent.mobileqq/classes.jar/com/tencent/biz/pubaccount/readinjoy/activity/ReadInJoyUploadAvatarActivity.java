@@ -1,5 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.activity;
 
+import ajjy;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,18 +8,23 @@ import android.os.Handler;
 import android.os.Looper;
 import android.view.View;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishUtils.PicUploadThread;
+import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import lhi;
-import lhk;
+import nlx;
+import nlz;
+import obz;
+import pwp;
+import pwq;
 
 public class ReadInJoyUploadAvatarActivity
   extends IphoneTitleBarActivity
 {
   public static String a;
-  public ProgressDialog a;
+  protected ProgressDialog a;
   protected Handler a;
+  pwp a;
   
   static
   {
@@ -28,45 +34,63 @@ public class ReadInJoyUploadAvatarActivity
   public ReadInJoyUploadAvatarActivity()
   {
     this.jdField_a_of_type_AndroidOsHandler = new Handler();
+    this.jdField_a_of_type_Pwp = new nlz(this);
   }
   
-  private void a(String paramString, Handler paramHandler)
+  private void a(String paramString)
   {
-    ArrayList localArrayList = new ArrayList(1);
-    localArrayList.add(paramString);
-    ThreadManager.post(new TroopBarPublishUtils.PicUploadThread(this, paramHandler, localArrayList, "https://upload.buluo.qq.com/cgi-bin/bar/upload/image", "1"), 8, null, true);
+    QQAppInterface localQQAppInterface = (QQAppInterface)obz.a();
+    new pwq(getApplicationContext(), localQQAppInterface, this.jdField_a_of_type_Pwp).a(paramString, true, 2);
   }
   
-  protected void a(String paramString)
+  private void a(String paramString, Handler paramHandler, int paramInt)
   {
-    a(paramString, new lhk(this, Looper.getMainLooper(), paramString));
+    ThreadManager.executeOnSubThread(new ReadInJoyUploadAvatarActivity.3(this, paramInt, paramString, paramHandler));
   }
   
-  protected boolean doOnCreate(Bundle paramBundle)
+  protected void a(int paramInt1, String paramString, int paramInt2)
+  {
+    switch (paramInt1)
+    {
+    default: 
+      a(paramString, new nlx(this, Looper.getMainLooper()), paramInt2);
+    }
+    for (;;)
+    {
+      QLog.d(jdField_a_of_type_JavaLangString, 1, "uploadFile: from:" + paramInt1 + " paths:" + paramString);
+      return;
+      a(paramString);
+    }
+  }
+  
+  public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
     setContentView(new View(this));
-    setTitle("移动和缩放", "移动和缩放");
-    setLeftViewName(2131435705);
-    this.jdField_a_of_type_AndroidOsHandler.post(new lhi(this));
-    paramBundle = getIntent().getStringArrayListExtra("PhotoConst.PHOTO_PATHS");
-    if ((paramBundle == null) || (paramBundle.isEmpty()))
+    setTitle(ajjy.a(2131647095), ajjy.a(2131647095));
+    setLeftViewName(2131629402);
+    this.jdField_a_of_type_AndroidOsHandler.post(new ReadInJoyUploadAvatarActivity.1(this));
+    paramBundle = getIntent();
+    ArrayList localArrayList = paramBundle.getStringArrayListExtra("PhotoConst.PHOTO_PATHS");
+    int i = paramBundle.getIntExtra("from", 0);
+    if ((localArrayList == null) || (localArrayList.isEmpty()))
     {
-      Intent localIntent = new Intent();
+      Intent localIntent = getIntent();
       Bundle localBundle = new Bundle();
       localBundle.putInt("retCode", 2);
-      localBundle.putString("msg", "图像为空");
+      localBundle.putString("msg", ajjy.a(2131647076));
       localIntent.putExtra("Bundle", localBundle);
       setResult(-1, localIntent);
       finish();
     }
-    if ((paramBundle != null) && (paramBundle.size() > 0)) {
-      a((String)paramBundle.get(0));
+    int j = paramBundle.getIntExtra("type", 1);
+    if ((localArrayList != null) && (localArrayList.size() > 0)) {
+      a(i, (String)localArrayList.get(0), j);
     }
     return true;
   }
   
-  protected void doOnDestroy()
+  public void doOnDestroy()
   {
     super.doOnDestroy();
     if (this.jdField_a_of_type_AndroidAppProgressDialog != null) {

@@ -1,34 +1,23 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyAtlasFragment;
-import com.tencent.biz.pubaccount.util.GalleryShareHelper;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.widget.LinearLayout;
 
-public class lpv
-  implements ActionSheet.OnButtonClickListener
+abstract class lpv
 {
-  public lpv(ReadInJoyAtlasFragment paramReadInJoyAtlasFragment, ActionSheet paramActionSheet, String paramString) {}
+  int jdField_a_of_type_Int = -1;
+  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout = null;
+  int b = -552421387;
+  int c = -15550475;
+  int d = 14;
   
-  public void OnClick(View paramView, int paramInt)
+  void a(int paramInt)
   {
-    paramView = this.jdField_a_of_type_ComTencentWidgetActionSheet.a(paramInt);
-    GalleryShareHelper localGalleryShareHelper = new GalleryShareHelper(ReadInJoyAtlasFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyAtlasFragment));
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyAtlasFragment.getString(2131435887).equals(paramView)) {
-      localGalleryShareHelper.a(ReadInJoyAtlasFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyAtlasFragment), this.jdField_a_of_type_JavaLangString);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      return;
-      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyAtlasFragment.getString(2131435893).equals(paramView)) {
-        localGalleryShareHelper.a(this.jdField_a_of_type_JavaLangString);
-      }
+    if (this.jdField_a_of_type_AndroidWidgetLinearLayout != null) {
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(paramInt);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lpv
  * JD-Core Version:    0.7.0.1
  */

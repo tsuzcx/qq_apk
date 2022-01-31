@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.activity.aio;
 
+import aclp;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import uql;
 
 public class ForwardUtils$SectionBase
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new uql();
+  public static final Parcelable.Creator<SectionBase> CREATOR = new aclp();
   public int a;
   
   protected ForwardUtils$SectionBase() {}
@@ -30,7 +30,7 @@ public class ForwardUtils$SectionBase
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.ForwardUtils.SectionBase
  * JD-Core Version:    0.7.0.1
  */

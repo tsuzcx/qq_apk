@@ -10,7 +10,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class Submsgtype0xe5$MsgBody$S2CCcAgentActionResultPush
-  extends MessageMicro
+  extends MessageMicro<S2CCcAgentActionResultPush>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_target_name = PBField.initBytes(ByteStringMicro.EMPTY);

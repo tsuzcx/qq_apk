@@ -1,13 +1,22 @@
 package com.tencent.mobileqq.msf.core.net;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+
 class q
-  implements Runnable
+  extends Thread
 {
-  q(p paramp) {}
+  q(n paramn) {}
   
   public void run()
   {
-    this.a.a();
+    Iterator localIterator = n.a(this.a).iterator();
+    while (localIterator.hasNext()) {
+      ((n.a)localIterator.next()).a();
+    }
+    n.b(this.a).addAll(n.a(this.a));
+    n.a(this.a).clear();
+    n.a(this.a, null);
   }
 }
 

@@ -1,21 +1,22 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.ark.ArkActionAppMgr;
-import com.tencent.mobileqq.ark.ArkAppCGI.ArkAppCGICallback;
-import java.util.ArrayList;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.GeneralSettingActivity;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.fragment.LangSettingFragment;
 
 public class aaxt
-  extends ArkAppCGI.ArkAppCGICallback
+  implements View.OnClickListener
 {
-  public aaxt(ArkActionAppMgr paramArkActionAppMgr) {}
+  public aaxt(GeneralSettingActivity paramGeneralSettingActivity) {}
   
-  public void a(boolean paramBoolean, Object paramObject, ArrayList paramArrayList1, ArrayList paramArrayList2)
+  public void onClick(View paramView)
   {
-    ThreadManager.post(new aaxu(this, paramObject, paramBoolean, paramArrayList1, paramArrayList2), 5, null, true);
+    PublicFragmentActivity.a(this.a, LangSettingFragment.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aaxt
  * JD-Core Version:    0.7.0.1
  */

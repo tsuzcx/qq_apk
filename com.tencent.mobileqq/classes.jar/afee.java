@@ -1,37 +1,27 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.nearby.now.datasource.CommentsDataSource.LoadCommentsCallback;
-import com.tencent.mobileqq.nearby.now.model.Comments;
-import com.tencent.mobileqq.nearby.now.view.CommentsView;
-import com.tencent.mobileqq.nearby.now.view.presenter.CommentsPresenterImpl;
+import com.tencent.mobileqq.data.MayKnowRecommend;
+import java.util.Comparator;
 
-public class afee
-  implements CommentsDataSource.LoadCommentsCallback
+class afee
+  implements Comparator<MayKnowRecommend>
 {
-  public afee(CommentsPresenterImpl paramCommentsPresenterImpl) {}
+  afee(afec paramafec) {}
   
-  public void a()
+  public int a(MayKnowRecommend paramMayKnowRecommend1, MayKnowRecommend paramMayKnowRecommend2)
   {
-    if (CommentsPresenterImpl.a(this.a) != null)
-    {
-      CommentsPresenterImpl.a(this.a).a(BaseApplicationImpl.getApplication().getString(2131430840));
-      CommentsPresenterImpl.a(this.a).b();
-      CommentsPresenterImpl.a(this.a).c();
+    long l1 = paramMayKnowRecommend1.cardDisplayTimestamp;
+    long l2 = paramMayKnowRecommend2.cardDisplayTimestamp;
+    if (l1 < l2) {
+      return -1;
     }
-  }
-  
-  public void a(Comments paramComments)
-  {
-    if (CommentsPresenterImpl.a(this.a) != null)
-    {
-      CommentsPresenterImpl.a(this.a);
-      CommentsPresenterImpl.a(this.a).a(paramComments);
-      CommentsPresenterImpl.a(this.a).b();
+    if (l1 == l2) {
+      return 0;
     }
+    return 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     afee
  * JD-Core Version:    0.7.0.1
  */

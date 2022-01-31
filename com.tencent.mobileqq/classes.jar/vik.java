@@ -1,64 +1,107 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.playvideo.StoryPlayVideoActivity;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
-import com.tencent.biz.qqstory.troop.TroopStoryUtil;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder.ViewHolder;
-import com.tencent.mobileqq.activity.aio.item.QQStoryCommentItemBuilder;
-import com.tencent.mobileqq.data.MessageForQQStoryComment;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.TagInfoBase;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.TagItem;
+import com.tencent.biz.qqstory.takevideo.tag.TagItemEntry;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class vik
-  implements View.OnClickListener
 {
-  long jdField_a_of_type_Long = 0L;
+  public final int a;
+  public final String a;
+  public final vil a;
   
-  public vik(QQStoryCommentItemBuilder paramQQStoryCommentItemBuilder) {}
-  
-  public void onClick(View paramView)
+  public vik(qqstory_struct.TagItem paramTagItem)
   {
-    long l1 = System.currentTimeMillis();
-    if (l1 - this.jdField_a_of_type_Long < 50L) {
-      return;
-    }
-    this.jdField_a_of_type_Long = l1;
-    MessageForQQStoryComment localMessageForQQStoryComment = (MessageForQQStoryComment)((BaseBubbleBuilder.ViewHolder)AIOUtils.a(paramView)).a;
-    if (TroopStoryUtil.a(localMessageForQQStoryComment.vid))
-    {
-      StoryPlayVideoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryCommentItemBuilder.jdField_a_of_type_AndroidContentContext, localMessageForQQStoryComment.vid, 1004);
-      StoryReportor.a("story_grp", "aio_obj", 0, 0, new String[] { "", "", "", "" });
-      return;
-    }
-    paramView = localMessageForQQStoryComment.selfuin;
-    if (localMessageForQQStoryComment.isSend()) {
-      paramView = localMessageForQQStoryComment.frienduin;
-    }
-    long l2 = 0L;
+    this.jdField_a_of_type_Vil = new vil((qqstory_struct.TagInfoBase)paramTagItem.base_info.get());
+    this.jdField_a_of_type_Int = paramTagItem.join_count.get();
+    this.jdField_a_of_type_JavaLangString = paramTagItem.wording.get();
+  }
+  
+  public vik(TagItemEntry paramTagItemEntry)
+  {
+    this.jdField_a_of_type_Vil = new vil(paramTagItemEntry.id, paramTagItemEntry.name, paramTagItemEntry.desc, paramTagItemEntry.type);
+    this.jdField_a_of_type_Int = paramTagItemEntry.joinCount;
+    this.jdField_a_of_type_JavaLangString = paramTagItemEntry.wording;
+  }
+  
+  public vik(vil paramvil, int paramInt, String paramString)
+  {
+    this.jdField_a_of_type_Vil = paramvil;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public TagItemEntry a()
+  {
+    TagItemEntry localTagItemEntry = new TagItemEntry();
+    localTagItemEntry.id = this.jdField_a_of_type_Vil.jdField_a_of_type_Long;
+    localTagItemEntry.name = this.jdField_a_of_type_Vil.jdField_a_of_type_JavaLangString;
+    localTagItemEntry.desc = this.jdField_a_of_type_Vil.b;
+    localTagItemEntry.type = this.jdField_a_of_type_Vil.jdField_a_of_type_Int;
+    localTagItemEntry.joinCount = this.jdField_a_of_type_Int;
+    localTagItemEntry.wording = this.jdField_a_of_type_JavaLangString;
+    return localTagItemEntry;
+  }
+  
+  public String a()
+  {
+    Object localObject = new JSONObject();
     try
     {
-      l1 = Long.parseLong(paramView);
-      StoryPlayVideoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryCommentItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (Activity)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryCommentItemBuilder.jdField_a_of_type_AndroidContentContext, localMessageForQQStoryComment.vid, l1, 5, null, 0);
-      return;
-    }
-    catch (NumberFormatException paramView)
-    {
-      for (;;)
-      {
-        l1 = l2;
-        if (QLog.isColorLevel())
-        {
-          QLog.d("QQStoryCommentItemBuilder", 2, "uin parse error");
-          l1 = l2;
-        }
+      if (this.jdField_a_of_type_Vil == null) {
+        return null;
       }
+      ((JSONObject)localObject).put("tag_id", this.jdField_a_of_type_Vil.jdField_a_of_type_Long);
+      ((JSONObject)localObject).put("tag_name", this.jdField_a_of_type_Vil.jdField_a_of_type_JavaLangString);
+      ((JSONObject)localObject).put("tag_desc", this.jdField_a_of_type_Vil.b);
+      ((JSONObject)localObject).put("tag_type", this.jdField_a_of_type_Vil.jdField_a_of_type_Int);
+      ((JSONObject)localObject).put("join_count", this.jdField_a_of_type_Int);
+      ((JSONObject)localObject).put("wording", this.jdField_a_of_type_JavaLangString);
+      ((JSONObject)localObject).put("one_page", 1);
+      ((JSONObject)localObject).put("src_type", "web");
+      ((JSONObject)localObject).put("version", 1);
+      localObject = ((JSONObject)localObject).toString();
+      return localObject;
     }
+    catch (JSONException localJSONException) {}
+    return null;
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if (this == paramObject) {}
+    do
+    {
+      return true;
+      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+        return false;
+      }
+      paramObject = (vik)paramObject;
+      if (this.jdField_a_of_type_Vil != null) {
+        return this.jdField_a_of_type_Vil.equals(paramObject.jdField_a_of_type_Vil);
+      }
+    } while (paramObject.jdField_a_of_type_Vil == null);
+    return false;
+  }
+  
+  public int hashCode()
+  {
+    if (this.jdField_a_of_type_Vil != null) {
+      return this.jdField_a_of_type_Vil.hashCode();
+    }
+    return 0;
+  }
+  
+  public String toString()
+  {
+    return "TagItem{tagInfo=" + this.jdField_a_of_type_Vil + ", joinCount=" + this.jdField_a_of_type_Int + ", wording='" + this.jdField_a_of_type_JavaLangString + '\'' + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vik
  * JD-Core Version:    0.7.0.1
  */

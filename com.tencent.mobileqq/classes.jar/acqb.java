@@ -1,58 +1,20 @@
-import android.support.v4.app.FragmentActivity;
-import android.text.TextUtils;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.extendfriend.ExtendFriendObserver;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendEditFragment;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendProfileEditFragment;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendProfileEditFragment.ExtendFriendInfo;
-import com.tencent.mobileqq.widget.QQProgressDialog;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.activity.aio.anim.friendship.impl.boat.FriendShipWaveView;
 
 public class acqb
-  extends ExtendFriendObserver
+  implements axbf
 {
-  public acqb(ExtendFriendEditFragment paramExtendFriendEditFragment) {}
+  public acqb(FriendShipWaveView paramFriendShipWaveView) {}
   
-  protected void a(boolean paramBoolean, Card paramCard)
+  public void a()
   {
-    super.a(paramBoolean, paramCard);
-    if (paramBoolean)
-    {
-      paramCard = new ExtendFriendProfileEditFragment.ExtendFriendInfo(paramCard);
-      if ((TextUtils.isEmpty(paramCard.a)) && (TextUtils.isEmpty(paramCard.b)))
-      {
-        ExtendFriendEditFragment.a(this.a, true);
-        this.a.a.a(paramCard);
-      }
-    }
-    for (;;)
-    {
-      ExtendFriendEditFragment.a(this.a).dismiss();
-      return;
-      ExtendFriendEditFragment.a(this.a, false);
-      break;
-      QQToast.a(ExtendFriendEditFragment.a(this.a), "获取QQ扩列信息失败", 0).a();
-    }
-  }
-  
-  protected void b(boolean paramBoolean)
-  {
-    super.b(paramBoolean);
-    if (paramBoolean)
-    {
-      ExtendFriendEditFragment.a(this.a).dismiss();
-      ExtendFriendEditFragment.a(this.a).setResult(8193);
-      if (ExtendFriendEditFragment.a(this.a) != null) {
-        ExtendFriendEditFragment.a(this.a).finish();
-      }
-      return;
-    }
-    ExtendFriendEditFragment.a(this.a).dismiss();
+    axbn localaxbn = new axbn(new axbe[] { new axbm(300, 0.1F, 1.1F), new axbm(100, 1.2F, 0.9F), new axbm(100, 0.9F, 1.0F) });
+    this.a.c.a(new axbe[] { localaxbn });
+    this.a.b.a(new axbe[] { new axbm(300, 0.0F, 1.0F) });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     acqb
  * JD-Core Version:    0.7.0.1
  */

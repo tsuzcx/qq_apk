@@ -18,12 +18,12 @@ public class a
     finally {}
   }
   
-  protected String b()
+  public String b()
   {
     return "BusinessInfoLogTable";
   }
   
-  protected String[] b(int paramInt)
+  public String[] b(int paramInt)
   {
     if (paramInt > 1) {
       return new String[] { c() };
@@ -31,19 +31,19 @@ public class a
     return null;
   }
   
-  protected String c()
+  public String c()
   {
     return "CREATE TABLE if not exists BusinessInfoLogTable( _id INTEGER PRIMARY KEY AUTOINCREMENT, logData BLOB );";
   }
   
-  protected String d()
+  public String d()
   {
     return "INSERT INTO BusinessInfoLogTable logData = ?";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.tmassistantsdk.internal.c.a.a
  * JD-Core Version:    0.7.0.1
  */

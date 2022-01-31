@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class mobileqq_mp$ConfigInfo
-  extends MessageMicro
+  extends MessageMicro<ConfigInfo>
 {
   public static final int LOCAL_EVENT = 3;
   public static final int NEED_UIN = 1;

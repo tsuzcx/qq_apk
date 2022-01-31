@@ -1,40 +1,43 @@
-import android.os.Bundle;
-import com.tencent.biz.troop.TroopMemberApiClient.Callback;
-import com.tencent.mobileqq.jsp.TroopApiPlugin;
+import android.view.View;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
 
-public class aefi
-  implements TroopMemberApiClient.Callback
+class aefi
+  implements begw
 {
-  public aefi(TroopApiPlugin paramTroopApiPlugin) {}
+  aefi(aefe paramaefe, begr parambegr, ChatMessage paramChatMessage, String paramString) {}
   
-  public void a(Bundle paramBundle)
+  public void OnClick(View paramView, int paramInt)
   {
-    int i = paramBundle.getInt("state", 0);
-    int j = paramBundle.getInt("percentage", 0);
-    long l = paramBundle.getLong("errCode", 0L);
-    try
+    this.jdField_a_of_type_Begr.dismiss();
+    switch (paramInt)
     {
-      paramBundle = new JSONObject();
-      paramBundle.put("state", i);
-      paramBundle.put("percentage", j);
-      paramBundle.put("errCode", l);
-      this.a.callJs(this.a.e, new String[] { paramBundle.toString() });
+    }
+    do
+    {
       return;
-    }
-    catch (Exception paramBundle)
-    {
+      this.jdField_a_of_type_Aefe.a(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.senderuin, this.jdField_a_of_type_JavaLangString, false, 1);
+      return;
       if (QLog.isColorLevel()) {
-        QLog.w("TroopApiPlugin", 2, "huanjiDownload exp", paramBundle);
+        QLog.i(this.jdField_a_of_type_Aefe.jdField_a_of_type_JavaLangString, 2, "del hot chat member onClick, uin=" + this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.senderuin);
       }
-      this.a.callJs(this.a.e, new String[] { "{\"errCode\":-10,\"message\":\"request fail\"}" });
-    }
+      if (!badq.d(BaseApplication.getContext()))
+      {
+        bbmy.a(this.jdField_a_of_type_Aefe.a(), this.jdField_a_of_type_Aefe.a().getString(2131628948), 0).b(this.jdField_a_of_type_Aefe.a().getTitleBarHeight());
+        return;
+      }
+    } while ((ajkc)this.jdField_a_of_type_Aefe.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(35) == null);
+    paramView = babr.a(this.jdField_a_of_type_Aefe.a(), 230).setMessage(2131627656).setNegativeButton(2131625012, new aefk(this)).setPositiveButton(2131625014, new aefj(this));
+    paramView.setTitle(2131627657);
+    paramView.show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aefi
  * JD-Core Version:    0.7.0.1
  */

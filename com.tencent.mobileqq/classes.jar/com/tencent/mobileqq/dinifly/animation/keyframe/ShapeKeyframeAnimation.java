@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.dinifly.animation.keyframe;
 
 import android.graphics.Path;
-import com.tencent.mobileqq.dinifly.animation.Keyframe;
 import com.tencent.mobileqq.dinifly.model.content.ShapeData;
 import com.tencent.mobileqq.dinifly.utils.MiscUtils;
+import com.tencent.mobileqq.dinifly.value.Keyframe;
 import java.util.List;
 
 public class ShapeKeyframeAnimation
@@ -28,7 +28,7 @@ public class ShapeKeyframeAnimation
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.animation.keyframe.ShapeKeyframeAnimation
  * JD-Core Version:    0.7.0.1
  */

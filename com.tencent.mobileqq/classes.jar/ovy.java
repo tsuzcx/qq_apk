@@ -1,20 +1,15 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.biz.qqstory.view.widget.StoryAddDescribeGuideDialog;
-
-public class ovy
-  implements Animation.AnimationListener
+class ovy
+  implements pjw
 {
-  public ovy(StoryAddDescribeGuideDialog paramStoryAddDescribeGuideDialog) {}
+  ovy(ovx paramovx, opw paramopw) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a()
   {
-    this.a.dismiss();
+    qpj localqpj = this.jdField_a_of_type_Opw.a().a();
+    if (localqpj != null) {
+      localqpj.a(null, this.jdField_a_of_type_Opw.a(), 1);
+    }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

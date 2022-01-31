@@ -1,13 +1,15 @@
 package com.tencent.mobileqq.msf.sdk.utils;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Build.VERSION;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.Process;
 import android.text.TextUtils;
 import com.tencent.mobileqq.msf.core.MsfCore;
-import com.tencent.mobileqq.msf.core.c.j;
+import com.tencent.mobileqq.msf.core.c.k;
+import com.tencent.mobileqq.msf.core.u;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -25,7 +27,6 @@ import java.net.InetAddress;
 import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.net.SocketAddress;
-import java.net.SocketException;
 import java.net.SocketImpl;
 import java.net.SocketTimeoutException;
 import java.util.concurrent.ConcurrentHashMap;
@@ -34,30 +35,31 @@ import java.util.concurrent.CopyOnWriteArrayList;
 public class c
   extends SocketImpl
 {
-  public static String j = "notfound";
-  public static short k = 0;
-  public static short l = 1;
-  static ConcurrentHashMap m = new ConcurrentHashMap();
+  public static String k = "notfound";
+  public static short l = 0;
+  public static short m = 1;
   static ConcurrentHashMap n = new ConcurrentHashMap();
-  private static final int r = 30000;
-  private static HandlerThread s = new HandlerThread("SocketTimeoutChecker");
-  private static Handler t;
-  private static int u;
-  private static long v;
-  private static long w;
-  private static CopyOnWriteArrayList x = new CopyOnWriteArrayList();
+  static ConcurrentHashMap o = new ConcurrentHashMap();
+  private static final int s = 30000;
+  private static HandlerThread t = new HandlerThread("MsfSocketTimeoutChecker");
+  private static Handler u;
+  private static int v = 0;
+  private static long w = 0L;
+  private static long x = 0L;
+  private static CopyOnWriteArrayList y = new CopyOnWriteArrayList();
   public String a = "";
   public String b = "";
   public int c;
   public String d;
   public String e = "";
   public String f = "";
-  MonitorSocketInputStream g;
-  MonitorSocketOutputStream h;
-  String i;
-  public Context o;
-  private SocketImpl p;
-  private Class q;
+  public MonitorHttpInfo g;
+  MonitorSocketInputStream h;
+  MonitorSocketOutputStream i;
+  String j;
+  public Context p;
+  private SocketImpl q;
+  private Class r;
   
   public c(Class paramClass, Context paramContext)
   {
@@ -65,11 +67,12 @@ public class c
     {
       Constructor localConstructor = paramClass.getDeclaredConstructor(new Class[0]);
       localConstructor.setAccessible(true);
-      this.p = ((SocketImpl)localConstructor.newInstance(new Object[0]));
-      this.o = paramContext;
-      this.q = paramClass;
+      this.q = ((SocketImpl)localConstructor.newInstance(new Object[0]));
+      this.p = paramContext;
+      this.r = paramClass;
       e();
       b();
+      BaseApplication.httpMonitorBan = paramContext.getSharedPreferences("StepUpdate", 4).getBoolean("httpMonitorBan", false);
     }
     catch (Exception paramContext)
     {
@@ -119,19 +122,19 @@ public class c
     }
     for (;;)
     {
-      u += 1;
-      v += paramb.f;
-      x.addIfAbsent(paramb.h);
+      v += 1;
+      w += paramb.f;
+      y.addIfAbsent(paramb.h);
       long l1 = System.currentTimeMillis();
-      if (l1 - w > 60000L)
+      if (l1 - x > 60000L)
       {
-        if ((u > 1000) || (v > 100000000L)) {
-          QLog.i("MSF.D.MonitorSocket", 1, "netflowSize:" + v + " ,netflowCount:" + u + " ,mType:" + x.toString());
+        if ((v > 1000) || (w > 100000000L)) {
+          QLog.i("MSF.D.MonitorSocket", 1, "netflowSize:" + w + " ,netflowCount:" + v + " ,mType:" + y.toString());
         }
-        u = 0;
-        v = 0L;
-        w = l1;
-        x.clear();
+        v = 0;
+        w = 0L;
+        x = l1;
+        y.clear();
       }
       return;
       if (paramb.f > 500000L) {
@@ -146,7 +149,7 @@ public class c
     {
       Method localMethod = Socket.class.getClassLoader().loadClass("java.net.SocketImpl").getDeclaredMethod("getFileDescriptor", new Class[0]);
       localMethod.setAccessible(true);
-      this.fd = ((FileDescriptor)localMethod.invoke(this.p, new Object[0]));
+      this.fd = ((FileDescriptor)localMethod.invoke(this.q, new Object[0]));
       this.e = (this.b + ":" + this.c + "_" + this.fd.hashCode() + " ");
       return;
     }
@@ -163,7 +166,7 @@ public class c
     {
       Field localField = SocketImpl.class.getDeclaredField("fd");
       localField.setAccessible(true);
-      localField.set(this.p, this.fd);
+      localField.set(this.q, this.fd);
       return;
     }
     catch (Exception localException)
@@ -236,10 +239,10 @@ public class c
     {
       i1 = this.f.indexOf(")", i2);
       if ((i1 <= 0) || (i1 <= i2)) {
-        break label207;
+        break label212;
       }
     }
-    label207:
+    label212:
     for (this.f = (this.f.substring(i2, i1 + 1) + "_"); this.fd != null; this.f = (this.f.substring(i2) + "_"))
     {
       this.e = (this.b + ":" + this.c + "_" + this.fd.hashCode() + " ");
@@ -248,9 +251,71 @@ public class c
     this.e = (this.b + ":" + this.c + "_ ");
   }
   
+  private void j()
+  {
+    for (;;)
+    {
+      try
+      {
+        if ((BaseApplication.httpMonitorBan) || (this.g == null)) {
+          break label231;
+        }
+        if (BaseApplication.networkMonitorCallback != null)
+        {
+          if ((this.g.getFileType() != 1) && (this.g.getFileType() != 2)) {
+            break label231;
+          }
+          u.b().post(new d(this));
+          if (!QLog.isColorLevel()) {
+            break label231;
+          }
+          str3 = this.g.toString();
+          if (this.d == null) {
+            break label232;
+          }
+          str1 = this.d;
+          QLog.d("MSF.D.MonitorSocket", 2, new Object[] { str3, " ProcessName=", str1 });
+          return;
+        }
+        if (!QLog.isColorLevel()) {
+          break label231;
+        }
+        str3 = this.g.toString();
+        if (this.d == null) {
+          continue;
+        }
+        str1 = this.d;
+      }
+      catch (Throwable localThrowable)
+      {
+        String str1;
+        if (!QLog.isColorLevel()) {
+          break label231;
+        }
+        String str3 = localThrowable.toString();
+        if (this.d == null) {
+          continue;
+        }
+        str2 = this.d;
+        QLog.d("MSF.D.MonitorSocket", 2, new Object[] { "report failed ", str3, " ProcessName=", str2 });
+        return;
+        str2 = "";
+        continue;
+        str2 = "";
+        continue;
+      }
+      QLog.d("MSF.D.MonitorSocket", 2, new Object[] { "report failed ", str3, " ProcessName=", str1 });
+      return;
+      label231:
+      return;
+      label232:
+      String str2 = "";
+    }
+  }
+  
   public Handler a()
   {
-    return t;
+    return u;
   }
   
   public Runnable a(int paramInt1, int paramInt2)
@@ -263,8 +328,8 @@ public class c
       return null;
     }
     b localb;
-    if (k == paramInt2) {
-      localb = (b)n.get(Integer.valueOf(paramInt1));
+    if (l == paramInt2) {
+      localb = (b)o.get(Integer.valueOf(paramInt1));
     }
     for (;;)
     {
@@ -274,33 +339,30 @@ public class c
           QLog.d("MSF.D.MonitorSocket", 2, "addSocketTimeoutCheck dataFlowItem is null.");
         }
         return null;
-        if (l == paramInt2) {
-          localb = (b)m.get(Integer.valueOf(paramInt1));
+        if (m == paramInt2) {
+          localb = (b)n.get(Integer.valueOf(paramInt1));
         }
       }
       else
       {
-        a locala = new a(paramInt1, paramInt2);
+        c.a locala = new c.a(this, paramInt1, paramInt2);
         localb.l = locala;
-        t.postDelayed(locala, 30000L);
+        u.postDelayed(locala, 30000L);
         return locala;
       }
       localb = null;
     }
   }
   
-  protected void accept(SocketImpl paramSocketImpl)
-    throws IOException
-  {}
+  protected void accept(SocketImpl paramSocketImpl) {}
   
   protected int available()
-    throws IOException
   {
     try
     {
-      Method localMethod = a(this.q, "available", new Class[0]);
+      Method localMethod = a(this.r, "available", new Class[0]);
       localMethod.setAccessible(true);
-      int i1 = ((Integer)localMethod.invoke(this.p, new Object[0])).intValue();
+      int i1 = ((Integer)localMethod.invoke(this.q, new Object[0])).intValue();
       return i1;
     }
     catch (Exception localException)
@@ -312,22 +374,22 @@ public class c
   
   public void b()
   {
-    this.d = MsfSdkUtils.getProcessName(this.o);
+    this.d = MsfSdkUtils.getProcessName(this.p);
     try
     {
-      if (t == null) {
-        synchronized (s)
+      if (u == null) {
+        synchronized (t)
         {
-          if (t == null)
+          if (u == null)
           {
-            if (!s.isAlive())
+            if (!t.isAlive())
             {
               if (QLog.isColorLevel()) {
-                QLog.d("MSF.D.MonitorSocket", 2, "initSocketTimeoutChecker PID=" + Process.myPid() + " TID=" + s.getId());
+                QLog.d("MSF.D.MonitorSocket", 2, "initSocketTimeoutChecker PID=" + Process.myPid() + " TID=" + t.getId());
               }
-              s.start();
+              t.start();
             }
-            t = new Handler(s.getLooper());
+            u = new Handler(t.getLooper());
           }
           return;
         }
@@ -341,13 +403,12 @@ public class c
   }
   
   protected void bind(InetAddress paramInetAddress, int paramInt)
-    throws IOException
   {
     try
     {
-      Method localMethod = a(this.q, "bind", new Class[] { InetAddress.class, Integer.TYPE });
+      Method localMethod = a(this.r, "bind", new Class[] { InetAddress.class, Integer.TYPE });
       localMethod.setAccessible(true);
-      localMethod.invoke(this.p, new Object[] { paramInetAddress, Integer.valueOf(paramInt) });
+      localMethod.invoke(this.q, new Object[] { paramInetAddress, Integer.valueOf(paramInt) });
       return;
     }
     catch (Exception paramInetAddress)
@@ -361,7 +422,7 @@ public class c
     try
     {
       if ((this.d != null) && (this.d.endsWith(":MSF")) && (MsfCore.sCore.statReporter != null)) {
-        MsfCore.sCore.statReporter.b(this.q.getName());
+        MsfCore.sCore.statReporter.b(this.r.getName());
       }
       return;
     }
@@ -372,13 +433,12 @@ public class c
   }
   
   protected void close()
-    throws IOException
   {
     try
     {
-      localMethod = a(this.q, "close", new Class[0]);
+      localMethod = a(this.r, "close", new Class[0]);
       localMethod.setAccessible(true);
-      localMethod.invoke(this.p, new Object[0]);
+      localMethod.invoke(this.q, new Object[0]);
       if (QLog.isColorLevel()) {
         QLog.d("MSF.D.MonitorSocket", 2, this.e + " close MonitorSocket succ.");
       }
@@ -390,7 +450,7 @@ public class c
       {
         Method localMethod;
         b localb;
-        label312:
+        label318:
         if (QLog.isColorLevel()) {
           QLog.d("MSF.D.MonitorSocket", 2, this.e + "close MonitorSocket failed.", localException);
         }
@@ -398,35 +458,36 @@ public class c
     }
     try
     {
-      if (!m.isEmpty())
-      {
-        localb = (b)m.remove(Integer.valueOf(this.e.hashCode()));
-        if ((localb != null) && (!TextUtils.isEmpty(this.f)))
-        {
-          if ((TextUtils.isEmpty(localb.h)) || (localb.h.equals(j))) {
-            localb.h = this.f.substring(0, this.f.indexOf("_"));
-          }
-          BaseApplication.monitor.insertData(localb);
-          if (localb.l != null)
-          {
-            t.removeCallbacks(localb.l);
-            localb.l = null;
-          }
-          a(localb);
-        }
-      }
+      j();
       if (!n.isEmpty())
       {
         localb = (b)n.remove(Integer.valueOf(this.e.hashCode()));
         if ((localb != null) && (!TextUtils.isEmpty(this.f)))
         {
-          if ((TextUtils.isEmpty(localb.h)) || (localb.h.equals(j))) {
+          if ((TextUtils.isEmpty(localb.h)) || (localb.h.equals(k))) {
             localb.h = this.f.substring(0, this.f.indexOf("_"));
           }
           BaseApplication.monitor.insertData(localb);
           if (localb.l != null)
           {
-            t.removeCallbacks(localb.l);
+            u.removeCallbacks(localb.l);
+            localb.l = null;
+          }
+          a(localb);
+        }
+      }
+      if (!o.isEmpty())
+      {
+        localb = (b)o.remove(Integer.valueOf(this.e.hashCode()));
+        if ((localb != null) && (!TextUtils.isEmpty(this.f)))
+        {
+          if ((TextUtils.isEmpty(localb.h)) || (localb.h.equals(k))) {
+            localb.h = this.f.substring(0, this.f.indexOf("_"));
+          }
+          BaseApplication.monitor.insertData(localb);
+          if (localb.l != null)
+          {
+            u.removeCallbacks(localb.l);
             localb.l = null;
           }
           a(localb);
@@ -436,10 +497,10 @@ public class c
     catch (Throwable localThrowable)
     {
       if (!QLog.isColorLevel()) {
-        break label312;
+        break label318;
       }
       QLog.w("MSF.D.MonitorSocket", 2, localThrowable.getMessage(), localThrowable);
-      break label312;
+      break label318;
     }
     if (localMethod != null) {
       throw new IOException(localMethod.toString());
@@ -447,7 +508,6 @@ public class c
   }
   
   protected void connect(String paramString, int paramInt)
-    throws IOException
   {
     this.b = paramString;
     this.c = paramInt;
@@ -457,9 +517,9 @@ public class c
     try
     {
       e();
-      Method localMethod = a(this.q, "connect", new Class[] { String.class, Integer.TYPE });
+      Method localMethod = a(this.r, "connect", new Class[] { String.class, Integer.TYPE });
       localMethod.setAccessible(true);
-      localMethod.invoke(this.p, new Object[] { paramString, Integer.valueOf(paramInt) });
+      localMethod.invoke(this.q, new Object[] { paramString, Integer.valueOf(paramInt) });
       e();
       i();
       if (QLog.isColorLevel()) {
@@ -477,7 +537,6 @@ public class c
   }
   
   protected void connect(InetAddress paramInetAddress, int paramInt)
-    throws IOException
   {
     try
     {
@@ -487,9 +546,9 @@ public class c
         QLog.d("MSF.D.MonitorSocket", 2, this.e + "connect to host 2 " + this.b + " fd=" + g() + " isSocket=" + h());
       }
       e();
-      Method localMethod = a(this.q, "connect", new Class[] { InetAddress.class, Integer.TYPE });
+      Method localMethod = a(this.r, "connect", new Class[] { InetAddress.class, Integer.TYPE });
       localMethod.setAccessible(true);
-      localMethod.invoke(this.p, new Object[] { paramInetAddress, Integer.valueOf(paramInt) });
+      localMethod.invoke(this.q, new Object[] { paramInetAddress, Integer.valueOf(paramInt) });
       e();
       i();
       if (QLog.isColorLevel()) {
@@ -507,7 +566,6 @@ public class c
   }
   
   public void connect(SocketAddress paramSocketAddress, int paramInt)
-    throws IOException
   {
     long l2 = 0L;
     long l1 = l2;
@@ -528,13 +586,13 @@ public class c
         l1 = l2;
         e();
         l1 = l2;
-        localObject = a(this.q, "connect", new Class[] { SocketAddress.class, Integer.TYPE });
+        localObject = a(this.r, "connect", new Class[] { SocketAddress.class, Integer.TYPE });
         l1 = l2;
         ((Method)localObject).setAccessible(true);
         l1 = l2;
         l2 = System.currentTimeMillis();
         l1 = l2;
-        ((Method)localObject).invoke(this.p, new Object[] { paramSocketAddress, Integer.valueOf(paramInt) });
+        ((Method)localObject).invoke(this.q, new Object[] { paramSocketAddress, Integer.valueOf(paramInt) });
         l1 = l2;
         e();
         l1 = l2;
@@ -563,13 +621,12 @@ public class c
   }
   
   protected void create(boolean paramBoolean)
-    throws IOException
   {
     try
     {
-      Method localMethod = a(this.q, "create", new Class[] { Boolean.TYPE });
+      Method localMethod = a(this.r, "create", new Class[] { Boolean.TYPE });
       localMethod.setAccessible(true);
-      localMethod.invoke(this.p, new Object[] { Boolean.valueOf(paramBoolean) });
+      localMethod.invoke(this.q, new Object[] { Boolean.valueOf(paramBoolean) });
       e();
       return;
     }
@@ -583,9 +640,9 @@ public class c
   {
     try
     {
-      Object localObject = a(this.q, "getInetAddress", new Class[0]);
+      Object localObject = a(this.r, "getInetAddress", new Class[0]);
       ((Method)localObject).setAccessible(true);
-      localObject = (InetAddress)((Method)localObject).invoke(this.p, new Object[0]);
+      localObject = (InetAddress)((Method)localObject).invoke(this.q, new Object[0]);
       return localObject;
     }
     catch (Exception localException)
@@ -596,14 +653,13 @@ public class c
   }
   
   protected InputStream getInputStream()
-    throws IOException
   {
     try
     {
       f();
-      Object localObject = a(this.q, "getInputStream", new Class[0]);
+      Object localObject = a(this.r, "getInputStream", new Class[0]);
       ((Method)localObject).setAccessible(true);
-      localObject = new MonitorSocketInputStream((InputStream)((Method)localObject).invoke(this.p, new Object[0]), this, this.o);
+      localObject = new MonitorSocketInputStream((InputStream)((Method)localObject).invoke(this.q, new Object[0]), this, this.p);
       return localObject;
     }
     catch (Exception localException)
@@ -613,21 +669,19 @@ public class c
   }
   
   public Object getOption(int paramInt)
-    throws SocketException
   {
-    return this.p.getOption(paramInt);
+    return this.q.getOption(paramInt);
   }
   
   protected OutputStream getOutputStream()
-    throws IOException
   {
     try
     {
       f();
-      Object localObject = a(this.q, "getOutputStream", new Class[0]);
+      Object localObject = a(this.r, "getOutputStream", new Class[0]);
       ((Method)localObject).setAccessible(true);
-      localObject = new MonitorSocketOutputStream((OutputStream)((Method)localObject).invoke(this.p, new Object[0]), this, this.o);
-      this.h = ((MonitorSocketOutputStream)localObject);
+      localObject = new MonitorSocketOutputStream((OutputStream)((Method)localObject).invoke(this.q, new Object[0]), this, this.p);
+      this.i = ((MonitorSocketOutputStream)localObject);
       return localObject;
     }
     catch (Exception localException)
@@ -640,27 +694,24 @@ public class c
   {
     try
     {
-      Method localMethod = a(this.q, "getPort", new Class[0]);
+      Method localMethod = a(this.r, "getPort", new Class[0]);
       localMethod.setAccessible(true);
-      int i1 = ((Integer)localMethod.invoke(this.p, new Object[0])).intValue();
+      int i1 = ((Integer)localMethod.invoke(this.q, new Object[0])).intValue();
       return i1;
     }
     catch (Exception localException) {}
     return 0;
   }
   
-  protected void listen(int paramInt)
-    throws IOException
-  {}
+  protected void listen(int paramInt) {}
   
   protected void sendUrgentData(int paramInt)
-    throws IOException
   {
     try
     {
-      Method localMethod = a(this.q, "sendUrgentData", new Class[] { Integer.TYPE });
+      Method localMethod = a(this.r, "sendUrgentData", new Class[] { Integer.TYPE });
       localMethod.setAccessible(true);
-      localMethod.invoke(this.p, new Object[] { Integer.valueOf(paramInt) });
+      localMethod.invoke(this.q, new Object[] { Integer.valueOf(paramInt) });
       return;
     }
     catch (Exception localException)
@@ -670,74 +721,9 @@ public class c
   }
   
   public void setOption(int paramInt, Object paramObject)
-    throws SocketException
   {
-    if (this.p != null) {
-      this.p.setOption(paramInt, paramObject);
-    }
-  }
-  
-  class a
-    implements Runnable
-  {
-    private int b;
-    private int c;
-    
-    public a(int paramInt1, int paramInt2)
-    {
-      this.b = paramInt1;
-      this.c = paramInt2;
-    }
-    
-    public void run()
-    {
-      if (this.b == 0)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("MSF.D.MonitorSocket", 2, "taskRun keyHashCode is 0.");
-        }
-        return;
-      }
-      b localb;
-      if (c.k == this.c) {
-        localb = (b)c.n.remove(Integer.valueOf(this.b));
-      }
-      for (;;)
-      {
-        if (localb == null)
-        {
-          if (!QLog.isColorLevel()) {
-            break;
-          }
-          QLog.d("MSF.D.MonitorSocket", 2, "taskRun dataFlowItem is null.,type:" + this.c + " ,keyhashCode:" + this.b);
-          return;
-          if (c.l != this.c) {
-            break label248;
-          }
-          localb = (b)c.m.remove(Integer.valueOf(this.b));
-          continue;
-        }
-        if ((localb.k > 0L) && (localb.l != null) && (System.currentTimeMillis() - localb.k < 3000L))
-        {
-          c.d().postDelayed(localb.l, 10000L);
-          if (c.k == this.c)
-          {
-            c.n.put(Integer.valueOf(this.b), localb);
-            return;
-          }
-          if (c.l != this.c) {
-            break;
-          }
-          c.m.put(Integer.valueOf(this.b), localb);
-          return;
-        }
-        localb.l = null;
-        BaseApplication.monitor.insertData(localb);
-        c.a(c.this, localb);
-        return;
-        label248:
-        localb = null;
-      }
+    if (this.q != null) {
+      this.q.setOption(paramInt, paramObject);
     }
   }
 }

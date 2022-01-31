@@ -1,22 +1,35 @@
-import com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeListManager;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import android.view.ViewGroup;
+import com.tencent.biz.pubaccount.readinjoy.struct.TabChannelCoverInfo;
+import com.tencent.widget.ListView;
+import java.util.List;
+import java.util.Map;
 
 public class njc
-  implements Runnable
+  extends rbg
 {
-  public njc(MsgTabStoryNodeListManager paramMsgTabStoryNodeListManager) {}
+  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
+  private List<TabChannelCoverInfo> jdField_a_of_type_JavaUtilList;
+  protected ohe a;
+  private qsz jdField_a_of_type_Qsz;
   
-  public void run()
+  protected void a() {}
+  
+  public void a(ListView paramListView)
   {
-    if (this.a.jdField_a_of_type_Int == 0)
-    {
-      if (MsgTabStoryNodeListManager.a(this.a)) {
-        this.a.jdField_a_of_type_JavaLangRunnable = null;
-      }
-      return;
+    paramListView.addHeaderView(this.jdField_a_of_type_AndroidViewViewGroup);
+  }
+  
+  public void a(Map<Integer, pov> paramMap)
+  {
+    if (this.jdField_a_of_type_Qsz != null) {
+      this.jdField_a_of_type_Qsz.a(paramMap);
     }
-    ThreadManager.getUIHandler().post(this.a.jdField_a_of_type_JavaLangRunnable);
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_JavaUtilList.clear();
+    ohb.a().b(this.jdField_a_of_type_Ohe);
   }
 }
 

@@ -1,81 +1,68 @@
-import android.os.Bundle;
-import android.widget.Button;
-import com.tencent.biz.troop.file.MoveFileActivity;
-import com.tencent.biz.troop.file.TroopFileProtocol.GetFileListObserver;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.troop.data.TroopFileInfo;
-import com.tencent.mobileqq.troop.utils.TroopFileManager;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.common.ImageCommon;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.DrawableUtil.DrawableCallBack;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.DrawableUtil.DrawableHelper;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.qphone.base.util.QLog;
 
-public class pcx
-  extends TroopFileProtocol.GetFileListObserver
+final class pcx
+  implements DrawableUtil.DrawableHelper
 {
-  public pcx(MoveFileActivity paramMoveFileActivity) {}
-  
-  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt1, int paramInt2, int paramInt3, ByteStringMicro paramByteStringMicro, List paramList, Bundle paramBundle)
+  public Drawable getDrawable(Context paramContext, String paramString, Drawable paramDrawable1, Drawable paramDrawable2)
   {
-    this.a.a(true);
-    if ((!paramBoolean1) || (paramList == null)) {
-      return;
+    if (paramString == null) {
+      return null;
     }
-    MoveFileActivity.a(this.a, paramInt3);
-    MoveFileActivity.a(this.a, paramBoolean2);
-    paramBoolean1 = paramBundle.getBoolean("isFirstPage");
-    paramByteStringMicro = paramList.iterator();
-    while (paramByteStringMicro.hasNext())
+    if (paramString.startsWith("http"))
     {
-      paramBundle = (TroopFileInfo)paramByteStringMicro.next();
-      if (MoveFileActivity.a(this.a).c.get(paramBundle.b) == null)
+      paramContext = URLDrawable.URLDrawableOptions.obtain();
+      paramContext.mLoadingDrawable = paramDrawable1;
+      paramContext.mFailedDrawable = paramDrawable2;
+      return URLDrawable.getDrawable(rsl.a(paramString, 3), paramContext);
+    }
+    paramDrawable1 = ImageCommon.getDrawableResourceId(paramString);
+    if (paramDrawable1 != null) {
+      try
       {
-        paramBundle.a = UUID.randomUUID();
-        MoveFileActivity.a(this.a).c.put(paramBundle.b, paramBundle);
+        paramContext = paramContext.getResources().getDrawable(paramDrawable1.intValue());
+        return paramContext;
+      }
+      catch (Exception paramContext)
+      {
+        QLog.d("Q.readinjoy.proteus", 2, "getDrawable: cant find in resources dir, do nothing");
+        QLog.e("Q.readinjoy.proteus", 1, paramContext, new Object[0]);
       }
     }
-    if (paramBoolean1)
+    QLog.e("Q.readinjoy.proteus", 2, "getDrawable: cant find path :" + paramString);
+    return null;
+  }
+  
+  public Drawable getDrawableFromNet(Context paramContext, String paramString, Drawable paramDrawable1, Drawable paramDrawable2, int paramInt1, int paramInt2, DrawableUtil.DrawableCallBack paramDrawableCallBack)
+  {
+    if (paramString.startsWith("http"))
     {
-      MoveFileActivity.a(this.a).clear();
-      if (!MoveFileActivity.c(this.a).equals("/"))
+      paramContext = URLDrawable.URLDrawableOptions.obtain();
+      paramContext.mLoadingDrawable = paramDrawable1;
+      paramContext.mFailedDrawable = paramDrawable2;
+      paramContext.mRequestWidth = paramInt1;
+      paramContext.mRequestHeight = paramInt2;
+      paramContext = URLDrawable.getDrawable(rsl.a(paramString, 3), paramContext);
+      paramContext.setCallback(new pcy(this, paramDrawableCallBack, paramContext));
+      paramContext.setURLDrawableListener(new pcz(this, paramString, paramDrawableCallBack));
+      paramContext.setDownloadListener(new pda(this, paramString, paramDrawableCallBack, paramContext));
+      QLog.i("Q.readinjoy.proteus", 1, "getDrawable: :" + paramString);
+      paramDrawableCallBack.onCallBack(true, paramContext);
+      if (paramContext.getStatus() != 1)
       {
-        paramByteStringMicro = new TroopFileInfo();
-        paramByteStringMicro.c = "移出文件夹";
-        paramByteStringMicro.b = "/";
-        paramByteStringMicro.d = true;
-        paramByteStringMicro.f = -1;
-        MoveFileActivity.a(this.a).add(paramByteStringMicro);
+        paramContext.startDownload();
+        QLog.i("Q.readinjoy.proteus", 1, "getDrawable: :" + paramString + "  startDownload ");
       }
+      return paramContext;
     }
-    MoveFileActivity.b(this.a, paramInt1);
-    if (!MoveFileActivity.c(this.a).equals("/"))
-    {
-      paramInt1 = paramList.size() - 1;
-      if (paramInt1 >= 0)
-      {
-        if (!((TroopFileInfo)paramList.get(paramInt1)).b.equals(MoveFileActivity.c(this.a))) {
-          break label386;
-        }
-        if (MoveFileActivity.a(this.a) == -1)
-        {
-          MoveFileActivity.c(this.a, paramInt1 + MoveFileActivity.a(this.a).size() - 1);
-          MoveFileActivity.a(this.a).setEnabled(true);
-          MoveFileActivity.a(this.a).setBackgroundResource(2130838514);
-          MoveFileActivity.a(this.a).setTextAppearance(this.a.getActivity(), 2131624424);
-        }
-      }
-      MoveFileActivity.a(this.a).addAll(MoveFileActivity.a(this.a).size() - 1, paramList);
-    }
-    for (;;)
-    {
-      MoveFileActivity.a(this.a).notifyDataSetChanged();
-      return;
-      label386:
-      paramInt1 -= 1;
-      break;
-      MoveFileActivity.a(this.a).addAll(paramList);
-    }
+    return getDrawable(paramContext, paramString, paramDrawable1, paramDrawable2);
   }
 }
 

@@ -1,45 +1,22 @@
-import android.graphics.drawable.StateListDrawable;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
 
 public class abxa
-  extends StateListDrawable
+  implements DialogInterface.OnDismissListener
 {
-  public boolean setState(int[] paramArrayOfInt)
+  public abxa(TroopInfoActivity paramTroopInfoActivity) {}
+  
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    int k = 0;
-    int j = k;
-    int i;
-    if (paramArrayOfInt != null)
-    {
-      j = k;
-      if (paramArrayOfInt.length > 0)
-      {
-        i = 0;
-        j = k;
-        if (i < paramArrayOfInt.length)
-        {
-          if (paramArrayOfInt[i] != 16842919) {
-            break label56;
-          }
-          j = 1;
-        }
-      }
-    }
-    if (j != 0) {
-      setAlpha(128);
-    }
-    for (;;)
-    {
-      return super.setState(paramArrayOfInt);
-      label56:
-      i += 1;
-      break;
-      setAlpha(255);
+    if (paramDialogInterface == this.a.a) {
+      this.a.a = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abxa
  * JD-Core Version:    0.7.0.1
  */

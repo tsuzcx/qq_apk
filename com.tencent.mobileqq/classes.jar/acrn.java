@@ -1,59 +1,43 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSquareFragment;
-import com.tencent.mobileqq.extendfriend.utils.ProfileGuideDialogUtils;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.aio.audiopanel.VoiceTextEditPanel;
+import com.tencent.mobileqq.activity.aio.audiopanel.VoiceTextEditPanel.9.1;
+import com.tencent.mobileqq.activity.aio.audiopanel.VoiceTextEditPanel.9.2;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class acrn
-  extends RecyclerView.ViewHolder
-  implements View.OnClickListener
+  implements INetInfoHandler
 {
-  private acrr jdField_a_of_type_Acrr;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  public acrn(VoiceTextEditPanel paramVoiceTextEditPanel) {}
   
-  public acrn(ExtendFriendSquareFragment paramExtendFriendSquareFragment, View paramView, acrr paramacrr)
+  public void onNetMobile2None()
   {
-    super(paramView);
-    this.jdField_a_of_type_Acrr = paramacrr;
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131362837));
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnTouchListener(ProfileGuideDialogUtils.a);
+    if (QLog.isColorLevel()) {
+      QLog.d("VoiceTextEditPanel", 2, "onNetMobile2None isSttNetFinish=" + VoiceTextEditPanel.a(this.a).get());
+    }
+    VoiceTextEditPanel.a(this.a).post(new VoiceTextEditPanel.9.1(this));
   }
   
-  public void a(acrn paramacrn, acrq paramacrq)
-  {
-    String str = "";
-    boolean bool = false;
-    switch (paramacrq.f)
-    {
-    default: 
-      paramacrq = str;
-    }
-    for (;;)
-    {
-      paramacrn.jdField_a_of_type_AndroidWidgetTextView.setText(paramacrq);
-      paramacrn.jdField_a_of_type_AndroidWidgetTextView.setEnabled(bool);
-      return;
-      paramacrq = "载入中，请稍候...";
-      continue;
-      paramacrq = "加载失败，点击重试";
-      bool = true;
-      continue;
-      paramacrq = "暂无更多的人啦~";
-    }
-  }
+  public void onNetMobile2Wifi(String paramString) {}
   
-  public void onClick(View paramView)
+  public void onNetNone2Mobile(String paramString) {}
+  
+  public void onNetNone2Wifi(String paramString) {}
+  
+  public void onNetWifi2Mobile(String paramString) {}
+  
+  public void onNetWifi2None()
   {
-    if (this.jdField_a_of_type_Acrr != null) {
-      this.jdField_a_of_type_Acrr.a();
+    if (QLog.isColorLevel()) {
+      QLog.d("VoiceTextEditPanel", 2, "onNetWifi2None isSttNetFinish=" + VoiceTextEditPanel.a(this.a).get());
     }
+    VoiceTextEditPanel.a(this.a).post(new VoiceTextEditPanel.9.2(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     acrn
  * JD-Core Version:    0.7.0.1
  */

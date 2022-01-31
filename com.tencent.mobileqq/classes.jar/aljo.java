@@ -1,35 +1,65 @@
-import android.os.Handler;
-import android.os.Message;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.GridView;
-import android.widget.HorizontalScrollView;
-import com.tencent.open.agent.FriendChooser;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.hardware.SensorManager;
+import com.tencent.mobileqq.armap.sensor.rotation.Matrix4;
 
-public class aljo
-  extends Handler
+public abstract class aljo
+  extends aljn
 {
-  public aljo(FriendChooser paramFriendChooser) {}
+  public int a;
+  protected aljx a;
+  protected Context a;
+  public Matrix4 a;
+  public float[] b = new float[3];
+  public float[] c = new float[3];
   
-  public void handleMessage(Message paramMessage)
+  public aljo(Context paramContext, int paramInt, SensorManager paramSensorManager, aljg paramaljg)
   {
-    switch (paramMessage.what)
+    super(paramSensorManager, paramaljg);
+    this.jdField_a_of_type_ComTencentMobileqqArmapSensorRotationMatrix4 = new Matrix4();
+    this.jdField_a_of_type_Int = 2;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    a(paramContext);
+  }
+  
+  private void a(Context paramContext)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqArmapSensorRotationMatrix4 = new Matrix4();
+    this.jdField_a_of_type_Aljx = new aljx();
+  }
+  
+  protected void a(float[] paramArrayOfFloat)
+  {
+    if ((this.jdField_a_of_type_Aljg == null) || (paramArrayOfFloat == null)) {}
+    do
     {
-    }
-    for (;;)
-    {
-      super.handleMessage(paramMessage);
-      return;
-      this.a.jdField_a_of_type_AndroidWidgetHorizontalScrollView.scrollTo(this.a.jdField_a_of_type_AndroidWidgetGridView.getLayoutParams().width, 0);
-      if (QLog.isColorLevel()) {
-        QLog.e("qqBaseActivity", 2, "" + this.a.jdField_a_of_type_AndroidWidgetGridView.getLayoutParams().width);
-      }
-    }
+      do
+      {
+        return;
+        this.jdField_a_of_type_ComTencentMobileqqArmapSensorRotationMatrix4.set(paramArrayOfFloat);
+        this.jdField_a_of_type_Aljx.a(this.jdField_a_of_type_ComTencentMobileqqArmapSensorRotationMatrix4, 0, this.c);
+        if (this.jdField_a_of_type_Int == 1)
+        {
+          this.jdField_a_of_type_Aljg.updateAzimuth(this.c[0]);
+          return;
+        }
+        this.b[0] = this.c[1];
+        this.b[1] = (-this.c[0]);
+        this.b[2] = (-this.c[2]);
+        if (this.jdField_a_of_type_Int == 0)
+        {
+          this.jdField_a_of_type_Aljg.updateRotation(this.b[0], this.b[1], this.b[2]);
+          return;
+        }
+      } while ((this.jdField_a_of_type_Int != 2) && (this.jdField_a_of_type_Int != 3));
+      this.jdField_a_of_type_Aljg.updateRotation(this.b[0], this.b[1], this.b[2]);
+    } while ((this.jdField_a_of_type_Int != 3) || (paramArrayOfFloat.length != 16));
+    this.jdField_a_of_type_Aljg.onRotationUpdateOriginal(paramArrayOfFloat);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aljo
  * JD-Core Version:    0.7.0.1
  */

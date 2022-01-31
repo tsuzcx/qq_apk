@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.app.automator.step;
 
+import axar;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
-import com.tencent.mobileqq.subaccount.SubAccountProtocManager;
 import com.tencent.qphone.base.util.QLog;
 
 public class GetSubAccount
   extends AsyncStep
 {
-  protected int a()
+  public int a()
   {
-    SubAccountProtocManager localSubAccountProtocManager = (SubAccountProtocManager)this.a.b.getManager(27);
-    if (localSubAccountProtocManager != null) {
-      localSubAccountProtocManager.a();
+    axar localaxar = (axar)this.a.app.getManager(28);
+    if (localaxar != null) {
+      localaxar.a();
     }
     if (QLog.isColorLevel()) {
       QLog.d("QQInitHandler", 2, "subaccount onGetSubAccountBind start int QQInitHandler...");

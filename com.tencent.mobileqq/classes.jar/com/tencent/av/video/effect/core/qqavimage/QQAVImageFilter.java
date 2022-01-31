@@ -25,8 +25,8 @@ public class QQAVImageFilter
   protected int mGLProgId;
   protected int mGLUniformTexture;
   private boolean mIsInitialized = false;
-  protected int mOutputHeight;
-  protected int mOutputWidth;
+  public int mOutputHeight;
+  public int mOutputWidth;
   protected String mQQAVEffectID = null;
   protected String mQQAVEffectName = null;
   protected int mQQAVEffectType;
@@ -240,39 +240,19 @@ public class QQAVImageFilter
     this.textureBuffer.put(TextureRotationUtil.TEXTURE_NO_ROTATION2).position(0);
   }
   
-  public void setFloat(final int paramInt, final float paramFloat)
+  public void setFloat(int paramInt, float paramFloat)
   {
-    runOnDraw(new Runnable()
-    {
-      public void run()
-      {
-        GLES20.glUniform1f(paramInt, paramFloat);
-      }
-    });
+    runOnDraw(new QQAVImageFilter.2(this, paramInt, paramFloat));
   }
   
-  public void setInteger(final int paramInt1, final int paramInt2)
+  public void setInteger(int paramInt1, int paramInt2)
   {
-    runOnDraw(new Runnable()
-    {
-      public void run()
-      {
-        GLES20.glUniform1i(paramInt1, paramInt2);
-      }
-    });
+    runOnDraw(new QQAVImageFilter.1(this, paramInt1, paramInt2));
   }
   
-  public void setPoint(final int paramInt, final PointF paramPointF)
+  public void setPoint(int paramInt, PointF paramPointF)
   {
-    runOnDraw(new Runnable()
-    {
-      public void run()
-      {
-        float f1 = paramPointF.x;
-        float f2 = paramPointF.y;
-        GLES20.glUniform2fv(paramInt, 1, new float[] { f1, f2 }, 0);
-      }
-    });
+    runOnDraw(new QQAVImageFilter.3(this, paramPointF, paramInt));
   }
   
   public void setQQAVEffectID(String paramString)
@@ -292,7 +272,7 @@ public class QQAVImageFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.av.video.effect.core.qqavimage.QQAVImageFilter
  * JD-Core Version:    0.7.0.1
  */

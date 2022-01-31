@@ -1,34 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.AccountDetail.handler.AccountDetailBaseItemClickHandler;
-import com.tencent.biz.pubaccount.AccountDetail.view.AccountDetailCustomModuleBaseWrapper;
-import com.tencent.biz.pubaccount.PaConfigAttr.PaConfigInfo;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.av.VideoController;
+import java.util.Comparator;
 
 public class ksz
-  implements View.OnClickListener
+  implements Comparator<kth>
 {
-  public ksz(AccountDetailCustomModuleBaseWrapper paramAccountDetailCustomModuleBaseWrapper) {}
+  public ksz(VideoController paramVideoController) {}
   
-  public void onClick(View paramView)
+  public int a(kth paramkth1, kth paramkth2)
   {
-    paramView = paramView.getTag();
-    if ((paramView != null) && ((paramView instanceof PaConfigAttr.PaConfigInfo)))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("AccountDetailCustomModuleBaseWrapper", 2, "click!");
-      }
-      paramView = (PaConfigAttr.PaConfigInfo)paramView;
-      if (this.a.a != null) {
-        this.a.a.a(paramView);
-      }
-      this.a.a(paramView);
-    }
+    return (int)(paramkth1.d - paramkth2.d);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     ksz
  * JD-Core Version:    0.7.0.1
  */

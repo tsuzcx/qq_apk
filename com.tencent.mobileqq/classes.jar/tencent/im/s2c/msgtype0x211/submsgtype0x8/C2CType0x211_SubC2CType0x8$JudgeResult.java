@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class C2CType0x211_SubC2CType0x8$JudgeResult
-  extends MessageMicro
+  extends MessageMicro<JudgeResult>
 {
   public static final int INT32_IDLE_TIMEOUT_FIELD_NUMBER = 4;
   public static final int STR_SSID_FIELD_NUMBER = 2;

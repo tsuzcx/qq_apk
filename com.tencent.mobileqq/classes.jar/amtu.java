@@ -1,37 +1,35 @@
-import com.tencent.qphone.base.util.QLog;
-import cooperation.plugin.Dex2Oat.ResultCallback;
-import cooperation.plugin.PluginInstaller;
-import java.io.File;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.widget.RadioGroup;
+import android.widget.RadioGroup.OnCheckedChangeListener;
+import com.tencent.mobileqq.database.corrupt.DBFixConfigActivity;
+import com.tencent.mobileqq.database.corrupt.DBFixManager;
+import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 
 public class amtu
-  implements Dex2Oat.ResultCallback
+  implements RadioGroup.OnCheckedChangeListener
 {
-  public amtu(PluginInstaller paramPluginInstaller) {}
+  public amtu(DBFixConfigActivity paramDBFixConfigActivity, AppRuntime paramAppRuntime, String paramString) {}
   
-  public void a(File paramFile1, File paramFile2)
+  public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("plugin_tag", 2, "dex2Oat onStart " + paramFile1.getAbsolutePath() + " o" + paramFile2.getAbsolutePath());
+    if (paramInt == 2131299840) {
+      DBFixConfigActivity.a = 1;
     }
-  }
-  
-  public void a(File paramFile1, File paramFile2, File paramFile3)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("plugin_tag", 2, "dex2Oat onSuccess " + paramFile1.getAbsolutePath() + " o" + paramFile2.getAbsolutePath());
-    }
-  }
-  
-  public void a(File paramFile1, File paramFile2, Throwable paramThrowable)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("plugin_tag", 2, "preDex2Oat onFailed " + paramFile1.getAbsolutePath() + " o" + paramFile2.getAbsolutePath());
+    for (;;)
+    {
+      this.jdField_a_of_type_MqqAppAppRuntime.getApplication().getSharedPreferences(DBFixManager.b, 0).edit().putInt(this.jdField_a_of_type_JavaLangString + DBFixManager.c, DBFixConfigActivity.a).commit();
+      return;
+      if (paramInt == 2131299372) {
+        DBFixConfigActivity.a = 2;
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amtu
  * JD-Core Version:    0.7.0.1
  */

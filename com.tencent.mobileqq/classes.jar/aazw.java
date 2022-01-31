@@ -1,33 +1,32 @@
-import com.tencent.mobileqq.ark.ArkAppCGI;
-import com.tencent.mobileqq.ark.ArkAppCGI.ArkAppCGICallback;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import java.util.ArrayList;
+import com.tencent.mobileqq.activity.JumpActivity;
+import mqq.observer.WtloginObserver;
+import oicq.wlogin_sdk.devicelock.DevlockInfo;
+import oicq.wlogin_sdk.request.WUserSigInfo;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
 public class aazw
-  implements abac
+  extends WtloginObserver
 {
-  public aazw(ArkAppCGI paramArkAppCGI, abae paramabae) {}
+  public aazw(JumpActivity paramJumpActivity) {}
   
-  public void a(abad paramabad, boolean paramBoolean, byte[] arg3)
+  public void OnCheckDevLockStatus(WUserSigInfo paramWUserSigInfo, DevlockInfo paramDevlockInfo, int paramInt, ErrMsg paramErrMsg)
   {
-    if ((paramBoolean) && (??? != null)) {
-      ArkAppCGI.a(this.jdField_a_of_type_Abae, ???);
+    if (paramDevlockInfo != null) {
+      annw.a().a(paramDevlockInfo.TransferInfo);
     }
-    synchronized (this.jdField_a_of_type_Abae)
+    paramWUserSigInfo = this.a;
+    if (paramInt == 0) {}
+    for (;;)
     {
-      this.jdField_a_of_type_Abae.jdField_a_of_type_JavaUtilArrayList.remove(paramabad);
-      paramBoolean = this.jdField_a_of_type_Abae.jdField_a_of_type_JavaUtilArrayList.isEmpty();
-      if (paramBoolean) {
-        this.jdField_a_of_type_Abae.jdField_a_of_type_ComTencentMobileqqArkArkAppCGI$ArkAppCGICallback.a(true, this.jdField_a_of_type_Abae.jdField_a_of_type_JavaLangObject, this.jdField_a_of_type_Abae.b);
-      }
+      paramWUserSigInfo.a(paramDevlockInfo);
       return;
-      ArkAppCenter.b("ArkApp.ArkAppCGI", String.format("queryActionAppNeedUpdate, subTask fail", new Object[0]));
+      paramDevlockInfo = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aazw
  * JD-Core Version:    0.7.0.1
  */

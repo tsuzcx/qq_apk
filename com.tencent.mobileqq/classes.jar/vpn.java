@@ -1,16 +1,23 @@
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.View;
+import com.tencent.biz.qqstory.view.segment.SegmentList;
 
 public class vpn
-  extends vpk
+  implements beno
 {
-  public vpn(QQAppInterface paramQQAppInterface)
+  public vpn(SegmentList paramSegmentList) {}
+  
+  public void a_(View paramView) {}
+  
+  public void e() {}
+  
+  public void e(boolean paramBoolean)
   {
-    super(paramQQAppInterface);
+    this.a.requestDisallowInterceptTouchEvent(paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vpn
  * JD-Core Version:    0.7.0.1
  */

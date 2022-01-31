@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class richtext$Video
-  extends MessageMicro
+  extends MessageMicro<Video>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34, 40, 50 }, new String[] { "url", "title", "summary", "pic", "type", "realurl" }, new Object[] { "", "", "", "", Integer.valueOf(0), "" }, Video.class);
   public final PBStringField pic = PBField.initString("");

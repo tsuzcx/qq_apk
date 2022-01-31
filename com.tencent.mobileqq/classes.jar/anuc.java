@@ -1,23 +1,17 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.qq.im.capture.data.FilterCategory;
+import java.io.File;
 
-public final class anuc
-  implements Parcelable.Creator
+public abstract interface anuc
+  extends bakb
 {
-  public FilterCategory a(Parcel paramParcel)
-  {
-    return new FilterCategory(paramParcel);
-  }
+  public abstract void a(File paramFile);
   
-  public FilterCategory[] a(int paramInt)
-  {
-    return new FilterCategory[paramInt];
-  }
+  public abstract void c(boolean paramBoolean);
+  
+  public abstract void f(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     anuc
  * JD-Core Version:    0.7.0.1
  */

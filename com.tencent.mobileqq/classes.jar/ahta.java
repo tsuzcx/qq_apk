@@ -1,13 +1,18 @@
-import com.tencent.mobileqq.richmedia.mediacodec.decoder.flow.FlowDecodeScreenSurfaceBase;
+import com.tencent.mobileqq.activity.selectmember.TroopDiscussionTroop;
 
 public class ahta
-  extends ahsz
+  extends ajmm
 {
-  public ahta(FlowDecodeScreenSurfaceBase paramFlowDecodeScreenSurfaceBase, boolean paramBoolean) {}
+  public ahta(TroopDiscussionTroop paramTroopDiscussionTroop) {}
+  
+  protected void a()
+  {
+    this.a.c();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ahta
  * JD-Core Version:    0.7.0.1
  */

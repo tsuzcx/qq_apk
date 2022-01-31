@@ -4,16 +4,18 @@ import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.MessageMicro.FieldMap;
 import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class cmd0xb2d$Cookies
-  extends MessageMicro
+  extends MessageMicro<Cookies>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8 }, new String[] { "uint32_next_start" }, new Object[] { Integer.valueOf(0) }, Cookies.class);
+  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 120 }, new String[] { "uint32_next_start", "uint64_test_count" }, new Object[] { Integer.valueOf(0), Long.valueOf(0L) }, Cookies.class);
   public final PBUInt32Field uint32_next_start = PBField.initUInt32(0);
+  public final PBUInt64Field uint64_test_count = PBField.initUInt64(0L);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     tencent.im.oidb.cmd0xb2d.cmd0xb2d.Cookies
  * JD-Core Version:    0.7.0.1
  */

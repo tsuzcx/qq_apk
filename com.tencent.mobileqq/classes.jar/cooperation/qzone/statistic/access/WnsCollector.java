@@ -1,11 +1,17 @@
 package cooperation.qzone.statistic.access;
 
 import android.content.Context;
-import common.config.service.QZoneConfigHelper;
+import bexy;
+import bgdr;
+import bgds;
+import bgdw;
+import bgdx;
+import bgdy;
+import bgdz;
+import bgeg;
+import bgeh;
 import cooperation.qzone.statistic.access.concept.Collector;
-import cooperation.qzone.statistic.access.concept.Global;
 import cooperation.qzone.statistic.access.concept.Key;
-import cooperation.qzone.statistic.access.concept.Sampler;
 import cooperation.qzone.statistic.access.concept.Statistic;
 
 public class WnsCollector
@@ -22,17 +28,17 @@ public class WnsCollector
   public WnsCollector()
   {
     this.jdField_a_of_type_CooperationQzoneStatisticAccessConceptStatistic = new Statistic(WnsKeys.PublicKeys);
-    WnsCondition localWnsCondition = new WnsCondition(QZoneConfigHelper.e(), QZoneConfigHelper.c(), true);
-    LinearSampler localLinearSampler = new LinearSampler(QZoneConfigHelper.a());
-    HttpAssembler localHttpAssembler = new HttpAssembler();
-    localHttpAssembler.a(this.jdField_a_of_type_CooperationQzoneStatisticAccessConceptStatistic);
-    WapProxyHttpDeliverer localWapProxyHttpDeliverer = new WapProxyHttpDeliverer("http://wspeed.qq.com/w.cgi");
-    localWapProxyHttpDeliverer.a(true);
-    localWapProxyHttpDeliverer.a().a(true);
-    a(localWnsCondition);
-    a(localLinearSampler);
-    a(localHttpAssembler);
-    a(localWapProxyHttpDeliverer);
+    bgdz localbgdz = new bgdz(bexy.d(), bexy.c(), true);
+    bgdx localbgdx = new bgdx(bexy.a());
+    bgdr localbgdr = new bgdr();
+    localbgdr.a(this.jdField_a_of_type_CooperationQzoneStatisticAccessConceptStatistic);
+    bgdy localbgdy = new bgdy("https://wspeed.qq.com/w.cgi");
+    localbgdy.a(true);
+    localbgdy.a().a(true);
+    a(localbgdz);
+    a(localbgdx);
+    a(localbgdr);
+    a(localbgdy);
   }
   
   public static WnsCollector a()
@@ -60,7 +66,7 @@ public class WnsCollector
   
   public void a(Context paramContext)
   {
-    Global.a(paramContext);
+    bgeg.a(paramContext);
   }
   
   public void a(String paramString1, String paramString2, String paramString3)

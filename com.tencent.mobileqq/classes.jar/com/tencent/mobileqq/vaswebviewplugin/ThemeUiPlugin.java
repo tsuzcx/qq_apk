@@ -1,16 +1,17 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
-import aksc;
+import ajjy;
 import android.content.Intent;
 import android.os.Handler;
+import basr;
+import bbac;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
+import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.theme.SkinEngine;
-import java.io.File;
 import org.json.JSONObject;
 
 public class ThemeUiPlugin
@@ -43,22 +44,18 @@ public class ThemeUiPlugin
   
   public static String getReportCurrThemeName()
   {
-    String str2 = SkinEngine.getInstances().getSkinRootPath();
-    if ((str2 == null) || (str2.trim().length() == 0)) {
+    String str = SkinEngine.getInstances().getSkinRootPath();
+    if ((str == null) || (str.trim().length() == 0)) {
       return "default_theme";
     }
-    String str1 = str2;
-    if (str2.charAt(str2.length() - 1) == File.separatorChar) {
-      str1 = str2.substring(0, str2.length() - 1);
-    }
-    return str1.substring(str1.lastIndexOf(File.separatorChar), str1.length());
+    return ThemeUtil.getCurrentThemeId();
   }
   
   public static void reportThemeNumAndCurrThemeName(QQAppInterface paramQQAppInterface, String paramString)
   {
     reportTimes = 0;
     if (reportHandler == null) {
-      reportHandler = new aksc(BaseApplication.getContext().getMainLooper());
+      reportHandler = new basr(BaseApplication.getContext().getMainLooper());
     }
     reportHandler.removeMessages(1);
     initDownloadedThemeNumForReport = 0;
@@ -68,7 +65,7 @@ public class ThemeUiPlugin
   
   void OnActivityResume()
   {
-    this.activity.setTitle("主题");
+    this.activity.setTitle(ajjy.a(2131649135));
   }
   
   protected long getPluginBusiness()
@@ -111,7 +108,7 @@ public class ThemeUiPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.ThemeUiPlugin
  * JD-Core Version:    0.7.0.1
  */

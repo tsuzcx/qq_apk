@@ -1,23 +1,18 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.model.DynamicPhotoData;
+import java.util.Comparator;
 
-public final class anby
-  implements Parcelable.Creator
+class anby
+  implements Comparator<String>
 {
-  public DynamicPhotoData a(Parcel paramParcel)
-  {
-    return new DynamicPhotoData(paramParcel);
-  }
+  anby(anbw paramanbw) {}
   
-  public DynamicPhotoData[] a(int paramInt)
+  public int a(String paramString1, String paramString2)
   {
-    return new DynamicPhotoData[paramInt];
+    return paramString2.compareTo(paramString1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     anby
  * JD-Core Version:    0.7.0.1
  */

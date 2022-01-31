@@ -1,25 +1,65 @@
-import com.tencent.mobileqq.nearby.now.model.VideoData;
-import com.tencent.mobileqq.nearby.now.view.PlayResultListener;
-import com.tencent.mobileqq.nearby.now.view.VideoPlayerView;
-import com.tencent.mobileqq.nearby.now.view.player.IVideoView;
-import com.tencent.mobileqq.nearby.now.view.player.IVideoView.OnErrorListener;
+import com.tencent.mobileqq.utils.ChnToSpell;
+import java.util.Comparator;
 
-public class afdj
-  implements IVideoView.OnErrorListener
+class afdj
+  implements Comparator<afdl>
 {
-  public afdj(VideoPlayerView paramVideoPlayerView, VideoData paramVideoData) {}
+  afdj(afdi paramafdi) {}
   
-  public boolean a(IVideoView paramIVideoView, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
+  public int a(afdl paramafdl1, afdl paramafdl2)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerView.a != null) {
-      this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerView.a.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.a, paramInt1, paramInt2, "use sdk play error");
-    }
-    return true;
+    if ((paramafdl1 == null) && (paramafdl2 == null)) {}
+    int j;
+    int k;
+    do
+    {
+      do
+      {
+        return 0;
+        if ((paramafdl1 == null) && (paramafdl2 != null)) {
+          return -1;
+        }
+        if ((paramafdl1 != null) && (paramafdl2 == null)) {
+          return 1;
+        }
+        paramafdl1 = paramafdl1.b;
+        paramafdl2 = paramafdl2.b;
+      } while ((paramafdl1 == null) && (paramafdl2 == null));
+      if ((paramafdl1 == null) && (paramafdl2 != null)) {
+        return -1;
+      }
+      if ((paramafdl1 != null) && (paramafdl2 == null)) {
+        return 1;
+      }
+      j = paramafdl1.length();
+      k = paramafdl2.length();
+      int m = Math.min(j, k);
+      int i = 0;
+      while (i < m)
+      {
+        char c1 = paramafdl1.charAt(i);
+        char c2 = paramafdl2.charAt(i);
+        if (c1 != c2)
+        {
+          paramafdl1 = ChnToSpell.a(c1);
+          paramafdl2 = ChnToSpell.a(c2);
+          if (paramafdl1.jdField_a_of_type_Int == paramafdl2.jdField_a_of_type_Int) {
+            return paramafdl1.jdField_a_of_type_JavaLangString.compareTo(paramafdl2.jdField_a_of_type_JavaLangString);
+          }
+          return paramafdl1.jdField_a_of_type_Int - paramafdl2.jdField_a_of_type_Int;
+        }
+        i += 1;
+      }
+      if (j < k) {
+        return -1;
+      }
+    } while (j <= k);
+    return 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     afdj
  * JD-Core Version:    0.7.0.1
  */

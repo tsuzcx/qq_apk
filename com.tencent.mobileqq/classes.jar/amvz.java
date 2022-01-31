@@ -1,22 +1,22 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import cooperation.qqdataline.ipc.DatalineRemoteManager;
+import com.tencent.mobileqq.dating.DatingUtil.1;
 
 public class amvz
   implements DialogInterface.OnClickListener
 {
-  public amvz(DatalineRemoteManager paramDatalineRemoteManager) {}
+  public amvz(DatingUtil.1 param1) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.b = true;
-    DatalineRemoteManager.a(this.a, 2);
-    DatalineRemoteManager.b(this.a);
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     amvz
  * JD-Core Version:    0.7.0.1
  */

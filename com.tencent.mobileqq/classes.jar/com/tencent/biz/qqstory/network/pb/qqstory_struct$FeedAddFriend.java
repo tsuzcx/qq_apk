@@ -9,15 +9,15 @@ import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class qqstory_struct$FeedAddFriend
-  extends MessageMicro
+  extends MessageMicro<FeedAddFriend>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField feed_id = PBField.initBytes(ByteStringMicro.EMPTY);
-  public final PBRepeatMessageField from_uid_list = PBField.initRepeatMessage(qqstory_struct.UserInfo.class);
+  public final PBRepeatMessageField<qqstory_struct.UserInfo> from_uid_list = PBField.initRepeatMessage(qqstory_struct.UserInfo.class);
   public final PBUInt32Field from_uid_num = PBField.initUInt32(0);
   public qqstory_struct.UserInfo to_uid = new qqstory_struct.UserInfo();
   public final PBUInt32Field video_isend = PBField.initUInt32(0);
-  public final PBRepeatMessageField video_list = PBField.initRepeatMessage(qqstory_struct.StoryVideoFullInfo.class);
+  public final PBRepeatMessageField<qqstory_struct.StoryVideoFullInfo> video_list = PBField.initRepeatMessage(qqstory_struct.StoryVideoFullInfo.class);
   public final PBUInt32Field video_next = PBField.initUInt32(0);
   
   static
@@ -28,7 +28,7 @@ public final class qqstory_struct$FeedAddFriend
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_struct.FeedAddFriend
  * JD-Core Version:    0.7.0.1
  */

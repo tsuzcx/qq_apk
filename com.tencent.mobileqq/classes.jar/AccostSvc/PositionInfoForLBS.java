@@ -9,23 +9,23 @@ public final class PositionInfoForLBS
   extends JceStruct
 {
   static GPS cache_stGps;
-  static ArrayList cache_vCells;
+  static ArrayList<Cell> cache_vCells;
   static byte[] cache_vLBSKeyData;
-  static ArrayList cache_vMacs;
+  static ArrayList<Long> cache_vMacs;
   public byte bPositionInfoType;
   public GPS stGps;
-  public ArrayList vCells;
+  public ArrayList<Cell> vCells;
   public byte[] vLBSKeyData;
-  public ArrayList vMacs;
+  public ArrayList<Long> vMacs;
   
   public PositionInfoForLBS() {}
   
-  public PositionInfoForLBS(byte paramByte, GPS paramGPS, ArrayList paramArrayList1, ArrayList paramArrayList2, byte[] paramArrayOfByte)
+  public PositionInfoForLBS(byte paramByte, GPS paramGPS, ArrayList<Long> paramArrayList, ArrayList<Cell> paramArrayList1, byte[] paramArrayOfByte)
   {
     this.bPositionInfoType = paramByte;
     this.stGps = paramGPS;
-    this.vMacs = paramArrayList1;
-    this.vCells = paramArrayList2;
+    this.vMacs = paramArrayList;
+    this.vCells = paramArrayList1;
     this.vLBSKeyData = paramArrayOfByte;
   }
   

@@ -1,21 +1,26 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.ar.ARRecord.ARRecordUtils;
-import com.tencent.mobileqq.ar.ARRecord.ARVideoRecordViewProxy;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class aafe
-  implements Runnable
+public final class aafe
+  implements DialogInterface.OnClickListener
 {
-  public aafe(ARVideoRecordViewProxy paramARVideoRecordViewProxy, int paramInt1, int paramInt2) {}
+  public aafe(aagm paramaagm, aagn paramaagn) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ARVideoRecordViewProxy.a(this.jdField_a_of_type_ComTencentMobileqqArARRecordARVideoRecordViewProxy).setText(ARRecordUtils.a(this.jdField_a_of_type_Int / 1000));
-    ARVideoRecordViewProxy.b(this.jdField_a_of_type_ComTencentMobileqqArARRecordARVideoRecordViewProxy).setText(ARRecordUtils.b(this.b));
+    if (this.jdField_a_of_type_Aagm != null) {
+      this.jdField_a_of_type_Aagm.a();
+    }
+    mga.e(true, false);
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
+    }
+    mga.b(this.jdField_a_of_type_Aagn.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aafe
  * JD-Core Version:    0.7.0.1
  */

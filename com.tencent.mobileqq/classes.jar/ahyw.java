@@ -1,55 +1,199 @@
-import android.app.AlertDialog;
-import android.app.AlertDialog.Builder;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.search.model.IContactSearchModel;
-import com.tencent.mobileqq.search.model.ISearchResultModel;
-import com.tencent.mobileqq.search.presenter.ContactSearchResultPresenter;
-import com.tencent.mobileqq.search.util.SearchConfigManager;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.ExpandableListView;
 
-public class ahyw
-  implements View.OnLongClickListener
+public abstract class ahyw
+  extends bemg
+  implements azwh, begh
 {
-  public ahyw(ContactSearchResultPresenter paramContactSearchResultPresenter, ISearchResultModel paramISearchResultModel) {}
+  private final Context jdField_a_of_type_AndroidContentContext;
+  private azwg jdField_a_of_type_Azwg;
+  private final QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  protected ExpandableListView a;
   
-  public boolean onLongClick(View paramView)
+  public ahyw(Context paramContext, QQAppInterface paramQQAppInterface, ExpandableListView paramExpandableListView)
   {
-    paramView = new AlertDialog.Builder(paramView.getContext());
-    paramView.setTitle("匹配详情");
-    long l = ((IContactSearchModel)this.jdField_a_of_type_ComTencentMobileqqSearchModelISearchResultModel).b();
-    StringBuilder localStringBuilder = new StringBuilder();
-    int i = SearchConfigManager.contactSearchPinyinBaseBit;
-    int j = SearchConfigManager.contactSearchPinyinBaseBit;
-    localStringBuilder.append("拼音匹配：");
-    localStringBuilder.append((9223372036854775807L << i & l) >> j);
-    localStringBuilder.append('\n');
-    i = SearchConfigManager.contactSearchRecentBaseBit;
-    j = SearchConfigManager.contactSearchRecentBaseBit;
-    int k = SearchConfigManager.contactSearchRecentBaseBit;
-    localStringBuilder.append("最近联系人排序：");
-    localStringBuilder.append((9223372036854775807L >> 63 - (i + 10) & l & 9223372036854775807L << j) >> k);
-    localStringBuilder.append('\n');
-    i = SearchConfigManager.contactSearchIndexBaseBit;
-    j = SearchConfigManager.contactSearchIndexBaseBit;
-    k = SearchConfigManager.contactSearchIndexBaseBit;
-    localStringBuilder.append("字符串匹配度：");
-    localStringBuilder.append((9223372036854775807L >> 63 - (i + 8) & l & 9223372036854775807L << j) >> k);
-    localStringBuilder.append('\n');
-    i = SearchConfigManager.contactSearchTypeBaseBit;
-    j = SearchConfigManager.contactSearchTypeBaseBit;
-    k = SearchConfigManager.contactSearchTypeBaseBit;
-    localStringBuilder.append("数据类型：");
-    localStringBuilder.append((9223372036854775807L >> 63 - (i + 8) & l & 9223372036854775807L << j) >> k);
-    localStringBuilder.append('\n');
-    i = SearchConfigManager.contactSearchFieldBaseBit;
-    j = SearchConfigManager.contactSearchFieldBaseBit;
-    k = SearchConfigManager.contactSearchFieldBaseBit;
-    localStringBuilder.append("字段类型：");
-    localStringBuilder.append((l & 9223372036854775807L >> 63 - (i + 8) & 9223372036854775807L << j) >> k);
-    localStringBuilder.append('\n');
-    paramView.setMessage(localStringBuilder.toString());
-    paramView.create().show();
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_ComTencentWidgetExpandableListView = paramExpandableListView;
+    this.jdField_a_of_type_Azwg = new azwg(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    this.jdField_a_of_type_Azwg.a(this);
+    bacm.a();
+  }
+  
+  public int a()
+  {
+    return 0;
+  }
+  
+  protected void a(aiac paramaiac, Bitmap paramBitmap)
+  {
+    a(paramaiac, paramBitmap, true);
+  }
+  
+  protected void a(aiac paramaiac, Bitmap paramBitmap, boolean paramBoolean)
+  {
+    if (paramaiac.jdField_c_of_type_AndroidWidgetImageView == null) {
+      return;
+    }
+    if (ajed.z.equals(paramaiac.a))
+    {
+      paramaiac.jdField_c_of_type_AndroidWidgetImageView.setBackgroundResource(2130843326);
+      return;
+    }
+    if (ajed.A.equals(paramaiac.a))
+    {
+      paramaiac.jdField_c_of_type_AndroidWidgetImageView.setBackgroundResource(2130843324);
+      return;
+    }
+    if (ajed.B.equals(paramaiac.a))
+    {
+      paramaiac.jdField_c_of_type_AndroidWidgetImageView.setBackgroundResource(2130843329);
+      return;
+    }
+    if (ajed.y.equals(paramaiac.a))
+    {
+      paramaiac.jdField_c_of_type_AndroidWidgetImageView.setBackgroundResource(2130839271);
+      return;
+    }
+    if (paramBitmap == null) {
+      paramBitmap = this.jdField_a_of_type_Azwg.a(paramaiac.jdField_c_of_type_Int, paramaiac.a);
+    }
+    for (;;)
+    {
+      Bitmap localBitmap = paramBitmap;
+      if (paramBitmap == null)
+      {
+        if (paramBoolean) {
+          paramBitmap = bacm.a();
+        }
+        localBitmap = paramBitmap;
+        if (!this.jdField_a_of_type_Azwg.a())
+        {
+          this.jdField_a_of_type_Azwg.a(paramaiac.a, paramaiac.jdField_c_of_type_Int, false);
+          localBitmap = paramBitmap;
+        }
+      }
+      if (localBitmap == null) {
+        break;
+      }
+      paramaiac.jdField_c_of_type_AndroidWidgetImageView.setBackgroundDrawable(new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), localBitmap));
+      return;
+    }
+  }
+  
+  public void a(View paramView, int paramInt) {}
+  
+  protected void a(String paramString, Bitmap paramBitmap)
+  {
+    int j = this.jdField_a_of_type_ComTencentWidgetExpandableListView.getChildCount();
+    int i = 0;
+    if (i < j)
+    {
+      Object localObject = this.jdField_a_of_type_ComTencentWidgetExpandableListView.getChildAt(i).getTag();
+      if ((localObject != null) && ((localObject instanceof aiac)))
+      {
+        localObject = (aiac)localObject;
+        if (paramString != null) {
+          break label69;
+        }
+        a((aiac)localObject, null, false);
+      }
+      label69:
+      while (!paramString.equals(((aiac)localObject).a))
+      {
+        i += 1;
+        break;
+      }
+      ((aiac)localObject).jdField_c_of_type_AndroidWidgetImageView.setBackgroundDrawable(new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), paramBitmap));
+    }
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_Azwg != null) {
+      this.jdField_a_of_type_Azwg.d();
+    }
+  }
+  
+  public Object getChild(int paramInt1, int paramInt2)
+  {
+    return null;
+  }
+  
+  public long getChildId(int paramInt1, int paramInt2)
+  {
+    return 0L;
+  }
+  
+  public View getChildView(int paramInt1, int paramInt2, boolean paramBoolean, View paramView, ViewGroup paramViewGroup)
+  {
+    return null;
+  }
+  
+  public int getChildrenCount(int paramInt)
+  {
+    return 0;
+  }
+  
+  public Object getGroup(int paramInt)
+  {
+    return null;
+  }
+  
+  public int getGroupCount()
+  {
+    return 0;
+  }
+  
+  public long getGroupId(int paramInt)
+  {
+    return 0L;
+  }
+  
+  public View getGroupView(int paramInt, boolean paramBoolean, View paramView, ViewGroup paramViewGroup)
+  {
+    return null;
+  }
+  
+  public boolean hasStableIds()
+  {
     return false;
+  }
+  
+  public boolean isChildSelectable(int paramInt1, int paramInt2)
+  {
+    return false;
+  }
+  
+  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
+  {
+    if ((!this.jdField_a_of_type_Azwg.a()) && (paramBitmap != null)) {
+      a(paramString, paramBitmap);
+    }
+  }
+  
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  {
+    if (paramInt != 0)
+    {
+      this.jdField_a_of_type_Azwg.a();
+      this.jdField_a_of_type_Azwg.c();
+    }
+    while (!this.jdField_a_of_type_Azwg.a()) {
+      return;
+    }
+    this.jdField_a_of_type_Azwg.a();
+    this.jdField_a_of_type_Azwg.b();
+    a(null, null);
   }
 }
 

@@ -1,31 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.biz.qqstory.shareGroup.widget.StoryPickerFragment;
-
-public class nxl
-  implements DialogInterface.OnClickListener
+class nxl
+  extends nyf
 {
-  public nxl(StoryPickerFragment paramStoryPickerFragment) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  nxl(nxd paramnxd)
   {
-    switch (paramInt)
-    {
-    case 0: 
-    default: 
-      return;
-    }
-    paramDialogInterface = new Intent();
-    paramDialogInterface.putExtra("extra_checked_vidset", this.a.a);
-    this.a.getActivity().setResult(-1, paramDialogInterface);
-    this.a.getActivity().finish();
+    super(paramnxd, null);
+  }
+  
+  void a(nyi paramnyi)
+  {
+    paramnyi.onCommentStateError(1001);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     nxl
  * JD-Core Version:    0.7.0.1
  */

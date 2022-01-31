@@ -10,10 +10,10 @@ import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem.InteractPasterLayout;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem.PollLayout;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.utils.UIUtils;
+import srp;
+import srq;
+import urk;
+import vms;
 
 public class StoryCoverView
   extends FrameLayout
@@ -58,12 +58,12 @@ public class StoryCoverView
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    SLog.a("StoryCoverView", "onLayout wh(%d, %d)", Integer.valueOf(paramInt3 - paramInt1), Integer.valueOf(paramInt4 - paramInt2));
+    urk.a("StoryCoverView", "onLayout wh(%d, %d)", Integer.valueOf(paramInt3 - paramInt1), Integer.valueOf(paramInt4 - paramInt2));
   }
   
   public void setCoverUrl(String paramString, int paramInt1, int paramInt2, int paramInt3)
   {
-    UIUtils.a(this.jdField_a_of_type_AndroidWidgetImageView, paramString, paramInt1, paramInt2, paramInt3, null, "Qim_Profile_Story" + paramInt1 + "_" + paramInt2 + "_" + paramInt3);
+    vms.a(this.jdField_a_of_type_AndroidWidgetImageView, paramString, paramInt1, paramInt2, paramInt3, null, "Qim_Profile_Story" + paramInt1 + "_" + paramInt2 + "_" + paramInt3);
   }
   
   public void setImageDrawable(Drawable paramDrawable)
@@ -71,20 +71,20 @@ public class StoryCoverView
     this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramDrawable);
   }
   
-  public void setPollLayout(StoryVideoItem.PollLayout paramPollLayout, int paramInt, int[] paramArrayOfInt)
+  public void setPollLayout(srq paramsrq, int paramInt, int[] paramArrayOfInt)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryWidgetPollContainerLayout.a(paramPollLayout, paramInt, paramArrayOfInt);
+    this.jdField_a_of_type_ComTencentBizQqstoryWidgetPollContainerLayout.a(paramsrq, paramInt, paramArrayOfInt);
   }
   
-  public void setRateLayout(StoryVideoItem.InteractPasterLayout paramInteractPasterLayout, int paramInt1, long paramLong, int paramInt2)
+  public void setRateLayout(srp paramsrp, int paramInt1, long paramLong, int paramInt2)
   {
-    SLog.a("StoryCoverView", "setRateLayout, layout=%s, rateResult=%s, totalScore=%s, totalCount=%s", paramInteractPasterLayout, Integer.valueOf(paramInt1), Long.valueOf(paramLong), Integer.valueOf(paramInt2));
-    this.jdField_a_of_type_ComTencentBizQqstoryWidgetInteractContainerLayout.a(paramInteractPasterLayout, paramInt1);
+    urk.a("StoryCoverView", "setRateLayout, layout=%s, rateResult=%s, totalScore=%s, totalCount=%s", paramsrp, Integer.valueOf(paramInt1), Long.valueOf(paramLong), Integer.valueOf(paramInt2));
+    this.jdField_a_of_type_ComTencentBizQqstoryWidgetInteractContainerLayout.a(paramsrp, paramInt1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.biz.qqstory.widget.StoryCoverView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,248 @@
+{
+  "ReadInjoy_ad_banner_inner_small_pic_cell": {
+    "view_type": "cell",
+    "direction": "vertical",
+    "height": {
+      "type": "wrap_content"
+    },
+    "width": {
+      "type": "match_parent"
+    },
+    "subviews": [
+      {
+        "view_type": "UIView",
+        "layout_type": "layout_relative",
+        "view_id": "id_ad_banner_inner_small_root",
+        "event_type": "cmd_native_inner_ad_nothing_click",
+        "height": {
+          "type": "wrap_content"
+        },
+        "width": {
+          "type": "relative",
+          "value": "345"
+        },
+        "margin_left": "15",
+        "margin_right": "15",
+        "margin_top": "16",
+        "margin_bottom": "17",
+        "padding_top": "8",
+        "padding_bottom": "8",
+        "padding_right": "8",
+        "padding_left": "8",
+        "setCornerRadiusArray:type:": [["4", "4", "4", "4"], "relative"],
+        "setBackgroundColorString:":"#F7F7F7",
+        "subviews": [
+          {
+            "view_type": "container",
+            "layout_type": "layout_relative",
+            "view_id": "id_inner_main_area",
+            "default_visible": "YES",
+            "height": {
+              "type": "wrap_content"
+            },
+            "width": {
+              "type": "match_parent"
+            },
+            "subviews": [
+              {
+                "view_type": "container",
+                "layout_type": "layout_relative",
+                "left_of_view": "id_inner_small_img",
+                "align_parent_center_vertical": "YES",
+                "height": {
+                  "type": "relative",
+                  "value": "84"
+                },
+                "width": {
+                  "type": "match_parent"
+                },
+                "subviews": [
+                  {
+                    "view_type": "UILabel",
+                    "view_id": "id_inner_title",
+                    "event_type": "cmd_native_inner_ad_title_click",
+                    "height": {
+                      "type": "wrap_content"
+                    },
+                    "width": {
+                      "type": "match_parent"
+                    },
+                    "margin_top": "5",
+                    "margin_right": "10",
+                    "attributes": {
+                      "setTextColorString:": "#262626",
+                      "setText:lineSpace:": [
+                        "$text",
+                        "4"
+                      ],
+                      "setFontSizeString:": "17",
+                      "setNumberOfLinesString:": "2"
+                    }
+                  },
+                  {
+                    "view_type": "UIView",
+                    "view_id": "id_bottom_operation",
+                    "default_visible": "YES",
+                    "layout_type": "layout_relative",
+                    "margin_top": "10",
+                    "margin_bottom": "5",
+                    "height": {
+                      "type": "relative",
+                      "value": "16"
+                    },
+                    "width": {
+                      "type": "match_parent"
+                    },
+                    "align_parent_left": "YES",
+                    "align_parent_bottom": "YES",
+                    "subviews": [
+                      {
+                        "view_type": "UILabel",
+                        "view_id": "id_inner_ad_name",
+                        "height": {
+                          "type": "wrap_content"
+                        },
+                        "width": {
+                          "type": "wrap_content"
+                        },
+                        "margin_right": "6",
+                        "event_type": "cmd_native_inner_ad_icon_click",
+                        "align_parent_center_vertical": "YES",
+                        "attributes": {
+                          "setTextColorString:": "#A6A6A6",
+                          "setText:": "$text",
+                          "setFontSizeString:": "12"
+                        }
+                      },
+                      {
+                        "view_type": "UILabel",
+                        "view_id": "id_inner_name",
+                        "align_parent_center_vertical": "YES",
+                        "right_of_view": "id_inner_ad_name",
+                        "event_type": "cmd_native_inner_ad_source_click",
+                        "height": {
+                          "type": "wrap_content"
+                        },
+                        "width": {
+                          "type": "wrap_content"
+                        },
+                        "attributes": {
+                          "setTextColorString:": "#A6A6A6",
+                          "setText:": "$text",
+                          "setNumberOfLinesString:": "1",
+                          "setFontSizeString:": "12"
+                        }
+                      },
+                      {
+                        "view_type": "ReadinjoyNativeArticleAdDownloadView",
+                        "view_id": "id_view_AdDownloadView",
+                        "height": {
+                          "type": "relative",
+                          "value": "30"
+                        },
+                        "width": {
+                          "type": "relative",
+                          "value": "82"
+                        },
+                        "align_parent_center_vertical": "YES",
+                        "left_of_view": "id_dislike_button",
+                        "event_type": "cmd_native_inner_ad_button_click",
+                        "margin_right": "16",
+                        "attributes": {
+                          "setFeedsModel:": "$article_model",
+                          "setDownloadBtnStyle:": {
+                            "buttonTextColor": "",
+                            "buttonTextSize": "",
+                            "buttonCornerSize": "",
+                            "buttonBackgroundColor": "",
+                            "showBunttonLeftIconOrNot": "",
+                            "buttonBorderSize": "",
+                            "buttonBorderColor": "",
+                            "buttonHorizontalPadding": "",
+                            "buttonVerticalPadding": "",
+                            "showAdIconOrNot": "",
+                            "buttonAlignment": "3"
+                          },
+                          "progressStyle:": {
+                            "style": "1",
+                            "showProgress": "1",
+                            "width": "82",
+                            "height": "20",
+                            "textColor": "#ffffff",
+                            "textSize": "12",
+                            "corner": "2.5",
+                            "background": "",
+                            "progressBg": "#CCCCCC",
+                            "secondaryProgressBg": "#CCCCCC",
+                            "progressColor": "#12B7F5"
+                          }
+                        }
+                      },
+                      {
+                        "view_type": "UIButton",
+                        "view_id": "id_dislike_button",
+                        "align_parent_right": "YES",
+                        "default_visible": "YES",
+                        "margin_right": "15",
+                        "align_parent_center_vertical": "YES",
+                        "event_type": "cmd_dislike_click",
+                        "height": {
+                          "type": "relative",
+                          "value": "8"
+                        },
+                        "width": {
+                          "type": "relative",
+                          "value": "8"
+                        },
+                        "attributes": {
+                          "setImage:": "feeds_dislike"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "view_type": "ReadInjoyAsynImageView",
+                "view_id": "id_inner_small_img",
+                "height": {
+                  "type": "relative",
+                  "value": "84"
+                },
+                "width": {
+                  "type": "relative",
+                  "value": "120"
+                },
+                "align_parent_right": "YES",
+                "event_type": "cmd_native_inner_ad_cover_click",
+                "attributes": {
+                  "setCornerRadiusArray:type:": [["3", "3", "3", "3"], "relative"],
+                  "setImageWithURLString:lineup:": [
+                    "$image_url",
+                    "-1"
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "view_type": "ReadInJoyAdInnerOperateView",
+            "view_id": "id_operate_edit_area",
+            "below_of_view": "id_inner_small_img",
+            "margin_top":"8.5",
+            "height": {
+              "type": "relative",
+              "value": "10"
+            },
+            "width": {
+              "type": "match_parent"
+            },
+            "attributes": {
+              "setFeedsModel:": "$article_model"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

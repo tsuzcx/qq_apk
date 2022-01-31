@@ -1,18 +1,63 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.model.QQStoryNetReqUtils.RequestCallBack;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.model.request.Step.ErrorCallBack;
-import java.lang.ref.WeakReference;
+import android.text.TextUtils;
+import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+import mqq.app.AppRuntime;
+import org.json.JSONObject;
 
-public final class ody
-  implements Step.ErrorCallBack
+public class ody
+  implements AladdinConfigHandler
 {
-  public ody(WeakReference paramWeakReference) {}
-  
-  public void a(ErrorMessage paramErrorMessage)
+  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
   {
-    QQStoryNetReqUtils.RequestCallBack localRequestCallBack = (QQStoryNetReqUtils.RequestCallBack)this.a.get();
-    if (localRequestCallBack != null) {
-      localRequestCallBack.a(paramErrorMessage);
+    QLog.d("NativeProteusBidConfigHandler", 1, "[onReceiveConfig] " + paramString);
+    for (;;)
+    {
+      try
+      {
+        Object localObject1 = ocx.a(paramString);
+        Object localObject2 = ((Map)localObject1).keySet();
+        paramString = new JSONObject();
+        paramInt1 = 0;
+        localObject2 = ((Set)localObject2).iterator();
+        if (((Iterator)localObject2).hasNext())
+        {
+          String str1 = (String)((Iterator)localObject2).next();
+          String str2 = (String)((Map)localObject1).get(str1);
+          if (!TextUtils.isEmpty(str2))
+          {
+            paramString.put(str1, str2);
+            paramInt1 = 1;
+          }
+        }
+        else
+        {
+          if (paramInt1 != 0)
+          {
+            localObject1 = obz.a();
+            if (localObject1 != null)
+            {
+              bgmq.a((AppRuntime)localObject1, "local_kd_native_main_text_style", paramString.toString());
+              QLog.d("NativeProteusBidConfigHandler", 1, "[onReceiveConfig],content: " + paramString.toString());
+            }
+          }
+          return true;
+        }
+      }
+      catch (Exception paramString)
+      {
+        return true;
+      }
+    }
+  }
+  
+  public void onWipeConfig(int paramInt)
+  {
+    AppRuntime localAppRuntime = obz.a();
+    if (localAppRuntime != null) {
+      bgmq.a(localAppRuntime, "local_kd_native_main_text_style", "");
     }
   }
 }

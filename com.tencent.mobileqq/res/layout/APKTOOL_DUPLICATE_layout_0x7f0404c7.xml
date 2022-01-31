@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <include layout="@layout/APKTOOL_DUPLICATE_layout_0x7f040490" />
-    <ListView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0971" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0202cb" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@null" android:divider="@null" android:dividerHeight="0.0dip" android:overScrollMode="never" android:requiresFadingEdge="none" />
-</LinearLayout>

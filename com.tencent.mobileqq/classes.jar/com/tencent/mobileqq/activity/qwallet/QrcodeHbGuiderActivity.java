@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.activity.qwallet;
 
+import ajjy;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -12,13 +13,13 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
+import awrn;
+import azvt;
 import com.tencent.mobileqq.activity.PayBridgeActivity;
 import com.tencent.mobileqq.activity.qwallet.report.VACDReportUtil;
 import com.tencent.mobileqq.activity.qwallet.widget.ImmersionBar;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.mqsafeedit.BaseApplication;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.mobileqq.util.CommonUtil;
 import cooperation.qwallet.plugin.QWalletHelper;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -45,7 +46,7 @@ public class QrcodeHbGuiderActivity
   
   private void c()
   {
-    new ImmersionBar(this, -468046, findViewById(2131362859));
+    new ImmersionBar(this, -468046, findViewById(2131310658));
     d();
     e();
     f();
@@ -53,12 +54,12 @@ public class QrcodeHbGuiderActivity
   
   private void d()
   {
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131368187));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363400));
-    this.jdField_c_of_type_AndroidWidgetTextView.setText("面对面红包");
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363262));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363447));
-    this.jdField_b_of_type_AndroidWidgetTextView.setText("红包记录");
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131306954));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131302847));
+    this.jdField_c_of_type_AndroidWidgetTextView.setText(ajjy.a(2131645402));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131302804));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131302832));
+    this.jdField_b_of_type_AndroidWidgetTextView.setText(ajjy.a(2131645401));
   }
   
   private void e()
@@ -137,7 +138,7 @@ public class QrcodeHbGuiderActivity
     {
       localStringBuilder.append(getPackageManager().getPackageInfo(getPackageName(), 0).versionName);
       localStringBuilder.append("|");
-      localStringBuilder.append(CommonUtil.a());
+      localStringBuilder.append(azvt.a());
       localStringBuilder.append("|");
       localStringBuilder.append(this.jdField_a_of_type_Int);
       localStringBuilder.append(".");
@@ -146,7 +147,7 @@ public class QrcodeHbGuiderActivity
       }
       localStringBuilder.append("|");
       VACDReportUtil.a(this.jdField_a_of_type_Long, null, paramString, "op_type=" + this.jdField_c_of_type_JavaLangString, 0, "");
-      StatisticCollector.a(BaseApplication.getContext()).b(this.app, localStringBuilder.toString());
+      awrn.a(BaseApplication.getContext()).b(this.app, localStringBuilder.toString());
       return;
     }
     catch (PackageManager.NameNotFoundException localNameNotFoundException)
@@ -209,11 +210,11 @@ public class QrcodeHbGuiderActivity
     }
   }
   
-  protected boolean doOnCreate(Bundle paramBundle)
+  public boolean doOnCreate(Bundle paramBundle)
   {
     this.mActNeedImmersive = false;
     super.doOnCreate(paramBundle);
-    setContentView(2130969837);
+    setContentView(2131494686);
     c();
     a("face2face.index.show");
     return true;
@@ -233,12 +234,12 @@ public class QrcodeHbGuiderActivity
     {
     default: 
       return;
-    case 2131368187: 
+    case 2131306954: 
       a();
       a("face2face.index.go");
       finish();
       return;
-    case 2131363262: 
+    case 2131302804: 
       a("face2face.index.back");
       finish();
       return;
@@ -259,7 +260,7 @@ public class QrcodeHbGuiderActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.QrcodeHbGuiderActivity
  * JD-Core Version:    0.7.0.1
  */

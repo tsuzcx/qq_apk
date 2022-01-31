@@ -1,19 +1,20 @@
-import com.tencent.mobileqq.activity.aio.doodle.control.RDBaseListLayout;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 
-public class uyl
+class uyl
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public int a;
-  Object jdField_a_of_type_JavaLangObject;
+  uyl(uyj paramuyj) {}
   
-  public uyl(RDBaseListLayout paramRDBaseListLayout, int paramInt, Object paramObject)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangObject = paramObject;
+    this.a.p = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.a.a.g();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     uyl
  * JD-Core Version:    0.7.0.1
  */

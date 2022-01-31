@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.data;
 
-import com.tencent.mobileqq.persistence.Entity;
+import atmo;
 
 public abstract class BaseRecentUser
-  extends Entity
+  extends atmo
 {
   public boolean mIsParsed;
   

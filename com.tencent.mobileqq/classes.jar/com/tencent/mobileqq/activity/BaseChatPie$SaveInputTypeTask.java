@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.activity;
 
-import com.tencent.mobileqq.app.FriendsManager;
+import ajjj;
+import atmo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.ExtensionInfo;
 import com.tencent.mobileqq.data.NoC2CExtensionInfo;
-import com.tencent.mobileqq.persistence.Entity;
 import java.lang.ref.WeakReference;
 
 public class BaseChatPie$SaveInputTypeTask
   implements Runnable
 {
-  private Entity jdField_a_of_type_ComTencentMobileqqPersistenceEntity;
-  private WeakReference jdField_a_of_type_JavaLangRefWeakReference;
+  private atmo jdField_a_of_type_Atmo;
+  private WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public BaseChatPie$SaveInputTypeTask(Entity paramEntity, QQAppInterface paramQQAppInterface)
+  public BaseChatPie$SaveInputTypeTask(atmo paramatmo, QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntity = paramEntity;
+    this.jdField_a_of_type_Atmo = paramatmo;
     if (paramQQAppInterface != null) {
       this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
     }
@@ -32,14 +32,14 @@ public class BaseChatPie$SaveInputTypeTask
         return;
         localObject = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
       } while (localObject == null);
-      localObject = (FriendsManager)((QQAppInterface)localObject).getManager(50);
-      if ((this.jdField_a_of_type_ComTencentMobileqqPersistenceEntity instanceof ExtensionInfo))
+      localObject = (ajjj)((QQAppInterface)localObject).getManager(51);
+      if ((this.jdField_a_of_type_Atmo instanceof ExtensionInfo))
       {
-        ((FriendsManager)localObject).a((ExtensionInfo)this.jdField_a_of_type_ComTencentMobileqqPersistenceEntity);
+        ((ajjj)localObject).a((ExtensionInfo)this.jdField_a_of_type_Atmo);
         return;
       }
-    } while (!(this.jdField_a_of_type_ComTencentMobileqqPersistenceEntity instanceof NoC2CExtensionInfo));
-    ((FriendsManager)localObject).a((NoC2CExtensionInfo)this.jdField_a_of_type_ComTencentMobileqqPersistenceEntity, true);
+    } while (!(this.jdField_a_of_type_Atmo instanceof NoC2CExtensionInfo));
+    ((ajjj)localObject).a((NoC2CExtensionInfo)this.jdField_a_of_type_Atmo, true);
   }
 }
 

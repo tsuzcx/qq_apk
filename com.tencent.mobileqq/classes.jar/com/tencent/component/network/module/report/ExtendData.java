@@ -4,25 +4,38 @@ import android.util.SparseArray;
 
 public class ExtendData
 {
-  private SparseArray a = new SparseArray(12);
+  private static final int EXTEND_COUNT = 12;
+  public static final int EXTEND_POS_BUSINESS_REFER = 9;
+  public static final int EXTEND_POS_DNS = 6;
+  public static final int EXTEND_POS_DOWNLOAD_EXCEPTION = 11;
+  public static final int EXTEND_POS_DOWNLOAD_EXTRAINFO = 10;
+  public static final int EXTEND_POS_IS_SD_EXIST = 2;
+  public static final int EXTEND_POS_IS_USB = 7;
+  public static final int EXTEND_POS_MODEL = 0;
+  public static final int EXTEND_POS_OS = 1;
+  public static final int EXTEND_POS_SD_AVAIL = 4;
+  public static final int EXTEND_POS_SD_TOTAL = 3;
+  public static final int EXTEND_POS_TASK_STATE = 8;
+  public static final int EXTEND_POS_UPLOAD_PATH = 5;
+  private SparseArray<String> extendDataList = new SparseArray(12);
   
-  public String a()
+  public String getExtendString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append((String)this.a.get(0, ""));
+    localStringBuilder.append((String)this.extendDataList.get(0, ""));
     int i = 1;
     while (i < 12)
     {
       localStringBuilder.append("|");
-      localStringBuilder.append((String)this.a.get(i, ""));
+      localStringBuilder.append((String)this.extendDataList.get(i, ""));
       i += 1;
     }
     return localStringBuilder.toString();
   }
   
-  public void a(int paramInt, String paramString)
+  public void put(int paramInt, String paramString)
   {
-    this.a.put(paramInt, paramString);
+    this.extendDataList.put(paramInt, paramString);
   }
 }
 

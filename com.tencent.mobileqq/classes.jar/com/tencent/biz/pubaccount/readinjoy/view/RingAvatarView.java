@@ -3,9 +3,7 @@ package com.tencent.biz.pubaccount.readinjoy.view;
 import android.content.Context;
 import android.content.res.Resources;
 import android.util.AttributeSet;
-import android.view.ViewGroup.LayoutParams;
 import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
 
 public class RingAvatarView
   extends RelativeLayout
@@ -27,20 +25,12 @@ public class RingAvatarView
   
   public void a()
   {
-    setBackgroundDrawable(getContext().getResources().getDrawable(2130845501));
-    ViewGroup.LayoutParams localLayoutParams = getLayoutParams();
-    localLayoutParams.width = AIOUtils.a(43.0F, getContext().getResources());
-    localLayoutParams.height = AIOUtils.a(43.0F, getContext().getResources());
-    setLayoutParams(localLayoutParams);
+    setBackgroundDrawable(getContext().getResources().getDrawable(2130848237));
   }
   
   public void b()
   {
     setBackgroundDrawable(null);
-    ViewGroup.LayoutParams localLayoutParams = getLayoutParams();
-    localLayoutParams.width = AIOUtils.a(43.0F, getContext().getResources());
-    localLayoutParams.height = AIOUtils.a(43.0F, getContext().getResources());
-    setLayoutParams(localLayoutParams);
   }
 }
 

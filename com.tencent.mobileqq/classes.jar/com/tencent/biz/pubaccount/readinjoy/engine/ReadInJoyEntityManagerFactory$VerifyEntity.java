@@ -1,9 +1,9 @@
 package com.tencent.biz.pubaccount.readinjoy.engine;
 
-import com.tencent.mobileqq.persistence.Entity;
+import atmo;
 
 public class ReadInJoyEntityManagerFactory$VerifyEntity
-  extends Entity
+  extends atmo
 {
   public String flags = "readinjoy_message_node_verify_entity";
   public String name = "";

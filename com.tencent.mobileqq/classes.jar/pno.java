@@ -1,23 +1,18 @@
-import com.tencent.component.media.image.BitmapReference;
-import com.tencent.component.media.photogif.NewAnimationDrawable;
-import com.tencent.component.media.utils.LruCache;
+import android.graphics.drawable.Drawable;
 
-public class pno
-  extends LruCache
+class pno
+  extends pnc
 {
-  public pno(NewAnimationDrawable paramNewAnimationDrawable, int paramInt)
-  {
-    super(paramInt);
-  }
+  pno(pnn parampnn) {}
   
-  protected int a(String paramString, BitmapReference paramBitmapReference)
+  public Drawable a()
   {
-    return paramBitmapReference.getAllocSize();
+    return a("readinjoy_diandian_icon_foreground");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     pno
  * JD-Core Version:    0.7.0.1
  */

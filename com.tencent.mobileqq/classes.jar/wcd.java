@@ -1,27 +1,46 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
+import android.content.Context;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView.Recycler;
+import android.support.v7.widget.RecyclerView.State;
 
 public class wcd
-  implements Animation.AnimationListener
+  extends LinearLayoutManager
 {
-  public wcd(PublicAccountChatPie paramPublicAccountChatPie) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  public wcd(Context paramContext, int paramInt, boolean paramBoolean)
   {
-    this.a.R = false;
-    this.a.aa = false;
-    this.a.c(this.a.jdField_o_of_type_AndroidViewView);
-    this.a.jdField_o_of_type_Int = 1;
+    super(paramContext, paramInt, paramBoolean);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public void onLayoutChildren(RecyclerView.Recycler paramRecycler, RecyclerView.State paramState)
+  {
+    try
+    {
+      super.onLayoutChildren(paramRecycler, paramState);
+      return;
+    }
+    catch (IndexOutOfBoundsException paramRecycler)
+    {
+      paramRecycler.printStackTrace();
+    }
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public int scrollVerticallyBy(int paramInt, RecyclerView.Recycler paramRecycler, RecyclerView.State paramState)
+  {
+    try
+    {
+      paramInt = super.scrollVerticallyBy(paramInt, paramRecycler, paramState);
+      return paramInt;
+    }
+    catch (IndexOutOfBoundsException paramRecycler)
+    {
+      paramRecycler.printStackTrace();
+    }
+    return 0;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wcd
  * JD-Core Version:    0.7.0.1
  */

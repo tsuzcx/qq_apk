@@ -1,56 +1,29 @@
-import android.graphics.RectF;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.shortvideo.dancemachine.GLLittleBoy;
-import com.tencent.mobileqq.shortvideo.dancemachine.GLLittleBoyManager;
-import com.tencent.mobileqq.shortvideo.dancemachine.ResourceManager;
-import com.tencent.mobileqq.shortvideo.dancemachine.ResourceManager.DancePosture;
-import com.tencent.mobileqq.shortvideo.dancemachine.ResourceManager.Posture;
-import java.util.ArrayList;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
 
-public class aifd
-  implements Animation.AnimationListener
+class aifd
+  implements INetInfoHandler
 {
-  public aifd(GLLittleBoyManager paramGLLittleBoyManager) {}
+  public void onNetMobile2None() {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onNetMobile2Wifi(String paramString)
   {
-    int i = 0;
-    for (;;)
-    {
-      if (i < GLLittleBoyManager.a(this.a).size())
-      {
-        GLLittleBoy localGLLittleBoy = (GLLittleBoy)GLLittleBoyManager.a(this.a).get(i);
-        if (localGLLittleBoy.a() == paramAnimation)
-        {
-          localGLLittleBoy.a(ResourceManager.a().a(localGLLittleBoy.a().a).b, true, true);
-          paramAnimation = localGLLittleBoy.c();
-          if (GLLittleBoyManager.a(this.a) == 0.0F) {
-            GLLittleBoyManager.a(this.a, paramAnimation.width() / 2.2F);
-          }
-          float f1 = paramAnimation.centerX();
-          float f2 = paramAnimation.centerY();
-          GLLittleBoyManager.a(this.a).set(f1 - GLLittleBoyManager.a(this.a), f2 - GLLittleBoyManager.a(this.a), f1 + GLLittleBoyManager.a(this.a), f2 + GLLittleBoyManager.a(this.a));
-          localGLLittleBoy.c(GLLittleBoyManager.a(this.a));
-          localGLLittleBoy.e();
-          localGLLittleBoy.a(this.a.b());
-        }
-      }
-      else
-      {
-        return;
-      }
-      i += 1;
-    }
+    ajam.a("onNetMobile2Wifi");
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public void onNetNone2Mobile(String paramString) {}
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void onNetNone2Wifi(String paramString)
+  {
+    ajam.a("onNetNone2Wifi");
+  }
+  
+  public void onNetWifi2Mobile(String paramString) {}
+  
+  public void onNetWifi2None() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aifd
  * JD-Core Version:    0.7.0.1
  */

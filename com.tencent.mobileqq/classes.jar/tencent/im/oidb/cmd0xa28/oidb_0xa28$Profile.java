@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class oidb_0xa28$Profile
-  extends MessageMicro
+  extends MessageMicro<Profile>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_common_info = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -30,7 +30,7 @@ public final class oidb_0xa28$Profile
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     tencent.im.oidb.cmd0xa28.oidb_0xa28.Profile
  * JD-Core Version:    0.7.0.1
  */

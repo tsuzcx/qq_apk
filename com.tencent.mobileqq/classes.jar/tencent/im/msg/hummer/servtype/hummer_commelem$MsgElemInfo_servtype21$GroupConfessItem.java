@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class hummer_commelem$MsgElemInfo_servtype21$GroupConfessItem
-  extends MessageMicro
+  extends MessageMicro<GroupConfessItem>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_confess_to_nick = PBField.initBytes(ByteStringMicro.EMPTY);

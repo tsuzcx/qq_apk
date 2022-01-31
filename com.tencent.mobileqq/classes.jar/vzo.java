@@ -1,29 +1,20 @@
-import com.tencent.mobileqq.activity.aio.rebuild.GameRoomChatPie;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.gameroom.GameRoomAVController;
-import com.tencent.mobileqq.utils.SharedPreUtils;
-import com.tencent.mobileqq.werewolves.WerewolvesHandler.Callback;
-import com.tencent.mobileqq.widget.QQToast;
-import tencent.im.oidb.cmd0x8ed.oidb_0x8ed.RspBody;
+import NS_COMM.COMM.StCommonExt;
+import com.tencent.mobileqq.pb.PBStringField;
 
-public class vzo
-  implements WerewolvesHandler.Callback
+class vzo
 {
-  public vzo(GameRoomChatPie paramGameRoomChatPie) {}
+  public COMM.StCommonExt a;
+  public boolean a;
+  public boolean b;
   
-  public void a(int paramInt, oidb_0x8ed.RspBody paramRspBody)
+  public String toString()
   {
-    if ((paramInt == 0) && (this.a.X))
-    {
-      QQToast.a(this.a.jdField_a_of_type_AndroidContentContext, 2, "已成功退出游戏房间", 0).a();
-      SharedPreUtils.l(this.a.a(), this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), false);
-      this.a.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomAVController.a(this.a.jdField_a_of_type_AndroidContentContext);
-    }
+    return "CommentResponse{hasMore=" + this.jdField_a_of_type_Boolean + ", attachInfo='" + this.jdField_a_of_type_NS_COMMCOMM$StCommonExt.attachInfo.get() + '\'' + ", hasResponse='" + this.b + '\'' + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     vzo
  * JD-Core Version:    0.7.0.1
  */

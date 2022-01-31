@@ -10,23 +10,24 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.Scroller;
 import com.tencent.mobileqq.app.ThreadManager;
-import lmf;
-import lmg;
 import mqq.os.MqqHandler;
+import nvv;
+import nvw;
 
 public class ReadInJoyCommentTopGestureLayout
   extends RelativeLayout
   implements View.OnTouchListener
 {
   float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
+  final int jdField_a_of_type_Int = 5;
   private Context jdField_a_of_type_AndroidContentContext;
   private View jdField_a_of_type_AndroidViewView;
   Scroller jdField_a_of_type_AndroidWidgetScroller;
-  private ReadInJoyCommentListFragment jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListFragment;
   private ReadInJoyCommentListView jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListView;
+  private nvw jdField_a_of_type_Nvw;
   private boolean jdField_a_of_type_Boolean = true;
   float jdField_b_of_type_Float;
+  private int jdField_b_of_type_Int;
   private boolean jdField_b_of_type_Boolean;
   private boolean c;
   
@@ -52,7 +53,7 @@ public class ReadInJoyCommentTopGestureLayout
     if (this.jdField_a_of_type_AndroidViewView == null) {
       return;
     }
-    if ((this.c) && (this.jdField_a_of_type_Boolean))
+    if (a())
     {
       b();
       return;
@@ -64,12 +65,12 @@ public class ReadInJoyCommentTopGestureLayout
         this.jdField_a_of_type_AndroidWidgetScroller.setFinalY(0);
       }
       Object localObject = this.jdField_a_of_type_AndroidViewView;
-      ThreadManager.getUIHandler().postDelayed(new lmf(this, (View)localObject), 32L);
-      localObject = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListFragment;
+      ThreadManager.getUIHandler().postDelayed(new ReadInJoyCommentTopGestureLayout.1(this, (View)localObject), 32L);
+      localObject = this.jdField_a_of_type_Nvw;
       if (this.jdField_a_of_type_Boolean) {}
       for (int i = 1;; i = 2)
       {
-        ((ReadInJoyCommentListFragment)localObject).a(i, j);
+        ((nvw)localObject).a(i, j);
         return;
       }
     }
@@ -83,8 +84,8 @@ public class ReadInJoyCommentTopGestureLayout
     }
     ViewGroup.LayoutParams localLayoutParams = this.jdField_a_of_type_AndroidViewView.getLayoutParams();
     localLayoutParams.height -= paramInt;
-    if (localLayoutParams.height > this.jdField_a_of_type_Int) {
-      localLayoutParams.height = this.jdField_a_of_type_Int;
+    if (localLayoutParams.height > this.jdField_b_of_type_Int) {
+      localLayoutParams.height = this.jdField_b_of_type_Int;
     }
     this.jdField_a_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
   }
@@ -105,13 +106,44 @@ public class ReadInJoyCommentTopGestureLayout
   
   private boolean a()
   {
+    return (this.c) && (this.jdField_a_of_type_Boolean);
+  }
+  
+  private void b()
+  {
+    int i = 1;
+    Object localObject = this.jdField_a_of_type_AndroidViewView;
+    ViewGroup.LayoutParams localLayoutParams = ((View)localObject).getLayoutParams();
+    if (this.jdField_b_of_type_Int - localLayoutParams.height > 200)
+    {
+      localObject = this.jdField_a_of_type_Nvw;
+      if (this.jdField_a_of_type_Boolean) {}
+      for (;;)
+      {
+        ((nvw)localObject).a(i, -1);
+        return;
+        i = 2;
+      }
+    }
+    ValueAnimator localValueAnimator = ValueAnimator.ofInt(new int[] { localLayoutParams.height, this.jdField_b_of_type_Int });
+    localValueAnimator.addUpdateListener(new nvv(this, localLayoutParams, (View)localObject));
+    localValueAnimator.setDuration(120L);
+    localValueAnimator.start();
+  }
+  
+  private boolean b()
+  {
     boolean bool2 = false;
     boolean bool1 = bool2;
     if (this.jdField_b_of_type_Boolean) {
       if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListView != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListView.getChildCount() != 0))
       {
         bool1 = bool2;
-        if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListView.getChildAt(0).getTop() != 0) {}
+        if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListView.getFirstVisiblePosition() == 0)
+        {
+          bool1 = bool2;
+          if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListView.getChildAt(0).getTop() != 0) {}
+        }
       }
       else
       {
@@ -119,27 +151,6 @@ public class ReadInJoyCommentTopGestureLayout
       }
     }
     return bool1;
-  }
-  
-  private void b()
-  {
-    int i = 1;
-    Object localObject = this.jdField_a_of_type_AndroidViewView.getLayoutParams();
-    if (this.jdField_a_of_type_Int - ((ViewGroup.LayoutParams)localObject).height > 200)
-    {
-      localObject = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListFragment;
-      if (this.jdField_a_of_type_Boolean) {}
-      for (;;)
-      {
-        ((ReadInJoyCommentListFragment)localObject).a(i, -1);
-        return;
-        i = 2;
-      }
-    }
-    ValueAnimator localValueAnimator = ValueAnimator.ofInt(new int[] { ((ViewGroup.LayoutParams)localObject).height, this.jdField_a_of_type_Int });
-    localValueAnimator.addUpdateListener(new lmg(this, (ViewGroup.LayoutParams)localObject));
-    localValueAnimator.setDuration(120L);
-    localValueAnimator.start();
   }
   
   public void computeScroll()
@@ -157,35 +168,25 @@ public class ReadInJoyCommentTopGestureLayout
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_AndroidViewView == null) {
+    float f = 0.0F;
+    if ((this.jdField_a_of_type_AndroidViewView == null) || (!a())) {
       return false;
     }
-    float f;
-    if (this.jdField_b_of_type_Float != 0.0F)
-    {
+    if (this.jdField_b_of_type_Float != 0.0F) {
       f = paramMotionEvent.getRawY() - this.jdField_b_of_type_Float;
-      this.jdField_a_of_type_Float = paramMotionEvent.getRawX();
-      this.jdField_b_of_type_Float = paramMotionEvent.getRawY();
-      if ((this.c) && (this.jdField_a_of_type_Boolean)) {
-        this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidViewView.getHeight();
-      }
-      if ((!a()) || (f <= 0.0F) || (paramMotionEvent.getAction() == 0)) {
-        break label98;
-      }
     }
-    label98:
-    for (boolean bool = true;; bool = false)
-    {
-      return bool;
-      f = 0.0F;
-      break;
+    this.jdField_a_of_type_Float = paramMotionEvent.getRawX();
+    this.jdField_b_of_type_Float = paramMotionEvent.getRawY();
+    if (a()) {
+      this.jdField_b_of_type_Int = this.jdField_a_of_type_AndroidViewView.getHeight();
     }
+    return (b()) && (f > 5.0F) && (paramMotionEvent.getAction() != 0);
   }
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
     float f = 0.0F;
-    if ((this.jdField_a_of_type_AndroidViewView == null) || ((this.jdField_a_of_type_Boolean) && (!this.c))) {
+    if ((this.jdField_a_of_type_AndroidViewView == null) || (!a())) {
       return false;
     }
     if (this.jdField_b_of_type_Float != 0.0F) {
@@ -199,7 +200,7 @@ public class ReadInJoyCommentTopGestureLayout
       a();
       return true;
     }
-    if ((this.c) && (this.jdField_a_of_type_Boolean)) {
+    if (a()) {
       a((int)f);
     }
     for (;;)
@@ -217,9 +218,9 @@ public class ReadInJoyCommentTopGestureLayout
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListView = paramReadInJoyCommentListView;
   }
   
-  public void setFragment(ReadInJoyCommentListFragment paramReadInJoyCommentListFragment, boolean paramBoolean)
+  public void setFirstLevelCommentContainer(nvw paramnvw, boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListFragment = paramReadInJoyCommentListFragment;
+    this.jdField_a_of_type_Nvw = paramnvw;
     this.c = paramBoolean;
   }
   
@@ -242,7 +243,7 @@ public class ReadInJoyCommentTopGestureLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentTopGestureLayout
  * JD-Core Version:    0.7.0.1
  */

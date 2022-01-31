@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class richtext$Voice
-  extends MessageMicro
+  extends MessageMicro<Voice>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 34 }, new String[] { "url", "time", "size", "url_mp3" }, new Object[] { "", Integer.valueOf(0), Integer.valueOf(0), "" }, Voice.class);
   public final PBUInt32Field size = PBField.initUInt32(0);

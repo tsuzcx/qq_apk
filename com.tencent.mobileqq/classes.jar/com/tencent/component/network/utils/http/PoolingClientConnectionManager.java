@@ -1,6 +1,7 @@
 package com.tencent.component.network.utils.http;
 
 import com.tencent.component.network.utils.http.pool.ConnPoolControl;
+import com.tencent.component.network.utils.http.pool.PoolStats;
 import java.io.IOException;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
@@ -14,22 +15,18 @@ import org.apache.http.conn.ManagedClientConnection;
 import org.apache.http.conn.routing.HttpRoute;
 import org.apache.http.conn.scheme.SchemeRegistry;
 import org.apache.http.impl.conn.DefaultClientConnectionOperator;
-import pps;
-import ppu;
-import ppv;
-import ppw;
 
 public class PoolingClientConnectionManager
-  implements ConnPoolControl, ClientConnectionManager
+  implements ConnPoolControl<HttpRoute>, ClientConnectionManager
 {
-  private final DnsResolver jdField_a_of_type_ComTencentComponentNetworkUtilsHttpDnsResolver;
-  private final ClientConnectionOperator jdField_a_of_type_OrgApacheHttpConnClientConnectionOperator;
-  private final SchemeRegistry jdField_a_of_type_OrgApacheHttpConnSchemeSchemeRegistry;
-  private final pps jdField_a_of_type_Pps;
+  private final DnsResolver dnsResolver;
+  private final ClientConnectionOperator operator;
+  private final HttpConnPool pool;
+  private final SchemeRegistry schemeRegistry;
   
   public PoolingClientConnectionManager()
   {
-    this(SchemeRegistryFactory.a());
+    this(SchemeRegistryFactory.createDefault());
   }
   
   public PoolingClientConnectionManager(SchemeRegistry paramSchemeRegistry)
@@ -50,60 +47,65 @@ public class PoolingClientConnectionManager
     if (paramDnsResolver == null) {
       throw new IllegalArgumentException("DNS resolver may not be null");
     }
-    this.jdField_a_of_type_OrgApacheHttpConnSchemeSchemeRegistry = paramSchemeRegistry;
-    this.jdField_a_of_type_ComTencentComponentNetworkUtilsHttpDnsResolver = paramDnsResolver;
-    this.jdField_a_of_type_OrgApacheHttpConnClientConnectionOperator = a(paramSchemeRegistry);
-    this.jdField_a_of_type_Pps = new pps(null, 2, 20, paramLong, paramTimeUnit);
+    this.schemeRegistry = paramSchemeRegistry;
+    this.dnsResolver = paramDnsResolver;
+    this.operator = createConnectionOperator(paramSchemeRegistry);
+    this.pool = new HttpConnPool(null, 2, 20, paramLong, paramTimeUnit);
   }
   
-  protected ClientConnectionOperator a(SchemeRegistry paramSchemeRegistry)
+  public PoolingClientConnectionManager(SchemeRegistry paramSchemeRegistry, DnsResolver paramDnsResolver)
   {
-    return new DefaultClientConnectionOperator(paramSchemeRegistry);
+    this(paramSchemeRegistry, -1L, TimeUnit.MILLISECONDS, paramDnsResolver);
   }
   
-  public ManagedClientConnection a(Future paramFuture, long paramLong, TimeUnit paramTimeUnit)
+  private String format(HttpPoolEntry paramHttpPoolEntry)
   {
-    try
-    {
-      paramTimeUnit = (ppu)paramFuture.get(paramLong, paramTimeUnit);
-      if ((paramTimeUnit == null) || (paramFuture.isCancelled())) {
-        throw new InterruptedException();
-      }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[id: ").append(paramHttpPoolEntry.getId()).append("]");
+    localStringBuilder.append("[route: ").append(paramHttpPoolEntry.getRoute()).append("]");
+    paramHttpPoolEntry = paramHttpPoolEntry.getState();
+    if (paramHttpPoolEntry != null) {
+      localStringBuilder.append("[state: ").append(paramHttpPoolEntry).append("]");
     }
-    catch (ExecutionException paramFuture)
-    {
-      if (paramFuture.getCause() == null) {}
-      throw new InterruptedException();
-      if (paramTimeUnit.b() == null) {
-        throw new IllegalStateException("Pool entry with no connection");
-      }
-    }
-    catch (TimeoutException paramFuture)
-    {
-      throw new ConnectionPoolTimeoutException("Timeout waiting for connection from pool");
-    }
-    paramFuture = new ppv(this, this.jdField_a_of_type_OrgApacheHttpConnClientConnectionOperator, paramTimeUnit);
-    return paramFuture;
+    return localStringBuilder.toString();
   }
   
-  public void a(int paramInt)
+  private String format(HttpRoute paramHttpRoute, Object paramObject)
   {
-    this.jdField_a_of_type_Pps.a(paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[route: ").append(paramHttpRoute).append("]");
+    if (paramObject != null) {
+      localStringBuilder.append("[state: ").append(paramObject).append("]");
+    }
+    return localStringBuilder.toString();
   }
   
-  public void b(int paramInt)
+  private String formatStats(HttpRoute paramHttpRoute)
   {
-    this.jdField_a_of_type_Pps.b(paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    PoolStats localPoolStats = this.pool.getTotalStats();
+    paramHttpRoute = this.pool.getStats(paramHttpRoute);
+    localStringBuilder.append("[total kept alive: ").append(localPoolStats.getAvailable()).append("; ");
+    localStringBuilder.append("route allocated: ").append(paramHttpRoute.getLeased() + paramHttpRoute.getAvailable());
+    localStringBuilder.append(" of ").append(paramHttpRoute.getMax()).append("; ");
+    localStringBuilder.append("total allocated: ").append(localPoolStats.getLeased() + localPoolStats.getAvailable());
+    localStringBuilder.append(" of ").append(localPoolStats.getMax()).append("]");
+    return localStringBuilder.toString();
   }
   
   public void closeExpiredConnections()
   {
-    this.jdField_a_of_type_Pps.b();
+    this.pool.closeExpired();
   }
   
   public void closeIdleConnections(long paramLong, TimeUnit paramTimeUnit)
   {
-    this.jdField_a_of_type_Pps.a(paramLong, paramTimeUnit);
+    this.pool.closeIdle(paramLong, paramTimeUnit);
+  }
+  
+  protected ClientConnectionOperator createConnectionOperator(SchemeRegistry paramSchemeRegistry)
+  {
+    return new DefaultClientConnectionOperator(paramSchemeRegistry);
   }
   
   protected void finalize()
@@ -119,9 +121,59 @@ public class PoolingClientConnectionManager
     }
   }
   
+  public int getDefaultMaxPerRoute()
+  {
+    return this.pool.getDefaultMaxPerRoute();
+  }
+  
+  public int getMaxPerRoute(HttpRoute paramHttpRoute)
+  {
+    return this.pool.getMaxPerRoute(paramHttpRoute);
+  }
+  
+  public int getMaxTotal()
+  {
+    return this.pool.getMaxTotal();
+  }
+  
   public SchemeRegistry getSchemeRegistry()
   {
-    return this.jdField_a_of_type_OrgApacheHttpConnSchemeSchemeRegistry;
+    return this.schemeRegistry;
+  }
+  
+  public PoolStats getStats(HttpRoute paramHttpRoute)
+  {
+    return this.pool.getStats(paramHttpRoute);
+  }
+  
+  public PoolStats getTotalStats()
+  {
+    return this.pool.getTotalStats();
+  }
+  
+  ManagedClientConnection leaseConnection(Future<HttpPoolEntry> paramFuture, long paramLong, TimeUnit paramTimeUnit)
+  {
+    try
+    {
+      paramTimeUnit = (HttpPoolEntry)paramFuture.get(paramLong, paramTimeUnit);
+      if ((paramTimeUnit == null) || (paramFuture.isCancelled())) {
+        throw new InterruptedException();
+      }
+    }
+    catch (ExecutionException paramFuture)
+    {
+      if (paramFuture.getCause() == null) {}
+      throw new InterruptedException();
+      if (paramTimeUnit.getConnection() == null) {
+        throw new IllegalStateException("Pool entry with no connection");
+      }
+    }
+    catch (TimeoutException paramFuture)
+    {
+      throw new ConnectionPoolTimeoutException("Timeout waiting for connection from pool");
+    }
+    paramFuture = new ManagedClientConnectionImpl(this, this.operator, paramTimeUnit);
+    return paramFuture;
   }
   
   /* Error */
@@ -129,29 +181,29 @@ public class PoolingClientConnectionManager
   {
     // Byte code:
     //   0: aload_1
-    //   1: instanceof 111
+    //   1: instanceof 222
     //   4: ifne +13 -> 17
-    //   7: new 45	java/lang/IllegalArgumentException
+    //   7: new 50	java/lang/IllegalArgumentException
     //   10: dup
-    //   11: ldc 139
-    //   13: invokespecial 50	java/lang/IllegalArgumentException:<init>	(Ljava/lang/String;)V
+    //   11: ldc 233
+    //   13: invokespecial 55	java/lang/IllegalArgumentException:<init>	(Ljava/lang/String;)V
     //   16: athrow
     //   17: aload_1
-    //   18: checkcast 111	ppv
+    //   18: checkcast 222	com/tencent/component/network/utils/http/ManagedClientConnectionImpl
     //   21: astore_1
     //   22: aload_1
-    //   23: invokevirtual 142	ppv:a	()Lorg/apache/http/conn/ClientConnectionManager;
+    //   23: invokevirtual 237	com/tencent/component/network/utils/http/ManagedClientConnectionImpl:getManager	()Lorg/apache/http/conn/ClientConnectionManager;
     //   26: aload_0
     //   27: if_acmpeq +13 -> 40
-    //   30: new 101	java/lang/IllegalStateException
+    //   30: new 212	java/lang/IllegalStateException
     //   33: dup
-    //   34: ldc 144
-    //   36: invokespecial 104	java/lang/IllegalStateException:<init>	(Ljava/lang/String;)V
+    //   34: ldc 239
+    //   36: invokespecial 215	java/lang/IllegalStateException:<init>	(Ljava/lang/String;)V
     //   39: athrow
     //   40: aload_1
     //   41: monitorenter
     //   42: aload_1
-    //   43: invokevirtual 147	ppv:a	()Lppu;
+    //   43: invokevirtual 243	com/tencent/component/network/utils/http/ManagedClientConnectionImpl:detach	()Lcom/tencent/component/network/utils/http/HttpPoolEntry;
     //   46: astore 6
     //   48: aload 6
     //   50: ifnonnull +6 -> 56
@@ -159,30 +211,30 @@ public class PoolingClientConnectionManager
     //   54: monitorexit
     //   55: return
     //   56: aload_1
-    //   57: invokevirtual 150	ppv:isOpen	()Z
+    //   57: invokevirtual 246	com/tencent/component/network/utils/http/ManagedClientConnectionImpl:isOpen	()Z
     //   60: ifeq +18 -> 78
     //   63: aload_1
-    //   64: invokevirtual 153	ppv:isMarkedReusable	()Z
+    //   64: invokevirtual 249	com/tencent/component/network/utils/http/ManagedClientConnectionImpl:isMarkedReusable	()Z
     //   67: istore 5
     //   69: iload 5
     //   71: ifne +7 -> 78
     //   74: aload_1
-    //   75: invokevirtual 154	ppv:shutdown	()V
+    //   75: invokevirtual 250	com/tencent/component/network/utils/http/ManagedClientConnectionImpl:shutdown	()V
     //   78: aload_1
-    //   79: invokevirtual 153	ppv:isMarkedReusable	()Z
+    //   79: invokevirtual 249	com/tencent/component/network/utils/http/ManagedClientConnectionImpl:isMarkedReusable	()Z
     //   82: ifeq +16 -> 98
     //   85: aload 4
     //   87: ifnull +34 -> 121
     //   90: aload 6
     //   92: lload_2
     //   93: aload 4
-    //   95: invokevirtual 155	ppu:a	(JLjava/util/concurrent/TimeUnit;)V
+    //   95: invokevirtual 253	com/tencent/component/network/utils/http/HttpPoolEntry:updateExpiry	(JLjava/util/concurrent/TimeUnit;)V
     //   98: aload_0
-    //   99: getfield 68	com/tencent/component/network/utils/http/PoolingClientConnectionManager:jdField_a_of_type_Pps	Lpps;
+    //   99: getfield 74	com/tencent/component/network/utils/http/PoolingClientConnectionManager:pool	Lcom/tencent/component/network/utils/http/HttpConnPool;
     //   102: aload 6
     //   104: aload_1
-    //   105: invokevirtual 153	ppv:isMarkedReusable	()Z
-    //   108: invokevirtual 158	pps:a	(Lcom/tencent/component/network/utils/http/pool/PoolEntry;Z)V
+    //   105: invokevirtual 249	com/tencent/component/network/utils/http/ManagedClientConnectionImpl:isMarkedReusable	()Z
+    //   108: invokevirtual 257	com/tencent/component/network/utils/http/HttpConnPool:release	(Lcom/tencent/component/network/utils/http/pool/PoolEntry;Z)V
     //   111: aload_1
     //   112: monitorexit
     //   113: return
@@ -191,16 +243,16 @@ public class PoolingClientConnectionManager
     //   117: monitorexit
     //   118: aload 4
     //   120: athrow
-    //   121: getstatic 32	java/util/concurrent/TimeUnit:MILLISECONDS	Ljava/util/concurrent/TimeUnit;
+    //   121: getstatic 37	java/util/concurrent/TimeUnit:MILLISECONDS	Ljava/util/concurrent/TimeUnit;
     //   124: astore 4
     //   126: goto -36 -> 90
     //   129: astore 4
     //   131: aload_0
-    //   132: getfield 68	com/tencent/component/network/utils/http/PoolingClientConnectionManager:jdField_a_of_type_Pps	Lpps;
+    //   132: getfield 74	com/tencent/component/network/utils/http/PoolingClientConnectionManager:pool	Lcom/tencent/component/network/utils/http/HttpConnPool;
     //   135: aload 6
     //   137: aload_1
-    //   138: invokevirtual 153	ppv:isMarkedReusable	()Z
-    //   141: invokevirtual 158	pps:a	(Lcom/tencent/component/network/utils/http/pool/PoolEntry;Z)V
+    //   138: invokevirtual 249	com/tencent/component/network/utils/http/ManagedClientConnectionImpl:isMarkedReusable	()Z
+    //   141: invokevirtual 257	com/tencent/component/network/utils/http/HttpConnPool:release	(Lcom/tencent/component/network/utils/http/pool/PoolEntry;Z)V
     //   144: aload 4
     //   146: athrow
     //   147: astore 7
@@ -212,7 +264,7 @@ public class PoolingClientConnectionManager
     //   0	152	2	paramLong	long
     //   0	152	4	paramTimeUnit	TimeUnit
     //   67	3	5	bool	boolean
-    //   46	90	6	localppu	ppu
+    //   46	90	6	localHttpPoolEntry	HttpPoolEntry
     //   147	1	7	localIOException	IOException
     // Exception table:
     //   from	to	target	type
@@ -234,14 +286,29 @@ public class PoolingClientConnectionManager
     if (paramHttpRoute == null) {
       throw new IllegalArgumentException("HTTP route may not be null");
     }
-    return new ppw(this, this.jdField_a_of_type_Pps.a(paramHttpRoute, paramObject));
+    return new PoolingClientConnectionManager.1(this, this.pool.lease(paramHttpRoute, paramObject));
+  }
+  
+  public void setDefaultMaxPerRoute(int paramInt)
+  {
+    this.pool.setDefaultMaxPerRoute(paramInt);
+  }
+  
+  public void setMaxPerRoute(HttpRoute paramHttpRoute, int paramInt)
+  {
+    this.pool.setMaxPerRoute(paramHttpRoute, paramInt);
+  }
+  
+  public void setMaxTotal(int paramInt)
+  {
+    this.pool.setMaxTotal(paramInt);
   }
   
   public void shutdown()
   {
     try
     {
-      this.jdField_a_of_type_Pps.a();
+      this.pool.shutdown();
       return;
     }
     catch (IOException localIOException) {}

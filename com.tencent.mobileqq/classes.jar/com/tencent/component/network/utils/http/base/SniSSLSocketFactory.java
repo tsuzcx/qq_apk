@@ -6,7 +6,6 @@ import java.security.KeyStore;
 import javax.net.ssl.SSLSocket;
 import org.apache.http.conn.ssl.SSLSocketFactory;
 import org.apache.http.params.HttpParams;
-import ppx;
 
 public class SniSSLSocketFactory
   extends SSLSocketFactory
@@ -14,10 +13,10 @@ public class SniSSLSocketFactory
   public SniSSLSocketFactory(KeyStore paramKeyStore)
   {
     super(paramKeyStore);
-    setHostnameVerifier(new ppx(this));
+    setHostnameVerifier(new SniSSLSocketFactory.1(this));
   }
   
-  public static void a(Socket paramSocket, String paramString)
+  public static void ensureSupportSNI(Socket paramSocket, String paramString)
   {
     if ((paramSocket != null) && ((paramSocket instanceof SSLSocket))) {}
     for (paramSocket = (SSLSocket)paramSocket;; paramSocket = null)
@@ -25,7 +24,7 @@ public class SniSSLSocketFactory
       if (paramSocket != null) {}
       try
       {
-        SniSSLSocketFactory.HostNameSetter.a(paramString, paramSocket);
+        SniSSLSocketFactory.HostNameSetter.setServerNameIndication(paramString, paramSocket);
         return;
       }
       catch (Exception paramSocket)

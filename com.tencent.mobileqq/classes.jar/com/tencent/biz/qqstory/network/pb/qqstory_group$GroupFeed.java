@@ -8,11 +8,11 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 
 public final class qqstory_group$GroupFeed
-  extends MessageMicro
+  extends MessageMicro<GroupFeed>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField feed_id = PBField.initBytes(ByteStringMicro.EMPTY);
-  public final PBRepeatMessageField story_id_list = PBField.initRepeatMessage(qqstory_group.VideoStoryId.class);
+  public final PBRepeatMessageField<qqstory_group.VideoStoryId> story_id_list = PBField.initRepeatMessage(qqstory_group.VideoStoryId.class);
   public final PBBytesField union_id = PBField.initBytes(ByteStringMicro.EMPTY);
   
   static
@@ -24,7 +24,7 @@ public final class qqstory_group$GroupFeed
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_group.GroupFeed
  * JD-Core Version:    0.7.0.1
  */

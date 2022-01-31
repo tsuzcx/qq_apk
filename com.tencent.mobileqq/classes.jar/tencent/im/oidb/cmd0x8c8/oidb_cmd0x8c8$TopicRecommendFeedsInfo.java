@@ -10,14 +10,14 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class oidb_cmd0x8c8$TopicRecommendFeedsInfo
-  extends MessageMicro
+  extends MessageMicro<TopicRecommendFeedsInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_comments = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField bytes_subscribe_id = PBField.initBytes(ByteStringMicro.EMPTY);
   public oidb_cmd0x8c8.TopicRecommendFeedsTitle msg_left_title = new oidb_cmd0x8c8.TopicRecommendFeedsTitle();
   public oidb_cmd0x8c8.TopicRecommendFeedsTitle msg_right_title = new oidb_cmd0x8c8.TopicRecommendFeedsTitle();
-  public final PBRepeatMessageField msg_topic_recommend_info = PBField.initRepeatMessage(oidb_cmd0x8c8.TopicRecommendInfo.class);
+  public final PBRepeatMessageField<oidb_cmd0x8c8.TopicRecommendInfo> msg_topic_recommend_info = PBField.initRepeatMessage(oidb_cmd0x8c8.TopicRecommendInfo.class);
   public final PBUInt32Field uint32_feeds_style = PBField.initUInt32(0);
   public final PBUInt64Field uint64_feeds_id = PBField.initUInt64(0L);
   public final PBUInt64Field uint64_uin = PBField.initUInt64(0L);
@@ -31,7 +31,7 @@ public final class oidb_cmd0x8c8$TopicRecommendFeedsInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     tencent.im.oidb.cmd0x8c8.oidb_cmd0x8c8.TopicRecommendFeedsInfo
  * JD-Core Version:    0.7.0.1
  */

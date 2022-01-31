@@ -1,19 +1,10 @@
-import com.tencent.mobileqq.utils.NewUpgradeDialog;
-import com.tencent.mobileqq.utils.NewUpgradeDialog.YYBDownloadListener;
-
-public class aklb
-  implements Runnable
+class aklb
 {
-  public aklb(NewUpgradeDialog.YYBDownloadListener paramYYBDownloadListener) {}
-  
-  public void run()
-  {
-    NewUpgradeDialog.d(this.a.a);
-  }
+  private static final akkz a = new akkz(null);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aklb
  * JD-Core Version:    0.7.0.1
  */

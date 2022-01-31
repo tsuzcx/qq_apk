@@ -1,54 +1,27 @@
-import dov.com.qq.im.capture.text.MidNightTextItem;
-
 public class anwt
 {
+  public float a;
   public int a;
-  public String a;
-  public int b = 0;
+  public float b;
+  public float c;
+  public float d;
+  public float e;
+  public float f;
   
-  private anwt(MidNightTextItem paramMidNightTextItem)
+  public anwt(int paramInt1, int paramInt2, float paramFloat1, float paramFloat2, int paramInt3, float paramFloat3)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_JavaLangString = null;
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    if (this == paramObject) {}
-    do
-    {
-      return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
-        return false;
-      }
-      paramObject = (anwt)paramObject;
-      if ((this.jdField_a_of_type_Int != paramObject.jdField_a_of_type_Int) || (this.b != paramObject.b)) {
-        break;
-      }
-      if (this.jdField_a_of_type_JavaLangString == null) {
-        break label74;
-      }
-    } while (this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString));
-    label74:
-    while (paramObject.jdField_a_of_type_JavaLangString != null) {
-      return false;
-    }
-    return true;
-  }
-  
-  public int hashCode()
-  {
-    int j = this.jdField_a_of_type_Int;
-    int k = this.b;
-    if (this.jdField_a_of_type_JavaLangString != null) {}
-    for (int i = this.jdField_a_of_type_JavaLangString.hashCode();; i = 0) {
-      return i + (j * 31 + k) * 31;
-    }
+    this.jdField_a_of_type_Float = paramInt1;
+    this.b = paramInt2;
+    this.c = paramFloat1;
+    this.d = paramFloat2;
+    this.jdField_a_of_type_Int = paramInt3;
+    this.f = paramFloat3;
+    this.e = 0.0F;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     anwt
  * JD-Core Version:    0.7.0.1
  */

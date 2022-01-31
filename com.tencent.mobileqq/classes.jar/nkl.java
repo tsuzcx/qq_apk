@@ -1,35 +1,19 @@
-import android.graphics.Bitmap;
-import com.tencent.biz.qqstory.newshare.job.DownloadPic2FileJob;
-import com.tencent.biz.qqstory.shareGroup.icon.UrlBitmapDownloader.Listener;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.utils.BitmapUtils;
-import com.tencent.mobileqq.utils.ImageUtil;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyFeedsActivity.1;
+import com.tencent.qphone.base.util.QLog;
 
 public class nkl
-  implements UrlBitmapDownloader.Listener
+  implements moc
 {
-  public nkl(DownloadPic2FileJob paramDownloadPic2FileJob, String paramString) {}
+  public nkl(ReadInJoyFeedsActivity.1 param1) {}
   
-  public void a(String paramString, Bitmap paramBitmap)
+  public void loaded(String paramString, int paramInt)
   {
-    if (DownloadPic2FileJob.a(this.jdField_a_of_type_ComTencentBizQqstoryNewshareJobDownloadPic2FileJob))
-    {
-      paramString = ImageUtil.c(paramBitmap, paramBitmap.getWidth(), paramBitmap.getHeight());
-      paramBitmap.recycle();
-      bool = BitmapUtils.a(paramString, DownloadPic2FileJob.a(this.jdField_a_of_type_ComTencentBizQqstoryNewshareJobDownloadPic2FileJob));
-      paramString.recycle();
-      DownloadPic2FileJob.a(this.jdField_a_of_type_ComTencentBizQqstoryNewshareJobDownloadPic2FileJob, bool);
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyBaseActivity", 2, "load 2378 html web resource finish");
     }
-    boolean bool = BitmapUtils.a(paramBitmap, DownloadPic2FileJob.a(this.jdField_a_of_type_ComTencentBizQqstoryNewshareJobDownloadPic2FileJob));
-    DownloadPic2FileJob.b(this.jdField_a_of_type_ComTencentBizQqstoryNewshareJobDownloadPic2FileJob, bool);
   }
   
-  public void a(String paramString, Throwable paramThrowable)
-  {
-    SLog.e("DownloadPic2FileJob", "Download url failed url=%s", new Object[] { this.jdField_a_of_type_JavaLangString });
-    DownloadPic2FileJob.c(this.jdField_a_of_type_ComTencentBizQqstoryNewshareJobDownloadPic2FileJob, false);
-  }
+  public void progress(int paramInt) {}
 }
 
 

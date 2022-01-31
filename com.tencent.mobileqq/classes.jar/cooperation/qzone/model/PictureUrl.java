@@ -1,14 +1,14 @@
 package cooperation.qzone.model;
 
-import ancf;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import bfwj;
 
 public class PictureUrl
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new ancf();
+  public static final Parcelable.Creator<PictureUrl> CREATOR = new bfwj();
   public float a;
   public int a;
   public String a;

@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
+import agph;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
@@ -16,13 +17,12 @@ import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
+import bbac;
+import befq;
 import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManagerProxy;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.WeakReferenceHandler;
 import java.util.HashMap;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -60,23 +60,23 @@ public class QWalletCommonJsPlugin$QWVideoJsPlugin
   static final int STATUS_READY = 1;
   static final int STATUS_UNKNOWN = 0;
   static final String TAG = "QWalletCommonJsPlugin";
-  final HashMap mCallbacks = new HashMap();
+  final HashMap<String, HashMap<String, String>> mCallbacks = new HashMap();
   private Context mContext;
   private long mDelayMillis;
   WebViewPlugin mExtPlugin;
   private Handler mHandler;
   private String mVid;
-  final HashMap mVideoViews = new HashMap();
-  private PreloadManagerProxy preloadManager;
+  final HashMap<String, QWalletCommonJsPlugin.QWVideoJsPlugin.MyVideoView> mVideoViews = new HashMap();
+  private agph preloadManager;
   private ViewGroup videoLayout;
   private ViewGroup videoParent;
   
   public QWalletCommonJsPlugin$QWVideoJsPlugin(QWalletCommonJsPlugin paramQWalletCommonJsPlugin, Context paramContext, WebViewPlugin paramWebViewPlugin, AppInterface paramAppInterface)
   {
     this.mContext = paramContext;
-    this.mHandler = new WeakReferenceHandler(this);
+    this.mHandler = new befq(this);
     this.mExtPlugin = paramWebViewPlugin;
-    this.preloadManager = PreloadManagerProxy.a(paramAppInterface);
+    this.preloadManager = agph.a(paramAppInterface);
   }
   
   private void callbackJs(String paramString1, String paramString2, JSONObject paramJSONObject)
@@ -125,7 +125,7 @@ public class QWalletCommonJsPlugin$QWVideoJsPlugin
   
   private String getInnerVideoPath(String paramString)
   {
-    return this.preloadManager.b(paramString);
+    return this.preloadManager.d(paramString);
   }
   
   private void js_download(String paramString1, String paramString2, JSONObject paramJSONObject)
@@ -748,15 +748,15 @@ public class QWalletCommonJsPlugin$QWVideoJsPlugin
     }
   }
   
-  protected void onWebViewCreated(WebViewPlugin.PluginRuntime paramPluginRuntime)
+  protected void onWebViewCreated(bbac parambbac)
   {
-    this.videoParent = ((ViewGroup)paramPluginRuntime.a().findViewById(2131366767));
+    this.videoParent = ((ViewGroup)parambbac.a().findViewById(2131313572));
     if (this.videoParent != null)
     {
       this.videoLayout = new FrameLayout(this.mContext);
-      paramPluginRuntime = new FrameLayout.LayoutParams(this.mContext.getResources().getDisplayMetrics().widthPixels, this.mContext.getResources().getDisplayMetrics().heightPixels);
-      paramPluginRuntime.setMargins(0, 0, 0, 0);
-      this.videoParent.addView(this.videoLayout, paramPluginRuntime);
+      parambbac = new FrameLayout.LayoutParams(this.mContext.getResources().getDisplayMetrics().widthPixels, this.mContext.getResources().getDisplayMetrics().heightPixels);
+      parambbac.setMargins(0, 0, 0, 0);
+      this.videoParent.addView(this.videoLayout, parambbac);
       this.videoLayout.setBackgroundColor(0);
       this.videoLayout.setVisibility(4);
     }
@@ -801,7 +801,7 @@ public class QWalletCommonJsPlugin$QWVideoJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.QWalletCommonJsPlugin.QWVideoJsPlugin
  * JD-Core Version:    0.7.0.1
  */

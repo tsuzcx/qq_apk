@@ -1,52 +1,26 @@
-import android.os.CountDownTimer;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.portal.ConversationHongBao;
-import com.tencent.mobileqq.portal.FormalView;
-import com.tencent.mobileqq.portal.PortalManager;
-import com.tencent.mobileqq.portal.ProgressViewRed;
-
 public class agql
-  extends CountDownTimer
 {
-  public agql(ConversationHongBao paramConversationHongBao, long paramLong1, long paramLong2, long[] paramArrayOfLong)
+  public String a;
+  public boolean a;
+  public String b;
+  public boolean b;
+  
+  public agql(boolean paramBoolean1, boolean paramBoolean2, String paramString1, String paramString2)
   {
-    super(paramLong1, paramLong2);
+    this.jdField_a_of_type_Boolean = paramBoolean1;
+    this.jdField_b_of_type_Boolean = paramBoolean2;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
   }
   
-  public void onFinish()
+  public String toString()
   {
-    PortalManager localPortalManager = (PortalManager)this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBao.jdField_a_of_type_ComTencentMobileqqActivityConversation.a.getManager(78);
-    if (localPortalManager != null) {
-      localPortalManager.a();
-    }
-  }
-  
-  public void onTick(long paramLong)
-  {
-    if (ConversationHongBao.a(this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBao).getVisibility() == 0)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBao.a(paramLong);
-      ConversationHongBao.a(this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBao).a(paramLong, this.jdField_a_of_type_ArrayOfLong[0], this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBao.jdField_a_of_type_JavaLangStringBuilder);
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBao.jdField_a_of_type_ComTencentMobileqqPortalFormalView.getVisibility() == 0)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBao.a(paramLong);
-      this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBao.jdField_a_of_type_ComTencentMobileqqPortalFormalView.a(paramLong, this.jdField_a_of_type_ArrayOfLong[0], this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBao.jdField_b_of_type_JavaLangStringBuilder);
-    }
-    paramLong = System.currentTimeMillis() - this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBao.jdField_b_of_type_Long;
-    if (paramLong > 2000L) {
-      this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBao.jdField_a_of_type_ComTencentMobileqqPortalFormalView.setHBSpeed(1);
-    }
-    while (paramLong <= 1000L) {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBao.jdField_a_of_type_ComTencentMobileqqPortalFormalView.setHBSpeed(2);
+    return "ShowInfo{Red=" + this.jdField_a_of_type_Boolean + ",Corner=" + this.jdField_b_of_type_Boolean + ",con='" + this.jdField_a_of_type_JavaLangString + '\'' + ",buf='" + this.jdField_b_of_type_JavaLangString + '\'' + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     agql
  * JD-Core Version:    0.7.0.1
  */

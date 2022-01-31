@@ -8,18 +8,18 @@ import java.util.ArrayList;
 public final class RegisterHttpShortConnectionResp
   extends JceStruct
 {
-  static ArrayList cache_vBusiPacks;
+  static ArrayList<RegisterHttpShortConnectionBusiPack> cache_vBusiPacks;
   static byte[] cache_vCookies;
   static byte[] cache_vSig;
   public byte bReloadSvrlist;
   public long uInterval;
-  public ArrayList vBusiPacks;
+  public ArrayList<RegisterHttpShortConnectionBusiPack> vBusiPacks;
   public byte[] vCookies;
   public byte[] vSig;
   
   public RegisterHttpShortConnectionResp() {}
   
-  public RegisterHttpShortConnectionResp(byte[] paramArrayOfByte1, ArrayList paramArrayList, long paramLong, byte[] paramArrayOfByte2, byte paramByte)
+  public RegisterHttpShortConnectionResp(byte[] paramArrayOfByte1, ArrayList<RegisterHttpShortConnectionBusiPack> paramArrayList, long paramLong, byte[] paramArrayOfByte2, byte paramByte)
   {
     this.vCookies = paramArrayOfByte1;
     this.vBusiPacks = paramArrayList;

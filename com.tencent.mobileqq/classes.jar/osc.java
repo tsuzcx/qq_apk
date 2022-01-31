@@ -1,20 +1,42 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.base.videoupload.StoryVideoUploadManager;
-import com.tencent.biz.qqstory.model.StoryManager;
-import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.biz.qqstory.troop.memories.TroopStoryItemInfo;
+import com.tencent.biz.pubaccount.readinjoy.skin.RefreshData;
+import org.json.JSONException;
 
 class osc
   implements View.OnClickListener
 {
-  osc(osb paramosb, TroopStoryItemInfo paramTroopStoryItemInfo) {}
+  osc(orz paramorz) {}
   
   public void onClick(View paramView)
   {
-    paramView = ((StoryManager)SuperManager.a(5)).a(this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryItemInfo.storyId);
-    if (paramView != null) {
-      ((StoryVideoUploadManager)SuperManager.a().b(3)).a(paramView);
+    RefreshData localRefreshData = pnh.b(orz.a(this.a), 0);
+    rvf.a(false);
+    paramView = new ocg();
+    paramView.h().b().e().a(orz.a(this.a).e()).f().g().d();
+    if ((orz.a(this.a).e() != 0) || (localRefreshData != null)) {}
+    for (;;)
+    {
+      try
+      {
+        if (!localRefreshData.isAD) {
+          continue;
+        }
+        i = 1;
+        paramView.a("ad_page", i);
+      }
+      catch (JSONException localJSONException)
+      {
+        int i;
+        localJSONException.printStackTrace();
+        continue;
+      }
+      ndn.a(null, "CliOper", "", "", "0X80066FD", "0X80066FD", 0, 0, bgmq.a("default_feeds_proteus_offline_bid"), "", "", paramView.a(), false);
+      if (orz.a(this.a) != null) {
+        orz.a(this.a).c();
+      }
+      return;
+      i = 0;
     }
   }
 }

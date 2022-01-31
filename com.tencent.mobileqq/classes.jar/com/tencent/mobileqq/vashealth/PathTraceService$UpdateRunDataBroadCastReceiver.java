@@ -1,12 +1,13 @@
 package com.tencent.mobileqq.vashealth;
 
+import ajjy;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.os.SystemClock;
 import android.support.v4.app.NotificationCompat.Builder;
 import android.widget.RemoteViews;
-import com.tencent.mobileqq.msf.sdk.QNotificationManager;
+import com.tencent.commonsdk.util.notification.QQNotificationManager;
 import com.tencent.qphone.base.util.QLog;
 import java.text.DecimalFormat;
 
@@ -22,15 +23,15 @@ public class PathTraceService$UpdateRunDataBroadCastReceiver
     long l = paramIntent.getLongExtra(PathTraceService.c, 0L);
     double d = paramIntent.getDoubleExtra(PathTraceService.d, 0.0D);
     if (i == 1) {
-      PathTraceService.a(this.a).setTextViewText(2131365338, "运动进行中");
+      PathTraceService.a(this.a).setTextViewText(2131305279, ajjy.a(2131642116));
     }
-    PathTraceService.a(this.a).setChronometer(2131365340, SystemClock.elapsedRealtime() - l * 1000L, null, false);
+    PathTraceService.a(this.a).setChronometer(2131305280, SystemClock.elapsedRealtime() - l * 1000L, null, false);
     paramContext = new DecimalFormat("######0.00");
-    PathTraceService.a(this.a).setTextViewText(2131365339, paramContext.format(d / 1000.0D) + "km");
+    PathTraceService.a(this.a).setTextViewText(2131305278, paramContext.format(d / 1000.0D) + "km");
     try
     {
       PathTraceService.a(this.a, PathTraceService.a(this.a).build());
-      PathTraceService.a(this.a).notify("PathTraceManager.Service", 3216, PathTraceService.a(this.a));
+      PathTraceService.a(this.a).notify("PathTraceManager.Service", 237, PathTraceService.a(this.a));
       return;
     }
     catch (Throwable paramContext)
@@ -41,7 +42,7 @@ public class PathTraceService$UpdateRunDataBroadCastReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.mobileqq.vashealth.PathTraceService.UpdateRunDataBroadCastReceiver
  * JD-Core Version:    0.7.0.1
  */

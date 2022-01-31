@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.startup.step;
 
-import aikh;
 import android.os.Looper;
 import android.os.SystemClock;
+import ardv;
+import awqm;
+import awrn;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.log.ReportLog;
-import com.tencent.mobileqq.statistics.MTAReportController;
-import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.remote.SimpleAccount;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.QZoneCrashHandler;
@@ -25,16 +25,17 @@ public class Rdm
       return;
     }
     long l = SystemClock.uptimeMillis();
-    MTAReportController localMTAReportController = MTAReportController.a(BaseApplicationImpl.sApplication);
-    localMTAReportController.a(false);
-    localMTAReportController.initMtaConfig("70124", "AGU36HSC29K4");
+    awqm localawqm = awqm.a(BaseApplicationImpl.sApplication);
+    localawqm.a(false);
+    localawqm.initMtaConfig(AppSetting.c(), "AGU36HSC29K4");
+    localawqm.b("MTA_" + paramString1.replace(':', '_'));
     if (!paramString1.endsWith(":openSdk")) {
-      localMTAReportController.a(paramString2);
+      localawqm.a(paramString2);
     }
     QLog.d("AutoMonitor", 1, "MTA, cost=" + (SystemClock.uptimeMillis() - l) + " results: true");
   }
   
-  protected boolean a()
+  protected boolean doStep()
   {
     String str = BaseApplicationImpl.processName;
     QLog.d("RdmInit", 1, "doStep process=" + str + ", sRdmState=" + a.get());
@@ -65,15 +66,15 @@ public class Rdm
       {
         if ((BaseApplicationImpl.sProcessId == 1) || (BaseApplicationImpl.sProcessId == 7))
         {
-          Thread.setDefaultUncaughtExceptionHandler(new ReportLog());
-          StatisticCollector.a(BaseApplicationImpl.sApplication).c((String)localObject1);
+          Thread.setDefaultUncaughtExceptionHandler(new ardv());
+          awrn.a(BaseApplicationImpl.sApplication).c((String)localObject1);
           Object localObject2 = localObject1;
           if (!str.endsWith(":openSdk"))
           {
-            StatisticCollector.a(BaseApplicationImpl.sApplication).a((String)localObject1);
+            awrn.a(BaseApplicationImpl.sApplication).a((String)localObject1);
             localObject2 = localObject1;
           }
-          localObject1 = new aikh(this, str);
+          localObject1 = new Rdm.1(this, str);
           if (Thread.currentThread() != Looper.getMainLooper().getThread()) {
             continue;
           }

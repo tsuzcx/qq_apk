@@ -1,33 +1,36 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.item.ArkAppBabyQNoResultBuilder;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageForArkBabyqReply;
-import com.tencent.mobileqq.service.message.MessageRecordFactory;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import java.lang.ref.WeakReference;
+import java.util.Collections;
 
-public class uzf
-  implements DialogInterface.OnClickListener
+class uzf
+  implements slx<szw, tbq>
 {
-  public uzf(ArkAppBabyQNoResultBuilder paramArkAppBabyQNoResultBuilder, MessageForArkBabyqReply paramMessageForArkBabyqReply) {}
+  uzf(uyz paramuyz, WeakReference paramWeakReference) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(@NonNull szw paramszw, @Nullable tbq paramtbq, @NonNull ErrorMessage paramErrorMessage)
   {
-    paramDialogInterface = (MessageForArkBabyqReply)MessageRecordFactory.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkBabyqReply);
-    if (paramDialogInterface.msgData == null) {
-      paramDialogInterface.msgData = paramDialogInterface.toBytes();
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppBabyQNoResultBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null)
+    if (paramtbq == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppBabyQNoResultBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppBabyQNoResultBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppBabyQNoResultBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkBabyqReply.uniseq);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppBabyQNoResultBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramDialogInterface, null, true);
+      paramszw = (uzm)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (paramszw != null) {
+        paramszw.a(paramErrorMessage.errorCode, Collections.EMPTY_LIST);
+      }
+      return;
     }
+    paramszw = (uzm)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (paramszw != null)
+    {
+      paramszw.a(0, paramtbq.a);
+      return;
+    }
+    urk.c("DoodleEmojiManager", "requestPoiFaces callback is null");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     uzf
  * JD-Core Version:    0.7.0.1
  */

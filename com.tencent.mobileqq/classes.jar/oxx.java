@@ -1,27 +1,34 @@
-import com.tencent.biz.qrcode.activity.QRDisplayActivity;
-import com.tencent.biz.qrcode.util.QRUtils;
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.wxapi.WXShareHelper.WXShareListener;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import tencent.im.oidb.articlesummary.articlesummary.PartnerAccountInfo;
 
 public class oxx
-  implements WXShareHelper.WXShareListener
 {
-  public oxx(QRDisplayActivity paramQRDisplayActivity) {}
-  
-  public void a(BaseResp paramBaseResp)
+  public static void a(Container paramContainer, opw paramopw)
   {
-    if ((this.a.g == null) || (!this.a.g.equals(paramBaseResp.transaction))) {
-      return;
+    a(paramContainer, paramopw, "id_nickname");
+  }
+  
+  public static void a(Container paramContainer, opw paramopw, String paramString)
+  {
+    ArticleInfo localArticleInfo = paramopw.a();
+    paramContainer = paramContainer.getVirtualView();
+    oyf localoyf = (oyf)paramContainer.findViewBaseByName("id_partner_info_avator");
+    if (localoyf != null) {
+      localoyf.a(paramopw);
     }
-    switch (paramBaseResp.errCode)
+    paramContainer = (par)paramContainer.findViewBaseByName(paramString);
+    if (paramContainer != null)
     {
-    case -2: 
-    case -1: 
-    default: 
-      QRUtils.a(1, 2131435319);
-      return;
+      long l = 0L;
+      if (localArticleInfo.mPartnerAccountInfo != null) {
+        l = localArticleInfo.mPartnerAccountInfo.uint64_uin.get();
+      }
+      paramContainer.a(l);
     }
-    QRUtils.a(2, 2131435318);
   }
 }
 

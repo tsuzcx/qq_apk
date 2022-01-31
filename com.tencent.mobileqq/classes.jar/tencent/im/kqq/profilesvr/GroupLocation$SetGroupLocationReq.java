@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class GroupLocation$SetGroupLocationReq
-  extends MessageMicro
+  extends MessageMicro<SetGroupLocationReq>
 {
   public static final int GROUPCODE_FIELD_NUMBER = 1;
   public static final int GROUPLOCATION_FIELD_NUMBER = 2;
@@ -17,7 +17,7 @@ public final class GroupLocation$SetGroupLocationReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     tencent.im.kqq.profilesvr.GroupLocation.SetGroupLocationReq
  * JD-Core Version:    0.7.0.1
  */

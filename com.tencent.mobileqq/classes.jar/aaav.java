@@ -1,41 +1,64 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.message.BaseMessageProcessor.RequestBuilder;
-import com.tencent.mobileqq.app.message.UncommonMessageProcessor;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.service.message.MessageConstants;
-import com.tencent.mobileqq.service.message.MessageUtils;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.mobileqq.activity.AssociatedAccountManageActivity;
+import com.tencent.mobileqq.activity.AssociatedAccountManageActivity.8.1;
 import com.tencent.qphone.base.util.QLog;
-import msf.msgsvc.msg_svc.PbSendMsgReq;
+import com.tencent.widget.SingleLineTextView;
 
 public class aaav
-  implements BaseMessageProcessor.RequestBuilder
+  extends ajjh
 {
-  public aaav(UncommonMessageProcessor paramUncommonMessageProcessor, MessageRecord paramMessageRecord, boolean paramBoolean, msg_svc.PbSendMsgReq paramPbSendMsgReq) {}
+  public aaav(AssociatedAccountManageActivity paramAssociatedAccountManageActivity) {}
   
-  public ToServiceMsg a()
+  void a(String paramString, View paramView)
   {
-    long l = System.currentTimeMillis();
-    ToServiceMsg localToServiceMsg = this.jdField_a_of_type_ComTencentMobileqqAppMessageUncommonMessageProcessor.a.a("MessageSvc.PbMultiMsgSend");
-    localToServiceMsg.extraData.putLong("uniseq", this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq);
-    localToServiceMsg.extraData.putInt("msgtype", this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.msgtype);
-    localToServiceMsg.extraData.putBoolean(MessageConstants.h, this.jdField_a_of_type_Boolean);
-    localToServiceMsg.extraData.putLong("key_msg_info_time_start", l);
-    localToServiceMsg.putWupBuffer(this.jdField_a_of_type_MsfMsgsvcMsg_svc$PbSendMsgReq.toByteArray());
-    localToServiceMsg.setTimeout(15000L);
-    localToServiceMsg.setEnableFastResend(true);
-    if (QLog.isColorLevel())
-    {
-      int i = MessageUtils.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.msgUid);
-      QLog.d("Q.msg.UncommonMessageProcessor", 2, "sendBlessMsg,  mr_uniseq:" + this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq + " msgSeq:" + this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.msgseq + " mr_shMsgseq:" + this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.shmsgseq + " mr_msgUid:" + this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.msgUid + " random:" + i + " isRedBagVideo:" + this.jdField_a_of_type_Boolean);
+    if ((TextUtils.isEmpty(paramString)) || (paramView == null)) {
+      return;
     }
-    return localToServiceMsg;
+    this.a.runOnUiThread(new AssociatedAccountManageActivity.8.1(this, paramString, paramView));
+  }
+  
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  {
+    if ((!paramBoolean) || (TextUtils.isEmpty(paramString))) {}
+    View localView;
+    do
+    {
+      return;
+      localView = AssociatedAccountManageActivity.a(this.a, paramString, 0);
+      if (localView != null) {
+        a(paramString, localView);
+      }
+      localView = AssociatedAccountManageActivity.a(this.a, paramString, 1);
+    } while (localView == null);
+    a(paramString, localView);
+  }
+  
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AssociatedAccountManage", 2, "onUpdateFriendInfo  uin = " + paramString + " isSuccess = " + paramBoolean);
+    }
+    if ((!paramBoolean) || (TextUtils.isEmpty(paramString))) {}
+    View localView;
+    do
+    {
+      return;
+      localView = AssociatedAccountManageActivity.a(this.a, paramString, 0);
+      if (localView != null)
+      {
+        ((SingleLineTextView)localView.findViewById(2131304981)).setText(babh.h(this.a.app, paramString));
+        a(paramString, localView);
+      }
+      localView = AssociatedAccountManageActivity.a(this.a, paramString, 1);
+    } while (localView == null);
+    ((SingleLineTextView)localView.findViewById(2131304981)).setText(babh.h(this.a.app, paramString));
+    a(paramString, localView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aaav
  * JD-Core Version:    0.7.0.1
  */

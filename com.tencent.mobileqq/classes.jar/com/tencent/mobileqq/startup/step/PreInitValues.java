@@ -5,7 +5,7 @@ import com.tencent.mobileqq.app.ThreadManager;
 public class PreInitValues
   extends Step
 {
-  protected boolean a()
+  protected boolean doStep()
   {
     ThreadManager.postImmediately(new InitDPC(), null, false);
     return true;

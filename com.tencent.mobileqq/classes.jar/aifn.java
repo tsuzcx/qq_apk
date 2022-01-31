@@ -1,27 +1,51 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.shortvideo.dancemachine.GLImageView;
-import com.tencent.mobileqq.shortvideo.dancemachine.filter.DanceManagerFilter;
-import com.tencent.mobileqq.shortvideo.dancemachine.filter.DanceReadyFilter;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
 
-public class aifn
-  implements Animation.AnimationListener
+class aifn
+  extends batl
 {
-  public aifn(DanceReadyFilter paramDanceReadyFilter) {}
+  aifn(aifg paramaifg) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onDone(batm parambatm)
   {
-    DanceReadyFilter.f(this.a).f_(false);
-    this.a.a.a();
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloManager", 2, "download panel json done httpCode: " + parambatm.f + ", status: " + parambatm.a());
+    }
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void onDoneFile(batm parambatm)
+  {
+    if (parambatm == null) {}
+    Bundle localBundle;
+    do
+    {
+      return;
+      localBundle = parambatm.a();
+    } while (localBundle == null);
+    int i = localBundle.getInt(parambatm.c);
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloManager", 2, "[onDoneFile], taskType:" + i + ",httpCode: " + parambatm.f + ", status: " + parambatm.a() + ",task.currUrl:" + parambatm.c);
+    }
+    if (1 == i) {}
+    try
+    {
+      super.onDone(parambatm);
+      if (parambatm.a() != 3) {
+        this.a.jdField_a_of_type_Ajak.a(Boolean.valueOf(false));
+      }
+      this.a.b();
+      bajr.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "cmshow", "Apollo", "json_download_success", 0, 0, new String[0]);
+      return;
+    }
+    catch (Exception parambatm)
+    {
+      QLog.e("ApolloManager", 1, "read apollo panel json content fail", parambatm);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aifn
  * JD-Core Version:    0.7.0.1
  */

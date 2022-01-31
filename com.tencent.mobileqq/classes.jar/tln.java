@@ -1,47 +1,25 @@
-import com.tencent.mobileqq.activity.ProfileCardMoreActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.businessCard.BusinessCardManager;
-import com.tencent.mobileqq.businessCard.BusinessCardObserver;
-import com.tencent.mobileqq.businessCard.data.BusinessCard;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.JobSegment;
 
 public class tln
-  extends BusinessCardObserver
+  extends JobSegment<ucw, ucw>
 {
-  public tln(ProfileCardMoreActivity paramProfileCardMoreActivity) {}
+  public tln(tlj paramtlj) {}
   
-  public void a(boolean paramBoolean, String paramString)
+  protected void a(JobContext paramJobContext, ucw paramucw)
   {
-    super.a(paramBoolean, paramString);
-  }
-  
-  public void a(boolean paramBoolean, String paramString, int paramInt)
-  {
-    super.a(paramBoolean, paramString, paramInt);
-    if (paramBoolean)
-    {
-      BusinessCard localBusinessCard = ((BusinessCardManager)this.a.app.getManager(111)).a(paramString);
-      QLog.i("BusinessCard_observer_ProfileCardMoreActivity", 4, "onGetCardInfo success : cardId = " + paramString);
-      this.a.a(localBusinessCard);
-      this.a.a = localBusinessCard;
-      return;
+    paramucw.a(tlj.a(this.a).a(paramucw.a.feedId, true), true, true);
+    if (paramucw.a()) {
+      paramucw.a(tlj.a(this.a).a(tlj.a(this.a), false), true, false);
     }
-    QLog.e("BusinessCard_observer_ProfileCardMoreActivity", 4, "onGetCardInfo faild : cardId = " + paramString);
-  }
-  
-  public void b(boolean paramBoolean, String paramString)
-  {
-    super.b(paramBoolean, paramString);
-  }
-  
-  public void b(boolean paramBoolean, String paramString, int paramInt)
-  {
-    super.b(paramBoolean, paramString, paramInt);
+    urk.a("Q.qqstory.player.CommentFloatDialogController", "load feed data from cache: %s.", tlj.a(this.a).toString());
+    notifyResult(paramucw);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tln
  * JD-Core Version:    0.7.0.1
  */

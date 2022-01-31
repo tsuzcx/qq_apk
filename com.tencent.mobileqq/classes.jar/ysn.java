@@ -1,139 +1,316 @@
-import android.text.Editable;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.apollo.ApolloResponseManager;
-import com.tencent.mobileqq.apollo.utils.ApolloDaoManager;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
-import com.tencent.mobileqq.apollo.view.ApolloInfo;
-import com.tencent.mobileqq.apollo.view.ApolloMainInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.ApolloActionData;
-import com.tencent.mobileqq.data.MessageForText.AtTroopMemberInfo;
-import com.tencent.mobileqq.troop.text.AtTroopMemberSpan;
-import com.tencent.mobileqq.utils.ContactUtils;
-import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.XEditTextEx;
-import java.util.ArrayList;
+import android.text.TextUtils;
+import com.tencent.ad.tangram.net.AdHttp;
+import com.tencent.ad.tangram.net.AdHttp.Params;
+import com.tencent.ad.tangram.thread.AdThreadManager;
+import com.tencent.gdtad.aditem.GdtAd;
+import com.tencent.gdtad.views.canvas.GdtCanvasData;
+import com.tencent.gdtad.views.form.GdtFormData;
+import com.tencent.gdtad.views.form.framework.GdtFormItemData;
+import com.tencent.gdtad.views.xijing.GdtDMPReportUtil.1;
+import com.tencent.gdtad.views.xijing.GdtDMPReportUtil.2;
+import com.tencent.gdtad.views.xijing.GdtDMPReportUtil.3;
+import com.tencent.gdtad.views.xijing.GdtTextData;
+import java.io.UnsupportedEncodingException;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class ysn
-  implements View.OnClickListener
 {
-  public ysn(ApolloResponseManager paramApolloResponseManager) {}
-  
-  public void onClick(View paramView)
+  private static AdHttp.Params a(byte[] paramArrayOfByte)
   {
-    if ((paramView == null) || (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) || (this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie == null) || (this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null)) {}
-    do
+    AdHttp.Params localParams = new AdHttp.Params();
+    localParams.setUrl("https://h5.gdt.qq.com/player/actionset/report");
+    localParams.method = "POST";
+    localParams.contentType = "application/json";
+    localParams.referer = "http://fv.gdt.qq.com";
+    localParams.connectTimeoutMillis = 5000;
+    localParams.readTimeoutMillis = 5000;
+    localParams.requestData = paramArrayOfByte;
+    return localParams;
+  }
+  
+  private static JSONObject a(GdtAd paramGdtAd)
+  {
+    if ((paramGdtAd == null) || (!paramGdtAd.isValid()))
     {
-      return;
-      localObject1 = paramView.getTag(2131362418);
-      paramView = paramView.getTag(2131362419);
-    } while ((localObject1 == null) || (paramView == null));
-    int i = ((Integer)localObject1).intValue();
-    int j = ((Integer)paramView).intValue();
-    Object localObject2 = ((ApolloDaoManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(154)).a(i);
-    if (localObject2 == null)
-    {
-      QLog.e("ApolloResponseManager", 1, "on click action is null!");
-      return;
+      yny.d("GdtDMPReportUtil", "getActionParamsForDownload error");
+      return null;
     }
-    VipUtils.a(null, "cmshow", "Apollo", "quickresponseclick", String.valueOf(this.a.jdField_a_of_type_JavaLangString), ApolloUtil.b(this.a.jdField_a_of_type_Int), j, new String[] { String.valueOf(i), String.valueOf(((ApolloActionData)localObject2).feeType) });
-    if (!ApolloUtil.a(((ApolloActionData)localObject2).actionId, ((ApolloActionData)localObject2).personNum))
+    try
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloResponseManager", 2, "download action data");
-      }
-      ThreadManager.post(new yso(this, (ApolloActionData)localObject2), 5, null, false);
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("app_id", paramGdtAd.getAppId());
+      return localJSONObject;
     }
-    paramView = new ApolloMainInfo(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c());
-    paramView.a = ((ApolloActionData)localObject2);
-    ((ApolloActionData)localObject2).atNickName = "";
-    ((ApolloActionData)localObject2).inputText = "";
-    Object localObject1 = this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
-    if (((SessionInfo)localObject1).jdField_a_of_type_Int == 0)
+    catch (JSONException paramGdtAd)
     {
-      ((ApolloActionData)localObject2).peerUin = ((SessionInfo)localObject1).jdField_a_of_type_JavaLangString;
-      if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.getText() != null)) {
-        ((ApolloActionData)localObject2).inputText = com.tencent.mobileqq.text.TextUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.getText().toString());
-      }
+      yny.d("GdtDMPReportUtil", "getActionParamsForDownload", paramGdtAd);
     }
-    while ((this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.getText() != null))
+    return null;
+  }
+  
+  private static JSONObject a(GdtAd paramGdtAd, GdtFormData paramGdtFormData)
+  {
+    if ((paramGdtAd == null) || (!paramGdtAd.isValid()) || (paramGdtFormData == null) || (!paramGdtFormData.isValid()))
     {
-      localObject2 = this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.getText().toString();
-      if ((localObject2 != null) && (((String)localObject2).length() > 99))
+      yny.d("GdtDMPReportUtil", "getActionParamsForUpload error");
+      return null;
+    }
+    GdtCanvasData localGdtCanvasData = ypo.a(paramGdtAd);
+    for (;;)
+    {
+      int i;
+      try
       {
-        ChatActivityUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), 2131433392, 1);
-        return;
-        if (((((SessionInfo)localObject1).jdField_a_of_type_Int == 1) || (((SessionInfo)localObject1).jdField_a_of_type_Int == 3000)) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidSupportV4AppFragmentActivity != null))
+        paramGdtAd = new JSONObject();
+        i = 0;
+        if (i < paramGdtFormData.getSize())
         {
-          ArrayList localArrayList = new ArrayList();
-          AtTroopMemberSpan.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.getEditableText(), localArrayList);
-          if (((ApolloActionData)localObject2).personNum == 1)
-          {
-            if ((localArrayList.size() == 1) && (0L != ((MessageForText.AtTroopMemberInfo)localArrayList.get(0)).uin) && (((MessageForText.AtTroopMemberInfo)localArrayList.get(0)).startPos == 0))
-            {
-              String str = com.tencent.mobileqq.text.TextUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.getText().toString());
-              try
-              {
-                ((ApolloActionData)localObject2).atNickName = str.substring(0, ((MessageForText.AtTroopMemberInfo)localArrayList.get(0)).textLen);
-                if (((MessageForText.AtTroopMemberInfo)localArrayList.get(0)).textLen >= this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.getText().length() - 1) {}
-                for (((ApolloActionData)localObject2).inputText = "";; ((ApolloActionData)localObject2).inputText = str.substring(((MessageForText.AtTroopMemberInfo)localArrayList.get(0)).textLen))
-                {
-                  ((ApolloActionData)localObject2).peerUin = (((MessageForText.AtTroopMemberInfo)localArrayList.get(0)).uin + "");
-                  this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.getText().clear();
-                  break;
-                }
-              }
-              catch (Exception localException)
-              {
-                for (;;)
-                {
-                  if (QLog.isColorLevel()) {
-                    QLog.d("ApolloResponseManager", 2, "inputText err:" + localException.getMessage());
-                  }
-                  ((ApolloActionData)localObject2).inputText = "";
-                }
-              }
-            }
-            else if (!android.text.TextUtils.isEmpty(this.a.jdField_a_of_type_JavaLangString))
-            {
-              localObject1 = ContactUtils.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_JavaLangString, true);
-              localObject1 = new StringBuilder("@").append((String)localObject1);
-              paramView.a.peerUin = this.a.jdField_a_of_type_JavaLangString;
-              paramView.a.atNickName = ((StringBuilder)localObject1).toString();
-              paramView.a.inputText = com.tencent.mobileqq.text.TextUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.getText().toString());
-              this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.getText().clear();
-              this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a(paramView);
-              this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqApolloViewApolloInfo = paramView;
-              this.a.a();
-            }
-          }
-          else if ((((ApolloActionData)localObject2).personNum == 0) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.getText() != null))
-          {
-            ((ApolloActionData)localObject2).inputText = com.tencent.mobileqq.text.TextUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.getText().toString());
-            this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.getText().clear();
+          localObject = paramGdtFormData.getItem(i);
+          if ((localObject == null) || (!((GdtFormItemData)localObject).isValid())) {
+            yny.d("GdtDMPReportUtil", "getActionParamsForUpload error");
+          } else {
+            paramGdtAd.put(((GdtFormItemData)localObject).title.text, ((GdtFormItemData)localObject).getResult());
           }
         }
       }
-      else if ((((SessionInfo)localObject1).jdField_a_of_type_Int != 1) && (((SessionInfo)localObject1).jdField_a_of_type_Int != 3000))
+      catch (JSONException paramGdtAd)
       {
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.getText().clear();
+        yny.d("GdtDMPReportUtil", "getActionParamsForUpload", paramGdtAd);
+        return null;
+      }
+      Object localObject = new JSONObject();
+      ((JSONObject)localObject).put("component_id", paramGdtFormData.formId);
+      ((JSONObject)localObject).put("component_type", 1);
+      ((JSONObject)localObject).put("bundle", paramGdtAd);
+      if (localGdtCanvasData != null)
+      {
+        if (!TextUtils.isEmpty(localGdtCanvasData.commonPageId)) {
+          ((JSONObject)localObject).put("common_page_id", localGdtCanvasData.commonPageId);
+        }
+        if (!TextUtils.isEmpty(localGdtCanvasData.name)) {
+          ((JSONObject)localObject).put("page_name", localGdtCanvasData.name);
+        }
+        if (localGdtCanvasData.pageId != -2147483648L) {
+          ((JSONObject)localObject).put("page_id", localGdtCanvasData.pageId);
+        }
+        if (!TextUtils.isEmpty(localGdtCanvasData.pageType)) {
+          ((JSONObject)localObject).put("page_type", localGdtCanvasData.pageType);
+        }
+        if (!TextUtils.isEmpty(localGdtCanvasData.pageUrl)) {
+          ((JSONObject)localObject).put("page_url", localGdtCanvasData.pageUrl);
+        }
+      }
+      paramGdtFormData = new JSONObject();
+      paramGdtFormData.put("form_info", paramGdtAd.toString());
+      paramGdtAd = new JSONObject();
+      paramGdtAd.put("custom_info", paramGdtFormData.toString());
+      paramGdtAd.put("leads_standard_form_info", ((JSONObject)localObject).toString());
+      return paramGdtAd;
+      i += 1;
+    }
+  }
+  
+  public static JSONObject a(GdtAd paramGdtAd, JSONObject paramJSONObject, String paramString1, String paramString2, String paramString3)
+  {
+    if ((paramGdtAd == null) || (!paramGdtAd.isValid()) || (paramGdtAd.actionSetId == -2147483648L) || (paramGdtAd.getAdvertiserId() == -2147483648L) || (TextUtils.isEmpty(paramGdtAd.getTraceId())))
+    {
+      yny.d("GdtDMPReportUtil", "getRequestData error");
+      return null;
+    }
+    try
+    {
+      long l = System.currentTimeMillis();
+      JSONObject localJSONObject2 = new JSONObject();
+      localJSONObject2.put("click_id", paramGdtAd.getTraceId());
+      JSONObject localJSONObject1 = new JSONObject();
+      localJSONObject1.put("action_time", l / 1000L);
+      localJSONObject1.put("action_type", paramString1);
+      if (!TextUtils.isEmpty(paramString2)) {
+        localJSONObject1.put("custom_action", paramString2);
+      }
+      if ((paramJSONObject != null) && (paramJSONObject != JSONObject.NULL)) {
+        localJSONObject1.put("action_param", paramJSONObject);
+      }
+      localJSONObject1.put("user_action_set_id", paramGdtAd.actionSetId);
+      localJSONObject1.put("url", paramString3);
+      localJSONObject1.put("trace", localJSONObject2);
+      paramJSONObject = new JSONArray();
+      paramJSONObject.put(0, localJSONObject1);
+      paramString1 = new JSONObject();
+      paramString1.put("account_id", paramGdtAd.getAdvertiserId());
+      paramString1.put("actions", paramJSONObject);
+      paramString1.put("signature", paramGdtAd.getTraceId() + l);
+      return paramString1;
+    }
+    catch (JSONException paramGdtAd)
+    {
+      yny.d("GdtDMPReportUtil", "getRequestData", paramGdtAd);
+    }
+    return null;
+  }
+  
+  public static yqq a(GdtAd paramGdtAd, GdtFormData paramGdtFormData)
+  {
+    paramGdtFormData = a(paramGdtAd, paramGdtFormData);
+    paramGdtAd = a(a(paramGdtAd, paramGdtFormData, "RESERVATION", null, "http://fv.gdt.qq.com"));
+    if ((paramGdtFormData == null) || (paramGdtFormData == JSONObject.NULL) || (paramGdtAd == null) || (paramGdtAd.length <= 0))
+    {
+      yny.d("GdtDMPReportUtil", "reportUpload error");
+      return new yqq(4, -1, null);
+    }
+    int i = 0;
+    for (;;)
+    {
+      if (i < 3)
+      {
+        paramGdtFormData = a(paramGdtAd);
+        if (paramGdtFormData != null) {}
+      }
+      else
+      {
+        yny.d("GdtDMPReportUtil", "reportUpload error");
+        return new yqq(4, -1, null);
+      }
+      AdHttp.send(paramGdtFormData);
+      if (paramGdtFormData.isSuccess()) {
+        return new yqq(1, -1, null);
+      }
+      i += 1;
+    }
+  }
+  
+  public static void a(GdtAd paramGdtAd)
+  {
+    AdThreadManager.INSTANCE.post(new GdtDMPReportUtil.1(paramGdtAd), 4);
+  }
+  
+  public static byte[] a(JSONObject paramJSONObject)
+  {
+    if ((paramJSONObject == null) || (paramJSONObject == JSONObject.NULL)) {
+      return null;
+    }
+    try
+    {
+      paramJSONObject = paramJSONObject.toString().getBytes("UTF-8");
+      return paramJSONObject;
+    }
+    catch (UnsupportedEncodingException paramJSONObject)
+    {
+      yny.d("GdtDMPReportUtil", "getRequestData", paramJSONObject);
+    }
+    return null;
+  }
+  
+  public static void b(GdtAd paramGdtAd)
+  {
+    AdThreadManager.INSTANCE.post(new GdtDMPReportUtil.2(paramGdtAd), 4);
+  }
+  
+  public static void c(GdtAd paramGdtAd)
+  {
+    AdThreadManager.INSTANCE.post(new GdtDMPReportUtil.3(paramGdtAd), 4);
+  }
+  
+  private static boolean d(GdtAd paramGdtAd)
+  {
+    paramGdtAd = a(a(paramGdtAd, a(paramGdtAd), "CUSTOM", "DOWNLOAD_CLICK", "http://fv.gdt.qq.com"));
+    if ((paramGdtAd == null) || (paramGdtAd.length <= 0)) {
+      yny.d("GdtDMPReportUtil", "reportAppBtnClick error");
+    }
+    for (;;)
+    {
+      return false;
+      int i = 0;
+      while (i < 3)
+      {
+        AdHttp.Params localParams = a(paramGdtAd);
+        AdHttp.send(localParams);
+        if ((localParams != null) && (localParams.isSuccess()))
+        {
+          yny.b("GdtDMPReportUtil", "reportAppBtnClick success");
+          return true;
+        }
+        yny.d("GdtDMPReportUtil", "reportAppBtnClick error");
+        i += 1;
       }
     }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a(paramView);
+  }
+  
+  private static boolean e(GdtAd paramGdtAd)
+  {
+    if ((paramGdtAd == null) || (TextUtils.isEmpty(paramGdtAd.getCanvas()))) {}
+    for (;;)
+    {
+      return false;
+      Object localObject1 = new JSONObject();
+      int i;
+      try
+      {
+        Object localObject2 = new JSONObject(paramGdtAd.getCanvas()).getJSONObject("content").getJSONObject("pageConfig");
+        String str = ((JSONObject)localObject2).getString("pageId");
+        localObject2 = ((JSONObject)localObject2).getString("pageUrl");
+        if ((TextUtils.isEmpty(str)) || (TextUtils.isEmpty((CharSequence)localObject2))) {
+          continue;
+        }
+        ((JSONObject)localObject1).put("object", "product");
+        ((JSONObject)localObject1).put("page_id", str);
+        ((JSONObject)localObject1).put("page_url", localObject2);
+        paramGdtAd = a(a(paramGdtAd, (JSONObject)localObject1, "VIEW_CONTENT", null, null));
+        if ((paramGdtAd == null) || (paramGdtAd.length <= 0))
+        {
+          yny.d("GdtDMPReportUtil", "reportOpenWebPage error");
+          return false;
+        }
+      }
+      catch (JSONException localJSONException)
+      {
+        for (;;)
+        {
+          localJSONException.printStackTrace();
+        }
+        i = 0;
+      }
+      while (i < 3)
+      {
+        localObject1 = a(paramGdtAd);
+        AdHttp.send((AdHttp.Params)localObject1);
+        if ((localObject1 != null) && (((AdHttp.Params)localObject1).isSuccess())) {
+          return true;
+        }
+        yny.d("GdtDMPReportUtil", "reportOpenWebPage error");
+        i += 1;
+      }
     }
-    this.a.a();
+  }
+  
+  private static boolean f(GdtAd paramGdtAd)
+  {
+    paramGdtAd = a(a(paramGdtAd, null, "VIEW_CONTENT", null, "http://fv.gdt.qq.com"));
+    if ((paramGdtAd == null) || (paramGdtAd.length <= 0)) {
+      yny.d("GdtDMPReportUtil", "reportLoad error");
+    }
+    for (;;)
+    {
+      return false;
+      int i = 0;
+      while (i < 3)
+      {
+        AdHttp.Params localParams = a(paramGdtAd);
+        AdHttp.send(localParams);
+        if ((localParams != null) && (localParams.isSuccess())) {
+          return true;
+        }
+        yny.d("GdtDMPReportUtil", "reportLoad error");
+        i += 1;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ysn
  * JD-Core Version:    0.7.0.1
  */

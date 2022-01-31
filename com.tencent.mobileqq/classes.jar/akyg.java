@@ -1,81 +1,53 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
-import com.tencent.mobileqq.webprocess.WebProcessReceiver;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserStatistics;
-import com.tencent.mobileqq.webview.swift.scheduler.SwiftBrowserStateMachineScheduler.StateMachine;
-import com.tencent.mobileqq.webview.swift.utils.SwiftWebAccelerator;
+import android.animation.ObjectAnimator;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
+import android.support.annotation.Nullable;
+import android.widget.TextView;
+import com.tencent.mobileqq.ar.view.QRScanEntryView;
+import com.tencent.mobileqq.dinifly.LottieComposition;
+import com.tencent.mobileqq.dinifly.LottieDrawable;
+import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
 import com.tencent.qphone.base.util.QLog;
 
 public class akyg
-  implements SwiftBrowserStateMachineScheduler.StateMachine
+  implements OnCompositionLoadedListener
 {
-  public akyg(SwiftWebAccelerator paramSwiftWebAccelerator) {}
+  public akyg(QRScanEntryView paramQRScanEntryView) {}
   
-  public int a(Bundle paramBundle)
+  public void onCompositionLoaded(@Nullable LottieComposition paramLottieComposition)
   {
-    if (this.a.jdField_a_of_type_Boolean) {
-      QLog.i("WebLog_SwiftWebAccelerator", 1, "mScheduler.next:is in real world, stop the preload task.");
-    }
-    do
+    long l = 0L;
+    if (paramLottieComposition != null)
     {
-      do
-      {
-        return -1;
-        if ((this.a.b & 0x2) != 0)
-        {
-          if ((this.a.jdField_a_of_type_Int & 0x400) == 0) {
-            this.a.b(paramBundle);
-          }
-          if ((this.a.jdField_a_of_type_Int & 0x800) == 0) {
-            this.a.c(paramBundle);
-          }
-          if ((this.a.jdField_a_of_type_Int & 0x1000) == 0) {
-            this.a.d(paramBundle);
-          }
-          if ((this.a.jdField_a_of_type_Int & 0x1) == 0) {
-            return this.a.a(paramBundle);
-          }
-        }
-      } while ((this.a.b & 0x1) == 0);
-      if ((this.a.jdField_a_of_type_Int & 0x2) == 0) {
-        return this.a.b(paramBundle);
-      }
-      if (!SwiftBrowserStatistics.o)
-      {
-        SwiftBrowserStatistics.o = true;
-        if ((WebProcessReceiver.a > 0L) && (WebProcessReceiver.b > 0L))
-        {
-          SwiftBrowserStatistics.z = WebProcessReceiver.b - WebProcessReceiver.a;
-          SwiftBrowserStatistics.A = System.currentTimeMillis() - WebProcessReceiver.b;
-          int i = (int)SwiftBrowserStatistics.z;
-          int j = (int)SwiftBrowserStatistics.A;
-          QLog.i("WebLog_SwiftWebAccelerator", 2, "cross process cost: " + i + "ms, preload cost: " + j + "ms.");
-          VasWebviewUtil.reportVasStatus("Preload_Web_Process", "", "", i, j);
-        }
-      }
-      if ((this.a.jdField_a_of_type_Int & 0x4) == 0) {
-        return this.a.c(paramBundle);
-      }
-      if ((this.a.jdField_a_of_type_Int & 0x8) == 0) {
-        return this.a.e(paramBundle);
-      }
-      if ((paramBundle.getBoolean("_should_set_cookie_", false)) && ((this.a.jdField_a_of_type_Int & 0x10) == 0)) {
-        return this.a.d(paramBundle);
-      }
-    } while (SwiftBrowserStatistics.p);
-    SwiftBrowserStatistics.p = true;
-    if ((WebProcessReceiver.a > 0L) && (WebProcessReceiver.b > 0L))
-    {
-      SwiftBrowserStatistics.B = System.currentTimeMillis() - WebProcessReceiver.b;
-      QLog.i("WebLog_SwiftWebAccelerator", 2, "WebProcessReceiver.onReceive cost: " + SwiftBrowserStatistics.z + "ms, complete preload cost: " + SwiftBrowserStatistics.B + "ms.");
+      l = paramLottieComposition.getDuration() + 100L;
+      Object localObject = paramLottieComposition.getBounds();
+      int i = aciy.a(30.0F, this.a.getResources());
+      float f1 = i / ((Rect)localObject).width();
+      float f2 = i / ((Rect)localObject).height();
+      localObject = new LottieDrawable();
+      ((LottieDrawable)localObject).setComposition(paramLottieComposition);
+      ((LottieDrawable)localObject).setScale(f1, f2);
+      ((LottieDrawable)localObject).playAnimation();
+      QRScanEntryView.a(this.a).setCompoundDrawablesWithIntrinsicBounds(null, (Drawable)localObject, null, null);
     }
-    QLog.i("WebLog_SwiftWebAccelerator", 1, "well done, all preload task execute success!");
-    return -1;
+    for (;;)
+    {
+      paramLottieComposition = ObjectAnimator.ofFloat(QRScanEntryView.a(this.a), "alpha", new float[] { 1.0F, 0.0F, 1.0F });
+      paramLottieComposition.setDuration(300L);
+      paramLottieComposition.setRepeatCount(2);
+      paramLottieComposition.setStartDelay(l);
+      paramLottieComposition.start();
+      QRScanEntryView.a(this.a, QRScanEntryView.a(this.a), true, false);
+      QRScanEntryView.a(this.a, QRScanEntryView.b(this.a), false, true);
+      return;
+      QLog.e("AREngine_QRScanEntryView", 1, "loadFlashLightSVGDrawable fail, use static resource.");
+      QRScanEntryView.a(this.a).setCompoundDrawablesWithIntrinsicBounds(0, 2130843971, 0, 0);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     akyg
  * JD-Core Version:    0.7.0.1
  */

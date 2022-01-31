@@ -1,18 +1,17 @@
-import com.tencent.biz.qqstory.network.BatchHandlerListPuller;
-import com.tencent.biz.qqstory.network.BatchHandlerListPuller.IPullResultCallback;
-import com.tencent.biz.qqstory.troop.model.TroopStoryAIOVideoListSynchronizer;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 
-public class osk
-  implements BatchHandlerListPuller.IPullResultCallback
+class osk
+  implements View.OnClickListener
 {
-  public osk(TroopStoryAIOVideoListSynchronizer paramTroopStoryAIOVideoListSynchronizer, BatchHandlerListPuller paramBatchHandlerListPuller) {}
+  osk(osh paramosh, String paramString, ArticleInfo paramArticleInfo) {}
   
-  public void a(boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryNetworkBatchHandlerListPuller.a();
-    this.jdField_a_of_type_ComTencentBizQqstoryTroopModelTroopStoryAIOVideoListSynchronizer.a.set(false);
-    this.jdField_a_of_type_ComTencentBizQqstoryTroopModelTroopStoryAIOVideoListSynchronizer.c();
+    paramView = obb.g + baaw.encodeToString(this.jdField_a_of_type_JavaLangString.getBytes(), 2);
+    obz.a(osh.a(this.jdField_a_of_type_Osh), paramView);
+    osh.a(this.jdField_a_of_type_Osh, obz.c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo));
   }
 }
 

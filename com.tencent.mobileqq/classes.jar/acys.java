@@ -1,46 +1,23 @@
-import com.tencent.mobileqq.filemanager.activity.delDownloadFile.QfileLocalFileDelPicTabView;
-import com.tencent.mobileqq.filemanager.settings.FMSettings;
-import com.tencent.mobileqq.filemanager.util.FileCategoryUtil;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
-public class acys
-  implements Runnable
+class acys
+  implements azna
 {
-  public acys(QfileLocalFileDelPicTabView paramQfileLocalFileDelPicTabView) {}
+  acys(acyp paramacyp, String paramString) {}
   
-  public void run()
+  public void a(boolean paramBoolean, String paramString)
   {
-    HashMap localHashMap = new HashMap();
-    FileCategoryUtil.a(false, FMSettings.a().b(), ".jpg|.bmp|.jpeg|.gif|.png|.ico|", "", localHashMap, null);
-    Object localObject1 = FMSettings.a().a();
-    if (localObject1 != null) {
-      FileCategoryUtil.a(false, (String)localObject1, ".jpg|.bmp|.jpeg|.gif|.png|.ico|", "", localHashMap, null);
-    }
-    localObject1 = new HashMap();
-    Iterator localIterator = localHashMap.keySet().iterator();
-    while (localIterator.hasNext())
+    if ((paramBoolean) && (this.jdField_a_of_type_JavaLangString.equals(paramString)))
     {
-      Object localObject2 = (String)localIterator.next();
-      String str = this.a.a((String)localObject2);
-      localObject2 = (List)localHashMap.get(localObject2);
-      if (!((HashMap)localObject1).containsKey(str)) {
-        ((HashMap)localObject1).put(str, new ArrayList());
-      }
-      ((List)((HashMap)localObject1).get(str)).addAll((Collection)localObject2);
+      ((aebg)acyp.a(this.jdField_a_of_type_Acyp)).X = true;
+      this.jdField_a_of_type_Acyp.a(true);
+      return;
     }
-    FileCategoryUtil.a((Map)localObject1);
-    QfileLocalFileDelPicTabView.a(this.a, new acyt(this, (HashMap)localObject1));
+    ((aebg)acyp.a(this.jdField_a_of_type_Acyp)).X = false;
+    this.jdField_a_of_type_Acyp.a(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     acys
  * JD-Core Version:    0.7.0.1
  */

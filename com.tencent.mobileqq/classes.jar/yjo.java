@@ -1,18 +1,27 @@
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import tencent.gdt.qq_ad_get.QQAdGet;
+import tencent.gdt.qq_ad_get.QQAdGetRsp;
 
-class yjo
-  implements Runnable
+public class yjo
 {
-  yjo(yjn paramyjn) {}
+  public int a;
+  public long a;
+  public qq_ad_get.QQAdGet a;
+  public qq_ad_get.QQAdGetRsp a;
   
-  public void run()
+  public yjo()
   {
-    this.a.a.b();
+    this.jdField_a_of_type_Int = -2147483648;
+    this.jdField_a_of_type_Long = -2147483648L;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGet != null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     yjo
  * JD-Core Version:    0.7.0.1
  */

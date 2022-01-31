@@ -1,1253 +1,539 @@
 package com.tencent.mobileqq.shortvideo.filter;
 
-import aifx;
-import aify;
-import aifz;
 import android.annotation.SuppressLint;
 import android.os.SystemClock;
 import android.text.TextUtils;
-import com.tencent.av.opengl.filter.qqavimage.QQAVImageFilterConstants;
-import com.tencent.mobileqq.qmcf.QmcfManager;
-import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
-import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
-import com.tencent.mobileqq.richmedia.capture.gesture.GLGestureProxy;
-import com.tencent.mobileqq.richmedia.capture.gesture.MovieFilterGesture;
-import com.tencent.mobileqq.richmedia.mediacodec.videodecoder.HWDecodeListener;
-import com.tencent.mobileqq.shortvideo.dancemachine.ResourceManager;
+import com.tencent.aekit.api.standard.ai.AEDetector;
+import com.tencent.aekit.api.standard.ai.AIManager;
+import com.tencent.aekit.openrender.internal.Frame;
+import com.tencent.aekit.openrender.internal.FrameBufferCache;
+import com.tencent.aekit.plugin.core.AEDetectorType;
+import com.tencent.aekit.plugin.core.AIAttr;
+import com.tencent.aekit.plugin.core.AIInput;
+import com.tencent.aekit.plugin.core.AIParam;
 import com.tencent.mobileqq.shortvideo.facedancegame.FaceDanceDetectTask;
 import com.tencent.mobileqq.shortvideo.facedancegame.FaceDanceDetectTask.FaceDetectTaskResult;
 import com.tencent.mobileqq.shortvideo.facedancegame.IFaceDetectCallBack;
 import com.tencent.mobileqq.shortvideo.gesture.GestureKeyInfo;
 import com.tencent.mobileqq.shortvideo.gesture.GestureMgrRecognize;
-import com.tencent.mobileqq.shortvideo.ptvfilter.GroupVideoFilterList;
-import com.tencent.mobileqq.shortvideo.ptvfilter.VideoFilterList;
-import com.tencent.mobileqq.shortvideo.ptvfilter.material.MovieMaterial;
-import com.tencent.mobileqq.shortvideo.resource.ArtFilterResource;
 import com.tencent.mobileqq.shortvideo.resource.GestureResource;
 import com.tencent.mobileqq.shortvideo.resource.PtuFilterResource;
 import com.tencent.mobileqq.shortvideo.resource.Resources;
-import com.tencent.mobileqq.shortvideo.util.FileUtil;
-import com.tencent.mobileqq.shortvideo.util.SoLoader;
+import com.tencent.mobileqq.shortvideo.util.CameraInterFace;
 import com.tencent.sveffects.SLog;
 import com.tencent.sveffects.SdkContext;
-import com.tencent.ttpic.facedetect.FaceDetector;
-import com.tencent.ttpic.facedetect.FaceDetector.FACE_DETECT_MODE;
-import com.tencent.ttpic.facedetect.FaceDetectorManager;
-import com.tencent.ttpic.util.RetrieveDataManager;
-import com.tencent.ttpic.util.RetrieveDataManager.DATA_TYPE;
-import com.tencent.ttpic.util.VideoMaterialUtil;
-import com.tencent.ttpic.util.VideoPrefsUtil;
-import com.tencent.ttpic.util.youtu.VideoPreviewFaceOutlineDetector;
-import com.tencent.view.RendererUtils;
-import com.tencent.ytcommon.util.YTCommonInterface;
-import java.lang.ref.WeakReference;
+import com.tencent.ttpic.baseutils.log.LogUtils;
+import com.tencent.ttpic.openai.ttpicmodule.AEHandDetector;
+import com.tencent.ttpic.openapi.PTFaceAttr;
+import com.tencent.ttpic.openapi.PTFaceAttr.PTExpression;
+import com.tencent.ttpic.openapi.PTFaceDetector;
+import com.tencent.ttpic.openapi.PTSegAttr;
+import com.tencent.ttpic.openapi.facedetect.FaceDetector.FACE_DETECT_MODE;
+import com.tencent.ttpic.openapi.filter.VideoFilterListExtension;
+import com.tencent.ttpic.openapi.manager.FeatureManager;
+import com.tencent.ttpic.openapi.model.StarParam;
+import com.tencent.ttpic.openapi.plugin.AICtrl;
+import com.tencent.ttpic.openapi.ttpicmodule.PTEmotionDetector;
+import com.tencent.ttpic.openapi.ttpicmodule.PTSegmenter;
+import com.tencent.ttpic.openapi.util.RetrieveDataManager;
+import com.tencent.ttpic.openapi.util.RetrieveDataManager.DATA_TYPE;
+import com.tencent.ttpic.openapi.util.VideoFilterUtil;
+import com.tencent.ttpic.openapi.util.youtu.VideoPreviewFaceOutlineDetector;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.concurrent.atomic.AtomicInteger;
 
 @SuppressLint({"NewApi"})
 public class QQFilterRenderManager
 {
-  private int jdField_a_of_type_Int = 0;
-  private long jdField_a_of_type_Long = 0L;
-  private aifz jdField_a_of_type_Aifz = new aifz(null);
-  private MusicItemInfo jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo;
-  private MovieFilterGesture jdField_a_of_type_ComTencentMobileqqRichmediaCaptureGestureMovieFilterGesture;
-  private QQDanceEventHandler jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQDanceEventHandler;
-  public GestureKeyInfo a;
-  private MovieMaterial jdField_a_of_type_ComTencentMobileqqShortvideoPtvfilterMaterialMovieMaterial;
-  public FaceDetector a;
-  private WeakReference jdField_a_of_type_JavaLangRefWeakReference;
-  private List jdField_a_of_type_JavaUtilList = new CopyOnWriteArrayList();
-  private final Map jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
-  public boolean a;
-  private int jdField_b_of_type_Int = 0;
-  private long jdField_b_of_type_Long = 0L;
-  private List jdField_b_of_type_JavaUtilList = new CopyOnWriteArrayList();
-  public boolean b;
-  private int jdField_c_of_type_Int = 0;
-  private long jdField_c_of_type_Long = 0L;
-  public boolean c;
-  private int jdField_d_of_type_Int;
-  private long jdField_d_of_type_Long = 0L;
-  public boolean d;
-  private int jdField_e_of_type_Int;
-  private long jdField_e_of_type_Long = 0L;
-  public boolean e;
-  private int jdField_f_of_type_Int;
-  private boolean jdField_f_of_type_Boolean = false;
-  private int jdField_g_of_type_Int;
-  private boolean jdField_g_of_type_Boolean = false;
+  public static final float FACE_DET_SCALE = 0.25F;
+  private static final String TAG = "QQFilterRenderManager";
+  private static final QQFilterCreator mDynamicCreator = new QQFilterCreator();
+  private static final String sId_Prefix = "FRM_";
+  private static final AtomicInteger sInstanceCount = new AtomicInteger(0);
+  private AEDetector aeDetector;
+  private AIAttr aiAttr;
+  public CameraInterFace cameraInterFace;
+  private boolean enableGauss = true;
+  private FaceDetector.FACE_DETECT_MODE faceDetectMode = FaceDetector.FACE_DETECT_MODE.MULTIPLE;
+  private boolean isAEDetectorInited = false;
+  public boolean mBackCameraDetectEnable = false;
+  private long mBeginTime = 0L;
+  private FilterBusinessOperation mBusinessOpt;
+  public boolean mDetectedFace = false;
+  public boolean mDetectedGesture = false;
+  private long mEndTime = 0L;
+  private PTFaceAttr mFaceAttr;
+  private int mFaceDetectBuffer = 0;
+  int mFaceDetectHeight = 0;
+  int mFaceDetectWidth = 0;
+  PTFaceDetector mFaceDetector = null;
+  private QQFilterRenderManager.FaceDetectParam mFaceParam = new QQFilterRenderManager.FaceDetectParam(null);
+  int mFilterHeight;
+  int mFilterWidth;
+  private boolean mHasGestureInit = false;
+  private String mId = "";
+  private final FilterManagerInternal mInternal = new FilterManagerInternal();
+  public GestureKeyInfo mLastGestureDetector = null;
+  public boolean mNeedDoFaceDetect = false;
+  public boolean mNeedDoGestureDetect = false;
+  public boolean mNeedDoYTGestureDetect = false;
+  private final Map<String, String> mParamMap = new ConcurrentHashMap();
+  private PTSegAttr mSegAttr;
+  private StarParam mStarParam;
+  private int mSufaceHeight;
+  private int mSufaceWidth;
+  private boolean mSurfaceDestroyed = false;
+  private double mUIAspectRatio;
+  private boolean needEmotionDetect = false;
+  private boolean needFaceDetect = true;
+  private boolean needGenderDetect = false;
+  private boolean needHandDetect = false;
+  private boolean needSegment = false;
   
   public QQFilterRenderManager()
   {
-    this.jdField_a_of_type_ComTencentTtpicFacedetectFaceDetector = null;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_d_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureGestureKeyInfo = null;
-    this.jdField_e_of_type_Boolean = false;
+    myId();
+    this.mInternal.setCommonParam(this);
+    this.mBusinessOpt = new FilterBusinessOperation(this);
   }
   
   public QQFilterRenderManager(int[] paramArrayOfInt)
   {
-    this.jdField_a_of_type_ComTencentTtpicFacedetectFaceDetector = null;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_d_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureGestureKeyInfo = null;
-    this.jdField_e_of_type_Boolean = false;
+    this(paramArrayOfInt, null, true);
+  }
+  
+  public QQFilterRenderManager(int[] paramArrayOfInt, Object[] paramArrayOfObject, boolean paramBoolean)
+  {
+    myId();
+    this.mInternal.setCommonParam(this);
+    this.mBusinessOpt = new FilterBusinessOperation(this);
     if (paramArrayOfInt != null)
     {
-      int j = paramArrayOfInt.length;
-      if (i < j)
+      if (paramBoolean)
       {
-        switch (paramArrayOfInt[i])
+        QQFilterRenderManager.ChainBuilder localChainBuilder = getChainBuilder();
+        localChainBuilder.setUseSort(true);
+        while (i < paramArrayOfInt.length)
         {
-        }
-        for (;;)
-        {
+          localChainBuilder.addFilter(paramArrayOfInt[i], localChainBuilder.getParam(paramArrayOfObject, i));
           i += 1;
-          break;
-          t();
-          continue;
-          a();
-          continue;
-          a();
-          continue;
-          j();
-          continue;
-          i();
-          continue;
-          a();
-          continue;
-          h();
-          continue;
-          u();
-          continue;
-          n();
-          continue;
-          o();
-          continue;
-          a();
-          p();
-          continue;
-          a();
-          continue;
-          a();
         }
-      }
-    }
-  }
-  
-  private void a(int paramInt, aifz paramaifz)
-  {
-    this.jdField_a_of_type_Long = SystemClock.elapsedRealtimeNanos();
-    int i = RetrieveDataManager.DATA_TYPE.RGBA.value;
-    if (this.jdField_a_of_type_ComTencentTtpicFacedetectFaceDetector != null) {
-      i = this.jdField_a_of_type_ComTencentTtpicFacedetectFaceDetector.getDataType().value;
-    }
-    paramaifz.jdField_a_of_type_ArrayOfByte = RetrieveDataManager.getInstance().retrieveData(i, paramInt, paramaifz.jdField_a_of_type_Int, paramaifz.jdField_b_of_type_Int);
-    this.jdField_b_of_type_Long = SystemClock.elapsedRealtimeNanos();
-    if (SLog.a()) {
-      SLog.d("QQFilterRenderManager", "FilterProcessRender_showPreview[doFaceDetectInitAndFlip " + (this.jdField_b_of_type_Long - this.jdField_a_of_type_Long) / 1000L + "us]");
-    }
-  }
-  
-  private void a(aifz paramaifz, boolean paramBoolean)
-  {
-    try
-    {
-      this.jdField_a_of_type_Long = SystemClock.elapsedRealtimeNanos();
-      if (paramBoolean) {}
-      for (;;)
-      {
-        this.jdField_b_of_type_Long = SystemClock.elapsedRealtimeNanos();
-        long l = (this.jdField_b_of_type_Long - this.jdField_a_of_type_Long) / 1000L;
-        if (SLog.a()) {
-          SLog.d("QQFilterRenderManager", "FilterProcessRender_showPreview[doTrackProceses=" + l + "us] forceDetect=" + paramBoolean);
-        }
-        if ((paramBoolean) || (this.jdField_a_of_type_ComTencentTtpicFacedetectFaceDetector.needDetectFace())) {
-          this.jdField_a_of_type_ComTencentTtpicFacedetectFaceDetector.postJob(new aify(this, paramaifz));
-        }
-        if (!this.jdField_a_of_type_ComTencentTtpicFacedetectFaceDetector.detectExpression(2)) {
-          break;
-        }
-        this.jdField_a_of_type_Boolean = true;
-        return;
-        this.jdField_a_of_type_ComTencentTtpicFacedetectFaceDetector.doTrack(paramaifz.jdField_a_of_type_ArrayOfByte, paramaifz.jdField_a_of_type_Int, paramaifz.jdField_b_of_type_Int);
-      }
-      this.jdField_a_of_type_Boolean = false;
-    }
-    catch (Throwable paramaifz)
-    {
-      paramaifz.printStackTrace();
-      return;
-    }
-  }
-  
-  private void b(FilterDesc paramFilterDesc)
-  {
-    Object localObject = a(70);
-    if ((localObject != null) && (((List)localObject).size() == 1))
-    {
-      localObject = (QQAVFilter)((List)localObject).get(0);
-      if (localObject != null) {
-        ((QQAVFilter)localObject).a(paramFilterDesc);
-      }
-    }
-  }
-  
-  private void c(FilterDesc paramFilterDesc)
-  {
-    Object localObject = a(80);
-    if ((localObject != null) && (((List)localObject).size() == 1))
-    {
-      localObject = (QQSpecialAVFilter)((List)localObject).get(0);
-      if (localObject != null) {
-        ((QQSpecialAVFilter)localObject).a(paramFilterDesc);
-      }
-    }
-  }
-  
-  private void c(List paramList)
-  {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    if ((paramList != null) && (paramList.size() > 0))
-    {
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
-      {
-        FilterDesc localFilterDesc = (FilterDesc)paramList.next();
-        this.jdField_a_of_type_JavaUtilList.add(localFilterDesc);
-      }
-    }
-  }
-  
-  private void d(FilterDesc paramFilterDesc)
-  {
-    List localList = a(90);
-    if ((localList != null) && (localList.size() == 1))
-    {
-      if (paramFilterDesc == null) {
-        QmcfManager.a().b(0);
+        localChainBuilder.commit();
       }
     }
     else {
       return;
     }
-    int i = QmcfManager.a().a(paramFilterDesc.jdField_a_of_type_Int);
-    QmcfManager.a().a(i, paramFilterDesc.b(SdkContext.a().a().a().a()));
+    this.mInternal.push(paramArrayOfInt, paramArrayOfObject);
   }
   
-  private void s()
+  private void clear()
   {
-    this.jdField_g_of_type_Boolean = false;
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_d_of_type_Boolean = false;
-    GestureMgrRecognize.a().b();
+    destroyGestureDetector();
+    this.mBusinessOpt.setPtvVideoFilter(null);
+    this.mParamMap.clear();
   }
   
-  private void t()
+  private void destroyGestureDetector()
   {
-    a(new QQPtvVideoFilter(40, this));
+    this.mHasGestureInit = false;
+    this.mNeedDoGestureDetect = false;
+    this.mDetectedGesture = false;
+    GestureMgrRecognize.getInstance().stop();
   }
   
-  private void u()
+  private void doAIDetect(Frame paramFrame)
   {
-    a(new QQMovieFilter(this));
-  }
-  
-  private void v()
-  {
-    VideoPreviewFaceOutlineDetector.getInstance().setFaceDetectMode(FaceDetector.FACE_DETECT_MODE.MULTIPLE);
-    RendererUtils.setEnableLog(false);
-  }
-  
-  private void w()
-  {
-    s();
-    a(null);
-    this.jdField_a_of_type_JavaUtilMap.clear();
-  }
-  
-  public float a()
-  {
-    QQSpecialAVFilter.MusicWaveformSupporter localMusicWaveformSupporter = null;
-    if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
-      localMusicWaveformSupporter = (QQSpecialAVFilter.MusicWaveformSupporter)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    this.mBeginTime = SystemClock.elapsedRealtimeNanos();
+    AIParam localAIParam = new AIParam();
+    int i = VideoFilterUtil.get4DirectionAngle(this.aeDetector.getRotation());
+    localAIParam.update(paramFrame.width, paramFrame.height, i);
+    localAIParam.setModuleParam(AEDetectorType.FACE.value, "phoneRoll", Float.valueOf(90.0F));
+    localAIParam.setModuleParam(AEDetectorType.FACE.value, "scale", Float.valueOf((float)getWindowScale()));
+    localAIParam.setModuleParam(AEDetectorType.FACE.value, "starParam", this.mStarParam);
+    localAIParam.setModuleParam(AEDetectorType.HAND.value, "scale", Float.valueOf((float)getWindowScale()));
+    localAIParam.setModuleParam(AEDetectorType.HAND.value, "scale", Float.valueOf((float)getWindowScale()));
+    localAIParam.setModuleParam(AEDetectorType.EMOTION.value, "scale", Float.valueOf((float)getWindowScale()));
+    localAIParam.setSurfaceTime(System.currentTimeMillis() * 1000000L);
+    AICtrl localAICtrl = new AICtrl();
+    localAICtrl.switchModule(AEDetectorType.FACE.value, true);
+    localAICtrl.switchModule(AEDetectorType.EMOTION.value, this.needEmotionDetect);
+    localAICtrl.switchModule(AEDetectorType.HAND.value, this.needHandDetect);
+    localAICtrl.switchModule(AEDetectorType.SEGMENT.value, this.needSegment);
+    this.aeDetector.getFaceDetector().setGenderDetectable(this.needGenderDetect);
+    AIInput localAIInput = new AIInput();
+    localAIInput.setInputTexture(paramFrame.getTextureId());
+    this.aiAttr = this.aeDetector.detectFrame(localAIInput, localAIParam, localAICtrl);
+    this.aiAttr.getOutTexture();
+    this.mFaceAttr = ((PTFaceAttr)this.aiAttr.getFaceAttr());
+    this.mDetectedFace = this.mFaceAttr.getTriggeredExpression().contains(Integer.valueOf(PTFaceAttr.PTExpression.FACE_DETECT.value));
+    this.mEndTime = SystemClock.elapsedRealtimeNanos();
+    long l = (this.mEndTime - this.mBeginTime) / 1000L;
+    if (SLog.isEnable()) {
+      SLog.d("QQFilterRenderManager", "FilterProcessRender_showPreview[doTrackProceses=" + l + "us]");
     }
-    if (localMusicWaveformSupporter != null) {
-      return localMusicWaveformSupporter.a();
-    }
-    return -1.0F;
   }
   
-  public int a()
+  private void initial()
   {
-    return this.jdField_a_of_type_Int;
+    LogUtils.setEnable(false);
   }
   
-  public int a(int paramInt)
+  private void myId()
   {
-    QQFilterLogManager.b();
-    QQBaseFilter localQQBaseFilter1 = a();
-    int j;
-    if (localQQBaseFilter1 != null)
+    this.mId = ("FRM_" + sInstanceCount.getAndIncrement());
+  }
+  
+  public void cameraChange(int paramInt)
+  {
+    QQFilterLogManager.setLogStart("cameraChange");
+    this.mInternal.changeCamera(paramInt);
+    QQFilterLogManager.setLogEnd("cameraChange");
+  }
+  
+  public void destroyAEDetecor()
+  {
+    if (this.aeDetector != null)
     {
-      i = 0;
-      for (;;)
+      this.aeDetector.clear();
+      this.aeDetector = null;
+    }
+    this.isAEDetectorInited = false;
+    this.mDetectedFace = false;
+    this.mNeedDoFaceDetect = false;
+    this.needEmotionDetect = false;
+    this.needSegment = false;
+    this.needHandDetect = false;
+    this.aiAttr = null;
+    this.mFaceAttr = null;
+    this.mSegAttr = null;
+  }
+  
+  public boolean detectedHeadNod()
+  {
+    return (this.mFaceDetector != null) && (this.mFaceAttr.getTriggeredExpression().contains(Integer.valueOf(PTFaceAttr.PTExpression.HEAD_NOD.value)));
+  }
+  
+  public boolean detectedOpenMouth()
+  {
+    return (this.mFaceDetector != null) && (this.mFaceAttr.getTriggeredExpression().contains(Integer.valueOf(PTFaceAttr.PTExpression.MOUTH_OPEN.value)));
+  }
+  
+  public boolean detectedShakeHead()
+  {
+    return (this.mFaceDetector != null) && (this.mFaceAttr.getTriggeredExpression().contains(Integer.valueOf(PTFaceAttr.PTExpression.HEAD_SHAKE.value)));
+  }
+  
+  public void doAEDetectWithCallBack(Frame paramFrame, int paramInt1, int paramInt2, IFaceDetectCallBack paramIFaceDetectCallBack)
+  {
+    long l = SystemClock.elapsedRealtimeNanos();
+    AIParam localAIParam = new AIParam();
+    localAIParam.update(paramFrame.width, paramFrame.height, 0);
+    localAIParam.setModuleParam(AEDetectorType.FACE.value, "phoneRoll", Integer.valueOf(90));
+    localAIParam.setModuleParam(AEDetectorType.FACE.value, "scale", Float.valueOf((float)getWindowScale()));
+    localAIParam.setModuleParam(AEDetectorType.FACE.value, "starParam", this.mStarParam);
+    AICtrl localAICtrl = new AICtrl();
+    localAICtrl.switchModule(AEDetectorType.FACE.value, true);
+    localAICtrl.switchModule(AEDetectorType.EMOTION.value, false);
+    localAICtrl.switchModule(AEDetectorType.HAND.value, false);
+    localAICtrl.switchModule(AEDetectorType.SEGMENT.value, false);
+    AIInput localAIInput = new AIInput();
+    localAIInput.setInputTexture(paramFrame.getTextureId());
+    this.aiAttr = this.aeDetector.detectFrame(localAIInput, localAIParam, localAICtrl);
+    this.aiAttr.getOutTexture();
+    this.mFaceAttr = ((PTFaceAttr)this.aiAttr.getFaceAttr());
+    FaceDanceDetectTask.logTimeInfo("doAEDetectWithCallBack", l, SystemClock.elapsedRealtimeNanos());
+    if (paramIFaceDetectCallBack != null)
+    {
+      paramFrame = new FaceDanceDetectTask.FaceDetectTaskResult();
+      if (this.mFaceAttr.getFaceCount() <= 0) {
+        break label300;
+      }
+    }
+    label300:
+    for (boolean bool = true;; bool = false)
+    {
+      paramFrame.vaild = bool;
+      if (paramFrame.vaild)
       {
-        j = paramInt;
-        if (i >= this.jdField_b_of_type_JavaUtilList.size()) {
-          break;
-        }
-        QQFilterLogManager.a();
-        QQBaseFilter localQQBaseFilter2 = (QQBaseFilter)this.jdField_b_of_type_JavaUtilList.get(i);
-        j = paramInt;
-        if (localQQBaseFilter1.a(localQQBaseFilter2.c()))
-        {
-          localQQBaseFilter2.b(paramInt);
-          localQQBaseFilter2.h();
-          j = localQQBaseFilter2.b();
-        }
-        QQFilterLogManager.a("ManualMode" + localQQBaseFilter2.getClass().getName());
-        i += 1;
-        paramInt = j;
+        paramFrame.pointFs = ((List)this.mFaceAttr.getAllFacePoints().get(0));
+        paramFrame.angles = ((float[])this.mFaceAttr.getAllFaceAngles().get(0));
       }
+      paramIFaceDetectCallBack.faceDetectEnd(paramFrame);
+      return;
     }
-    int i = 0;
-    for (;;)
-    {
-      j = paramInt;
-      if (i >= this.jdField_b_of_type_JavaUtilList.size()) {
-        break;
-      }
-      QQFilterLogManager.a();
-      localQQBaseFilter1 = (QQBaseFilter)this.jdField_b_of_type_JavaUtilList.get(i);
-      j = paramInt;
-      if (localQQBaseFilter1.d() != 1)
-      {
-        localQQBaseFilter1.b(paramInt);
-        localQQBaseFilter1.h();
-        j = localQQBaseFilter1.b();
-      }
-      QQFilterLogManager.a("NormalMode" + localQQBaseFilter1.getClass().getName());
-      i += 1;
-      paramInt = j;
-    }
-    QQFilterLogManager.c();
-    return j;
   }
   
-  public int a(String paramString)
+  public final int drawFrame(int paramInt)
   {
-    paramString = (String)this.jdField_a_of_type_JavaUtilMap.get(paramString);
-    if (!TextUtils.isEmpty(paramString)) {
-      return Integer.parseInt(paramString);
-    }
-    return -1;
+    QQFilterLogManager.setOnDrawFrameStart();
+    paramInt = this.mInternal.runChain(paramInt);
+    QQFilterLogManager.setOnDrawFrameEnd();
+    return paramInt;
   }
   
-  public long a()
+  public AIAttr getAIAttr()
   {
-    return this.jdField_e_of_type_Long;
+    return this.aiAttr;
   }
   
-  public FilterDesc a(int paramInt)
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
-    {
-      FilterDesc localFilterDesc = (FilterDesc)localIterator.next();
-      if ((localFilterDesc != null) && (QQAVImageFilterConstants.a(localFilterDesc.jdField_b_of_type_Int) == paramInt)) {
-        return localFilterDesc;
-      }
-    }
-    return null;
-  }
-  
-  public MusicItemInfo a()
-  {
-    FilterDesc localFilterDesc = a(2);
-    if ((localFilterDesc != null) && (QQAVImageFilterConstants.a(localFilterDesc.jdField_b_of_type_Int))) {
-      return this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo;
-    }
-    return null;
-  }
-  
-  public QQAVFilter a()
-  {
-    QQAVFilter localQQAVFilter = new QQAVFilter(70, this);
-    a(localQQAVFilter);
-    return localQQAVFilter;
-  }
-  
-  public QQBaseFilter a()
-  {
-    Object localObject = b(1);
-    if (((List)localObject).size() > 0)
-    {
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        QQBaseFilter localQQBaseFilter = (QQBaseFilter)((Iterator)localObject).next();
-        if (localQQBaseFilter.f_()) {
-          return localQQBaseFilter;
-        }
-      }
-    }
-    return null;
-  }
-  
-  public QQDanceEventHandler a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQDanceEventHandler;
-  }
-  
-  public QQDanceGameFilter a()
-  {
-    QQDanceGameFilter localQQDanceGameFilter = new QQDanceGameFilter(130, this);
-    a(localQQDanceGameFilter);
-    return localQQDanceGameFilter;
-  }
-  
-  public QQFaceDanceMechineFilter a()
-  {
-    QQFaceDanceMechineFilter localQQFaceDanceMechineFilter = new QQFaceDanceMechineFilter(140, this);
-    a(localQQFaceDanceMechineFilter);
-    return localQQFaceDanceMechineFilter;
-  }
-  
-  public QQSVArtFilterNew a()
-  {
-    QQSVArtFilterNew localQQSVArtFilterNew = new QQSVArtFilterNew(90, this);
-    a(localQQSVArtFilterNew);
-    return localQQSVArtFilterNew;
-  }
-  
-  public QQSpecialAVFilter a()
-  {
-    QQSpecialAVFilter localQQSpecialAVFilter = new QQSpecialAVFilter(80, this);
-    a(localQQSpecialAVFilter);
-    return localQQSpecialAVFilter;
-  }
-  
-  public QQTransferFilter a()
-  {
-    QQTransferFilter localQQTransferFilter = new QQTransferFilter(this);
-    a(localQQTransferFilter);
-    localQQTransferFilter.d();
-    localQQTransferFilter.b(this.jdField_f_of_type_Int, this.jdField_g_of_type_Int);
-    return localQQTransferFilter;
-  }
-  
-  public List a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public List a(int paramInt)
+  public List<QQBaseFilter> getAllActiveFilters()
   {
     ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = this.jdField_b_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
-    {
-      QQBaseFilter localQQBaseFilter = (QQBaseFilter)localIterator.next();
-      if (localQQBaseFilter.c() == paramInt) {
-        localArrayList.add(localQQBaseFilter);
-      }
-    }
+    this.mInternal.getAllActiveFilter(localArrayList);
     return localArrayList;
   }
   
-  public void a()
+  public boolean getBackCameraDetectEnable()
   {
-    Iterator localIterator;
-    if (QmcfManager.a().a() == 2)
-    {
-      localIterator = a(130).iterator();
-      while (localIterator.hasNext()) {
-        ((QQDanceGameFilter)localIterator.next()).a();
-      }
-    }
-    if (QQFaceDanceMechineFilter.jdField_a_of_type_Boolean)
-    {
-      localIterator = a(140).iterator();
-      while (localIterator.hasNext()) {
-        ((QQFaceDanceMechineFilter)localIterator.next()).a();
-      }
-    }
+    return this.mBackCameraDetectEnable;
   }
   
-  public void a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
+  public boolean getBooleanParam(String paramString)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvfilterMaterialMovieMaterial == null) || (!FileUtil.b(this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvfilterMaterialMovieMaterial.e))) {}
-    for (;;)
-    {
-      return;
-      paramFloat1 = (paramFloat3 / 2.0F - paramFloat1) / (paramFloat3 / 2.0F);
-      paramFloat2 = (paramFloat2 - paramFloat4 / 2.0F) / (paramFloat4 / 2.0F);
-      Object localObject = a(100);
-      if ((localObject != null) && (((List)localObject).size() > 0))
-      {
-        localObject = ((List)localObject).iterator();
-        while (((Iterator)localObject).hasNext()) {
-          ((QQMovieFilter)((Iterator)localObject).next()).a(this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvfilterMaterialMovieMaterial.e, this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvfilterMaterialMovieMaterial.f, this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvfilterMaterialMovieMaterial.jdField_d_of_type_Boolean, paramFloat1 * 0.5F, paramFloat2 * 0.5F, null);
-        }
-      }
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    e();
-    if (this.jdField_b_of_type_Boolean)
-    {
-      this.jdField_a_of_type_Aifz.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-      this.jdField_a_of_type_Aifz.jdField_b_of_type_Int = this.jdField_b_of_type_Int;
-      if (this.jdField_f_of_type_Boolean)
-      {
-        a(paramInt, this.jdField_a_of_type_Aifz);
-        a(this.jdField_a_of_type_Aifz, false);
-      }
-    }
-  }
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    this.jdField_d_of_type_Int = paramInt3;
-    this.jdField_e_of_type_Int = paramInt4;
-    this.jdField_f_of_type_Int = paramInt1;
-    this.jdField_g_of_type_Int = paramInt2;
-    if ((this.jdField_a_of_type_Int == 0) || (this.jdField_b_of_type_Int == 0) || (this.jdField_c_of_type_Int == 0) || (this.jdField_a_of_type_Int < 90) || (this.jdField_b_of_type_Int < 120))
-    {
-      this.jdField_a_of_type_Int = ((int)(this.jdField_f_of_type_Int * VideoMaterialUtil.SCALE_FACE_DETECT));
-      this.jdField_b_of_type_Int = ((int)(this.jdField_g_of_type_Int * VideoMaterialUtil.SCALE_FACE_DETECT));
-      this.jdField_c_of_type_Int = (this.jdField_a_of_type_Int * this.jdField_b_of_type_Int * 4);
-    }
-    if (SLog.a()) {
-      SLog.d("QQFilterRenderManager", "updatePreviewSize:: mSufaceWidth=" + this.jdField_d_of_type_Int + ";mSufaceHeight=" + this.jdField_e_of_type_Int + ";mFilterWidth=" + this.jdField_f_of_type_Int + ";mFilterHeight=" + this.jdField_g_of_type_Int + ";mFaceDetectWidth" + this.jdField_a_of_type_Int + ";mFaceDetectHeight=" + this.jdField_b_of_type_Int);
-    }
-  }
-  
-  public void a(int paramInt1, int paramInt2, int[] paramArrayOfInt)
-  {
-    Iterator localIterator = this.jdField_b_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
-    {
-      QQBaseFilter localQQBaseFilter = (QQBaseFilter)localIterator.next();
-      if (localQQBaseFilter.c() == paramInt1) {
-        localQQBaseFilter.a(paramInt2, paramArrayOfInt);
-      }
-    }
-  }
-  
-  public void a(long paramLong)
-  {
-    this.jdField_e_of_type_Long = paramLong;
-  }
-  
-  public void a(long paramLong1, long paramLong2)
-  {
-    this.jdField_c_of_type_Long = paramLong1;
-    this.jdField_d_of_type_Long = paramLong2;
-  }
-  
-  public void a(FilterDesc paramFilterDesc)
-  {
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(paramFilterDesc);
-    c(localArrayList);
-    if (paramFilterDesc == null)
-    {
-      b(null);
-      c(null);
-      d(null);
-      SLog.c("FilterRender", "set currentFilter null");
-      return;
-    }
-    SLog.c("FilterRender", "set currentFilter " + paramFilterDesc.e);
-    if (paramFilterDesc.jdField_a_of_type_Int == 0)
-    {
-      b(paramFilterDesc);
-      c(null);
-      d(null);
-      return;
-    }
-    if (paramFilterDesc.jdField_a_of_type_Int == 2)
-    {
-      b(null);
-      c(paramFilterDesc);
-      d(null);
-      return;
-    }
-    if ((paramFilterDesc.jdField_a_of_type_Int == 1) || (paramFilterDesc.jdField_a_of_type_Int == 3))
-    {
-      b(null);
-      c(null);
-      d(paramFilterDesc);
-      return;
-    }
-    SLog.a("FilterRender", "set currentFilter unKnown");
-  }
-  
-  public void a(QQBaseFilter paramQQBaseFilter)
-  {
-    if (paramQQBaseFilter.c() <= 0) {
-      return;
-    }
-    if (this.jdField_b_of_type_JavaUtilList.size() == 0)
-    {
-      this.jdField_b_of_type_JavaUtilList.add(paramQQBaseFilter);
-      return;
-    }
-    int k = this.jdField_b_of_type_JavaUtilList.size();
-    int i = 0;
-    int j = -1;
-    while ((i < k) && (paramQQBaseFilter.c() >= ((QQBaseFilter)this.jdField_b_of_type_JavaUtilList.get(i)).c()))
-    {
-      j = i + 1;
-      i += 1;
-    }
-    if (j == -1)
-    {
-      this.jdField_b_of_type_JavaUtilList.add(0, paramQQBaseFilter);
-      return;
-    }
-    this.jdField_b_of_type_JavaUtilList.add(j, paramQQBaseFilter);
-  }
-  
-  public void a(QQDanceEventHandler paramQQDanceEventHandler)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQDanceEventHandler = paramQQDanceEventHandler;
-  }
-  
-  public void a(QQSpecialAVFilter.MusicWaveformSupporter paramMusicWaveformSupporter)
-  {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramMusicWaveformSupporter);
-    if (paramMusicWaveformSupporter != null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo = paramMusicWaveformSupporter.a();
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo = null;
-  }
-  
-  public void a(GroupVideoFilterList paramGroupVideoFilterList)
-  {
-    Object localObject = a(40);
-    if ((localObject != null) && (((List)localObject).size() > 0))
-    {
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext()) {
-        ((QQPtvVideoFilter)((Iterator)localObject).next()).a(paramGroupVideoFilterList, this.jdField_f_of_type_Int, this.jdField_g_of_type_Int, 1.0D);
-      }
-    }
-  }
-  
-  public void a(VideoFilterList paramVideoFilterList)
-  {
-    Object localObject = a(40);
-    if ((localObject != null) && (((List)localObject).size() > 0))
-    {
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext()) {
-        ((QQPtvVideoFilter)((Iterator)localObject).next()).a(paramVideoFilterList, this.jdField_f_of_type_Int, this.jdField_g_of_type_Int, 1.0D);
-      }
-    }
-  }
-  
-  public void a(MovieMaterial paramMovieMaterial)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvfilterMaterialMovieMaterial = paramMovieMaterial;
-    if ((paramMovieMaterial != null) && (paramMovieMaterial.jdField_a_of_type_Boolean)) {
-      if (FileUtil.a(paramMovieMaterial.e))
-      {
-        if (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureGestureMovieFilterGesture == null) {
-          this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureGestureMovieFilterGesture = new MovieFilterGesture(this, GLGestureProxy.a());
-        }
-        GLGestureProxy.a().b(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureGestureMovieFilterGesture);
-        GLGestureProxy.a().a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureGestureMovieFilterGesture);
-      }
-    }
-    while (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureGestureMovieFilterGesture == null) {
-      return;
-    }
-    GLGestureProxy.a().b(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureGestureMovieFilterGesture);
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureGestureMovieFilterGesture = null;
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)))
-    {
-      QQFaceDanceMechineFilter.jdField_a_of_type_Boolean = false;
-      ResourceManager.a().a(0);
-    }
-    List localList;
-    do
-    {
-      return;
-      a(null, null, null);
-      QmcfManager.a().b(0);
-      a(null);
-      localList = a(140);
-    } while ((localList == null) || (localList.size() != 1));
-    ((QQBaseFilter)localList.get(0)).a(1, new int[] { 10, 20, 140 });
-    ResourceManager.a().a(1);
-    ResourceManager.a().a(paramString1);
-    ResourceManager.a().b(paramString2);
-    QQFaceDanceMechineFilter.jdField_a_of_type_Boolean = true;
-  }
-  
-  public void a(String paramString1, String paramString2, String paramString3)
-  {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)) || (TextUtils.isEmpty(paramString3))) {
-      if (QmcfManager.a().a() == 2) {
-        QmcfManager.a().b(0);
-      }
-    }
-    List localList;
-    do
-    {
-      return;
-      a(null, null);
-      QQFaceDanceMechineFilter.jdField_a_of_type_Boolean = false;
-      a(null);
-      localList = a(130);
-    } while ((localList == null) || (localList.size() != 1));
-    ((QQBaseFilter)localList.get(0)).a(1, new int[] { 10, 130 });
-    ResourceManager.a().a(0);
-    ResourceManager.a().a(paramString1);
-    ResourceManager.a().b(paramString2);
-    QmcfManager.a().a(2, paramString3);
-  }
-  
-  public void a(String paramString1, String paramString2, boolean paramBoolean, HWDecodeListener paramHWDecodeListener, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
-  {
-    float f1 = 0.0F;
-    float f2 = 0.0F;
-    if ((paramFloat1 != 0.0F) || (paramFloat2 != 0.0F) || (paramFloat3 != 0.0F) || (paramFloat4 != 0.0F))
-    {
-      f1 = (paramFloat3 / 2.0F - paramFloat1) / (paramFloat3 / 2.0F) * 0.5F;
-      f2 = (paramFloat2 - paramFloat4 / 2.0F) / (paramFloat4 / 2.0F) * 0.5F;
-    }
-    Object localObject = a(100);
-    if ((localObject != null) && (((List)localObject).size() > 0))
-    {
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext()) {
-        ((QQMovieFilter)((Iterator)localObject).next()).a(paramString1, paramString2, paramBoolean, f1, f2, paramHWDecodeListener);
-      }
-    }
-  }
-  
-  public void a(ArrayList paramArrayList)
-  {
-    List localList = a(110);
-    if ((localList != null) && (localList.size() > 0)) {
-      ((QQTrackerStickersFilter)localList.get(0)).a(paramArrayList);
-    }
-  }
-  
-  public void a(List paramList)
-  {
-    c(paramList);
-    b(null);
-    c(null);
-    if ((paramList == null) || (paramList.size() == 0)) {
-      d(null);
-    }
-    for (;;)
-    {
-      return;
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
-      {
-        FilterDesc localFilterDesc = (FilterDesc)paramList.next();
-        if (localFilterDesc != null)
-        {
-          int i = QQAVImageFilterConstants.a(localFilterDesc.jdField_b_of_type_Int);
-          if (i == 0)
-          {
-            d(null);
-            b(localFilterDesc);
-          }
-          else if (i == 2)
-          {
-            d(null);
-            c(localFilterDesc);
-          }
-          else if (i == 1)
-          {
-            d(localFilterDesc);
-          }
-        }
-      }
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_b_of_type_Boolean = paramBoolean;
-  }
-  
-  public void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, IFaceDetectCallBack paramIFaceDetectCallBack)
-  {
-    try
-    {
-      long l = SystemClock.elapsedRealtimeNanos();
-      this.jdField_a_of_type_ComTencentTtpicFacedetectFaceDetector.doTrack(paramArrayOfByte, paramInt1, paramInt2);
-      FaceDanceDetectTask.a("mFaceDetector.doTrack", l, SystemClock.elapsedRealtimeNanos());
-      if (this.jdField_a_of_type_ComTencentTtpicFacedetectFaceDetector.needDetectFace())
-      {
-        this.jdField_a_of_type_ComTencentTtpicFacedetectFaceDetector.postJob(new aifx(this, paramArrayOfByte, paramInt1, paramInt2, paramIFaceDetectCallBack));
-        return;
-      }
-      if (paramIFaceDetectCallBack == null) {
-        return;
-      }
-      paramArrayOfByte = new FaceDanceDetectTask.FaceDetectTaskResult();
-      if (this.jdField_a_of_type_ComTencentTtpicFacedetectFaceDetector.getFaceCount() <= 0) {
-        break label161;
-      }
-      bool = true;
-    }
-    catch (Throwable paramArrayOfByte)
-    {
-      for (;;)
-      {
-        paramArrayOfByte.printStackTrace();
-        if (paramIFaceDetectCallBack == null) {
-          break;
-        }
-        paramArrayOfByte = new FaceDanceDetectTask.FaceDetectTaskResult();
-        paramArrayOfByte.jdField_a_of_type_Boolean = false;
-        paramIFaceDetectCallBack.a(paramArrayOfByte);
-        return;
-        label161:
-        boolean bool = false;
-      }
-    }
-    paramArrayOfByte.jdField_a_of_type_Boolean = bool;
-    if (paramArrayOfByte.jdField_a_of_type_Boolean)
-    {
-      paramArrayOfByte.jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_ComTencentTtpicFacedetectFaceDetector.getAllPoints(0);
-      paramArrayOfByte.jdField_a_of_type_ArrayOfFloat = this.jdField_a_of_type_ComTencentTtpicFacedetectFaceDetector.getFaceAngles(0);
-    }
-    paramIFaceDetectCallBack.a(paramArrayOfByte);
-    return;
-  }
-  
-  public boolean a()
-  {
-    return (a() != null) && (a().size() > 0);
-  }
-  
-  public boolean a(int paramInt)
-  {
-    boolean bool2 = false;
-    List localList = a(paramInt);
-    boolean bool1 = bool2;
-    if (localList != null)
-    {
-      bool1 = bool2;
-      if (localList.size() > 0) {
-        bool1 = ((QQBaseFilter)localList.get(0)).f_();
-      }
-    }
-    return bool1;
-  }
-  
-  public boolean a(String paramString)
-  {
-    paramString = (String)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+    paramString = (String)this.mParamMap.get(paramString);
     if (!TextUtils.isEmpty(paramString)) {
       return Boolean.parseBoolean(paramString);
     }
     return false;
   }
   
-  public byte[] a()
+  public FilterBusinessOperation getBusinessOperation()
   {
-    if (this.jdField_b_of_type_Boolean) {
-      return this.jdField_a_of_type_Aifz.jdField_a_of_type_ArrayOfByte;
+    return this.mBusinessOpt;
+  }
+  
+  public int getCameraID()
+  {
+    if (this.cameraInterFace == null) {
+      return -1;
+    }
+    return this.cameraInterFace.getCameraID();
+  }
+  
+  public final QQFilterRenderManager.ChainBuilder getChainBuilder()
+  {
+    return new QQFilterRenderManager.ChainBuilder(this);
+  }
+  
+  public final String getCurrentChainId()
+  {
+    return this.mInternal.getCurrentChainId();
+  }
+  
+  public final boolean getCurrentChainInfo(ArrayList<Integer> paramArrayList, ArrayList<Object> paramArrayList1)
+  {
+    return this.mInternal.getCurrentChainData(paramArrayList, paramArrayList1);
+  }
+  
+  public PTFaceAttr getFaceAttr()
+  {
+    return this.mFaceAttr;
+  }
+  
+  public byte[] getFaceDataAfterDoFaceDetect()
+  {
+    if (this.mNeedDoFaceDetect) {
+      return this.mFaceParam.mFaceData;
     }
     return null;
   }
   
-  public byte[] a(int paramInt1, int paramInt2, int paramInt3)
+  public byte[] getFaceDetectDataByTexture(int paramInt1, int paramInt2, int paramInt3)
   {
-    this.jdField_a_of_type_Long = SystemClock.elapsedRealtimeNanos();
+    this.mBeginTime = SystemClock.elapsedRealtimeNanos();
     int i = RetrieveDataManager.DATA_TYPE.RGBA.value;
-    if (this.jdField_a_of_type_ComTencentTtpicFacedetectFaceDetector != null) {
-      i = this.jdField_a_of_type_ComTencentTtpicFacedetectFaceDetector.getDataType().value;
-    }
     byte[] arrayOfByte = RetrieveDataManager.getInstance().retrieveData(i, paramInt1, paramInt2, paramInt3);
-    this.jdField_b_of_type_Long = SystemClock.elapsedRealtimeNanos();
-    if (SLog.a()) {
-      SLog.d("QQFilterRenderManager", "FilterProcessRender_showPreview[doFaceDetectInitAndFlip " + (this.jdField_b_of_type_Long - this.jdField_a_of_type_Long) / 1000L + "us]");
+    this.mEndTime = SystemClock.elapsedRealtimeNanos();
+    if (SLog.isEnable()) {
+      SLog.d("QQFilterRenderManager", "FilterProcessRender_showPreview[doFaceDetectInitAndFlip " + (this.mEndTime - this.mBeginTime) / 1000L + "us]");
     }
     return arrayOfByte;
   }
   
-  public int b()
+  public boolean getFaceDetectFlags()
   {
-    return this.jdField_b_of_type_Int;
+    return this.mNeedDoFaceDetect;
   }
   
-  public long b()
+  public int getFaceDetectHeight()
   {
-    return this.jdField_d_of_type_Long;
+    return this.mFaceDetectHeight;
   }
   
-  public List b()
+  public int getFaceDetectWidth()
+  {
+    return this.mFaceDetectWidth;
+  }
+  
+  public VideoPreviewFaceOutlineDetector getFaceDetector()
+  {
+    if ((this.aeDetector == null) || (this.aeDetector.getFaceDetector() == null)) {
+      return null;
+    }
+    return this.aeDetector.getFaceDetector().getFaceDetector();
+  }
+  
+  public String getFilterCacheInfo()
+  {
+    return this.mInternal.getCacheFilterInfo();
+  }
+  
+  public int getFilterHeight()
+  {
+    return this.mFilterHeight;
+  }
+  
+  public Object getFilterSpecificParam(int paramInt)
+  {
+    return this.mInternal.getFilterSpecificParam(paramInt);
+  }
+  
+  public int getFilterWidth()
+  {
+    return this.mFilterWidth;
+  }
+  
+  public float getFloatParam(String paramString)
+  {
+    paramString = (String)this.mParamMap.get(paramString);
+    if (!TextUtils.isEmpty(paramString)) {
+      return Float.parseFloat(paramString);
+    }
+    return -1.0F;
+  }
+  
+  public int getIntParam(String paramString)
+  {
+    paramString = (String)this.mParamMap.get(paramString);
+    if (!TextUtils.isEmpty(paramString)) {
+      return Integer.parseInt(paramString);
+    }
+    return -1;
+  }
+  
+  public String getParam(String paramString)
+  {
+    return (String)this.mParamMap.get(paramString);
+  }
+  
+  public QQBaseFilter getQQFilterByType(int paramInt)
+  {
+    return this.mInternal.currentChainGetFilter(paramInt);
+  }
+  
+  public List<QQBaseFilter> getQQFilters(int paramInt)
   {
     ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = this.jdField_b_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
-    {
-      QQBaseFilter localQQBaseFilter = (QQBaseFilter)localIterator.next();
-      if (localQQBaseFilter.f_()) {
-        localArrayList.add(localQQBaseFilter);
-      }
+    QQBaseFilter localQQBaseFilter = this.mInternal.currentChainGetFilter(paramInt);
+    if (localQQBaseFilter != null) {
+      localArrayList.add(localQQBaseFilter);
     }
     return localArrayList;
   }
   
-  public List b(int paramInt)
+  public String getStackTraceInfo()
   {
-    ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = this.jdField_b_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
+    return this.mInternal.generateStackTrace();
+  }
+  
+  public int getSufaceWidth()
+  {
+    return this.mSufaceWidth;
+  }
+  
+  public int getSurfaceHeight()
+  {
+    return this.mSufaceHeight;
+  }
+  
+  public double getUIAspectRatio()
+  {
+    return this.mUIAspectRatio;
+  }
+  
+  public double getWindowScale()
+  {
+    if ((this.mFaceDetectWidth == 0) || (this.mFilterWidth == 0)) {
+      return 0.25D;
+    }
+    float f = this.mFaceDetectWidth * 1.0F / this.mFilterWidth;
+    this.mFaceDetectHeight = ((int)(this.mFilterHeight * f));
+    return f;
+  }
+  
+  public boolean hasAEDetectorInited()
+  {
+    return this.isAEDetectorInited;
+  }
+  
+  public boolean hasActiveFilter()
+  {
+    return this.mInternal.hasAllResourceActiveFilter();
+  }
+  
+  public boolean hasQQFilter(int paramInt)
+  {
+    return this.mInternal.currentChinaHasFilter(paramInt);
+  }
+  
+  public void initAEDetector_sync()
+  {
+    if (!this.isAEDetectorInited)
     {
-      QQBaseFilter localQQBaseFilter = (QQBaseFilter)localIterator.next();
-      if (localQQBaseFilter.d() == paramInt) {
-        localArrayList.add(localQQBaseFilter);
+      FeatureManager.loadBasicFeatures();
+      if (!FeatureManager.isBasicFeaturesFunctionReady()) {
+        return;
+      }
+      this.aeDetector = new AEDetector();
+      int i = this.aeDetector.init();
+      this.aiAttr = null;
+      if (i != 0) {
+        break label138;
       }
     }
-    return localArrayList;
-  }
-  
-  public void b()
-  {
-    Iterator localIterator;
-    if (QmcfManager.a().a() == 2)
+    label138:
+    for (boolean bool = true;; bool = false)
     {
-      localIterator = a(130).iterator();
-      while (localIterator.hasNext()) {
-        ((QQDanceGameFilter)localIterator.next()).b();
+      this.isAEDetectorInited = bool;
+      String str1 = SdkContext.getInstance().getResources().getPtuFilterResource().getSoPathDir();
+      String str2 = SdkContext.getInstance().getResources().getPtuFilterResource().getPortraitPathDir();
+      if (this.needHandDetect) {
+        AIManager.installDetector(AEHandDetector.class, str1, str1);
       }
-    }
-    if (QQFaceDanceMechineFilter.jdField_a_of_type_Boolean)
-    {
-      localIterator = a(140).iterator();
-      while (localIterator.hasNext()) {
-        ((QQFaceDanceMechineFilter)localIterator.next()).b();
+      if (this.needSegment) {
+        AIManager.installDetector(PTSegmenter.class, str2, str1);
       }
-    }
-  }
-  
-  public void b(int paramInt)
-  {
-    Object localObject = a(25);
-    if ((localObject != null) && (((List)localObject).size() > 0))
-    {
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext()) {
-        ((QQPtBeautyFilter)((Iterator)localObject).next()).a(paramInt);
+      if (!this.needEmotionDetect) {
+        break;
       }
-    }
-  }
-  
-  public void b(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    QQFilterLogManager.b("surfaceCreate");
-    v();
-    a(paramInt1, paramInt2, paramInt3, paramInt4);
-    Iterator localIterator = this.jdField_b_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext()) {
-      ((QQBaseFilter)localIterator.next()).d();
-    }
-    QQFilterLogManager.c("surfaceCreate");
-  }
-  
-  public void b(String paramString1, String paramString2)
-  {
-    this.jdField_a_of_type_JavaUtilMap.put(paramString1, paramString2);
-  }
-  
-  public void b(List paramList)
-  {
-    List localList = a(120);
-    if ((localList != null) && (localList.size() > 0)) {
-      ((QQDynamicStickersFilter)localList.get(0)).a(paramList);
-    }
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    this.jdField_c_of_type_Boolean = paramBoolean;
-    if (this.jdField_c_of_type_Boolean)
-    {
-      GestureMgrRecognize.a().a();
+      AIManager.installDetector(PTEmotionDetector.class, str1, str1);
       return;
     }
-    GestureMgrRecognize.a().b();
   }
   
-  public boolean b()
+  public void initDetectFaceSDK(Frame paramFrame)
   {
-    boolean bool2 = false;
-    List localList = a(100);
-    boolean bool1 = bool2;
-    if (localList != null)
-    {
-      bool1 = bool2;
-      if (localList.size() > 0) {
-        bool1 = ((QQMovieFilter)localList.get(0)).f_();
-      }
-    }
-    return bool1;
-  }
-  
-  public boolean b(int paramInt)
-  {
-    Iterator localIterator = this.jdField_b_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext()) {
-      if (((QQBaseFilter)localIterator.next()).c() == paramInt) {
-        return true;
-      }
-    }
-    return false;
-  }
-  
-  public int c()
-  {
-    int k = 0;
-    int j = 0;
-    Object localObject = a(25);
-    int i = k;
-    if (localObject != null)
-    {
-      i = k;
-      if (((List)localObject).size() > 0)
-      {
-        localObject = ((List)localObject).iterator();
-        for (i = j; ((Iterator)localObject).hasNext(); i = ((QQPtBeautyFilter)((Iterator)localObject).next()).a()) {}
-      }
-    }
-    return i;
-  }
-  
-  public long c()
-  {
-    return this.jdField_c_of_type_Long;
-  }
-  
-  public void c()
-  {
-    Iterator localIterator;
-    if (QmcfManager.a().a() == 2)
-    {
-      localIterator = a(130).iterator();
-      while (localIterator.hasNext()) {
-        ((QQBaseFilter)localIterator.next()).g();
-      }
-    }
-    if (QQFaceDanceMechineFilter.jdField_a_of_type_Boolean)
-    {
-      localIterator = a(140).iterator();
-      while (localIterator.hasNext()) {
-        ((QQBaseFilter)localIterator.next()).g();
-      }
+    initAEDetector_sync();
+    if ((this.mNeedDoFaceDetect) && (this.isAEDetectorInited)) {
+      doAIDetect(paramFrame);
     }
   }
   
-  public void c(int paramInt)
+  public void initGestureDetectorSDK_Sync()
   {
-    List localList = a(40);
-    if ((localList != null) && (localList.size() > 0)) {
-      ((QQPtvVideoFilter)localList.get(0)).a(paramInt);
-    }
-  }
-  
-  public void c(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    QQFilterLogManager.b("surfaceChange");
-    a(paramInt1, paramInt2, paramInt3, paramInt4);
-    Iterator localIterator = this.jdField_b_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext()) {
-      ((QQBaseFilter)localIterator.next()).b(paramInt1, paramInt2);
-    }
-    QQFilterLogManager.c("surfaceChange");
-  }
-  
-  public void c(boolean paramBoolean)
-  {
-    VideoPrefsUtil.setMaterialMute(paramBoolean);
-    Object localObject = a(100);
-    if ((localObject != null) && (((List)localObject).size() > 0))
-    {
-      localObject = ((List)localObject).iterator();
-      if (((Iterator)localObject).hasNext())
-      {
-        QQMovieFilter localQQMovieFilter = (QQMovieFilter)((Iterator)localObject).next();
-        if (!paramBoolean) {}
-        for (boolean bool = true;; bool = false)
-        {
-          localQQMovieFilter.a(bool);
-          break;
-        }
-      }
-    }
-  }
-  
-  public boolean c()
-  {
-    Iterator localIterator = this.jdField_b_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext()) {
-      if (((QQBaseFilter)localIterator.next()).f_()) {
-        return true;
-      }
-    }
-    return false;
-  }
-  
-  public int d()
-  {
-    Object localObject = a(40);
-    if ((localObject != null) && (((List)localObject).size() > 0))
-    {
-      localObject = ((List)localObject).iterator();
-      if (((Iterator)localObject).hasNext()) {
-        return ((QQPtvVideoFilter)((Iterator)localObject).next()).a();
-      }
-    }
-    return 0;
-  }
-  
-  public void d()
-  {
-    Iterator localIterator;
-    if (QmcfManager.a().a() == 2)
-    {
-      localIterator = a(130).iterator();
-      while (localIterator.hasNext()) {
-        ((QQBaseFilter)localIterator.next()).f();
-      }
-    }
-    if (QQFaceDanceMechineFilter.jdField_a_of_type_Boolean)
-    {
-      localIterator = a(140).iterator();
-      while (localIterator.hasNext()) {
-        ((QQBaseFilter)localIterator.next()).f();
-      }
-    }
-  }
-  
-  public boolean d()
-  {
-    return SoLoader.a(SdkContext.a().a(), false);
-  }
-  
-  public int e()
-  {
-    Object localObject = a(70);
-    if ((localObject != null) && (((List)localObject).size() >= 1))
-    {
-      localObject = (QQAVFilter)((List)localObject).get(0);
-      if (localObject != null) {
-        return ((QQAVFilter)localObject).a();
-      }
-    }
-    return 0;
-  }
-  
-  public void e()
-  {
-    this.jdField_a_of_type_ComTencentTtpicFacedetectFaceDetector = FaceDetectorManager.getInstance().getCurrentFaceDetector();
-    String str;
-    if (!this.jdField_f_of_type_Boolean)
-    {
-      str = SdkContext.a().a().a().a();
-      boolean bool = TextUtils.isEmpty(str);
-      if (SoLoader.a(SdkContext.a().a(), bool))
-      {
-        YTCommonInterface.initAuth(SdkContext.a().a(), "youtusdk_mqq.licence", 0, true);
-        if ((!bool) && (this.jdField_a_of_type_ComTencentTtpicFacedetectFaceDetector != null)) {
-          this.jdField_a_of_type_ComTencentTtpicFacedetectFaceDetector.setModelPath(str);
-        }
-      }
-    }
-    try
-    {
-      if (this.jdField_a_of_type_ComTencentTtpicFacedetectFaceDetector != null)
-      {
-        this.jdField_a_of_type_ComTencentTtpicFacedetectFaceDetector.init();
-        this.jdField_f_of_type_Boolean = true;
-      }
-      if (SLog.a()) {
-        SLog.d("QQFilterRenderManager", "mFaceDetector path:" + str);
-      }
+    if (this.mHasGestureInit) {
       return;
     }
-    catch (OutOfMemoryError localOutOfMemoryError)
-    {
-      for (;;)
-      {
-        SLog.a("QQFilterRenderManager", "QQFilterRenderManager OutOfMemoryError:", localOutOfMemoryError);
-        this.jdField_f_of_type_Boolean = false;
-      }
-    }
-    catch (Error localError)
-    {
-      for (;;)
-      {
-        SLog.a("QQFilterRenderManager", "QQFilterRenderManager Exception:", localError);
-        this.jdField_f_of_type_Boolean = false;
-      }
-    }
-  }
-  
-  public int f()
-  {
-    return this.jdField_f_of_type_Int;
-  }
-  
-  public void f()
-  {
-    boolean bool = TextUtils.isEmpty(SdkContext.a().a().a().a());
-    if (SoLoader.a(SdkContext.a().a(), bool)) {
-      FaceDetectorManager.getInstance().destroy();
-    }
-    this.jdField_a_of_type_ComTencentTtpicFacedetectFaceDetector = null;
-    this.jdField_f_of_type_Boolean = false;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-  }
-  
-  public int g()
-  {
-    return this.jdField_g_of_type_Int;
-  }
-  
-  public void g()
-  {
-    if (this.jdField_g_of_type_Boolean) {
-      return;
-    }
-    this.jdField_g_of_type_Boolean = true;
+    this.mHasGestureInit = true;
     i = 200;
     m = 5;
-    String str1 = SdkContext.a().a().a().b();
-    String str2 = SdkContext.a().a().a().a();
+    String str1 = SdkContext.getInstance().getResources().getGestureResource().getGestureGapTime();
+    String str2 = SdkContext.getInstance().getResources().getGestureResource().getGestureGapFrame();
     try
     {
       j = Integer.parseInt(str1);
@@ -1260,7 +546,7 @@ public class QQFilterRenderManager
       {
         int k = m;
         int j = i;
-        if (SLog.a())
+        if (SLog.isEnable())
         {
           SLog.d("GestureTestUse", "GestureMgr.getInstance().setRecognizeMillis number exception" + i);
           k = m;
@@ -1268,102 +554,217 @@ public class QQFilterRenderManager
         }
       }
     }
-    if (SLog.a()) {
+    if (SLog.isEnable()) {
       SLog.d("GestureTestUse", "PtvTemplateManager.mGestureGapTime raw value " + str1 + ":GestureMgr.getInstance().setRecognizeMillis normal result" + j + ",frameRate is:" + k);
     }
-    GestureMgrRecognize.a().a(j);
-    GestureMgrRecognize.a().b(k);
+    GestureMgrRecognize.getInstance().setRecognizeMillis(j);
+    GestureMgrRecognize.getInstance().setRecognizeFrameRate(k);
   }
   
-  public int h()
+  public boolean isEnableGauss()
   {
-    return this.jdField_d_of_type_Int;
+    return this.enableGauss;
   }
   
-  public void h()
+  public boolean isFilterWork(int paramInt)
   {
-    a(new QQLowLightFilter(this));
+    return this.mInternal.isFilterWork(paramInt);
   }
   
-  public int i()
+  public boolean isNeedEmotionDetect()
   {
-    return this.jdField_e_of_type_Int;
+    return this.needEmotionDetect;
   }
   
-  public void i()
+  public boolean isNeedFaceDetect()
   {
-    a(new QQBeautyFilter(20, this));
+    return this.needFaceDetect;
   }
   
-  public void j()
+  public boolean isNeedHandDetect()
   {
-    a(new QQPtBeautyFilter(25, this));
+    return this.needHandDetect;
   }
   
-  public void k()
+  public boolean isNeedSegment()
   {
-    Object localObject = a(40);
-    if ((localObject != null) && (((List)localObject).size() > 0))
-    {
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext()) {
-        ((QQPtvVideoFilter)((Iterator)localObject).next()).b();
-      }
+    return this.needSegment;
+  }
+  
+  public boolean isSurfaceDestroyed()
+  {
+    return this.mSurfaceDestroyed;
+  }
+  
+  public boolean loadFilterSoSuccess()
+  {
+    return FeatureManager.isBasicFeaturesFunctionReady();
+  }
+  
+  public boolean needFaceDetect()
+  {
+    return this.mInternal.needFaceDetect();
+  }
+  
+  public void onPause()
+  {
+    this.mInternal.onCurrentChainPause();
+  }
+  
+  public void onResume()
+  {
+    this.mInternal.onCurrentChainResume();
+  }
+  
+  public final void popAndRelease(String paramString)
+  {
+    this.mInternal.popAndRelease(paramString);
+  }
+  
+  public final void popChain(String paramString)
+  {
+    this.mInternal.pop(paramString);
+  }
+  
+  public final String pushChain(ArrayList<Integer> paramArrayList, ArrayList<Object> paramArrayList1)
+  {
+    return this.mInternal.push(paramArrayList, paramArrayList1);
+  }
+  
+  public final String pushChain(int[] paramArrayOfInt, Object[] paramArrayOfObject)
+  {
+    return this.mInternal.push(paramArrayOfInt, paramArrayOfObject);
+  }
+  
+  public String pushChainBasedStackTopChain(int paramInt, Object paramObject)
+  {
+    return this.mInternal.insertNewFilterToOldChain_pushChain(paramInt, paramObject);
+  }
+  
+  public void setBackCameraDetectEnable(boolean paramBoolean)
+  {
+    this.mBackCameraDetectEnable = paramBoolean;
+  }
+  
+  public void setCaptureMode(boolean paramBoolean)
+  {
+    if (this.mInternal != null) {
+      this.mInternal.setCaptureMode(paramBoolean);
     }
   }
   
-  public void l()
+  public void setEnableGauss(boolean paramBoolean)
   {
-    Object localObject = a(40);
-    if ((localObject != null) && (((List)localObject).size() > 0))
+    this.enableGauss = paramBoolean;
+  }
+  
+  public void setFaceDetectFlags(boolean paramBoolean)
+  {
+    this.mNeedDoFaceDetect = paramBoolean;
+  }
+  
+  public final void setFilterSpecificParam(int paramInt, Object paramObject)
+  {
+    this.mInternal.setFilterSpecificParam(paramInt, paramObject);
+  }
+  
+  public void setGestureDetectectFlags(boolean paramBoolean)
+  {
+    this.mNeedDoGestureDetect = paramBoolean;
+    if (this.mNeedDoGestureDetect)
     {
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext()) {
-        ((QQPtvVideoFilter)((Iterator)localObject).next()).c();
-      }
+      GestureMgrRecognize.getInstance().start();
+      return;
     }
+    GestureMgrRecognize.getInstance().stop();
   }
   
-  public void m()
+  public void setNeedEmotionDetect(boolean paramBoolean)
   {
-    a(new QQImage2FrameFilter(this));
+    this.needEmotionDetect = paramBoolean;
   }
   
-  public void n()
+  public void setNeedFaceDetect(boolean paramBoolean)
   {
-    a(new QQDynamicStickersFilter(120, this));
+    this.needFaceDetect = paramBoolean;
   }
   
-  public void o()
+  public void setNeedFlip(boolean paramBoolean)
   {
-    a(new QQTrackerStickersFilter(110, this));
+    this.mInternal.setNeedFaceDetectFlip(paramBoolean);
   }
   
-  public void p()
+  public void setNeedGenderDetect(boolean paramBoolean)
   {
-    a(new QQImgHazeRmoveFilter(13, this));
+    this.needGenderDetect = paramBoolean;
   }
   
-  public void q()
+  public void setNeedHandDetect(boolean paramBoolean)
   {
-    QQFilterLogManager.b("surfaceDestroyed");
-    Iterator localIterator = this.jdField_b_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext()) {
-      ((QQBaseFilter)localIterator.next()).e();
-    }
-    w();
-    QQFilterLogManager.c("surfaceDestroyed");
+    this.needHandDetect = paramBoolean;
   }
   
-  public void r()
+  public void setNeedSegment(boolean paramBoolean)
   {
-    Object localObject = a(40);
-    if ((localObject != null) && (((List)localObject).size() > 0))
+    this.needSegment = paramBoolean;
+  }
+  
+  public void setParam(String paramString1, String paramString2)
+  {
+    this.mParamMap.put(paramString1, paramString2);
+  }
+  
+  public void setStarParam(StarParam paramStarParam)
+  {
+    this.mStarParam = paramStarParam;
+  }
+  
+  public void setYTGestureDetectFlags(boolean paramBoolean)
+  {
+    this.mNeedDoYTGestureDetect = paramBoolean;
+  }
+  
+  public final void surfaceChange(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    QQFilterLogManager.setLogStart("surfaceChange");
+    updatePreviewSize(paramInt1, paramInt2, paramInt3, paramInt4);
+    QQFilterLogManager.setLogEnd("surfaceChange");
+  }
+  
+  public final void surfaceCreate(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    QQFilterLogManager.setLogStart("surfaceCreate");
+    initial();
+    updatePreviewSize(paramInt1, paramInt2, paramInt3, paramInt4);
+    VideoFilterListExtension.setCreateExternalFiltersListener(mDynamicCreator);
+    QQFilterLogManager.setLogEnd("surfaceCreate");
+  }
+  
+  public final void surfaceDestroyed()
+  {
+    QQFilterLogManager.setLogStart("surfaceDestroyed");
+    clear();
+    this.mInternal.releaseAllResource();
+    FrameBufferCache.getInstance().destroy();
+    this.mSurfaceDestroyed = true;
+    QQFilterLogManager.setLogEnd("surfaceDestroyed");
+  }
+  
+  public void updatePreviewSize(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    this.mSufaceWidth = paramInt3;
+    this.mSufaceHeight = paramInt4;
+    this.mFilterWidth = paramInt1;
+    this.mFilterHeight = paramInt2;
+    this.mUIAspectRatio = (paramInt1 / paramInt2);
+    if ((this.mFaceDetectWidth == 0) || (this.mFaceDetectHeight == 0) || (this.mFaceDetectBuffer == 0) || (this.mFaceDetectWidth < 90) || (this.mFaceDetectHeight < 120))
     {
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext()) {
-        ((QQPtvVideoFilter)((Iterator)localObject).next()).a();
-      }
+      this.mFaceDetectWidth = ((int)(this.mFilterWidth * 0.25F));
+      this.mFaceDetectHeight = ((int)(this.mFilterHeight * 0.25F));
+      this.mFaceDetectBuffer = (this.mFaceDetectWidth * this.mFaceDetectHeight * 4);
+    }
+    if (SLog.isEnable()) {
+      SLog.d("QQFilterRenderManager", "updatePreviewSize:: mSufaceWidth=" + this.mSufaceWidth + ";mSufaceHeight=" + this.mSufaceHeight + ";mFilterWidth=" + this.mFilterWidth + ";mFilterHeight=" + this.mFilterHeight + ";mFaceDetectWidth" + this.mFaceDetectWidth + ";mFaceDetectHeight=" + this.mFaceDetectHeight + "; mUIRatio:" + this.mUIAspectRatio);
     }
   }
 }

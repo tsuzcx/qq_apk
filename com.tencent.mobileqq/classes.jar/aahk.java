@@ -1,19 +1,48 @@
-import com.tencent.mobileqq.ar.ARNativeBridge;
-import com.tencent.mobileqq.ar.ARRenderModel.GreetingCardRender;
+import android.os.AsyncTask;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.data.MessageForApollo;
+import com.tencent.mobileqq.data.MessageRecord;
 
 class aahk
-  implements Runnable
+  extends AsyncTask<MessageRecord, Object, Object>
 {
-  aahk(aahj paramaahj, float[] paramArrayOfFloat) {}
+  aahk(aahj paramaahj) {}
   
-  public void run()
+  protected Object a(MessageRecord... paramVarArgs)
   {
-    GreetingCardRender.a(this.jdField_a_of_type_Aahj.a).native_setARCardQuaternion(this.jdField_a_of_type_ArrayOfFloat[0], this.jdField_a_of_type_ArrayOfFloat[1], this.jdField_a_of_type_ArrayOfFloat[2], this.jdField_a_of_type_ArrayOfFloat[3]);
+    if (this.a.a.d) {
+      if (this.a.a.jdField_a_of_type_Atob != null) {
+        this.a.a.jdField_a_of_type_Atob.a(paramVarArgs[0], true);
+      }
+    }
+    for (;;)
+    {
+      if ((paramVarArgs[0] instanceof MessageForApollo)) {
+        aisc.a(this.a.a.app, "chat_history_start_del_msg");
+      }
+      return null;
+      this.a.a.app.a().a(paramVarArgs[0], true);
+    }
+  }
+  
+  protected void onPostExecute(Object paramObject)
+  {
+    super.onPostExecute(paramObject);
+    this.a.a.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
+    if ((this.a.a.jdField_a_of_type_Bbms != null) && (this.a.a.jdField_a_of_type_Bbms.isShowing())) {
+      this.a.a.jdField_a_of_type_Bbms.dismiss();
+    }
+    if (this.a.a.d) {
+      this.a.a.a(11, false);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aahk
  * JD-Core Version:    0.7.0.1
  */

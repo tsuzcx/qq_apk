@@ -1,23 +1,19 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.olympic.OlympicManager;
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.helper.AIOLongShotHelper;
+import java.util.ArrayList;
+import mqq.util.WeakReference;
 
-public class agil
-  implements Runnable
+class agil
+  implements View.OnClickListener
 {
-  public agil(OlympicManager paramOlympicManager, int paramInt) {}
+  agil(agik paramagik) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    synchronized (OlympicManager.a(this.jdField_a_of_type_ComTencentMobileqqOlympicOlympicManager))
-    {
-      SharedPreferences localSharedPreferences = this.jdField_a_of_type_ComTencentMobileqqOlympicOlympicManager.a.getPreferences();
-      if (localSharedPreferences != null) {
-        localSharedPreferences.edit().putInt("isTorchbearer", this.jdField_a_of_type_Int).commit();
-      }
-      return;
-    }
+    AIOLongShotHelper.a((Activity)this.a.a.get(), (String)agik.a(this.a).a.get(0), new agim(this));
+    AIOLongShotHelper.a("0X8009DEE");
   }
 }
 

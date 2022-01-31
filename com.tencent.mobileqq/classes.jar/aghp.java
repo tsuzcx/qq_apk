@@ -1,26 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.ocr.ui.SearchResultAdapter;
-import com.tencent.mobileqq.ocr.ui.SearchResultAdapter.ListItem;
-import com.tencent.mobileqq.ocr.ui.SearchResultAdapter.OnResultItemClickedListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class aghp
-  implements View.OnClickListener
+class aghp
+  implements DialogInterface.OnClickListener
 {
-  public aghp(SearchResultAdapter paramSearchResultAdapter) {}
+  aghp(aghn paramaghn, Runnable paramRunnable) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((this.a.a != null) && ((paramView.getTag() instanceof SearchResultAdapter.ListItem)))
-    {
-      paramView = (SearchResultAdapter.ListItem)paramView.getTag();
-      this.a.a.a(paramView);
-    }
+    this.jdField_a_of_type_JavaLangRunnable.run();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aghp
  * JD-Core Version:    0.7.0.1
  */

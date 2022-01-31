@@ -1,27 +1,26 @@
+import android.os.Build.VERSION;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.PublicAccountManager;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View.OnSystemUiVisibilityChangeListener;
+import android.view.Window;
 
-public class wee
-  implements View.OnClickListener
+final class wee
+  implements View.OnSystemUiVisibilityChangeListener
 {
-  public wee(PublicAccountChatPie paramPublicAccountChatPie) {}
+  wee(Window paramWindow) {}
   
-  public void onClick(View paramView)
+  public void onSystemUiVisibilityChange(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.aio.BaseChatPie", 2, "mQidianClickListener ... mQidianKefu = " + this.a.ak);
+    if (Build.VERSION.SDK_INT >= 19) {}
+    for (paramInt = 5894;; paramInt = 1799)
+    {
+      this.a.getDecorView().setSystemUiVisibility(paramInt);
+      return;
     }
-    this.a.v(2131430031);
-    this.a.jdField_a_of_type_ComTencentBizPubaccountPublicAccountManager.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, this.a.j, this.a.k, this.a.l, new wef(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wee
  * JD-Core Version:    0.7.0.1
  */

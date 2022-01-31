@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class msg_svc$NearByAssistantTmp
-  extends MessageMicro
+  extends MessageMicro<NearByAssistantTmp>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBoolField reply = PBField.initBool(false);

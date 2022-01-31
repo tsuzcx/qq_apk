@@ -8,12 +8,12 @@ import java.util.ArrayList;
 public final class CoverCate
   extends JceStruct
 {
-  static ArrayList cache_items;
+  static ArrayList<CoverItem> cache_items;
   public String attachInfo = "";
   public String description = "";
   public int hasMore;
   public String id = "";
-  public ArrayList items;
+  public ArrayList<CoverItem> items;
   public int manyBits;
   public String name = "";
   public int showCount;
@@ -24,7 +24,7 @@ public final class CoverCate
   
   public CoverCate() {}
   
-  public CoverCate(String paramString1, ArrayList paramArrayList, int paramInt1, int paramInt2, int paramInt3, String paramString2, String paramString3, String paramString4, int paramInt4, String paramString5, String paramString6, int paramInt5)
+  public CoverCate(String paramString1, ArrayList<CoverItem> paramArrayList, int paramInt1, int paramInt2, int paramInt3, String paramString2, String paramString3, String paramString4, int paramInt4, String paramString5, String paramString6, int paramInt5)
   {
     this.name = paramString1;
     this.items = paramArrayList;

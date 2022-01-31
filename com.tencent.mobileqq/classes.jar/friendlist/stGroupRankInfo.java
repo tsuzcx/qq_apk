@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public final class stGroupRankInfo
   extends JceStruct
 {
-  static ArrayList cache_vecRankMap;
+  static ArrayList<stLevelRankPair> cache_vecRankMap;
   public byte cGroupRankSysFlag;
   public byte cGroupRankUserFlag;
   public long dwGroupCode;
@@ -16,11 +16,11 @@ public final class stGroupRankInfo
   public long dwOfficeMode;
   public String strAdminName = "";
   public String strOwnerName = "";
-  public ArrayList vecRankMap;
+  public ArrayList<stLevelRankPair> vecRankMap;
   
   public stGroupRankInfo() {}
   
-  public stGroupRankInfo(long paramLong1, byte paramByte1, byte paramByte2, ArrayList paramArrayList, long paramLong2, String paramString1, String paramString2, long paramLong3)
+  public stGroupRankInfo(long paramLong1, byte paramByte1, byte paramByte2, ArrayList<stLevelRankPair> paramArrayList, long paramLong2, String paramString1, String paramString2, long paramLong3)
   {
     this.dwGroupCode = paramLong1;
     this.cGroupRankSysFlag = paramByte1;

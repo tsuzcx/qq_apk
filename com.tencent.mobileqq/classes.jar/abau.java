@@ -1,34 +1,24 @@
-import com.tencent.ark.ArkEnvironmentManager.Log;
+import com.tencent.mobileqq.activity.Leba.30.1;
 import com.tencent.qphone.base.util.QLog;
 
-public final class abau
-  implements ArkEnvironmentManager.Log
+public class abau
+  extends akfr
 {
-  public void d(String paramString1, String paramString2)
+  abau(abai paramabai) {}
+  
+  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
   {
     if (QLog.isColorLevel()) {
-      QLog.d(paramString1, 2, paramString2);
+      QLog.i("Q.lebatab.leba", 2, "onReadInJoyNotifyRedTouchUpdate, isSuccess=" + paramBoolean1 + ",isUpdate=" + paramBoolean2 + ", type=" + paramInt);
     }
-  }
-  
-  public void e(String paramString1, String paramString2)
-  {
-    QLog.e(paramString1, 1, paramString2);
-  }
-  
-  public void i(String paramString1, String paramString2)
-  {
-    QLog.i(paramString1, 1, paramString2);
-  }
-  
-  public void w(String paramString1, String paramString2)
-  {
-    QLog.w(paramString1, 1, paramString2);
+    if ((paramBoolean1) && (paramBoolean2) && ((paramInt & 0x1) != 0)) {
+      this.a.a(new Leba.30.1(this));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abau
  * JD-Core Version:    0.7.0.1
  */

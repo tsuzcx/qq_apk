@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.recent.data;
 
+import baiu;
 import com.tencent.mobileqq.data.RecentUser;
-import com.tencent.mobileqq.utils.TimeFormatterUtils;
 
 public class RecentItemPullActivePush
   extends RecentUserBaseData
 {
-  public long b;
+  public long time;
   
   public RecentItemPullActivePush(RecentUser paramRecentUser)
   {
@@ -15,9 +15,9 @@ public class RecentItemPullActivePush
   
   public void a(String paramString, long paramLong)
   {
-    this.jdField_b_of_type_JavaLangString = paramString;
-    this.jdField_b_of_type_Long = paramLong;
-    this.c = TimeFormatterUtils.a(paramLong, true, "yyyy-MM-dd");
+    this.mTitleName = paramString;
+    this.time = paramLong;
+    this.mShowTime = baiu.a(paramLong, true, "yyyy-MM-dd");
   }
 }
 

@@ -1,20 +1,13 @@
-import android.os.Bundle;
-import com.tencent.biz.troop.TroopMemberApiService;
-import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
 
 public class pau
-  extends FriendListObserver
+  implements ViewBase.IBuilder
 {
-  public pau(TroopMemberApiService paramTroopMemberApiService) {}
-  
-  protected void onUpdateTroopHead(boolean paramBoolean, String paramString)
+  public ViewBase build(VafContext paramVafContext)
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("type", 30);
-    localBundle.putBoolean("isSuccess", paramBoolean);
-    localBundle.putSerializable("data", new Object[] { paramString });
-    localBundle.putSerializable("observer_type", Integer.valueOf(2));
-    this.a.a(3, localBundle);
+    return new par(paramVafContext);
   }
 }
 

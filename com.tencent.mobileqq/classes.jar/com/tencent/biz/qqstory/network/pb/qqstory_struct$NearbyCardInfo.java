@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBField;
 
 public final class qqstory_struct$NearbyCardInfo
-  extends MessageMicro
+  extends MessageMicro<NearbyCardInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public qqstory_struct.NormalCardInfo card_info = new qqstory_struct.NormalCardInfo();
@@ -21,7 +21,7 @@ public final class qqstory_struct$NearbyCardInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_struct.NearbyCardInfo
  * JD-Core Version:    0.7.0.1
  */

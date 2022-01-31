@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBField;
 
 public final class oidb_0xa8b$DeletePoid
-  extends MessageMicro
+  extends MessageMicro<DeletePoid>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_poid = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -20,7 +20,7 @@ public final class oidb_0xa8b$DeletePoid
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     tencent.im.oidb.hotchat.oidb_0xa8b.DeletePoid
  * JD-Core Version:    0.7.0.1
  */

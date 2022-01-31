@@ -1,29 +1,31 @@
-import android.graphics.Bitmap;
-import com.tencent.biz.qqstory.utils.UIUtils;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.DownloadParams.DecodeHandler;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import java.net.URL;
+import org.json.JSONObject;
 
-public final class otf
-  implements DownloadParams.DecodeHandler
+public class otf
 {
-  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
+  public static JSONObject a(BaseArticleInfo paramBaseArticleInfo)
   {
-    if (paramBitmap == null) {
-      paramDownloadParams = null;
-    }
-    Object localObject;
-    do
+    JSONObject localJSONObject1 = new JSONObject();
+    JSONObject localJSONObject2 = new JSONObject();
+    if (paramBaseArticleInfo.mSinglePicture != null) {}
+    for (String str = paramBaseArticleInfo.mSinglePicture.getFile();; str = null)
     {
-      do
-      {
-        return paramDownloadParams;
-        localObject = paramDownloadParams.tag;
-        paramDownloadParams = paramBitmap;
-      } while (!(localObject instanceof int[]));
-      paramDownloadParams = paramBitmap;
-    } while (((int[])localObject).length != 3);
-    paramDownloadParams = (int[])localObject;
-    return UIUtils.a(paramBitmap, paramDownloadParams[2], paramDownloadParams[0], paramDownloadParams[1]);
+      localJSONObject2.put("article_small_imge_url", str);
+      localJSONObject1.put("id_article_small_imge", localJSONObject2);
+      otl.a(paramBaseArticleInfo, localJSONObject1, true);
+      otl.a(paramBaseArticleInfo, localJSONObject1);
+      otl.b(paramBaseArticleInfo, localJSONObject1);
+      otl.e(paramBaseArticleInfo, localJSONObject1);
+      otl.m(paramBaseArticleInfo, localJSONObject1);
+      otl.f(paramBaseArticleInfo, localJSONObject1);
+      otl.X(paramBaseArticleInfo, localJSONObject1);
+      otl.ab(paramBaseArticleInfo, localJSONObject1);
+      localJSONObject1.put("style_ID", "ReadInjoy_small_cell");
+      otl.a(localJSONObject1, paramBaseArticleInfo);
+      otl.aa(paramBaseArticleInfo, localJSONObject1);
+      return localJSONObject1;
+    }
   }
 }
 

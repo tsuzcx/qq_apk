@@ -1,66 +1,28 @@
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
-import com.tencent.mobileqq.data.PhoneContact;
-import com.tencent.mobileqq.utils.ContactUtils;
-import java.util.Comparator;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.intervideo.nowproxy.proxyinner.channel.FromService;
 
-public class zpf
-  implements Comparator
+public final class zpf
+  implements Parcelable.Creator<FromService>
 {
-  public zpf(PhoneContactManagerImp paramPhoneContactManagerImp, boolean paramBoolean1, boolean paramBoolean2) {}
-  
-  int a(PhoneContact paramPhoneContact)
+  public FromService a(Parcel paramParcel)
   {
-    int j = ContactUtils.a(paramPhoneContact.detalStatusFlag, paramPhoneContact.iTermType);
-    if ((j != 6) && (j != 0)) {}
-    for (int i = 65536;; i = 131072) {
-      switch (j)
-      {
-      case 5: 
-      case 6: 
-      default: 
-        return i | (int)this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp.a(paramPhoneContact.unifiedCode);
-      }
-    }
-    return i | 0x1;
-    return i | 0x2;
-    return i | 0x3;
+    FromService localFromService = new FromService();
+    localFromService.jdField_a_of_type_Int = paramParcel.readInt();
+    localFromService.b = paramParcel.readInt();
+    localFromService.c = paramParcel.readInt();
+    localFromService.jdField_a_of_type_AndroidOsBundle = paramParcel.readBundle();
+    return localFromService;
   }
   
-  public int a(PhoneContact paramPhoneContact1, PhoneContact paramPhoneContact2)
+  public FromService[] a(int paramInt)
   {
-    int i;
-    if (this.jdField_a_of_type_Boolean)
-    {
-      boolean bool1 = paramPhoneContact1.isNewRecommend;
-      boolean bool2 = paramPhoneContact2.isNewRecommend;
-      if (((bool1) || (bool2)) && ((!bool1) || (!bool2))) {
-        if (bool2) {
-          i = 1;
-        }
-      }
-    }
-    int j;
-    do
-    {
-      return i;
-      return -1;
-      if (!this.b) {
-        break;
-      }
-      j = b(paramPhoneContact1, paramPhoneContact2);
-      i = j;
-    } while (j != 0);
-    return PhoneContactManagerImp.a(paramPhoneContact1, paramPhoneContact2);
-  }
-  
-  int b(PhoneContact paramPhoneContact1, PhoneContact paramPhoneContact2)
-  {
-    return a(paramPhoneContact1) - a(paramPhoneContact2);
+    return new FromService[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     zpf
  * JD-Core Version:    0.7.0.1
  */

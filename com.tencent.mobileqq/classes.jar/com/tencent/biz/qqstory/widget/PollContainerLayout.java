@@ -7,19 +7,19 @@ import android.util.AttributeSet;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem.PollLayout;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.utils.PollWidgetUtils;
-import com.tencent.biz.qqstory.utils.PollWidgetUtils.IPollWidget;
-import com.tencent.biz.qqstory.utils.PollWidgetUtils.OptionElement;
-import com.tencent.biz.qqstory.utils.PollWidgetUtils.QuestionElement;
+import srq;
+import urk;
+import vlx;
+import vly;
+import vmd;
+import vme;
 
 public class PollContainerLayout
   extends FrameLayout
 {
-  public StoryVideoItem.PollLayout a;
   public StoryVideoItem a;
-  private final PollWidgetUtils.IPollWidget jdField_a_of_type_ComTencentBizQqstoryUtilsPollWidgetUtils$IPollWidget = PollWidgetUtils.a(getContext(), 1, 1, null);
+  public srq a;
+  private final vly jdField_a_of_type_Vly = vlx.a(getContext(), 1, 1, null);
   boolean jdField_a_of_type_Boolean = false;
   
   public PollContainerLayout(@NonNull Context paramContext)
@@ -30,9 +30,9 @@ public class PollContainerLayout
   public PollContainerLayout(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_ComTencentBizQqstoryUtilsPollWidgetUtils$IPollWidget.a(false);
+    this.jdField_a_of_type_Vly.a(false);
     paramContext = new FrameLayout.LayoutParams(-2, -2);
-    addView(this.jdField_a_of_type_ComTencentBizQqstoryUtilsPollWidgetUtils$IPollWidget.a(), paramContext);
+    addView(this.jdField_a_of_type_Vly.a(), paramContext);
     setVisibility(4);
     setClipChildren(false);
     setClickable(false);
@@ -40,48 +40,11 @@ public class PollContainerLayout
   
   private void a(int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem$PollLayout == null) {
+    if (this.jdField_a_of_type_Srq == null) {
       return;
     }
-    this.jdField_a_of_type_ComTencentBizQqstoryUtilsPollWidgetUtils$IPollWidget.a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem$PollLayout, paramInt1, paramInt2);
-    this.jdField_a_of_type_ComTencentBizQqstoryUtilsPollWidgetUtils$IPollWidget.a();
-  }
-  
-  public void a(StoryVideoItem.PollLayout paramPollLayout, int paramInt, int[] paramArrayOfInt)
-  {
-    this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem$PollLayout = paramPollLayout;
-    if (paramPollLayout == null)
-    {
-      setVisibility(4);
-      return;
-    }
-    setVisibility(0);
-    paramPollLayout = paramPollLayout.a;
-    this.jdField_a_of_type_ComTencentBizQqstoryUtilsPollWidgetUtils$IPollWidget.a().a(paramPollLayout[0]);
-    int i = 1;
-    while (i < paramPollLayout.length)
-    {
-      this.jdField_a_of_type_ComTencentBizQqstoryUtilsPollWidgetUtils$IPollWidget.a(i - 1).a(paramPollLayout[i]);
-      this.jdField_a_of_type_ComTencentBizQqstoryUtilsPollWidgetUtils$IPollWidget.a(i - 1).b(false);
-      i += 1;
-    }
-    if ((this.jdField_a_of_type_Boolean) && (paramInt >= 0))
-    {
-      this.jdField_a_of_type_ComTencentBizQqstoryUtilsPollWidgetUtils$IPollWidget.a(paramInt).b(true);
-      if (paramArrayOfInt != null)
-      {
-        this.jdField_a_of_type_ComTencentBizQqstoryUtilsPollWidgetUtils$IPollWidget.a(paramArrayOfInt);
-        this.jdField_a_of_type_ComTencentBizQqstoryUtilsPollWidgetUtils$IPollWidget.a(true);
-      }
-    }
-    for (;;)
-    {
-      a(getWidth(), getHeight());
-      return;
-      this.jdField_a_of_type_ComTencentBizQqstoryUtilsPollWidgetUtils$IPollWidget.a(false);
-      continue;
-      this.jdField_a_of_type_ComTencentBizQqstoryUtilsPollWidgetUtils$IPollWidget.a(false);
-    }
+    this.jdField_a_of_type_Vly.a(this.jdField_a_of_type_Srq, paramInt1, paramInt2);
+    this.jdField_a_of_type_Vly.a();
   }
   
   public void a(StoryVideoItem paramStoryVideoItem)
@@ -95,6 +58,43 @@ public class PollContainerLayout
     a(null, -1, null);
   }
   
+  public void a(srq paramsrq, int paramInt, int[] paramArrayOfInt)
+  {
+    this.jdField_a_of_type_Srq = paramsrq;
+    if (paramsrq == null)
+    {
+      setVisibility(4);
+      return;
+    }
+    setVisibility(0);
+    paramsrq = paramsrq.a;
+    this.jdField_a_of_type_Vly.a().a(paramsrq[0]);
+    int i = 1;
+    while (i < paramsrq.length)
+    {
+      this.jdField_a_of_type_Vly.a(i - 1).a(paramsrq[i]);
+      this.jdField_a_of_type_Vly.a(i - 1).b(false);
+      i += 1;
+    }
+    if ((this.jdField_a_of_type_Boolean) && (paramInt >= 0))
+    {
+      this.jdField_a_of_type_Vly.a(paramInt).b(true);
+      if (paramArrayOfInt != null)
+      {
+        this.jdField_a_of_type_Vly.a(paramArrayOfInt);
+        this.jdField_a_of_type_Vly.a(true);
+      }
+    }
+    for (;;)
+    {
+      a(getWidth(), getHeight());
+      return;
+      this.jdField_a_of_type_Vly.a(false);
+      continue;
+      this.jdField_a_of_type_Vly.a(false);
+    }
+  }
+  
   public boolean a(boolean paramBoolean)
   {
     boolean bool = this.jdField_a_of_type_Boolean;
@@ -106,12 +106,12 @@ public class PollContainerLayout
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     a(paramInt3 - paramInt1, paramInt4 - paramInt2);
-    SLog.a("PollContainerLayout", "onLayout wh(%d, %d)", Integer.valueOf(paramInt3 - paramInt1), Integer.valueOf(paramInt4 - paramInt2));
+    urk.a("PollContainerLayout", "onLayout wh(%d, %d)", Integer.valueOf(paramInt3 - paramInt1), Integer.valueOf(paramInt4 - paramInt2));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.biz.qqstory.widget.PollContainerLayout
  * JD-Core Version:    0.7.0.1
  */

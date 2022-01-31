@@ -1,40 +1,36 @@
-import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.support.report.VideoEditReport;
-import dov.com.qq.im.capture.QIMManager;
-import dov.com.qq.im.capture.paster.PasterDataManager;
-import dov.com.qq.im.capture.view.StaticStickerProviderView;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.model.DoodleEmojiManager;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.FaceListPage.FacePackagePageEventListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
 
 public class anyp
-  implements FaceListPage.FacePackagePageEventListener
+  implements View.OnClickListener
 {
-  public anyp(StaticStickerProviderView paramStaticStickerProviderView) {}
+  public anyp(UniformDownloadActivity paramUniformDownloadActivity) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    SLog.b("StaticStickerProviderView", "用户点击重新拉取地理贴纸");
-    ((PasterDataManager)QIMManager.a(4)).d();
-  }
-  
-  public void a(String paramString)
-  {
-    SLog.b("StaticStickerProviderView", "用户点击下载：" + paramString);
-    VideoEditReport.b("0X80075DD");
-    if (!((DoodleEmojiManager)SuperManager.a(36)).a(paramString, true)) {
-      SLog.d("StaticStickerProviderView", "用户点击下载启动失败");
+    if (badq.d(this.a.getActivity()))
+    {
+      UniformDownloadActivity.a(this.a).setVisibility(8);
+      if (apck.a())
+      {
+        apbx.a(this.a.getActivity(), 2131627035, 2131654705, new anyq(this));
+        return;
+      }
+      UniformDownloadActivity.a(this.a);
+      this.a.finish();
+      this.a.overridePendingTransition(0, 0);
+      return;
     }
-  }
-  
-  public void b(String paramString)
-  {
-    SLog.b("StaticStickerProviderView", "用户点击下载取消：" + paramString);
+    apcb.a(2131627028);
+    this.a.finish();
+    this.a.overridePendingTransition(0, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     anyp
  * JD-Core Version:    0.7.0.1
  */

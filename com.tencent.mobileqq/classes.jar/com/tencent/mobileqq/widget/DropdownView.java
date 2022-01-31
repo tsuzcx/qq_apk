@@ -1,8 +1,6 @@
 package com.tencent.mobileqq.widget;
 
-import albu;
-import albw;
-import albx;
+import ajjy;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.Resources;
@@ -20,6 +18,8 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.PopupWindow.OnDismissListener;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
+import bbin;
+import bbio;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
@@ -28,22 +28,22 @@ public class DropdownView
   implements PopupWindow.OnDismissListener
 {
   private float jdField_a_of_type_Float;
-  public albx a;
   private Context jdField_a_of_type_AndroidContentContext;
   public Drawable a;
   public InputMethodManager a;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private final RelativeLayout.LayoutParams jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams = new RelativeLayout.LayoutParams(-1, -1);
+  public bbio a;
   public boolean a;
-  public Drawable b;
-  private ImageView b;
+  Drawable jdField_b_of_type_AndroidGraphicsDrawableDrawable;
+  private ImageView jdField_b_of_type_AndroidWidgetImageView;
   
   public DropdownView(Context paramContext)
   {
     super(paramContext);
     this.jdField_a_of_type_Boolean = false;
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Albx = new albx(this, paramContext);
+    this.jdField_a_of_type_Bbio = new bbio(this, paramContext);
     a(paramContext);
   }
   
@@ -51,7 +51,7 @@ public class DropdownView
   {
     super(paramContext, paramAttributeSet);
     this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Albx = new albx(this, paramContext, paramAttributeSet);
+    this.jdField_a_of_type_Bbio = new bbio(this, paramContext, paramAttributeSet);
     a(paramContext);
   }
   
@@ -60,7 +60,7 @@ public class DropdownView
   {
     super(paramContext, paramAttributeSet, paramInt);
     this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Albx = new albx(this, paramContext, paramAttributeSet, paramInt);
+    this.jdField_a_of_type_Bbio = new bbio(this, paramContext, paramAttributeSet, paramInt);
     a(paramContext);
   }
   
@@ -71,21 +71,21 @@ public class DropdownView
     setLayoutParams(this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams);
     setPadding(0, 0, 0, 0);
     Object localObject1 = new RelativeLayout.LayoutParams(this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams);
-    addView(this.jdField_a_of_type_Albx, (ViewGroup.LayoutParams)localObject1);
-    this.jdField_a_of_type_Albx.setDropDownVerticalOffset(0);
+    addView(this.jdField_a_of_type_Bbio, (ViewGroup.LayoutParams)localObject1);
+    this.jdField_a_of_type_Bbio.setDropDownVerticalOffset(0);
     localObject1 = new LinearLayout(paramContext);
     new RelativeLayout.LayoutParams(this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams);
     Object localObject2 = new RelativeLayout.LayoutParams(-2, -1);
     ((RelativeLayout.LayoutParams)localObject2).setMargins(0, 0, 0, 0);
     ((RelativeLayout.LayoutParams)localObject2).addRule(15);
-    ((RelativeLayout.LayoutParams)localObject2).addRule(7, this.jdField_a_of_type_Albx.getId());
+    ((RelativeLayout.LayoutParams)localObject2).addRule(7, this.jdField_a_of_type_Bbio.getId());
     addView((View)localObject1, (ViewGroup.LayoutParams)localObject2);
     this.jdField_b_of_type_AndroidWidgetImageView = new ImageView(paramContext);
     this.jdField_b_of_type_AndroidWidgetImageView.setPadding((int)(this.jdField_a_of_type_Float * 10.0F), (int)(this.jdField_a_of_type_Float * 10.0F), (int)(this.jdField_a_of_type_Float * 15.0F), (int)(this.jdField_a_of_type_Float * 10.0F));
-    this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130838584);
+    this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130839094);
     this.jdField_b_of_type_AndroidWidgetImageView.setClickable(true);
     this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
-    this.jdField_b_of_type_AndroidWidgetImageView.setContentDescription("清除帐号");
+    this.jdField_b_of_type_AndroidWidgetImageView.setContentDescription(ajjy.a(2131637761));
     new LinearLayout.LayoutParams(this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams);
     localObject2 = new LinearLayout.LayoutParams((int)(44.0F * this.jdField_a_of_type_Float), (int)(39.0F * this.jdField_a_of_type_Float));
     ((LinearLayout.LayoutParams)localObject2).gravity = 16;
@@ -93,20 +93,20 @@ public class DropdownView
     this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(paramContext);
     this.jdField_a_of_type_AndroidWidgetImageView.setId(571);
     this.jdField_a_of_type_AndroidWidgetImageView.setPadding((int)(1.0F * this.jdField_a_of_type_Float), (int)(this.jdField_a_of_type_Float * 10.0F), (int)(this.jdField_a_of_type_Float * 15.0F), (int)(this.jdField_a_of_type_Float * 10.0F));
-    this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription("帐号列表");
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130839322);
-    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130839323);
+    this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(ajjy.a(2131637762));
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130840249);
+    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130840250);
     this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
     this.jdField_a_of_type_AndroidWidgetImageView.setClickable(true);
     paramContext = new LinearLayout.LayoutParams((int)(35.0F * this.jdField_a_of_type_Float), (int)(33.0F * this.jdField_a_of_type_Float));
     paramContext.gravity = 16;
     ((LinearLayout)localObject1).addView(this.jdField_a_of_type_AndroidWidgetImageView, paramContext);
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new albu(this));
+    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new bbin(this));
     try
     {
-      paramContext = this.jdField_a_of_type_Albx.getClass().getSuperclass().getDeclaredField("mPopup");
+      paramContext = this.jdField_a_of_type_Bbio.getClass().getSuperclass().getDeclaredField("mPopup");
       paramContext.setAccessible(true);
-      paramContext = paramContext.get(this.jdField_a_of_type_Albx);
+      paramContext = paramContext.get(this.jdField_a_of_type_Bbio);
       paramContext.getClass().getMethod("setOnDismissListener", new Class[] { PopupWindow.OnDismissListener.class }).invoke(paramContext, new Object[] { this });
       return;
     }
@@ -115,7 +115,7 @@ public class DropdownView
   
   public AutoCompleteTextView a()
   {
-    return this.jdField_a_of_type_Albx;
+    return this.jdField_a_of_type_Bbio;
   }
   
   public ImageView a()
@@ -131,12 +131,12 @@ public class DropdownView
   public void onDismiss()
   {
     this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-    new Handler().postDelayed(new albw(this), 500L);
+    new Handler().postDelayed(new DropdownView.2(this), 500L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.DropdownView
  * JD-Core Version:    0.7.0.1
  */

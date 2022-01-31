@@ -1,20 +1,30 @@
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngineEventDispatcher;
-import com.tencent.biz.pubaccount.readinjoy.model.ArticleInfoModule;
+import com.tencent.av.ui.EffectToolbar;
+import java.lang.ref.WeakReference;
+import java.util.Observable;
+import java.util.Observer;
 
 public class lsu
-  implements Runnable
+  implements Observer
 {
-  public lsu(ArticleInfoModule paramArticleInfoModule, int paramInt) {}
+  private WeakReference<EffectToolbar> a;
   
-  public void run()
+  public lsu(EffectToolbar paramEffectToolbar)
   {
-    ReadInJoyLogicEngineEventDispatcher.a().c(this.jdField_a_of_type_Int);
-    ReadInJoyLogicEngineEventDispatcher.a().b();
+    this.a = new WeakReference(paramEffectToolbar);
+  }
+  
+  public void update(Observable paramObservable, Object paramObject)
+  {
+    EffectToolbar localEffectToolbar = (EffectToolbar)this.a.get();
+    if (localEffectToolbar == null) {
+      return;
+    }
+    EffectToolbar.access$300(localEffectToolbar, paramObservable, paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lsu
  * JD-Core Version:    0.7.0.1
  */

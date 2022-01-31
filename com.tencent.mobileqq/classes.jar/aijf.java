@@ -1,34 +1,20 @@
-import android.os.Handler;
-import com.tencent.mobileqq.shortvideo.widget.TCProgressBar;
+import com.tencent.mobileqq.apollo.IApolloRunnableTask;
 
-public class aijf
-  implements Runnable
+public abstract interface aijf
 {
-  public aijf(TCProgressBar paramTCProgressBar) {}
+  public abstract void exeJsOnEngine(String paramString);
   
-  public void run()
-  {
-    aijb localaijb;
-    if (this.a.jdField_a_of_type_Int == 3)
-    {
-      this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(new aijf(this.a), this.a.d);
-      localaijb = this.a.jdField_a_of_type_Aijb;
-      if (this.a.jdField_a_of_type_Aijb.e) {
-        break label77;
-      }
-    }
-    label77:
-    for (boolean bool = true;; bool = false)
-    {
-      localaijb.e = bool;
-      this.a.invalidate();
-      return;
-    }
-  }
+  public abstract long getRenderThreadId();
+  
+  public abstract long getRuntimeState();
+  
+  public abstract boolean isJsRuntime();
+  
+  public abstract void runRenderTask(IApolloRunnableTask paramIApolloRunnableTask);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aijf
  * JD-Core Version:    0.7.0.1
  */

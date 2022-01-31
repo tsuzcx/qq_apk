@@ -1,18 +1,21 @@
-import com.tencent.mobileqq.activity.Leba;
-
-public class tcz
-  implements Runnable
+class tcz
+  extends tyd
 {
-  public tcz(Leba paramLeba, boolean paramBoolean) {}
+  tcz(tcy paramtcy) {}
   
-  public void run()
+  protected void a(Error paramError)
   {
-    Leba.a(this.jdField_a_of_type_ComTencentMobileqqActivityLeba, this.jdField_a_of_type_Boolean);
+    this.a.a(paramError);
+  }
+  
+  protected void a(txr paramtxr)
+  {
+    this.a.a(paramtxr);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tcz
  * JD-Core Version:    0.7.0.1
  */

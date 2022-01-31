@@ -1,18 +1,29 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.qrcode.ipc.ScannerParams;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.animation.AnimatorSet;
+import android.widget.ImageView;
 
-public final class ozn
-  implements Parcelable.Creator
+class ozn
+  implements Animator.AnimatorListener
 {
-  public ScannerParams a(Parcel paramParcel)
+  ozn(ozm paramozm) {}
+  
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    return new ScannerParams(paramParcel);
+    ozm.a(this.a).setSelected(this.a.isSelected());
   }
   
-  public ScannerParams[] a(int paramInt)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    return new ScannerParams[paramInt];
+    ozm.a(this.a).setSelected(this.a.isSelected());
+    ozm.a(this.a).start();
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    ozm.a(this.a, true);
   }
 }
 

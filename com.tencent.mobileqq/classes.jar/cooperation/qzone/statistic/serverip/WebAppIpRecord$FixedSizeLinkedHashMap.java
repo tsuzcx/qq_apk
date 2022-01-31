@@ -4,8 +4,8 @@ import common.config.service.QzoneConfig;
 import java.util.LinkedHashMap;
 import java.util.Map.Entry;
 
-public class WebAppIpRecord$FixedSizeLinkedHashMap
-  extends LinkedHashMap
+public class WebAppIpRecord$FixedSizeLinkedHashMap<K, V>
+  extends LinkedHashMap<K, V>
 {
   private static int a = QzoneConfig.getInstance().getConfig("QZoneSetting", "LatestWebappIPCount", 3);
   private static final long serialVersionUID = 6918023506928428613L;
@@ -20,7 +20,7 @@ public class WebAppIpRecord$FixedSizeLinkedHashMap
     a = paramInt;
   }
   
-  protected boolean removeEldestEntry(Map.Entry paramEntry)
+  protected boolean removeEldestEntry(Map.Entry<K, V> paramEntry)
   {
     return size() > a;
   }

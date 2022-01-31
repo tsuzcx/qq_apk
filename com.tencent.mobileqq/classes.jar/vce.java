@@ -1,17 +1,20 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.AbstractChatItemBuilder.ViewHolder;
-import com.tencent.mobileqq.activity.aio.item.FileTimDocGrayTipsItemBuilder;
+import java.io.File;
+import java.io.FileFilter;
 
-public class vce
-  extends AbstractChatItemBuilder.ViewHolder
+class vce
+  implements FileFilter
 {
-  public TextView b;
+  vce(vcd paramvcd) {}
   
-  public vce(FileTimDocGrayTipsItemBuilder paramFileTimDocGrayTipsItemBuilder) {}
+  public boolean accept(File paramFile)
+  {
+    paramFile = paramFile.getName();
+    return (paramFile.endsWith(".jpg")) || (paramFile.endsWith(".png")) || (paramFile.endsWith(".bmp"));
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vce
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,20 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import dov.com.qq.im.QIMCameraCaptureUnit;
+import com.tencent.mobileqq.extendfriend.bean.GroupInfo;
+import java.util.List;
 
 public class anqt
-  extends AnimatorListenerAdapter
 {
-  public anqt(QIMCameraCaptureUnit paramQIMCameraCaptureUnit) {}
+  public long a;
+  public List<GroupInfo> a;
+  public boolean a;
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public String toString()
   {
-    super.onAnimationEnd(paramAnimator);
-    this.a.g();
-    this.a.e();
+    return "CacheData{mList.size()=" + this.jdField_a_of_type_JavaUtilList.size() + ", mLoadOver=" + this.jdField_a_of_type_Boolean + ", mUpdateTime=" + this.jdField_a_of_type_Long + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     anqt
  * JD-Core Version:    0.7.0.1
  */

@@ -1,45 +1,20 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.aio.photo.AIOImageProviderService;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import mqq.app.AccountNotMatchException;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.qrcode.activity.QRDisplayActivity;
 
 public class vto
-  implements Runnable
+  implements DialogInterface.OnDismissListener
 {
-  public vto(AIOImageProviderService paramAIOImageProviderService, long paramLong, int paramInt) {}
+  public vto(QRDisplayActivity paramQRDisplayActivity) {}
   
-  public void run()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.jdField_a_of_type_JavaUtilList;
-    if ((localObject == null) || (((List)localObject).size() == 0)) {}
-    do
-    {
-      do
-      {
-        return;
-        localObject = AIOImageProviderService.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService, this.jdField_a_of_type_Long, this.jdField_a_of_type_Int);
-      } while ((localObject == null) || (!MessageForPic.class.isInstance(localObject)));
-      localObject = (MessageForPic)localObject;
-      try
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("AIOImageProviderService", 2, "payFlow,id:" + this.jdField_a_of_type_Long + ",subId:" + this.jdField_a_of_type_Int);
-        }
-        QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.sApplication.getAppRuntime(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.jdField_a_of_type_JavaLangString);
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a(localQQAppInterface, (MessageForPic)localObject);
-        return;
-      }
-      catch (AccountNotMatchException localAccountNotMatchException) {}
-    } while (!QLog.isColorLevel());
-    QLog.d("AIOImageProviderService", 2, "no appRuntime");
+    this.a.f = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     vto
  * JD-Core Version:    0.7.0.1
  */

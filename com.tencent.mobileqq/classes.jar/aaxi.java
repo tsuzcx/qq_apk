@@ -1,28 +1,25 @@
-import com.tencent.mobileqq.ark.API.ArkAppMusicModule;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.FriendProfilePicBrowserActivity;
 
-class aaxi
-  implements Runnable
+public class aaxi
+  implements DialogInterface.OnClickListener
 {
-  aaxi(aaxh paramaaxh, int paramInt) {}
+  public aaxi(FriendProfilePicBrowserActivity paramFriendProfilePicBrowserActivity, bafb parambafb) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Iterator localIterator = ArkAppMusicModule.a.iterator();
-    while (localIterator.hasNext())
-    {
-      ArkAppMusicModule localArkAppMusicModule = (ArkAppMusicModule)((WeakReference)localIterator.next()).get();
-      if (localArkAppMusicModule != null) {
-        localArkAppMusicModule.a(this.jdField_a_of_type_Int);
-      }
-    }
+    this.jdField_a_of_type_Bafb.dismiss();
+    paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity.getIntent();
+    paramDialogInterface.putExtra("delHead_fileid", FriendProfilePicBrowserActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity));
+    this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity.setResult(-1, paramDialogInterface);
+    this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aaxi
  * JD-Core Version:    0.7.0.1
  */

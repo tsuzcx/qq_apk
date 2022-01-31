@@ -1,21 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.DiscussionMemberActivity;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import java.util.List;
 
-public class spr
-  implements View.OnClickListener
+public abstract interface spr
 {
-  public spr(DiscussionMemberActivity paramDiscussionMemberActivity) {}
-  
-  public void onClick(View paramView)
-  {
-    this.a.a.setText("");
-  }
+  public abstract void a(List<StoryVideoItem> paramList, boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     spr
  * JD-Core Version:    0.7.0.1
  */

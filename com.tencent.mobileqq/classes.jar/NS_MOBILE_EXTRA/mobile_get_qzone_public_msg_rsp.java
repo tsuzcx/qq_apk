@@ -9,9 +9,9 @@ import java.util.Map;
 public final class mobile_get_qzone_public_msg_rsp
   extends JceStruct
 {
-  static Map cache_map_ext = new HashMap();
+  static Map<String, String> cache_map_ext = new HashMap();
   public int left_req_times;
-  public Map map_ext;
+  public Map<String, String> map_ext;
   public int next_req_tmstamp;
   public int stay_min_seconds_to_req;
   
@@ -22,7 +22,7 @@ public final class mobile_get_qzone_public_msg_rsp
   
   public mobile_get_qzone_public_msg_rsp() {}
   
-  public mobile_get_qzone_public_msg_rsp(int paramInt1, int paramInt2, int paramInt3, Map paramMap)
+  public mobile_get_qzone_public_msg_rsp(int paramInt1, int paramInt2, int paramInt3, Map<String, String> paramMap)
   {
     this.next_req_tmstamp = paramInt1;
     this.left_req_times = paramInt2;

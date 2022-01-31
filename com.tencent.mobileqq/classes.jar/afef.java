@@ -1,39 +1,27 @@
-import com.tencent.mobileqq.nearby.now.datasource.CommentsDataSource.PublishCommentCallback;
-import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
-import com.tencent.mobileqq.nearby.now.view.CommentsView;
-import com.tencent.mobileqq.nearby.now.view.presenter.CommentsPresenterImpl;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.data.MayKnowRecommend;
+import java.util.Comparator;
 
-public class afef
-  implements CommentsDataSource.PublishCommentCallback
+class afef
+  implements Comparator<MayKnowRecommend>
 {
-  public afef(CommentsPresenterImpl paramCommentsPresenterImpl) {}
+  afef(afec paramafec) {}
   
-  public void a(Comments.Comment paramComment)
+  public int a(MayKnowRecommend paramMayKnowRecommend1, MayKnowRecommend paramMayKnowRecommend2)
   {
-    if (CommentsPresenterImpl.a(this.a) != null)
-    {
-      CommentsPresenterImpl.a(this.a).a(paramComment);
-      if (QLog.isColorLevel()) {
-        QLog.d("nearby.bindphone", 2, "onPublishSuccess");
-      }
+    long l1 = paramMayKnowRecommend1.cardDisplayTimestamp;
+    long l2 = paramMayKnowRecommend2.cardDisplayTimestamp;
+    if (l1 < l2) {
+      return 1;
     }
-  }
-  
-  public void a(Comments.Comment paramComment, int paramInt, String paramString)
-  {
-    if (CommentsPresenterImpl.a(this.a) != null)
-    {
-      CommentsPresenterImpl.a(this.a).a(paramComment, paramInt, paramString);
-      if (QLog.isColorLevel()) {
-        QLog.d("nearby.bindphone", 2, "onDataNotAvailable, code=" + paramInt + ", tip=" + paramString + ", comment=" + paramComment);
-      }
+    if (l1 == l2) {
+      return 0;
     }
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     afef
  * JD-Core Version:    0.7.0.1
  */

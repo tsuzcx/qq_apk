@@ -1,35 +1,31 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.view.View;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.os.Handler;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.ui.AVActivity;
+import com.tencent.av.ui.AVActivity.10.1;
+import com.tencent.av.ui.AVActivity.10.2;
 
 public class lqj
-  implements CompoundButton.OnCheckedChangeListener
+  extends bawf
 {
-  public lqj(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
+  public lqj(AVActivity paramAVActivity) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void a()
   {
-    ReadInJoySelfFragment.a(this.a).b(paramBoolean);
-    if (paramBoolean)
-    {
-      QQToast.a(this.a.a.getContext(), this.a.a.getContext().getResources().getString(2131428461), 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131558448));
-      PublicAccountReportUtils.a(null, "CliOper", "", "", "0X80067D6", "0X80067D6", 0, 0, "", "", "", ReadInJoyUtils.c(), false);
-      return;
+    if (this.a.a != null) {
+      this.a.a.a().postDelayed(new AVActivity.10.1(this), 0L);
     }
-    PublicAccountReportUtils.a(null, "CliOper", "", "", "0X800705C", "0X800705C", 0, 0, "", "", "", ReadInJoyUtils.c(), false);
+  }
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3)
+  {
+    if (this.a.a != null) {
+      this.a.a.a().post(new AVActivity.10.2(this));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lqj
  * JD-Core Version:    0.7.0.1
  */

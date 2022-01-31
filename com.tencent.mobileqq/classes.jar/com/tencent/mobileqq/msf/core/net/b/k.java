@@ -6,7 +6,7 @@ import android.text.TextUtils;
 import com.tencent.mobileqq.msf.core.MsfCore;
 import com.tencent.mobileqq.msf.core.MsfStore;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.msf.core.af;
+import com.tencent.mobileqq.msf.core.ag;
 import com.tencent.mobileqq.msf.sdk.MsfCommand;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 import com.tencent.msf.boot.config.NativeConfigStore;
@@ -29,25 +29,26 @@ public class k
   private static final String g = "WifiDetector";
   private static final String h = "_wifi_detect_history";
   private static final long i = 7200000L;
-  private static final long j = 60000L;
-  private static final long k = 86400000L;
-  private static final long l = 5L;
-  private static final int t = 1000;
-  private MsfCore m;
-  private AtomicBoolean n = new AtomicBoolean(false);
-  private volatile int o;
-  private int p = -1;
-  private String q;
+  private static final long j = 10000L;
+  private static final long k = 30000L;
+  private static final long l = 86400000L;
+  private static final long m = 5L;
+  private static final int u = 1000;
+  private MsfCore n;
+  private AtomicBoolean o = new AtomicBoolean(false);
+  private volatile int p = 0;
+  private int q = -1;
   private String r;
-  private ConcurrentHashMap s = new ConcurrentHashMap();
-  private Handler u = new l(this);
-  private a.a v = new m(this);
+  private String s;
+  private ConcurrentHashMap t = new ConcurrentHashMap();
+  private Handler v = new l(this);
+  private a.a w = new m(this);
   
   public k(MsfCore paramMsfCore)
   {
-    this.m = paramMsfCore;
-    g();
-    e();
+    this.n = paramMsfCore;
+    f();
+    d();
   }
   
   private int a(int paramInt)
@@ -66,29 +67,28 @@ public class k
   
   private void a(int paramInt, String paramString)
   {
-    if ((this.p != -2) || (paramInt == 0)) {
-      this.p = paramInt;
+    if ((this.q != -2) || (paramInt == 0)) {
+      this.q = paramInt;
     }
-    if (this.p == -2) {
-      this.q = paramString;
+    if (this.q == -2) {
+      this.r = paramString;
     }
   }
   
-  private void a(String paramString, long paramLong, boolean paramBoolean)
+  private void a(String paramString, long paramLong, boolean paramBoolean, int paramInt)
   {
-    n localn = new n(paramString, paramLong, paramBoolean);
-    Iterator localIterator = this.s.entrySet().iterator();
+    n localn = new n(paramString, paramLong, paramBoolean, paramInt);
+    Iterator localIterator = this.t.entrySet().iterator();
     StringBuffer localStringBuffer;
-    int i1;
     Object localObject;
     try
     {
       localStringBuffer = new StringBuffer();
-      i1 = 0;
+      paramInt = 0;
       for (;;)
       {
         if (!localIterator.hasNext()) {
-          break label160;
+          break label162;
         }
         localObject = (Map.Entry)localIterator.next();
         String str = (String)((Map.Entry)localObject).getKey();
@@ -112,25 +112,40 @@ public class k
     }
     for (;;)
     {
-      label160:
-      this.s.put(paramString, localn);
+      label162:
+      this.t.put(paramString, localn);
       MsfStore.getNativeConfigStore().setConfig("_wifi_detect_history", localStringBuffer.toString());
       return;
       localStringBuffer.append("#&#").append((String)localObject);
       do
       {
         break;
-        i1 += 1;
-      } while (i1 <= 5L);
+        paramInt += 1;
+      } while (paramInt <= 5L);
+    }
+  }
+  
+  private void b(String paramString, int paramInt)
+  {
+    try
+    {
+      a(paramString, System.currentTimeMillis(), false, paramInt);
+      c(paramString);
+      return;
+    }
+    finally
+    {
+      paramString = finally;
+      throw paramString;
     }
   }
   
   private void b(String paramString, long paramLong)
   {
-    this.u.removeMessages(1000);
-    Message localMessage = this.u.obtainMessage();
+    this.v.removeMessages(1000);
+    Message localMessage = this.v.obtainMessage();
     localMessage.obj = paramString;
-    this.u.sendMessageDelayed(localMessage, paramLong);
+    this.v.sendMessageDelayed(localMessage, paramLong);
   }
   
   private void c(String paramString)
@@ -150,31 +165,39 @@ public class k
           QLog.d("WifiDetector", 1, "WIFI detect start failed, ssid is invalid!");
           continue;
         }
-        if (this.n.compareAndSet(false, true)) {
+        if (this.o.compareAndSet(false, true)) {
           break label76;
         }
       }
       finally {}
       QLog.d("WifiDetector", 1, "WIFI detect start failed, there is detect running!");
-      b(paramString, 60000L);
+      b(paramString, 30000L);
       continue;
       label76:
       QLog.d("WifiDetector", 1, "WIFI detect started!");
-      this.r = paramString;
-      a(this.r, System.currentTimeMillis());
+      this.s = paramString;
+      a(this.s, System.currentTimeMillis());
       b(paramString, 7200000L);
       while (i1 < this.f.length)
       {
-        this.o |= 1 << i1;
-        paramString = a(this.f[i1], i1, this.v);
-        if (paramString != null)
+        this.p |= 1 << i1;
+        Object localObject = a(this.f[i1], i1, this.w);
+        ((a)localObject).g = paramString;
+        if (localObject != null)
         {
-          paramString = new Thread(paramString);
-          paramString.setName("WifiDetectEchoThread");
-          paramString.start();
+          localObject = new Thread((Runnable)localObject);
+          ((Thread)localObject).setName("WifiDetectEchoThread");
+          ((Thread)localObject).start();
         }
         i1 += 1;
       }
+    }
+  }
+  
+  private void d()
+  {
+    if ((NetConnInfoCenter.isWifiConn()) && (d(NetConnInfoCenter.getLastWifiSSID()))) {
+      a(NetConnInfoCenter.getLastWifiSSID(), 0);
     }
   }
   
@@ -185,21 +208,14 @@ public class k
   
   private void e()
   {
-    if ((NetConnInfoCenter.isWifiConn()) && (d(NetConnInfoCenter.getLastWifiSSID()))) {
-      a(NetConnInfoCenter.getLastWifiSSID());
-    }
+    this.o.set(false);
+    this.p = 0;
+    this.q = -1;
+    this.r = null;
+    this.s = "";
   }
   
   private void f()
-  {
-    this.n.set(false);
-    this.o = 0;
-    this.p = -1;
-    this.q = null;
-    this.r = "";
-  }
-  
-  private void g()
   {
     Object localObject = MsfStore.getNativeConfigStore().getConfig("_wifi_detect_history");
     try
@@ -213,7 +229,7 @@ public class k
       {
         n localn = n.a(localObject[i1]);
         if (localn != null) {
-          this.s.put(localn.a, localn);
+          this.t.put(localn.a, localn);
         }
         i1 += 1;
       }
@@ -228,96 +244,103 @@ public class k
   public void a()
   {
     QLog.d("WifiDetector", 1, "WIFI detect onWifiDisconnected!");
-    this.u.removeMessages(1000);
+    this.v.removeMessages(1000);
   }
   
   public void a(String paramString)
   {
-    QLog.d("WifiDetector", 1, "WIFI detect onWifiConnected!");
-    n localn = (n)this.s.get(paramString);
-    long l1 = System.currentTimeMillis();
-    if (localn == null)
+    QLog.d("WifiDetector", 1, "WIFI detect onWifiConnSucc!");
+    a(paramString, true);
+  }
+  
+  public void a(String paramString, int paramInt)
+  {
+    QLog.d("WifiDetector", 1, "WIFI detect onWifiConnected! with " + paramInt);
+    Object localObject = this.n.configManager;
+    if (!com.tencent.mobileqq.msf.core.a.a.y())
     {
-      a(paramString, false);
+      paramInt = 0;
+      QLog.d("WifiDetector", 1, "WIFI detect onWifiConnected into:  " + 0);
+    }
+    localObject = (n)this.t.get(paramString);
+    long l2 = System.currentTimeMillis();
+    if (localObject == null)
+    {
+      b(paramString, paramInt);
+      return;
+    }
+    if (!((n)localObject).c)
+    {
+      ((n)localObject).d = paramInt;
       c(paramString);
       return;
     }
-    if (!localn.c)
+    ((n)localObject).d = paramInt;
+    if (1 == paramInt) {}
+    for (long l1 = 10000L; l2 - ((n)localObject).b >= l1; l1 = 7200000L)
     {
       c(paramString);
       return;
     }
-    if (l1 - localn.b >= 7200000L)
-    {
-      c(paramString);
-      return;
-    }
-    b(paramString, 7200000L - (l1 - localn.b));
+    b(paramString, l1 - (l2 - ((n)localObject).b));
   }
   
   public void a(String paramString, long paramLong)
   {
-    n localn = (n)this.s.get(paramString);
-    if (localn != null)
-    {
-      a(paramString, paramLong, localn.c);
-      return;
+    n localn = (n)this.t.get(paramString);
+    if (localn != null) {
+      a(paramString, paramLong, localn.c, localn.d);
     }
-    a(paramString, paramLong, false);
   }
   
   public void a(String paramString, boolean paramBoolean)
   {
-    n localn = (n)this.s.get(paramString);
+    n localn = (n)this.t.get(paramString);
     if (localn != null) {
-      a(paramString, localn.b, paramBoolean);
+      a(paramString, localn.b, paramBoolean, localn.d);
     }
   }
   
   public void b()
   {
     QLog.d("WifiDetector", 1, "WIFI detect onWifiAllConnFailed!");
-    c(NetConnInfoCenter.getLastWifiSSID());
+    b(NetConnInfoCenter.getLastWifiSSID(), 0);
   }
   
   public void b(String paramString)
   {
-    QLog.d("WifiDetector", 1, "WIFI detect onWifiConnSucc!");
-    a(paramString, true);
-  }
-  
-  public void c()
-  {
-    QLog.d("WifiDetector", 1, "WIFI detect onWifiConnFake!");
-    c(NetConnInfoCenter.getLastWifiSSID());
-  }
-  
-  public void d()
-  {
-    int i1 = this.p;
-    String str = this.q;
+    int i1 = this.q;
+    String str = this.r;
     if (NetConnInfoCenter.isWifiConn()) {
-      if (i1 == 0) {
+      if (i1 == 0)
+      {
         QLog.d("WifiDetector", 1, "WIFI detect result, WIFI_OK");
+        if (paramString != null)
+        {
+          paramString = (n)this.t.get(paramString);
+          if ((paramString != null) && (paramString.d == 1)) {
+            this.n.sender.b.l().a(com.tencent.qphone.base.a.b);
+          }
+        }
       }
     }
     for (;;)
     {
-      f();
+      e();
       return;
       if (i1 == -1)
       {
         QLog.d("WifiDetector", 1, "WIFI detect result, WIFI_EXCEPTION");
       }
-      else if ((i1 == -2) && (!this.m.sender.a.c()) && (d(this.r)))
+      else if ((i1 == -2) && (!this.n.sender.b.c()) && (d(this.s)))
       {
         QLog.d("WifiDetector", 1, "WIFI detect result, WIFI_NEED_AUTH");
-        FromServiceMsg localFromServiceMsg = new FromServiceMsg(NetConnInfoCenter.msfCore.getMsfAppid(), MsfCore.getNextSeq(), "0", "cmd_netNeedSignon");
-        localFromServiceMsg.setMsgSuccess();
-        localFromServiceMsg.setMsfCommand(MsfCommand.onNetNeedSignon);
-        localFromServiceMsg.addAttribute("signonurl", str);
-        MsfSdkUtils.addFromMsgProcessName("*", localFromServiceMsg);
-        NetConnInfoCenter.msfCore.addRespToQuque(null, localFromServiceMsg);
+        paramString = new FromServiceMsg(NetConnInfoCenter.msfCore.getMsfAppid(), MsfCore.getNextSeq(), "0", "cmd_netNeedSignon");
+        paramString.setMsgSuccess();
+        paramString.setMsfCommand(MsfCommand.onNetNeedSignon);
+        paramString.addAttribute("signonurl", str);
+        MsfSdkUtils.addFromMsgProcessName("*", paramString);
+        NetConnInfoCenter.msfCore.addRespToQuque(null, paramString);
       }
       else
       {
@@ -326,6 +349,12 @@ public class k
         QLog.d("WifiDetector", 1, "WIFI detect result, WIFI_NONE");
       }
     }
+  }
+  
+  public void c()
+  {
+    QLog.d("WifiDetector", 1, "WIFI detect onWifiConnFake!");
+    b(NetConnInfoCenter.getLastWifiSSID(), 0);
   }
 }
 

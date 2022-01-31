@@ -1,55 +1,34 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.data.ChatBackgroundInfo;
-import com.tencent.mobileqq.model.ChatBackgroundManager;
-import com.tencent.mobileqq.vip.DownloadListener;
-import com.tencent.mobileqq.vip.DownloadTask;
-import com.tencent.mobileqq.vip.IPCDownloadListener;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnPreparedListener;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.bless.BlessActivity;
+import com.tencent.mobileqq.activity.bless.BlessActivity.7.1;
+import com.tencent.mobileqq.widget.QQVideoView;
 import com.tencent.qphone.base.util.QLog;
 
 public class aepw
-  extends DownloadListener
+  implements MediaPlayer.OnPreparedListener
 {
-  public aepw(ChatBackgroundManager paramChatBackgroundManager, String paramString1, String paramString2)
-  {
-    super(paramString1, paramString2);
-  }
+  public aepw(BlessActivity paramBlessActivity) {}
   
-  public void onDone(DownloadTask paramDownloadTask)
-  {
-    super.onDone(paramDownloadTask);
-    ChatBackgroundInfo localChatBackgroundInfo = (ChatBackgroundInfo)paramDownloadTask.a().get("chatbgInfo");
-    long l1 = paramDownloadTask.h;
-    long l2 = paramDownloadTask.g;
-    int i = paramDownloadTask.a();
-    if (QLog.isColorLevel()) {
-      QLog.d("ChatBackgroundManager", 2, "endDownload  id=" + paramDownloadTask.b() + "result =" + i);
-    }
-    if (i == 3) {
-      this.a.a(0, String.valueOf(paramDownloadTask.b()), l1 - l2);
-    }
-    for (i = 0;; i = 1)
-    {
-      if ((this.a.a != null) && (paramDownloadTask.a().containsKey("callbackId"))) {
-        this.a.a.a(paramDownloadTask.b(), i, paramDownloadTask.a());
-      }
-      return;
-      this.a.a(1, String.valueOf(paramDownloadTask.b()), 0L);
-      QLog.d("ChatBackgroundManager", 1, "chatbg downloadfail:id = " + paramDownloadTask.b() + ";result =" + i);
-    }
-  }
-  
-  public boolean onStart(DownloadTask paramDownloadTask)
+  public void onPrepared(MediaPlayer paramMediaPlayer)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("ChatBackgroundManager", 2, "startDownload  id=" + paramDownloadTask.b());
+      QLog.d(BlessActivity.a(this.a), 2, "videoview onPrepared");
     }
-    super.onStart(paramDownloadTask);
-    return true;
+    if (BlessActivity.a(this.a) != null) {
+      BlessActivity.a(this.a).start();
+    }
+    BlessActivity.a(this.a).postDelayed(new BlessActivity.7.1(this), 800L);
+    if (QLog.isColorLevel()) {
+      QLog.d(BlessActivity.a(this.a), 2, "videoview onPrepared");
+    }
+    awqx.b(this.a.app, "CliOper", "", "", "0X800632D", "0X800632D", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aepw
  * JD-Core Version:    0.7.0.1
  */

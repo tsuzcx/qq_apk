@@ -1,22 +1,24 @@
-import com.tencent.mobileqq.ar.ARRenderModel.ARWorldCupGlobalSceneRenderable;
-import com.tencent.mobileqq.ar.ARRenderModel.ARWorldCupResourceInfo;
-import com.tencent.mobileqq.arcard.ARcardSound;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-class aaga
-  implements Runnable
+public final class aaga
+  implements DialogInterface.OnClickListener
 {
-  aaga(aafz paramaafz) {}
+  public aaga(aagm paramaagm) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (ARWorldCupGlobalSceneRenderable.a(this.a.a) != null) {
-      ARWorldCupGlobalSceneRenderable.a(this.a.a).a(ARWorldCupGlobalSceneRenderable.a(this.a.a).a() + "/res/worldcup/football.mp3", false);
+    if (this.a != null) {
+      this.a.a();
+    }
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aaga
  * JD-Core Version:    0.7.0.1
  */

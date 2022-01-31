@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.data;
 
 import android.database.Cursor;
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.unique;
+import atmo;
+import atoc;
 
 public class Groups
-  extends Entity
+  extends atmo
 {
   @Deprecated
   public long datetime;
   public int group_friend_count;
-  @unique
+  @atoc
   public int group_id;
   public String group_name;
   @Deprecated
@@ -19,7 +19,7 @@ public class Groups
   @Deprecated
   public int sqqOnLine_count;
   
-  protected boolean entityByCursor(Cursor paramCursor)
+  public boolean entityByCursor(Cursor paramCursor)
   {
     this.group_name = paramCursor.getString(paramCursor.getColumnIndex("group_name"));
     this.group_id = paramCursor.getInt(paramCursor.getColumnIndex("group_id"));

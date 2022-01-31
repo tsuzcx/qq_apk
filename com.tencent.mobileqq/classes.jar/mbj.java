@@ -1,26 +1,25 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.biz.pubaccount.readinjoy.struct.KandianOx210MsgInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import cooperation.readinjoy.ReadInJoyHelper;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 
-public class mbj
-  implements Runnable
+class mbj
+  implements View.OnClickListener
 {
-  public mbj(KandianOx210MsgInfo paramKandianOx210MsgInfo, QQAppInterface paramQQAppInterface) {}
+  mbj(mbf parammbf) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    SharedPreferences.Editor localEditor = ReadInJoyHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, true, false).edit();
-    localEditor.remove("kandian_push_0x210_msg_sys");
-    localEditor.remove("kandian_push_0x210_msg_sys_count");
-    localEditor.remove("kandian_push_0x210_c5_msg_time");
-    ReadInJoyHelper.a(localEditor, true);
+    if ((mbf.a(this.a) != null) && (mbf.a(this.a).isShown()))
+    {
+      this.a.e();
+      return;
+    }
+    mbf.c(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     mbj
  * JD-Core Version:    0.7.0.1
  */

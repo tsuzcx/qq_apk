@@ -1,0 +1,39 @@
+package com.tencent.mobileqq.webprocess;
+
+import bbdc;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.sdk.WebAccelerator;
+import java.util.HashMap;
+import java.util.Map;
+import mpw;
+
+class WebAccelerateHelper$1
+  implements Runnable
+{
+  WebAccelerateHelper$1(WebAccelerateHelper paramWebAccelerateHelper, boolean paramBoolean1, String paramString, boolean paramBoolean2) {}
+  
+  public void run()
+  {
+    if (this.val$fisX5PreFetch)
+    {
+      localHashMap = new HashMap();
+      localHashMap.put("User-Agent", bbdc.a(bbdc.b("x5prefetch_1.0"), "", false));
+      WebAccelerator.prefetchResource(BaseApplicationImpl.getContext(), this.val$fUrl, localHashMap, true);
+      QLog.i("WebAccelerateHelper", 1, "now prefetchResource " + mpw.c(this.val$fUrl, new String[0]));
+    }
+    while (!this.val$fisX5PreConnect)
+    {
+      HashMap localHashMap;
+      return;
+    }
+    WebAccelerator.preConnect(BaseApplicationImpl.getContext(), this.val$fUrl, 1, true);
+    QLog.i("WebAccelerateHelper", 1, "now preconnect " + mpw.c(this.val$fUrl, new String[0]));
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+ * Qualified Name:     com.tencent.mobileqq.webprocess.WebAccelerateHelper.1
+ * JD-Core Version:    0.7.0.1
+ */

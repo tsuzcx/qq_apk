@@ -2,19 +2,21 @@ package com.tencent.biz.pubaccount.util;
 
 import com.tencent.commonsdk.cache.QQHashMap;
 import java.util.concurrent.atomic.AtomicBoolean;
+import rsp;
+import rsq;
 
-final class PublicAccountConfigUtil$3
-  extends QQHashMap
+public final class PublicAccountConfigUtil$3
+  extends QQHashMap<Integer, rsq>
 {
-  PublicAccountConfigUtil$3(int paramInt1, int paramInt2, int paramInt3)
+  public PublicAccountConfigUtil$3(int paramInt1, int paramInt2, int paramInt3)
   {
     super(paramInt1, paramInt2, paramInt3);
   }
   
-  protected void clearMemory()
+  public void clearMemory()
   {
     clear();
-    PublicAccountConfigUtil.a().set(false);
+    rsp.a().set(false);
   }
 }
 

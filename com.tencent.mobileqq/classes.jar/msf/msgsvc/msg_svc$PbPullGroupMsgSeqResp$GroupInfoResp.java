@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class msg_svc$PbPullGroupMsgSeqResp$GroupInfoResp
-  extends MessageMicro
+  extends MessageMicro<GroupInfoResp>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24 }, new String[] { "group_code", "member_seq", "group_seq" }, new Object[] { Long.valueOf(0L), Long.valueOf(0L), Long.valueOf(0L) }, GroupInfoResp.class);
   public final PBUInt64Field group_code = PBField.initUInt64(0L);

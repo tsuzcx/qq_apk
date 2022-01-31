@@ -1,38 +1,38 @@
 package com.tencent.mobileqq.app.automator.step;
 
+import ajmm;
+import ajrx;
+import ajxt;
 import android.os.Bundle;
+import awqx;
+import bffu;
 import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.app.MessageObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ShieldListHandler;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
-import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qphone.base.remote.ToServiceMsg;
-import cooperation.qlink.QlinkReliableReport;
-import zxl;
 
 public class GetSig
   extends AsyncStep
 {
-  private MessageObserver a;
+  private ajmm a;
   
   private void b()
   {
-    ToServiceMsg localToServiceMsg = this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.a("TransService.ReqGetSign");
+    ToServiceMsg localToServiceMsg = this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.createToServiceMsg("TransService.ReqGetSign");
     localToServiceMsg.extraData.putInt("ssover", 1);
-    localToServiceMsg.extraData.putInt("app_id", AppSetting.a);
+    localToServiceMsg.extraData.putInt("app_id", AppSetting.a());
     localToServiceMsg.extraData.putByte("a2type", (byte)4);
-    localToServiceMsg.extraData.putByteArray("enkey", this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.b.getUinSign());
-    this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.a(localToServiceMsg);
+    localToServiceMsg.extraData.putByteArray("enkey", this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getUinSign());
+    this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.send(localToServiceMsg);
   }
   
-  protected int a()
+  public int a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver == null)
+    if (this.jdField_a_of_type_Ajmm == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new zxl(this, null);
-      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.b.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver);
+      this.jdField_a_of_type_Ajmm = new ajxt(this, null);
+      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.a(this.jdField_a_of_type_Ajmm);
     }
     b();
     return 2;
@@ -40,17 +40,17 @@ public class GetSig
   
   public void a()
   {
-    ((ShieldListHandler)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.b.a(18)).b();
-    ReportController.a(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.b, true);
-    QlinkReliableReport.a();
+    ((ajrx)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.a(18)).a();
+    awqx.a(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app, true);
+    bffu.a();
   }
   
-  public void c()
+  public void d()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver != null)
+    if (this.jdField_a_of_type_Ajmm != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.b.removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver);
-      this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver = null;
+      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.removeObserver(this.jdField_a_of_type_Ajmm);
+      this.jdField_a_of_type_Ajmm = null;
     }
   }
 }

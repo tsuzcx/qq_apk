@@ -10,7 +10,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class C2CType0x211_SubC2CType0x8$NearFieldFileSendReq
-  extends MessageMicro
+  extends MessageMicro<NearFieldFileSendReq>
 {
   public static final int INT32_CONN_WIFIAP_TIMEOUT_FIELD_NUMBER = 6;
   public static final int INT32_IP_FIELD_NUMBER = 3;
@@ -24,7 +24,7 @@ public final class C2CType0x211_SubC2CType0x8$NearFieldFileSendReq
   public final PBInt32Field int32_conn_wifiap_timeout = PBField.initInt32(0);
   public final PBInt32Field int32_ip = PBField.initInt32(0);
   public final PBInt32Field int32_udp_port = PBField.initInt32(0);
-  public final PBRepeatMessageField rpt_msg_file_list = PBField.initRepeatMessage(C2CType0x211_SubC2CType0x8.NearFieldFileInfo.class);
+  public final PBRepeatMessageField<C2CType0x211_SubC2CType0x8.NearFieldFileInfo> rpt_msg_file_list = PBField.initRepeatMessage(C2CType0x211_SubC2CType0x8.NearFieldFileInfo.class);
   public final PBStringField str_ssid = PBField.initString("");
   public final PBStringField str_wifipsw = PBField.initString("");
   public final PBUInt32Field uint32_force_wifi = PBField.initUInt32(0);

@@ -4,9 +4,9 @@ import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
 
 public abstract interface QQSpecialAVFilter$MusicWaveformSupporter
 {
-  public abstract float a();
+  public abstract float getCurrentMusicGain();
   
-  public abstract MusicItemInfo a();
+  public abstract MusicItemInfo getMusicItemInfo();
 }
 
 

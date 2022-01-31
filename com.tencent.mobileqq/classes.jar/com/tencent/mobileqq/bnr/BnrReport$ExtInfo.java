@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBStringField;
 
 public final class BnrReport$ExtInfo
-  extends MessageMicro
+  extends MessageMicro<ExtInfo>
 {
   public static final int APP_VER_FIELD_NUMBER = 1;
   public static final int SYS_VER_FIELD_NUMBER = 2;

@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class DynamicAssociationWord$AssociationItem
-  extends MessageMicro
+  extends MessageMicro<AssociationItem>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBUInt32Field group_mask = PBField.initUInt32(0);

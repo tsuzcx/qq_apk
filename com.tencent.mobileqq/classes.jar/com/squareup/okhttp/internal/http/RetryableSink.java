@@ -1,7 +1,6 @@
 package com.squareup.okhttp.internal.http;
 
 import com.squareup.okhttp.internal.Util;
-import java.io.IOException;
 import java.net.ProtocolException;
 import okio.Buffer;
 import okio.Sink;
@@ -25,7 +24,6 @@ public final class RetryableSink
   }
   
   public void close()
-    throws IOException
   {
     if (this.closed) {}
     do
@@ -37,14 +35,11 @@ public final class RetryableSink
   }
   
   public long contentLength()
-    throws IOException
   {
     return this.content.size();
   }
   
-  public void flush()
-    throws IOException
-  {}
+  public void flush() {}
   
   public Timeout timeout()
   {
@@ -52,7 +47,6 @@ public final class RetryableSink
   }
   
   public void write(Buffer paramBuffer, long paramLong)
-    throws IOException
   {
     if (this.closed) {
       throw new IllegalStateException("closed");
@@ -65,7 +59,6 @@ public final class RetryableSink
   }
   
   public void writeToSocket(Sink paramSink)
-    throws IOException
   {
     Buffer localBuffer = new Buffer();
     this.content.copyTo(localBuffer, 0L, this.content.size());

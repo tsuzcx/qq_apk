@@ -1,18 +1,19 @@
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class ajbj
-  implements Runnable
+class ajbj
+  implements View.OnClickListener
 {
-  public ajbj(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity) {}
+  ajbj(ajbi paramajbi) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.a.l = false;
+    this.a.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ajbj
  * JD-Core Version:    0.7.0.1
  */

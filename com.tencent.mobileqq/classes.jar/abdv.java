@@ -1,81 +1,82 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.ark.ArkAiBubbleView;
-import com.tencent.mobileqq.ark.ArkAiInfo;
-import com.tencent.mobileqq.ark.ArkAppDataReport;
-import com.tencent.mobileqq.ark.ArkAppHandler;
-import com.tencent.mobileqq.ark.ArkRecommendController;
-import com.tencent.widget.XEditTextEx;
-import java.util.List;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.NearbyActivity;
+import com.tencent.mobileqq.activity.NearbyActivity.TabInfo;
+import com.tencent.mobileqq.fragment.NearbyBaseFragment;
+import com.tencent.mobileqq.widget.TabBarView;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class abdv
-  implements View.OnClickListener
+  implements ViewPager.OnPageChangeListener
 {
-  public abdv(ArkRecommendController paramArkRecommendController) {}
+  public abdv(NearbyActivity paramNearbyActivity) {}
   
-  public void onClick(View paramView)
+  public void onPageScrollStateChanged(int paramInt) {}
+  
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
+  
+  public void onPageSelected(int paramInt)
   {
-    paramView = paramView.getTag();
-    QQAppInterface localQQAppInterface;
-    int i;
-    ArkAiInfo localArkAiInfo;
-    if ((paramView instanceof ArkAiBubbleView))
+    if (QLog.isColorLevel()) {
+      asfl.a("onPageSelected", new Object[] { Integer.valueOf(this.a.b), Integer.valueOf(this.a.jdField_h_of_type_Int), Integer.valueOf(paramInt) });
+    }
+    Object localObject = this.a;
+    int i = ((NearbyActivity.TabInfo)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).tabIndex;
+    ((NearbyActivity)localObject).b = i;
+    NearbyBaseFragment.b = i;
+    if ((this.a.jdField_h_of_type_Long == 0L) && (this.a.b == 2))
     {
-      paramView = (ArkAiBubbleView)paramView;
-      if (!paramView.c)
-      {
-        this.a.a(paramView.jdField_a_of_type_JavaUtilList, paramView.jdField_a_of_type_JavaUtilList.indexOf(paramView.jdField_a_of_type_ComTencentMobileqqArkArkAiInfo));
-        List localList = paramView.a();
-        localQQAppInterface = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
-        i = 0;
-        if (i >= localList.size()) {
-          break label274;
-        }
-        localArkAiInfo = (ArkAiInfo)localList.get(i);
-        ArkAppDataReport.h(null, localArkAiInfo.jdField_a_of_type_JavaLangString, localArkAiInfo.g, localArkAiInfo.jdField_b_of_type_Int);
-        if (localArkAiInfo.jdField_a_of_type_Int != 0)
-        {
-          ArkAppDataReport.j(localQQAppInterface, localArkAiInfo.jdField_a_of_type_JavaLangString, localArkAiInfo.h, localArkAiInfo.jdField_a_of_type_Int);
-          if (4 == localArkAiInfo.jdField_a_of_type_Int) {
-            ArkAppDataReport.j(localQQAppInterface, localArkAiInfo.jdField_a_of_type_JavaLangString, localArkAiInfo.h, 1);
-          }
-        }
-        if (i == 0)
-        {
-          if ((ArkRecommendController.a(this.a) == null) || (ArkRecommendController.a(this.a).a == null)) {
-            break label275;
-          }
-          paramView = ArkRecommendController.a(this.a).a.getText();
-          if (paramView != null) {
-            break label247;
-          }
-          paramView = null;
-        }
+      this.a.jdField_h_of_type_Long = System.currentTimeMillis();
+      if (QLog.isDevelopLevel()) {
+        asfl.a("WebSpeedTrace", "mClickTime", new Object[] { "onPageSelected", Long.valueOf(this.a.jdField_h_of_type_Long) });
       }
+    }
+    if ((this.a.jdField_a_of_type_Long == 0L) && (this.a.b == 1))
+    {
+      this.a.jdField_a_of_type_Long = System.currentTimeMillis();
+      if (QLog.isDevelopLevel()) {
+        asfl.a("WebSpeedTrace", "mNowClickTime", new Object[] { "onPageSelected", Long.valueOf(this.a.jdField_a_of_type_Long) });
+      }
+    }
+    if (this.a.jdField_h_of_type_Int != paramInt) {
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.setSelectedTab(paramInt, true);
+    }
+    if (this.a.jdField_h_of_type_Int != -1)
+    {
+      i = this.a.jdField_h_of_type_Int;
+      if (this.a.jdField_h_of_type_Int != this.a.c) {
+        break label411;
+      }
+      i = 9;
     }
     for (;;)
     {
-      ((ArkAppHandler)localQQAppInterface.a(95)).a(100, 1, 2, null, null, localArkAiInfo.jdField_a_of_type_JavaLangString, localArkAiInfo.jdField_b_of_type_JavaLangString, paramView, 0, 0);
-      i += 1;
-      break;
-      label247:
-      paramView = paramView.toString();
-      continue;
-      this.a.h();
-      ArkAppDataReport.c((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime());
-      label274:
+      if (TextUtils.equals(ajjy.a(2131641305), ((NearbyActivity.TabInfo)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).tabName)) {
+        i = 11;
+      }
+      int j = ((NearbyActivity.TabInfo)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).reportId;
+      if (j != 0)
+      {
+        if (QLog.isColorLevel()) {
+          asfl.a("report_switch_tab", new Object[] { ((NearbyActivity.TabInfo)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).tabName, Integer.valueOf(j) });
+        }
+        i = j;
+      }
+      asfl.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface, "switch_tab", i);
+      localObject = this.a.a(paramInt);
+      if (localObject != null) {
+        ((NearbyBaseFragment)localObject).aW_();
+      }
       return;
-      label275:
-      paramView = null;
+      label411:
+      i += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abdv
  * JD-Core Version:    0.7.0.1
  */

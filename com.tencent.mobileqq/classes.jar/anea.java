@@ -1,53 +1,19 @@
-import android.os.Message;
-import com.tencent.component.network.downloader.DownloadResult;
-import com.tencent.component.network.downloader.Downloader.DownloadListener;
-import cooperation.qzone.networkedmodule.QzoneModuleDownloadManager;
-import java.util.Map;
+import android.os.Bundle;
+import com.tencent.mobileqq.emosm.web.MessengerService;
 
 public class anea
-  implements Downloader.DownloadListener
+  extends ahxi
 {
-  public anea(QzoneModuleDownloadManager paramQzoneModuleDownloadManager) {}
+  public anea(MessengerService paramMessengerService) {}
   
-  public void onDownloadCanceled(String paramString)
+  public void a(Bundle paramBundle)
   {
-    Message localMessage = Message.obtain(QzoneModuleDownloadManager.a(this.a));
-    localMessage.what = 5;
-    localMessage.obj = paramString;
-    localMessage.sendToTarget();
-  }
-  
-  public void onDownloadFailed(String paramString, DownloadResult paramDownloadResult)
-  {
-    paramDownloadResult = Message.obtain(QzoneModuleDownloadManager.a(this.a));
-    paramDownloadResult.what = 3;
-    paramDownloadResult.obj = paramString;
-    paramDownloadResult.sendToTarget();
-  }
-  
-  public void onDownloadProgress(String paramString, long paramLong, float paramFloat)
-  {
-    paramString = (aneb)QzoneModuleDownloadManager.a(this.a).get(paramString);
-    if (paramString != null) {
-      paramString.a = Float.valueOf(paramFloat);
-    }
-    Message localMessage = Message.obtain(QzoneModuleDownloadManager.a(this.a));
-    localMessage.what = 6;
-    localMessage.obj = paramString;
-    localMessage.sendToTarget();
-  }
-  
-  public void onDownloadSucceed(String paramString, DownloadResult paramDownloadResult)
-  {
-    paramDownloadResult = Message.obtain(QzoneModuleDownloadManager.a(this.a));
-    paramDownloadResult.what = 2;
-    paramDownloadResult.obj = paramString;
-    paramDownloadResult.sendToTarget();
+    this.a.a(paramBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     anea
  * JD-Core Version:    0.7.0.1
  */

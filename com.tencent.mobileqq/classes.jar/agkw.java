@@ -1,27 +1,26 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.FrameLayout;
-import com.tencent.mobileqq.ar.ARRenderModel.ARRenderMangerInnerCallback;
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import android.content.res.Resources;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.qwallet.RedPacketKSongFragment;
+import com.tencent.mobileqq.widget.ksong.KSongView;
 
-class agkw
-  implements View.OnClickListener
+public class agkw
+  extends bbpo
 {
-  agkw(agkv paramagkv) {}
+  public agkw(RedPacketKSongFragment paramRedPacketKSongFragment) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderMangerInnerCallback != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderMangerInnerCallback.a(this.a.jdField_a_of_type_ComTencentMobileqqArModelArVideoResourceInfo);
-    }
-    ScanTorchActivity.k(this.a.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity);
-    ScanTorchActivity.j(this.a.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity);
-    this.a.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity.a.setOnClickListener(this.a.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity);
+    super.a();
+    this.a.b = false;
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetKsongKSongView.a();
+    this.a.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.a.getResources().getDrawable(2130846204));
+    this.a.c.setText(ajjy.a(2131647514));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     agkw
  * JD-Core Version:    0.7.0.1
  */

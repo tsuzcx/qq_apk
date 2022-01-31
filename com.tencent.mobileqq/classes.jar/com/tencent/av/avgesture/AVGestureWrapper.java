@@ -19,7 +19,7 @@ public class AVGestureWrapper
   public static final String UPLOAD_REPORT_START = "0X800839B";
   private static final AVCosUpload cos = ;
   static String mFilePath;
-  public static AVUploadReport mReport;
+  public static AVGestureWrapper.AVUploadReport mReport;
   public static final int sImgFmtBGRA = 1;
   public static final int sImgFmtI420 = 3;
   public static final int sImgFmtNV21 = 2;
@@ -76,132 +76,126 @@ public class AVGestureWrapper
   private static String readFile(String paramString)
   {
     // Byte code:
-    //   0: aconst_null
-    //   1: astore_1
-    //   2: aconst_null
-    //   3: astore 4
-    //   5: ldc 81
-    //   7: astore_3
-    //   8: new 142	java/io/BufferedReader
+    //   0: new 137	java/io/BufferedReader
+    //   3: dup
+    //   4: new 139	java/io/InputStreamReader
+    //   7: dup
+    //   8: new 141	java/io/FileInputStream
     //   11: dup
-    //   12: new 144	java/io/InputStreamReader
-    //   15: dup
-    //   16: new 146	java/io/FileInputStream
-    //   19: dup
-    //   20: aload_0
-    //   21: invokespecial 149	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
-    //   24: ldc 151
-    //   26: invokespecial 154	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;Ljava/lang/String;)V
-    //   29: invokespecial 157	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
-    //   32: astore_2
-    //   33: aload_3
-    //   34: astore_0
-    //   35: aload_2
-    //   36: invokevirtual 160	java/io/BufferedReader:readLine	()Ljava/lang/String;
-    //   39: astore_1
-    //   40: aload_1
-    //   41: ifnull +27 -> 68
-    //   44: new 78	java/lang/StringBuilder
-    //   47: dup
-    //   48: invokespecial 79	java/lang/StringBuilder:<init>	()V
-    //   51: aload_0
-    //   52: invokevirtual 85	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   55: aload_1
-    //   56: invokevirtual 85	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   59: invokevirtual 97	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   62: astore_1
-    //   63: aload_1
-    //   64: astore_0
-    //   65: goto -30 -> 35
-    //   68: aload_2
-    //   69: invokevirtual 163	java/io/BufferedReader:close	()V
-    //   72: aload_2
-    //   73: ifnull +80 -> 153
-    //   76: aload_2
-    //   77: invokevirtual 163	java/io/BufferedReader:close	()V
-    //   80: aload_0
-    //   81: astore_1
-    //   82: aload_1
-    //   83: areturn
-    //   84: astore_1
-    //   85: aload_1
-    //   86: invokevirtual 166	java/io/IOException:printStackTrace	()V
-    //   89: aload_0
-    //   90: areturn
-    //   91: astore_1
-    //   92: aload 4
+    //   12: aload_0
+    //   13: invokespecial 144	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   16: ldc 146
+    //   18: invokespecial 149	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;Ljava/lang/String;)V
+    //   21: invokespecial 152	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   24: astore_2
+    //   25: ldc 76
+    //   27: astore_1
+    //   28: aload_2
+    //   29: astore_0
+    //   30: aload_2
+    //   31: invokevirtual 155	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   34: astore_3
+    //   35: aload_3
+    //   36: ifnull +29 -> 65
+    //   39: aload_2
+    //   40: astore_0
+    //   41: new 73	java/lang/StringBuilder
+    //   44: dup
+    //   45: invokespecial 74	java/lang/StringBuilder:<init>	()V
+    //   48: aload_1
+    //   49: invokevirtual 80	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   52: aload_3
+    //   53: invokevirtual 80	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   56: invokevirtual 92	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   59: astore_3
+    //   60: aload_3
+    //   61: astore_1
+    //   62: goto -34 -> 28
+    //   65: aload_2
+    //   66: astore_0
+    //   67: aload_2
+    //   68: invokevirtual 158	java/io/BufferedReader:close	()V
+    //   71: aload_1
+    //   72: astore_0
+    //   73: aload_2
+    //   74: ifnull +9 -> 83
+    //   77: aload_2
+    //   78: invokevirtual 158	java/io/BufferedReader:close	()V
+    //   81: aload_1
+    //   82: astore_0
+    //   83: aload_0
+    //   84: areturn
+    //   85: astore_0
+    //   86: aload_0
+    //   87: invokevirtual 161	java/io/IOException:printStackTrace	()V
+    //   90: aload_1
+    //   91: areturn
+    //   92: astore_3
+    //   93: aconst_null
     //   94: astore_2
-    //   95: aload_3
-    //   96: astore_0
-    //   97: aload_1
-    //   98: astore_3
-    //   99: aload_2
-    //   100: astore_1
-    //   101: aload_3
-    //   102: invokevirtual 166	java/io/IOException:printStackTrace	()V
-    //   105: aload_0
-    //   106: astore_1
-    //   107: aload_2
-    //   108: ifnull -26 -> 82
-    //   111: aload_2
-    //   112: invokevirtual 163	java/io/BufferedReader:close	()V
-    //   115: aload_0
-    //   116: areturn
-    //   117: astore_1
-    //   118: aload_1
-    //   119: invokevirtual 166	java/io/IOException:printStackTrace	()V
-    //   122: aload_0
-    //   123: areturn
-    //   124: astore_0
-    //   125: aload_1
-    //   126: ifnull +7 -> 133
-    //   129: aload_1
-    //   130: invokevirtual 163	java/io/BufferedReader:close	()V
-    //   133: aload_0
-    //   134: athrow
-    //   135: astore_1
-    //   136: aload_1
-    //   137: invokevirtual 166	java/io/IOException:printStackTrace	()V
-    //   140: goto -7 -> 133
-    //   143: astore_0
-    //   144: aload_2
-    //   145: astore_1
-    //   146: goto -21 -> 125
-    //   149: astore_3
-    //   150: goto -51 -> 99
-    //   153: aload_0
-    //   154: areturn
+    //   95: ldc 76
+    //   97: astore_1
+    //   98: aload_2
+    //   99: astore_0
+    //   100: aload_3
+    //   101: invokevirtual 161	java/io/IOException:printStackTrace	()V
+    //   104: aload_1
+    //   105: astore_0
+    //   106: aload_2
+    //   107: ifnull -24 -> 83
+    //   110: aload_2
+    //   111: invokevirtual 158	java/io/BufferedReader:close	()V
+    //   114: aload_1
+    //   115: areturn
+    //   116: astore_0
+    //   117: aload_0
+    //   118: invokevirtual 161	java/io/IOException:printStackTrace	()V
+    //   121: aload_1
+    //   122: areturn
+    //   123: astore_1
+    //   124: aconst_null
+    //   125: astore_0
+    //   126: aload_0
+    //   127: ifnull +7 -> 134
+    //   130: aload_0
+    //   131: invokevirtual 158	java/io/BufferedReader:close	()V
+    //   134: aload_1
+    //   135: athrow
+    //   136: astore_0
+    //   137: aload_0
+    //   138: invokevirtual 161	java/io/IOException:printStackTrace	()V
+    //   141: goto -7 -> 134
+    //   144: astore_1
+    //   145: goto -19 -> 126
+    //   148: astore_3
+    //   149: goto -51 -> 98
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	155	0	paramString	String
-    //   1	82	1	str	String
-    //   84	2	1	localIOException1	java.io.IOException
-    //   91	7	1	localIOException2	java.io.IOException
-    //   100	7	1	localObject1	Object
-    //   117	13	1	localIOException3	java.io.IOException
-    //   135	2	1	localIOException4	java.io.IOException
-    //   145	1	1	localObject2	Object
-    //   32	113	2	localObject3	Object
-    //   7	95	3	localObject4	Object
-    //   149	1	3	localIOException5	java.io.IOException
-    //   3	90	4	localObject5	Object
+    //   0	152	0	paramString	String
+    //   27	95	1	localObject1	Object
+    //   123	12	1	localObject2	Object
+    //   144	1	1	localObject3	Object
+    //   24	87	2	localBufferedReader	java.io.BufferedReader
+    //   34	27	3	str	String
+    //   92	9	3	localIOException1	java.io.IOException
+    //   148	1	3	localIOException2	java.io.IOException
     // Exception table:
     //   from	to	target	type
-    //   76	80	84	java/io/IOException
-    //   8	33	91	java/io/IOException
-    //   111	115	117	java/io/IOException
-    //   8	33	124	finally
-    //   101	105	124	finally
-    //   129	133	135	java/io/IOException
-    //   35	40	143	finally
-    //   44	63	143	finally
-    //   68	72	143	finally
-    //   35	40	149	java/io/IOException
-    //   44	63	149	java/io/IOException
-    //   68	72	149	java/io/IOException
+    //   77	81	85	java/io/IOException
+    //   0	25	92	java/io/IOException
+    //   110	114	116	java/io/IOException
+    //   0	25	123	finally
+    //   130	134	136	java/io/IOException
+    //   30	35	144	finally
+    //   41	60	144	finally
+    //   67	71	144	finally
+    //   100	104	144	finally
+    //   30	35	148	java/io/IOException
+    //   41	60	148	java/io/IOException
+    //   67	71	148	java/io/IOException
   }
   
-  public static void setAVGestureReport(AVUploadReport paramAVUploadReport)
+  public static void setAVGestureReport(AVGestureWrapper.AVUploadReport paramAVUploadReport)
   {
     mReport = paramAVUploadReport;
   }
@@ -303,19 +297,7 @@ public class AVGestureWrapper
       byte[] arrayOfByte = getInputRGBA(this.mGestureRecognizor);
       paramInt1 = getFcnInputWidth();
       paramInt2 = getFcnInputHeight();
-      AVCosUpload.createInstance().uploadFile(mFilePath, paramArrayOfByte, arrayOfByte, paramInt1, paramInt2, new AVCosUpload.UploadFileListener()
-      {
-        public void onCompleted(int paramAnonymousInt, String paramAnonymousString1, String paramAnonymousString2)
-        {
-          if (AVGestureWrapper.mReport != null)
-          {
-            AVGestureWrapper.mReport.avGestureUploadReport("0X80083AD", String.valueOf(paramAnonymousInt));
-            if (paramAnonymousInt == 0) {
-              AVGestureWrapper.mReport.avGestureUploadReport("0X800839C", "0");
-            }
-          }
-        }
-      });
+      AVCosUpload.createInstance().uploadFile(mFilePath, paramArrayOfByte, arrayOfByte, paramInt1, paramInt2, new AVGestureWrapper.1(this));
     }
     return paramBoolean;
   }
@@ -334,7 +316,12 @@ public class AVGestureWrapper
   public RectF getHotRegionInOriginImg()
   {
     float[] arrayOfFloat = getHotRegionInOriginImg(this.mGestureRecognizor);
-    return new RectF(arrayOfFloat[0], arrayOfFloat[1], arrayOfFloat[0] + arrayOfFloat[2], arrayOfFloat[1] + arrayOfFloat[3]);
+    float f1 = arrayOfFloat[0];
+    float f2 = arrayOfFloat[1];
+    float f3 = arrayOfFloat[0];
+    float f4 = arrayOfFloat[2];
+    float f5 = arrayOfFloat[1];
+    return new RectF(f1, f2, f3 + f4, arrayOfFloat[3] + f5);
   }
   
   public PointF getKeyPointByName(String paramString)
@@ -358,15 +345,10 @@ public class AVGestureWrapper
     }
     return arrayOfPointF;
   }
-  
-  public static abstract interface AVUploadReport
-  {
-    public abstract void avGestureUploadReport(String paramString1, String paramString2);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.av.avgesture.AVGestureWrapper
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,7 @@
-import com.tencent.mobileqq.troop.enterEffect.TroopEnterEffectManager;
-
-class ajkw
-  implements Runnable
-{
-  ajkw(ajkv paramajkv) {}
-  
-  public void run()
-  {
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopEnterEffectTroopEnterEffectManager.c(this.a.jdField_a_of_type_JavaLangString);
-  }
-}
+public abstract interface ajkw {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajkw
  * JD-Core Version:    0.7.0.1
  */

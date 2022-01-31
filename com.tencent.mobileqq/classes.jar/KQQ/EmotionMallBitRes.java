@@ -28,7 +28,7 @@ public final class EmotionMallBitRes
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     KQQ.EmotionMallBitRes
  * JD-Core Version:    0.7.0.1
  */

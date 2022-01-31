@@ -2,8 +2,10 @@ package com.tencent.apkupdate.logic.protocol.a;
 
 import android.os.Message;
 import com.qq.taf.jce.JceStruct;
-import com.tencent.apkupdate.c.f;
+import com.tencent.apkupdate.b.b;
+import com.tencent.apkupdate.b.i;
 import com.tencent.apkupdate.logic.data.ApkUpdateDetail;
+import com.tencent.apkupdate.logic.protocol.BaseHttpRequest;
 import com.tencent.apkupdate.logic.protocol.jce.ApkDownUrl;
 import com.tencent.apkupdate.logic.protocol.jce.AppInfoForUpdate;
 import com.tencent.apkupdate.logic.protocol.jce.AppUpdateInfo;
@@ -16,7 +18,7 @@ import java.util.List;
 import java.util.Map;
 
 public final class a
-  extends com.tencent.apkupdate.logic.protocol.a
+  extends BaseHttpRequest
 {
   private static String a = "CheckAppUpdateHttpRequest";
   private final List b;
@@ -111,27 +113,14 @@ public final class a
     return null;
   }
   
-  protected final void a()
+  public final void onDataReceiveFailed()
   {
-    super.a();
-    if (this.b != null)
-    {
-      GetAppUpdateRequest localGetAppUpdateRequest = new GetAppUpdateRequest();
-      localGetAppUpdateRequest.appInfoForUpdateList = ((ArrayList)this.b);
-      localGetAppUpdateRequest.flag = 0;
-      StringBuffer localStringBuffer = new StringBuffer("CheckAppUpdateHttpRequest:prepareData to server; appInfoForUpdateList= [");
-      Iterator localIterator = this.b.iterator();
-      while (localIterator.hasNext())
-      {
-        AppInfoForUpdate localAppInfoForUpdate = (AppInfoForUpdate)localIterator.next();
-        localStringBuffer.append("pkgname=" + localAppInfoForUpdate.packageName + ";versionCode=" + localAppInfoForUpdate.versionCode + ";targetVersionCode=" + localAppInfoForUpdate.targetVersionCode + ";targetGrayVersionCode=" + localAppInfoForUpdate.targetGrayVersionCode + "| \n\r");
-      }
-      f.a(a, localStringBuffer.toString() + "]");
-      a(localGetAppUpdateRequest);
-    }
+    Message localMessage = com.tencent.apkupdate.logic.a.a().obtainMessage();
+    localMessage.what = 2;
+    localMessage.sendToTarget();
   }
   
-  protected final void a(JceStruct paramJceStruct1, JceStruct paramJceStruct2)
+  public final void onFinished(JceStruct paramJceStruct1, JceStruct paramJceStruct2)
   {
     Object localObject2;
     Object localObject1;
@@ -148,7 +137,7 @@ public final class a
       paramJceStruct1 = new StringBuffer("CheckAppUpdateHttpRequest:checkupdate from server; response=  [");
       paramJceStruct1.append("ret=" + ((GetAppUpdateResponse)localObject2).ret + "| ");
       if (((GetAppUpdateResponse)localObject2).ret != 0) {
-        break label1033;
+        break label1028;
       }
       localObject1 = new ArrayList();
       paramJceStruct2 = new ArrayList();
@@ -170,7 +159,7 @@ public final class a
                 localObject4 = (AppUpdateInfo)((Iterator)localObject3).next();
                 j = ((AppUpdateInfo)localObject4).flag;
                 if ((j & 0x1) != 1) {
-                  break label524;
+                  break label519;
                 }
                 i = 1;
                 if (i != 0) {
@@ -178,7 +167,7 @@ public final class a
                 }
                 localObject5 = new StringBuilder("pkgname=").append(((AppUpdateInfo)localObject4).packageName).append(";versionCode=").append(((AppUpdateInfo)localObject4).versionCode).append(";uploadFlag=");
                 if ((j & 0x1) != 1) {
-                  break label529;
+                  break label524;
                 }
                 bool = true;
                 label277:
@@ -186,9 +175,9 @@ public final class a
                 localObject4 = a((AppUpdateInfo)localObject4);
                 if (localObject4 != null)
                 {
-                  localObject5 = com.tencent.apkupdate.logic.protocol.b.a().b(((ApkUpdateDetail)localObject4).packageName);
-                  if ((com.tencent.apkupdate.c.b.a().b() == null) || (com.tencent.apkupdate.c.b.a(com.tencent.apkupdate.c.b.a().b(), ((ApkUpdateDetail)localObject4).packageName) != ((ApkUpdateDetail)localObject4).versioncode)) {
-                    break label1057;
+                  localObject5 = com.tencent.apkupdate.logic.protocol.a.a().b(((ApkUpdateDetail)localObject4).packageName);
+                  if ((b.a().b() == null) || (b.a(b.a().b(), ((ApkUpdateDetail)localObject4).packageName) != ((ApkUpdateDetail)localObject4).versioncode)) {
+                    break label1040;
                   }
                 }
               }
@@ -197,19 +186,19 @@ public final class a
         }
       }
     }
+    label519:
     label524:
-    label529:
-    label1057:
+    label1040:
     for (int i = 1;; i = 0)
     {
       if ((((String)localObject5).compareToIgnoreCase(((ApkUpdateDetail)localObject4).sigMd5) != 0) || (i != 0)) {
         ((ApkUpdateDetail)localObject4).updatemethod = 1;
       }
-      f.a(a, "packageName: " + ((ApkUpdateDetail)localObject4).packageName);
-      f.a(a, "updatemethod: " + ((ApkUpdateDetail)localObject4).updatemethod);
-      f.a(a, "newapksize: " + ((ApkUpdateDetail)localObject4).newapksize);
-      f.a(a, "patchsize: " + ((ApkUpdateDetail)localObject4).patchsize);
-      f.a(a, "url: " + ((ApkUpdateDetail)localObject4).url);
+      i.a(a, "packageName: " + ((ApkUpdateDetail)localObject4).packageName);
+      i.a(a, "updatemethod: " + ((ApkUpdateDetail)localObject4).updatemethod);
+      i.a(a, "newapksize: " + ((ApkUpdateDetail)localObject4).newapksize);
+      i.a(a, "patchsize: " + ((ApkUpdateDetail)localObject4).patchsize);
+      i.a(a, "url: " + ((ApkUpdateDetail)localObject4).url);
       ((ArrayList)localObject1).add(localObject4);
       break label179;
       break;
@@ -217,7 +206,7 @@ public final class a
       break label218;
       bool = false;
       break label277;
-      f.a(a, paramJceStruct1.toString() + "]");
+      i.a(a, paramJceStruct1.toString() + "]");
       localObject2 = new ArrayList();
       if (this.b != null)
       {
@@ -261,7 +250,7 @@ public final class a
           localObject3 = (ApkUpdateDetail)((Iterator)localObject1).next();
           paramJceStruct1.append("pkgname=" + ((ApkUpdateDetail)localObject3).packageName + ";versionCode=" + ((ApkUpdateDetail)localObject3).versioncode + "| \n\r");
         }
-        f.a(a, paramJceStruct1.toString() + "]");
+        i.a(a, paramJceStruct1.toString() + "]");
         paramJceStruct1 = com.tencent.apkupdate.logic.a.a().obtainMessage();
         paramJceStruct1.what = 1;
         paramJceStruct1.obj = localObject2;
@@ -273,7 +262,7 @@ public final class a
           localObject2 = (AppUpdateInfo)((Iterator)localObject1).next();
           paramJceStruct1.append("pkgname=" + ((AppUpdateInfo)localObject2).packageName + ";versionCode=" + ((AppUpdateInfo)localObject2).versionCode + ";grayVersionCode=" + ((AppUpdateInfo)localObject2).grayVersionCode + "| \n\r");
         }
-        f.a(a, paramJceStruct1.toString() + "]");
+        i.a(a, paramJceStruct1.toString() + "]");
         if (paramJceStruct2.size() > 0)
         {
           paramJceStruct1 = com.tencent.apkupdate.logic.a.a().obtainMessage();
@@ -282,20 +271,31 @@ public final class a
           paramJceStruct1.sendToTarget();
         }
         return;
-        paramJceStruct1 = com.tencent.apkupdate.logic.a.a().obtainMessage();
-        paramJceStruct1.what = 2;
-        paramJceStruct1.sendToTarget();
+        onDataReceiveFailed();
         return;
         paramJceStruct1 = null;
       }
     }
   }
   
-  protected final void b()
+  public final void prepareData()
   {
-    Message localMessage = com.tencent.apkupdate.logic.a.a().obtainMessage();
-    localMessage.what = 2;
-    localMessage.sendToTarget();
+    super.prepareData();
+    if (this.b != null)
+    {
+      GetAppUpdateRequest localGetAppUpdateRequest = new GetAppUpdateRequest();
+      localGetAppUpdateRequest.appInfoForUpdateList = ((ArrayList)this.b);
+      localGetAppUpdateRequest.flag = 0;
+      StringBuffer localStringBuffer = new StringBuffer("CheckAppUpdateHttpRequest:prepareData to server; appInfoForUpdateList= [");
+      Iterator localIterator = this.b.iterator();
+      while (localIterator.hasNext())
+      {
+        AppInfoForUpdate localAppInfoForUpdate = (AppInfoForUpdate)localIterator.next();
+        localStringBuffer.append("pkgname=" + localAppInfoForUpdate.packageName + ";versionCode=" + localAppInfoForUpdate.versionCode + ";targetVersionCode=" + localAppInfoForUpdate.targetVersionCode + ";targetGrayVersionCode=" + localAppInfoForUpdate.targetGrayVersionCode + "| \n\r");
+      }
+      i.a(a, localStringBuffer.toString() + "]");
+      setData(localGetAppUpdateRequest);
+    }
   }
 }
 

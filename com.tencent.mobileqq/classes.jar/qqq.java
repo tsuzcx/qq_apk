@@ -1,33 +1,39 @@
-import android.view.KeyEvent;
-import android.widget.EditText;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
-import com.tencent.gdtad.log.GdtLog;
-import com.tencent.gdtad.views.canvas.components.form.textbox.GdtCanvasFormItemTextBoxView;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyXListView;
+import com.tencent.qphone.base.util.QLog;
 
 public class qqq
-  implements TextView.OnEditorActionListener
+  extends AnimatorListenerAdapter
 {
-  public qqq(GdtCanvasFormItemTextBoxView paramGdtCanvasFormItemTextBoxView) {}
+  public qqq(ReadInJoyListViewGroup paramReadInJoyListViewGroup) {}
   
-  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (paramInt == 6)
-    {
-      GdtLog.b("GdtCanvasFormItemTextBoxView", "onEditorActionDone " + GdtCanvasFormItemTextBoxView.b(this.a));
-      GdtCanvasFormItemTextBoxView.a(this.a).clearFocus();
-      GdtCanvasFormItemTextBoxView.a(paramTextView);
+    super.onAnimationEnd(paramAnimator);
+    ReadInJoyListViewGroup.a(this.a).setLayerType(0, null);
+    ReadInJoyListViewGroup.a(this.a).setVisibility(8);
+    this.a.a.setAlpha(1.0F);
+    if (ReadInJoyListViewGroup.a(this.a) != null) {
+      ReadInJoyListViewGroup.a(this.a).i();
     }
-    for (;;)
-    {
-      return false;
-      GdtLog.b("GdtCanvasFormItemTextBoxView", "onEditorAction " + paramInt + " " + GdtCanvasFormItemTextBoxView.c(this.a));
+    ReadInJoyListViewGroup.a(this.a).setVisibility(8);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.readinjoy.videoanimation", 2, "trans animation end");
     }
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    super.onAnimationStart(paramAnimator);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     qqq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,43 +1,35 @@
-import android.os.Handler;
+import android.support.v7.widget.RecyclerView.OnChildAttachStateChangeListener;
 import android.view.View;
-import com.tencent.image.Utils;
-import com.tencent.mobileqq.activity.ChatHistoryForC2C;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
-import java.util.ArrayList;
-import java.util.List;
+import dov.com.qq.im.capture.view.SpeedFlexibleRecyclerView;
 
-public class sfh
-  implements ActionSheet.OnButtonClickListener
+class sfh
+  implements RecyclerView.OnChildAttachStateChangeListener
 {
-  public sfh(ChatHistoryForC2C paramChatHistoryForC2C, MessageRecord paramMessageRecord, ActionSheet paramActionSheet) {}
+  sfh(sez paramsez) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onChildViewAttachedToWindow(View paramView)
   {
-    switch (paramInt)
+    paramView = (ser)sez.a(this.a).getChildViewHolder(paramView);
+    if ((paramView != null) && (paramView == sez.a(this.a)))
     {
+      paramView.b();
+      urk.b("Q.qqstory.recommendAlbum.ui.AlbumGalleryCapturePart", "attach from window , start play!");
     }
-    for (;;)
+  }
+  
+  public void onChildViewDetachedFromWindow(View paramView)
+  {
+    paramView = (ser)sez.a(this.a).getChildViewHolder(paramView);
+    if ((paramView != null) && (paramView == sez.a(this.a)))
     {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      return;
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryForC2C.jdField_a_of_type_JavaUtilList == null) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryForC2C.jdField_a_of_type_JavaUtilList = new ArrayList();
-      }
-      this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryForC2C.b = true;
-      this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryForC2C.jdField_a_of_type_JavaUtilList.add(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
-      paramView = this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryForC2C.jdField_a_of_type_AndroidOsHandler.obtainMessage(1);
-      this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryForC2C.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(paramView, 800L);
-      Utils.executeAsyncTaskOnThreadPool(new sfi(this), new MessageRecord[] { this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord });
-      VipUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryForC2C.app, "chat_history", "ChatHistory", "Clk_deleteOne", 1, 0, new String[0]);
+      paramView.c();
+      urk.b("Q.qqstory.recommendAlbum.ui.AlbumGalleryCapturePart", "detach from window , stop play!");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     sfh
  * JD-Core Version:    0.7.0.1
  */

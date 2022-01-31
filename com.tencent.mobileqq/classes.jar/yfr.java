@@ -1,22 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.selectmember.PhoneContactSelectActivity;
-import com.tencent.mobileqq.statistics.ReportController;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
-class yfr
-  implements DialogInterface.OnClickListener
+public class yfr
 {
-  yfr(yfp paramyfp) {}
+  private static yfr jdField_a_of_type_Yfr;
+  private ExecutorService jdField_a_of_type_JavaUtilConcurrentExecutorService = Executors.newFixedThreadPool(5);
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public static yfr a()
   {
-    paramDialogInterface.dismiss();
-    ReportController.b(this.a.a.app, "CliOper", "", "", "0X8006405", "0X8006405", 0, 0, "", "", "", "");
+    if (jdField_a_of_type_Yfr == null) {
+      jdField_a_of_type_Yfr = new yfr();
+    }
+    return jdField_a_of_type_Yfr;
+  }
+  
+  public void a(Runnable paramRunnable)
+  {
+    this.jdField_a_of_type_JavaUtilConcurrentExecutorService.submit(paramRunnable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     yfr
  * JD-Core Version:    0.7.0.1
  */

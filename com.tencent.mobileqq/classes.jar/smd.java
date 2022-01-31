@@ -1,72 +1,69 @@
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.app.DiscussionObserver;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.channel.QQStoryCmdHandler;
+import com.tencent.biz.qqstory.channel.QQStoryCmdHandler.IllegalUinException;
+import com.tencent.common.app.AppInterface;
+import com.tribe.async.async.Boss;
+import com.tribe.async.async.Bosses;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
+import java.util.Map;
+import java.util.Set;
+import java.util.concurrent.atomic.AtomicInteger;
+import mqq.app.NewIntent;
 
 public class smd
-  extends DiscussionObserver
+  extends SimpleJob
 {
-  public smd(Conversation paramConversation) {}
-  
-  protected void a()
+  public smd(QQStoryCmdHandler paramQQStoryCmdHandler, String paramString, slz paramslz)
   {
-    this.a.a(9, null, -2147483648);
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.recent", 2, "refresh recent, from_onDelDiscussion");
-    }
+    super(paramString);
   }
   
-  protected void a(boolean paramBoolean, int paramInt, long paramLong, ArrayList paramArrayList)
+  public Object doInBackground(@NonNull JobContext paramJobContext, @Nullable Object[] paramArrayOfObject)
   {
-    this.a.a(8, Long.toString(paramLong), 3000);
-  }
-  
-  protected void a(boolean paramBoolean, Object paramObject)
-  {
-    if (paramBoolean)
+    for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.recent", 2, "refresh recent, from_updateDiscussionInfo");
+      NewIntent localNewIntent;
+      try
+      {
+        paramJobContext = this.jdField_a_of_type_Slz.a();
+        paramArrayOfObject = Integer.valueOf(QQStoryCmdHandler.a(this.jdField_a_of_type_ComTencentBizQqstoryChannelQQStoryCmdHandler).getAndIncrement());
+        AppInterface localAppInterface = QQStoryContext.a();
+        localNewIntent = new NewIntent(localAppInterface.getApp(), smk.class);
+        localNewIntent.putExtra("storySeq", paramArrayOfObject);
+        localNewIntent.putExtra("cmd", this.jdField_a_of_type_Slz.a());
+        localNewIntent.putExtra("data", paramJobContext);
+        localNewIntent.putExtra("start_time", System.currentTimeMillis());
+        if (this.jdField_a_of_type_ComTencentBizQqstoryChannelQQStoryCmdHandler.a.contains(Integer.valueOf(this.jdField_a_of_type_Slz.b())))
+        {
+          localNewIntent.putExtra("timeout", 10000L);
+          localNewIntent.putExtra("support_retry", true);
+          QQStoryCmdHandler.a(this.jdField_a_of_type_ComTencentBizQqstoryChannelQQStoryCmdHandler).put(paramArrayOfObject, this.jdField_a_of_type_Slz);
+          localAppInterface.startServlet(localNewIntent);
+          return null;
+        }
       }
-      this.a.a(0L);
+      catch (QQStoryCmdHandler.IllegalUinException paramJobContext)
+      {
+        Bosses.get().scheduleJobDelayed(new sme(this, "Q.qqstory.net:QQStoryCmdHandler", paramJobContext), 100);
+        return null;
+      }
+      if (this.jdField_a_of_type_Slz.a > 0L) {
+        localNewIntent.putExtra("timeout", this.jdField_a_of_type_Slz.a);
+      }
     }
   }
   
-  protected void a(boolean paramBoolean, String paramString)
+  public int getJobType()
   {
-    if (paramBoolean)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.recent", 2, "refresh recent, from_onChangeDiscussionName");
-      }
-      this.a.a(8, paramString, 3000);
-    }
-  }
-  
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.recent", 2, "conversation onUpdateDiscussionFaceIcon|[" + paramBoolean1 + ", " + paramBoolean2 + ", " + paramString + "]");
-    }
-    if (paramBoolean1) {
-      this.a.a(new sme(this, paramString));
-    }
-  }
-  
-  protected void b(boolean paramBoolean, String paramString)
-  {
-    if (paramBoolean)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.recent", 2, "refresh recent, from_onQuitDiscussion");
-      }
-      this.a.a(8, paramString, 3000);
-    }
+    return 16;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     smd
  * JD-Core Version:    0.7.0.1
  */

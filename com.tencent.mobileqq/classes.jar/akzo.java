@@ -1,30 +1,76 @@
-import android.os.Handler;
-import com.tencent.mobileqq.werewolves.WereWolvesLoadingView;
+import android.os.Build;
+import android.text.TextUtils;
+import android.util.DisplayMetrics;
+import com.tencent.ark.ark.VariantWrapper;
+import com.tencent.commonsdk.util.MD5Coding;
+import com.tencent.qphone.base.util.QLog;
 
 public class akzo
-  implements Runnable
+  implements akyx
 {
-  public akzo(WereWolvesLoadingView paramWereWolvesLoadingView) {}
+  private akzo(akyv paramakyv) {}
   
-  public void run()
+  public boolean a(String paramString, ark.VariantWrapper[] paramArrayOfVariantWrapper, ark.VariantWrapper paramVariantWrapper)
   {
-    if ((this.a.jdField_b_of_type_Int > 90) || (this.a.jdField_b_of_type_Boolean)) {
-      return;
+    if (!alan.a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Long, this.a.jdField_a_of_type_ComTencentArkArk$Application, "permission.DEVICE_INFORMATION")) {}
+    do
+    {
+      return false;
+      if ("GetModelName".equals(paramString))
+      {
+        paramVariantWrapper.SetString(Build.MODEL);
+        return true;
+      }
+      if ("GetScreenWidth".equals(paramString))
+      {
+        paramString = alem.a;
+        paramVariantWrapper.SetInt((int)(paramString.widthPixels / paramString.density));
+        return true;
+      }
+      if ("GetScreenHeight".equals(paramString))
+      {
+        paramString = alem.a;
+        paramVariantWrapper.SetInt((int)(paramString.heightPixels / paramString.density));
+        return true;
+      }
+      if ("GetPixelRatio".equals(paramString))
+      {
+        paramVariantWrapper.SetDouble(alem.a());
+        return true;
+      }
+    } while (!"GetIdentifier".equals(paramString));
+    paramArrayOfVariantWrapper = babp.a();
+    paramString = paramArrayOfVariantWrapper;
+    if (TextUtils.isEmpty(paramArrayOfVariantWrapper)) {}
+    try
+    {
+      paramString = befc.a("6973c4");
+      paramArrayOfVariantWrapper = paramString;
+      if (paramString == null)
+      {
+        paramArrayOfVariantWrapper = "";
+        QLog.e("ArkAppDeviceModule", 1, "get identifer: null, fix it with empty string");
+      }
+      paramString = paramArrayOfVariantWrapper;
+      if (this.a.jdField_a_of_type_Long != 0L) {
+        paramString = MD5Coding.encodeHexStr(paramArrayOfVariantWrapper);
+      }
+      paramVariantWrapper.SetString(paramString);
+      return true;
     }
-    WereWolvesLoadingView localWereWolvesLoadingView1 = this.a;
-    localWereWolvesLoadingView1.jdField_b_of_type_Int += 1;
-    localWereWolvesLoadingView1 = this.a;
-    WereWolvesLoadingView localWereWolvesLoadingView2 = this.a;
-    int i = localWereWolvesLoadingView2.jdField_b_of_type_Int;
-    localWereWolvesLoadingView2.jdField_b_of_type_Int = (i + 1);
-    localWereWolvesLoadingView1.setProgress(i);
-    i = (int)(2.222222F * this.a.jdField_b_of_type_Int + 100.0F);
-    this.a.a.postDelayed(this, i);
+    catch (Exception paramString)
+    {
+      for (;;)
+      {
+        QLog.e("ArkAppDeviceModule", 1, "get identifer: exception, catch it");
+        paramString = paramArrayOfVariantWrapper;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     akzo
  * JD-Core Version:    0.7.0.1
  */

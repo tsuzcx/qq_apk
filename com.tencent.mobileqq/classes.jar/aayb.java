@@ -1,22 +1,20 @@
-import java.util.ArrayList;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.GesturePWDCreateActivity;
 
 public class aayb
+  implements View.OnClickListener
 {
-  public long a;
-  public String a;
-  public final ArrayList a;
-  public long b = 0L;
-  public String b;
+  public aayb(GesturePWDCreateActivity paramGesturePWDCreateActivity) {}
   
-  public aayb()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_Long = 0L;
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aayb
  * JD-Core Version:    0.7.0.1
  */

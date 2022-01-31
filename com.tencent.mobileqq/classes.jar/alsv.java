@@ -1,17 +1,13 @@
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
-import com.tencent.qidian.PhotoWallViewForQiDianProfile.PhotoAdapter;
+import android.content.Context;
+import com.tencent.mobileqq.colornote.data.ColorNote;
 
-public class alsv
+public abstract interface alsv
 {
-  public TextView a;
-  public URLImageView a;
-  
-  public alsv(PhotoWallViewForQiDianProfile.PhotoAdapter paramPhotoAdapter) {}
+  public abstract void a(Context paramContext, ColorNote paramColorNote);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     alsv
  * JD-Core Version:    0.7.0.1
  */

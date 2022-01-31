@@ -1,19 +1,19 @@
-import com.tencent.mobileqq.activity.specialcare.QvipSpecialSoundManager;
-import com.tencent.mobileqq.utils.FileUtils;
+import android.view.View;
 
 public class ylt
-  implements Runnable
+  extends ylv
 {
-  public ylt(QvipSpecialSoundManager paramQvipSpecialSoundManager, String paramString) {}
+  public int a;
+  public View a;
   
-  public void run()
+  public String toString()
   {
-    FileUtils.b(this.jdField_a_of_type_JavaLangString + "http://i.gtimg.cn/club/moblie/special_sound/new_config.json", this.jdField_a_of_type_JavaLangString + "pddata/vas/special_remind/new_config.json");
+    return " \nlpcYby " + this.jdField_a_of_type_Int + " videoViewScaleXby " + this.jdField_a_of_type_Float + " videoViewScaleYby " + this.b + " videoViewXBy " + this.l + " videoViewYBy " + this.m + " btnTopMarginOffset " + this.j + " btnLeftMarginOffset " + this.k;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ylt
  * JD-Core Version:    0.7.0.1
  */

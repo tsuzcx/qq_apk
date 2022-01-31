@@ -1,24 +1,21 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.qwallet.TransactionActivity;
 
-class aglz
-  implements Runnable
+public class aglz
+  implements DialogInterface.OnClickListener
 {
-  aglz(agly paramagly) {}
+  public aglz(TransactionActivity paramTransactionActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (TextUtils.isEmpty(ScanTorchActivity.b(this.a.a.a)))
-    {
-      ScanTorchActivity.s(this.a.a.a);
-      return;
-    }
-    ScanTorchActivity.c(this.a.a.a, ScanTorchActivity.b(this.a.a.a));
+    this.a.a(TransactionActivity.b(this.a), 128, "transfer.amount.go", "", "", TransactionActivity.b(this.a), "");
+    this.a.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aglz
  * JD-Core Version:    0.7.0.1
  */

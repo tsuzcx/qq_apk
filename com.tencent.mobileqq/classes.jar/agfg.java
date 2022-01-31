@@ -1,19 +1,21 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.widget.QQToast;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.photo.album.AlbumListFragment;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
 
-class agfg
-  implements Runnable
+public class agfg
+  implements View.OnClickListener
 {
-  agfg(agfe paramagfe) {}
+  public agfg(AlbumListFragment paramAlbumListFragment) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    QQToast.a(BaseApplicationImpl.getContext(), 1, 2131439068, 0).a();
+    ((NewPhotoListActivity)this.a.getActivity()).a(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agfg
  * JD-Core Version:    0.7.0.1
  */

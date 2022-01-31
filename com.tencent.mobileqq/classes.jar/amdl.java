@@ -1,26 +1,87 @@
-import android.view.KeyEvent;
-import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
-import com.tencent.qqconnect.wtlogin.Login;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class amdl
-  implements TextView.OnEditorActionListener
+  implements alzn<String>
 {
-  public amdl(Login paramLogin) {}
+  public ArrayList<amdm> a = new ArrayList();
   
-  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
+  public void a(String paramString)
   {
-    if (paramInt == 6)
+    this.a.clear();
+    if (TextUtils.isEmpty(paramString))
     {
-      this.a.b();
-      return true;
+      QLog.e("OpenSdkRandomConfig", 1, "OpenVirtual.config content is empty");
+      return;
     }
-    return false;
+    for (;;)
+    {
+      int i;
+      try
+      {
+        paramString = new JSONObject(paramString).optJSONArray("random_list");
+        if (paramString != null)
+        {
+          i = 0;
+          if (i < paramString.length())
+          {
+            JSONObject localJSONObject = paramString.getJSONObject(i);
+            amdm localamdm = new amdm();
+            localamdm.a = localJSONObject.optString("nick", "");
+            localamdm.b = localJSONObject.optString("headid", "");
+            localamdm.c = localJSONObject.optString("url", "");
+            if ((!TextUtils.isEmpty(localamdm.a)) && (!TextUtils.isEmpty(localamdm.b)) && (!TextUtils.isEmpty(localamdm.c))) {
+              break label230;
+            }
+            if (!QLog.isColorLevel()) {
+              break label235;
+            }
+            QLog.e("OpenSdkRandomConfig", 2, new Object[] { "OpenVirtual.random.config.parse.find invalid,index=", Integer.valueOf(i) });
+            break label235;
+            if (j == 0) {
+              break label240;
+            }
+            this.a.add(localamdm);
+            break label240;
+          }
+        }
+        if (!QLog.isColorLevel()) {
+          break;
+        }
+        QLog.e("OpenSdkRandomConfig", 2, new Object[] { "OpenVirtual.random.config.parse=", toString() });
+        return;
+      }
+      catch (JSONException paramString)
+      {
+        QLog.e("OpenSdkRandomConfig", 1, "OpenVirtual.config.getException.", paramString);
+        return;
+      }
+      label230:
+      int j = 1;
+      continue;
+      label235:
+      j = 0;
+      continue;
+      label240:
+      i += 1;
+    }
+  }
+  
+  public String toString()
+  {
+    if (this.a.size() > 0) {
+      return this.a.toString();
+    }
+    return "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amdl
  * JD-Core Version:    0.7.0.1
  */

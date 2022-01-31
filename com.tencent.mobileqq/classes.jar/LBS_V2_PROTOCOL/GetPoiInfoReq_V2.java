@@ -10,10 +10,9 @@ public final class GetPoiInfoReq_V2
 {
   static ReqCommon_V2 cache_stCommon;
   static GPS_V2 cache_stGps;
-  static ArrayList cache_vCellData;
-  static ArrayList cache_vWifiData;
+  static ArrayList<Cell_V2> cache_vCellData;
+  static ArrayList<Wifi_V2> cache_vWifiData;
   public int iAccuracy;
-  public int iAppID;
   public int iDistance = 100;
   public int iLocateCostTime;
   public ReqCommon_V2 stCommon;
@@ -21,24 +20,23 @@ public final class GetPoiInfoReq_V2
   public String strAttachInfo = "";
   public String strClientIP = "";
   public String strKeyWord = "";
-  public ArrayList vCellData;
-  public ArrayList vWifiData;
+  public ArrayList<Cell_V2> vCellData;
+  public ArrayList<Wifi_V2> vWifiData;
   
   public GetPoiInfoReq_V2() {}
   
-  public GetPoiInfoReq_V2(ReqCommon_V2 paramReqCommon_V2, GPS_V2 paramGPS_V2, ArrayList paramArrayList1, ArrayList paramArrayList2, String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, String paramString3, int paramInt4)
+  public GetPoiInfoReq_V2(ReqCommon_V2 paramReqCommon_V2, GPS_V2 paramGPS_V2, ArrayList<Cell_V2> paramArrayList, ArrayList<Wifi_V2> paramArrayList1, String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, String paramString3)
   {
     this.stCommon = paramReqCommon_V2;
     this.stGps = paramGPS_V2;
-    this.vCellData = paramArrayList1;
-    this.vWifiData = paramArrayList2;
+    this.vCellData = paramArrayList;
+    this.vWifiData = paramArrayList1;
     this.strClientIP = paramString1;
     this.strKeyWord = paramString2;
     this.iDistance = paramInt1;
     this.iAccuracy = paramInt2;
     this.iLocateCostTime = paramInt3;
     this.strAttachInfo = paramString3;
-    this.iAppID = paramInt4;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -72,7 +70,6 @@ public final class GetPoiInfoReq_V2
     this.iAccuracy = paramJceInputStream.read(this.iAccuracy, 7, false);
     this.iLocateCostTime = paramJceInputStream.read(this.iLocateCostTime, 8, false);
     this.strAttachInfo = paramJceInputStream.readString(9, false);
-    this.iAppID = paramJceInputStream.read(this.iAppID, 10, false);
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -89,7 +86,6 @@ public final class GetPoiInfoReq_V2
     if (this.strAttachInfo != null) {
       paramJceOutputStream.write(this.strAttachInfo, 9);
     }
-    paramJceOutputStream.write(this.iAppID, 10);
   }
 }
 

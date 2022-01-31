@@ -1,15 +1,16 @@
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
-
-public class mhy
+public abstract class mhy
 {
-  public long a;
-  public long b;
+  public abstract void a();
   
-  private mhy(VideoFeedsPlayManager paramVideoFeedsPlayManager) {}
+  public abstract void b();
+  
+  public abstract void c();
+  
+  public abstract void d();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     mhy
  * JD-Core Version:    0.7.0.1
  */

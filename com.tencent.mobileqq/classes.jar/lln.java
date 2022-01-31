@@ -1,33 +1,23 @@
-import android.graphics.Rect;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.FrameLayout;
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentComponentFragment;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.av.service.AVPbInfo;
 
-public class lln
-  implements ViewTreeObserver.OnGlobalLayoutListener
+public final class lln
+  implements Parcelable.Creator<AVPbInfo>
 {
-  public lln(ReadInJoyCommentComponentFragment paramReadInJoyCommentComponentFragment) {}
-  
-  public void onGlobalLayout()
+  public AVPbInfo a(Parcel paramParcel)
   {
-    Rect localRect = new Rect();
-    this.a.jdField_a_of_type_AndroidWidgetFrameLayout.getWindowVisibleDisplayFrame(localRect);
-    int j = localRect.bottom;
-    int i = j;
-    if (!this.a.d) {
-      i = j - this.a.g;
-    }
-    if (i != this.a.f)
-    {
-      this.a.f = i;
-      this.a.jdField_a_of_type_AndroidViewViewGroup$LayoutParams.height = this.a.f;
-      this.a.jdField_a_of_type_AndroidWidgetFrameLayout.requestLayout();
-    }
+    return new AVPbInfo(paramParcel);
+  }
+  
+  public AVPbInfo[] a(int paramInt)
+  {
+    return new AVPbInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lln
  * JD-Core Version:    0.7.0.1
  */

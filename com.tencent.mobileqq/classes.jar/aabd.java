@@ -1,49 +1,68 @@
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.drawable.AnimationDrawable;
-import android.graphics.drawable.BitmapDrawable;
-import android.widget.ImageView;
-import com.tencent.mobileqq.app.msgnotify.MsgNotifyPushDialog;
-import com.tencent.mobileqq.util.BitmapManager;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.AuthDevActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 
 public class aabd
-  implements Runnable
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public aabd(MsgNotifyPushDialog paramMsgNotifyPushDialog) {}
+  public aabd(AuthDevActivity paramAuthDevActivity) {}
   
-  public void run()
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    int i = 0;
-    AnimationDrawable localAnimationDrawable;
-    if (this.a.isShowing())
+    boolean bool = true;
+    paramBoolean = false;
+    if (paramCompoundButton == AuthDevActivity.a(this.a).a())
     {
-      MsgNotifyPushDialog.a(this.a, true);
-      localAnimationDrawable = new AnimationDrawable();
-    }
-    try
-    {
-      long l1 = System.currentTimeMillis();
-      while (i < MsgNotifyPushDialog.jdField_a_of_type_Int)
+      AuthDevActivity.a(this.a).setOnCheckedChangeListener(null);
+      paramCompoundButton = AuthDevActivity.a(this.a);
+      if (AuthDevActivity.a(this.a).a())
       {
-        Bitmap localBitmap = BitmapManager.a(String.format(MsgNotifyPushDialog.c + MsgNotifyPushDialog.e, new Object[] { Integer.valueOf(i) }));
-        localAnimationDrawable.addFrame(new BitmapDrawable(MsgNotifyPushDialog.a(this.a).getResources(), localBitmap), 1000 / MsgNotifyPushDialog.jdField_a_of_type_Int);
-        i += 1;
+        paramBoolean = false;
+        paramCompoundButton.setChecked(paramBoolean);
+        AuthDevActivity.a(this.a).setOnCheckedChangeListener(AuthDevActivity.a(this.a));
+        if (badq.d(this.a)) {
+          break label118;
+        }
+        bbmy.a(this.a, this.a.getString(2131626719), 0).b(this.a.getTitleBarHeight());
       }
-      localAnimationDrawable.setOneShot(true);
-      long l2 = System.currentTimeMillis();
-      if (QLog.isColorLevel()) {
-        QLog.d(MsgNotifyPushDialog.jdField_a_of_type_JavaLangString, 2, new Object[] { "Frame Animation decode cost ", Long.valueOf(l2 - l1) });
-      }
-      this.a.jdField_a_of_type_AndroidWidgetImageView.postDelayed(new aabe(this, localAnimationDrawable), 500L);
-      return;
     }
-    catch (OutOfMemoryError localOutOfMemoryError) {}
+    label118:
+    while (paramCompoundButton != AuthDevActivity.b(this.a).a())
+    {
+      do
+      {
+        for (;;)
+        {
+          return;
+          paramBoolean = true;
+        }
+        paramCompoundButton = (ajru)this.a.app.a(34);
+      } while (paramCompoundButton == null);
+      if (!AuthDevActivity.a(this.a).a()) {}
+      for (paramBoolean = bool;; paramBoolean = false)
+      {
+        paramCompoundButton.a(paramBoolean);
+        return;
+      }
+    }
+    AuthDevActivity.b(this.a).setOnCheckedChangeListener(null);
+    paramCompoundButton = AuthDevActivity.b(this.a);
+    if (AuthDevActivity.b(this.a).a()) {}
+    for (;;)
+    {
+      paramCompoundButton.setChecked(paramBoolean);
+      AuthDevActivity.b(this.a).setOnCheckedChangeListener(AuthDevActivity.a(this.a));
+      AuthDevActivity.a(this.a);
+      return;
+      paramBoolean = true;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aabd
  * JD-Core Version:    0.7.0.1
  */

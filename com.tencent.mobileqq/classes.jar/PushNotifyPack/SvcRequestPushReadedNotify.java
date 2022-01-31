@@ -8,22 +8,22 @@ import java.util.ArrayList;
 public final class SvcRequestPushReadedNotify
   extends JceStruct
 {
-  static ArrayList cache_vC2CReadedNotify;
-  static ArrayList cache_vDisReadedNotify;
-  static ArrayList cache_vGroupReadedNotify;
+  static ArrayList<C2CMsgReadedNotify> cache_vC2CReadedNotify;
+  static ArrayList<DisMsgReadedNotify> cache_vDisReadedNotify;
+  static ArrayList<GroupMsgReadedNotify> cache_vGroupReadedNotify;
   public byte cNotifyType;
-  public ArrayList vC2CReadedNotify;
-  public ArrayList vDisReadedNotify;
-  public ArrayList vGroupReadedNotify;
+  public ArrayList<C2CMsgReadedNotify> vC2CReadedNotify;
+  public ArrayList<DisMsgReadedNotify> vDisReadedNotify;
+  public ArrayList<GroupMsgReadedNotify> vGroupReadedNotify;
   
   public SvcRequestPushReadedNotify() {}
   
-  public SvcRequestPushReadedNotify(byte paramByte, ArrayList paramArrayList1, ArrayList paramArrayList2, ArrayList paramArrayList3)
+  public SvcRequestPushReadedNotify(byte paramByte, ArrayList<C2CMsgReadedNotify> paramArrayList, ArrayList<GroupMsgReadedNotify> paramArrayList1, ArrayList<DisMsgReadedNotify> paramArrayList2)
   {
     this.cNotifyType = paramByte;
-    this.vC2CReadedNotify = paramArrayList1;
-    this.vGroupReadedNotify = paramArrayList2;
-    this.vDisReadedNotify = paramArrayList3;
+    this.vC2CReadedNotify = paramArrayList;
+    this.vGroupReadedNotify = paramArrayList1;
+    this.vDisReadedNotify = paramArrayList2;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)

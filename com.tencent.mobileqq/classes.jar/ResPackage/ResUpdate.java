@@ -12,9 +12,9 @@ public final class ResUpdate
   extends JceStruct
   implements Cloneable
 {
-  static Map cache_AttrMap;
+  static Map<String, String> cache_AttrMap;
   static int cache_OpType;
-  public Map AttrMap;
+  public Map<String, String> AttrMap;
   public int OpType;
   public String Path = "";
   public String ResURL = "";
@@ -31,7 +31,7 @@ public final class ResUpdate
   
   public ResUpdate() {}
   
-  public ResUpdate(String paramString1, int paramInt, String paramString2, Map paramMap)
+  public ResUpdate(String paramString1, int paramInt, String paramString2, Map<String, String> paramMap)
   {
     this.Path = paramString1;
     this.OpType = paramInt;
@@ -94,7 +94,7 @@ public final class ResUpdate
     return "ResPackage.ResUpdate";
   }
   
-  public Map getAttrMap()
+  public Map<String, String> getAttrMap()
   {
     return this.AttrMap;
   }
@@ -140,7 +140,7 @@ public final class ResUpdate
     this.AttrMap = ((Map)paramJceInputStream.read(cache_AttrMap, 3, false));
   }
   
-  public void setAttrMap(Map paramMap)
+  public void setAttrMap(Map<String, String> paramMap)
   {
     this.AttrMap = paramMap;
   }

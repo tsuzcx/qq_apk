@@ -1,40 +1,63 @@
-import android.os.Bundle;
-import cooperation.photoplus.PhotoPlusManager;
-import cooperation.photoplus.PhotoPlusModule;
-import cooperation.photoplus.sticker.Sticker;
-import eipc.EIPCResult;
-import java.util.Iterator;
-import java.util.List;
-import org.json.JSONArray;
+import com.tencent.mobileqq.data.MessageForTroopFee;
+import org.xml.sax.Attributes;
+import org.xml.sax.helpers.DefaultHandler;
 
 public class amte
-  implements Runnable
+  extends DefaultHandler
 {
-  public amte(PhotoPlusModule paramPhotoPlusModule, PhotoPlusManager paramPhotoPlusManager, int paramInt) {}
+  MessageForTroopFee a;
+  public String a;
   
-  public void run()
+  public amte()
   {
-    Object localObject = this.jdField_a_of_type_CooperationPhotoplusPhotoPlusManager.a();
-    JSONArray localJSONArray = new JSONArray();
-    if (localObject != null)
-    {
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        Sticker localSticker = (Sticker)((Iterator)localObject).next();
-        if (localSticker.toJsonObject() != null) {
-          localJSONArray.put(localSticker.toJsonObject());
-        }
-      }
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFee = new MessageForTroopFee();
+    this.jdField_a_of_type_JavaLangString = "";
+  }
+  
+  public MessageForTroopFee a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFee;
+  }
+  
+  public void characters(char[] paramArrayOfChar, int paramInt1, int paramInt2)
+  {
+    paramArrayOfChar = new String(paramArrayOfChar, paramInt1, paramInt2);
+    if (this.jdField_a_of_type_JavaLangString.equals("title")) {
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFee.title = paramArrayOfChar;
     }
-    localObject = new Bundle();
-    ((Bundle)localObject).putString("param_sticker_templates", localJSONArray.toString());
-    this.jdField_a_of_type_CooperationPhotoplusPhotoPlusModule.callbackResult(this.jdField_a_of_type_Int, EIPCResult.createSuccessResult((Bundle)localObject));
+    while (!this.jdField_a_of_type_JavaLangString.equals("summary")) {
+      return;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFee.summary = paramArrayOfChar;
+  }
+  
+  public void startElement(String paramString1, String paramString2, String paramString3, Attributes paramAttributes)
+  {
+    if (paramString3.equals("msg"))
+    {
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFee.actionUrl = paramAttributes.getValue("url");
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFee.brief = paramAttributes.getValue("brief");
+    }
+    do
+    {
+      return;
+      if (paramString3.equals("title"))
+      {
+        this.jdField_a_of_type_JavaLangString = "title";
+        return;
+      }
+      if (paramString3.equals("summary"))
+      {
+        this.jdField_a_of_type_JavaLangString = "summary";
+        return;
+      }
+    } while (!paramString3.equals("source"));
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFee.source = paramAttributes.getValue("name");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     amte
  * JD-Core Version:    0.7.0.1
  */

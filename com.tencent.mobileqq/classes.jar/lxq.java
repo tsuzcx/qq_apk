@@ -1,25 +1,59 @@
-import com.tencent.biz.pubaccount.readinjoy.model.IReadInJoyModel;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.FeedItemCellTypePgcGrid;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentGridImage.OnNoItemClickListener;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter.OnSubRegionClickListener;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.widget.RelativeLayout;
+import com.tencent.qphone.base.util.QLog;
 
-public class lxq
-  implements ComponentContentGridImage.OnNoItemClickListener
+class lxq
+  implements Animator.AnimatorListener
 {
-  public lxq(FeedItemCellTypePgcGrid paramFeedItemCellTypePgcGrid) {}
+  lxq(lxo paramlxo, int paramInt, long paramLong) {}
   
-  public void a()
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    ReadInJoyBaseAdapter.OnSubRegionClickListener localOnSubRegionClickListener = this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseAdapter.a();
-    if (localOnSubRegionClickListener != null) {
-      localOnSubRegionClickListener.a(null, ((IReadInJoyModel)this.a.jdField_a_of_type_JavaLangObject).a(), 1);
+    int i = 4;
+    if (this.jdField_a_of_type_Lxo.jdField_a_of_type_AndroidWidgetRelativeLayout != null)
+    {
+      i = this.jdField_a_of_type_Lxo.jdField_a_of_type_AndroidWidgetRelativeLayout.getVisibility();
+      if (this.jdField_a_of_type_Lxo.jdField_a_of_type_Boolean) {
+        break label173;
+      }
+      this.jdField_a_of_type_Lxo.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
     }
+    for (;;)
+    {
+      this.jdField_a_of_type_Lxo.jdField_a_of_type_AndroidWidgetRelativeLayout.setAlpha(1.0F);
+      this.jdField_a_of_type_Lxo.jdField_a_of_type_AndroidWidgetRelativeLayout.setTranslationY(0.0F);
+      QLog.w(this.jdField_a_of_type_Lxo.jdField_a_of_type_JavaLangString, 1, "ShowMenuView, onAnimationEnd, isShow[" + this.jdField_a_of_type_Lxo.jdField_a_of_type_Boolean + "], visibility[" + i + "], seq[" + this.jdField_a_of_type_Long + "], \nlastObjectAnimator[" + this.jdField_a_of_type_Lxo.jdField_a_of_type_AndroidAnimationObjectAnimator + "], \nanimation[" + paramAnimator + "]");
+      if (this.jdField_a_of_type_Lxo.jdField_a_of_type_AndroidAnimationObjectAnimator == paramAnimator) {
+        this.jdField_a_of_type_Lxo.jdField_a_of_type_AndroidAnimationObjectAnimator = null;
+      }
+      return;
+      label173:
+      this.jdField_a_of_type_Lxo.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
+      if (this.jdField_a_of_type_Lxo.jdField_a_of_type_Lxr != null) {
+        this.jdField_a_of_type_Lxo.jdField_a_of_type_Lxr.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Lxo.jdField_a_of_type_AndroidWidgetRelativeLayout, false);
+      }
+    }
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    int i = 4;
+    if (this.jdField_a_of_type_Lxo.jdField_a_of_type_AndroidWidgetRelativeLayout != null)
+    {
+      i = this.jdField_a_of_type_Lxo.jdField_a_of_type_AndroidWidgetRelativeLayout.getVisibility();
+      this.jdField_a_of_type_Lxo.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
+    }
+    QLog.w(this.jdField_a_of_type_Lxo.jdField_a_of_type_JavaLangString, 1, "ShowMenuView, onAnimationStart, height[" + this.jdField_a_of_type_Int + "], isShow[" + this.jdField_a_of_type_Lxo.jdField_a_of_type_Boolean + "], visibility[" + i + "], seq[" + this.jdField_a_of_type_Long + "]");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lxq
  * JD-Core Version:    0.7.0.1
  */

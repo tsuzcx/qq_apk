@@ -1,84 +1,145 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import com.tencent.mobileqq.activity.EditActivity;
-import com.tencent.mobileqq.widget.ClearableEditText;
-
 public class sqg
-  implements TextWatcher
+  implements spo
 {
-  int jdField_a_of_type_Int = 0;
-  String jdField_a_of_type_JavaLangString;
-  boolean jdField_a_of_type_Boolean = true;
-  String jdField_b_of_type_JavaLangString;
-  boolean jdField_b_of_type_Boolean = true;
-  String jdField_c_of_type_JavaLangString;
-  boolean jdField_c_of_type_Boolean = false;
+  public final spo[] a = new spo[40];
   
-  public sqg(EditActivity paramEditActivity) {}
-  
-  public void afterTextChanged(Editable paramEditable)
+  public static spo a(int paramInt)
   {
-    EditActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityEditActivity, true);
-    if (!this.jdField_b_of_type_Boolean) {
-      return;
-    }
-    StringBuilder localStringBuilder = new StringBuilder().append(this.jdField_a_of_type_JavaLangString);
-    if (this.jdField_a_of_type_Boolean) {}
-    for (paramEditable = this.jdField_c_of_type_JavaLangString;; paramEditable = "")
+    return sqi.a.b(paramInt);
+  }
+  
+  public static sqg a()
+  {
+    return sqi.a;
+  }
+  
+  private void a(int paramInt, spo paramspo)
+  {
+    this.a[paramInt] = paramspo;
+  }
+  
+  public void a() {}
+  
+  public spo b(int paramInt)
+  {
+    spo localspo1 = this.a[paramInt];
+    if (localspo1 == null) {}
+    for (;;)
     {
-      paramEditable = paramEditable + this.jdField_b_of_type_JavaLangString;
-      if (this.jdField_c_of_type_Boolean)
+      spo localspo2;
+      synchronized (this.a)
       {
-        this.jdField_b_of_type_Boolean = false;
-        this.jdField_a_of_type_ComTencentMobileqqActivityEditActivity.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setText(paramEditable);
-        this.jdField_b_of_type_Boolean = true;
+        localspo2 = this.a[paramInt];
+        if (localspo2 == null) {
+          break label408;
+        }
+        return localspo2;
+        if (localspo1 != null)
+        {
+          localspo1.a();
+          urk.b("Q.qqstory.SuperManager", "onInit manager : %s", localspo1);
+        }
+        a(paramInt, localspo1);
+        return localspo1;
       }
-      int i = this.jdField_a_of_type_JavaLangString.length();
-      int j = this.jdField_a_of_type_Int;
-      this.jdField_a_of_type_ComTencentMobileqqActivityEditActivity.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setSelection(i + j);
-      this.jdField_a_of_type_ComTencentMobileqqActivityEditActivity.e();
-      return;
+      Object localObject2 = this;
+      continue;
+      localObject2 = new sqm();
+      continue;
+      localObject2 = new txz();
+      continue;
+      localObject2 = new sre();
+      continue;
+      localObject2 = new spz();
+      continue;
+      localObject2 = new srz();
+      continue;
+      localObject2 = new uyz();
+      continue;
+      localObject2 = new bikm();
+      continue;
+      localObject2 = new sqs();
+      continue;
+      localObject2 = new sia();
+      continue;
+      localObject2 = new sgm();
+      continue;
+      localObject2 = new sis();
+      continue;
+      localObject2 = new sqd();
+      continue;
+      localObject2 = new spw();
+      continue;
+      localObject2 = new sjr();
+      continue;
+      localObject2 = new sps();
+      continue;
+      localObject2 = new spu();
+      continue;
+      localObject2 = new spd();
+      continue;
+      localObject2 = new spt();
+      continue;
+      localObject2 = new sph();
+      continue;
+      localObject2 = new sqr();
+      continue;
+      localObject2 = new spm();
+      continue;
+      localObject2 = new uje();
+      continue;
+      localObject2 = new ujk();
+      continue;
+      localObject2 = new sqo();
+      continue;
+      localObject2 = new uac();
+      continue;
+      localObject2 = new spn();
+      continue;
+      localObject2 = new sqj();
+      continue;
+      localObject2 = new sgs();
+      continue;
+      localObject2 = new sqe();
+      continue;
+      localObject2 = new scu();
+      continue;
+      return localObject2;
+      label408:
+      localObject2 = localspo2;
+      switch (paramInt)
+      {
+      }
+      localObject2 = localspo2;
     }
   }
   
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
-  {
-    if (!this.jdField_b_of_type_Boolean) {
-      return;
-    }
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaLangString = paramCharSequence.toString().substring(0, paramInt1);
-    this.jdField_b_of_type_JavaLangString = paramCharSequence.toString().substring(paramInt1 + paramInt2);
-    if (paramInt3 > 0)
-    {
-      this.jdField_a_of_type_Boolean = true;
-      return;
-    }
-    this.jdField_a_of_type_Boolean = false;
-  }
+  public void b() {}
   
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public void c()
   {
-    if (!this.jdField_b_of_type_Boolean) {
-      return;
-    }
-    this.jdField_c_of_type_JavaLangString = paramCharSequence.toString().substring(paramInt1, paramInt1 + paramInt3);
-    if (this.jdField_a_of_type_Boolean)
+    spo[] arrayOfspo = this.a;
+    int i = 0;
+    try
     {
-      if ((this.jdField_a_of_type_ComTencentMobileqqActivityEditActivity.jdField_a_of_type_Int == 100) && (this.jdField_c_of_type_JavaLangString.contains("\n")))
+      while (i < this.a.length)
       {
-        this.jdField_c_of_type_Boolean = true;
-        this.jdField_c_of_type_JavaLangString = this.jdField_c_of_type_JavaLangString.replace("\n", "");
+        spo localspo = this.a[i];
+        urk.b("Q.qqstory.SuperManager", "destroy manager : %s", localspo);
+        if (localspo != null) {
+          localspo.b();
+        }
+        this.a[i] = null;
+        i += 1;
       }
-      this.jdField_a_of_type_Int = this.jdField_c_of_type_JavaLangString.length();
       return;
     }
-    this.jdField_a_of_type_Int = 0;
+    finally {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     sqg
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,27 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.activity.contacts.fragment.PublicAccountFragment;
+import android.support.annotation.Nullable;
 
-public class wtg
-  implements Handler.Callback
+class wtg
+  implements bhwg<Boolean>
 {
-  public wtg(PublicAccountFragment paramPublicAccountFragment) {}
+  wtg(wta paramwta) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void a(@Nullable Boolean paramBoolean)
   {
-    switch (paramMessage.what)
-    {
+    if (paramBoolean == null) {
+      return;
     }
-    for (;;)
+    wta localwta = this.a;
+    if (!paramBoolean.booleanValue()) {}
+    for (boolean bool = true;; bool = false)
     {
-      return true;
-      this.a.i();
+      wta.a(localwta, bool);
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wtg
  * JD-Core Version:    0.7.0.1
  */

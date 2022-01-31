@@ -1,40 +1,21 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.utils.QQConfMeetingLogReportHelper;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import mqq.app.AppRuntime;
-import mqq.manager.TicketManager;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.BaseChatPie.82;
 
 public class aadq
-  implements Runnable
+  implements View.OnTouchListener
 {
-  public aadq(QQConfMeetingLogReportHelper paramQQConfMeetingLogReportHelper, String paramString) {}
+  public aadq(BaseChatPie.82 param82) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    long l1 = System.currentTimeMillis();
-    Object localObject = ((QQAppInterface)QQConfMeetingLogReportHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppUtilsQQConfMeetingLogReportHelper).get()).getCurrentAccountUin();
-    String str1 = "MSFSDK_LogReport" + (String)localObject;
-    localObject = BaseApplicationImpl.sApplication.getRuntime();
-    if (localObject != null)
-    {
-      TicketManager localTicketManager = (TicketManager)((AppRuntime)localObject).getManager(2);
-      String str2 = ((AppRuntime)localObject).getAccount();
-      localObject = "";
-      if (localTicketManager != null) {
-        localObject = localTicketManager.getSkey(str2);
-      }
-      QLog.syncReportLogSelf(AppSetting.a, this.jdField_a_of_type_JavaLangString, str1, "", str2, (String)localObject);
-    }
-    long l2 = System.currentTimeMillis();
-    QLog.w("QQConfMeetingLogReportHelper", 1, "sendFile, Runnable, path[" + this.jdField_a_of_type_JavaLangString + "], Thread[" + Thread.currentThread().getId() + "], cost[" + (l2 - l1) + "]");
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aadq
  * JD-Core Version:    0.7.0.1
  */

@@ -6,6 +6,8 @@ import android.util.AttributeSet;
 public class KandianUrlImageView
   extends ResizeURLImageView
 {
+  private boolean a;
+  
   public KandianUrlImageView(Context paramContext)
   {
     super(paramContext);
@@ -19,6 +21,18 @@ public class KandianUrlImageView
   public KandianUrlImageView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
+  }
+  
+  public void onDetachedFromWindow()
+  {
+    if (!this.a) {
+      super.onDetachedFromWindow();
+    }
+  }
+  
+  public void setIsRecyclerView(boolean paramBoolean)
+  {
+    this.a = paramBoolean;
   }
 }
 

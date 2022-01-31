@@ -1,23 +1,24 @@
-import com.tencent.biz.pubaccount.readinjoy.model.ArticleInfoModule;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.mobileqq.persistence.EntityManager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.av.VideoController;
+import com.tencent.av.ui.DoubleVideoMeetingCtrlUI;
 import com.tencent.qphone.base.util.QLog;
 
 public class lsk
-  implements Runnable
+  implements View.OnClickListener
 {
-  public lsk(ArticleInfoModule paramArticleInfoModule, ArticleInfo paramArticleInfo) {}
+  public lsk(DoubleVideoMeetingCtrlUI paramDoubleVideoMeetingCtrlUI) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (!this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelArticleInfoModule.a.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo)) {
-      QLog.d("ArticleInfoModule", 2, "delete article fail ! title : " + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mTitle + " , articleID : " + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mArticleID);
-    }
+    QLog.d(this.a.c, 1, "onClick R.id.qav_btn_accept_video");
+    this.a.p();
+    this.a.a.a().ao = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lsk
  * JD-Core Version:    0.7.0.1
  */

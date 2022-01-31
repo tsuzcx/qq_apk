@@ -1,23 +1,22 @@
-import com.tencent.mobileqq.richmedia.mediacodec.recorder.HWVideoRecorder;
-import com.tencent.mobileqq.richmedia.mediacodec.utils.ThumbnailUtil.ThumbnailCallback;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class ahtj
-  implements ThumbnailUtil.ThumbnailCallback
+class ahtj
+  extends ajuc
 {
-  public ahtj(HWVideoRecorder paramHWVideoRecorder) {}
+  ahtj(ahti paramahti) {}
   
-  public void a(boolean paramBoolean, String paramString)
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
   {
-    HWVideoRecorder.a(this.a, true);
-    if ((QLog.isColorLevel()) && (QLog.isColorLevel())) {
-      QLog.d("HWVideoRecorder", 2, "Generate thumbnail result. success = " + paramBoolean + " ; file path = " + paramString);
+    Bitmap localBitmap = this.a.a.a(113, paramString, false, 0);
+    if (localBitmap != null) {
+      ahti.a(this.a, paramString, localBitmap);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ahtj
  * JD-Core Version:    0.7.0.1
  */

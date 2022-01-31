@@ -1,315 +1,260 @@
-import cooperation.troop_homework.jsp.TroopHWJsPlugin;
+import android.content.Context;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.PublicAccountBrowser;
+import com.tencent.crmqq.structmsg.StructMsg.ButtonInfo;
+import com.tencent.crmqq.structmsg.StructMsg.GetCRMMenuResponse;
+import com.tencent.crmqq.structmsg.StructMsg.RetInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.enterpriseqq.EnterpriseQQManager.1;
+import com.tencent.mobileqq.enterpriseqq.EnterpriseQQMenuEntity;
+import com.tencent.mobileqq.pb.PBBoolField;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class annt
-  implements Runnable
 {
-  public annt(TroopHWJsPlugin paramTroopHWJsPlugin, String paramString) {}
+  private static annt jdField_a_of_type_Annt;
+  private static byte[] jdField_a_of_type_ArrayOfByte = new byte[0];
+  private static byte[] jdField_b_of_type_ArrayOfByte = new byte[0];
+  private double jdField_a_of_type_Double;
+  private long jdField_a_of_type_Long;
+  public akgd a;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private anns jdField_a_of_type_Anns = new anns();
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  protected Runnable a;
+  private ArrayList<annv> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private double jdField_b_of_type_Double;
+  private long jdField_b_of_type_Long = 1800000L;
   
-  /* Error */
-  public void run()
+  private annt(QQAppInterface paramQQAppInterface)
   {
-    // Byte code:
-    //   0: new 26	java/io/FileInputStream
-    //   3: dup
-    //   4: aload_0
-    //   5: getfield 15	annt:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   8: invokespecial 29	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
-    //   11: astore_3
-    //   12: aload_3
-    //   13: astore_2
-    //   14: new 31	java/lang/StringBuilder
-    //   17: dup
-    //   18: invokespecial 32	java/lang/StringBuilder:<init>	()V
-    //   21: astore 4
-    //   23: aload_3
-    //   24: astore_2
-    //   25: sipush 30720
-    //   28: newarray byte
-    //   30: astore 5
-    //   32: aload_3
-    //   33: astore_2
-    //   34: aload_3
-    //   35: aload 5
-    //   37: invokevirtual 36	java/io/FileInputStream:read	([B)I
-    //   40: istore_1
-    //   41: iload_1
-    //   42: iconst_m1
-    //   43: if_icmpeq +187 -> 230
-    //   46: iload_1
-    //   47: sipush 30720
-    //   50: if_icmpge +98 -> 148
-    //   53: aload_3
-    //   54: astore_2
-    //   55: iload_1
-    //   56: newarray byte
-    //   58: astore 6
-    //   60: aload_3
-    //   61: astore_2
-    //   62: aload 5
-    //   64: iconst_0
-    //   65: aload 6
-    //   67: iconst_0
-    //   68: iload_1
-    //   69: invokestatic 42	java/lang/System:arraycopy	(Ljava/lang/Object;ILjava/lang/Object;II)V
-    //   72: aload_3
-    //   73: astore_2
-    //   74: aload 4
-    //   76: aload 6
-    //   78: iconst_2
-    //   79: invokestatic 48	com/tencent/mobileqq/utils/Base64Util:encodeToString	([BI)Ljava/lang/String;
-    //   82: invokevirtual 52	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   85: pop
-    //   86: goto -54 -> 32
-    //   89: astore 4
-    //   91: aload_3
-    //   92: astore_2
-    //   93: aload 4
-    //   95: invokevirtual 55	java/io/FileNotFoundException:printStackTrace	()V
-    //   98: new 57	org/json/JSONObject
-    //   101: dup
-    //   102: invokespecial 58	org/json/JSONObject:<init>	()V
-    //   105: astore_2
-    //   106: aload_2
-    //   107: ldc 60
-    //   109: aconst_null
-    //   110: invokevirtual 64	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   113: pop
-    //   114: aload_0
-    //   115: getfield 13	annt:jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin	Lcooperation/troop_homework/jsp/TroopHWJsPlugin;
-    //   118: aload_0
-    //   119: getfield 13	annt:jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin	Lcooperation/troop_homework/jsp/TroopHWJsPlugin;
-    //   122: getfield 69	cooperation/troop_homework/jsp/TroopHWJsPlugin:b	Ljava/lang/String;
-    //   125: iconst_1
-    //   126: anewarray 71	java/lang/String
-    //   129: dup
-    //   130: iconst_0
-    //   131: aload_2
-    //   132: invokevirtual 75	org/json/JSONObject:toString	()Ljava/lang/String;
-    //   135: aastore
-    //   136: invokevirtual 79	cooperation/troop_homework/jsp/TroopHWJsPlugin:callJs	(Ljava/lang/String;[Ljava/lang/String;)V
-    //   139: aload_3
-    //   140: ifnull +7 -> 147
-    //   143: aload_3
-    //   144: invokevirtual 82	java/io/FileInputStream:close	()V
-    //   147: return
-    //   148: aload_3
-    //   149: astore_2
-    //   150: aload 4
-    //   152: aload 5
-    //   154: iconst_2
-    //   155: invokestatic 48	com/tencent/mobileqq/utils/Base64Util:encodeToString	([BI)Ljava/lang/String;
-    //   158: invokevirtual 52	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   161: pop
-    //   162: goto -130 -> 32
-    //   165: astore 4
-    //   167: aload_3
-    //   168: astore_2
-    //   169: aload 4
-    //   171: invokevirtual 83	java/lang/Exception:printStackTrace	()V
-    //   174: new 57	org/json/JSONObject
-    //   177: dup
-    //   178: invokespecial 58	org/json/JSONObject:<init>	()V
-    //   181: astore_2
-    //   182: aload_2
-    //   183: ldc 60
-    //   185: aconst_null
-    //   186: invokevirtual 64	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   189: pop
-    //   190: aload_0
-    //   191: getfield 13	annt:jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin	Lcooperation/troop_homework/jsp/TroopHWJsPlugin;
-    //   194: aload_0
-    //   195: getfield 13	annt:jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin	Lcooperation/troop_homework/jsp/TroopHWJsPlugin;
-    //   198: getfield 69	cooperation/troop_homework/jsp/TroopHWJsPlugin:b	Ljava/lang/String;
-    //   201: iconst_1
-    //   202: anewarray 71	java/lang/String
-    //   205: dup
-    //   206: iconst_0
-    //   207: aload_2
-    //   208: invokevirtual 75	org/json/JSONObject:toString	()Ljava/lang/String;
-    //   211: aastore
-    //   212: invokevirtual 79	cooperation/troop_homework/jsp/TroopHWJsPlugin:callJs	(Ljava/lang/String;[Ljava/lang/String;)V
-    //   215: aload_3
-    //   216: ifnull -69 -> 147
-    //   219: aload_3
-    //   220: invokevirtual 82	java/io/FileInputStream:close	()V
-    //   223: return
-    //   224: astore_2
-    //   225: aload_2
-    //   226: invokevirtual 83	java/lang/Exception:printStackTrace	()V
-    //   229: return
-    //   230: aload_3
-    //   231: astore_2
-    //   232: aload 4
-    //   234: invokevirtual 84	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   237: astore 4
-    //   239: new 57	org/json/JSONObject
-    //   242: dup
-    //   243: invokespecial 58	org/json/JSONObject:<init>	()V
-    //   246: astore_2
-    //   247: aload_2
-    //   248: ldc 60
-    //   250: aload 4
-    //   252: invokevirtual 64	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   255: pop
-    //   256: aload_0
-    //   257: getfield 13	annt:jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin	Lcooperation/troop_homework/jsp/TroopHWJsPlugin;
-    //   260: aload_0
-    //   261: getfield 13	annt:jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin	Lcooperation/troop_homework/jsp/TroopHWJsPlugin;
-    //   264: getfield 69	cooperation/troop_homework/jsp/TroopHWJsPlugin:b	Ljava/lang/String;
-    //   267: iconst_1
-    //   268: anewarray 71	java/lang/String
-    //   271: dup
-    //   272: iconst_0
-    //   273: aload_2
-    //   274: invokevirtual 75	org/json/JSONObject:toString	()Ljava/lang/String;
-    //   277: aastore
-    //   278: invokevirtual 79	cooperation/troop_homework/jsp/TroopHWJsPlugin:callJs	(Ljava/lang/String;[Ljava/lang/String;)V
-    //   281: aload_3
-    //   282: ifnull -135 -> 147
-    //   285: aload_3
-    //   286: invokevirtual 82	java/io/FileInputStream:close	()V
-    //   289: return
-    //   290: astore_2
-    //   291: aload_2
-    //   292: invokevirtual 83	java/lang/Exception:printStackTrace	()V
-    //   295: return
-    //   296: astore 4
-    //   298: aload 4
-    //   300: invokevirtual 83	java/lang/Exception:printStackTrace	()V
-    //   303: goto -47 -> 256
-    //   306: astore 4
-    //   308: aload 4
-    //   310: invokevirtual 83	java/lang/Exception:printStackTrace	()V
-    //   313: goto -199 -> 114
-    //   316: astore_2
-    //   317: aload_2
-    //   318: invokevirtual 83	java/lang/Exception:printStackTrace	()V
-    //   321: return
-    //   322: astore 4
-    //   324: aload 4
-    //   326: invokevirtual 83	java/lang/Exception:printStackTrace	()V
-    //   329: goto -139 -> 190
-    //   332: astore_3
-    //   333: aconst_null
-    //   334: astore_2
-    //   335: new 57	org/json/JSONObject
-    //   338: dup
-    //   339: invokespecial 58	org/json/JSONObject:<init>	()V
-    //   342: astore 4
-    //   344: aload 4
-    //   346: ldc 60
-    //   348: aconst_null
-    //   349: invokevirtual 64	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   352: pop
-    //   353: aload_0
-    //   354: getfield 13	annt:jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin	Lcooperation/troop_homework/jsp/TroopHWJsPlugin;
-    //   357: aload_0
-    //   358: getfield 13	annt:jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin	Lcooperation/troop_homework/jsp/TroopHWJsPlugin;
-    //   361: getfield 69	cooperation/troop_homework/jsp/TroopHWJsPlugin:b	Ljava/lang/String;
-    //   364: iconst_1
-    //   365: anewarray 71	java/lang/String
-    //   368: dup
-    //   369: iconst_0
-    //   370: aload 4
-    //   372: invokevirtual 75	org/json/JSONObject:toString	()Ljava/lang/String;
-    //   375: aastore
-    //   376: invokevirtual 79	cooperation/troop_homework/jsp/TroopHWJsPlugin:callJs	(Ljava/lang/String;[Ljava/lang/String;)V
-    //   379: aload_2
-    //   380: ifnull +7 -> 387
-    //   383: aload_2
-    //   384: invokevirtual 82	java/io/FileInputStream:close	()V
-    //   387: aload_3
-    //   388: athrow
-    //   389: astore 5
-    //   391: aload 5
-    //   393: invokevirtual 83	java/lang/Exception:printStackTrace	()V
-    //   396: goto -43 -> 353
-    //   399: astore_2
-    //   400: aload_2
-    //   401: invokevirtual 83	java/lang/Exception:printStackTrace	()V
-    //   404: goto -17 -> 387
-    //   407: astore_3
-    //   408: goto -73 -> 335
-    //   411: astore 4
-    //   413: aconst_null
-    //   414: astore_3
-    //   415: goto -248 -> 167
-    //   418: astore 4
-    //   420: aconst_null
-    //   421: astore_3
-    //   422: goto -331 -> 91
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	425	0	this	annt
-    //   40	29	1	i	int
-    //   13	195	2	localObject1	Object
-    //   224	2	2	localException1	java.lang.Exception
-    //   231	43	2	localObject2	Object
-    //   290	2	2	localException2	java.lang.Exception
-    //   316	2	2	localException3	java.lang.Exception
-    //   334	50	2	localObject3	Object
-    //   399	2	2	localException4	java.lang.Exception
-    //   11	275	3	localFileInputStream	java.io.FileInputStream
-    //   332	56	3	localObject4	Object
-    //   407	1	3	localObject5	Object
-    //   414	8	3	localObject6	Object
-    //   21	54	4	localStringBuilder	java.lang.StringBuilder
-    //   89	62	4	localFileNotFoundException1	java.io.FileNotFoundException
-    //   165	68	4	localException5	java.lang.Exception
-    //   237	14	4	str	String
-    //   296	3	4	localException6	java.lang.Exception
-    //   306	3	4	localException7	java.lang.Exception
-    //   322	3	4	localException8	java.lang.Exception
-    //   342	29	4	localJSONObject	org.json.JSONObject
-    //   411	1	4	localException9	java.lang.Exception
-    //   418	1	4	localFileNotFoundException2	java.io.FileNotFoundException
-    //   30	123	5	arrayOfByte1	byte[]
-    //   389	3	5	localException10	java.lang.Exception
-    //   58	19	6	arrayOfByte2	byte[]
-    // Exception table:
-    //   from	to	target	type
-    //   14	23	89	java/io/FileNotFoundException
-    //   25	32	89	java/io/FileNotFoundException
-    //   34	41	89	java/io/FileNotFoundException
-    //   55	60	89	java/io/FileNotFoundException
-    //   62	72	89	java/io/FileNotFoundException
-    //   74	86	89	java/io/FileNotFoundException
-    //   150	162	89	java/io/FileNotFoundException
-    //   232	239	89	java/io/FileNotFoundException
-    //   14	23	165	java/lang/Exception
-    //   25	32	165	java/lang/Exception
-    //   34	41	165	java/lang/Exception
-    //   55	60	165	java/lang/Exception
-    //   62	72	165	java/lang/Exception
-    //   74	86	165	java/lang/Exception
-    //   150	162	165	java/lang/Exception
-    //   232	239	165	java/lang/Exception
-    //   219	223	224	java/lang/Exception
-    //   285	289	290	java/lang/Exception
-    //   247	256	296	java/lang/Exception
-    //   106	114	306	java/lang/Exception
-    //   143	147	316	java/lang/Exception
-    //   182	190	322	java/lang/Exception
-    //   0	12	332	finally
-    //   344	353	389	java/lang/Exception
-    //   383	387	399	java/lang/Exception
-    //   14	23	407	finally
-    //   25	32	407	finally
-    //   34	41	407	finally
-    //   55	60	407	finally
-    //   62	72	407	finally
-    //   74	86	407	finally
-    //   93	98	407	finally
-    //   150	162	407	finally
-    //   169	174	407	finally
-    //   232	239	407	finally
-    //   0	12	411	java/lang/Exception
-    //   0	12	418	java/io/FileNotFoundException
+    this.jdField_a_of_type_JavaLangRunnable = new EnterpriseQQManager.1(this);
+    this.jdField_a_of_type_Akgd = new annu(this, 4, true, true, 0L, false, false, "EnterpriseQQManager");
+    if (paramQQAppInterface != null) {
+      a(paramQQAppInterface);
+    }
+  }
+  
+  public static annt a(QQAppInterface paramQQAppInterface)
+  {
+    if (jdField_a_of_type_Annt == null) {}
+    synchronized (jdField_a_of_type_ArrayOfByte)
+    {
+      if (jdField_a_of_type_Annt == null) {
+        jdField_a_of_type_Annt = new annt(paramQQAppInterface);
+      }
+      return jdField_a_of_type_Annt;
+    }
+  }
+  
+  private static void a(Context paramContext, QQAppInterface paramQQAppInterface, String paramString, StructMsg.ButtonInfo paramButtonInfo)
+  {
+    paramButtonInfo = new StringBuilder(paramButtonInfo.url.get());
+    if (paramButtonInfo.indexOf("?") < 0) {
+      paramButtonInfo.append("?");
+    }
+    for (;;)
+    {
+      paramButtonInfo.append("uin=" + paramQQAppInterface.getCurrentAccountUin());
+      paramButtonInfo.append("&puin=" + paramString);
+      Intent localIntent = new Intent(paramContext, PublicAccountBrowser.class);
+      localIntent.putExtra("url", paramButtonInfo.toString());
+      localIntent.putExtra("uin", paramQQAppInterface.getCurrentAccountUin());
+      localIntent.putExtra("puin", paramString);
+      localIntent.putExtra("assignBackText", paramContext.getResources().getString(2131625011));
+      if (paramString.equalsIgnoreCase("2632129500")) {
+        localIntent.putExtra("hide_operation_bar", true);
+      }
+      paramContext.startActivity(localIntent);
+      return;
+      if (paramButtonInfo.indexOf("?") < paramButtonInfo.length() - 1) {
+        if (paramButtonInfo.indexOf("&") < 0) {
+          paramButtonInfo.append("&");
+        } else if (paramButtonInfo.lastIndexOf("&") < paramButtonInfo.length() - 1) {
+          paramButtonInfo.append("&");
+        }
+      }
+    }
+  }
+  
+  public List<StructMsg.ButtonInfo> a(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    if (this.jdField_a_of_type_Anns != null) {
+      return this.jdField_a_of_type_Anns.a(paramString);
+    }
+    return null;
+  }
+  
+  public void a(Context paramContext, QQAppInterface paramQQAppInterface, String paramString1, String paramString2, boolean paramBoolean, double paramDouble1, double paramDouble2)
+  {
+    if ((paramQQAppInterface != null) && (!TextUtils.isEmpty(paramString1)))
+    {
+      paramContext = (ajho)paramQQAppInterface.a(21);
+      if (paramContext != null) {
+        paramContext.a(paramString1, paramString2, 1, paramBoolean, paramDouble1, paramDouble2);
+      }
+    }
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface)
+  {
+    if (this.jdField_a_of_type_Anns == null) {
+      this.jdField_a_of_type_Anns = new anns();
+    }
+    if (paramQQAppInterface != null)
+    {
+      paramQQAppInterface = paramQQAppInterface.getEntityManagerFactory().createEntityManager().a(EnterpriseQQMenuEntity.class);
+      if ((paramQQAppInterface != null) && (paramQQAppInterface.size() > 0)) {
+        paramQQAppInterface = paramQQAppInterface.iterator();
+      }
+    }
+    for (;;)
+    {
+      EnterpriseQQMenuEntity localEnterpriseQQMenuEntity;
+      StructMsg.GetCRMMenuResponse localGetCRMMenuResponse;
+      if (paramQQAppInterface.hasNext())
+      {
+        localEnterpriseQQMenuEntity = (EnterpriseQQMenuEntity)paramQQAppInterface.next();
+        if (localEnterpriseQQMenuEntity == null) {
+          continue;
+        }
+        localGetCRMMenuResponse = new StructMsg.GetCRMMenuResponse();
+      }
+      try
+      {
+        localGetCRMMenuResponse.mergeFrom(localEnterpriseQQMenuEntity.data);
+        label95:
+        if (!localGetCRMMenuResponse.ret_info.has()) {
+          continue;
+        }
+        this.jdField_a_of_type_Anns.a(localEnterpriseQQMenuEntity.uin, localGetCRMMenuResponse.button_info.get(), localEnterpriseQQMenuEntity.seqno, localEnterpriseQQMenuEntity.savedDateTime);
+        continue;
+        return;
+      }
+      catch (Exception localException)
+      {
+        break label95;
+      }
+    }
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, String paramString, int paramInt, StructMsg.GetCRMMenuResponse paramGetCRMMenuResponse)
+  {
+    if ((paramQQAppInterface == null) || (TextUtils.isEmpty(paramString))) {}
+    long l;
+    do
+    {
+      return;
+      if (this.jdField_a_of_type_Anns == null) {
+        this.jdField_a_of_type_Anns = new anns();
+      }
+      l = System.currentTimeMillis();
+      if ((this.jdField_a_of_type_Anns.a(paramString) != paramInt) && (paramGetCRMMenuResponse != null))
+      {
+        List localList = paramGetCRMMenuResponse.button_info.get();
+        paramGetCRMMenuResponse = new EnterpriseQQMenuEntity(paramString, paramGetCRMMenuResponse, paramInt, l);
+        paramQQAppInterface = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
+        EnterpriseQQMenuEntity localEnterpriseQQMenuEntity = (EnterpriseQQMenuEntity)paramQQAppInterface.a(EnterpriseQQMenuEntity.class, paramString);
+        if (localEnterpriseQQMenuEntity != null)
+        {
+          localEnterpriseQQMenuEntity.data = ((byte[])paramGetCRMMenuResponse.data.clone());
+          localEnterpriseQQMenuEntity.savedDateTime = paramGetCRMMenuResponse.savedDateTime;
+          localEnterpriseQQMenuEntity.seqno = paramGetCRMMenuResponse.seqno;
+          paramQQAppInterface.a(localEnterpriseQQMenuEntity);
+        }
+        for (;;)
+        {
+          this.jdField_a_of_type_Anns.a(paramString, localList, paramInt, l);
+          return;
+          paramQQAppInterface.a(paramGetCRMMenuResponse);
+        }
+      }
+    } while (paramGetCRMMenuResponse == null);
+    paramQQAppInterface = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
+    paramGetCRMMenuResponse = (EnterpriseQQMenuEntity)paramQQAppInterface.a(EnterpriseQQMenuEntity.class, paramString);
+    if (paramGetCRMMenuResponse != null)
+    {
+      paramGetCRMMenuResponse.savedDateTime = l;
+      paramQQAppInterface.a(paramGetCRMMenuResponse);
+    }
+    this.jdField_a_of_type_Anns.a(paramString, l);
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, String paramString, boolean paramBoolean)
+  {
+    if ((paramQQAppInterface != null) && (!TextUtils.isEmpty(paramString)))
+    {
+      long l = 0L;
+      if (this.jdField_a_of_type_Anns != null) {
+        l = this.jdField_a_of_type_Anns.a(paramString);
+      }
+      if ((paramBoolean) || ((!paramBoolean) && (System.currentTimeMillis() - l > 43200000L)))
+      {
+        paramQQAppInterface = (ajho)paramQQAppInterface.a(21);
+        if (paramQQAppInterface != null) {
+          paramQQAppInterface.a(paramString);
+        }
+      }
+    }
+  }
+  
+  public void a(String arg1, Context paramContext, QQAppInterface paramQQAppInterface, String paramString2, StructMsg.ButtonInfo paramButtonInfo)
+  {
+    if (paramButtonInfo == null) {
+      if (QLog.isColorLevel()) {
+        QLog.e("EnterpriseQQManager", 2, "buttoninfo is null.");
+      }
+    }
+    int i;
+    do
+    {
+      return;
+      switch (paramButtonInfo.type.get())
+      {
+      default: 
+        return;
+      case 1: 
+        if (paramButtonInfo.is_need_lbs.get())
+        {
+          if ((System.currentTimeMillis() - this.jdField_a_of_type_Long < this.jdField_b_of_type_Long) && (this.jdField_a_of_type_Double != 0.0D) && (this.jdField_b_of_type_Double != 0.0D))
+          {
+            a(paramContext, paramQQAppInterface, paramString2, ???, true, this.jdField_a_of_type_Double, this.jdField_b_of_type_Double);
+            return;
+          }
+          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+          this.jdField_a_of_type_AndroidContentContext = paramContext;
+          paramContext = new annv(this);
+          paramContext.a = paramString2;
+          paramContext.b = ???;
+          synchronized (jdField_b_of_type_ArrayOfByte)
+          {
+            this.jdField_a_of_type_JavaUtilArrayList.add(paramContext);
+            ThreadManager.post(this.jdField_a_of_type_JavaLangRunnable, 8, null, true);
+            return;
+          }
+        }
+        a(paramContext, paramQQAppInterface, paramString2, ???, false, 0.0D, 0.0D);
+        return;
+      case 2: 
+        a(paramContext, paramQQAppInterface, paramString2, paramButtonInfo);
+        return;
+      }
+      i = paramButtonInfo.event_id.get();
+    } while ((i == 1) || (i == 2) || (i == 3) || (i != 4));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     annt
  * JD-Core Version:    0.7.0.1
  */

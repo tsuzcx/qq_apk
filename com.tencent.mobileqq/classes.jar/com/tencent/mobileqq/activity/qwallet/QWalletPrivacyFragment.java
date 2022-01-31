@@ -1,5 +1,9 @@
 package com.tencent.mobileqq.activity.qwallet;
 
+import agki;
+import agkj;
+import agkk;
+import agwj;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -9,17 +13,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
+import babr;
+import bafb;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.activity.qwallet.utils.QWalletTools;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qwallet.plugin.QWalletHelper;
-import xgh;
-import xgi;
-import xgj;
 
 public class QWalletPrivacyFragment
   extends PublicBaseFragment
@@ -36,17 +36,17 @@ public class QWalletPrivacyFragment
     if (!TextUtils.isEmpty((CharSequence)localObject2)) {
       localObject1 = ((String)localObject2).replace("\\n", "\n");
     }
-    localObject2 = QWalletTools.a((String)localObject1, getActivity(), new xgh(this));
+    localObject2 = agwj.a((String)localObject1, getActivity(), new agki(this));
     if ((TextUtils.isEmpty((CharSequence)localObject2)) || (TextUtils.isEmpty(str2)) || (TextUtils.isEmpty((CharSequence)localObject1)) || (TextUtils.isEmpty(str1)))
     {
       a();
       return;
     }
-    localObject1 = DialogUtil.a(getActivity(), 230, 2130971066, str2, (CharSequence)localObject2, 2131432357, 2131432356, new xgi(this), new xgj(this));
-    ((QQCustomDialog)localObject1).setCancelable(false);
-    ((QQCustomDialog)localObject1).setCanceledOnTouchOutside(false);
-    ((QQCustomDialog)localObject1).show();
-    paramView = (RelativeLayout)paramView.findViewById(2131372750);
+    localObject1 = babr.a(getActivity(), 230, 2131496084, str2, (CharSequence)localObject2, 2131651756, 2131651755, new agkj(this), new agkk(this));
+    ((bafb)localObject1).setCancelable(false);
+    ((bafb)localObject1).setCanceledOnTouchOutside(false);
+    ((bafb)localObject1).show();
+    paramView = (RelativeLayout)paramView.findViewById(2131307996);
     localObject1 = new ColorDrawable(-1);
     localObject2 = URLDrawable.URLDrawableOptions.obtain();
     ((URLDrawable.URLDrawableOptions)localObject2).mFailedDrawable = ((Drawable)localObject1);
@@ -56,7 +56,7 @@ public class QWalletPrivacyFragment
   
   public void a()
   {
-    QWalletHelper.launchQWalletAct(getActivity(), getActivity().app, false);
+    QWalletHelper.launchQWalletAct(getActivity(), getActivity().app, false, false);
     getActivity().finish();
   }
   
@@ -72,7 +72,7 @@ public class QWalletPrivacyFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    return paramLayoutInflater.inflate(2130971065, paramViewGroup, false);
+    return paramLayoutInflater.inflate(2131496083, paramViewGroup, false);
   }
   
   public void onDestroy()
@@ -98,7 +98,7 @@ public class QWalletPrivacyFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.QWalletPrivacyFragment
  * JD-Core Version:    0.7.0.1
  */

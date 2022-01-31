@@ -1,54 +1,61 @@
-import android.widget.ImageView;
-import android.widget.SeekBar;
-import android.widget.SeekBar.OnSeekBarChangeListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
-import com.tencent.mobileqq.video.IMediaPlayer;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.content.Context;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.FrameLayout;
+import android.widget.FrameLayout.LayoutParams;
 
-public class yla
-  implements SeekBar.OnSeekBarChangeListener
+final class yla
+  extends FrameLayout
+  implements yku
 {
-  public yla(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  private int jdField_a_of_type_Int = -2147483648;
+  private ykr jdField_a_of_type_Ykr;
+  private int b = -2147483648;
   
-  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean) {}
-  
-  public void onStartTrackingTouch(SeekBar paramSeekBar)
+  public yla(Context paramContext, String paramString, int paramInt1, int paramInt2)
   {
-    int i = this.a.jdField_a_of_type_AndroidWidgetSeekBar.getProgress();
-    if (this.a.jdField_a_of_type_MqqOsMqqHandler != null) {
-      this.a.jdField_a_of_type_MqqOsMqqHandler.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
-    }
-    this.a.d();
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoPreviewActivity", 2, "onStartTrackingTouch: progress = " + i);
-    }
-  }
-  
-  public void onStopTrackingTouch(SeekBar paramSeekBar)
-  {
-    int i = this.a.jdField_a_of_type_AndroidWidgetSeekBar.getProgress();
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoPreviewActivity", 2, "onStopTrackingTouch: 当前位置为 = " + i);
-    }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqVideoIMediaPlayer != null)
+    super(paramContext);
+    if ((paramContext == null) || (TextUtils.isEmpty(paramString)) || (paramInt1 < 0) || (paramInt2 < 0))
     {
-      if (this.a.a() == 2) {
-        this.a.b();
-      }
-      this.a.c.setImageResource(2130843369);
-      this.a.jdField_a_of_type_ComTencentMobileqqVideoIMediaPlayer.a();
-      this.a.jdField_a_of_type_ComTencentMobileqqVideoIMediaPlayer.a(i);
-      this.a.jdField_a_of_type_MqqOsMqqHandler.post(this.a.jdField_a_of_type_JavaLangRunnable);
-      this.a.b.setEnabled(false);
-      this.a.b.setTextColor(-2130706433);
+      yny.d("GdtBannerViewForCreativeSize193", "constructor");
+      return;
     }
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.jdField_a_of_type_Ykr = new ykr(paramContext, paramString);
+    this.jdField_a_of_type_Ykr.setId(2131301342);
+    addView(this.jdField_a_of_type_Ykr);
   }
+  
+  public View a()
+  {
+    return this;
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    if ((this.jdField_a_of_type_Int <= 0) || (this.b <= 0) || (this.jdField_a_of_type_Ykr == null) || (paramInt1 <= 0) || (paramInt2 <= 0))
+    {
+      yny.d("GdtBannerViewForCreativeSize193", "setSize error");
+      return;
+    }
+    Object localObject = new ykz(getContext(), paramInt1, paramInt2);
+    paramInt2 = Double.valueOf(1.0D * (paramInt1 - ((ykz)localObject).b * 2) / this.jdField_a_of_type_Int * this.b + ((ykz)localObject).b * 2).intValue();
+    this.jdField_a_of_type_Ykr.setPadding(((ykz)localObject).b, ((ykz)localObject).b, ((ykz)localObject).b, ((ykz)localObject).b);
+    localObject = new FrameLayout.LayoutParams(paramInt1, paramInt2);
+    this.jdField_a_of_type_Ykr.setLayoutParams((ViewGroup.LayoutParams)localObject);
+  }
+  
+  public void a(Context paramContext) {}
+  
+  public void b(Context paramContext) {}
+  
+  public void c(Context paramContext) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     yla
  * JD-Core Version:    0.7.0.1
  */

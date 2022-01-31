@@ -1,18 +1,16 @@
 package com.tencent.mobileqq.richmedia.mediacodec.widget;
 
-import ahtq;
-import ahtr;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.support.annotation.NonNull;
 import android.util.AttributeSet;
-import com.tencent.mobileqq.richmedia.mediacodec.decoder.DecodeConfig;
-import com.tencent.mobileqq.richmedia.mediacodec.renderer.FilterFactory;
-import com.tencent.mobileqq.richmedia.mediacodec.renderer.GPUBaseFilter;
-import com.tencent.mobileqq.richmedia.mediacodec.renderer.GPUImagePixelationFilter;
-import com.tencent.mobileqq.richmedia.mediacodec.renderer.GpuImagePartsFilterGroup;
-import com.tencent.mobileqq.richmedia.mediacodec.renderer.RenderBuffer;
+import auxr;
+import avab;
+import avag;
+import avak;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.ttpic.openapi.filter.GPUBaseFilter;
+import com.tencent.ttpic.openapi.filter.RenderBuffer;
 import java.util.LinkedList;
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
@@ -21,12 +19,12 @@ public class VideoFilterPlayView
   extends HWVideoPlayView
 {
   public static int h;
-  private GPUBaseFilter jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererGPUBaseFilter;
-  private GpuImagePartsFilterGroup jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererGpuImagePartsFilterGroup;
-  private RenderBuffer jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererRenderBuffer;
-  public final LinkedList a;
-  private GPUBaseFilter jdField_b_of_type_ComTencentMobileqqRichmediaMediacodecRendererGPUBaseFilter;
-  private RenderBuffer jdField_b_of_type_ComTencentMobileqqRichmediaMediacodecRendererRenderBuffer;
+  private avak jdField_a_of_type_Avak;
+  private GPUBaseFilter jdField_a_of_type_ComTencentTtpicOpenapiFilterGPUBaseFilter;
+  private RenderBuffer jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer;
+  protected final LinkedList<Runnable> a;
+  private GPUBaseFilter jdField_b_of_type_ComTencentTtpicOpenapiFilterGPUBaseFilter;
+  private RenderBuffer jdField_b_of_type_ComTencentTtpicOpenapiFilterRenderBuffer;
   private GPUBaseFilter c;
   public int i;
   
@@ -39,33 +37,33 @@ public class VideoFilterPlayView
   {
     super(paramContext, paramAttributeSet);
     this.jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
-    n();
+    o();
     int j = h + 1;
     h = j;
     this.i = j;
   }
   
-  private void n()
+  private void o()
   {
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererGpuImagePartsFilterGroup = new GpuImagePartsFilterGroup();
-    GPUBaseFilter localGPUBaseFilter = FilterFactory.a(101);
-    this.jdField_b_of_type_ComTencentMobileqqRichmediaMediacodecRendererGPUBaseFilter = localGPUBaseFilter;
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererGPUBaseFilter = localGPUBaseFilter;
-    a(new ahtq(this));
+    this.jdField_a_of_type_Avak = new avak();
+    GPUBaseFilter localGPUBaseFilter = avab.a(101);
+    this.jdField_b_of_type_ComTencentTtpicOpenapiFilterGPUBaseFilter = localGPUBaseFilter;
+    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterGPUBaseFilter = localGPUBaseFilter;
+    a(new VideoFilterPlayView.1(this));
   }
   
-  public void a(int paramInt, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2)
+  protected void a(int paramInt, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererGpuImagePartsFilterGroup.g();
+    this.jdField_a_of_type_Avak.a();
     int j = paramInt;
-    if (this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererGpuImagePartsFilterGroup.b())
+    if (this.jdField_a_of_type_Avak.a())
     {
-      this.jdField_b_of_type_ComTencentMobileqqRichmediaMediacodecRendererRenderBuffer.b();
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererGpuImagePartsFilterGroup.a(paramInt, null, null);
-      this.jdField_b_of_type_ComTencentMobileqqRichmediaMediacodecRendererRenderBuffer.c();
-      j = this.jdField_b_of_type_ComTencentMobileqqRichmediaMediacodecRendererRenderBuffer.a();
+      this.jdField_b_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.bind();
+      this.jdField_a_of_type_Avak.drawTexture(paramInt, null, null);
+      this.jdField_b_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.unbind();
+      j = this.jdField_b_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.getTexId();
     }
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererGPUBaseFilter.a(j, paramArrayOfFloat1, paramArrayOfFloat2);
+    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterGPUBaseFilter.drawTexture(j, paramArrayOfFloat1, paramArrayOfFloat2);
   }
   
   public void a(long paramLong)
@@ -82,7 +80,7 @@ public class VideoFilterPlayView
     }
   }
   
-  public void a(@NonNull LinkedList paramLinkedList)
+  protected void a(@NonNull LinkedList<Runnable> paramLinkedList)
   {
     try
     {
@@ -100,10 +98,10 @@ public class VideoFilterPlayView
   protected void a(float[] paramArrayOfFloat1, float[] paramArrayOfFloat2)
   {
     a(this.jdField_a_of_type_JavaUtilLinkedList);
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererRenderBuffer.b();
+    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.bind();
     super.a(null, null);
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererRenderBuffer.c();
-    a(this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererRenderBuffer.a(), paramArrayOfFloat1, paramArrayOfFloat2);
+    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.unbind();
+    a(this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.getTexId(), paramArrayOfFloat1, paramArrayOfFloat2);
   }
   
   public void l()
@@ -115,58 +113,58 @@ public class VideoFilterPlayView
   public void m()
   {
     super.m();
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererRenderBuffer.d();
-    this.jdField_b_of_type_ComTencentMobileqqRichmediaMediacodecRendererRenderBuffer.d();
+    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.destroy();
+    this.jdField_b_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.destroy();
   }
   
   public void onSurfaceChanged(GL10 paramGL10, int paramInt1, int paramInt2)
   {
     super.onSurfaceChanged(paramGL10, paramInt1, paramInt2);
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererRenderBuffer = new RenderBuffer(paramInt1, paramInt2, 33984);
-    this.jdField_b_of_type_ComTencentMobileqqRichmediaMediacodecRendererRenderBuffer = new RenderBuffer(paramInt1, paramInt2, 33984);
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererGpuImagePartsFilterGroup.a(paramInt1, paramInt2);
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererGPUBaseFilter.a(paramInt1, paramInt2);
+    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer = new RenderBuffer(paramInt1, paramInt2, 33984);
+    this.jdField_b_of_type_ComTencentTtpicOpenapiFilterRenderBuffer = new RenderBuffer(paramInt1, paramInt2, 33984);
+    this.jdField_a_of_type_Avak.onOutputSizeChanged(paramInt1, paramInt2);
+    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterGPUBaseFilter.onOutputSizeChanged(paramInt1, paramInt2);
   }
   
   public void onSurfaceCreated(GL10 paramGL10, EGLConfig paramEGLConfig)
   {
     super.onSurfaceCreated(paramGL10, paramEGLConfig);
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererGPUBaseFilter = FilterFactory.a(101);
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererGPUBaseFilter.a();
+    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterGPUBaseFilter = avab.a(101);
+    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterGPUBaseFilter.init();
   }
   
   public void setColorFilterType(int paramInt)
   {
-    if ((!this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererGpuImagePartsFilterGroup.b()) && (paramInt == 0)) {
+    if ((!this.jdField_a_of_type_Avak.a()) && (paramInt == 0)) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererGpuImagePartsFilterGroup.a(paramInt, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int);
+    this.jdField_a_of_type_Avak.a(paramInt, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int);
   }
   
   public void setColorFilterType(int paramInt1, int paramInt2, float paramFloat, int paramInt3)
   {
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererGpuImagePartsFilterGroup.a(paramInt1, paramInt2, paramFloat, paramInt3, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int);
+    this.jdField_a_of_type_Avak.a(paramInt1, paramInt2, paramFloat, paramInt3, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int);
   }
   
   public void setMosaicFilterType(Bitmap paramBitmap)
   {
     if (paramBitmap == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererGPUBaseFilter = this.jdField_b_of_type_ComTencentMobileqqRichmediaMediacodecRendererGPUBaseFilter;
+      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterGPUBaseFilter = this.jdField_b_of_type_ComTencentTtpicOpenapiFilterGPUBaseFilter;
       return;
     }
-    if (this.jdField_c_of_type_ComTencentMobileqqRichmediaMediacodecRendererGPUBaseFilter == null)
+    if (this.jdField_c_of_type_ComTencentTtpicOpenapiFilterGPUBaseFilter == null)
     {
-      this.jdField_c_of_type_ComTencentMobileqqRichmediaMediacodecRendererGPUBaseFilter = FilterFactory.a(106);
-      a(new ahtr(this));
+      this.jdField_c_of_type_ComTencentTtpicOpenapiFilterGPUBaseFilter = avab.a(106);
+      a(new VideoFilterPlayView.2(this));
     }
-    ((GPUImagePixelationFilter)this.jdField_c_of_type_ComTencentMobileqqRichmediaMediacodecRendererGPUBaseFilter).a(paramBitmap, this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderDecodeConfig.jdField_b_of_type_Int);
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererGPUBaseFilter = this.jdField_c_of_type_ComTencentMobileqqRichmediaMediacodecRendererGPUBaseFilter;
+    ((avag)this.jdField_c_of_type_ComTencentTtpicOpenapiFilterGPUBaseFilter).a(paramBitmap, this.jdField_a_of_type_Auxr.jdField_b_of_type_Int);
+    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterGPUBaseFilter = this.jdField_c_of_type_ComTencentTtpicOpenapiFilterGPUBaseFilter;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.mediacodec.widget.VideoFilterPlayView
  * JD-Core Version:    0.7.0.1
  */

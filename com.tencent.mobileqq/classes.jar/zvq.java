@@ -1,19 +1,30 @@
-import com.tencent.mobileqq.app.TroopQZoneUploadAlbumHandler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewParent;
+import com.tencent.mobileqq.activity.AccountManageActivity;
 
 public class zvq
+  implements View.OnClickListener
 {
-  public long a;
-  public String a;
+  public zvq(AccountManageActivity paramAccountManageActivity) {}
   
-  public zvq(TroopQZoneUploadAlbumHandler paramTroopQZoneUploadAlbumHandler, String paramString, long paramLong)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Long = paramLong;
+    paramView = (View)paramView.getParent().getParent();
+    if ((paramView == null) || (paramView.getTag() == null)) {}
+    int i;
+    do
+    {
+      return;
+      i = ((Integer)paramView.getTag()).intValue();
+    } while ((i == 0) && (!atok.a().a(this.a.app, this.a)));
+    this.a.a(i);
+    awqx.b(this.a.app, "CliOper", "", "", "Setting_tab", "Clk_acc_edit_delete", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     zvq
  * JD-Core Version:    0.7.0.1
  */

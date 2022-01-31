@@ -1,105 +1,134 @@
-import android.content.res.Resources;
 import android.os.Bundle;
-import com.tencent.open.agent.SwitchAccountActivity;
-import com.tencent.open.agent.util.AuthorityUtil;
-import com.tencent.open.business.cgireport.ReportManager;
-import com.tencent.open.data.SharedPrefs;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqconnect.wtlogin.OpenSDKAppInterface;
-import mqq.observer.SSOAccountObserver;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+import tencent.im.oidb.cmd0x74b.oidb_0x74b.ReqBody;
+import tencent.im.oidb.cmd0x74b.oidb_0x74b.RspBody;
 
 public class alkj
-  extends SSOAccountObserver
+  extends ajfb
 {
-  public alkj(SwitchAccountActivity paramSwitchAccountActivity) {}
-  
-  public void onFailed(String paramString, int paramInt1, int paramInt2, Bundle paramBundle)
+  public alkj(AppInterface paramAppInterface)
   {
-    this.a.e();
-    String str = paramBundle.getString("error");
-    try
-    {
-      paramInt1 = paramBundle.getInt("code");
-      ReportManager.a().a("agent_login", this.a.jdField_a_of_type_Long, 0L, 0L, paramInt1, Long.parseLong(paramString), "1000069", "ret: " + paramInt2 + " | error: " + str);
-      if (paramInt2 == -1000) {
-        this.a.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.a(this.a, this.a.getResources().getString(2131435619));
-      }
-      for (;;)
-      {
-        paramInt1 = paramBundle.getInt("code");
-        QLog.d("SwitchAccountActivity", 1, "rec | cmd: g_t_n_p | uin : *" + AuthorityUtil.a(paramString) + " | ret : " + paramInt2 + " - error: " + str + " | code: " + paramInt1);
-        return;
-        if ((paramInt2 == 1) || (paramInt2 == -1004))
-        {
-          this.a.b();
-        }
-        else
-        {
-          Object localObject1 = (ErrMsg)paramBundle.getParcelable("lastError");
-          if (localObject1 == null) {
-            break;
-          }
-          localObject1 = ((ErrMsg)localObject1).getMessage();
-          Object localObject3;
-          if (localObject1 != null)
-          {
-            localObject3 = localObject1;
-            if (((String)localObject1).length() != 0) {}
-          }
-          else
-          {
-            localObject3 = this.a.getString(2131434782);
-          }
-          this.a.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.a(this.a, (String)localObject3);
-        }
-      }
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        continue;
-        Object localObject2 = null;
-      }
-    }
+    super(paramAppInterface);
   }
   
-  public void onGetTicketNoPasswd(String paramString, byte[] paramArrayOfByte, int paramInt, Bundle paramBundle)
+  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    if ((!paramBundle.getBoolean("fake_callback")) && (paramInt == 4096)) {
-      SharedPrefs.a(paramString, System.currentTimeMillis());
+    if ((paramToServiceMsg == null) || (paramFromServiceMsg == null)) {
+      notifyUI(1001, false, null);
     }
-    this.a.e();
-    String str = null;
-    if (paramInt == 4096) {
-      str = new String(paramArrayOfByte);
-    }
-    this.a.a(paramString, str, paramBundle);
-    paramInt = paramBundle.getInt("code");
-    QLog.d("SwitchAccountActivity", 1, "rec | cmd: g_t_n_p | uin : *" + AuthorityUtil.a(paramString) + " | ret : success | code: " + paramInt);
-    try
+    oidb_0x74b.RspBody localRspBody;
+    int j;
+    int k;
+    int m;
+    boolean bool;
+    do
     {
-      ReportManager.a().a("agent_login", this.a.jdField_a_of_type_Long, 0L, 0L, 0, Long.parseLong(paramString), "1000069", null);
+      return;
+      localRspBody = new oidb_0x74b.RspBody();
+      int i = parseOIDBPkg(paramFromServiceMsg, paramObject, localRspBody);
+      paramFromServiceMsg = Long.valueOf(paramToServiceMsg.extraData.getLong("id"));
+      j = paramToServiceMsg.extraData.getInt("type");
+      k = paramToServiceMsg.extraData.getInt("headType");
+      m = paramToServiceMsg.extraData.getInt("sizeType");
+      bool = paramToServiceMsg.extraData.getBoolean("isSmartMode");
+      QLog.i("Q.dynamicAvatar", 2, "handleDynamicAvatarInfo, result : " + i);
+      if (i != 0) {
+        break;
+      }
+      paramToServiceMsg = alkf.a(localRspBody);
+      notifyUI(1001, true, new Object[] { paramToServiceMsg, paramFromServiceMsg, Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m), Boolean.valueOf(bool) });
+      paramFromServiceMsg = (alkl)this.mApp.getManager(180);
+    } while (paramFromServiceMsg == null);
+    if ((this.mApp instanceof QQAppInterface))
+    {
+      paramFromServiceMsg.a(paramToServiceMsg);
       return;
     }
-    catch (Exception paramString)
+    paramFromServiceMsg.a(localRspBody.toByteArray());
+    return;
+    QLog.i("Q.dynamicAvatar", 1, "handleGetDynamicAvatarInfo result not success.");
+    notifyUI(1001, false, new Object[] { null, paramFromServiceMsg, Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m), Boolean.valueOf(bool) });
+  }
+  
+  public void a(Long paramLong, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean)
+  {
+    Object localObject = null;
+    ArrayList localArrayList2 = new ArrayList();
+    localArrayList2.add(Integer.valueOf(17));
+    localArrayList2.add(Integer.valueOf(18));
+    ArrayList localArrayList1;
+    if (paramInt1 != 18)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("SwitchAccountActivity", 2, "report login error : " + paramString.toString());
+      localArrayList1 = new ArrayList();
+      localArrayList1.add(paramLong);
+    }
+    for (;;)
+    {
+      oidb_0x74b.ReqBody localReqBody = new oidb_0x74b.ReqBody();
+      if ((localArrayList1 != null) && (!localArrayList1.isEmpty())) {
+        localReqBody.rpt_uint64_uin.set(localArrayList1);
+      }
+      if ((localObject != null) && (!((ArrayList)localObject).isEmpty())) {
+        localReqBody.rpt_uint64_tinyid.set((List)localObject);
+      }
+      if ((localArrayList2 != null) && (!localArrayList2.isEmpty())) {
+        localReqBody.rpt_head_type.set(localArrayList2);
+      }
+      localObject = makeOIDBPkg("OidbSvc.0x74b", 1867, 0, localReqBody.toByteArray());
+      ((ToServiceMsg)localObject).extraData.putLong("id", paramLong.longValue());
+      ((ToServiceMsg)localObject).extraData.putInt("type", paramInt1);
+      ((ToServiceMsg)localObject).extraData.putInt("headType", paramInt2);
+      ((ToServiceMsg)localObject).extraData.putInt("sizeType", paramInt3);
+      ((ToServiceMsg)localObject).extraData.putBoolean("isSmartMode", paramBoolean);
+      sendPbReq((ToServiceMsg)localObject);
+      return;
+      localObject = new ArrayList();
+      ((ArrayList)localObject).add(paramLong);
+      localArrayList1 = null;
     }
   }
   
-  public void onUserCancel(String paramString, int paramInt, Bundle paramBundle)
+  protected boolean msgCmdFilter(String paramString)
   {
-    this.a.e();
-    paramInt = paramBundle.getInt("code");
-    QLog.d("SwitchAccountActivity", 1, "rec | cmd: g_t_n_p | uin : *" + AuthorityUtil.a(paramString) + " | ret : on_user_cancel | code: " + paramInt);
+    if (this.allowCmdSet == null)
+    {
+      this.allowCmdSet = new HashSet();
+      this.allowCmdSet.add("OidbSvc.0x74b");
+    }
+    return !this.allowCmdSet.contains(paramString);
+  }
+  
+  protected Class<? extends ajfe> observerClass()
+  {
+    return alkk.class;
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    if ((paramToServiceMsg == null) || (paramFromServiceMsg == null)) {}
+    do
+    {
+      do
+      {
+        return;
+      } while (msgCmdFilter(paramFromServiceMsg.getServiceCmd()));
+      paramFromServiceMsg.getServiceCmd();
+    } while (!"OidbSvc.0x74b".equals(paramFromServiceMsg.getServiceCmd()));
+    a(paramToServiceMsg, paramFromServiceMsg, paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     alkj
  * JD-Core Version:    0.7.0.1
  */

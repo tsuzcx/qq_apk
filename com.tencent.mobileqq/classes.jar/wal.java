@@ -1,21 +1,21 @@
-import com.tencent.mobileqq.activity.aio.rebuild.HotChatPie;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StComment;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class wal
-  implements Runnable
+class wal
+  implements View.OnClickListener
 {
-  public wal(HotChatPie paramHotChatPie, boolean paramBoolean) {}
+  wal(wai paramwai, CertifiedAccountMeta.StComment paramStComment) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildHotChatPie.x()) {
-      return;
-    }
-    HotChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildHotChatPie, this.jdField_a_of_type_Boolean);
+    vzz.a(this.jdField_a_of_type_Wai.a, vzz.a(this.jdField_a_of_type_Wai.a), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StComment, null);
+    vzz.a(this.jdField_a_of_type_Wai.a).dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wal
  * JD-Core Version:    0.7.0.1
  */

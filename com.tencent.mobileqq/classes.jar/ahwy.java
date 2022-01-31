@@ -1,25 +1,28 @@
-import com.tencent.mobileqq.search.activity.VADActivity;
-import mqq.os.MqqHandler;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
 
-public final class ahwy
-  implements Runnable
+public class ahwy
+  extends ahxg
 {
-  public ahwy(MqqHandler paramMqqHandler) {}
-  
-  public void run()
+  public ahwy(SpecailCareListActivity paramSpecailCareListActivity)
   {
-    
-    if (VADActivity.a())
-    {
-      this.a.sendEmptyMessage(0);
+    super(paramSpecailCareListActivity, null);
+  }
+  
+  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
+  {
+    if (this.a.d != 0) {
+      this.a.b = true;
+    }
+    while ((paramInt2 != 200) || (paramBitmap == null)) {
       return;
     }
-    this.a.sendEmptyMessage(1);
+    this.a.a.notifyDataSetChanged();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ahwy
  * JD-Core Version:    0.7.0.1
  */

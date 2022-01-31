@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/hra" android:layout_width="fill_parent" android:layout_height="@dimen/arg">
+        <TextView android:textSize="@dimen/arh" android:textColor="@color/bp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ga1" android:layout_centerInParent="true" />
+    </RelativeLayout>
+    <LinearLayout android:orientation="horizontal" android:id="@id/hr_" android:layout_width="fill_parent" android:layout_height="@dimen/are" android:layout_below="@id/hra">
+        <RelativeLayout android:id="@id/hq4" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0">
+            <TextView android:textSize="@dimen/ayk" android:textColor="@color/a_q" android:id="@id/hji" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/arf" android:text="@string/ga2" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" />
+            <ImageView android:id="@id/hq1" android:layout_width="21.0dip" android:layout_height="21.0dip" android:layout_marginBottom="14.5dip" android:src="@drawable/ghd" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+        </RelativeLayout>
+        <RelativeLayout android:id="@id/htl" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0">
+            <TextView android:textSize="@dimen/ayk" android:textColor="@color/a_q" android:id="@id/hr3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/arf" android:text="@string/ga3" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" />
+            <ImageView android:id="@id/htj" android:layout_width="21.0dip" android:layout_height="21.0dip" android:layout_marginBottom="14.5dip" android:src="@drawable/ghd" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+        </RelativeLayout>
+    </LinearLayout>
+</RelativeLayout>

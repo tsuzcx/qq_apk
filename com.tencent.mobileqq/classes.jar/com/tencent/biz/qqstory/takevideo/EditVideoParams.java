@@ -4,12 +4,12 @@ import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import ojz;
+import uuq;
 
 public class EditVideoParams
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new ojz();
+  public static final Parcelable.Creator<EditVideoParams> CREATOR = new uuq();
   public int a;
   public final Bundle a;
   public EditVideoParams.EditSource a;
@@ -60,10 +60,6 @@ public class EditVideoParams
     case 103: 
       localBundle = new Bundle();
       localBundle.putInt("qq_sub_business_id", 103);
-      return localBundle;
-    case 105: 
-      localBundle = new Bundle();
-      localBundle.putInt("qq_sub_business_id", 105);
       return localBundle;
     }
     Bundle localBundle = new Bundle();
@@ -262,7 +258,7 @@ public class EditVideoParams
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.biz.qqstory.takevideo.EditVideoParams
  * JD-Core Version:    0.7.0.1
  */

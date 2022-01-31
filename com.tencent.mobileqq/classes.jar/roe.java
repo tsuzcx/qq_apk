@@ -1,72 +1,72 @@
-import android.app.Dialog;
-import android.content.Intent;
-import android.text.TextUtils;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.Window;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import android.widget.TextView;
-import com.tencent.biz.anonymous.QQAnonymousDialog;
-import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.ClearableEditText;
-import com.tencent.mobileqq.widget.QQToast;
+import android.widget.RadioGroup;
+import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderActivityNew;
+import com.tencent.biz.pubaccount.serviceAccountFolder.fragment.FolderBaseTabFragment;
+import java.util.ArrayList;
 
 public class roe
-  implements View.OnClickListener
+  implements ViewPager.OnPageChangeListener
 {
-  public roe(AddFriendVerifyActivity paramAddFriendVerifyActivity, String paramString) {}
+  public roe(ServiceAccountFolderActivityNew paramServiceAccountFolderActivityNew) {}
   
-  public void onClick(View paramView)
+  private void a(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.a != null)
+    if (paramInt == FolderBaseTabFragment.a)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.getWindow().setSoftInputMode(2);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.a.hideSoftInputFromWindow(AddFriendVerifyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity).getWindowToken(), 0);
-      AddFriendVerifyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity).clearFocus();
-    }
-    paramView = AddFriendVerifyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity).getText().toString();
-    if (TextUtils.isEmpty(paramView))
-    {
-      if (!this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.isFinishing())
+      if (ServiceAccountFolderActivityNew.a(this.a)) {}
+      for (str = "1";; str = "2")
       {
-        paramView = new QQAnonymousDialog(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity);
-        paramView.jdField_a_of_type_AndroidWidgetTextView.setText("请输入答案");
-        paramView.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843375);
-        paramView.a();
+        wye.b("auth_discover", "tofollow", 0, 0, new String[] { str });
+        return;
       }
-      return;
     }
-    if (!paramView.equals(this.jdField_a_of_type_JavaLangString))
+    if (ServiceAccountFolderActivityNew.a(this.a)) {}
+    for (String str = "1";; str = "2")
     {
-      AddFriendVerifyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity).setVisibility(0);
+      wye.b("auth_follow", "todiscover", 0, 0, new String[] { str });
       return;
     }
-    AddFriendVerifyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity).setVisibility(8);
-    if (paramView.length() > 90)
+  }
+  
+  public void onPageScrollStateChanged(int paramInt) {}
+  
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
+  
+  public void onPageSelected(int paramInt)
+  {
+    vvr.a();
+    a(paramInt);
+    if ((ServiceAccountFolderActivityNew.a(this.a) != null) && (ServiceAccountFolderActivityNew.a(this.a).getChildCount() > paramInt))
     {
-      paramView = new Dialog(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity, 2131624516);
-      paramView.setContentView(2130971534);
-      ((TextView)paramView.findViewById(2131362781)).setText(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.getString(2131434800));
-      ((ProgressBar)paramView.findViewById(2131362780)).setVisibility(8);
-      ((ImageView)paramView.findViewById(2131374274)).setImageResource(2130838761);
-      paramView.show();
-      return;
+      ServiceAccountFolderActivityNew.a(this.a).getChildAt(paramInt).performClick();
+      ServiceAccountFolderActivityNew.a(this.a, false);
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.a(AddFriendVerifyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity).getText().toString(), true);
-    if (NetworkUtil.d(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity))
+    ((FolderBaseTabFragment)ServiceAccountFolderActivityNew.a(this.a).get(paramInt)).a(this.a, paramInt);
+    long l1;
+    long l2;
+    if (ServiceAccountFolderActivityNew.a(this.a) > 0L)
     {
-      AddFriendVerifyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity, AddFriendVerifyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity), AddFriendVerifyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity).getText().toString(), this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.getIntent().getIntExtra("stat_option", 0));
+      l1 = System.currentTimeMillis();
+      l2 = ServiceAccountFolderActivityNew.a(this.a);
+      if (ServiceAccountFolderActivityNew.a(this.a) != FolderBaseTabFragment.a) {
+        break label173;
+      }
+    }
+    label173:
+    for (String str = "auth_follow";; str = "auth_discover")
+    {
+      wye.a(str, "exp", 0, 0, new String[] { String.valueOf(l1 - l2) });
+      ServiceAccountFolderActivityNew.a(this.a, 0L);
+      ServiceAccountFolderActivityNew.a(this.a, System.currentTimeMillis());
+      ServiceAccountFolderActivityNew.a(this.a, paramInt);
       return;
     }
-    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity, 1, 2131434827, 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.getTitleBarHeight());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     roe
  * JD-Core Version:    0.7.0.1
  */

@@ -1,104 +1,200 @@
-import com.tencent.common.app.BaseApplicationImpl;
+import android.text.TextUtils;
+import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.emoticon.EmojiManager;
-import com.tencent.mobileqq.emoticon.EmotionJsonUtils;
-import com.tencent.mobileqq.emoticonview.EmoticonUtils;
-import com.tencent.mobileqq.model.EmoticonManager;
-import com.tencent.mobileqq.text.QQText;
-import com.tencent.mobileqq.text.QQText.SmallEmojiSpan;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.mobileqq.vip.DownloadTask;
-import com.tencent.mobileqq.vip.DownloaderFactory;
-import com.tencent.qbar.QbarNativeImpl;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
-import mqq.app.AccountNotMatchException;
+import java.util.Iterator;
 
 public class aisu
-  implements Runnable
 {
-  public aisu(QQText.SmallEmojiSpan paramSmallEmojiSpan) {}
+  private airu jdField_a_of_type_Airu;
+  private aisd jdField_a_of_type_Aisd;
+  private aise jdField_a_of_type_Aise;
+  private aish jdField_a_of_type_Aish;
+  private aist jdField_a_of_type_Aist;
+  private aisv jdField_a_of_type_Aisv;
+  private WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
+  private boolean jdField_a_of_type_Boolean;
   
-  public void run()
+  public aisu(QQAppInterface paramQQAppInterface)
   {
-    Object localObject2 = EmoticonUtils.r.replace("[epId]", Integer.toString(this.a.e));
-    boolean bool = FileUtils.a((String)localObject2);
-    for (;;)
-    {
-      try
-      {
-        QQAppInterface localQQAppInterface1 = (QQAppInterface)BaseApplicationImpl.getApplication().getAppRuntime(QQText.c());
-        if (localQQAppInterface1 == null)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("QQText", 2, "appInterface is null. return");
-          }
-          return;
-        }
-      }
-      catch (ClassCastException localClassCastException)
-      {
-        localClassCastException.printStackTrace();
-        QQAppInterface localQQAppInterface2 = null;
-        continue;
-        if (bool)
-        {
-          localObject3 = EmoticonUtils.a();
-          if (localObject3 == null) {
-            break label372;
-          }
-          localObject1 = ((EmoticonManager)localObject3).a(Integer.toString(this.a.e), Integer.toString(this.a.f));
-          if (localObject1 != null)
-          {
-            localObject1 = ((EmoticonManager)localObject3).a(Integer.toString(this.a.e));
-            if ((localObject1 != null) && (((EmoticonPackage)localObject1).isAPNG == 0))
-            {
-              localObject2 = new ArrayList();
-              EmotionJsonUtils.a(localQQAppInterface2, (EmoticonPackage)localObject1, EmojiManager.b, QbarNativeImpl.b, (ArrayList)localObject2);
-            }
-            this.a.a((EmoticonPackage)localObject1);
-            return;
-          }
-        }
-        Object localObject3 = EmoticonUtils.c.replace("[epId]", Integer.toString(this.a.e));
-        localObject1 = new File((String)localObject2);
-        if (QLog.isColorLevel()) {
-          QLog.d("QQText", 2, "small emoji json not exist. epId:" + this.a.e + ",downloadUrl:" + (String)localObject3);
-        }
-        localObject2 = new DownloadTask((String)localObject3, (File)localObject1);
-        ((DownloadTask)localObject2).h = true;
-        int i = DownloaderFactory.a((DownloadTask)localObject2, localQQAppInterface2);
-        localObject2 = new EmoticonPackage();
-        ((EmoticonPackage)localObject2).epId = Integer.toString(this.a.e);
-        ((EmoticonPackage)localObject2).jobType = 4;
-        if (i != 0) {
-          continue;
-        }
-        if (((File)localObject1).exists())
-        {
-          localObject1 = FileUtils.a((File)localObject1);
-          localObject3 = new ArrayList();
-          EmotionJsonUtils.a(localQQAppInterface2, (EmoticonPackage)localObject2, EmojiManager.b, (byte[])localObject1, (ArrayList)localObject3);
-          this.a.a((EmoticonPackage)localObject2);
-          return;
-        }
-        localObject1 = null;
-        continue;
-      }
-      catch (AccountNotMatchException localAccountNotMatchException)
-      {
-        return;
-      }
-      label372:
-      Object localObject1 = null;
+    if (QLog.isColorLevel()) {
+      QLog.d("cmshow_scripted_SpriteDrawerInfoManager", 2, "SpriteDrawerInfoManager constructor.");
     }
+    this.jdField_a_of_type_Aisd = new aisd(paramQQAppInterface);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
+    this.jdField_a_of_type_Aisv = new aisv(this.jdField_a_of_type_Aisd);
+    this.jdField_a_of_type_Aish = new aish(this.jdField_a_of_type_Aisd, this.jdField_a_of_type_Aisv);
+    this.jdField_a_of_type_Aise = new aise(this.jdField_a_of_type_Aisd);
+    this.jdField_a_of_type_Aist = new aist(this.jdField_a_of_type_Aisd, this.jdField_a_of_type_Aisv, this.jdField_a_of_type_Aise, this.jdField_a_of_type_Aish);
+    this.jdField_a_of_type_Aisd.a(this.jdField_a_of_type_Aise);
+    paramQQAppInterface = aisl.a(paramQQAppInterface);
+    if (paramQQAppInterface != null) {
+      paramQQAppInterface.a(this);
+    }
+  }
+  
+  public airu a()
+  {
+    return this.jdField_a_of_type_Airu;
+  }
+  
+  public aisd a()
+  {
+    return this.jdField_a_of_type_Aisd;
+  }
+  
+  public aist a()
+  {
+    return this.jdField_a_of_type_Aist;
+  }
+  
+  public QQAppInterface a()
+  {
+    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {
+      return null;
+    }
+    return (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Aist != null) {
+      this.jdField_a_of_type_Aist.a();
+    }
+  }
+  
+  public void a(float paramFloat1, float paramFloat2, float paramFloat3)
+  {
+    aijy localaijy = new aijy(paramFloat1, paramFloat2, paramFloat3);
+    this.jdField_a_of_type_Aisd.a(localaijy);
+  }
+  
+  public void a(int paramInt)
+  {
+    QLog.i("cmshow_scripted_SpriteDrawerInfoManager", 1, "[onSurfaceReady], spriteFrom:" + paramInt);
+    if ((this.jdField_a_of_type_Aisd == null) || (this.jdField_a_of_type_Aist == null) || (this.jdField_a_of_type_Aish == null)) {
+      return;
+    }
+    this.jdField_a_of_type_Aisd.c(true);
+    int i = aisl.b(this.jdField_a_of_type_Aisd.e);
+    this.jdField_a_of_type_Aisd.b(i);
+    aixo.a(i, 100, 0, new Object[] { "onSurfaceReady" });
+    this.jdField_a_of_type_Aisd.a(-2, paramInt);
+    aixo.a(i, 200);
+    this.jdField_a_of_type_Aish.a();
+    aixo.a(i, 200, 0, new Object[] { "loadBasicScript done" });
+    this.jdField_a_of_type_Aisd.b(true);
+    aixo.a(i, 300);
+    this.jdField_a_of_type_Aist.a(this.jdField_a_of_type_Aisd);
+    aixo.a(i, 300, 0, new Object[] { "initSprite done" });
+    aixo.a(i, 1, 0, new Object[] { "terminal all done" });
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_Airu = ((airu)this.jdField_a_of_type_Aish.a(0));
+  }
+  
+  public void a(int paramInt, ArrayList<String> paramArrayList)
+  {
+    airu localairu = a();
+    if ((localairu != null) && (paramArrayList != null))
+    {
+      Iterator localIterator = paramArrayList.iterator();
+      while (localIterator.hasNext()) {
+        if (((String)localIterator.next()).equals(this.jdField_a_of_type_Aisd.jdField_b_of_type_JavaLangString)) {
+          localairu.a(paramInt, paramArrayList);
+        }
+      }
+    }
+  }
+  
+  public void a(int paramInt, Object... paramVarArgs)
+  {
+    if (!this.jdField_a_of_type_Boolean) {
+      aixo.a(aisl.b(this.jdField_a_of_type_Aisd.e), 1, paramInt, 0L, paramVarArgs);
+    }
+  }
+  
+  public void a(aiii paramaiii)
+  {
+    if (paramaiii == null) {}
+    ApolloCmdChannel localApolloCmdChannel;
+    do
+    {
+      return;
+      this.jdField_a_of_type_Aisd.a(paramaiii);
+      localApolloCmdChannel = ApolloCmdChannel.getChannel(this.jdField_a_of_type_Aisd.a());
+    } while (localApolloCmdChannel == null);
+    localApolloCmdChannel.addRenderRunner(paramaiii);
+  }
+  
+  public void a(aiso paramaiso)
+  {
+    if (paramaiso != null) {
+      this.jdField_a_of_type_Aisd.a(paramaiso);
+    }
+  }
+  
+  public void a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return;
+    }
+    this.jdField_a_of_type_Aisd.a(paramString);
+    this.jdField_a_of_type_Aisd.jdField_b_of_type_Int = aifg.a(a(), paramString);
+  }
+  
+  public void b()
+  {
+    if (!aisl.d(a())) {
+      return;
+    }
+    if (this.jdField_a_of_type_Airu != null) {
+      this.jdField_a_of_type_Airu.c(1);
+    }
+    this.jdField_a_of_type_Aisd.a(-1);
+  }
+  
+  public void b(int paramInt)
+  {
+    if (this.jdField_a_of_type_Aisd != null) {
+      this.jdField_a_of_type_Aisd.a(-2, paramInt);
+    }
+  }
+  
+  public void c()
+  {
+    if (!aisl.d(a())) {}
+    while (this.jdField_a_of_type_Airu == null) {
+      return;
+    }
+    this.jdField_a_of_type_Airu.c(2);
+  }
+  
+  public void d()
+  {
+    if (this.jdField_a_of_type_Aise != null) {
+      this.jdField_a_of_type_Aise.a();
+    }
+    Object localObject = this.jdField_a_of_type_Aisd.a();
+    if (localObject != null)
+    {
+      localObject = ((aiii)localObject).getRenderImpl();
+      if (localObject != null) {
+        ((aigt)localObject).c();
+      }
+    }
+    aixo.a(this.jdField_a_of_type_Aisd.a(), true);
+    this.jdField_a_of_type_Aisv.a();
+    this.jdField_a_of_type_Aish.b();
+    this.jdField_a_of_type_Aisd.c();
+    this.jdField_a_of_type_Aist.b();
+    this.jdField_a_of_type_Boolean = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aisu
  * JD-Core Version:    0.7.0.1
  */

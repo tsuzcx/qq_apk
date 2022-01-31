@@ -1,108 +1,51 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.image.URLDrawableDownListener.Adapter;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.mobileqq.structmsg.view.StructMsgItemCover;
-import com.tencent.mobileqq.widget.PAHighLightImageView;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.gdtad.api.banner.GdtBannerAd;
+import com.tencent.mobileqq.apollo.process.ads.CmGameBannerAds.4;
 import com.tencent.qphone.base.util.QLog;
-import java.net.URL;
 import java.util.HashMap;
 
 public class aink
-  extends URLDrawableDownListener.Adapter
+  implements yka
 {
-  public aink(StructMsgItemCover paramStructMsgItemCover) {}
+  public aink(CmGameBannerAds.4 param4, GdtBannerAd paramGdtBannerAd) {}
   
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
+  private long a(com.tencent.gdtad.api.GdtAd paramGdtAd)
   {
-    super.onLoadCancelled(paramView, paramURLDrawable);
-    if (QLog.isColorLevel()) {
-      QLog.d("StructMsgItemCover", 2, "onLoadCancelled");
+    if ((paramGdtAd != null) && (paramGdtAd.getAd() != null)) {
+      return paramGdtAd.getAd().getAId();
     }
+    return -2147483648L;
   }
   
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public void a(com.tencent.gdtad.api.GdtAd paramGdtAd)
   {
-    super.onLoadFailed(paramView, paramURLDrawable, paramThrowable);
-    if (QLog.isColorLevel()) {
-      QLog.d("StructMsgItemCover", 2, "onLoadFailed ,cause = " + paramThrowable);
-    }
-    if ((paramURLDrawable != null) && (paramURLDrawable.getURL() != null))
-    {
-      paramThrowable = paramURLDrawable.getURL().toString();
-      if (paramThrowable.startsWith("http://url.cn"))
-      {
-        paramThrowable = paramThrowable.replace("http://", "https://");
-        try
-        {
-          paramThrowable = URLDrawable.getDrawable(new URL(paramThrowable), (URLDrawable.URLDrawableOptions)paramURLDrawable.getTag());
-          paramThrowable.setAutoDownload(true);
-          ((PAHighLightImageView)paramView).setImageDrawable(paramThrowable);
-          return;
-        }
-        catch (Exception paramThrowable)
-        {
-          paramThrowable.printStackTrace();
-        }
-      }
-    }
-    try
-    {
-      paramThrowable = new HashMap();
-      paramThrowable.put("param_Url", paramURLDrawable.getURL().toString());
-      StatisticCollector.a(BaseApplication.getContext()).a(null, "StructMsgPicShow", false, 0L, 0L, paramThrowable, null);
-      label152:
-      this.a.a(paramView, 0, 1001);
-      return;
-    }
-    catch (Exception paramURLDrawable)
-    {
-      break label152;
-    }
+    QLog.i("cmgame_process.CmGameBannerAds", 1, String.format("onAdLoaded %d", new Object[] { Long.valueOf(a(paramGdtAd)) }));
+    paramGdtAd = new ainl();
+    paramGdtAd.jdField_a_of_type_ComTencentGdtadApiBannerGdtBannerAd = this.jdField_a_of_type_ComTencentGdtadApiBannerGdtBannerAd;
+    paramGdtAd.b = this.jdField_a_of_type_ComTencentMobileqqApolloProcessAdsCmGameBannerAds$4.jdField_a_of_type_Int;
+    paramGdtAd.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqApolloProcessAdsCmGameBannerAds$4.b;
+    ainj.a(this.jdField_a_of_type_ComTencentMobileqqApolloProcessAdsCmGameBannerAds$4.this$0).put(Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqApolloProcessAdsCmGameBannerAds$4.b), paramGdtAd);
+    ainj.a(this.jdField_a_of_type_ComTencentMobileqqApolloProcessAdsCmGameBannerAds$4.this$0, this.jdField_a_of_type_ComTencentMobileqqApolloProcessAdsCmGameBannerAds$4.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqApolloProcessAdsCmGameBannerAds$4.b, 0, 0);
   }
   
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
+  public void a(com.tencent.gdtad.api.GdtAd paramGdtAd, yjz paramyjz)
   {
-    super.onLoadInterrupted(paramView, paramURLDrawable, paramInterruptedException);
-    if (QLog.isColorLevel()) {
-      QLog.d("StructMsgItemCover", 2, "onLoadInterrupted");
-    }
+    QLog.e("cmgame_process.CmGameBannerAds", 1, "onAdFailedToLoad " + paramyjz.a());
+    ainj.a(this.jdField_a_of_type_ComTencentMobileqqApolloProcessAdsCmGameBannerAds$4.this$0, this.jdField_a_of_type_ComTencentMobileqqApolloProcessAdsCmGameBannerAds$4.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqApolloProcessAdsCmGameBannerAds$4.b, -1, paramyjz.a());
   }
   
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  public void b(com.tencent.gdtad.api.GdtAd paramGdtAd)
   {
-    if (paramView == null) {
-      return;
-    }
-    paramView.setBackgroundDrawable(null);
-    if ((paramView instanceof ImageView)) {
-      ((ImageView)paramView).setScaleType(ImageView.ScaleType.CENTER_CROP);
-    }
-    try
-    {
-      HashMap localHashMap = new HashMap();
-      localHashMap.put("param_Url", paramURLDrawable.getURL().toString());
-      StatisticCollector.a(BaseApplication.getContext()).a(null, "StructMsgPicShow", true, 0L, 0L, localHashMap, null);
-      label66:
-      if (QLog.isColorLevel()) {
-        QLog.d("StructMsgItemCover", 2, "onLoadSuccessed");
-      }
-      this.a.a(paramView, 1, 1001);
-      return;
-    }
-    catch (Exception paramURLDrawable)
-    {
-      break label66;
-    }
+    QLog.i("cmgame_process.CmGameBannerAds", 1, String.format("onAdImpression %d", new Object[] { Long.valueOf(a(paramGdtAd)) }));
+  }
+  
+  public void c(com.tencent.gdtad.api.GdtAd paramGdtAd)
+  {
+    QLog.i("cmgame_process.CmGameBannerAds", 1, String.format("onAdClicked %d", new Object[] { Long.valueOf(a(paramGdtAd)) }));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aink
  * JD-Core Version:    0.7.0.1
  */

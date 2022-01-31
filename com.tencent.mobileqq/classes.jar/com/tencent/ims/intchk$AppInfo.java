@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class intchk$AppInfo
-  extends MessageMicro
+  extends MessageMicro<AppInfo>
 {
   public static final int BYTES_APP_VERSION_FIELD_NUMBER = 3;
   public static final int BYTES_PACKAGE_NAME_FIELD_NUMBER = 2;

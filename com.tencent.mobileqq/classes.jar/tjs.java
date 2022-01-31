@@ -1,30 +1,53 @@
-import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
-import com.tencent.mobileqq.activity.contacts.base.CardConfigManager.CardConfigs;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.FormSwitchItem;
+import android.support.annotation.NonNull;
 
-class tjs
-  implements Runnable
+public class tjs
 {
-  tjs(tjr paramtjr) {}
+  public String a;
+  public String b;
   
-  public void run()
+  public tjs(@NonNull String paramString)
   {
-    FormSwitchItem localFormSwitchItem = this.a.a.d;
-    if (PermisionPrivacyActivity.a(this.a.a).a) {}
-    for (int i = 0;; i = 8)
+    this.a = paramString;
+    vkw.a(paramString);
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if (this == paramObject) {}
+    do
     {
-      localFormSwitchItem.setVisibility(i);
-      if (this.a.a.d.getVisibility() == 0) {
-        PermisionPrivacyActivity.a(this.a.a, this.a.a.d.a(), this.a.a.app.o());
+      return true;
+      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+        return false;
       }
-      return;
+      paramObject = (tjs)paramObject;
+      if (this.a != null) {
+        return this.a.equals(paramObject.a);
+      }
+    } while (paramObject.a == null);
+    return false;
+  }
+  
+  public int hashCode()
+  {
+    if (this.a != null) {
+      return this.a.hashCode();
+    }
+    return 0;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    if (this.b == null) {}
+    for (String str = "";; str = this.b) {
+      return str + this.a;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tjs
  * JD-Core Version:    0.7.0.1
  */

@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class SubMsgType0xae$PersonMayKnow
-  extends MessageMicro
+  extends MessageMicro<PersonMayKnow>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_alghrithm = PBField.initBytes(ByteStringMicro.EMPTY);

@@ -1,29 +1,20 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderTopicRecommend;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.ui.VideoInviteActivity;
 
-public class lzm
-  implements ActionSheet.OnButtonClickListener
+class lzm
+  implements DialogInterface.OnClickListener
 {
-  public lzm(ComponentHeaderTopicRecommend paramComponentHeaderTopicRecommend) {}
+  lzm(lzl paramlzl) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      ComponentHeaderTopicRecommend.a(this.a).dismiss();
-      return;
-      ComponentHeaderTopicRecommend.a(this.a, false);
-    }
+    this.a.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a(this.a.jdField_a_of_type_Long, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lzm
  * JD-Core Version:    0.7.0.1
  */

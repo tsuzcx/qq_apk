@@ -9,17 +9,17 @@ import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class DynamicSearch$SubItem
-  extends MessageMicro
+  extends MessageMicro<SubItem>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField backgroud_color = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField jump_url = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBUInt32Field layout_id = PBField.initUInt32(0);
-  public final PBRepeatMessageField media_list = PBField.initRepeatMessage(DynamicSearch.SubItemMedia.class);
+  public final PBRepeatMessageField<DynamicSearch.SubItemMedia> media_list = PBField.initRepeatMessage(DynamicSearch.SubItemMedia.class);
   public final PBUInt32Field media_total_count = PBField.initUInt32(0);
   public final PBUInt32Field show_arrow = PBField.initUInt32(0);
-  public final PBRepeatMessageField summary = PBField.initRepeatMessage(DynamicSearch.SubItemText.class);
-  public final PBRepeatMessageField title = PBField.initRepeatMessage(DynamicSearch.SubItemText.class);
+  public final PBRepeatMessageField<DynamicSearch.SubItemText> summary = PBField.initRepeatMessage(DynamicSearch.SubItemText.class);
+  public final PBRepeatMessageField<DynamicSearch.SubItemText> title = PBField.initRepeatMessage(DynamicSearch.SubItemText.class);
   
   static
   {

@@ -1,30 +1,22 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.animation.ValueAnimator;
-import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class vmh
-  implements Animator.AnimatorListener
+class vmh
+  implements View.OnClickListener
 {
-  public vmh(SixCombolEffectView paramSixCombolEffectView, vmi paramvmi) {}
+  vmh(vmg paramvmg) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onClick(View paramView)
   {
-    if (!SixCombolEffectView.a) {
-      return;
+    paramView = this.a.jdField_a_of_type_Vmc;
+    if (paramView != null) {
+      paramView.a(this.a.jdField_a_of_type_Vmi, this.a);
     }
-    this.jdField_a_of_type_Vmi.b.start();
   }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vmh
  * JD-Core Version:    0.7.0.1
  */

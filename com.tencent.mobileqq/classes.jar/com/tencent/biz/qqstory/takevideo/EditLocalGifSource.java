@@ -4,16 +4,16 @@ import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
+import bggt;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import cooperation.qzone.util.gifCoderWnsConfig;
 import java.io.File;
 import java.util.ArrayList;
-import ohm;
+import usf;
 
 public class EditLocalGifSource
   implements EditVideoParams.EditSource
 {
-  public static final Parcelable.Creator CREATOR = new ohm();
+  public static final Parcelable.Creator<EditLocalGifSource> CREATOR = new usf();
   @NonNull
   public int a;
   @NonNull
@@ -23,11 +23,11 @@ public class EditLocalGifSource
   @NonNull
   public String a;
   @NonNull
-  public ArrayList a;
+  public ArrayList<String> a;
   @NonNull
   public boolean a;
   @NonNull
-  public ArrayList b = new ArrayList();
+  public ArrayList<String> b = new ArrayList();
   
   public EditLocalGifSource(Parcel paramParcel)
   {
@@ -38,7 +38,7 @@ public class EditLocalGifSource
     this.jdField_a_of_type_Long = paramParcel.readLong();
   }
   
-  public EditLocalGifSource(String paramString, ArrayList paramArrayList, LocalMediaInfo paramLocalMediaInfo)
+  public EditLocalGifSource(String paramString, ArrayList<String> paramArrayList, LocalMediaInfo paramLocalMediaInfo)
   {
     this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
     this.jdField_a_of_type_JavaLangString = paramString;
@@ -48,10 +48,10 @@ public class EditLocalGifSource
       paramString = new LocalMediaInfo();
     }
     this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo = paramString;
-    this.jdField_a_of_type_Long = gifCoderWnsConfig.d;
+    this.jdField_a_of_type_Long = bggt.d;
   }
   
-  public EditLocalGifSource(String paramString, ArrayList paramArrayList, LocalMediaInfo paramLocalMediaInfo, long paramLong)
+  public EditLocalGifSource(String paramString, ArrayList<String> paramArrayList, LocalMediaInfo paramLocalMediaInfo, long paramLong)
   {
     this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
     this.jdField_a_of_type_JavaLangString = paramString;
@@ -112,7 +112,7 @@ public class EditLocalGifSource
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.biz.qqstory.takevideo.EditLocalGifSource
  * JD-Core Version:    0.7.0.1
  */

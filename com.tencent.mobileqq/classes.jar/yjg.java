@@ -1,60 +1,32 @@
-import android.content.Intent;
-import com.tencent.device.file.DevLittleVideoOperator;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.shortvideo.AioShortVideoOperator;
-import com.tencent.mobileqq.shortvideo.ShortVideoBusiManager;
-import com.tencent.mobileqq.shortvideo.ShortVideoReq;
-import com.tencent.mobileqq.shortvideo.ShortVideoUploadInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import com.tencent.ad.tangram.AdError;
+import com.tencent.ad.tangram.mini.AdQQMINIProgramAdapter;
+import com.tencent.ad.tangram.mini.AdQQMINIProgramAdapter.Params;
+import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
+import com.tencent.gdtad.aditem.GdtAd;
+import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
+import java.lang.ref.WeakReference;
 
-class yjg
-  implements Runnable
+public class yjg
+  implements AdQQMINIProgramAdapter
 {
-  yjg(yjf paramyjf) {}
-  
-  public void run()
+  public AdError show(AdQQMINIProgramAdapter.Params paramParams)
   {
-    Object localObject;
-    ShortVideoUploadInfo localShortVideoUploadInfo;
-    if (this.a.jdField_a_of_type_AndroidContentIntent != null)
+    if ((paramParams == null) || (!paramParams.isValid()) || (!(paramParams.ad instanceof GdtAd)))
     {
-      int i = this.a.jdField_a_of_type_AndroidContentIntent.getIntExtra("file_send_business_type", 2);
-      if (QLog.isColorLevel()) {
-        QLog.d("SendVideoActivity", 2, "#SendTask# run(), busiType = " + i + ",VideoFileDir = " + this.a.jdField_a_of_type_AndroidContentIntent.getStringExtra("file_video_source_dir"));
-      }
-      int j = this.a.jdField_a_of_type_AndroidContentIntent.getIntExtra("uintype", -1);
-      if (j == 9501) {
-        i = 4;
-      }
-      localObject = ShortVideoBusiManager.a(0, i);
-      localShortVideoUploadInfo = ShortVideoBusiManager.a(this.a.jdField_a_of_type_AndroidContentIntent, (ShortVideoReq)localObject);
-      ((ShortVideoReq)localObject).a(localShortVideoUploadInfo);
-      if (j != 9501) {
-        break label214;
-      }
-      localObject = new DevLittleVideoOperator(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app);
-      ((DevLittleVideoOperator)localObject).a(((DevLittleVideoOperator)localObject).a(localShortVideoUploadInfo));
+      yny.d("GdtQQMINIProgramAdapter", "show error");
+      return new AdError(4);
     }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("SendVideoActivity", 2, "#SendTask# run(): success");
-      }
-      if (!this.a.jdField_a_of_type_Boolean)
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.setResult(-1, this.a.jdField_a_of_type_AndroidContentIntent);
-        this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.finish();
-      }
-      return;
-      label214:
-      localObject = new AioShortVideoOperator(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app);
-      ((AioShortVideoOperator)localObject).a(((AioShortVideoOperator)localObject).a(localShortVideoUploadInfo));
-    }
+    GdtAd localGdtAd = (GdtAd)GdtAd.class.cast(paramParams.ad);
+    yny.b("GdtQQMINIProgramAdapter", String.format("show %s", new Object[] { localGdtAd.getUrlForLandingPage() }));
+    AdReporterForAnalysis.reportForLaunchQQMINIProgramStart((Context)paramParams.context.get(), localGdtAd);
+    MiniAppLauncher.startMiniApp((Context)paramParams.context.get(), localGdtAd.getUrlForLandingPage(), 2054, new yjh(this, paramParams, localGdtAd));
+    return new AdError(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     yjg
  * JD-Core Version:    0.7.0.1
  */

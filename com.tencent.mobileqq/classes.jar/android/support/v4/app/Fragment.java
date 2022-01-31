@@ -34,7 +34,7 @@ public class Fragment
   static final int RESUMED = 5;
   static final int STARTED = 4;
   static final int STOPPED = 3;
-  private static final SimpleArrayMap sClassMap = new SimpleArrayMap();
+  private static final SimpleArrayMap<String, Class<?>> sClassMap = new SimpleArrayMap();
   FragmentActivity mActivity;
   boolean mAdded;
   View mAnimatingAway;
@@ -42,7 +42,7 @@ public class Fragment
   int mBackStackNesting;
   boolean mCalled;
   boolean mCheckedForLoaderManager;
-  FragmentManagerImpl mChildFragmentManager;
+  protected FragmentManagerImpl mChildFragmentManager;
   ViewGroup mContainer;
   int mContainerId;
   boolean mDeferStart;
@@ -67,7 +67,7 @@ public class Fragment
   boolean mRetainInstance;
   boolean mRetaining;
   Bundle mSavedFragmentState;
-  SparseArray mSavedViewState;
+  SparseArray<Parcelable> mSavedViewState;
   int mState = 0;
   int mStateAfterAnimating;
   String mTag;
@@ -587,7 +587,7 @@ public class Fragment
   public void onPause()
   {
     this.mCalled = true;
-    if ((!this.mHidden) && (this.mIFragmentLifecycleCallback != null)) {
+    if (this.mIFragmentLifecycleCallback != null) {
       this.mIFragmentLifecycleCallback.onFragmentHiddenChanged(this, true);
     }
   }
@@ -597,7 +597,7 @@ public class Fragment
   public void onResume()
   {
     this.mCalled = true;
-    if ((!this.mHidden) && (this.mIFragmentLifecycleCallback != null)) {
+    if (this.mIFragmentLifecycleCallback != null) {
       this.mIFragmentLifecycleCallback.onFragmentHiddenChanged(this, this.mHidden);
     }
   }

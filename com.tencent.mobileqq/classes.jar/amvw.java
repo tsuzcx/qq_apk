@@ -1,39 +1,66 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand;
-import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand.OnInvokeFinishLinstener;
-import cooperation.qqdataline.ipc.DatalineRemoteManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import mqq.manager.Manager;
 
 public class amvw
-  extends RemoteCommand
+  implements Manager
 {
-  public amvw(DatalineRemoteManager paramDatalineRemoteManager, String paramString)
+  private amwu jdField_a_of_type_Amwu;
+  private amwz jdField_a_of_type_Amwz;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private Object jdField_a_of_type_JavaLangObject = new Object();
+  private Object b = new Object();
+  
+  public amvw(QQAppInterface paramQQAppInterface)
   {
-    super(paramString);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
   }
   
-  public Bundle invoke(Bundle paramBundle, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener)
+  public amwu a()
   {
-    if (paramBundle == null) {
-      paramBundle = null;
+    if (this.jdField_a_of_type_Amwu != null) {
+      return this.jdField_a_of_type_Amwu;
     }
-    Bundle localBundle;
-    do
+    synchronized (this.b)
     {
-      return paramBundle;
-      paramBundle.setClassLoader(getClass().getClassLoader());
-      localBundle = DatalineRemoteManager.a(this.a, paramBundle);
-      if (localBundle != null) {
-        localBundle.setClassLoader(getClass().getClassLoader());
+      if (this.jdField_a_of_type_Amwu == null) {
+        this.jdField_a_of_type_Amwu = new amwu(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
       }
-      paramBundle = localBundle;
-    } while (paramOnInvokeFinishLinstener == null);
-    paramOnInvokeFinishLinstener.onInvokeFinish(localBundle);
-    return localBundle;
+      amwu localamwu = this.jdField_a_of_type_Amwu;
+      return localamwu;
+    }
+  }
+  
+  public amwz a()
+  {
+    if (this.jdField_a_of_type_Amwz != null) {
+      return this.jdField_a_of_type_Amwz;
+    }
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      if (this.jdField_a_of_type_Amwz == null) {
+        this.jdField_a_of_type_Amwz = new amwz(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      }
+      amwz localamwz = this.jdField_a_of_type_Amwz;
+      return localamwz;
+    }
+  }
+  
+  public void onDestroy()
+  {
+    if (this.jdField_a_of_type_Amwz != null) {
+      this.jdField_a_of_type_Amwz.b();
+    }
+    this.jdField_a_of_type_Amwz = null;
+    if (this.jdField_a_of_type_Amwu != null)
+    {
+      this.jdField_a_of_type_Amwu.a();
+      this.jdField_a_of_type_Amwu = null;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     amvw
  * JD-Core Version:    0.7.0.1
  */

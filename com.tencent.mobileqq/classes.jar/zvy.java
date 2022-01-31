@@ -1,32 +1,20 @@
-import android.content.SharedPreferences;
-import android.os.Handler;
-import com.tencent.mobileqq.app.activateFriends.ActivateFriendServlet;
-import com.tencent.mobileqq.app.activateFriends.ActivateFriendsManager;
-import com.tencent.mobileqq.service.message.MessageCache;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.util.Pair;
 
-public class zvy
-  implements Runnable
+class zvy
+  implements DialogInterface.OnClickListener
 {
-  public zvy(ActivateFriendsManager paramActivateFriendsManager) {}
+  zvy(zvx paramzvx, axam paramaxam, Pair paramPair) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    long l = ActivateFriendsManager.a(this.a).getLong("key_last_birth_msg_stamp", 0L);
-    if (QLog.isColorLevel()) {
-      QLog.d("ActivateFriends.Manager", 2, "local birth timestamp = " + l);
-    }
-    if (MessageCache.a() - l > 259200L)
-    {
-      ActivateFriendsManager.a(this.a).removeCallbacks(ActivateFriendsManager.a(this.a));
-      this.a.a = ActivateFriendsManager.b(this.a);
-      ActivateFriendServlet.a(ActivateFriendsManager.a(this.a), false, true, false, true);
-    }
+    this.jdField_a_of_type_Axam.a((String)this.jdField_a_of_type_ComTencentUtilPair.first, ((Integer)this.jdField_a_of_type_ComTencentUtilPair.second).intValue(), true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     zvy
  * JD-Core Version:    0.7.0.1
  */

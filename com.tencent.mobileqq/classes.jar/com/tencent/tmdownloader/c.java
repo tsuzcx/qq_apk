@@ -1,28 +1,39 @@
 package com.tencent.tmdownloader;
 
-import android.os.IBinder;
 import android.os.RemoteException;
-import com.tencent.tmassistantbase.util.r;
+import com.tencent.tmassistantbase.util.ab;
+import com.tencent.tmassistantbase.util.ac;
 
 class c
   implements Runnable
 {
-  c(a parama, IBinder paramIBinder) {}
+  c(a parama) {}
   
   public void run()
   {
-    this.b.stubAsInterface(this.a);
-    this.b.connectState = "FINISH";
-    synchronized (this.b.mThreadlock)
+    try
     {
-      this.b.mThreadlock.notifyAll();
-      r.c("BaseIPCClient", "onServiceConnected,clientKey:" + this.b.mClientKey + ",mServiceInterface:" + this.b.mServiceInterface + ",IBinder:" + this.a + ",threadId:" + Thread.currentThread().getId());
+      if ((this.a.mServiceInterface != null) && (this.a.mServiceCallback != null))
+      {
+        ab.a(this.a.mServiceName + "BaseIPCClient registerServiceCallback");
+        this.a.registerServiceCallback();
+      }
+      return;
+    }
+    catch (RemoteException localRemoteException)
+    {
+      this.a.onDownloadSDKServiceInvalid();
+      return;
+    }
+    catch (Exception localException)
+    {
+      ac.e("BaseIPCClient", "<onServiceConnected> service wrong, e = " + localException.getMessage());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.tmdownloader.c
  * JD-Core Version:    0.7.0.1
  */

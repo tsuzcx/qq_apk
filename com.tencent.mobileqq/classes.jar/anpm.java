@@ -1,33 +1,25 @@
-import com.tencent.mobileqq.filemanager.core.WeiYunLogicCenter.WeiyunCallback;
-import mqq.os.MqqHandler;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
 
-public class anpm
-  implements WeiYunLogicCenter.WeiyunCallback
+class anpm
+  implements Animation.AnimationListener
 {
-  public MqqHandler a;
+  anpm(anpl paramanpl) {}
   
-  public anpm(MqqHandler paramMqqHandler)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a = paramMqqHandler;
+    this.a.a.g.setVisibility(8);
+    this.a.a.a = false;
   }
   
-  public void a()
-  {
-    if (this.a != null) {
-      this.a.sendEmptyMessageDelayed(100, 1500L);
-    }
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public void a(int paramInt, String paramString)
-  {
-    if (this.a != null) {
-      this.a.sendMessageDelayed(this.a.obtainMessage(101, paramInt, 0, paramString), 1500L);
-    }
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     anpm
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,29 @@
-import com.tencent.mobileqq.richmedia.conn.ConnManager;
-import com.tencent.mobileqq.richmedia.server.ChannelStateManager;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.Window;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
 
 public class ahru
-  implements Runnable
+  implements View.OnClickListener
 {
-  public ahru(ConnManager paramConnManager, long paramLong) {}
+  public ahru(SelectMemberActivity paramSelectMemberActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    ConnManager.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaConnConnManager).b(10);
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaConnConnManager.a(ConnManager.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaConnConnManager), this.jdField_a_of_type_Long);
+    if (this.a.d == 27)
+    {
+      this.a.a.putParcelableArrayListExtra("result_set", this.a.e);
+      ((InputMethodManager)this.a.getSystemService("input_method")).hideSoftInputFromWindow(this.a.getWindow().peekDecorView().getWindowToken(), 0);
+      this.a.setResult(-1, this.a.a);
+    }
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ahru
  * JD-Core Version:    0.7.0.1
  */

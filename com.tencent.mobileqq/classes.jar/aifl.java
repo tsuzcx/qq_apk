@@ -1,42 +1,53 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.shortvideo.dancemachine.GLImageView;
-import com.tencent.mobileqq.shortvideo.dancemachine.ResourceManager;
-import com.tencent.mobileqq.shortvideo.dancemachine.ResourceManager.ReadyResource;
-import com.tencent.mobileqq.shortvideo.dancemachine.filter.DanceReadyFilter;
-import java.util.List;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.apollo.ApolloManager.20.1;
+import com.tencent.mobileqq.apollo.data.ApolloPreDownloadData;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 public class aifl
-  implements Animation.AnimationListener
+  extends batl
 {
-  public aifl(DanceReadyFilter paramDanceReadyFilter) {}
+  aifl(aifg paramaifg) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onDoneFile(batm parambatm)
   {
-    if (DanceReadyFilter.a(this.a) > 0)
+    if ((parambatm == null) || (this.a.a == null)) {}
+    String str1;
+    do
     {
-      DanceReadyFilter.e(this.a).a((String)DanceReadyFilter.a(this.a).a.a.get(DanceReadyFilter.a(this.a) - 1));
-      if (DanceReadyFilter.c(this.a) != null)
+      return;
+      if (parambatm.a != 0)
       {
-        DanceReadyFilter.c(this.a).setStartOffset(300L);
-        DanceReadyFilter.e(this.a).e();
-        DanceReadyFilter.e(this.a).a(DanceReadyFilter.c(this.a));
+        QLog.e("ApolloManager", 1, new Object[] { "preDownloadListener task error:", Integer.valueOf(parambatm.a()) });
+        return;
       }
+      str1 = parambatm.c;
+      parambatm = parambatm.a();
+    } while (parambatm == null);
+    ApolloPreDownloadData localApolloPreDownloadData = (ApolloPreDownloadData)parambatm.getSerializable(str1);
+    if (localApolloPreDownloadData == null)
+    {
+      QLog.e("ApolloManager", 1, "preDownloadListener res onDoneFile but preDownload data is null");
       return;
     }
-    DanceReadyFilter.e(this.a).f_(false);
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    DanceReadyFilter.c(this.a);
+    if (!TextUtils.isEmpty(localApolloPreDownloadData.zipDir)) {}
+    for (parambatm = ApolloUtil.e(localApolloPreDownloadData.dirType) + localApolloPreDownloadData.zipDir;; parambatm = aiys.t + localApolloPreDownloadData.resId + ".zip")
+    {
+      String str2 = ApolloUtil.e(localApolloPreDownloadData.dirType) + localApolloPreDownloadData.dir;
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloManager", 2, new Object[] { "preDownloadListener res zip done reportId:", localApolloPreDownloadData.reportId, ", url:", str1 });
+      }
+      ThreadManager.getSubThreadHandler().post(new ApolloManager.20.1(this, localApolloPreDownloadData, parambatm, str2));
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aifl
  * JD-Core Version:    0.7.0.1
  */

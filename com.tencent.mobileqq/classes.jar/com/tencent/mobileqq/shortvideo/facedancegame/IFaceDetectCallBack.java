@@ -2,7 +2,7 @@ package com.tencent.mobileqq.shortvideo.facedancegame;
 
 public abstract interface IFaceDetectCallBack
 {
-  public abstract void a(FaceDanceDetectTask.FaceDetectTaskResult paramFaceDetectTaskResult);
+  public abstract void faceDetectEnd(FaceDanceDetectTask.FaceDetectTaskResult paramFaceDetectTaskResult);
 }
 
 

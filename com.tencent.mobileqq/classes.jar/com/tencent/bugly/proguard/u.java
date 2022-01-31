@@ -151,11 +151,11 @@ public final class u
       x.c("[UploadManager] Initialize security context now (pid=%d | tid=%d)", new Object[] { Integer.valueOf(Process.myPid()), Integer.valueOf(Process.myTid()) });
       if (paramBoolean2)
       {
-        a(new a(this.e, ???, paramLong), 0L);
+        a(new u.a(this, this.e, ???, paramLong), 0L);
         return;
       }
       a(???, paramBoolean1);
-      ??? = new a(this.e);
+      ??? = new u.a(this, this.e);
       x.a("[UploadManager] Create and start a new thread to execute a task of initializing security context: %s", new Object[] { "BUGLY_ASYNC_UPLOAD" });
     } while (z.a(???, "BUGLY_ASYNC_UPLOAD") != null);
     x.d("[UploadManager] Failed to start a thread to execute task of initializing security context, try to post it into thread pool.", new Object[0]);
@@ -203,7 +203,7 @@ public final class u
     }
   }
   
-  private void c(final int paramInt)
+  private void c(int paramInt)
   {
     if (paramInt < 0)
     {
@@ -212,7 +212,7 @@ public final class u
     }
     w localw = w.a();
     LinkedBlockingQueue localLinkedBlockingQueue1 = new LinkedBlockingQueue();
-    final LinkedBlockingQueue localLinkedBlockingQueue2 = new LinkedBlockingQueue();
+    LinkedBlockingQueue localLinkedBlockingQueue2 = new LinkedBlockingQueue();
     int i1;
     int i2;
     synchronized (this.k)
@@ -297,7 +297,7 @@ public final class u
       i2 = 0;
       if (i2 < i1)
       {
-        final Runnable localRunnable3 = (Runnable)localLinkedBlockingQueue1.poll();
+        Runnable localRunnable3 = (Runnable)localLinkedBlockingQueue1.poll();
         if (localRunnable3 != null) {
           for (;;)
           {
@@ -310,18 +310,7 @@ public final class u
                 break;
               }
               x.a("[UploadManager] Create and start a new thread to execute a upload task: %s", new Object[] { "BUGLY_ASYNC_UPLOAD" });
-              if (z.a(new Runnable()
-              {
-                public final void run()
-                {
-                  localRunnable3.run();
-                  synchronized (u.a(u.this))
-                  {
-                    u.b(u.this);
-                    return;
-                  }
-                }
-              }, "BUGLY_ASYNC_UPLOAD") != null) {
+              if (z.a(new u.1(this, localRunnable3), "BUGLY_ASYNC_UPLOAD") != null) {
                 synchronized (this.k)
                 {
                   this.v += 1;
@@ -339,22 +328,7 @@ public final class u
       if (localObject3 == null) {
         break;
       }
-      localObject3.a(new Runnable()
-      {
-        public final void run()
-        {
-          int i = 0;
-          while (i < paramInt)
-          {
-            Runnable localRunnable = (Runnable)localLinkedBlockingQueue2.poll();
-            if (localRunnable == null) {
-              break;
-            }
-            localRunnable.run();
-            i += 1;
-          }
-        }
-      });
+      localObject3.a(new u.2(this, paramInt, localLinkedBlockingQueue2));
       return;
       break label580;
       paramInt = i2;
@@ -896,11 +870,11 @@ public final class u
     //   52: invokestatic 536	com/tencent/bugly/proguard/z:c	(J)[B
     //   55: putfield 407	com/tencent/bugly/proguard/r:g	[B
     //   58: aload_0
-    //   59: getfield 104	com/tencent/bugly/proguard/u:d	Lcom/tencent/bugly/proguard/p;
+    //   59: getfield 98	com/tencent/bugly/proguard/u:d	Lcom/tencent/bugly/proguard/p;
     //   62: iload 4
     //   64: invokevirtual 397	com/tencent/bugly/proguard/p:b	(I)V
     //   67: aload_0
-    //   68: getfield 104	com/tencent/bugly/proguard/u:d	Lcom/tencent/bugly/proguard/p;
+    //   68: getfield 98	com/tencent/bugly/proguard/u:d	Lcom/tencent/bugly/proguard/p;
     //   71: aload 5
     //   73: invokevirtual 456	com/tencent/bugly/proguard/p:a	(Lcom/tencent/bugly/proguard/r;)Z
     //   76: pop
@@ -919,7 +893,7 @@ public final class u
     //   99: ldiv
     //   100: invokestatic 425	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   103: aastore
-    //   104: invokestatic 172	com/tencent/bugly/proguard/x:c	(Ljava/lang/String;[Ljava/lang/Object;)Z
+    //   104: invokestatic 166	com/tencent/bugly/proguard/x:c	(Ljava/lang/String;[Ljava/lang/Object;)Z
     //   107: pop
     //   108: aload_0
     //   109: monitorexit
@@ -1078,96 +1052,6 @@ public final class u
       return false;
     }
     return true;
-  }
-  
-  final class a
-    implements Runnable
-  {
-    private final Context a;
-    private final Runnable b;
-    private final long c;
-    
-    public a(Context paramContext)
-    {
-      this.a = paramContext;
-      this.b = null;
-      this.c = 0L;
-    }
-    
-    public a(Context paramContext, Runnable paramRunnable, long paramLong)
-    {
-      this.a = paramContext;
-      this.b = paramRunnable;
-      this.c = paramLong;
-    }
-    
-    public final void run()
-    {
-      if (!z.a(this.a, "security_info", 30000L))
-      {
-        x.c("[UploadManager] Sleep %d try to lock security file again (pid=%d | tid=%d)", new Object[] { Integer.valueOf(5000), Integer.valueOf(Process.myPid()), Integer.valueOf(Process.myTid()) });
-        z.b(5000L);
-        if (z.a(this, "BUGLY_ASYNC_UPLOAD") == null)
-        {
-          x.d("[UploadManager] Failed to start a thread to execute task of initializing security context, try to post it into thread pool.", new Object[0]);
-          ??? = w.a();
-          if (??? != null) {
-            ((w)???).a(this);
-          }
-        }
-        else
-        {
-          return;
-        }
-        x.e("[UploadManager] Asynchronous thread pool is unavailable now, try next time.", new Object[0]);
-        return;
-      }
-      if (!u.c(u.this))
-      {
-        x.d("[UploadManager] Failed to load security info from database", new Object[0]);
-        u.this.b(false);
-      }
-      if (u.d(u.this) != null)
-      {
-        if (u.this.d())
-        {
-          x.c("[UploadManager] Sucessfully got session ID, try to execute upload tasks now (pid=%d | tid=%d)", new Object[] { Integer.valueOf(Process.myPid()), Integer.valueOf(Process.myTid()) });
-          if (this.b != null) {
-            u.a(u.this, this.b, this.c);
-          }
-          u.a(u.this, 0);
-          z.b(this.a, "security_info");
-          synchronized (u.e(u.this))
-          {
-            u.a(u.this, false);
-            return;
-          }
-        }
-        x.a("[UploadManager] Session ID is expired, drop it.", new Object[0]);
-        u.this.b(true);
-      }
-      ??? = z.a(128);
-      if ((??? != null) && (???.length << 3 == 128))
-      {
-        u.a(u.this, (byte[])???);
-        x.c("[UploadManager] Execute one upload task for requesting session ID (pid=%d | tid=%d)", new Object[] { Integer.valueOf(Process.myPid()), Integer.valueOf(Process.myTid()) });
-        if (this.b != null)
-        {
-          u.a(u.this, this.b, this.c);
-          return;
-        }
-        u.a(u.this, 1);
-        return;
-      }
-      x.d("[UploadManager] Failed to create AES key (pid=%d | tid=%d)", new Object[] { Integer.valueOf(Process.myPid()), Integer.valueOf(Process.myTid()) });
-      u.this.b(false);
-      z.b(this.a, "security_info");
-      synchronized (u.e(u.this))
-      {
-        u.a(u.this, false);
-        return;
-      }
-    }
   }
 }
 

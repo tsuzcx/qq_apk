@@ -1,12 +1,23 @@
-import com.tencent.component.network.module.statistics.ProxyStatistics;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.struct.FusionBiuInfo;
 
-public class pph
+public final class pph
+  implements Parcelable.Creator<FusionBiuInfo>
 {
-  public static final ProxyStatistics a = new ProxyStatistics(null);
+  public FusionBiuInfo a(Parcel paramParcel)
+  {
+    return new FusionBiuInfo(paramParcel);
+  }
+  
+  public FusionBiuInfo[] a(int paramInt)
+  {
+    return new FusionBiuInfo[paramInt];
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     pph
  * JD-Core Version:    0.7.0.1
  */

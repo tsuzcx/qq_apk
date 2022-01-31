@@ -1,20 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.RecommendFriendActivity;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnBufferingUpdateListener;
 
-public class ttb
-  implements View.OnClickListener
+class ttb
+  implements MediaPlayer.OnBufferingUpdateListener
 {
-  public ttb(RecommendFriendActivity paramRecommendFriendActivity) {}
+  ttb(tsy paramtsy, tsp paramtsp) {}
   
-  public void onClick(View paramView)
+  public void onBufferingUpdate(MediaPlayer paramMediaPlayer, int paramInt)
   {
-    this.a.finish();
+    this.jdField_a_of_type_Tsp.a(this.jdField_a_of_type_Tsy, paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     ttb
  * JD-Core Version:    0.7.0.1
  */

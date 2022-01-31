@@ -1,23 +1,16 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.widget.ExpandableListView.SavedState;
-
-public final class amiw
-  implements Parcelable.Creator
+public class amiw
 {
-  public ExpandableListView.SavedState a(Parcel paramParcel)
-  {
-    return new ExpandableListView.SavedState(paramParcel, null);
-  }
+  public boolean a;
+  public boolean b;
   
-  public ExpandableListView.SavedState[] a(int paramInt)
+  public String toString()
   {
-    return new ExpandableListView.SavedState[paramInt];
+    return "QVipDiyTemplateConfig{enable=" + this.a + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amiw
  * JD-Core Version:    0.7.0.1
  */

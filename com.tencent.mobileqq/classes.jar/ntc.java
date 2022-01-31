@@ -1,25 +1,23 @@
-import com.tencent.biz.qqstory.playvideo.TVKPreloader;
-import com.tencent.biz.qqstory.playvideo.TVKPreloader.PreloadItem;
-import com.tencent.biz.qqstory.playvideo.TVKPreloader.PreloadListener;
-import java.util.Iterator;
-import java.util.concurrent.CopyOnWriteArraySet;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.capture.ReadInJoyUgcVideoReportItem;
 
 public final class ntc
-  implements Runnable
+  implements Parcelable.Creator<ReadInJoyUgcVideoReportItem>
 {
-  public ntc(TVKPreloader.PreloadItem paramPreloadItem) {}
-  
-  public void run()
+  public ReadInJoyUgcVideoReportItem a(Parcel paramParcel)
   {
-    Iterator localIterator = TVKPreloader.a().iterator();
-    while (localIterator.hasNext()) {
-      ((TVKPreloader.PreloadListener)localIterator.next()).c(this.a);
-    }
+    return new ReadInJoyUgcVideoReportItem(paramParcel);
+  }
+  
+  public ReadInJoyUgcVideoReportItem[] a(int paramInt)
+  {
+    return new ReadInJoyUgcVideoReportItem[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ntc
  * JD-Core Version:    0.7.0.1
  */

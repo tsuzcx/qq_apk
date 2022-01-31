@@ -1,18 +1,19 @@
-import com.tencent.mobileqq.extendfriend.ExtendFriendManager;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class acpo
-  implements Runnable
+class acpo
+  implements View.OnClickListener
 {
-  public acpo(ExtendFriendManager paramExtendFriendManager) {}
+  acpo(acpn paramacpn) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    ExtendFriendManager.b(this.a);
+    this.a.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     acpo
  * JD-Core Version:    0.7.0.1
  */

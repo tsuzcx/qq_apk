@@ -1,29 +1,21 @@
-import android.text.TextUtils;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import tencent.im.oidb.cmd0x5bd.oidb_0x5bd.AdReport;
 
 public class poe
-  extends pod
 {
-  private poe()
-  {
-    super(null);
-  }
+  public String a;
   
-  public String b(String paramString)
+  public static poe a(oidb_0x5bd.AdReport paramAdReport)
   {
-    paramString = super.b(paramString);
-    if (TextUtils.isEmpty(paramString)) {}
-    int i;
-    do
-    {
-      return paramString;
-      i = paramString.indexOf('#');
-    } while (i <= 0);
-    return paramString.substring(0, i);
+    poe localpoe = new poe();
+    localpoe.a = paramAdReport.bytes_report_url.get().toStringUtf8();
+    return localpoe;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     poe
  * JD-Core Version:    0.7.0.1
  */

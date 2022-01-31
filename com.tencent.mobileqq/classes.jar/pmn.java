@@ -1,63 +1,26 @@
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.Drawable.ConstantState;
-import com.tencent.component.media.image.drawable.DrawableContainer;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentSocialOperation;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentSocialOperation.1.1;
 
-public abstract class pmn
-  extends Drawable.ConstantState
+public class pmn
+  implements Animation.AnimationListener
 {
-  public int a;
-  public Drawable a;
-  private boolean a;
-  private boolean b;
+  public pmn(ComponentSocialOperation paramComponentSocialOperation) {}
   
-  pmn(Drawable paramDrawable, DrawableContainer paramDrawableContainer)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setCallback(paramDrawableContainer);
+    this.a.a.post(new ComponentSocialOperation.1.1(this));
   }
   
-  pmn(pmn parampmn, DrawableContainer paramDrawableContainer, Resources paramResources)
-  {
-    if ((parampmn != null) && (parampmn.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) && (parampmn.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getConstantState() != null)) {
-      if (paramResources == null) {
-        break label63;
-      }
-    }
-    label63:
-    for (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = parampmn.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getConstantState().newDrawable(paramResources);; this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = parampmn.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getConstantState().newDrawable())
-    {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setCallback(paramDrawableContainer);
-      this.b = true;
-      this.jdField_a_of_type_Boolean = true;
-      return;
-    }
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public boolean a()
-  {
-    if (!this.jdField_a_of_type_Boolean) {
-      if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getConstantState() == null) {
-        break label34;
-      }
-    }
-    label34:
-    for (boolean bool = true;; bool = false)
-    {
-      this.b = bool;
-      this.jdField_a_of_type_Boolean = true;
-      return this.b;
-    }
-  }
-  
-  public int getChangingConfigurations()
-  {
-    return this.jdField_a_of_type_Int;
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     pmn
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,42 @@
-import com.tencent.widget.HorizontalListView;
-
 public class amjj
-  implements Runnable
 {
-  public amjj(HorizontalListView paramHorizontalListView, amjo paramamjo) {}
+  private String jdField_a_of_type_JavaLangString = "https://h5.qzone.qq.com/qzone/visitor/";
+  private boolean jdField_a_of_type_Boolean;
+  private boolean b;
   
-  public void run()
+  public String a()
   {
-    this.jdField_a_of_type_ComTencentWidgetHorizontalListView.p = -1;
-    HorizontalListView.a(this.jdField_a_of_type_ComTencentWidgetHorizontalListView);
-    if (!this.jdField_a_of_type_ComTencentWidgetHorizontalListView.b) {
-      this.jdField_a_of_type_Amjo.run();
-    }
-    HorizontalListView.a(this.jdField_a_of_type_ComTencentWidgetHorizontalListView, null);
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    this.b = paramBoolean;
+  }
+  
+  public boolean b()
+  {
+    return this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amjj
  * JD-Core Version:    0.7.0.1
  */

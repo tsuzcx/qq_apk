@@ -1,23 +1,21 @@
-import com.tencent.biz.qqstory.storyHome.memory.StoryMemoriesFragment;
-import com.tencent.biz.qqstory.utils.TranslucentTitleBarHelper;
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.AbsListView.OnScrollListener;
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class obg
-  implements AbsListView.OnScrollListener
+class obg
+  implements View.OnClickListener
 {
-  public obg(StoryMemoriesFragment paramStoryMemoriesFragment, TranslucentTitleBarHelper paramTranslucentTitleBarHelper) {}
+  obg(obf paramobf, obi paramobi, oqa paramoqa, int paramInt) {}
   
-  public void a(AbsListView paramAbsListView, int paramInt) {}
-  
-  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryUtilsTranslucentTitleBarHelper.a(paramAbsListView, paramInt1, paramInt2, paramInt3);
+    this.jdField_a_of_type_Obf.a = new rfb((Activity)obf.a(this.jdField_a_of_type_Obf), new obh(this), this.jdField_a_of_type_Oqa.b, this.jdField_a_of_type_Oqa.a);
+    this.jdField_a_of_type_Obf.a.b(this.jdField_a_of_type_Obi.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     obg
  * JD-Core Version:    0.7.0.1
  */

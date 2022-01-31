@@ -1,21 +1,29 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.UpgradeActivity;
+import android.support.annotation.NonNull;
 
 public class ukn
-  implements DialogInterface.OnClickListener
+  extends sgl<ujx, spl>
 {
-  public ukn(UpgradeActivity paramUpgradeActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public ukn(ujx paramujx)
   {
-    UpgradeActivity.a(this.a);
-    this.a.finish();
+    super(paramujx);
   }
+  
+  public void a(@NonNull ujx paramujx, @NonNull spl paramspl)
+  {
+    urk.a("Q.qqstory.home.data.HomeFeedPresenter", "upload status change event:%s", paramspl);
+    ujx.a(paramujx, paramspl.a);
+  }
+  
+  public Class acceptEventClass()
+  {
+    return spl.class;
+  }
+  
+  public void b(@NonNull ujx paramujx, @NonNull spl paramspl) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     ukn
  * JD-Core Version:    0.7.0.1
  */

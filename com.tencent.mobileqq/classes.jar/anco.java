@@ -1,23 +1,43 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.model.WeishiOperationInfo;
+import android.text.TextUtils;
 
-public final class anco
-  implements Parcelable.Creator
+public class anco
 {
-  public WeishiOperationInfo a(Parcel paramParcel)
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
+  public String h;
+  
+  public anco(String paramString)
   {
-    return new WeishiOperationInfo(paramParcel);
+    this.a = paramString;
+    if (!TextUtils.isEmpty(paramString))
+    {
+      paramString = paramString.split("_");
+      if (paramString.length >= 7)
+      {
+        this.g = paramString[0];
+        this.h = paramString[1];
+        this.b = paramString[2];
+        this.c = paramString[3];
+        this.d = paramString[4];
+        this.e = paramString[5];
+        this.f = paramString[6];
+      }
+    }
   }
   
-  public WeishiOperationInfo[] a(int paramInt)
+  public boolean a()
   {
-    return new WeishiOperationInfo[paramInt];
+    return this.a.split("_").length >= 7;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     anco
  * JD-Core Version:    0.7.0.1
  */

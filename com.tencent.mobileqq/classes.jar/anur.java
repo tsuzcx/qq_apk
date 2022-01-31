@@ -1,24 +1,23 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.WeakReferenceHandler;
-import dov.com.qq.im.capture.music.QQMusicPlayerScene;
-import java.util.TimerTask;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
-public class anur
-  extends TimerTask
+class anur
+  implements Animation.AnimationListener
 {
-  private anur(QQMusicPlayerScene paramQQMusicPlayerScene) {}
+  anur(anuq paramanuq) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a.a.sendEmptyMessage(1);
-    if (QLog.isColorLevel()) {
-      QLog.d("QQMusicPlayerScene", 2, "MyMusicTimerTask MSG_MUSIC_REPLAY");
-    }
+    this.a.a.c();
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     anur
  * JD-Core Version:    0.7.0.1
  */

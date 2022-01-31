@@ -1,51 +1,42 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.activity.UpgradeTipsDialog;
-import com.tencent.mobileqq.jsbridge.JsBridge;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.WebView;
-import com.tencent.smtt.sdk.WebViewClient;
+import android.graphics.drawable.Drawable;
 
 public class ulh
-  extends WebViewClient
 {
-  public ulh(UpgradeTipsDialog paramUpgradeTipsDialog) {}
+  public int a;
+  public Drawable a;
+  public String a;
+  public uld a;
+  public int b;
   
-  public void onPageFinished(WebView paramWebView, String paramString)
+  public String a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("UpgradeController", 2, "onPageFinished: " + paramString);
+    if (this.jdField_a_of_type_JavaLangString == null) {
+      return "?";
     }
+    if (this.jdField_a_of_type_Uld == null) {
+      return this.jdField_a_of_type_JavaLangString;
+    }
+    return uls.a(new Object[] { this.jdField_a_of_type_JavaLangString, "/", this.jdField_a_of_type_Uld.a() });
   }
   
-  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
+  public boolean equals(Object paramObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("UpgradeController", 2, "onPageStarted: " + paramString);
-    }
+    return a().equals(((ulh)paramObject).a());
   }
   
-  public void onReceivedError(WebView paramWebView, int paramInt, String paramString1, String paramString2)
+  public int hashCode()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("UpgradeController", 2, "onReceivedError: " + paramInt + ", " + paramString1);
-    }
-    ReportController.b(UpgradeTipsDialog.a(this.a), "CliOper", "", "", "Update_tips", "Upd_fail", 0, paramInt, "", "", "", "");
+    return a().hashCode();
   }
   
-  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
+  public String toString()
   {
-    if ((paramString == null) || ("".equals(paramString)) || ("about:blank;".equals(paramString)) || ("about:blank".equals(paramString))) {}
-    while (UpgradeTipsDialog.a(this.a).a(paramWebView, paramString)) {
-      return true;
-    }
-    this.a.a.loadUrl(paramString);
-    return true;
+    return a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     ulh
  * JD-Core Version:    0.7.0.1
  */

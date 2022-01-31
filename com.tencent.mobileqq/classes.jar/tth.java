@@ -1,39 +1,47 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.RegisterActivity;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.playvideo.playerwidget.AbsVideoInfoWidget;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+import java.util.Iterator;
+import java.util.List;
 
-class tth
-  implements Runnable
+public class tth
+  extends QQUIEventReceiver<AbsVideoInfoWidget, syp>
 {
-  tth(ttg paramttg, String paramString) {}
-  
-  public void run()
+  public tth(@NonNull AbsVideoInfoWidget paramAbsVideoInfoWidget)
   {
-    Object localObject2 = this.jdField_a_of_type_JavaLangString;
-    if ((localObject2 == null) || (((String)localObject2).length() <= 0)) {
-      return;
-    }
-    Object localObject1 = localObject2;
-    if (!((String)localObject2).startsWith("http://"))
+    super(paramAbsVideoInfoWidget);
+  }
+  
+  public void a(@NonNull AbsVideoInfoWidget paramAbsVideoInfoWidget, @NonNull syp paramsyp)
+  {
+    if ((paramsyp.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) || (paramsyp.jdField_a_of_type_JavaUtilList == null)) {}
+    String str;
+    StoryVideoItem localStoryVideoItem;
+    do
     {
-      localObject1 = localObject2;
-      if (!((String)localObject2).startsWith("https://")) {
-        localObject1 = "http://" + (String)localObject2;
-      }
-    }
-    localObject2 = new Intent(this.jdField_a_of_type_Ttg.a.getActivity(), QQBrowserActivity.class);
-    ((Intent)localObject2).putExtra("is_register_uin", true);
-    ((Intent)localObject2).putExtra("isShowAd", false);
-    ((Intent)localObject2).putExtra("hide_more_button", true);
-    ((Intent)localObject2).putExtra("hide_operation_bar", true);
-    ((Intent)localObject2).putExtra("register_uin_msg", 9);
-    ((Intent)localObject2).putExtra("register_uin_class", RegisterActivity.class.getName());
-    this.jdField_a_of_type_Ttg.a.startActivity(((Intent)localObject2).putExtra("url", (String)localObject1));
+      do
+      {
+        return;
+        while (paramAbsVideoInfoWidget.a == null) {}
+        str = paramAbsVideoInfoWidget.a.a;
+        paramsyp = paramsyp.jdField_a_of_type_JavaUtilList.iterator();
+      } while (!paramsyp.hasNext());
+      localStoryVideoItem = (StoryVideoItem)paramsyp.next();
+    } while ((!TextUtils.equals(str, localStoryVideoItem.mVid)) || (!localStoryVideoItem.isBasicInfoOK()));
+    paramAbsVideoInfoWidget.i();
+  }
+  
+  public Class acceptEventClass()
+  {
+    return syp.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tth
  * JD-Core Version:    0.7.0.1
  */

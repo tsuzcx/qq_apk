@@ -1,24 +1,85 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.UpgradeActivity;
-import com.tencent.mobileqq.app.upgrade.UpgradeConstants;
-import com.tencent.mobileqq.app.upgrade.UpgradeController;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.view.View;
 
-public class ukz
-  implements DialogInterface.OnClickListener
+public abstract class ukz
+  implements ula
 {
-  public ukz(UpgradeActivity paramUpgradeActivity) {}
+  protected Activity a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public Activity a()
   {
-    ReportController.b(this.a.app, "CliOper", "", "", "0X8004DA2", "0X8004DA2", 0, 0, UpgradeConstants.b(), String.valueOf(0), UpgradeController.a(), "0");
-    this.a.finish();
+    return this.a;
+  }
+  
+  public View a(int paramInt)
+  {
+    Activity localActivity = this.a;
+    if (localActivity != null) {
+      return localActivity.findViewById(paramInt);
+    }
+    urk.e(getClass().getSimpleName(), "findViewById can not access after detach");
+    return null;
+  }
+  
+  public void a() {}
+  
+  public void a(int paramInt)
+  {
+    Activity localActivity = this.a;
+    if (localActivity != null)
+    {
+      localActivity.setContentView(paramInt);
+      return;
+    }
+    urk.e(getClass().getSimpleName(), "setContentView can not access after detach");
+  }
+  
+  public void a(int paramInt1, int paramInt2, Intent paramIntent) {}
+  
+  public void a(int paramInt, Intent paramIntent)
+  {
+    Activity localActivity = this.a;
+    if (localActivity != null)
+    {
+      localActivity.setResult(paramInt, paramIntent);
+      return;
+    }
+    urk.e(getClass().getSimpleName(), "finish can not access after detach");
+  }
+  
+  public void a(@NonNull Activity paramActivity)
+  {
+    this.a = paramActivity;
+  }
+  
+  public void a(Bundle paramBundle1, Bundle paramBundle2) {}
+  
+  public void b() {}
+  
+  public void c() {}
+  
+  public void d()
+  {
+    this.a = null;
+  }
+  
+  public void e()
+  {
+    Activity localActivity = this.a;
+    if (localActivity != null)
+    {
+      localActivity.finish();
+      return;
+    }
+    urk.e(getClass().getSimpleName(), "finish can not access after detach");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     ukz
  * JD-Core Version:    0.7.0.1
  */

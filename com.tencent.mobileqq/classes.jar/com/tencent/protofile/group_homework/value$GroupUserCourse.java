@@ -4,7 +4,7 @@ import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.MessageMicro.FieldMap;
 
 public final class value$GroupUserCourse
-  extends MessageMicro
+  extends MessageMicro<GroupUserCourse>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26 }, new String[] { "course_list", "last_course", "default_exclude" }, new Object[] { null, null, null }, GroupUserCourse.class);
   public value.CourseList course_list = new value.CourseList();

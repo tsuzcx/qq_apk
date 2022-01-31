@@ -1,290 +1,195 @@
-import com.tencent.biz.eqq.CrmUtils;
-import com.tencent.mobileqq.app.FriendsManager;
+import android.content.Context;
+import android.content.res.Resources;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.AddFriendLogicActivity;
+import com.tencent.mobileqq.activity.ProfileActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.contact.newfriend.ContactMatchBuilder.1;
+import com.tencent.mobileqq.activity.contact.newfriend.NewFriendActivity;
+import com.tencent.mobileqq.app.PhoneContactManagerImp;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.app.proxy.RecentUserProxy;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.data.RecentUser;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.nearby.HotChatUtil;
-import com.tencent.mobileqq.nearby.gameroom.RecentInviteUser;
-import com.tencent.mobileqq.nearby.gameroom.WerewolvesDataManager;
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.util.Utils;
-import com.tencent.mobileqq.utils.ContactUtils;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.Random;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.ContactMatch;
+import mqq.os.MqqHandler;
 
 public class aexz
-  implements Runnable
+  extends aeyf
+  implements View.OnClickListener
 {
-  public aexz(WerewolvesDataManager paramWerewolvesDataManager, String paramString1, String paramString2, ArrayList paramArrayList, aeyb paramaeyb) {}
+  private ajjj jdField_a_of_type_Ajjj;
+  private ajnf jdField_a_of_type_Ajnf;
   
-  public void run()
+  public aexz(Context paramContext, QQAppInterface paramQQAppInterface, aicw paramaicw, atcu paramatcu)
   {
-    ArrayList localArrayList1 = new ArrayList();
-    ArrayList localArrayList2 = new ArrayList();
-    Random localRandom = new Random(System.currentTimeMillis());
-    Object localObject1 = (TroopManager)this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomWerewolvesDataManager.a.getManager(51);
-    Object localObject2 = ((TroopManager)localObject1).a();
-    ((List)localObject2).size();
-    Object localObject3 = this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomWerewolvesDataManager.b();
-    int i = 0;
-    while ((i < ((List)localObject3).size()) && (localArrayList2.size() < 8))
+    super(paramContext, paramQQAppInterface, paramaicw, paramatcu);
+    this.jdField_a_of_type_Ajjj = ((ajjj)paramQQAppInterface.getManager(51));
+    this.jdField_a_of_type_Ajnf = ((ajnf)paramQQAppInterface.getManager(34));
+    this.jdField_a_of_type_Bens = a(paramContext);
+    this.b = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131166195);
+  }
+  
+  protected int a()
+  {
+    return 1;
+  }
+  
+  public View a(int paramInt, View paramView)
+  {
+    aeya localaeya;
+    Object localObject;
+    boolean bool;
+    label213:
+    StringBuilder localStringBuilder;
+    if ((paramView == null) || (!(paramView.getTag() instanceof aeya)))
     {
-      localObject4 = (RecentInviteUser)((List)localObject3).get(i);
-      localObject5 = new aeyc(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomWerewolvesDataManager);
-      if (((TroopManager)localObject1).a(((RecentInviteUser)localObject4).uin) == null)
+      localaeya = new aeya();
+      paramView = a(this.jdField_a_of_type_AndroidContentContext, 2131495535, localaeya);
+      a(paramView, this.b);
+      localaeya.jdField_f_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131296259));
+      localaeya.h = ((TextView)paramView.findViewById(2131305159));
+      localaeya.i = ((TextView)paramView.findViewById(2131309446));
+      localaeya.l = ((TextView)paramView.findViewById(2131296655));
+      localaeya.j = ((TextView)paramView.findViewById(2131310547));
+      localaeya.k = ((TextView)paramView.findViewById(2131309443));
+      localaeya.a = ((Button)paramView.findViewById(2131309433));
+      b(localaeya.jdField_f_of_type_AndroidWidgetImageView);
+      paramView.setTag(localaeya);
+      localaeya.g.setTag(localaeya);
+      localaeya.g.setOnClickListener(this);
+      a(this.jdField_a_of_type_AndroidContentContext, paramView, paramInt, this.jdField_a_of_type_Atcu, localaeya, this);
+      localObject = localaeya.g;
+      if (this.jdField_a_of_type_Atcu.a()) {
+        break label495;
+      }
+      bool = true;
+      a((View)localObject, bool);
+      localObject = ((atco)this.jdField_a_of_type_Atcu).a;
+      localStringBuilder = new StringBuilder(256);
+      if (TextUtils.isEmpty(((ContactMatch)localObject).name)) {
+        break label500;
+      }
+      localaeya.h.setVisibility(0);
+      localaeya.h.setText(((ContactMatch)localObject).name);
+      if (AppSetting.c) {
+        localStringBuilder.append(((ContactMatch)localObject).name);
+      }
+      label293:
+      a(localaeya.l, ((ContactMatch)localObject).gender, ((ContactMatch)localObject).age, localStringBuilder);
+      localaeya.i.setVisibility(8);
+      localaeya.j.setText(ajjy.a(2131636725));
+      localaeya.j.setVisibility(0);
+      if (AppSetting.c) {
+        localStringBuilder.append(",来自手机通讯录");
+      }
+      if (!this.jdField_a_of_type_Ajjj.a(((ContactMatch)localObject).unifiedCode, true)) {
+        break label513;
+      }
+      localaeya.a.setVisibility(8);
+      localaeya.k.setVisibility(0);
+      localaeya.k.setText(ajjy.a(2131636722));
+      if (AppSetting.c)
       {
-        i += 1;
+        localStringBuilder.append(",等待验证");
+        localaeya.k.setContentDescription(ajjy.a(2131636726));
       }
-      else
-      {
-        ((aeyc)localObject5).jdField_a_of_type_JavaLangString = ((RecentInviteUser)localObject4).uin;
-        ((aeyc)localObject5).jdField_a_of_type_Int = ((RecentInviteUser)localObject4).uinType;
-        ((aeyc)localObject5).b = ContactUtils.a(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomWerewolvesDataManager.a, ((aeyc)localObject5).jdField_a_of_type_JavaLangString, false);
-        ((aeyc)localObject5).jdField_a_of_type_Boolean = this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomWerewolvesDataManager.a(((aeyc)localObject5).jdField_a_of_type_JavaLangString, ((aeyc)localObject5).jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
-        if ((!localArrayList2.contains(localObject5)) && (!((aeyc)localObject5).jdField_a_of_type_JavaLangString.equals(this.b))) {
-          localArrayList2.add(localObject5);
-        }
-        i += 1;
-      }
-    }
-    localObject1 = this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomWerewolvesDataManager.a.a().a().a(true);
-    i = 0;
-    while ((localArrayList2.size() < 8) && (i < ((List)localObject1).size()))
-    {
-      localObject3 = (RecentUser)((List)localObject1).get(i);
-      if ((((RecentUser)localObject3).type == 1) && (!HotChatUtil.a(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomWerewolvesDataManager.a, (RecentUser)localObject3)) && (!Utils.a(((RecentUser)localObject3).uin)) && (((RecentUser)localObject3).lFlag != 16L))
-      {
-        localObject4 = new aeyc(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomWerewolvesDataManager);
-        ((aeyc)localObject4).jdField_a_of_type_JavaLangString = ((RecentUser)localObject3).uin;
-        ((aeyc)localObject4).jdField_a_of_type_Int = ((RecentUser)localObject3).type;
-        ((aeyc)localObject4).b = ContactUtils.a(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomWerewolvesDataManager.a, ((aeyc)localObject4).jdField_a_of_type_JavaLangString, false);
-        ((aeyc)localObject4).jdField_a_of_type_Boolean = this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomWerewolvesDataManager.a(((aeyc)localObject4).jdField_a_of_type_JavaLangString, ((aeyc)localObject4).jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
-        if ((!localArrayList2.contains(localObject4)) && (!((aeyc)localObject4).jdField_a_of_type_JavaLangString.equals(this.b))) {
-          localArrayList2.add(localObject4);
-        }
-      }
-      i += 1;
-    }
-    if (((List)localObject2).size() > 0)
-    {
-      i = 0;
-      while ((localArrayList2.size() < 8) && (i < 100))
-      {
-        localObject3 = (Entity)((List)localObject2).get(localRandom.nextInt(((List)localObject2).size()));
-        if ((localObject3 instanceof TroopInfo))
-        {
-          localObject3 = (TroopInfo)localObject3;
-          localObject4 = new aeyc(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomWerewolvesDataManager);
-          ((aeyc)localObject4).jdField_a_of_type_JavaLangString = ((TroopInfo)localObject3).troopuin;
-          ((aeyc)localObject4).jdField_a_of_type_Int = 1;
-          ((aeyc)localObject4).b = ((TroopInfo)localObject3).getTroopName();
-          ((aeyc)localObject4).jdField_a_of_type_Boolean = this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomWerewolvesDataManager.a(((aeyc)localObject4).jdField_a_of_type_JavaLangString, ((aeyc)localObject4).jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
-          if ((!localArrayList2.contains(localObject4)) && (!((aeyc)localObject4).jdField_a_of_type_JavaLangString.equals(this.b))) {
-            localArrayList2.add(localObject4);
-          }
-        }
-        i += 1;
-      }
-    }
-    localObject2 = this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomWerewolvesDataManager.a.getCurrentAccountUin();
-    localObject3 = new ArrayList();
-    Object localObject5 = (FriendsManager)this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomWerewolvesDataManager.a.getManager(50);
-    Object localObject4 = ((FriendsManager)localObject5).c();
-    int j;
-    Object localObject7;
-    if (localObject4 == null)
-    {
-      j = 0;
-      if ((localObject4 != null) && (((List)localObject4).size() > 0)) {
-        i = 0;
-      }
-    }
-    else
-    {
-      for (;;)
-      {
-        if ((((List)localObject3).size() >= 8) || (i >= 100)) {
-          break label951;
-        }
-        localObject6 = (Entity)((List)localObject4).get(localRandom.nextInt(((List)localObject4).size()));
-        if ((localObject6 instanceof Friends))
-        {
-          localObject6 = (Friends)localObject6;
-          if (((String)localObject2).equals(((Friends)localObject6).uin))
-          {
-            i += 1;
-            continue;
-            j = ((List)localObject4).size();
-            break;
-          }
-          int k = ContactUtils.a(((Friends)localObject6).detalStatusFlag, ((Friends)localObject6).iTermType);
-          if ((k != 4) && (k != 3))
-          {
-            i += 1;
-            continue;
-          }
-          localObject7 = new aeyc(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomWerewolvesDataManager);
-          ((aeyc)localObject7).jdField_a_of_type_JavaLangString = ((Friends)localObject6).uin;
-          ((aeyc)localObject7).jdField_a_of_type_Int = 0;
-          ((aeyc)localObject7).b = ContactUtils.k(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomWerewolvesDataManager.a, ((aeyc)localObject7).jdField_a_of_type_JavaLangString);
-          ((aeyc)localObject7).jdField_a_of_type_Boolean = this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomWerewolvesDataManager.a(((aeyc)localObject7).jdField_a_of_type_JavaLangString, ((aeyc)localObject7).jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
-          if (!((List)localObject3).contains(localObject7)) {
-            ((List)localObject3).add(localObject7);
-          }
-        }
-        i += 1;
-      }
-    }
-    label951:
-    Object localObject6 = this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomWerewolvesDataManager.a();
-    i = 0;
-    while ((((List)localObject3).size() < 8) && (i < ((List)localObject6).size()))
-    {
-      localObject7 = (RecentInviteUser)((List)localObject6).get(i);
-      if (((String)localObject2).equals(((RecentInviteUser)localObject7).uin))
-      {
-        i += 1;
-      }
-      else if ((j < 1000) && (!((FriendsManager)localObject5).b(((RecentInviteUser)localObject7).uin)))
-      {
-        i += 1;
-      }
-      else
-      {
-        aeyc localaeyc = new aeyc(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomWerewolvesDataManager);
-        localaeyc.jdField_a_of_type_JavaLangString = ((RecentInviteUser)localObject7).uin;
-        localaeyc.jdField_a_of_type_Int = ((RecentInviteUser)localObject7).uinType;
-        localaeyc.b = ContactUtils.k(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomWerewolvesDataManager.a, localaeyc.jdField_a_of_type_JavaLangString);
-        localaeyc.jdField_a_of_type_Boolean = this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomWerewolvesDataManager.a(localaeyc.jdField_a_of_type_JavaLangString, localaeyc.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
-        if (!((List)localObject3).contains(localaeyc)) {
-          ((List)localObject3).add(localaeyc);
-        }
-        i += 1;
-      }
-    }
-    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0))
-    {
-      i = 0;
-      while ((((List)localObject3).size() < 8) && (i < this.jdField_a_of_type_JavaUtilArrayList.size()))
-      {
-        localObject6 = (String)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-        if ((((String)localObject2).equals(localObject6)) || (!((FriendsManager)localObject5).b((String)localObject6)))
-        {
-          i += 1;
-        }
-        else
-        {
-          localObject7 = new aeyc(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomWerewolvesDataManager);
-          ((aeyc)localObject7).jdField_a_of_type_JavaLangString = ((String)localObject6);
-          ((aeyc)localObject7).jdField_a_of_type_Int = 0;
-          ((aeyc)localObject7).b = ContactUtils.k(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomWerewolvesDataManager.a, ((aeyc)localObject7).jdField_a_of_type_JavaLangString);
-          ((aeyc)localObject7).jdField_a_of_type_Boolean = this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomWerewolvesDataManager.a(((aeyc)localObject7).jdField_a_of_type_JavaLangString, ((aeyc)localObject7).jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
-          if (!((List)localObject3).contains(localObject7)) {
-            ((List)localObject3).add(localObject7);
-          }
-          i += 1;
-        }
-      }
-    }
-    i = 0;
-    while ((((List)localObject3).size() < 8) && (i < ((List)localObject1).size()))
-    {
-      localObject6 = (RecentUser)((List)localObject1).get(i);
-      if (((String)localObject2).equals(((RecentUser)localObject6).uin))
-      {
-        i += 1;
-      }
-      else
-      {
-        if ((((RecentUser)localObject6).type == 0) && (!Utils.a(((RecentUser)localObject6).uin)) && (((RecentUser)localObject6).lFlag != 16L) && (!CrmUtils.b(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomWerewolvesDataManager.a, ((RecentUser)localObject6).uin, ((RecentUser)localObject6).type)))
-        {
-          localObject7 = new aeyc(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomWerewolvesDataManager);
-          ((aeyc)localObject7).jdField_a_of_type_JavaLangString = ((RecentUser)localObject6).uin;
-          ((aeyc)localObject7).jdField_a_of_type_Int = ((RecentUser)localObject6).type;
-          ((aeyc)localObject7).b = ContactUtils.k(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomWerewolvesDataManager.a, ((aeyc)localObject7).jdField_a_of_type_JavaLangString);
-          ((aeyc)localObject7).jdField_a_of_type_Boolean = this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomWerewolvesDataManager.a(((aeyc)localObject7).jdField_a_of_type_JavaLangString, ((aeyc)localObject7).jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
-          if ((!((List)localObject3).contains(localObject7)) && (((FriendsManager)localObject5).b(((RecentUser)localObject6).uin))) {
-            ((List)localObject3).add(localObject7);
-          }
-        }
-        i += 1;
-      }
-    }
-    if ((localObject4 != null) && (((List)localObject4).size() > 0))
-    {
-      i = 0;
-      while ((((List)localObject3).size() < 8) && (i < 100))
-      {
-        localObject1 = (Entity)((List)localObject4).get(localRandom.nextInt(((List)localObject4).size()));
-        if ((localObject1 instanceof Friends))
-        {
-          localObject1 = (Friends)localObject1;
-          if (((String)localObject2).equals(((Friends)localObject1).uin))
-          {
-            i += 1;
-            continue;
-          }
-          localObject5 = new aeyc(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomWerewolvesDataManager);
-          ((aeyc)localObject5).jdField_a_of_type_JavaLangString = ((Friends)localObject1).uin;
-          ((aeyc)localObject5).jdField_a_of_type_Int = 0;
-          ((aeyc)localObject5).b = ContactUtils.k(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomWerewolvesDataManager.a, ((aeyc)localObject5).jdField_a_of_type_JavaLangString);
-          ((aeyc)localObject5).jdField_a_of_type_Boolean = this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomWerewolvesDataManager.a(((aeyc)localObject5).jdField_a_of_type_JavaLangString, ((aeyc)localObject5).jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
-          if (!((List)localObject3).contains(localObject5)) {
-            ((List)localObject3).add(localObject5);
-          }
-        }
-        i += 1;
-      }
-    }
-    if ((localArrayList2.size() >= 4) && (((List)localObject3).size() >= 4))
-    {
-      localArrayList1.addAll(localArrayList2.subList(0, 4));
-      localArrayList1.addAll(((List)localObject3).subList(0, 4));
     }
     for (;;)
     {
-      this.jdField_a_of_type_Aeyb.a(localArrayList1, true);
-      return;
-      if ((localArrayList2.size() < 4) && (((List)localObject3).size() < 4))
-      {
-        localArrayList1.addAll(localArrayList2);
-        localArrayList1.addAll((Collection)localObject3);
+      if (AppSetting.c) {
+        paramView.setContentDescription(localStringBuilder.toString());
       }
-      else
+      localaeya.jdField_f_of_type_JavaLangString = ((ContactMatch)localObject).unifiedCode;
+      localaeya.jdField_f_of_type_AndroidWidgetImageView.setImageBitmap(this.jdField_a_of_type_Aicw.a(11, ((ContactMatch)localObject).unifiedCode));
+      return paramView;
+      localaeya = (aeya)paramView.getTag();
+      break;
+      label495:
+      bool = false;
+      break label213;
+      label500:
+      localaeya.h.setVisibility(8);
+      break label293;
+      label513:
+      localaeya.a.setVisibility(0);
+      localaeya.a.setText(ajjy.a(2131624088));
+      localaeya.a.setTag(localObject);
+      localaeya.a.setOnClickListener(this);
+      localaeya.k.setVisibility(8);
+      if (AppSetting.c)
       {
-        if ((localArrayList2.size() >= 4) && (((List)localObject3).size() < 4))
-        {
-          i = 8 - ((List)localObject3).size();
-          if (localArrayList2.size() >= i) {
-            localArrayList1.addAll(localArrayList2.subList(0, i));
-          }
-          for (;;)
-          {
-            localArrayList1.addAll((Collection)localObject3);
-            break;
-            localArrayList1.addAll(localArrayList2);
-          }
-        }
-        i = 8 - localArrayList2.size();
-        localArrayList1.addAll(localArrayList2);
-        if (((List)localObject3).size() >= i) {
-          localArrayList1.addAll(((List)localObject3).subList(0, i));
-        } else {
-          localArrayList1.addAll((Collection)localObject3);
-        }
+        localStringBuilder.append(",添加");
+        localaeya.a.setContentDescription(ajjy.a(2131636723));
       }
     }
+  }
+  
+  protected void a()
+  {
+    ThreadManager.getSubThreadHandler().post(new ContactMatchBuilder.1(this));
+    awqx.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8006A72", "0X8006A72", 0, 0, "", "", "", "");
+  }
+  
+  public void onClick(View paramView)
+  {
+    switch (paramView.getId())
+    {
+    default: 
+      a(paramView);
+    }
+    Object localObject;
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+          paramView = paramView.getTag();
+        } while ((paramView == null) || (!(paramView instanceof aeya)));
+        localObject = ((atco)this.jdField_a_of_type_Atcu).a;
+      } while (localObject == null);
+      if (((PhoneContactManagerImp)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(11)).h()) {}
+      for (paramView = new ProfileActivity.AllInOne(((ContactMatch)localObject).unifiedCode, 34);; paramView = new ProfileActivity.AllInOne(((ContactMatch)localObject).unifiedCode, 29))
+      {
+        paramView.h = ((ContactMatch)localObject).name;
+        ProfileActivity.a((NewFriendActivity)this.jdField_a_of_type_AndroidContentContext, paramView, 229);
+        this.jdField_a_of_type_Ajnf.h();
+        return;
+      }
+      paramView = paramView.getTag();
+    } while ((paramView == null) || (!(paramView instanceof ContactMatch)));
+    if (!badq.g(this.jdField_a_of_type_AndroidContentContext))
+    {
+      bbmy.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131626719), 0).b(c());
+      return;
+    }
+    paramView = (ContactMatch)paramView;
+    if (paramView != null)
+    {
+      localObject = (PhoneContactManagerImp)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(11);
+      int i = 3006;
+      int j = 3;
+      if (!((PhoneContactManagerImp)localObject).h())
+      {
+        i = 3075;
+        j = 1;
+      }
+      paramView = AddFriendLogicActivity.a(this.jdField_a_of_type_AndroidContentContext, 2, paramView.unifiedCode, "ContactMatchBuilder", i, j, paramView.name, null, null, ajjy.a(2131636724), null);
+      ((NewFriendActivity)this.jdField_a_of_type_AndroidContentContext).startActivityForResult(paramView, 229);
+    }
+    this.jdField_a_of_type_Ajnf.h();
+    awqx.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8006A71", "0X8006A71", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aexz
  * JD-Core Version:    0.7.0.1
  */

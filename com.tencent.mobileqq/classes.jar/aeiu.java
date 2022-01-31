@@ -1,42 +1,22 @@
-import android.os.Message;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.leba.LebaTitleBar;
-import com.tencent.mobileqq.leba.LebaWithFeeds;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 
-public class aeiu
-  extends MqqHandler
+class aeiu
+  implements View.OnClickListener
 {
-  public aeiu(LebaWithFeeds paramLebaWithFeeds) {}
+  aeiu(aeis paramaeis) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    if ((this.a.a != null) && ("0".equals(this.a.a.getCurrentAccountUin()))) {}
-    do
-    {
-      return;
-      switch (paramMessage.what)
-      {
-      default: 
-        return;
-      case 1134006: 
-      case 11340005: 
-        LebaWithFeeds.a(this.a).e();
-        return;
-      case 11340002: 
-        LebaWithFeeds.a(this.a);
-        LebaWithFeeds.a(this.a, true, 3);
-        return;
-      }
-    } while (!LebaWithFeeds.a(this.a));
-    LebaWithFeeds.a(this.a, true, 5);
-    return;
-    LebaWithFeeds.a(this.a, true, 4);
+    if (!aeis.a(this.a)) {
+      azgu.a(this.a.jdField_a_of_type_AndroidContentContext, null, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aeiu
  * JD-Core Version:    0.7.0.1
  */

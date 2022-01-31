@@ -1,13 +1,15 @@
 package com.tencent.mobileqq.confess;
 
-import com.tencent.mobileqq.util.Utils;
+import azzz;
 import java.io.Serializable;
 import org.json.JSONObject;
 
 public class ConfessInfo
   implements Serializable
 {
+  public static final String KEY_CONFESSOR_FRIEND_SEX = "key_confessor_friend_sex";
   public static final String KEY_CONFESSOR_NICK = "key_confessor_nick";
+  public static final String KEY_CONFESSOR_NUM = "key_confessor_num";
   public static final String KEY_CONFESSOR_SEX = "key_confessor_sex";
   public static final String KEY_CONFESSOR_UIN = "key_confessor_uin";
   public static final String KEY_CONFESS_BG_TYPE = "key_confess_bg_type";
@@ -57,7 +59,7 @@ public class ConfessInfo
     {
       return false;
       paramObject = (ConfessInfo)paramObject;
-    } while ((this.topicId != paramObject.topicId) || (this.confessorSex != paramObject.confessorSex) || (this.confessorUin != paramObject.confessorUin) || (!Utils.a(this.confessorNick, paramObject.confessorNick)) || (!Utils.a(this.topic, paramObject.topic)));
+    } while ((this.topicId != paramObject.topicId) || (this.confessorSex != paramObject.confessorSex) || (this.confessorUin != paramObject.confessorUin) || (!azzz.a(this.confessorNick, paramObject.confessorNick)) || (!azzz.a(this.topic, paramObject.topic)));
     return true;
   }
   

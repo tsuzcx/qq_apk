@@ -4,10 +4,10 @@ import android.graphics.Rect;
 
 public class MRect
 {
-  int h;
-  int w;
-  int x;
-  int y;
+  private int h;
+  private int w;
+  private int x;
+  private int y;
   
   public MRect() {}
   
@@ -26,7 +26,7 @@ public class MRect
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.filter.MRect
  * JD-Core Version:    0.7.0.1
  */

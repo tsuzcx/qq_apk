@@ -1,46 +1,37 @@
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.BitmapFactory.Options;
-import android.widget.ImageView;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.filemanager.util.FileUtil;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.preference.PreferenceManager;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import com.tencent.securemodule.impl.AppInfo;
+import com.tencent.securemodule.service.CloudScanListener;
+import java.util.List;
 
-public final class ajpm
-  implements Runnable
+public class ajpm
+  implements CloudScanListener
 {
-  public ajpm(String paramString, ImageView paramImageView) {}
+  public ajpm(QQAppInterface paramQQAppInterface) {}
   
-  public void run()
+  public void onFinish(int paramInt)
   {
-    try
-    {
-      if (FileUtil.a(this.jdField_a_of_type_JavaLangString))
-      {
-        Object localObject = new BitmapFactory.Options();
-        ((BitmapFactory.Options)localObject).inJustDecodeBounds = true;
-        BitmapFactory.decodeFile(this.jdField_a_of_type_JavaLangString, (BitmapFactory.Options)localObject);
-        ((BitmapFactory.Options)localObject).inJustDecodeBounds = false;
-        localObject = BitmapFactory.decodeFile(this.jdField_a_of_type_JavaLangString, (BitmapFactory.Options)localObject);
-        ThreadManager.getUIHandler().post(new ajpn(this, (Bitmap)localObject));
-      }
-      return;
+    if (paramInt == 0) {
+      PreferenceManager.getDefaultSharedPreferences(QQAppInterface.f(this.a)).edit().putLong("security_scan_last_time", System.currentTimeMillis()).putBoolean("security_scan_last_result", false).commit();
     }
-    catch (OutOfMemoryError localOutOfMemoryError)
-    {
-      QLog.e("setBitmapByPath", 2, localOutOfMemoryError.getStackTrace());
-      return;
+  }
+  
+  public void onRiskFoud(List<AppInfo> paramList) {}
+  
+  public void onRiskFound()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("security_scan", 2, "Find Risk");
     }
-    catch (Exception localException)
-    {
-      QLog.e("setBitmapByPath", 2, localException.getStackTrace());
-    }
+    PreferenceManager.getDefaultSharedPreferences(QQAppInterface.e(this.a)).edit().putBoolean("security_scan_last_result", true).commit();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajpm
  * JD-Core Version:    0.7.0.1
  */

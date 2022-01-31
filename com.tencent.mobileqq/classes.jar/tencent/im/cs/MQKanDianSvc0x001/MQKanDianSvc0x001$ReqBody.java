@@ -10,7 +10,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class MQKanDianSvc0x001$ReqBody
-  extends MessageMicro
+  extends MessageMicro<ReqBody>
 {
   public static final int CUT_ALL = 1;
   public static final int CUT_FOR_SEARCH = 2;
@@ -22,12 +22,12 @@ public final class MQKanDianSvc0x001$ReqBody
   public final PBBoolField bool_use_hmm = PBField.initBool(false);
   public final PBEnumField enum_cut_mode = PBField.initEnum(0);
   public final PBEnumField enum_request_mode = PBField.initEnum(0);
-  public final PBRepeatField rpt_str_sentences = PBField.initRepeat(PBStringField.__repeatHelper__);
+  public final PBRepeatField<String> rpt_str_sentences = PBField.initRepeat(PBStringField.__repeatHelper__);
   public final PBUInt32Field uint32_request_article_num = PBField.initUInt32(0);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     tencent.im.cs.MQKanDianSvc0x001.MQKanDianSvc0x001.ReqBody
  * JD-Core Version:    0.7.0.1
  */

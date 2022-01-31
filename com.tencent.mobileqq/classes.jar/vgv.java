@@ -1,25 +1,33 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.item.MedalNewsItemBuilder;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.MessageForMedalNews;
+import android.media.MediaFormat;
 
 public class vgv
-  implements View.OnClickListener
 {
-  public vgv(MedalNewsItemBuilder paramMedalNewsItemBuilder, MessageForMedalNews paramMessageForMedalNews) {}
+  public int a;
+  public long a;
+  public MediaFormat a;
+  public String a;
+  public boolean a;
+  public int b = 1;
+  public String b;
+  public String c;
   
-  public void onClick(View paramView)
+  public vgv()
   {
-    if ((vgz)paramView.getTag() == null) {
-      return;
-    }
-    ThreadManager.postImmediately(new vgw(this), null, true);
+    this.jdField_a_of_type_Long = -1L;
+    this.jdField_a_of_type_Int = -1;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder(128);
+    localStringBuilder.append("Image2result.result ").append("src: ").append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append("result ").append(this.jdField_a_of_type_Int);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vgv
  * JD-Core Version:    0.7.0.1
  */

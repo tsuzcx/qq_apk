@@ -1,13 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.troopgift.TroopGiftPanel;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.pts.nativemodule.IPTSAllInOneJump;
+import com.tencent.qphone.base.util.QLog;
 
 public class pdy
-  implements DialogInterface.OnClickListener
+  implements IPTSAllInOneJump
 {
-  public pdy(TroopGiftPanel paramTroopGiftPanel) {}
+  public final String a = "PTSAllInOneJumpModule";
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void allInOneJump(String paramString)
+  {
+    QLog.i("PTSAllInOneJumpModule", 1, "[allInOneJump], url = " + paramString);
+    if (BaseActivity.sTopActivity != null) {
+      obz.a(BaseActivity.sTopActivity, paramString);
+    }
+  }
 }
 
 

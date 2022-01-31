@@ -1,51 +1,47 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.base.UIBaseEventReceiver;
-import com.tencent.biz.qqstory.storyHome.detail.model.DetailFeedItem;
-import com.tencent.biz.qqstory.storyHome.detail.model.DetailLikeListLoader.GetLikeListEvent;
-import com.tencent.biz.qqstory.storyHome.detail.view.StoryDetailPresenter;
-import com.tencent.biz.qqstory.support.logging.SLog;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInjoyTabDragAnimationView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.recent.cur.DragTextView;
 
 public class oad
-  extends UIBaseEventReceiver
 {
-  public oad(StoryDetailPresenter paramStoryDetailPresenter)
+  private static boolean a;
+  
+  public static View a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7)
   {
-    super(paramStoryDetailPresenter);
+    if (BaseApplicationImpl.sApplication == null) {
+      return null;
+    }
+    View localView = View.inflate(BaseApplicationImpl.sApplication, 2131496884, null);
+    ((DragTextView)localView.findViewById(2131312777)).setDragViewType(2);
+    ((ReadInjoyTabDragAnimationView)localView.findViewById(2131310999)).setEmotionDrawable(paramInt1, paramInt2, paramInt3, paramInt4, paramInt6, paramInt7);
+    ((TextView)localView.findViewById(2131312542)).setText(paramInt5);
+    return localView;
   }
   
-  public void a(@NonNull StoryDetailPresenter paramStoryDetailPresenter, @NonNull DetailLikeListLoader.GetLikeListEvent paramGetLikeListEvent)
+  public static void a(boolean paramBoolean)
   {
-    if ((!paramGetLikeListEvent.jdField_a_of_type_Boolean) || (!paramGetLikeListEvent.jdField_a_of_type_JavaLangString.equals(StoryDetailPresenter.a(paramStoryDetailPresenter))) || (paramGetLikeListEvent.errorInfo.isFail()) || (StoryDetailPresenter.a(paramStoryDetailPresenter) == null))
+    try
     {
-      SLog.b(this.TAG, "ignore this like list event. %s.", paramGetLikeListEvent.toString());
+      a = paramBoolean;
       return;
     }
-    SLog.a(this.TAG, "receive like list event. %s.", paramGetLikeListEvent.toString());
-    boolean bool2 = StoryDetailPresenter.a(paramStoryDetailPresenter);
-    if (paramGetLikeListEvent.jdField_a_of_type_Int == 0) {}
-    for (boolean bool1 = false;; bool1 = true)
+    finally
     {
-      StoryDetailPresenter.a(paramStoryDetailPresenter).b(bool1, paramGetLikeListEvent.b);
-      StoryDetailPresenter.a(paramStoryDetailPresenter).b(paramGetLikeListEvent.jdField_a_of_type_JavaUtilList, true, bool1);
-      if (bool2 != bool1) {
-        break;
-      }
-      paramStoryDetailPresenter.a();
-      return;
+      localObject = finally;
+      throw localObject;
     }
   }
   
-  public Class acceptEventClass()
+  public static boolean a()
   {
-    return DetailLikeListLoader.GetLikeListEvent.class;
+    return a;
   }
-  
-  public void b(@NonNull StoryDetailPresenter paramStoryDetailPresenter, @NonNull DetailLikeListLoader.GetLikeListEvent paramGetLikeListEvent) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     oad
  * JD-Core Version:    0.7.0.1
  */

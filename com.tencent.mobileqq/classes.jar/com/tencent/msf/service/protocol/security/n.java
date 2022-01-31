@@ -10,13 +10,13 @@ public final class n
   static byte[] h;
   static byte[] i;
   static byte[] j;
-  public byte[] a;
+  public byte[] a = null;
   public String b = "";
   public String c = "";
-  public byte d;
-  public byte e;
-  public byte[] f;
-  public byte[] g;
+  public byte d = 0;
+  public byte e = 0;
+  public byte[] f = null;
+  public byte[] g = null;
   
   public n() {}
   

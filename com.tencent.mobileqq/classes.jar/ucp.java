@@ -1,32 +1,32 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.ProfileActivity;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
-import com.tencent.mobileqq.troop.widget.AvatarWallAdapter;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.parallel.ParallelJobSegment;
+import java.util.ArrayList;
 
-public class ucp
-  implements ActionSheet.OnButtonClickListener
+class ucp
+  extends ParallelJobSegment<String, Integer>
 {
-  public ucp(TroopInfoActivity paramTroopInfoActivity, ActionSheet paramActionSheet) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public ucp(uch paramuch)
   {
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 0: 
-      this.jdField_a_of_type_ComTencentMobileqqActivityTroopInfoActivity.a = ProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopInfoActivity, 13);
-      return;
-    }
-    AvatarWallAdapter.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopInfoActivity, 8);
+    this(paramuch, "RequestViewCountSegment");
+  }
+  
+  public ucp(uch paramuch, String paramString)
+  {
+    super(paramString);
+  }
+  
+  protected void a(JobContext paramJobContext, String paramString)
+  {
+    szp localszp = new szp();
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(paramString);
+    localszp.a = localArrayList;
+    slv.a().a(localszp, new ucq(this, paramJobContext, paramString));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     ucp
  * JD-Core Version:    0.7.0.1
  */

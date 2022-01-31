@@ -8,15 +8,15 @@ import java.util.ArrayList;
 public final class GetRichSigReq
   extends JceStruct
 {
-  static ArrayList cache_vstReqRichInfo;
+  static ArrayList<ReqRichInfo> cache_vstReqRichInfo;
   public boolean checkupdate;
   public boolean get_large_tlv;
   public boolean showdatesig;
-  public ArrayList vstReqRichInfo;
+  public ArrayList<ReqRichInfo> vstReqRichInfo;
   
   public GetRichSigReq() {}
   
-  public GetRichSigReq(ArrayList paramArrayList, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
+  public GetRichSigReq(ArrayList<ReqRichInfo> paramArrayList, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
   {
     this.vstReqRichInfo = paramArrayList;
     this.checkupdate = paramBoolean1;
@@ -48,7 +48,7 @@ public final class GetRichSigReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     KQQ.GetRichSigReq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.data;
 
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.unique;
+import atmo;
+import atoc;
 
 public class QIMFollwerAdd
-  extends Entity
+  extends atmo
 {
   public long careSCount;
   public long fansCount;
@@ -15,7 +15,7 @@ public class QIMFollwerAdd
   public String smartRemark = "";
   public String source = "";
   public long totalNum;
-  @unique
+  @atoc
   public long uin;
   public long upTime;
 }

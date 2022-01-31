@@ -1,41 +1,76 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.EditActivity;
+import android.os.Build;
+import android.text.TextUtils;
 
 public class sqc
-  implements View.OnClickListener
 {
-  public sqc(EditActivity paramEditActivity) {}
+  public static sqc a;
+  public static sqc b;
+  @vlq(a="manufacturer")
+  public String a;
+  @vlq(a="model")
+  public String b;
   
-  public void onClick(View paramView)
+  static
   {
-    paramView = this.a;
-    if (!EditActivity.a(this.a)) {}
-    for (boolean bool = true;; bool = false)
+    jdField_a_of_type_Sqc = new sqc();
+    jdField_b_of_type_Sqc = new sqc();
+    jdField_b_of_type_Sqc.jdField_a_of_type_JavaLangString = Build.MANUFACTURER;
+    jdField_b_of_type_Sqc.jdField_b_of_type_JavaLangString = Build.MODEL;
+    jdField_a_of_type_Sqc.jdField_a_of_type_JavaLangString = "all";
+    jdField_a_of_type_Sqc.jdField_b_of_type_JavaLangString = "all";
+  }
+  
+  public boolean a()
+  {
+    if (jdField_a_of_type_Sqc.equals(this)) {}
+    while ((jdField_b_of_type_Sqc.equals(this)) || ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (TextUtils.equals(this.jdField_b_of_type_JavaLangString, jdField_b_of_type_Sqc.jdField_b_of_type_JavaLangString)))) {
+      return true;
+    }
+    return false;
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if (this == paramObject) {}
+    do
     {
-      EditActivity.a(paramView, bool);
-      if (!EditActivity.a(this.a)) {
-        break;
+      return true;
+      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+        return false;
       }
-      this.a.d();
-      EditActivity.a(this.a).setImageResource(2130837626);
-      if (EditActivity.a(this.a) != null) {
-        EditActivity.a(this.a).setVisibility(0);
+      paramObject = (sqc)paramObject;
+      if (this.jdField_a_of_type_JavaLangString != null)
+      {
+        if (this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString)) {}
       }
-      return;
+      else {
+        while (paramObject.jdField_a_of_type_JavaLangString != null) {
+          return false;
+        }
+      }
+      if (this.jdField_b_of_type_JavaLangString != null) {
+        return this.jdField_b_of_type_JavaLangString.equals(paramObject.jdField_b_of_type_JavaLangString);
+      }
+    } while (paramObject.jdField_b_of_type_JavaLangString == null);
+    return false;
+  }
+  
+  public int hashCode()
+  {
+    int j = 0;
+    if (this.jdField_a_of_type_JavaLangString != null) {}
+    for (int i = this.jdField_a_of_type_JavaLangString.hashCode();; i = 0)
+    {
+      if (this.jdField_b_of_type_JavaLangString != null) {
+        j = this.jdField_b_of_type_JavaLangString.hashCode();
+      }
+      return i * 31 + j;
     }
-    if (EditActivity.a(this.a) != null) {
-      EditActivity.a(this.a).setVisibility(4);
-    }
-    EditActivity.a(this.a).setImageResource(2130844609);
-    this.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     sqc
  * JD-Core Version:    0.7.0.1
  */

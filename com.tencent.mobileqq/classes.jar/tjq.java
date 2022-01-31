@@ -1,41 +1,29 @@
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.vas.IndividuationUrlHelper;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
-import com.tencent.mobileqq.widget.FormSimpleItem;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import java.util.ArrayList;
+import java.util.List;
 
 public class tjq
-  implements View.OnClickListener
 {
-  public tjq(PermisionPrivacyActivity paramPermisionPrivacyActivity, boolean paramBoolean1, SharedPreferences paramSharedPreferences, boolean paramBoolean2) {}
+  public ErrorMessage a;
+  public List<tjt> a;
+  public boolean a;
+  public ErrorMessage b;
+  public boolean b;
+  public boolean c;
   
-  public void onClick(View paramView)
+  public tjq()
   {
-    if (!this.jdField_a_of_type_Boolean)
-    {
-      paramView = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
-      paramView.putBoolean("plate_of_king_red_dot_" + this.jdField_a_of_type_ComTencentMobileqqActivityPermisionPrivacyActivity.app.c(), true);
-      paramView.apply();
-      if (this.b) {
-        PermisionPrivacyActivity.c(this.jdField_a_of_type_ComTencentMobileqqActivityPermisionPrivacyActivity).setRightIcon(null);
-      }
-    }
-    paramView = IndividuationUrlHelper.a("gameIconSetupH5Url");
-    Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityPermisionPrivacyActivity.app.getApp(), QQBrowserActivity.class);
-    localIntent.setFlags(268435456);
-    localIntent.putExtra("vasUsePreWebview", true);
-    VasWebviewUtil.openQQBrowserWithoutAD(this.jdField_a_of_type_ComTencentMobileqqActivityPermisionPrivacyActivity.app.getApp(), paramView, -1L, localIntent, false, -1);
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+  }
+  
+  public String toString()
+  {
+    return "Data{upErrorMessage=" + this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage + ", isUpEnd=" + this.jdField_a_of_type_Boolean + ", mGroupInfoList=" + this.jdField_a_of_type_JavaUtilList + ", isDownEnd=" + this.jdField_b_of_type_Boolean + ", isFastData=" + this.c + ", downErrorMessage=" + this.jdField_b_of_type_ComTencentBizQqstoryBaseErrorMessage + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tjq
  * JD-Core Version:    0.7.0.1
  */

@@ -13,7 +13,8 @@ import java.io.IOException;
 public class NewGifImage
   extends Image
 {
-  private Drawable a;
+  private Drawable mDrawable;
+  private String url;
   
   public NewGifImage(ImageKey paramImageKey, int paramInt1, int paramInt2)
   {
@@ -22,7 +23,7 @@ public class NewGifImage
       NewGifDecoder.Options localOptions = new NewGifDecoder.Options();
       localOptions.inPreferWidth = paramInt1;
       localOptions.inPreferHeight = paramInt2;
-      this.a = new NewGifDrawable(paramImageKey.filePath, localOptions, paramImageKey.url);
+      this.mDrawable = new NewGifDrawable(paramImageKey.filePath, localOptions, paramImageKey.url);
       ImageManagerEnv.getLogger().d("NewGifImage", new Object[] { "create NewGifImage url: " + paramImageKey.url });
       return;
     }
@@ -36,7 +37,7 @@ public class NewGifImage
   {
     try
     {
-      this.a = new NewGifDrawable(paramString, null);
+      this.mDrawable = new NewGifDrawable(paramString, null);
       return;
     }
     catch (IOException paramString) {}
@@ -44,38 +45,38 @@ public class NewGifImage
   
   public NewGifImage(String paramString, int paramInt1, int paramInt2, float paramFloat)
   {
-    this.a = new NewGifDrawable(new SharpPNewGifDecoder(paramString, (int)(paramInt1 / paramFloat), (int)(paramInt2 / paramFloat)));
+    this.mDrawable = new NewGifDrawable(new SharpPNewGifDecoder(paramString, (int)(paramInt1 / paramFloat), (int)(paramInt2 / paramFloat)));
   }
   
   public NewGifImage(String paramString1, int paramInt1, int paramInt2, float paramFloat, String paramString2)
   {
-    this.a = new NewGifDrawable(new SharpPNewGifDecoder(paramString1, (int)(paramInt1 / paramFloat), (int)(paramInt2 / paramFloat)), paramString2);
+    this.mDrawable = new NewGifDrawable(new SharpPNewGifDecoder(paramString1, (int)(paramInt1 / paramFloat), (int)(paramInt2 / paramFloat)), paramString2);
   }
   
   public Drawable getDrawable()
   {
-    return this.a;
+    return this.mDrawable;
   }
   
   public boolean isRecycled()
   {
-    if ((this.a != null) && ((this.a instanceof NewGifDrawable))) {
-      return ((NewGifDrawable)this.a).isRecycled();
+    if ((this.mDrawable != null) && ((this.mDrawable instanceof NewGifDrawable))) {
+      return ((NewGifDrawable)this.mDrawable).isRecycled();
     }
     return false;
   }
   
   public void recycle()
   {
-    if ((this.a != null) && ((this.a instanceof NewGifDrawable))) {
-      ((NewGifDrawable)this.a).recycle();
+    if ((this.mDrawable != null) && ((this.mDrawable instanceof NewGifDrawable))) {
+      ((NewGifDrawable)this.mDrawable).recycle();
     }
   }
   
   public int size()
   {
-    if ((this.a != null) && ((this.a instanceof NewGifDrawable))) {
-      return this.a.getIntrinsicWidth() * this.a.getIntrinsicHeight() * 4;
+    if ((this.mDrawable != null) && ((this.mDrawable instanceof NewGifDrawable))) {
+      return this.mDrawable.getIntrinsicWidth() * this.mDrawable.getIntrinsicHeight() * 4;
     }
     return 0;
   }

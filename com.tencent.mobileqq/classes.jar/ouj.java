@@ -1,27 +1,16 @@
-import android.os.Handler;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.biz.qqstory.view.AnimationPoint;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class ouj
-  implements Runnable
+class ouj
+  implements View.OnClickListener
 {
-  public ouj(AnimationPoint paramAnimationPoint) {}
+  ouj(ouc paramouc, qoe paramqoe, opw paramopw) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (this.a.jdField_a_of_type_Boolean) {
-      return;
-    }
-    if ((System.currentTimeMillis() - this.a.c < this.a.b) || (this.a.b < 0L)) {
-      this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(this, 30L);
-    }
-    for (;;)
-    {
-      this.a.invalidate();
-      return;
-      if (this.a.jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener != null) {
-        this.a.jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener.onAnimationEnd(null);
-      }
+    paramView = this.jdField_a_of_type_Qoe.a();
+    if (paramView != null) {
+      paramView.a(null, this.jdField_a_of_type_Opw.a(), 1);
     }
   }
 }

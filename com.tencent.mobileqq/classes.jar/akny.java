@@ -1,15 +1,27 @@
-public final class akny
-  implements akoc
+import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
+import com.tencent.mobileqq.ar.aidl.ArConfigInfo;
+import com.tencent.mobileqq.ar.aidl.ArEffectConfig;
+
+public class akny
+  implements akok
 {
-  public Float a(float paramFloat, Number paramNumber1, Number paramNumber2)
-  {
-    float f = paramNumber1.floatValue();
-    return Float.valueOf(f + (paramNumber2.floatValue() - f) * paramFloat);
-  }
+  public void a() {}
+  
+  public void a(int paramInt) {}
+  
+  public void a(long paramLong1, long paramLong2) {}
+  
+  public void a(ARCommonConfigInfo paramARCommonConfigInfo) {}
+  
+  public void a(ArConfigInfo paramArConfigInfo) {}
+  
+  public void a(ArEffectConfig paramArEffectConfig) {}
+  
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     akny
  * JD-Core Version:    0.7.0.1
  */

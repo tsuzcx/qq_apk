@@ -1,60 +1,32 @@
-import android.content.Context;
-import android.support.v4.view.ViewPager.LayoutParams;
-import android.widget.AdapterView;
-import android.widget.GridView;
-import com.tencent.mobileqq.profile.view.QzonePhotoView;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AdapterViewPagerAdapter.AdapterViewFactory;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.activity.qwallet.voice.KSongMicView;
+import java.util.Iterator;
+import java.util.List;
 
 public class agwq
-  implements AdapterViewPagerAdapter.AdapterViewFactory
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public agwq(QzonePhotoView paramQzonePhotoView) {}
+  public agwq(KSongMicView paramKSongMicView) {}
   
-  public AdapterView a(Context paramContext, int paramInt)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    do
+    float f = paramValueAnimator.getAnimatedFraction();
+    paramValueAnimator = KSongMicView.a(this.a).iterator();
+    while (paramValueAnimator.hasNext())
     {
-      try
-      {
-        paramContext = new GridView(paramContext);
-        ViewPager.LayoutParams localLayoutParams;
-        Context localContext = paramContext;
-      }
-      catch (OutOfMemoryError localOutOfMemoryError1)
-      {
-        try
-        {
-          paramContext.setNumColumns(4);
-          paramContext.setFadingEdgeLength(0);
-          paramContext.setHorizontalSpacing(QzonePhotoView.a(this.a));
-          paramContext.setVerticalSpacing(QzonePhotoView.a(this.a));
-          paramContext.setStretchMode(2);
-          paramContext.setScrollingCacheEnabled(false);
-          paramContext.setSelector(2131492924);
-          localLayoutParams = new ViewPager.LayoutParams();
-          localLayoutParams.gravity = 17;
-          localLayoutParams.height = -2;
-          localLayoutParams.width = -1;
-          paramContext.setLayoutParams(localLayoutParams);
-          localContext = paramContext;
-          return localContext;
-        }
-        catch (OutOfMemoryError localOutOfMemoryError2)
-        {
-          continue;
-        }
-        localOutOfMemoryError1 = localOutOfMemoryError1;
-        paramContext = null;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.e("ProfileCard.QzonePhotoView", 2, "new gridview error", localOutOfMemoryError1);
-    return paramContext;
+      agwr localagwr = (agwr)paramValueAnimator.next();
+      localagwr.jdField_c_of_type_Float = (localagwr.f + (localagwr.g - localagwr.f) * f);
+      localagwr.d = (localagwr.h + (localagwr.i - localagwr.h) * f);
+      localagwr.e = (localagwr.j + (localagwr.k - localagwr.j) * f);
+      localagwr.a = (localagwr.b + (int)((localagwr.jdField_c_of_type_Int - localagwr.b) * f));
+    }
+    this.a.invalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     agwq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,48 +1,28 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troop.data.TroopFeedParserHelper;
-import com.tencent.mobileqq.troop.data.TroopFeedsDataManager;
-import com.tencent.qphone.base.util.QLog;
-import java.util.LinkedHashMap;
-import java.util.List;
-import org.json.JSONObject;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.app.FriendListHandler.QQHeadDetails;
 
-class ajjf
-  implements Runnable
+public final class ajjf
+  implements Parcelable.Creator<FriendListHandler.QQHeadDetails>
 {
-  ajjf(ajjd paramajjd, JSONObject paramJSONObject) {}
-  
-  public void run()
+  public FriendListHandler.QQHeadDetails a(Parcel paramParcel)
   {
-    Object localObject1 = TroopFeedParserHelper.a(this.jdField_a_of_type_OrgJsonJSONObject, "" + this.jdField_a_of_type_Ajjd.a.jdField_a_of_type_JavaLangLong, this.jdField_a_of_type_Ajjd.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-    List localList = (List)localObject1[0];
-    localObject1 = (List)localObject1[1];
-    if ((localList == null) || (localObject1 == null)) {
-      return;
-    }
-    Object localObject2 = localList.toString();
-    int i = localList.size() - 1;
-    while (i >= 0)
-    {
-      String str = (String)localList.get(i);
-      if (!this.jdField_a_of_type_Ajjd.a.jdField_a_of_type_JavaUtilLinkedHashMap.containsKey(str)) {
-        localList.remove(str);
-      }
-      i -= 1;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopFeedsDataManager.troop.notification_center.auto_pull_down", 2, "cgi callback ids, beforeFilter:" + (String)localObject2 + "|afterFilter ids:" + localList.toString());
-    }
-    this.jdField_a_of_type_Ajjd.a.jdField_a_of_type_JavaUtilLinkedHashMap.clear();
-    localObject2 = this.jdField_a_of_type_Ajjd.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(4);
-    ((Message)localObject2).obj = this.jdField_a_of_type_Ajjd.a.a(localList, (List)localObject1);
-    this.jdField_a_of_type_Ajjd.a.jdField_a_of_type_AndroidOsHandler.sendMessage((Message)localObject2);
+    FriendListHandler.QQHeadDetails localQQHeadDetails = new FriendListHandler.QQHeadDetails(null);
+    localQQHeadDetails.jdField_a_of_type_Int = paramParcel.readInt();
+    localQQHeadDetails.jdField_a_of_type_JavaLangString = paramParcel.readString();
+    localQQHeadDetails.jdField_a_of_type_Long = paramParcel.readLong();
+    localQQHeadDetails.jdField_a_of_type_Byte = paramParcel.readByte();
+    return localQQHeadDetails;
+  }
+  
+  public FriendListHandler.QQHeadDetails[] a(int paramInt)
+  {
+    return new FriendListHandler.QQHeadDetails[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajjf
  * JD-Core Version:    0.7.0.1
  */

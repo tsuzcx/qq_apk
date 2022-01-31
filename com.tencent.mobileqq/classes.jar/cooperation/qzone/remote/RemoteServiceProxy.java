@@ -1,40 +1,66 @@
 package cooperation.qzone.remote;
 
+import android.app.Service;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.os.DeadObjectException;
 import android.os.Looper;
 import android.os.RemoteException;
-import anfv;
-import anfw;
-import anfx;
+import bfcz;
+import bfdi;
+import bgbx;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.plugin.IPluginManager;
-import cooperation.plugin.IPluginManager.PluginParams;
 import cooperation.qzone.QzonePluginProxyActivity;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class RemoteServiceProxy
 {
   private static final String tag = "RemoteServiceProxy";
-  private Class clazz;
-  protected ServiceConnection conn = new anfv(this);
+  private Class<? extends Service> clazz;
+  protected ServiceConnection conn = new bgbx(this);
   protected volatile long lastStartSerivceTime = -1L;
   private IActionListener mActionListener;
   private String mUin;
   protected Object sendLock = new Object();
-  public ConcurrentLinkedQueue sendMsgQueue = new ConcurrentLinkedQueue();
+  protected ConcurrentLinkedQueue<SendMsg> sendMsgQueue = new ConcurrentLinkedQueue();
   public volatile IServiceHandler serviceHandler;
   private String serviceName;
   
-  public RemoteServiceProxy(String paramString1, Class paramClass, String paramString2)
+  public RemoteServiceProxy(String paramString1, Class<? extends Service> paramClass, String paramString2)
   {
     this.serviceName = paramString1;
     this.clazz = paramClass;
     this.mUin = paramString2;
+  }
+  
+  private void sendMsgToServiceInner(SendMsg paramSendMsg)
+  {
+    try
+    {
+      if (this.serviceHandler != null)
+      {
+        this.serviceHandler.sendMsg(paramSendMsg);
+        return;
+      }
+      try
+      {
+        sendFailedRespToApp(paramSendMsg, createWaiteRespTimeout(paramSendMsg, "main thread sendMsgToServiceFailed. serviceHandler is null."));
+        return;
+      }
+      catch (Throwable paramSendMsg)
+      {
+        QLog.e("RemoteServiceProxy", 1, "", paramSendMsg);
+        return;
+      }
+      return;
+    }
+    catch (RemoteException paramSendMsg)
+    {
+      QLog.e("RemoteServiceProxy", 1, "", paramSendMsg);
+    }
   }
   
   protected void addMsgToSendQueue(SendMsg paramSendMsg)
@@ -42,7 +68,7 @@ public class RemoteServiceProxy
     this.sendMsgQueue.add(paramSendMsg);
   }
   
-  public RecvMsg createWaiteRespTimeout(SendMsg paramSendMsg, String paramString)
+  protected RecvMsg createWaiteRespTimeout(SendMsg paramSendMsg, String paramString)
   {
     paramSendMsg = new RecvMsg(paramSendMsg.getRequestId(), paramSendMsg.getServiceCmd());
     paramSendMsg.setBusinessFail(1002, paramString);
@@ -56,12 +82,12 @@ public class RemoteServiceProxy
   
   public void onBaseServiceConnected()
   {
-    anfw localanfw = new anfw(this);
-    localanfw.setName("handleWaitSendProxyMsgThread");
-    localanfw.start();
+    RemoteServiceProxy.2 local2 = new RemoteServiceProxy.2(this);
+    local2.setName("handleWaitSendProxyMsgThread");
+    local2.start();
   }
   
-  public void sendFailedRespToApp(SendMsg paramSendMsg, RecvMsg paramRecvMsg)
+  protected void sendFailedRespToApp(SendMsg paramSendMsg, RecvMsg paramRecvMsg)
   {
     try
     {
@@ -114,14 +140,14 @@ public class RemoteServiceProxy
     }
   }
   
-  public void sendMsgToService(SendMsg paramSendMsg)
+  protected void sendMsgToService(SendMsg paramSendMsg)
   {
     if (Looper.getMainLooper().getThread() == Thread.currentThread())
     {
-      ThreadManager.post(new anfx(this, paramSendMsg), 10, null, false);
+      ThreadManager.post(new RemoteServiceProxy.3(this, paramSendMsg), 10, null, false);
       return;
     }
-    this.serviceHandler.sendMsg(paramSendMsg);
+    sendMsgToServiceInner(paramSendMsg);
   }
   
   public void setActionListener(IActionListener paramIActionListener)
@@ -135,14 +161,14 @@ public class RemoteServiceProxy
     {
       Intent localIntent = new Intent(BaseApplicationImpl.getApplication(), this.clazz);
       localIntent.putExtra("useSkinEngine", 1);
-      IPluginManager.PluginParams localPluginParams = new IPluginManager.PluginParams(0);
-      localPluginParams.b = QzonePluginProxyActivity.a();
-      localPluginParams.d = "QQ空间";
-      localPluginParams.jdField_a_of_type_JavaLangString = this.mUin;
-      localPluginParams.e = this.serviceName;
-      localPluginParams.jdField_a_of_type_AndroidContentIntent = localIntent;
-      localPluginParams.jdField_a_of_type_AndroidContentServiceConnection = this.conn;
-      IPluginManager.b(BaseApplicationImpl.getApplication(), localPluginParams);
+      bfdi localbfdi = new bfdi(0);
+      localbfdi.b = QzonePluginProxyActivity.a();
+      localbfdi.d = "QQ空间";
+      localbfdi.jdField_a_of_type_JavaLangString = this.mUin;
+      localbfdi.e = this.serviceName;
+      localbfdi.jdField_a_of_type_AndroidContentIntent = localIntent;
+      localbfdi.jdField_a_of_type_AndroidContentServiceConnection = this.conn;
+      bfcz.c(BaseApplicationImpl.getApplication(), localbfdi);
       if (QLog.isColorLevel()) {
         QLog.d("RemoteServiceProxy", 2, " start service finish");
       }

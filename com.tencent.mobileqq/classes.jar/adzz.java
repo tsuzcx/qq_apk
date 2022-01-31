@@ -1,20 +1,31 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
-
-class adzz
-  implements DialogInterface.OnClickListener
+public abstract interface adzz
 {
-  adzz(adzy paramadzy) {}
+  public static final String a = ajjy.a(2131639938);
+  public static final String b = ajjy.a(2131639935);
+  public static final String c = ajjy.a(2131639936);
+  public static final String d = ajjy.a(2131639937);
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    QLog.d("PresenceInterfaceImpl", 2, "user click button");
-  }
+  public abstract void a();
+  
+  public abstract void b();
+  
+  public abstract boolean b();
+  
+  public abstract void c();
+  
+  public abstract void e();
+  
+  public abstract void f();
+  
+  public abstract void g();
+  
+  public abstract void h();
+  
+  public abstract void i();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     adzz
  * JD-Core Version:    0.7.0.1
  */

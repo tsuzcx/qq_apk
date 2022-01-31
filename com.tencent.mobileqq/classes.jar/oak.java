@@ -1,40 +1,26 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.model.DiscoverManager;
-import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.biz.qqstory.storyHome.discover.model.DiscoverPagerLoader;
-import com.tencent.biz.qqstory.storyHome.discover.model.DiscoverPagerLoader.GetDiscoverCardsEvent;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tribe.async.dispatch.Dispatcher;
-import com.tribe.async.dispatch.Dispatchers;
-import java.util.List;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 
-public class oak
-  implements Runnable
+class oak
+  implements ViewBase.OnClickListener
 {
-  public oak(DiscoverPagerLoader paramDiscoverPagerLoader) {}
+  oak(oah paramoah, ViewBase paramViewBase) {}
   
-  public void run()
+  public void onClick(ViewBase paramViewBase)
   {
-    ??? = ((DiscoverManager)SuperManager.a(22)).a(DiscoverPagerLoader.a(this.a), DiscoverPagerLoader.a(this.a));
-    DiscoverPagerLoader.GetDiscoverCardsEvent localGetDiscoverCardsEvent = new DiscoverPagerLoader.GetDiscoverCardsEvent(new ErrorMessage(), DiscoverPagerLoader.a(this.a), DiscoverPagerLoader.a(this.a));
-    localGetDiscoverCardsEvent.b = true;
-    localGetDiscoverCardsEvent.jdField_a_of_type_JavaUtilList = ((List)???);
-    localGetDiscoverCardsEvent.jdField_a_of_type_Boolean = true;
-    synchronized (this.a)
+    if (this.jdField_a_of_type_Oah.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean != null)
     {
-      if (!this.a.b)
-      {
-        Dispatchers.get().dispatch(localGetDiscoverCardsEvent);
-        SLog.a("Q.qqstory.discover:DiscoverPagerLoader", "dispatch video list return from cache: %s", localGetDiscoverCardsEvent);
-        return;
-      }
-      SLog.d("Q.qqstory.discover:DiscoverPagerLoader", "load cache data later than load from network");
+      oag.a(this.jdField_a_of_type_Oah.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean.findViewById(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase.getName()));
+      oag.a(this.jdField_a_of_type_Oah.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase);
     }
+    obz.e(this.jdField_a_of_type_Oah.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.getContext(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase.getEventAttachedData());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     oak
  * JD-Core Version:    0.7.0.1
  */

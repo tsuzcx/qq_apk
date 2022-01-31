@@ -1,37 +1,26 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.startup.step.LoadDex;
-import com.tencent.mobileqq.startup.step.Step;
-import com.tencent.mobileqq.startup.step.Step.AmStepFactory;
-import com.tencent.mobileqq.statistics.battery.BatteryStats;
-import com.tencent.qphone.base.util.QLog;
-
 public class aijy
-  implements Runnable
 {
-  public aijy(LoadDex paramLoadDex) {}
+  public float a;
+  public float b;
+  public float c;
   
-  public void run()
+  public aijy(float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    try
-    {
-      QQAppInterface.a().a();
-      Step.AmStepFactory.b(28, this.a.a, null).c();
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("LoadDex", 2, "", localThrowable);
-        }
-      }
-    }
+    this.a = paramFloat1;
+    this.b = paramFloat2;
+    this.c = paramFloat3;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ApolloRoleInfo:").append("scale:").append(this.a).append(",xPos:").append(this.b).append(",yPos:").append(this.c);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aijy
  * JD-Core Version:    0.7.0.1
  */

@@ -3,13 +3,13 @@ package android.support.v4.app;
 import android.os.Bundle;
 import android.support.v4.content.Loader;
 
-public abstract interface LoaderManager$LoaderCallbacks
+public abstract interface LoaderManager$LoaderCallbacks<D>
 {
-  public abstract Loader onCreateLoader(int paramInt, Bundle paramBundle);
+  public abstract Loader<D> onCreateLoader(int paramInt, Bundle paramBundle);
   
-  public abstract void onLoadFinished(Loader paramLoader, Object paramObject);
+  public abstract void onLoadFinished(Loader<D> paramLoader, D paramD);
   
-  public abstract void onLoaderReset(Loader paramLoader);
+  public abstract void onLoaderReset(Loader<D> paramLoader);
 }
 
 

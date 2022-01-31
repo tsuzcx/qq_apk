@@ -1,23 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoGuide;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
+import android.view.View;
 
-public class aock
-  implements DialogInterface.OnDismissListener
+class aock
+  implements behy
 {
-  public aock(EditVideoGuide paramEditVideoGuide) {}
+  aock(aoch paramaoch, View paramView) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void a()
   {
-    this.a.jdField_a_of_type_Int = 2;
-    this.a.b = 2;
-    this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a(5);
+    this.jdField_a_of_type_AndroidViewView.setSelected(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aock
  * JD-Core Version:    0.7.0.1
  */

@@ -1,69 +1,83 @@
-import android.graphics.Bitmap;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.biz.qrcode.util.QRUtils;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.profile.PersonalityLabel.ShareHelper;
-import com.tencent.mobileqq.profile.PersonalityLabel.ShareHelper.OnUseResListener;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
-import com.tencent.widget.ActionSheet;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
 public class agtj
-  implements AdapterView.OnItemClickListener
+  extends agsz<agti>
 {
-  public agtj(ShareHelper paramShareHelper) {}
-  
-  public void onItemClick(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public int a()
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.a().isShowing()) {
-      this.a.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.a().dismiss();
+    return 540;
+  }
+  
+  @NonNull
+  public agti a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("springHb_SpringFestivalRedpacketStaggerConfProcessor", 2, "[migrateOldOrDefaultContent]");
     }
-    if ((paramLong == 2L) || (paramLong == 3L)) {
-      if (!WXShareHelper.a().a()) {
-        paramInt = 2131435335;
-      }
-    }
-    for (;;)
+    return new agti();
+  }
+  
+  protected agti a(alzs[] paramArrayOfalzs)
+  {
+    if ((paramArrayOfalzs != null) && (paramArrayOfalzs.length > 0))
     {
-      if (paramInt != -1)
-      {
-        QRUtils.a(1, paramInt);
-        return;
-        if (!WXShareHelper.a().b()) {
-          paramInt = 2131435336;
-        }
+      paramArrayOfalzs = paramArrayOfalzs[0].a;
+      if (QLog.isColorLevel()) {
+        QLog.i("springHb_SpringFestivalRedpacketStaggerConfProcessor", 2, "onParsed " + paramArrayOfalzs);
       }
-      else
-      {
-        if ((this.a.jdField_a_of_type_AndroidGraphicsBitmap == null) || (this.a.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled()))
-        {
-          QRUtils.a(1, 2131439117);
-          return;
-        }
-        this.a.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelShareHelper$OnUseResListener.a(true);
-        switch ((int)paramLong)
-        {
-        default: 
-          return;
-        case 0: 
-          ThreadManager.postImmediately(new agtk(this), null, true);
-          return;
-        case 1: 
-          ThreadManager.postImmediately(new agtm(this), null, true);
-          return;
-        }
-        ThreadManager.postImmediately(new agto(this, paramLong), null, true);
-        return;
-      }
-      paramInt = -1;
+      return agti.a(paramArrayOfalzs);
     }
+    return null;
+  }
+  
+  public Class<agti> a()
+  {
+    return agti.class;
+  }
+  
+  public void a()
+  {
+    super.a();
+  }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("springHb_SpringFestivalRedpacketStaggerConfProcessor", 2, "[onReqFailed] failCode=" + paramInt);
+    }
+  }
+  
+  public void a(agti paramagti)
+  {
+    super.a(paramagti);
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  @Nullable
+  public agti b(alzs[] paramArrayOfalzs)
+  {
+    return (agti)super.b(paramArrayOfalzs);
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     agtj
  * JD-Core Version:    0.7.0.1
  */

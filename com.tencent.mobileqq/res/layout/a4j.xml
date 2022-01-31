@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/kq5" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true" />
+    <com.tencent.biz.pubaccount.readinjoy.view.ResizeURLImageView android:id="@id/v2" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" android:layout_centerInParent="true" />
+    <View android:id="@id/v6" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ImageView android:id="@id/az2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="13.0dip" android:layout_marginTop="15.0dip" android:src="@drawable/dq_" android:layout_alignParentLeft="true" />
+    <ImageView android:id="@id/l05" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" android:layout_marginRight="13.0dip" android:src="@drawable/d6a" android:layout_alignParentRight="true" />
+    <ImageView android:id="@id/kos" android:visibility="visible" android:layout_width="62.0dip" android:layout_height="62.0dip" android:src="@drawable/n5" android:layout_centerInParent="true" />
+    <ImageView android:id="@id/kor" android:visibility="gone" android:layout_width="62.0dip" android:layout_height="62.0dip" android:src="@drawable/n4" android:layout_centerInParent="true" />
+    <ImageView android:id="@id/kow" android:visibility="gone" android:layout_width="62.0dip" android:layout_height="62.0dip" android:src="@drawable/dud" android:layout_centerInParent="true" />
+    <TextView android:textSize="16.0dip" android:textColor="#ff777777" android:gravity="center_vertical" android:id="@id/v3" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/pwp" android:drawableTop="@drawable/fd2" android:drawablePadding="15.0dip" android:layout_centerInParent="true" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/v8" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginRight="15.0dip" android:layout_marginBottom="15.0dip" android:layout_alignParentBottom="true">
+        <TextView android:layout_gravity="center_vertical" android:id="@id/fzr" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="00:00" />
+        <SeekBar android:layout_gravity="center_vertical" android:id="@id/v7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:layout_marginRight="8.0dip" android:maxHeight="2.0dip" android:progressDrawable="@drawable/aik" android:minHeight="2.0dip" android:thumb="@drawable/gnh" android:thumbOffset="0.0dip" android:layout_weight="1.0" />
+        <TextView android:layout_gravity="center_vertical" android:id="@id/jut" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="30:00" />
+        <FrameLayout android:orientation="horizontal" android:id="@id/cpz" android:paddingLeft="14.0dip" android:visibility="gone" android:clickable="true" android:layout_width="wrap_content" android:layout_height="fill_parent">
+            <ImageView android:layout_gravity="center" android:id="@id/cq0" android:background="@drawable/d8o" android:layout_width="21.0dip" android:layout_height="21.0dip" />
+        </FrameLayout>
+    </LinearLayout>
+    <com.tencent.biz.pubaccount.readinjoy.ad.view.ReadInJoyAdVideoGuide android:id="@id/ex" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true" />
+</RelativeLayout>

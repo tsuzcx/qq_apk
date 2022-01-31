@@ -1,36 +1,74 @@
-import android.content.Intent;
-import android.net.Uri;
-import com.tencent.biz.qrcode.util.QRUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelShareActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.mobileqq.activity.qwallet.redpacket.springfestival.config.SpringFestivalRedpakcetPreviewConfBean;
+import com.tencent.qphone.base.util.QLog;
 
-class agth
-  implements Runnable
+public class agth
+  extends agsz<SpringFestivalRedpakcetPreviewConfBean>
 {
-  agth(agtg paramagtg, boolean paramBoolean, String paramString) {}
-  
-  public void run()
+  public int a()
   {
-    if (this.jdField_a_of_type_Boolean)
+    return 548;
+  }
+  
+  @NonNull
+  public SpringFestivalRedpakcetPreviewConfBean a(int paramInt)
+  {
+    return new SpringFestivalRedpakcetPreviewConfBean();
+  }
+  
+  protected SpringFestivalRedpakcetPreviewConfBean a(alzs[] paramArrayOfalzs)
+  {
+    if ((paramArrayOfalzs != null) && (paramArrayOfalzs.length > 0))
     {
-      Intent localIntent = new Intent("android.intent.action.MEDIA_SCANNER_SCAN_FILE");
-      localIntent.setData(Uri.parse("file://" + this.jdField_a_of_type_JavaLangString));
-      this.jdField_a_of_type_Agtg.a.sendBroadcast(localIntent);
-      QQToast.a(BaseApplicationImpl.getContext(), 2, this.jdField_a_of_type_Agtg.a.getString(2131430003, new Object[] { this.jdField_a_of_type_JavaLangString }), 1).b(this.jdField_a_of_type_Agtg.a.getTitleBarHeight());
+      paramArrayOfalzs = paramArrayOfalzs[0].a;
+      if (QLog.isColorLevel()) {
+        QLog.i("springHb_SpringFestivalRedpacketPreviewProcessor", 2, "onParsed " + paramArrayOfalzs);
+      }
+      return SpringFestivalRedpakcetPreviewConfBean.a(paramArrayOfalzs);
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_Agtg.a.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_Agtg.a.b = true;
-      return;
-      QRUtils.a(1, 2131430004);
-    }
+    return null;
+  }
+  
+  public Class<SpringFestivalRedpakcetPreviewConfBean> a()
+  {
+    return SpringFestivalRedpakcetPreviewConfBean.class;
+  }
+  
+  public void a(int paramInt)
+  {
+    super.a(paramInt);
+  }
+  
+  public void a(SpringFestivalRedpakcetPreviewConfBean paramSpringFestivalRedpakcetPreviewConfBean)
+  {
+    super.a(paramSpringFestivalRedpakcetPreviewConfBean);
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  @Nullable
+  public SpringFestivalRedpakcetPreviewConfBean b(alzs[] paramArrayOfalzs)
+  {
+    return (SpringFestivalRedpakcetPreviewConfBean)super.b(paramArrayOfalzs);
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     agth
  * JD-Core Version:    0.7.0.1
  */

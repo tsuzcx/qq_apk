@@ -1,25 +1,19 @@
-import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserTBSHandler;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 
-public class akxz
-  implements Runnable
+class akxz
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public akxz(SwiftBrowserTBSHandler paramSwiftBrowserTBSHandler) {}
+  akxz(akxy paramakxy) {}
   
-  public void run()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.a.a(MsfSdkUtils.insertMtype("Web", this.a.jdField_a_of_type_JavaLangString), 0);
-    synchronized (this.a.jdField_a_of_type_JavaLangObject)
-    {
-      this.a.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(true);
-      this.a.jdField_a_of_type_JavaLangObject.notifyAll();
-      return;
-    }
+    this.a.a(((Integer)paramValueAnimator.getAnimatedValue()).intValue());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     akxz
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,20 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.biz.qqstory.takevideo.QQStoryTakeVideoCloseAnimationActivity;
-
-public class omg
-  implements Animator.AnimatorListener
+public abstract interface omg
 {
-  public omg(QQStoryTakeVideoCloseAnimationActivity paramQQStoryTakeVideoCloseAnimationActivity) {}
+  public abstract void D_();
   
-  public void onAnimationCancel(Animator paramAnimator)
-  {
-    this.a.finish();
-    this.a.overridePendingTransition(0, 2131034167);
-  }
+  public abstract void E_();
   
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    this.a.finish();
-    this.a.overridePendingTransition(0, 2131034167);
-  }
+  public abstract boolean a();
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
+  public abstract void c();
   
-  public void onAnimationStart(Animator paramAnimator) {}
+  public abstract void d();
+  
+  public abstract void setMediaCoverUrl(String paramString);
+  
+  public abstract void setMediaPlayUrl(String paramString);
+  
+  public abstract void setMediaPlayVid(String paramString);
 }
 
 

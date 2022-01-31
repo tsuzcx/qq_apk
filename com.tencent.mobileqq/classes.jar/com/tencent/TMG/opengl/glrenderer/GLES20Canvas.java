@@ -68,13 +68,13 @@ public class GLES20Canvas
   private int mCurrentAlphaIndex = 0;
   private int mCurrentMatrixIndex = 0;
   private final IntArray mDeleteBuffers = new IntArray();
-  ShaderParameter[] mDrawParameters = { new AttributeShaderParameter("aPosition"), new UniformShaderParameter("uMatrix"), new UniformShaderParameter("uColor") };
+  GLES20Canvas.ShaderParameter[] mDrawParameters = { new GLES20Canvas.AttributeShaderParameter("aPosition"), new GLES20Canvas.UniformShaderParameter("uMatrix"), new GLES20Canvas.UniformShaderParameter("uColor") };
   private int mDrawProgram;
   private int mHeight;
   private float[] mMatrices = new float[''];
-  ShaderParameter[] mMeshParameters = { new AttributeShaderParameter("aPosition"), new UniformShaderParameter("uMatrix"), new UniformShaderParameter("uAlpha"), new AttributeShaderParameter("aTextureCoordinate"), new UniformShaderParameter("uTextureSampler0") };
+  GLES20Canvas.ShaderParameter[] mMeshParameters = { new GLES20Canvas.AttributeShaderParameter("aPosition"), new GLES20Canvas.UniformShaderParameter("uMatrix"), new GLES20Canvas.UniformShaderParameter("uAlpha"), new GLES20Canvas.AttributeShaderParameter("aTextureCoordinate"), new GLES20Canvas.UniformShaderParameter("uTextureSampler0") };
   private int mMeshProgram;
-  ShaderParameter[] mOesTextureParameters = { new AttributeShaderParameter("aPosition"), new UniformShaderParameter("uMatrix"), new UniformShaderParameter("uAlpha"), new UniformShaderParameter("uTextureMatrix"), new UniformShaderParameter("uTextureSampler0") };
+  GLES20Canvas.ShaderParameter[] mOesTextureParameters = { new GLES20Canvas.AttributeShaderParameter("aPosition"), new GLES20Canvas.UniformShaderParameter("uMatrix"), new GLES20Canvas.UniformShaderParameter("uAlpha"), new GLES20Canvas.UniformShaderParameter("uTextureMatrix"), new GLES20Canvas.UniformShaderParameter("uTextureSampler0") };
   private int mOesTextureProgram;
   private float[] mProjectionMatrix = new float[16];
   private IntArray mSaveFlags = new IntArray();
@@ -84,11 +84,11 @@ public class GLES20Canvas
   private final RectF mTempSourceRect = new RectF();
   private final RectF mTempTargetRect = new RectF();
   private final float[] mTempTextureMatrix = new float[16];
-  ShaderParameter[] mTextureParameters = { new AttributeShaderParameter("aPosition"), new UniformShaderParameter("uMatrix"), new UniformShaderParameter("uAlpha"), new UniformShaderParameter("uTextureMatrix"), new UniformShaderParameter("uTextureSampler0") };
+  GLES20Canvas.ShaderParameter[] mTextureParameters = { new GLES20Canvas.AttributeShaderParameter("aPosition"), new GLES20Canvas.UniformShaderParameter("uMatrix"), new GLES20Canvas.UniformShaderParameter("uAlpha"), new GLES20Canvas.UniformShaderParameter("uTextureMatrix"), new GLES20Canvas.UniformShaderParameter("uTextureSampler0") };
   private int mTextureProgram;
   private final IntArray mUnboundTextures = new IntArray();
   private int mWidth;
-  ShaderParameter[] mYUVTextureParameters = { new AttributeShaderParameter("aPosition"), new UniformShaderParameter("uMatrix"), new UniformShaderParameter("uAlpha"), new UniformShaderParameter("uTextureMatrix"), new UniformShaderParameter("uTextureSampler0"), new UniformShaderParameter("uTextureSampler1"), new UniformShaderParameter("uTextureSampler2") };
+  GLES20Canvas.ShaderParameter[] mYUVTextureParameters = { new GLES20Canvas.AttributeShaderParameter("aPosition"), new GLES20Canvas.UniformShaderParameter("uMatrix"), new GLES20Canvas.UniformShaderParameter("uAlpha"), new GLES20Canvas.UniformShaderParameter("uTextureMatrix"), new GLES20Canvas.UniformShaderParameter("uTextureSampler0"), new GLES20Canvas.UniformShaderParameter("uTextureSampler1"), new GLES20Canvas.UniformShaderParameter("uTextureSampler2") };
   private int mYUVTextureProgram;
   
   static
@@ -119,7 +119,7 @@ public class GLES20Canvas
     checkError();
   }
   
-  private int assembleProgram(int paramInt1, int paramInt2, ShaderParameter[] paramArrayOfShaderParameter)
+  private int assembleProgram(int paramInt1, int paramInt2, GLES20Canvas.ShaderParameter[] paramArrayOfShaderParameter)
   {
     int i = 0;
     int j = GLES20.glCreateProgram();
@@ -200,7 +200,7 @@ public class GLES20Canvas
     draw(paramInt1, paramInt2, paramInt3, paramFloat1, paramFloat2, paramFloat3, paramFloat4, paramGLPaint.getColor(), paramGLPaint.getLineWidth());
   }
   
-  private void draw(ShaderParameter[] paramArrayOfShaderParameter, int paramInt1, int paramInt2, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
+  private void draw(GLES20Canvas.ShaderParameter[] paramArrayOfShaderParameter, int paramInt1, int paramInt2, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
     setMatrix(paramArrayOfShaderParameter, paramFloat1, paramFloat2, paramFloat3, paramFloat4);
     int i = paramArrayOfShaderParameter[0].handle;
@@ -220,7 +220,7 @@ public class GLES20Canvas
   
   private void drawTextureRect(BasicTexture paramBasicTexture, float[] paramArrayOfFloat, RectF paramRectF)
   {
-    ShaderParameter[] arrayOfShaderParameter = prepareTexture(paramBasicTexture);
+    GLES20Canvas.ShaderParameter[] arrayOfShaderParameter = prepareTexture(paramBasicTexture);
     setPosition(arrayOfShaderParameter, 0);
     GLES20.glUniformMatrix4fv(arrayOfShaderParameter[3].handle, 1, false, paramArrayOfFloat, 0);
     checkError();
@@ -299,7 +299,7 @@ public class GLES20Canvas
     }
   }
   
-  private void prepareTexture(BasicTexture paramBasicTexture, int paramInt, ShaderParameter[] paramArrayOfShaderParameter)
+  private void prepareTexture(BasicTexture paramBasicTexture, int paramInt, GLES20Canvas.ShaderParameter[] paramArrayOfShaderParameter)
   {
     int i = 0;
     GLES20.glUseProgram(paramInt);
@@ -326,9 +326,9 @@ public class GLES20Canvas
     checkError();
   }
   
-  private ShaderParameter[] prepareTexture(BasicTexture paramBasicTexture)
+  private GLES20Canvas.ShaderParameter[] prepareTexture(BasicTexture paramBasicTexture)
   {
-    ShaderParameter[] arrayOfShaderParameter;
+    GLES20Canvas.ShaderParameter[] arrayOfShaderParameter;
     int i;
     if (paramBasicTexture.getTarget() == 3553) {
       if (paramBasicTexture.getFormatType() == 1)
@@ -365,7 +365,7 @@ public class GLES20Canvas
     Log.v(TAG, paramString.toString());
   }
   
-  private void setMatrix(ShaderParameter[] paramArrayOfShaderParameter, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
+  private void setMatrix(GLES20Canvas.ShaderParameter[] paramArrayOfShaderParameter, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
     Matrix.translateM(this.mTempMatrix, 0, this.mMatrices, this.mCurrentMatrixIndex, paramFloat1, paramFloat2, 0.0F);
     Matrix.scaleM(this.mTempMatrix, 0, paramFloat3, paramFloat4, 1.0F);
@@ -374,7 +374,7 @@ public class GLES20Canvas
     checkError();
   }
   
-  private void setPosition(ShaderParameter[] paramArrayOfShaderParameter, int paramInt)
+  private void setPosition(GLES20Canvas.ShaderParameter[] paramArrayOfShaderParameter, int paramInt)
   {
     GLES20.glBindBuffer(34962, this.mBoxCoordinates);
     checkError();
@@ -828,53 +828,10 @@ public class GLES20Canvas
   {
     return uploadBuffer(paramFloatBuffer, 4);
   }
-  
-  private static class AttributeShaderParameter
-    extends GLES20Canvas.ShaderParameter
-  {
-    public AttributeShaderParameter(String paramString)
-    {
-      super();
-    }
-    
-    public void loadHandle(int paramInt)
-    {
-      this.handle = GLES20.glGetAttribLocation(paramInt, this.mName);
-      GLES20Canvas.checkError();
-    }
-  }
-  
-  private static abstract class ShaderParameter
-  {
-    public int handle;
-    protected final String mName;
-    
-    public ShaderParameter(String paramString)
-    {
-      this.mName = paramString;
-    }
-    
-    public abstract void loadHandle(int paramInt);
-  }
-  
-  private static class UniformShaderParameter
-    extends GLES20Canvas.ShaderParameter
-  {
-    public UniformShaderParameter(String paramString)
-    {
-      super();
-    }
-    
-    public void loadHandle(int paramInt)
-    {
-      this.handle = GLES20.glGetUniformLocation(paramInt, this.mName);
-      GLES20Canvas.checkError();
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.TMG.opengl.glrenderer.GLES20Canvas
  * JD-Core Version:    0.7.0.1
  */

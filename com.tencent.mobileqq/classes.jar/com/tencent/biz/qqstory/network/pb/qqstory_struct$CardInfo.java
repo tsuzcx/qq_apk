@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBEnumField;
 import com.tencent.mobileqq.pb.PBField;
 
 public final class qqstory_struct$CardInfo
-  extends MessageMicro
+  extends MessageMicro<CardInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField card_id = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -26,7 +26,7 @@ public final class qqstory_struct$CardInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_struct.CardInfo
  * JD-Core Version:    0.7.0.1
  */

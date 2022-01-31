@@ -1,23 +1,17 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.armap.config.ARMapConfig.WealthGodActTime;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.QQMapActivity;
 
-public final class ablx
-  implements Parcelable.Creator
+public class ablx
+  implements DialogInterface.OnClickListener
 {
-  public ARMapConfig.WealthGodActTime a(Parcel paramParcel)
-  {
-    return new ARMapConfig.WealthGodActTime(paramParcel);
-  }
+  public ablx(QQMapActivity paramQQMapActivity) {}
   
-  public ARMapConfig.WealthGodActTime[] a(int paramInt)
-  {
-    return new ARMapConfig.WealthGodActTime[paramInt];
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ablx
  * JD-Core Version:    0.7.0.1
  */

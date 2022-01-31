@@ -1,22 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.photo.PhotoPreviewActivity;
-import cooperation.qzone.report.lp.LpReportInfo_pf00064;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 
 public class xeb
-  implements View.OnClickListener
+  extends WebViewPlugin
 {
-  public xeb(PhotoPreviewActivity paramPhotoPreviewActivity) {}
-  
-  public void onClick(View paramView)
-  {
-    this.a.h();
-    LpReportInfo_pf00064.allReport(603, 3);
-  }
+  public static String[] a = { "http://htdata.qq.com/cgi-bin/httpconn?htcmd=0x6ff0080", "http://htdata2.qq.com/cgi-bin/httpconn?htcmd=0x6ff0080" };
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     xeb
  * JD-Core Version:    0.7.0.1
  */

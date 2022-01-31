@@ -1,19 +1,18 @@
-import dov.com.tencent.mobileqq.shortvideo.musicwavesupport.MusicSoundFile.ProgressListener;
-import dov.com.tencent.mobileqq.shortvideo.musicwavesupport.MusicWaveformManager;
+import android.view.View;
 
-public class aoyp
-  implements MusicSoundFile.ProgressListener
+class aoyp
+  implements apcz
 {
-  public aoyp(MusicWaveformManager paramMusicWaveformManager) {}
+  aoyp(aoym paramaoym) {}
   
-  public boolean a(double paramDouble)
+  public void onClick(View paramView)
   {
-    return MusicWaveformManager.a(this.a);
+    apck.b(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_Aovk.c());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aoyp
  * JD-Core Version:    0.7.0.1
  */

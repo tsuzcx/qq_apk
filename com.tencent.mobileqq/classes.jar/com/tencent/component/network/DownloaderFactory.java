@@ -15,8 +15,6 @@ import com.tencent.component.network.module.base.inter.IDownloadConfig;
 import com.tencent.component.network.module.base.inter.Log;
 import com.tencent.component.network.module.common.DnsService;
 import java.util.concurrent.Executor;
-import pnw;
-import pnx;
 
 public class DownloaderFactory
 {
@@ -24,14 +22,14 @@ public class DownloaderFactory
   private static volatile DownloaderFactory mInstance = null;
   private Downloader mCommonDownloader;
   private Downloader mImageDownloader;
-  private FileHandler mImageFileHandler = new pnw(this);
+  private FileHandler mImageFileHandler = new DownloaderFactory.1(this);
   private PortConfigStrategy mPortConfig;
   protected IPStrategy pBackupIPConfig;
   protected IPStrategy pDirectIPConfig;
   
   private DownloaderFactory(Context paramContext)
   {
-    Global.a(paramContext.getApplicationContext());
+    Global.init(paramContext.getApplicationContext());
   }
   
   public static Downloader createDownloader(String paramString)
@@ -41,11 +39,11 @@ public class DownloaderFactory
   
   public static Downloader createDownloader(String paramString, Executor paramExecutor1, Executor paramExecutor2)
   {
-    if ((Global.a() == null) || (TextUtils.isEmpty(paramString))) {
+    if ((Global.getContext() == null) || (TextUtils.isEmpty(paramString))) {
       return null;
     }
-    DnsService.a().a(paramExecutor2);
-    paramString = new DownloaderImpl(Global.a(), paramString, 2);
+    DnsService.getInstance().setThreadPoolExecutor(paramExecutor2);
+    paramString = new DownloaderImpl(Global.getContext(), paramString, 2);
     paramString.setExecutor(paramExecutor1);
     return paramString;
   }
@@ -57,13 +55,13 @@ public class DownloaderFactory
   
   public static Downloader createImageDownloader(String paramString, Executor paramExecutor1, Executor paramExecutor2)
   {
-    if ((Global.a() == null) || (TextUtils.isEmpty(paramString))) {
+    if ((Global.getContext() == null) || (TextUtils.isEmpty(paramString))) {
       return null;
     }
-    DnsService.a().a(paramExecutor2);
-    paramString = new DownloaderImpl(Global.a(), paramString, 1);
+    DnsService.getInstance().setThreadPoolExecutor(paramExecutor2);
+    paramString = new DownloaderImpl(Global.getContext(), paramString, 1);
     paramString.setExecutor(paramExecutor1);
-    ImageDownloaderInitializer.a(paramString);
+    ImageDownloaderInitializer.initImageDownloader(paramString);
     return paramString;
   }
   
@@ -81,8 +79,8 @@ public class DownloaderFactory
   
   public static void init(IDownloadConfig paramIDownloadConfig, Log paramLog)
   {
-    Config.a(paramIDownloadConfig);
-    QDLog.a(paramLog);
+    Config.setConfig(paramIDownloadConfig);
+    QDLog.setLog(paramLog);
   }
   
   public IPStrategy getBackupIpStrategy()
@@ -104,8 +102,8 @@ public class DownloaderFactory
       }
     }
     finally {}
-    DownloaderImpl localDownloaderImpl = new DownloaderImpl(Global.a(), "common", 2);
-    localDownloaderImpl.setUrlKeyGenerator(UrlKeyGenerator.b);
+    DownloaderImpl localDownloaderImpl = new DownloaderImpl(Global.getContext(), "common", 2);
+    localDownloaderImpl.setUrlKeyGenerator(UrlKeyGenerator.GENERATOR_DESPITE_HASH);
     localDownloaderImpl.enableResumeTransfer();
     this.mCommonDownloader = localDownloaderImpl;
     return localDownloaderImpl;
@@ -130,11 +128,11 @@ public class DownloaderFactory
       }
     }
     finally {}
-    DownloaderImpl localDownloaderImpl = new DownloaderImpl(Global.a(), "image", 1);
-    localDownloaderImpl.setUrlKeyGenerator(UrlKeyGenerator.b);
+    DownloaderImpl localDownloaderImpl = new DownloaderImpl(Global.getContext(), "image", 1);
+    localDownloaderImpl.setUrlKeyGenerator(UrlKeyGenerator.GENERATOR_DESPITE_HASH);
     localDownloaderImpl.setFileHandler(this.mImageFileHandler);
     localDownloaderImpl.enableResumeTransfer();
-    localDownloaderImpl.setContentHandler(new pnx(this));
+    localDownloaderImpl.setContentHandler(new DownloaderFactory.2(this));
     this.mImageDownloader = localDownloaderImpl;
     return localDownloaderImpl;
   }

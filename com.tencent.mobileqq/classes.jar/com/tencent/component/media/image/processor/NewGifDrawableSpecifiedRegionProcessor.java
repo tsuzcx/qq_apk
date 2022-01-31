@@ -7,8 +7,8 @@ import com.tencent.component.media.gif.NewGifDrawable;
 public class NewGifDrawableSpecifiedRegionProcessor
   extends SpecifiedSizeCropByPivotProcessor
 {
-  private final Rect a = new Rect();
   public int height;
+  private final Rect mDisplayRect = new Rect();
   public int width;
   
   public NewGifDrawableSpecifiedRegionProcessor(int paramInt1, int paramInt2, Rect paramRect)
@@ -17,7 +17,7 @@ public class NewGifDrawableSpecifiedRegionProcessor
     this.width = paramInt1;
     this.height = paramInt2;
     if (paramRect != null) {
-      this.a.set(paramRect);
+      this.mDisplayRect.set(paramRect);
     }
   }
   
@@ -50,20 +50,20 @@ public class NewGifDrawableSpecifiedRegionProcessor
           if (i <= j) {
             break;
           }
-          k = this.a.left + this.a.right;
+          k = this.mDisplayRect.left + this.mDisplayRect.right;
           localDrawable = paramDrawable;
         } while (k <= 0);
-        i = (i - j) * this.a.left / k;
+        i = (i - j) * this.mDisplayRect.left / k;
         paramDrawable.setSrcRect(new Rect(i, 0, i + j, j));
         paramDrawable.setIntrinsicWidth(j);
         paramDrawable.setIntrinsicHeight(j);
         return paramDrawable;
         localDrawable = paramDrawable;
       } while (i >= j);
-      k = this.a.top + this.a.bottom;
+      k = this.mDisplayRect.top + this.mDisplayRect.bottom;
       localDrawable = paramDrawable;
     } while (k <= 0);
-    int j = (j - i) * this.a.top / k;
+    int j = (j - i) * this.mDisplayRect.top / k;
     paramDrawable.setSrcRect(new Rect(0, j, i, j + i));
     paramDrawable.setIntrinsicWidth(i);
     paramDrawable.setIntrinsicHeight(i);

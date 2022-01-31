@@ -1,31 +1,14 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.net.InetAddress;
-import java.net.URL;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 
-public final class pcl
-  implements Runnable
+class pcl
+  implements ViewBase.OnClickListener
 {
-  public pcl(String paramString) {}
+  pcl(pck parampck) {}
   
-  public void run()
+  public void onClick(ViewBase paramViewBase)
   {
-    try
-    {
-      URL localURL = new URL(this.a);
-      String str = InetAddress.getByName(localURL.getHost()).getHostAddress();
-      if (!TextUtils.isEmpty(str)) {
-        BaseApplicationImpl.getContext().getSharedPreferences("qbiz_host_ip_map", 0).edit().putString(localURL.getHost(), str).commit();
-      }
-      return;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
+    pcj.a(this.a.jdField_a_of_type_Pcj).a(this.a.jdField_a_of_type_Int, paramViewBase, this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean);
   }
 }
 

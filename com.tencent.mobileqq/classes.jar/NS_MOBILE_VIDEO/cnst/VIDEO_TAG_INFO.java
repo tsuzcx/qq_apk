@@ -1,6 +1,9 @@
 package NS_MOBILE_VIDEO.cnst;
 
-public abstract interface VIDEO_TAG_INFO {}
+public abstract interface VIDEO_TAG_INFO
+{
+  public static final String value = "TAG_INFO";
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar

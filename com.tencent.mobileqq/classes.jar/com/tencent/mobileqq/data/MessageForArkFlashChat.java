@@ -1,14 +1,18 @@
 package com.tencent.mobileqq.data;
 
+import ajjy;
 import com.tencent.ark.ark;
+import com.tencent.biz.qqstory.view.widget.AutoStartProgressBar;
 import com.tencent.mobileqq.activity.aio.item.ArkFlashChatContainerWrapper;
 import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 public class MessageForArkFlashChat
   extends ChatMessage
 {
   public ArkFlashChatContainerWrapper arkContainer;
   public ArkFlashChatMessage ark_app_message;
+  public WeakReference<AutoStartProgressBar> mSendingProgress;
   
   protected void doParse()
   {
@@ -27,7 +31,12 @@ public class MessageForArkFlashChat
     if (this.ark_app_message != null) {
       return this.ark_app_message.getSummery();
     }
-    return "[轻应用]";
+    return ajjy.a(2131640830);
+  }
+  
+  public boolean isSupportReply()
+  {
+    return true;
   }
   
   public void playAnim()
@@ -47,12 +56,12 @@ public class MessageForArkFlashChat
     }
   }
   
-  protected void postRead()
+  public void postRead()
   {
     parse();
   }
   
-  protected void prewrite()
+  public void prewrite()
   {
     byte[] arrayOfByte = null;
     if (this.ark_app_message != null) {
@@ -70,6 +79,12 @@ public class MessageForArkFlashChat
       return;
     }
     finally {}
+  }
+  
+  public void setupSendLoading(AutoStartProgressBar paramAutoStartProgressBar)
+  {
+    this.mSendingProgress = new WeakReference(paramAutoStartProgressBar);
+    ((AutoStartProgressBar)this.mSendingProgress.get()).setTag(this);
   }
   
   public void stopAnim()

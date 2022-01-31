@@ -9,13 +9,13 @@ import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class AudioTransClientTransInfo$InfoC2SCreateSessionRsp
-  extends MessageMicro
+  extends MessageMicro<InfoC2SCreateSessionRsp>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 32, 40 }, new String[] { "enum_channel_type", "rpt_msg_interface_list", "bool_client_ans", "uint32_combine_num", "enum_translator_type" }, new Object[] { Integer.valueOf(1), null, Boolean.valueOf(false), Integer.valueOf(0), Integer.valueOf(1) }, InfoC2SCreateSessionRsp.class);
   public final PBBoolField bool_client_ans = PBField.initBool(false);
   public final PBEnumField enum_channel_type = PBField.initEnum(1);
   public final PBEnumField enum_translator_type = PBField.initEnum(1);
-  public final PBRepeatMessageField rpt_msg_interface_list = PBField.initRepeatMessage(AudioTransCommon.NetAddr.class);
+  public final PBRepeatMessageField<AudioTransCommon.NetAddr> rpt_msg_interface_list = PBField.initRepeatMessage(AudioTransCommon.NetAddr.class);
   public final PBUInt32Field uint32_combine_num = PBField.initUInt32(0);
 }
 

@@ -1,25 +1,104 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
+import android.annotation.TargetApi;
+import android.support.annotation.NonNull;
+import java.io.File;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
+@TargetApi(14)
 public class sim
-  implements Runnable
+  extends sii
 {
-  public sim(ChatSettingForTroop paramChatSettingForTroop) {}
+  protected int a;
+  protected int b;
   
-  public void run()
+  public sim(@NonNull String[] paramArrayOfString)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData == null) {
-      return;
+    super(paramArrayOfString);
+    paramArrayOfString = (spz)sqg.a(10);
+    this.a = ((Integer)paramArrayOfString.b("StoryFriendCacheCountMax", Integer.valueOf(300))).intValue();
+    this.jdField_b_of_type_Int = ((Integer)paramArrayOfString.b("StoryFriendCacheCountNormal", Integer.valueOf(200))).intValue();
+  }
+  
+  protected void a(String[] paramArrayOfString, sij paramsij)
+  {
+    int m = paramArrayOfString.length;
+    int i = 0;
+    String str;
+    int j;
+    if (i < m)
+    {
+      str = paramArrayOfString[i];
+      if (paramsij.a)
+      {
+        j = 50;
+        label31:
+        if (!a(str, j)) {
+          break label60;
+        }
+      }
     }
-    ArrayList localArrayList = TroopInfoActivity.a(this.a, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData);
-    this.a.jdField_a_of_type_AndroidOsHandler.post(new sin(this, localArrayList));
+    for (;;)
+    {
+      i += 1;
+      break;
+      j = this.a;
+      break label31;
+      label60:
+      File localFile = new File(str);
+      double d = a(localFile);
+      File[] arrayOfFile = localFile.listFiles();
+      ArrayList localArrayList = new ArrayList();
+      int k = arrayOfFile.length;
+      j = 0;
+      while (j < k)
+      {
+        localArrayList.add(new sin(this, arrayOfFile[j]));
+        j += 1;
+      }
+      Collections.sort(localArrayList);
+      int n = localArrayList.size();
+      k = 0;
+      j = 0;
+      while (j < n)
+      {
+        if (j % 150 == 0) {}
+        try
+        {
+          Thread.sleep(100L);
+          if ((j % 20 == 0) && (a(str, this.jdField_b_of_type_Int))) {
+            return;
+          }
+        }
+        catch (InterruptedException localInterruptedException)
+        {
+          for (;;)
+          {
+            localInterruptedException.printStackTrace();
+          }
+          a(((sin)localArrayList.get(j)).a);
+          k += 1;
+          j += 1;
+        }
+      }
+      paramsij.jdField_b_of_type_Double = (d - a(localFile) + paramsij.jdField_b_of_type_Double);
+      paramsij.jdField_b_of_type_Int += k;
+    }
+  }
+  
+  public boolean a(String paramString, int paramInt)
+  {
+    paramString = new File(paramString).listFiles();
+    if (paramString == null) {}
+    while (paramString.length <= paramInt) {
+      return true;
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     sim
  * JD-Core Version:    0.7.0.1
  */

@@ -1,32 +1,13 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import java.util.List;
 
-public class sdm
-  extends Handler
+public abstract interface sdm
 {
-  public sdm(ChatHistory paramChatHistory) {}
-  
-  public void handleMessage(Message paramMessage)
-  {
-    if (paramMessage.what == 1)
-    {
-      if ((this.a.a != null) && (this.a.a.isShowing()) && (!this.a.isFinishing())) {
-        this.a.a.dismiss();
-      }
-      this.a.a = new QQProgressDialog(this.a, this.a.getTitleBarHeight());
-      this.a.a.setCancelable(false);
-      this.a.a.c(2131434499);
-      if (!this.a.isFinishing()) {
-        this.a.a.show();
-      }
-    }
-  }
+  public abstract void a(ErrorMessage paramErrorMessage, List<String> paramList);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     sdm
  * JD-Core Version:    0.7.0.1
  */

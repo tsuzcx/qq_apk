@@ -1,13 +1,14 @@
 package com.tencent.mobileqq.activity.contacts.view.pullrefresh;
 
+import afhn;
 import android.widget.Scroller;
 
 public class AutoScroller
   implements Runnable
 {
   private int jdField_a_of_type_Int;
+  private afhn jdField_a_of_type_Afhn;
   private Scroller jdField_a_of_type_AndroidWidgetScroller;
-  private AutoScroller.ScrollerCallback jdField_a_of_type_ComTencentMobileqqActivityContactsViewPullrefreshAutoScroller$ScrollerCallback;
   private CommonRefreshLayout jdField_a_of_type_ComTencentMobileqqActivityContactsViewPullrefreshCommonRefreshLayout;
   private boolean jdField_a_of_type_Boolean;
   private boolean b;
@@ -23,8 +24,8 @@ public class AutoScroller
     this.jdField_a_of_type_Int = 0;
     this.jdField_a_of_type_Boolean = false;
     this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewPullrefreshCommonRefreshLayout.removeCallbacks(this);
-    if ((!this.b) && (this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewPullrefreshAutoScroller$ScrollerCallback != null)) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewPullrefreshAutoScroller$ScrollerCallback.a();
+    if ((!this.b) && (this.jdField_a_of_type_Afhn != null)) {
+      this.jdField_a_of_type_Afhn.a();
     }
   }
   
@@ -54,9 +55,9 @@ public class AutoScroller
     this.jdField_a_of_type_Boolean = true;
   }
   
-  public void a(AutoScroller.ScrollerCallback paramScrollerCallback)
+  public void a(afhn paramafhn)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewPullrefreshAutoScroller$ScrollerCallback = paramScrollerCallback;
+    this.jdField_a_of_type_Afhn = paramafhn;
   }
   
   public boolean a()
@@ -80,8 +81,8 @@ public class AutoScroller
       return;
     }
     this.jdField_a_of_type_Int = j;
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewPullrefreshAutoScroller$ScrollerCallback != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewPullrefreshAutoScroller$ScrollerCallback.a(j - k);
+    if (this.jdField_a_of_type_Afhn != null) {
+      this.jdField_a_of_type_Afhn.a(j - k);
     }
     this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewPullrefreshCommonRefreshLayout.post(this);
   }

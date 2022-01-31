@@ -1,20 +1,18 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.newshare.job.AddPollViewJob;
-import com.tencent.biz.qqstory.newshare.mode.base.ShareModeBase;
-import com.tencent.biz.qqstory.newshare.model.ShareQQData;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyFollowActivity;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyFollowActivity.1.1;
+import com.tencent.mobileqq.app.ThreadManager;
 
 public class nks
-  extends AddPollViewJob
+  implements View.OnClickListener
 {
-  public nks(ShareModeBase paramShareModeBase, StoryVideoItem paramStoryVideoItem, ShareQQData paramShareQQData)
-  {
-    super(paramStoryVideoItem);
-  }
+  public nks(ReadInJoyFollowActivity paramReadInJoyFollowActivity) {}
   
-  public boolean b()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareQQData.a = ((String)a("result"));
-    return true;
+    this.a.a.a(true);
+    ThreadManager.executeOnSubThread(new ReadInJoyFollowActivity.1.1(this));
   }
 }
 

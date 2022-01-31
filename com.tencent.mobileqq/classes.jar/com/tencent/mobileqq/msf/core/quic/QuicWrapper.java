@@ -45,7 +45,7 @@ public class QuicWrapper
   
   public static synchronized native boolean initialize(long paramLong);
   
-  public static native QuicBundle recv(long paramLong, int paramInt1, int paramInt2);
+  public static native QuicWrapper.QuicBundle recv(long paramLong, int paramInt1, int paramInt2);
   
   public static synchronized native void releaseQuicContext(long paramLong);
   
@@ -75,25 +75,6 @@ public class QuicWrapper
   public static native int send(long paramLong, byte[] paramArrayOfByte, int paramInt1, int paramInt2);
   
   public static synchronized native void setLogLevel(int paramInt, boolean paramBoolean);
-  
-  public static class QuicBundle
-  {
-    public byte[] data;
-    public int data_len;
-    public int retcode;
-    
-    public QuicBundle(int paramInt1, byte[] paramArrayOfByte, int paramInt2)
-    {
-      this.retcode = paramInt1;
-      this.data = paramArrayOfByte;
-      this.data_len = paramInt2;
-    }
-    
-    public void putData(byte[] paramArrayOfByte)
-    {
-      this.data = paramArrayOfByte;
-    }
-  }
 }
 
 

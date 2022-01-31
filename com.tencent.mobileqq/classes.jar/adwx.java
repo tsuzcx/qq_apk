@@ -1,107 +1,92 @@
-import android.content.Intent;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.gameparty.GamePartyManager;
-import com.tencent.mobileqq.gameparty.GamePartyManager.AsyncRequestCallback;
-import com.tencent.mobileqq.gameparty.PromptDialogActivity;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.open.agent.report.ReportCenter;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-import tencent.im.s2c.msgtype0x210.submsgtype0xaa.SubMsgType0xaa.GameTeam_StartGameMessage;
+import android.net.Uri;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.structmsg.StructMsgForImageShare;
 
-public class adwx
-  implements GamePartyManager.AsyncRequestCallback
+class adwx
+  implements View.OnClickListener
 {
-  public adwx(GamePartyManager paramGamePartyManager, long paramLong1, SubMsgType0xaa.GameTeam_StartGameMessage paramGameTeam_StartGameMessage, long paramLong2, boolean paramBoolean) {}
+  adwx(adww paramadww) {}
   
-  public void a(String paramString)
+  public void onClick(View paramView)
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)GamePartyManager.a(this.jdField_a_of_type_ComTencentMobileqqGamepartyGamePartyManager).get();
-    if (localQQAppInterface == null) {}
-    for (;;)
+    if (paramView == this.a.a)
     {
-      return;
-      try
+      paramView = paramView.getTag();
+      if ((paramView instanceof StructMsgForImageShare)) {}
+    }
+    do
+    {
+      do
       {
-        paramString = new JSONObject(paramString).getJSONObject("result").getJSONArray("team_list");
-        if (paramString.length() <= 0) {
-          continue;
-        }
-        paramString = paramString.getJSONObject(0);
-        int i;
-        int j;
-        boolean bool;
-        label426:
-        return;
-      }
-      catch (JSONException paramString)
-      {
+        Object localObject2;
+        do
+        {
+          do
+          {
+            return;
+            if (adww.a(((StructMsgForImageShare)paramView).mMsgActionData))
+            {
+              this.a.b((StructMsgForImageShare)paramView, "5");
+              return;
+            }
+          } while (!adww.b(((StructMsgForImageShare)paramView).mMsgActionData));
+          adww.a(this.a, (StructMsgForImageShare)paramView);
+          localObject2 = adww.b(((StructMsgForImageShare)paramView).mMsgActionData);
+        } while ((localObject2 == null) || (localObject2.length <= 2));
+        paramView = "";
+        Object localObject1 = Uri.parse(localObject2[1]);
         try
         {
-          i = paramString.getInt("expire");
-          j = i;
-          if (i <= 0) {
-            j = GamePartyManager.a;
-          }
-          i = paramString.getInt("status");
-          if (QLog.isColorLevel()) {
-            QLog.d("GamePartyManager", 2, "handlePushMsg_StartGame, getTeamContext finished, deltaTime = " + this.jdField_a_of_type_Long + ", expire = " + j + ", status = " + i);
-          }
-          if (this.jdField_a_of_type_Long < j)
-          {
-            paramString = paramString.getJSONObject("leader");
-            bool = localQQAppInterface.getCurrentAccountUin().equals(paramString.getString("uin"));
-            if ((i > 0) && (i < 5))
-            {
-              paramString = new Intent(localQQAppInterface.getApp().getApplicationContext(), PromptDialogActivity.class);
-              paramString.addFlags(268435456);
-              paramString.putExtra("title", this.jdField_a_of_type_TencentImS2cMsgtype0x210Submsgtype0xaaSubMsgType0xaa$GameTeam_StartGameMessage.str_title.get());
-              paramString.putExtra("summary", this.jdField_a_of_type_TencentImS2cMsgtype0x210Submsgtype0xaaSubMsgType0xaa$GameTeam_StartGameMessage.str_summary.get());
-              paramString.putExtra("picUrl", this.jdField_a_of_type_TencentImS2cMsgtype0x210Submsgtype0xaaSubMsgType0xaa$GameTeam_StartGameMessage.str_picUrl.get());
-              paramString.putExtra("appid", this.jdField_a_of_type_TencentImS2cMsgtype0x210Submsgtype0xaaSubMsgType0xaa$GameTeam_StartGameMessage.str_appid.get());
-              paramString.putExtra("packageName", this.jdField_a_of_type_TencentImS2cMsgtype0x210Submsgtype0xaaSubMsgType0xaa$GameTeam_StartGameMessage.str_packageName.get());
-              paramString.putExtra("gamedata", this.jdField_a_of_type_TencentImS2cMsgtype0x210Submsgtype0xaaSubMsgType0xaa$GameTeam_StartGameMessage.str_gamedata.get());
-              paramString.putExtra("leader", bool);
-              paramString.putExtra("createMsgTime", this.b);
-              localQQAppInterface.getApp().startActivity(paramString);
-              if (!this.jdField_a_of_type_Boolean) {
-                break label426;
-              }
-              ReportCenter.a().a(localQQAppInterface.getCurrentAccountUin(), "", "", "2000", "2044", "0", false);
-              return;
-              paramString = paramString;
-              if (QLog.isColorLevel()) {
-                QLog.d("GamePartyManager", 2, "handlePushMsg_StartGame, getTeamContext finished, parse json error e = " + paramString);
-              }
-            }
-          }
-          if (this.jdField_a_of_type_Boolean)
-          {
-            ReportCenter.a().a(localQQAppInterface.getCurrentAccountUin(), "", "", "2000", "2044", "1", false);
-            return;
-          }
+          localObject1 = ((Uri)localObject1).getQueryParameter("article_id");
+          paramView = (View)localObject1;
         }
-        catch (JSONException localJSONException)
+        catch (Exception localException)
         {
           for (;;)
           {
-            i = 0;
+            localException.printStackTrace();
           }
-          ReportCenter.a().a(localQQAppInterface.getCurrentAccountUin(), "", "", "2000", "2043", "0", false);
-          return;
         }
-        ReportCenter.a().a(localQQAppInterface.getCurrentAccountUin(), "", "", "2000", "2043", "1", false);
-      }
+        localObject1 = paramView;
+        if (paramView == null) {
+          localObject1 = "";
+        }
+        paramView = "";
+        if (localObject2.length > 3)
+        {
+          localObject2 = localObject2[3];
+          if (localObject2 != null)
+          {
+            paramView = (View)localObject2;
+            if (((String)localObject2).equals("1")) {}
+          }
+          else
+          {
+            paramView = "";
+          }
+        }
+        ndn.a(null, "", "0X800712E", "0X800712E", 0, 0, (String)localObject1, paramView, "", "");
+        ndn.a("0X800712E", "", (String)localObject1, paramView, "", "");
+        return;
+        if (paramView != this.a.b) {
+          break;
+        }
+        paramView = paramView.getTag();
+      } while (!(paramView instanceof StructMsgForImageShare));
+      this.a.c((StructMsgForImageShare)paramView, "5");
+      return;
+    } while (paramView != this.a.c);
+    paramView = paramView.getTag();
+    if ((paramView instanceof StructMsgForImageShare)) {
+      paramView = (StructMsgForImageShare)paramView;
     }
+    this.a.c(4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     adwx
  * JD-Core Version:    0.7.0.1
  */

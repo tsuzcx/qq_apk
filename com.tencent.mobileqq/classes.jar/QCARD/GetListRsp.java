@@ -10,10 +10,10 @@ import java.util.Map;
 public final class GetListRsp
   extends JceStruct
 {
-  static ArrayList cache_folder_list = new ArrayList();
-  static Map cache_map_folderid_nextindex;
-  public ArrayList folder_list;
-  public Map map_folderid_nextindex;
+  static ArrayList<CouponMobileFolder> cache_folder_list = new ArrayList();
+  static Map<Integer, String> cache_map_folderid_nextindex;
+  public ArrayList<CouponMobileFolder> folder_list;
+  public Map<Integer, String> map_folderid_nextindex;
   public int op_type;
   public int refresh_interval;
   public int req_type;

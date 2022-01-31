@@ -1,34 +1,28 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
-import com.tencent.mobileqq.filemanager.data.FileManagerProxy;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Collections;
-import java.util.List;
+import android.graphics.Bitmap;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import com.tencent.ark.open.ArkAppCacheMgr.OnGetAppIcon;
 
-public class adax
-  implements Runnable
+class adax
+  implements ArkAppCacheMgr.OnGetAppIcon
 {
-  public adax(QfileBaseRecentFileTabView paramQfileBaseRecentFileTabView) {}
+  adax(adaw paramadaw1, adaw paramadaw2) {}
   
-  public void run()
+  public void callback(String paramString, Bitmap paramBitmap)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i(QfileBaseRecentFileTabView.jdField_a_of_type_JavaLangString, 2, "queryFileEntitiesFromDB thread start");
-    }
-    if ((this.a.b != null) && (this.a.b.trim().length() != 0)) {}
-    for (List localList = QfileBaseRecentFileTabView.a(this.a).a().a(this.a.b);; localList = QfileBaseRecentFileTabView.b(this.a).a().a())
+    if (paramBitmap != null)
     {
-      Collections.sort(localList, this.a.jdField_a_of_type_JavaUtilComparator);
-      if (localList != null) {
-        QfileBaseRecentFileTabView.a(this.a, new aday(this, localList));
-      }
+      this.b.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+      this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
       return;
     }
+    this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     adax
  * JD-Core Version:    0.7.0.1
  */

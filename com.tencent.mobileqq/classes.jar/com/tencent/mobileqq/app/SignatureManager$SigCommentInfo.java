@@ -4,7 +4,7 @@ import com.tencent.mobileqq.richstatus.RichStatus;
 import java.io.Serializable;
 
 public class SignatureManager$SigCommentInfo
-  implements Serializable, Comparable
+  implements Serializable, Comparable<SigCommentInfo>
 {
   public String feedsid;
   public RichStatus rs;

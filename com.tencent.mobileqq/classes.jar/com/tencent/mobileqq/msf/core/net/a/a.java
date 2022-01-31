@@ -1,13 +1,11 @@
 package com.tencent.mobileqq.msf.core.net.a;
 
 import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.HandlerThread;
-import android.os.Message;
 import com.tencent.mobileqq.msf.core.MsfCore;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.msf.core.af;
-import com.tencent.mobileqq.msf.core.c.j;
+import com.tencent.mobileqq.msf.core.ag;
+import com.tencent.mobileqq.msf.core.c.k;
+import com.tencent.mobileqq.msf.core.push.g;
 import com.tencent.mobileqq.msf.service.MsfService;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
@@ -26,8 +24,8 @@ public class a
   private static int h = -2;
   private static boolean i = true;
   private static int j = -1;
-  private static a k;
-  private static Handler l;
+  private static a.a k = null;
+  private static Handler l = null;
   private static volatile AtomicBoolean m = new AtomicBoolean(false);
   private static boolean n = false;
   private static boolean o = false;
@@ -40,7 +38,7 @@ public class a
   public a(MsfCore paramMsfCore, int paramInt)
   {
     g = paramMsfCore;
-    k = new a("controllerthread");
+    k = new a.a(this, "controllerthread");
     k.start();
     l = new Handler(k.getLooper(), k);
     i = true;
@@ -59,7 +57,7 @@ public class a
         if (!b.e) {
           return true;
         }
-        if (!g.sender.J.b().b(153, true)) {
+        if (!g.sender.I.b().b(153, true)) {
           QLog.d(a, 1, "failed to pause heartbeat");
         }
         b.e = false;
@@ -84,7 +82,7 @@ public class a
       {
         p = 0;
         j = 0;
-        if (!l.sendEmptyMessageDelayed(18, com.tencent.mobileqq.msf.core.a.a.aL())) {
+        if (!l.sendEmptyMessageDelayed(18, com.tencent.mobileqq.msf.core.a.a.aM())) {
           QLog.d(a, 1, "failed to add msg testHeartbeat");
         }
       }
@@ -128,7 +126,7 @@ public class a
       Object localObject2;
       if (h == 2)
       {
-        localObject1 = g.sender.J.b().a(513);
+        localObject1 = g.sender.I.b().a(513);
         if (localObject1 != null)
         {
           localObject2 = new HashMap();
@@ -137,7 +135,7 @@ public class a
             MsfService.core.getStatReporter().a("dim.Msf.hwSending", true, 0L, 0L, (Map)localObject2, false, false);
           }
         }
-        localObject2 = g.sender.J.b().a(516);
+        localObject2 = g.sender.I.b().a(516);
         if (localObject1 != null)
         {
           localObject1 = new HashMap();
@@ -146,7 +144,7 @@ public class a
             MsfService.core.getStatReporter().a("dim.Msf.hwSendingExTimeout", true, 0L, 0L, (Map)localObject1, false, false);
           }
         }
-        localObject1 = g.sender.J.b().a(514);
+        localObject1 = g.sender.I.b().a(514);
         if (localObject1 != null)
         {
           localObject2 = new HashMap();
@@ -158,7 +156,7 @@ public class a
       }
       else if (h == 1)
       {
-        localObject1 = g.sender.J.b().a(513);
+        localObject1 = g.sender.I.b().a(513);
         if (localObject1 != null)
         {
           localObject2 = new HashMap();
@@ -167,7 +165,7 @@ public class a
             MsfService.core.getStatReporter().a("dim.Msf.NmSending", false, 0L, 0L, (Map)localObject2, false, false);
           }
         }
-        localObject2 = g.sender.J.b().a(516);
+        localObject2 = g.sender.I.b().a(516);
         if (localObject1 != null)
         {
           localObject1 = new HashMap();
@@ -194,7 +192,7 @@ public class a
       HashMap localHashMap;
       if (h == 2)
       {
-        str = g.sender.J.b().a(515);
+        str = g.sender.I.b().a(515);
         if (str != null)
         {
           localHashMap = new HashMap();
@@ -206,7 +204,7 @@ public class a
       }
       else if (h == 1)
       {
-        str = g.sender.J.b().a(515);
+        str = g.sender.I.b().a(515);
         if (str != null)
         {
           localHashMap = new HashMap();
@@ -231,7 +229,7 @@ public class a
     try
     {
       a("exception");
-      g.sender.J.d();
+      g.sender.I.d();
       h = f.b;
       m.set(false);
       return;
@@ -247,7 +245,7 @@ public class a
     QLog.d(a, 1, "resume current mode: " + h);
     try
     {
-      g.sender.J.e();
+      g.sender.I.e();
       h = f.b;
       return;
     }
@@ -273,7 +271,7 @@ public class a
           QLog.d(a, 1, "condition check failed");
           return false;
         }
-        if (!g.sender.J.b().a(156).equals("false")) {
+        if (!g.sender.I.b().a(156).equals("false")) {
           break label189;
         }
         QLog.d(a, 1, "native switch closed");
@@ -293,7 +291,7 @@ public class a
         QLog.d(a, 1, "already in proxy heartbeat, return");
         return true;
       }
-      if (g.sender.J.b().b(151, true))
+      if (g.sender.I.b().b(151, true))
       {
         QLog.d(a, 1, "set heartbeat proxy");
         if (!m())
@@ -319,7 +317,7 @@ public class a
       {
         QLog.d(a, 1, "resume heartbeat");
         b.e = true;
-        g.sender.J.b().b(152, true);
+        g.sender.I.b().b(152, true);
       }
       return true;
     }
@@ -338,7 +336,7 @@ public class a
       {
         QLog.d(a, 1, "stop heartbeat");
         b.e = true;
-        g.sender.J.b().b(153, true);
+        g.sender.I.b().b(153, true);
       }
       return true;
     }
@@ -361,7 +359,7 @@ public class a
         if ((!b.e) && (m.compareAndSet(false, true)))
         {
           j = 0;
-          if (!l.sendEmptyMessageDelayed(18, com.tencent.mobileqq.msf.core.a.a.aL())) {
+          if (!l.sendEmptyMessageDelayed(18, com.tencent.mobileqq.msf.core.a.a.aM())) {
             QLog.d(a, 1, "failed to add msg testHeartbeat");
           }
         }
@@ -406,7 +404,7 @@ public class a
       if ((h == 2) && (NetConnInfoCenter.isMobileConn()) && (!b.e) && (m.compareAndSet(false, true)))
       {
         n = true;
-        if (!l.sendEmptyMessageDelayed(18, com.tencent.mobileqq.msf.core.a.a.aL())) {
+        if (!l.sendEmptyMessageDelayed(18, com.tencent.mobileqq.msf.core.a.a.aM())) {
           QLog.d(a, 1, "failed to add msg testHeartbeat");
         }
       }
@@ -435,113 +433,6 @@ public class a
     catch (Exception localException)
     {
       QLog.d(a, 1, "failed to process screenoff event " + localException.toString());
-    }
-  }
-  
-  class a
-    extends HandlerThread
-    implements Handler.Callback
-  {
-    public a(String paramString)
-    {
-      super();
-    }
-    
-    public boolean handleMessage(Message paramMessage)
-    {
-      int i = paramMessage.what;
-      QLog.d(a.a, 1, "recv msg event " + i);
-      switch (i)
-      {
-      }
-      label240:
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              for (;;)
-              {
-                return false;
-                try
-                {
-                  if (a.o() == 2)
-                  {
-                    QLog.d(a.a, 1, "test heartbeat count:" + a.p() + ", fore:" + a.q() + ", mobile:" + NetConnInfoCenter.isMobileConn());
-                    if (((a.p() != 0) || (a.q())) && ((!a.r()) || (!NetConnInfoCenter.isMobileConn()))) {
-                      break label240;
-                    }
-                    QLog.d(a.a, 1, "testing heartbeat response");
-                    if (b.a())
-                    {
-                      a.s().sendEmptyMessageDelayed(19, 35000L);
-                      return false;
-                    }
-                  }
-                }
-                catch (Exception paramMessage)
-                {
-                  QLog.d(a.a, 1, "process action " + i + " failed " + paramMessage.toString());
-                  return false;
-                }
-              }
-              a.a(0);
-              a.t().set(false);
-              QLog.d(a.a, 1, "encap heartbeat failed");
-              return false;
-              a.a(0);
-              a.t().set(false);
-            } while (a.q());
-            a.s().sendEmptyMessageDelayed(18, com.tencent.mobileqq.msf.core.a.a.aL());
-            return false;
-          } while (a.o() != 2);
-          if (b.b())
-          {
-            QLog.d(a.a, 1, "test heartbeat response failed");
-            a.b(a.u() + 1);
-            if (a.u() <= com.tencent.mobileqq.msf.core.a.a.aQ())
-            {
-              QLog.d(a.a, 1, "test heartbeat retry");
-              a.s().sendEmptyMessageDelayed(18, 30000L);
-              return false;
-            }
-            QLog.d(a.a, 1, "test heartbeat response limit " + a.u());
-            a.a(0);
-            a.t().set(false);
-            return false;
-          }
-          QLog.d(a.a, 1, "test heartbeat response succ");
-          return false;
-        } while ((a.o() != 2) && (a.o() != 1));
-        QLog.d(a.a, 1, "start to report adaptor event");
-        try
-        {
-          a.h();
-          a.i();
-          a.s().sendEmptyMessageDelayed(20, 72000000L);
-          a.a(true);
-          return false;
-        }
-        catch (Exception paramMessage)
-        {
-          QLog.d(a.a, 1, "failed to report", paramMessage);
-          return false;
-        }
-      } while ((a.o() != 2) && (a.o() != 1));
-      QLog.d(a.a, 1, "start to report adaptor event");
-      try
-      {
-        a.h();
-        return false;
-      }
-      catch (Exception paramMessage)
-      {
-        QLog.d(a.a, 1, "failed to report", paramMessage);
-      }
-      return false;
     }
   }
 }

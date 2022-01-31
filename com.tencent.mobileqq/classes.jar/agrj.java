@@ -1,82 +1,34 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.portal.PortalManager;
-import com.tencent.mobileqq.portal.PortalManager.IconReqDetails;
-import com.tencent.mobileqq.portal.PortalUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.ConcurrentHashMap;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DoodleLayout;
 
-class agrj
-  implements Runnable
+public class agrj
+  implements agrm
 {
-  agrj(agri paramagri, String paramString, boolean paramBoolean) {}
+  public agrj(DoodleLayout paramDoodleLayout) {}
   
-  public void run()
+  public void a()
   {
-    PortalManager.IconReqDetails localIconReqDetails = (PortalManager.IconReqDetails)this.jdField_a_of_type_Agri.a.a.get(this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_Agri.a.a.remove(this.jdField_a_of_type_JavaLangString);
-    Object localObject1;
-    JSONObject localJSONObject;
-    if (this.jdField_a_of_type_Boolean)
-    {
-      i = 1;
-      localObject1 = PortalManager.a(this.jdField_a_of_type_Agri.a).a(this.jdField_a_of_type_JavaLangString, false);
-      if (localObject1 != null)
-      {
-        localObject1 = PortalUtils.a((Bitmap)localObject1);
-        localJSONObject = new JSONObject();
-      }
+    if (DoodleLayout.a(this.a) != null) {
+      DoodleLayout.a(this.a).a();
     }
-    try
-    {
-      localJSONObject.put("errorCode", 0);
-      localJSONObject.put("key", localIconReqDetails.jdField_a_of_type_JavaLangString);
-      localJSONObject.put("result", localObject1);
-      if (QLog.isColorLevel()) {
-        QLog.d("PortalManagerhead", 2, "onUpdateCustomHead details.key = " + localIconReqDetails.jdField_a_of_type_JavaLangString);
-      }
-      PortalManager.a(this.jdField_a_of_type_Agri.a, localIconReqDetails.b, localJSONObject.toString(), localIconReqDetails.jdField_a_of_type_Int);
-      return;
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    if (DoodleLayout.a(this.a) != null) {
+      DoodleLayout.a(this.a).a(paramInt1, paramInt2);
     }
-    catch (JSONException localJSONException)
-    {
-      localJSONException.printStackTrace();
+  }
+  
+  public void b()
+  {
+    if (DoodleLayout.a(this.a) != null) {
+      DoodleLayout.a(this.a).a(this.a.a(true, false));
     }
-    finally
-    {
-      try
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("PortalManagerhead", 2, "error heppened info = " + localJSONObject);
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("PortalManagerhead", 2, "onUpdateCustomHead details.key = " + localIconReqDetails.jdField_a_of_type_JavaLangString);
-        }
-        PortalManager.a(this.jdField_a_of_type_Agri.a, localIconReqDetails.b, localIconReqDetails.jdField_a_of_type_Int, null, -1, "get bitmap failed!");
-        return;
-      }
-      finally
-      {
-        i = 0;
-      }
-      localObject2 = finally;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("PortalManagerhead", 2, "onUpdateCustomHead details.key = " + localIconReqDetails.jdField_a_of_type_JavaLangString);
-    }
-    if (i != 0)
-    {
-      PortalManager.a(this.jdField_a_of_type_Agri.a, localIconReqDetails.b, localJSONObject.toString(), localIconReqDetails.jdField_a_of_type_Int);
-      return;
-    }
-    throw localObject2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     agrj
  * JD-Core Version:    0.7.0.1
  */

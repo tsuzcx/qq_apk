@@ -1,29 +1,28 @@
-import com.tencent.biz.pubaccount.ecshopassit.BusinessReporter;
-import com.tencent.biz.webviewplugin.BusinessReportPlugin;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
+import java.io.BufferedReader;
 
-public final class lcc
-  implements Runnable
+public class lcc
 {
-  public lcc(String paramString, WebViewPluginEngine paramWebViewPluginEngine) {}
+  boolean a;
+  boolean b;
   
-  public void run()
+  public void a(BufferedReader paramBufferedReader)
   {
-    
-    if ((BusinessReporter.a(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPluginEngine != null))
+    if (!this.b)
     {
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPluginEngine.a(new String[] { "JD_REPORT" });
-      WebViewPlugin localWebViewPlugin = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPluginEngine.a("JD_REPORT");
-      if (localWebViewPlugin != null) {
-        ((BusinessReportPlugin)localWebViewPlugin).b(this.jdField_a_of_type_JavaLangString);
-      }
+      this.a = lbz.a(paramBufferedReader, "active");
+      return;
     }
+    this.a = true;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.b = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lcc
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,67 @@
-import android.content.ContentValues;
-import com.tencent.mobileqq.app.proxy.DataLineMsgProxy;
-import com.tencent.mobileqq.app.proxy.ProxyListener;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
+import android.content.Intent;
+import android.os.Message;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.AuthDevOpenUgActivity;
+import com.tencent.mobileqq.activity.LoginInfoActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import mqq.manager.AccountManager;
+import mqq.observer.WtloginObserver;
+import mqq.os.MqqHandler;
+import oicq.wlogin_sdk.devicelock.DevlockInfo;
+import oicq.wlogin_sdk.request.WUserSigInfo;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
 public class aabm
-  implements Runnable
+  extends WtloginObserver
 {
-  public aabm(DataLineMsgProxy paramDataLineMsgProxy, String paramString1, ContentValues paramContentValues, String paramString2, String[] paramArrayOfString, ProxyListener paramProxyListener) {}
+  public aabm(AuthDevOpenUgActivity paramAuthDevOpenUgActivity) {}
   
-  public void run()
+  public void OnCheckDevLockSms(WUserSigInfo paramWUserSigInfo, int paramInt, ErrMsg paramErrMsg)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppProxyDataLineMsgProxy.a.a(String.valueOf(0), 0, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidContentContentValues, this.b, this.jdField_a_of_type_ArrayOfJavaLangString, 1, this.jdField_a_of_type_ComTencentMobileqqAppProxyProxyListener);
+    if (paramInt == 0)
+    {
+      paramWUserSigInfo = (AccountManager)this.a.app.getManager(0);
+      if (paramWUserSigInfo != null) {
+        paramWUserSigInfo.refreshDA2(this.a.app.getCurrentAccountUin(), null);
+      }
+      anoc.a().a(this.a.app, this.a, this.a.app.getCurrentAccountUin(), true);
+      bbmy.a(this.a.getApplicationContext(), 2, this.a.getString(2131626508), 0).b(this.a.getTitleBarHeight());
+      paramWUserSigInfo = this.a.app.getHandler(LoginInfoActivity.class);
+      if (paramWUserSigInfo != null) {
+        paramWUserSigInfo.obtainMessage(20140331, 1, 0).sendToTarget();
+      }
+      AuthDevOpenUgActivity.a(this.a, true, 0);
+      paramErrMsg = new Intent();
+      paramErrMsg.putExtra("auth_dev_open", true);
+      if (AuthDevOpenUgActivity.a(this.a) != null) {}
+      for (paramWUserSigInfo = AuthDevOpenUgActivity.a(this.a).Mobile;; paramWUserSigInfo = "")
+      {
+        paramErrMsg.putExtra("phone_num", paramWUserSigInfo);
+        this.a.a(-1, paramErrMsg);
+        return;
+      }
+    }
+    if ((paramErrMsg != null) && (!TextUtils.isEmpty(paramErrMsg.getMessage())))
+    {
+      bbmy.a(this.a.getApplicationContext(), 1, paramErrMsg.getMessage(), 0).b(this.a.getTitleBarHeight());
+      return;
+    }
+    bbmy.a(this.a.getApplicationContext(), 1, this.a.getString(2131626559), 0).b(this.a.getTitleBarHeight());
+  }
+  
+  public void OnCheckDevLockStatus(WUserSigInfo paramWUserSigInfo, DevlockInfo paramDevlockInfo, int paramInt, ErrMsg paramErrMsg)
+  {
+    if ((paramInt != 0) || (paramDevlockInfo == null))
+    {
+      bbmy.a(this.a, this.a.getString(2131626567), 0).b(this.a.getTitleBarHeight());
+      return;
+    }
+    AuthDevOpenUgActivity.a(this.a, paramDevlockInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aabm
  * JD-Core Version:    0.7.0.1
  */

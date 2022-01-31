@@ -1,19 +1,31 @@
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.PublicAccountHandler;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.service.message.MessagePBElemDecoder;
-import msf.msgcomm.msg_comm.Msg;
-import msf.msgcomm.msg_comm.MsgHead;
 
-public class aicd
-  implements Runnable
+class aicd
+  implements View.OnClickListener
 {
-  public aicd(MessagePBElemDecoder paramMessagePBElemDecoder, msg_comm.Msg paramMsg) {}
+  aicd(aicc paramaicc) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    ((PublicAccountHandler)MessagePBElemDecoder.a(this.jdField_a_of_type_ComTencentMobileqqServiceMessageMessagePBElemDecoder).b.a(11)).a(String.valueOf(this.jdField_a_of_type_MsfMsgcommMsg_comm$Msg.msg_head.from_uin.get()), 0L, 1);
+    paramView = paramView.getTag();
+    if ((paramView != null) && ((paramView instanceof aicj)))
+    {
+      paramView = (aicj)paramView;
+      azgu.a(aicc.a(this.a), aicc.a(this.a), paramView.a);
+      azks localazks = (azks)aicc.a(this.a).getManager(203);
+      if ((localazks != null) && (localazks.a(aicc.a(this.a), paramView.a, aicc.a(this.a)))) {
+        localazks.a(aicc.a(this.a), paramView.a);
+      }
+      if (aicc.a(this.a) != null) {}
+    }
+    else
+    {
+      return;
+    }
+    awqx.b(aicc.a(this.a).app, "dc00898", "", "", "", "0X8009F9F", 0, 0, paramView.a, "", "", "");
   }
 }
 

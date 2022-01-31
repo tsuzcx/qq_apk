@@ -1,25 +1,27 @@
-import android.os.MessageQueue.IdleHandler;
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
-import com.tencent.mobileqq.olympic.view.ScanIconAnimateView;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.activity.qwallet.fragment.ThemeHbFragment;
+import com.tencent.mobileqq.widget.AnimationView;
+import com.tencent.mobileqq.widget.AnimationView.MyAnimationListener;
 
 public class agnu
-  implements MessageQueue.IdleHandler
+  implements AnimationView.MyAnimationListener
 {
-  public agnu(ScanTorchActivity paramScanTorchActivity) {}
+  public agnu(ThemeHbFragment paramThemeHbFragment) {}
   
-  public boolean queueIdle()
+  public void onAnimationEnd(AnimationView paramAnimationView) {}
+  
+  public void onAnimationRepeat(AnimationView paramAnimationView) {}
+  
+  public void onAnimationStart(AnimationView paramAnimationView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ScanTorchActivity", 2, "queueIdle called ");
+    if (ThemeHbFragment.a(this.a).getChildCount() > 0) {
+      ThemeHbFragment.a(this.a).removeViewAt(0);
     }
-    this.a.a.c();
-    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     agnu
  * JD-Core Version:    0.7.0.1
  */

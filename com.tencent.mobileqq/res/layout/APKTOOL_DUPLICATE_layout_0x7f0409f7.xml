@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="188.0dip" android:layout_height="46.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.qzone.widget.AsyncImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2c8d" android:layout_width="30.0dip" android:layout_height="30.0dip" android:layout_marginLeft="10.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021abf" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
-    <TextView android:textSize="16.0dip" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2c8e" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:layout_marginRight="10.0dip" android:text="好友名字" android:singleLine="true" android:layout_toRightOf="@id/APKTOOL_DUPLICATE_id_0x7f0a2c8d" android:layout_centerVertical="true" />
-    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2c8a" android:background="#35ffffff" android:layout_width="fill_parent" android:layout_height="2.0px" android:layout_alignParentBottom="true" />
-</RelativeLayout>

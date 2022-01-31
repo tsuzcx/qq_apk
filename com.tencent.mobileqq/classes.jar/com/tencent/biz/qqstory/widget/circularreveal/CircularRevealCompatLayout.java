@@ -36,14 +36,6 @@ public class CircularRevealCompatLayout
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public float a()
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      return this.c;
-    }
-    return -1.0F;
-  }
-  
   protected void dispatchDraw(Canvas paramCanvas)
   {
     if (this.jdField_a_of_type_Boolean)
@@ -117,7 +109,7 @@ public class CircularRevealCompatLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.biz.qqstory.widget.circularreveal.CircularRevealCompatLayout
  * JD-Core Version:    0.7.0.1
  */

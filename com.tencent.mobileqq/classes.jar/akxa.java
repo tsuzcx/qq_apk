@@ -1,19 +1,24 @@
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserScreenShotHandler;
+import android.os.Bundle;
 
-public class akxa
-  implements Runnable
+public final class akxa
 {
-  public akxa(SwiftBrowserScreenShotHandler paramSwiftBrowserScreenShotHandler) {}
-  
-  public void run()
+  public static Bundle a(Bundle paramBundle)
   {
-    this.a.c();
-    this.a.b(null);
+    Bundle localBundle = paramBundle;
+    if (paramBundle == null) {
+      localBundle = new Bundle();
+    }
+    paramBundle = new akxf(localBundle);
+    paramBundle.a(10L);
+    paramBundle.b(true);
+    paramBundle.a(true);
+    paramBundle.b(4096L);
+    return paramBundle.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     akxa
  * JD-Core Version:    0.7.0.1
  */

@@ -1,38 +1,64 @@
-import com.tencent.mobileqq.armap.ipc.ArMapIPC;
-import com.tencent.mobileqq.armap.ipc.IPCConstants;
+import android.content.res.Resources;
+import android.graphics.drawable.Animatable;
+import android.graphics.drawable.Drawable;
+import android.os.Bundle;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCConnection;
-import eipc.EIPCOnGetConnectionListener;
-import eipc.EIPCResult;
 
 public class abmv
-  implements EIPCOnGetConnectionListener
+  implements axlx
 {
-  public abmv(ArMapIPC paramArMapIPC) {}
+  public abmv(QQSettingMe paramQQSettingMe) {}
   
-  public void onConnectBind(EIPCConnection paramEIPCConnection)
+  public void a(Bundle paramBundle)
   {
-    paramEIPCConnection = paramEIPCConnection.procName;
-    this.a.a = true;
-    if (QLog.isColorLevel()) {
-      QLog.i("ArMapIPC", 2, "onConnectBind " + paramEIPCConnection);
-    }
-    this.a.a(IPCConstants.c, EIPCResult.createResult(0, null));
+    this.a.n();
   }
   
-  public void onConnectUnbind(EIPCConnection paramEIPCConnection)
+  public void b(Bundle paramBundle)
   {
-    paramEIPCConnection = paramEIPCConnection.procName;
-    this.a.a = false;
-    if (QLog.isColorLevel()) {
-      QLog.i("ArMapIPC", 2, "onConnectUnbind " + paramEIPCConnection);
+    int i = paramBundle.getInt("start_status");
+    if (i == 1) {
+      this.a.n();
     }
-    this.a.a(IPCConstants.c, EIPCResult.createResult(0, null));
+    do
+    {
+      do
+      {
+        return;
+        if (i == 2)
+        {
+          this.a.n();
+          return;
+        }
+      } while (i != 3);
+      if (!(this.a.jdField_b_of_type_AndroidWidgetImageView.getDrawable() instanceof Animatable)) {
+        break;
+      }
+      i = paramBundle.getInt("percent");
+      paramBundle = String.valueOf(i) + "%";
+      this.a.jdField_b_of_type_AndroidWidgetTextView.setText(paramBundle);
+    } while (!QLog.isDevelopLevel());
+    QLog.d("QQSettingRedesign", 4, "NIGHTMODE_ACTION_DOWNLOADING: " + i);
+    return;
+    if (QQSettingMe.f(this.a)) {}
+    for (Drawable localDrawable = this.a.a.getResources().getDrawable(2130845121);; localDrawable = this.a.a.getResources().getDrawable(2130845122))
+    {
+      this.a.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable(localDrawable);
+      if (!(localDrawable instanceof Animatable)) {
+        break;
+      }
+      ((Animatable)localDrawable).start();
+      break;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abmv
  * JD-Core Version:    0.7.0.1
  */

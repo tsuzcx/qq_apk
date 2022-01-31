@@ -1,15 +1,19 @@
-import com.tencent.biz.qqstory.newshare.job.ShareGroupAvatarSaveFileJob;
-import com.tencent.biz.qqstory.shareGroup.icon.RestrictedBitmap;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyFeedsActivity.1;
+import com.tencent.qphone.base.util.QLog;
 
 public class nko
-  implements Runnable
+  implements moc
 {
-  public nko(ShareGroupAvatarSaveFileJob paramShareGroupAvatarSaveFileJob, RestrictedBitmap paramRestrictedBitmap) {}
+  public nko(ReadInJoyFeedsActivity.1 param1) {}
   
-  public void run()
+  public void loaded(String paramString, int paramInt)
   {
-    ShareGroupAvatarSaveFileJob.a(this.jdField_a_of_type_ComTencentBizQqstoryNewshareJobShareGroupAvatarSaveFileJob, ShareGroupAvatarSaveFileJob.a(this.jdField_a_of_type_ComTencentBizQqstoryNewshareJobShareGroupAvatarSaveFileJob, this.jdField_a_of_type_ComTencentBizQqstoryShareGroupIconRestrictedBitmap));
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyBaseActivity", 2, "load 3256 html web resource finish");
+    }
   }
+  
+  public void progress(int paramInt) {}
 }
 
 

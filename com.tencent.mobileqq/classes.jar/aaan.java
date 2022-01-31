@@ -1,90 +1,37 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.message.SystemMessageProcessor;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.transfile.ProtoReqManager.IProtoRespBack;
-import com.tencent.mobileqq.transfile.ProtoReqManager.ProtoReq;
-import com.tencent.mobileqq.transfile.ProtoReqManager.ProtoResp;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.AssociatedAccountActivity;
+import com.tencent.mobileqq.activity.LoginActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import tencent.mobileim.structmsg.structmsg.RspHead;
-import tencent.mobileim.structmsg.structmsg.RspSystemMsgAction;
 
 public class aaan
-  implements ProtoReqManager.IProtoRespBack
+  implements DialogInterface.OnClickListener
 {
-  public aaan(SystemMessageProcessor paramSystemMessageProcessor) {}
+  public aaan(AssociatedAccountActivity paramAssociatedAccountActivity) {}
   
-  public void a(ProtoReqManager.ProtoResp paramProtoResp, ProtoReqManager.ProtoReq paramProtoReq)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ToServiceMsg localToServiceMsg = (ToServiceMsg)paramProtoReq.a;
-    if (paramProtoResp.a.getResultCode() != 1000) {
-      this.a.a(4012, false, localToServiceMsg);
+    if (QLog.isColorLevel()) {
+      QLog.d("AssociatedAccountActivity", 2, "switchFail -> to LoginActivity which=" + paramInt);
     }
-    for (;;)
-    {
-      try
-      {
-        paramProtoResp = paramProtoResp.a.getWupBuffer();
-        localRspSystemMsgAction = new structmsg.RspSystemMsgAction();
-        localRspSystemMsgAction.mergeFrom(paramProtoResp);
-        j = localRspSystemMsgAction.head.result.get();
-        if (j != 0) {
-          continue;
-        }
-        bool1 = true;
-        paramProtoResp = localRspSystemMsgAction.msg_detail.get();
-        if (paramProtoResp != null) {
-          continue;
-        }
-        paramProtoResp = "";
-      }
-      catch (Exception paramProtoResp)
-      {
-        structmsg.RspSystemMsgAction localRspSystemMsgAction;
-        int j;
-        boolean bool1;
-        int i;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("Q.systemmsg.", 2, "sendFriendSystemMsgReadedReportResp exception", paramProtoResp);
-        boolean bool2 = false;
-        continue;
-        continue;
-      }
-      i = -1;
-      if (localRspSystemMsgAction.remark_result.has()) {
-        i = localRspSystemMsgAction.remark_result.get();
-      }
-      localToServiceMsg.extraData.putString("system_msg_action_resp_key", paramProtoResp);
-      localToServiceMsg.extraData.putInt("system_msg_action_resp_result_code_key", localRspSystemMsgAction.head.result.get());
-      localToServiceMsg.extraData.putInt("system_msg_action_resp_type_key", localRspSystemMsgAction.type.get());
-      localToServiceMsg.extraData.putString("system_msg_action_resp_invalid_decided_key", localRspSystemMsgAction.msg_invalid_decided.get());
-      localToServiceMsg.extraData.putInt("system_msg_action_resp_remark_result_key", i);
-      bool2 = bool1;
-      if (QLog.isColorLevel())
-      {
-        QLog.d("Q.systemmsg.", 2, "sendFriendSystemMsgActionResp result:" + j + " msg:" + paramProtoResp);
-        bool2 = bool1;
-      }
-      this.a.a(4011, bool2, localToServiceMsg);
-      return;
-      paramProtoReq = localRspSystemMsgAction.head.msg_fail.get();
-      paramProtoResp = paramProtoReq;
-      if (paramProtoReq == null) {
-        paramProtoResp = "";
-      }
-      localToServiceMsg.extraData.putString("system_msg_action_resp_error_key", paramProtoResp);
-      bool1 = false;
+    paramDialogInterface = new Intent();
+    paramDialogInterface.setPackage(this.a.getPackageName());
+    paramDialogInterface.setClass(this.a, LoginActivity.class);
+    paramDialogInterface.putExtra("is_change_account", true);
+    paramDialogInterface.putExtra("fromsubaccount", true);
+    if (this.a.a != null) {
+      paramDialogInterface.putExtra("uin", this.a.a);
     }
+    paramDialogInterface.putExtra("befault_uin", this.a.app.getCurrentAccountUin());
+    this.a.startActivityForResult(paramDialogInterface, 1011);
+    this.a.a = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aaan
  * JD-Core Version:    0.7.0.1
  */

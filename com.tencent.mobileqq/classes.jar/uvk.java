@@ -1,37 +1,35 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.aio.audiopanel.PressToSpeakPanel;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
 
-public class uvk
-  implements Animation.AnimationListener
+class uvk
+  extends ssd
 {
-  public uvk(PressToSpeakPanel paramPressToSpeakPanel) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  uvk(uvj paramuvj, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AIOAudioPanel", 2, "startStartRecordAnim(),onAnimationEnd is called,time is:" + System.currentTimeMillis());
-    }
+    super(paramString);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation)
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AIOAudioPanel", 2, "startStartRecordAnim(),onAnimationRepeat is called,time is:" + System.currentTimeMillis());
+    super.onLocationFinish(paramInt, paramSosoLbsInfo);
+    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null))
+    {
+      this.a.jdField_a_of_type_Uvg.a = paramSosoLbsInfo.a.a;
+      this.a.jdField_a_of_type_Uvg.b = paramSosoLbsInfo.a.b;
+      urk.b("Q.qqstory.publish.edit.EditVideoPoi", "onLocationUpdate() latitude=" + this.a.jdField_a_of_type_Uvg.a + " longitude=" + this.a.jdField_a_of_type_Uvg.b);
+      if (this.a.jdField_a_of_type_Boolean) {
+        this.a.jdField_a_of_type_Uvg.f();
+      }
+      return;
     }
-  }
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AIOAudioPanel", 2, "startStartRecordAnim(),onAnimationStart is called,time is:" + System.currentTimeMillis());
-    }
+    this.a.jdField_a_of_type_Uvg.a = 0.0D;
+    this.a.jdField_a_of_type_Uvg.b = 0.0D;
+    urk.b("Q.qqstory.publish.edit.EditVideoPoi", "onLocationUpdate() error");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     uvk
  * JD-Core Version:    0.7.0.1
  */

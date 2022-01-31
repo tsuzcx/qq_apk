@@ -1,49 +1,62 @@
-import android.app.Activity;
-import android.view.View;
-import com.tencent.mobileqq.activity.ChatActivityFacade;
-import com.tencent.mobileqq.activity.aio.item.MarketFaceItemBuilder;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.mobileqq.data.MessageForMarketFace;
-import com.tencent.mobileqq.emoticonview.PicEmoticonInfo;
-import com.tencent.mobileqq.vaswebviewplugin.EmojiHomeUiPlugin;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.os.Message;
 
 public class vgc
-  implements ActionSheet.OnButtonClickListener
 {
-  public vgc(MarketFaceItemBuilder paramMarketFaceItemBuilder, PicEmoticonInfo paramPicEmoticonInfo, ActionSheet paramActionSheet, MessageForMarketFace paramMessageForMarketFace) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public static String a(int paramInt)
   {
     switch (paramInt)
     {
     default: 
-      return;
-    case 0: 
-      if (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.a.jobType != 1) {
-        break;
-      }
+      return "BOOLEAN";
+    case 1: 
+      return "TRUE";
     }
-    for (boolean bool1 = true;; bool1 = false)
+    return "FALSE";
+  }
+  
+  public static String a(Message paramMessage)
+  {
+    switch (paramMessage.what)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.a.jobType == 3) {}
-      for (boolean bool2 = true;; bool2 = false)
-      {
-        EmojiHomeUiPlugin.openEmojiDetailPage((Activity)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder.b, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), 8, this.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.a.epId, bool1, bool2);
-        this.jdField_a_of_type_ComTencentWidgetActionSheet.cancel();
-        return;
-      }
-      ChatActivityFacade.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder.b, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.a, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMarketFace.uniseq);
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.cancel();
-      return;
+    default: 
+      return "OTHERS[" + paramMessage.what + "] - " + paramMessage.arg1;
+    case 1: 
+      return "ACTION_VISIBILITY - " + paramMessage.arg1;
+    case 2: 
+      return "ACTION_KEEP_SHOWING - " + a(paramMessage.arg1);
+    case 3: 
+      return "ACTION_PLAY_ANIMATION";
+    case 4: 
+      return "ACTION_STOP_ANIMATION";
+    case 5: 
+      return "ACTION_SET_PROGRESS";
+    case 7: 
+      return "ACTION_UI_EVENT_CLICK - " + b(paramMessage.arg1);
+    case 8: 
+      return "ACTION_UI_EVENT_LONG_CLICK - " + b(paramMessage.arg1);
+    case 9: 
+      return "ACTION_UI_EVENT_TOUCH - " + b(paramMessage.arg1);
+    case 10: 
+      return "ACTION_UI_VISIBILITY_CHANGED - " + paramMessage.arg1;
     }
+    return "ACTION_SET_STUBMODE";
+  }
+  
+  public static String b(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return "BOOLEAN";
+    case 0: 
+      return "UNREGISTER";
+    }
+    return "REGISTER";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vgc
  * JD-Core Version:    0.7.0.1
  */

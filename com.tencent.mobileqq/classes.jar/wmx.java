@@ -1,55 +1,28 @@
+import android.content.Context;
 import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyActivityHelper;
-import com.tencent.biz.pubaccount.readinjoy.struct.ChannelInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySearchTipsContainer.OnTipClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.troopgift.RadioViewPager;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
-import java.util.Iterator;
-import java.util.List;
 
 public class wmx
-  implements ReadInJoySearchTipsContainer.OnTipClickListener
+  implements View.OnClickListener
 {
-  public wmx(ClassificationSearchActivity paramClassificationSearchActivity) {}
+  public wmx(RadioViewPager paramRadioViewPager, Context paramContext, String paramString) {}
   
-  public void a(String paramString)
+  public void onClick(View paramView)
   {
-    Object localObject;
-    if (paramString != null)
-    {
-      Iterator localIterator = this.a.c.iterator();
-      do
-      {
-        if (!localIterator.hasNext()) {
-          break;
-        }
-        localObject = (ChannelInfo)localIterator.next();
-      } while (!paramString.equals(((ChannelInfo)localObject).mChannelName));
-    }
-    for (paramString = (String)localObject;; paramString = null)
-    {
-      if (paramString != null)
-      {
-        if (!TextUtils.isEmpty(paramString.mJumpUrl))
-        {
-          localObject = new Intent(this.a, QQBrowserActivity.class);
-          ((Intent)localObject).putExtra("hide_operation_bar", true);
-          ((Intent)localObject).putExtra("url", paramString.mJumpUrl);
-          this.a.startActivity((Intent)localObject);
-        }
-      }
-      else {
-        return;
-      }
-      ReadInJoyActivityHelper.a(this.a, paramString.mChannelID, paramString.mChannelName, paramString.mChannelType, 0);
-      return;
-    }
+    paramView = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+    paramView.putExtra("selfSet_leftViewText", ajjy.a(2131646909));
+    paramView.putExtra("hide_more_button", true);
+    paramView.putExtra("hide_operation_bar", true);
+    paramView.putExtra("url", this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wmx
  * JD-Core Version:    0.7.0.1
  */

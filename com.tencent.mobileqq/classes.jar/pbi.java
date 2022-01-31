@@ -1,17 +1,25 @@
-import android.os.Bundle;
-import com.tencent.biz.troop.TroopMemberApiService;
-import com.tencent.mobileqq.vip.DownloadListener;
-import com.tencent.mobileqq.vip.DownloadTask;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeCommentView;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 
-class pbi
-  extends DownloadListener
+public class pbi
+  extends pba
 {
-  pbi(paz parampaz, Bundle paramBundle) {}
-  
-  public void onDone(DownloadTask paramDownloadTask)
+  public pbi(NativeCommentView paramNativeCommentView, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.jdField_a_of_type_AndroidOsBundle.putBoolean("down", true);
-    this.jdField_a_of_type_Paz.a.a(87, this.jdField_a_of_type_AndroidOsBundle);
+    super(paramInt1, paramInt2, paramInt3);
+  }
+  
+  public void onClick(View paramView)
+  {
+    paramView = this.a.a.a.a();
+    if (paramView.isPGCShortContent())
+    {
+      obz.b(this.a.getContext(), paramView, (int)paramView.mChannelID);
+      oyc.a(this.a.getContext(), paramView);
+      return;
+    }
+    obz.a(this.a.getContext(), this.a.a.a.a(), 1, false, 8, false);
   }
 }
 

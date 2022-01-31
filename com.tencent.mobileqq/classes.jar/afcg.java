@@ -1,29 +1,48 @@
-import android.view.View;
-import android.widget.ListView;
-import com.tencent.av.utils.UITools;
-import com.tencent.mobileqq.nearby.now.model.Comments;
-import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
+import android.os.Message;
+import com.tencent.mobileqq.activity.contact.troop.TroopNotifyAndRecommendView;
+import com.tencent.qphone.base.util.QLog;
 import java.util.List;
+import mqq.os.MqqHandler;
 
 public class afcg
-  implements Runnable
+  extends MqqHandler
 {
-  public afcg(ShortVideoCommentsView paramShortVideoCommentsView) {}
+  public afcg(TroopNotifyAndRecommendView paramTroopNotifyAndRecommendView) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    int i = UITools.b(this.a.getContext());
-    if (ShortVideoCommentsView.a() * this.a.a.a.size() + ShortVideoCommentsView.b(this.a).getMeasuredHeight() >= i)
+    switch (paramMessage.what)
     {
-      ShortVideoCommentsView.a(this.a).setSelectionFromTop(1, ShortVideoCommentsView.a() + ShortVideoCommentsView.b(this.a).getMeasuredHeight());
+    case 1013: 
+    default: 
+    case 1012: 
+      do
+      {
+        return;
+      } while (this.a.jdField_a_of_type_Afbk == null);
+      this.a.jdField_a_of_type_Afbk.a = axcz.a().a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      this.a.jdField_a_of_type_Afbk.notifyDataSetChanged();
+      this.a.jdField_a_of_type_Ajqt.c = axcz.a().a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      return;
+    case 1014: 
+      this.a.j();
       return;
     }
-    ShortVideoCommentsView.a(this.a).setSelection(this.a.a.a.size() + 1);
+    paramMessage = paramMessage.obj;
+    try
+    {
+      this.a.a((List)paramMessage);
+      return;
+    }
+    catch (Exception paramMessage)
+    {
+      QLog.e("TroopNotifyAndRecommendView", 1, "handleRecommendData wrong");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     afcg
  * JD-Core Version:    0.7.0.1
  */

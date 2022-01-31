@@ -1,22 +1,63 @@
-import android.os.AsyncTask;
-import com.dataline.core.DirectForwarder;
-import com.dataline.core.DirectForwarder.CallBack;
-import com.tencent.mobileqq.forward.ForwardBaseOption;
+import android.text.TextUtils;
+import com.tencent.image.RegionDrawable;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.DownloadListener;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForTroopGift;
+import com.tencent.qphone.base.util.QLog;
 
-public class adso
-  extends DirectForwarder.CallBack
+class adso
+  implements URLDrawable.DownloadListener
 {
-  public adso(ForwardBaseOption paramForwardBaseOption) {}
+  adso(adsm paramadsm, URLDrawable paramURLDrawable, MessageForTroopGift paramMessageForTroopGift, adst paramadst) {}
   
-  protected void a(AsyncTask paramAsyncTask, int paramInt)
+  public void onFileDownloadFailed(int paramInt)
   {
-    super.a(paramAsyncTask, paramInt);
-    DirectForwarder.a(this.a.a, paramAsyncTask, paramInt, new adsp(this));
+    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopGift.isFromNearby)
+    {
+      ajnb.a("gift_aio", "fail_obj", this.jdField_a_of_type_Adsm.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, "", "", "");
+      return;
+    }
+    if (mnf.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopGift)) {}
+    for (paramInt = 2;; paramInt = 1)
+    {
+      awqx.b(this.jdField_a_of_type_Adsm.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_flower", "", "grp_aio", "objicon_fail", paramInt, 0, this.jdField_a_of_type_Adsm.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, "", "0", "" + mje.a(this.jdField_a_of_type_Adsm.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Adsm.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_Adsm.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a));
+      return;
+    }
+  }
+  
+  public void onFileDownloadStarted() {}
+  
+  public void onFileDownloadSucceed(long paramLong)
+  {
+    int i;
+    if ((this.jdField_a_of_type_ComTencentImageURLDrawable.getCurrDrawable() instanceof RegionDrawable))
+    {
+      i = this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopGift.objColor;
+      if (i != 0) {
+        break label136;
+      }
+      i = -2138570752;
+    }
+    label136:
+    for (;;)
+    {
+      if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopGift.interactId)) {
+        this.jdField_a_of_type_Adsm.a(((RegionDrawable)this.jdField_a_of_type_ComTencentImageURLDrawable.getCurrDrawable()).getBitmap(), i, this.jdField_a_of_type_Adst.a, this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopGift.giftPicId + "");
+      }
+      do
+      {
+        return;
+      } while (!QLog.isColorLevel());
+      QLog.e("TroopGiftMsgItemBuilder", 2, "drawable.getCurrDrawable() instanceof  RegionDrawable = " + (this.jdField_a_of_type_ComTencentImageURLDrawable.getCurrDrawable() instanceof RegionDrawable));
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     adso
  * JD-Core Version:    0.7.0.1
  */

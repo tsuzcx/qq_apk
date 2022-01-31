@@ -7,10 +7,10 @@ import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class SubMsgType0x6f$QimRecomendMsg
-  extends MessageMicro
+  extends MessageMicro<QimRecomendMsg>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16 }, new String[] { "rpt_msg_recomend_list", "uint64_timestamp" }, new Object[] { null, Long.valueOf(0L) }, QimRecomendMsg.class);
-  public final PBRepeatMessageField rpt_msg_recomend_list = PBField.initRepeatMessage(SubMsgType0x6f.QimRecomendInfo.class);
+  public final PBRepeatMessageField<SubMsgType0x6f.QimRecomendInfo> rpt_msg_recomend_list = PBField.initRepeatMessage(SubMsgType0x6f.QimRecomendInfo.class);
   public final PBUInt64Field uint64_timestamp = PBField.initUInt64(0L);
 }
 

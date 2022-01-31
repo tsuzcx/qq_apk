@@ -1,21 +1,44 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
+import android.view.View;
 
 public class vlz
-  implements ValueAnimator.AnimatorUpdateListener
+  extends vmd
 {
-  public vlz(SixCombolEffectView paramSixCombolEffectView, vmi paramvmi) {}
+  public int a;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public vlz(vmi paramvmi, View paramView, int paramInt)
   {
-    this.jdField_a_of_type_Vmi.b = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemSixCombolEffectView.invalidate();
+    super(paramvmi, paramView);
+    this.a = paramInt;
+  }
+  
+  public int a()
+  {
+    urk.e("NullOptionElement", "getOptionIndex() on %d", new Object[] { Integer.valueOf(this.a) });
+    return this.a;
+  }
+  
+  public CharSequence a()
+  {
+    urk.e("NullOptionElement", "getText() on %d", new Object[] { Integer.valueOf(this.a) });
+    return "";
+  }
+  
+  public void a(CharSequence paramCharSequence)
+  {
+    urk.e("NullOptionElement", "setText() on %d", new Object[] { Integer.valueOf(this.a) });
+  }
+  
+  public void a(boolean paramBoolean) {}
+  
+  public CharSequence b()
+  {
+    urk.e("NullOptionElement", "getHint() on %d", new Object[] { Integer.valueOf(this.a) });
+    return "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vlz
  * JD-Core Version:    0.7.0.1
  */

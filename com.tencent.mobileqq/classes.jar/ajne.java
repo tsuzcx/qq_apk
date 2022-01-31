@@ -1,86 +1,178 @@
-import android.os.Bundle;
-import com.tencent.biz.troop.file.TroopFileProtocol.ReqResendFileObserver;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.troop.filemanager.TroopFileDataCenter;
-import com.tencent.mobileqq.troop.filemanager.TroopFileTransferUtil.Log;
-import com.tencent.mobileqq.troop.filemanager.upload.TroopFileUploadWorker;
-import com.tencent.mobileqq.troop.utils.TroopFileError.SimpleErrorInfo;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
-import com.tencent.mobileqq.troop.utils.TroopTechReportUtils.TroopFileReportResultCode;
-import java.util.UUID;
-import tencent.im.oidb.cmd0x6d6.oidb_0x6d6.ResendRspBody;
+import com.tencent.av.service.LBSInfo;
+import com.tencent.mobileqq.data.StrangerInfo;
+import com.tencent.mobileqq.nearpeople.mytab.NearbyMyTabCard;
+import com.tencent.pb.now.ilive_feeds_near_anchor.NearAnchorInfo;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import java.util.ArrayList;
+import java.util.List;
+import tencent.im.oidb.cmd0x8dd.oidb_0x8dd.RspBody;
 
 public class ajne
-  extends TroopFileProtocol.ReqResendFileObserver
+  implements ajfe
 {
-  public ajne(TroopFileUploadWorker paramTroopFileUploadWorker) {}
+  protected void a() {}
   
-  public void a(boolean paramBoolean, int paramInt, oidb_0x6d6.ResendRspBody paramResendRspBody, Bundle paramBundle)
+  protected void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, String paramString) {}
+  
+  protected void a(FromServiceMsg paramFromServiceMsg, ToServiceMsg paramToServiceMsg, Object paramObject) {}
+  
+  public void a(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, int paramInt9, String paramString1, String paramString2, String paramString3) {}
+  
+  protected void a(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, String paramString) {}
+  
+  protected void a(boolean paramBoolean, int paramInt, String paramString) {}
+  
+  protected void a(boolean paramBoolean, int paramInt, oidb_0x8dd.RspBody paramRspBody, ToServiceMsg paramToServiceMsg, List<Object> paramList) {}
+  
+  protected void a(boolean paramBoolean, LBSInfo paramLBSInfo) {}
+  
+  protected void a(boolean paramBoolean, NearbyMyTabCard paramNearbyMyTabCard) {}
+  
+  protected void a(boolean paramBoolean, String paramString, long paramLong) {}
+  
+  public void a(boolean paramBoolean, String paramString1, List<asjg> paramList, String paramString2, int paramInt1, int paramInt2) {}
+  
+  protected void a(boolean paramBoolean1, ArrayList<StrangerInfo> paramArrayList, byte[] paramArrayOfByte, int paramInt, long paramLong1, String paramString, boolean paramBoolean2, long paramLong2, long paramLong3) {}
+  
+  protected void a(boolean paramBoolean, List<ilive_feeds_near_anchor.NearAnchorInfo> paramList) {}
+  
+  protected void a(boolean paramBoolean, byte[] paramArrayOfByte) {}
+  
+  public void b() {}
+  
+  protected void b(boolean paramBoolean, int paramInt, String paramString) {}
+  
+  protected void b(boolean paramBoolean, int paramInt, oidb_0x8dd.RspBody paramRspBody, ToServiceMsg paramToServiceMsg, List<Object> paramList) {}
+  
+  public void b(boolean paramBoolean, NearbyMyTabCard paramNearbyMyTabCard) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (paramBundle.getLong("troopUin") != this.a.jdField_a_of_type_Long) {}
+    switch (paramInt)
+    {
+    }
     do
     {
-      return;
-      paramBundle = paramBundle.getString("itemKey");
-    } while ((paramBundle == null) || (!UUID.fromString(paramBundle).equals(this.a.a())));
-    if (this.a.jdField_a_of_type_Boolean)
-    {
-      TroopFileTransferUtil.Log.b("TroopFileUploadWorker", TroopFileTransferUtil.Log.a, "[" + this.a.jdField_a_of_type_JavaLangString + "] onReqResendFileResult.but stoped");
-      return;
-    }
-    if ((paramResendRspBody == null) || (!paramBoolean))
-    {
-      TroopFileTransferUtil.Log.a("TroopFileUploadWorker", TroopFileTransferUtil.Log.a, "[" + this.a.jdField_a_of_type_JavaLangString + "] onReqResendFileResult isSuccess:false  errCode:" + paramInt);
-      paramResendRspBody = new TroopFileError.SimpleErrorInfo(this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.FileName, this.a.jdField_a_of_type_Long, 3, 207);
-      this.a.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerTroopFileDataReporter$ReportTransferItem.c = 1;
-      this.a.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerTroopFileDataReporter$ReportTransferItem.d = paramInt;
-      this.a.a(true, TroopTechReportUtils.TroopFileReportResultCode.b, TroopTechReportUtils.TroopFileReportResultCode.z, paramResendRspBody);
-      return;
-    }
-    int i = paramResendRspBody.int32_ret_code.get();
-    TroopFileTransferUtil.Log.c("TroopFileUploadWorker", TroopFileTransferUtil.Log.a, "[" + this.a.jdField_a_of_type_JavaLangString + "] onReqResendFileResult isSuccess:true  errCode:" + paramInt + " retCode:" + i);
-    if (i < 0)
-    {
-      switch (paramResendRspBody.int32_ret_code.get())
+      do
       {
-      default: 
-        paramInt = 1;
-      }
-      for (;;)
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerTroopFileDataReporter$ReportTransferItem.c = 1;
-        this.a.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerTroopFileDataReporter$ReportTransferItem.d = i;
-        if (paramInt != 206) {
-          break;
-        }
-        TroopFileDataCenter.b(this.a.jdField_a_of_type_Long, this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, paramInt);
-        this.a.a(false, TroopTechReportUtils.TroopFileReportResultCode.c, i);
+        do
+        {
+          do
+          {
+            do
+            {
+              do
+              {
+                do
+                {
+                  do
+                  {
+                    Object[] arrayOfObject;
+                    do
+                    {
+                      do
+                      {
+                        do
+                        {
+                          do
+                          {
+                            return;
+                          } while (paramObject == null);
+                          paramObject = (Object[])paramObject;
+                        } while (paramObject.length != 3);
+                        a((FromServiceMsg)paramObject[0], (ToServiceMsg)paramObject[1], (Object[])paramObject[2]);
+                        return;
+                      } while (paramObject == null);
+                      arrayOfObject = (Object[])paramObject;
+                    } while (arrayOfObject.length < 4);
+                    int i = ((Integer)arrayOfObject[0]).intValue();
+                    paramObject = null;
+                    if ((arrayOfObject[1] instanceof oidb_0x8dd.RspBody)) {
+                      paramObject = (oidb_0x8dd.RspBody)arrayOfObject[1];
+                    }
+                    ToServiceMsg localToServiceMsg = null;
+                    if ((arrayOfObject[2] instanceof ToServiceMsg)) {
+                      localToServiceMsg = (ToServiceMsg)arrayOfObject[2];
+                    }
+                    List localList = null;
+                    if ((arrayOfObject[3] instanceof List)) {
+                      localList = (List)arrayOfObject[3];
+                    }
+                    if (paramInt == 1)
+                    {
+                      b(paramBoolean, i, paramObject, localToServiceMsg, localList);
+                      return;
+                    }
+                    a(paramBoolean, i, paramObject, localToServiceMsg, localList);
+                    return;
+                    a();
+                    return;
+                    if ((paramBoolean) && ((paramObject instanceof Object[])))
+                    {
+                      a(paramBoolean, (NearbyMyTabCard)((Object[])(Object[])paramObject)[0]);
+                      return;
+                    }
+                    a(false, null);
+                    return;
+                    paramObject = (Object[])paramObject;
+                    if ((paramBoolean) && (paramObject != null))
+                    {
+                      b(true, (NearbyMyTabCard)paramObject[0]);
+                      return;
+                    }
+                    b(false, null);
+                    return;
+                  } while ((!paramBoolean) || (paramObject == null));
+                  a(true, (byte[])paramObject);
+                  return;
+                  if ((paramBoolean == true) && (paramObject != null))
+                  {
+                    paramObject = (Object[])paramObject;
+                    a(true, new LBSInfo(String.valueOf(paramObject[0]), String.valueOf(paramObject[1]), String.valueOf(paramObject[2]), String.valueOf(paramObject[3]), String.valueOf(paramObject[4]), String.valueOf(paramObject[5]), String.valueOf(paramObject[6]), String.valueOf(paramObject[7]), ((Integer)paramObject[8]).doubleValue(), ((Integer)paramObject[9]).doubleValue(), ((Integer)paramObject[10]).doubleValue(), (String[])paramObject[11]));
+                    return;
+                  }
+                  a(false, null);
+                  return;
+                } while ((!paramBoolean) || (!(paramObject instanceof Object[])));
+                paramObject = (Object[])paramObject;
+                a(((Boolean)paramObject[0]).booleanValue(), ((Integer)paramObject[1]).intValue(), ((Integer)paramObject[2]).intValue(), ((Integer)paramObject[3]).intValue(), ((Integer)paramObject[4]).intValue(), ((Integer)paramObject[5]).intValue(), ((Integer)paramObject[6]).intValue(), (String)paramObject[7]);
+                return;
+              } while ((!paramBoolean) || (!(paramObject instanceof Object[])));
+              paramObject = (Object[])paramObject;
+              a(((Integer)paramObject[0]).intValue(), ((Integer)paramObject[1]).intValue(), ((Integer)paramObject[2]).intValue(), ((Integer)paramObject[3]).intValue(), ((Integer)paramObject[4]).intValue(), ((Integer)paramObject[5]).intValue(), ((Integer)paramObject[6]).intValue(), ((Integer)paramObject[7]).intValue(), (String)paramObject[8]);
+              return;
+              paramObject = (Object[])paramObject;
+              a(paramBoolean, (String)paramObject[0], (List)paramObject[1], (String)paramObject[2], ((Integer)paramObject[3]).intValue(), ((Integer)paramObject[4]).intValue());
+              return;
+              paramObject = (Object[])paramObject;
+              a(paramBoolean, (ArrayList)paramObject[0], (byte[])paramObject[1], ((Integer)paramObject[2]).intValue(), ((Long)paramObject[3]).longValue(), (String)paramObject[4], ((Boolean)paramObject[5]).booleanValue(), ((Long)paramObject[6]).longValue(), ((Long)paramObject[7]).longValue());
+              return;
+            } while ((!paramBoolean) || (!(paramObject instanceof Object[])));
+            paramObject = (Object[])paramObject;
+            a(paramBoolean, ((Integer)paramObject[0]).intValue(), ((Integer)paramObject[1]).intValue(), ((Integer)paramObject[2]).intValue(), ((Integer)paramObject[3]).intValue(), ((Integer)paramObject[4]).intValue(), ((Integer)paramObject[5]).intValue(), ((Integer)paramObject[6]).intValue(), ((Integer)paramObject[7]).intValue(), ((Integer)paramObject[8]).intValue(), (String)paramObject[9], (String)paramObject[10], (String)paramObject[11]);
+            return;
+          } while (!(paramObject instanceof Object[]));
+          paramObject = (Object[])paramObject;
+          a(paramBoolean, (String)paramObject[0], ((Integer)paramObject[1]).intValue());
+          return;
+        } while (!(paramObject instanceof Object[]));
+        paramObject = (Object[])paramObject;
+        b(paramBoolean, ((Integer)paramObject[0]).intValue(), (String)paramObject[1]);
         return;
-        paramInt = 101;
-        continue;
-        paramInt = 102;
-        continue;
-        paramInt = 206;
-        continue;
-        paramInt = -136;
-        continue;
-        paramInt = -138;
-      }
-      this.a.a(true, TroopTechReportUtils.TroopFileReportResultCode.c, i, paramInt);
+      } while (!(paramObject instanceof Object[]));
+      a(paramBoolean, (List)((Object[])(Object[])paramObject)[0]);
       return;
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.UploadIp = paramResendRspBody.str_upload_ip.get();
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.CheckKey = paramResendRspBody.bytes_check_key.get().toByteArray();
-    TroopFileTransferUtil.Log.c("TroopFileUploadWorker", TroopFileTransferUtil.Log.a, "[" + this.a.jdField_a_of_type_JavaLangString + "] onReqResendFileResult fileid:" + this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.FilePath + " UploadIp:" + this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.UploadIp + " busId:" + this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.BusId);
-    this.a.a(true);
+      b();
+      return;
+    } while (!(paramObject instanceof Object[]));
+    paramObject = (Object[])paramObject;
+    a(paramBoolean, ((Integer)paramObject[0]).intValue(), (String)paramObject[1]);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajne
  * JD-Core Version:    0.7.0.1
  */

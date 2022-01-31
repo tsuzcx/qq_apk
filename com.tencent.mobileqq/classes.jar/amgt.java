@@ -1,36 +1,107 @@
-import android.graphics.Bitmap;
-import android.widget.ImageView.ScaleType;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.FrameHelperActivity.QQSettingMeListener;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.widget.RandomCoverView;
-import com.tencent.widget.UpSideDownDrawable;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-public final class amgt
-  implements Runnable
+public class amgt
 {
-  public amgt(BaseActivity paramBaseActivity, Bitmap paramBitmap, RandomCoverView paramRandomCoverView, boolean paramBoolean, FrameHelperActivity.QQSettingMeListener paramQQSettingMeListener, Card paramCard) {}
+  public String a;
+  public boolean a;
+  public String b;
+  public boolean b;
+  public String c;
+  public boolean c;
+  public String d = "";
   
-  public void run()
+  public amgt()
   {
-    UpSideDownDrawable localUpSideDownDrawable = new UpSideDownDrawable(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_AndroidGraphicsBitmap, 0, 0);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetRandomCoverView.a().setScaleType(ImageView.ScaleType.FIT_CENTER);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetRandomCoverView.a().setImageDrawable(localUpSideDownDrawable);
-    if (this.jdField_a_of_type_Boolean) {
-      localUpSideDownDrawable.a();
-    }
+    this.jdField_c_of_type_Boolean = true;
+    this.jdField_a_of_type_JavaLangString = "0";
+    this.jdField_b_of_type_JavaLangString = "0";
+    this.jdField_c_of_type_JavaLangString = "0";
+  }
+  
+  public static amgt a(String paramString)
+  {
+    if (paramString == null) {}
     for (;;)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppFrameHelperActivity$QQSettingMeListener.a(this.jdField_a_of_type_ComTencentMobileqqDataCard.strDrawerCardUrl, localUpSideDownDrawable);
-      return;
-      localUpSideDownDrawable.b();
+      return null;
+      try
+      {
+        amgt localamgt = new amgt();
+        paramString = new JSONObject(paramString);
+        if (paramString.has("wvShouldReportPerf"))
+        {
+          if (paramString.optInt("wvShouldReportPerf") == 1)
+          {
+            bool = true;
+            localamgt.jdField_a_of_type_Boolean = bool;
+          }
+        }
+        else
+        {
+          if (paramString.has("wvShouldReportJsapiCall"))
+          {
+            if (paramString.optInt("wvShouldReportJsapiCall") != 1) {
+              break label212;
+            }
+            bool = true;
+            label70:
+            localamgt.jdField_b_of_type_Boolean = bool;
+          }
+          if (paramString.has("wvShouldReportOpenapiCall")) {
+            if (paramString.optInt("wvShouldReportOpenapiCall") != 1) {
+              break label217;
+            }
+          }
+        }
+        label212:
+        label217:
+        for (boolean bool = true;; bool = false)
+        {
+          localamgt.jdField_c_of_type_Boolean = bool;
+          if (paramString.has("wvPerformanceRate")) {
+            localamgt.jdField_a_of_type_JavaLangString = paramString.optString("wvPerformanceRate");
+          }
+          if (paramString.has("wvJsapiCallRate")) {
+            localamgt.jdField_b_of_type_JavaLangString = paramString.optString("wvJsapiCallRate");
+          }
+          if (paramString.has("wvSchemeRate")) {
+            localamgt.jdField_c_of_type_JavaLangString = paramString.optString("wvSchemeRate");
+          }
+          if (paramString.has("recogniseText")) {
+            localamgt.d = paramString.optString("recogniseText");
+          }
+          QLog.d("ConfBean", 2, "confBean = " + localamgt.toString());
+          return localamgt;
+          bool = false;
+          break;
+          bool = false;
+          break label70;
+        }
+        if (!QLog.isColorLevel()) {}
+      }
+      catch (Exception paramString) {}
     }
+    QLog.e("ConfBean", 1, new Object[] { "parse e:", paramString.toString() });
+    return null;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder(100);
+    localStringBuilder.append("reportPerformance:").append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(" reportJsapi:").append(this.jdField_b_of_type_Boolean);
+    localStringBuilder.append(" reportOpenapi:").append(this.jdField_c_of_type_Boolean);
+    localStringBuilder.append(" performanceRate:").append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(" jsapiRate:").append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(" schemeRate:").append(this.jdField_c_of_type_JavaLangString);
+    localStringBuilder.append(" recogniseText:").append(this.d);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amgt
  * JD-Core Version:    0.7.0.1
  */

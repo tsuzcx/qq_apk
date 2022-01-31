@@ -2,15 +2,15 @@ package com.tencent.sveffects;
 
 public abstract interface DpcSwitcher
 {
-  public abstract float a();
+  public abstract float getBeatyRate();
   
-  public abstract boolean a();
+  public abstract boolean isBeautySwitchOpen();
   
-  public abstract boolean b();
+  public abstract boolean isDeNoiseSwitchOpen();
   
-  public abstract boolean c();
+  public abstract boolean isPortraitSwitchOpen();
   
-  public abstract boolean d();
+  public abstract boolean isSvafSwitchOpen();
 }
 
 

@@ -1,28 +1,13 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.commonsdk.soload.SoLoadUtilNew;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-
-public final class aieu
-  implements Runnable
+class aieu
 {
-  public void run()
-  {
-    try
-    {
-      SoLoadUtilNew.loadSoByName(BaseApplicationImpl.getContext(), "GIFEngine");
-      ShortVideoUtils.a(true);
-      return;
-    }
-    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
-    {
-      localUnsatisfiedLinkError.printStackTrace();
-      ShortVideoUtils.a(false);
-    }
-  }
+  public int a;
+  public long a;
+  
+  aieu(aiet paramaiet) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aieu
  * JD-Core Version:    0.7.0.1
  */

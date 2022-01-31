@@ -1,43 +1,54 @@
 package com.tencent.mobileqq.webprocess;
 
-import com.tencent.biz.webviewplugin.OfflinePlugin;
+import agvf;
+import aiek;
+import apyp;
+import aqrr;
+import bayg;
+import bayh;
+import bbey;
 import com.tencent.biz.webviewplugin.OpenCenterPlugin;
-import com.tencent.biz.webviewplugin.PtloginPlugin;
-import com.tencent.biz.webviewplugin.QzoneWebViewOfflinePlugin;
-import com.tencent.biz.webviewplugin.ReportPlugin;
-import com.tencent.biz.webviewplugin.WebSoPlugin;
-import com.tencent.mobileqq.antiphing.AntiphingHandler;
-import com.tencent.mobileqq.jsp.EventApiPlugin;
 import com.tencent.mobileqq.jsp.UiApiPlugin;
+import com.tencent.mobileqq.mini.out.webPlugins.MiniAppPlugin;
 import com.tencent.mobileqq.vaswebviewplugin.VasWebReport;
-import com.tencent.mobileqq.webview.WebSecurityPlugin;
-import com.tencent.mobileqq.webviewplugin.WebViewJumpPlugin;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import java.util.ArrayList;
 import java.util.List;
+import xce;
+import xcn;
+import xdi;
+import xdn;
+import xeh;
+import ysq;
 
 public class WebAccelerateHelper$CommonJsPluginFactory
 {
-  public List a()
+  public List<WebViewPlugin> getCommonJsPlugin()
   {
     ArrayList localArrayList = new ArrayList();
-    localArrayList.add(new AntiphingHandler());
-    localArrayList.add(new WebSecurityPlugin());
+    localArrayList.add(new apyp());
+    localArrayList.add(new aiek());
+    localArrayList.add(new bayg());
+    localArrayList.add(new bayh());
     localArrayList.add(new VasWebReport());
-    localArrayList.add(new WebSoPlugin());
-    localArrayList.add(new ReportPlugin());
-    localArrayList.add(new OfflinePlugin());
-    localArrayList.add(new PtloginPlugin());
-    localArrayList.add(new WebViewJumpPlugin());
-    localArrayList.add(new EventApiPlugin());
+    localArrayList.add(new xeh());
+    localArrayList.add(new xdn());
+    localArrayList.add(new xce());
+    localArrayList.add(new xcn());
+    localArrayList.add(new bbey());
+    localArrayList.add(new aqrr());
     localArrayList.add(new UiApiPlugin());
     localArrayList.add(new OpenCenterPlugin());
-    localArrayList.add(new QzoneWebViewOfflinePlugin());
+    localArrayList.add(new MiniAppPlugin());
+    localArrayList.add(new xdi());
+    localArrayList.add(new ysq());
+    localArrayList.add(new agvf());
     return localArrayList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.mobileqq.webprocess.WebAccelerateHelper.CommonJsPluginFactory
  * JD-Core Version:    0.7.0.1
  */

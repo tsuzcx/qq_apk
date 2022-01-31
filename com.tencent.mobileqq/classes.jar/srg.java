@@ -1,84 +1,36 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.EmosmActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.emosm.EmosmUtils;
-import com.tencent.mobileqq.emosm.view.DragSortAdapter;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.vaswebviewplugin.EmojiHomeUiPlugin;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.AdapterView.OnItemClickListener;
-import java.lang.ref.WeakReference;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 import java.util.List;
 
-public class srg
-  implements AdapterView.OnItemClickListener
+class srg
+  implements slx<srh, sri>
 {
-  public srg(EmosmActivity paramEmosmActivity) {}
+  private srg(sre paramsre) {}
   
-  public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void a(@NonNull srh paramsrh, @Nullable sri paramsri, @NonNull ErrorMessage paramErrorMessage)
   {
-    if (this.a.jdField_a_of_type_Boolean) {}
-    EmoticonPackage localEmoticonPackage;
-    do
+    if ((paramsri != null) && (paramsri.jdField_a_of_type_Int == 0) && (paramErrorMessage.isSuccess()))
     {
-      return;
-      localEmoticonPackage = (EmoticonPackage)this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortAdapter.getItem(paramInt);
-      if (this.a.b)
+      this.a.jdField_a_of_type_JavaUtilList.addAll(paramsri.jdField_a_of_type_JavaUtilList);
+      urk.d("VideoFilterManager", "new filter count %d, current total count %d, isEnd=%s, cookie=%s", new Object[] { Integer.valueOf(paramsri.jdField_a_of_type_JavaUtilList.size()), Integer.valueOf(this.a.jdField_a_of_type_JavaUtilList.size()), Boolean.valueOf(paramsri.jdField_a_of_type_Boolean), paramsri.jdField_a_of_type_JavaLangString });
+      if ((paramsri.jdField_a_of_type_Boolean) || (paramsri.jdField_a_of_type_JavaUtilList.isEmpty()))
       {
-        this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortAdapter.a(paramInt);
-        this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortAdapter.notifyDataSetChanged();
-        paramAdapterView = this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortAdapter.a();
-        if ((paramAdapterView != null) && (paramAdapterView.size() > 0))
-        {
-          this.a.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
-          return;
-        }
-        this.a.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
+        urk.d("VideoFilterManager", "get filter full list finish, frequency = %d s", new Object[] { Integer.valueOf(paramsri.b) });
+        this.a.a(true, paramsri.b);
         return;
       }
-    } while (!EmosmUtils.a(this.a));
-    this.a.jdField_a_of_type_Boolean = true;
-    paramAdapterView = localEmoticonPackage.epId;
-    boolean bool1 = false;
-    if (localEmoticonPackage.jobType == 2)
-    {
-      paramAdapterView = localEmoticonPackage.kinId;
-      bool1 = true;
-    }
-    paramView = null;
-    if (localEmoticonPackage.jobType == 4)
-    {
-      paramView = new Intent();
-      paramView.putExtra("EXTRA_KEY_IS_SMALL_EMOTICON", true);
-    }
-    boolean bool2;
-    if (localEmoticonPackage.jobType == 4)
-    {
-      bool2 = true;
-      if (1 != this.a.getIntent().getExtras().getInt("emojimall_src", 3)) {
-        break label284;
-      }
-      EmojiHomeUiPlugin.openEmojiDetailPage((Activity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get(), this.a.app.getAccount(), 8, paramAdapterView, bool1, paramView, bool2);
-    }
-    for (;;)
-    {
-      ReportController.b(this.a.app, "CliOper", "", "", "ep_mall", "Clk_ep_mine_detail", 0, 0, localEmoticonPackage.epId, "", "", "");
+      this.a.c = paramsri.jdField_a_of_type_JavaLangString;
+      this.a.c();
       return;
-      bool2 = false;
-      break;
-      label284:
-      EmojiHomeUiPlugin.openEmojiDetailPage((Activity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get(), this.a.app.getAccount(), 4, paramAdapterView, bool1, paramView, bool2);
     }
+    urk.c("VideoFilterManager", "get filter failed %s", paramErrorMessage);
+    this.a.a(false, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     srg
  * JD-Core Version:    0.7.0.1
  */

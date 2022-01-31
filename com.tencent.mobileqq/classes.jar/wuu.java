@@ -1,35 +1,36 @@
-import android.support.v4.view.ViewPager;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.emogroupstore.ImgPreviewAdapter;
-import com.tencent.mobileqq.data.EmoticonFromGroupEntity;
-import com.tencent.mobileqq.emosm.favroaming.EmoticonFromGroupManager;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
 import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.AECamera.panel.material.AEMaterialPanel;
 
-public class wuu
-  implements View.OnClickListener
+class wuu
+  implements Animator.AnimatorListener
 {
-  public wuu(ImgPreviewAdapter paramImgPreviewAdapter) {}
+  wuu(wut paramwut) {}
   
-  public void onClick(View paramView)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    EmoticonFromGroupEntity localEmoticonFromGroupEntity = this.a.a(ImgPreviewAdapter.a(this.a).getCurrentItem());
-    if (localEmoticonFromGroupEntity != null)
-    {
-      if (localEmoticonFromGroupEntity.msg != null)
-      {
-        ImgPreviewAdapter.a(this.a).a(ImgPreviewAdapter.a(this.a), localEmoticonFromGroupEntity.msg, paramView);
-        return;
-      }
-      QLog.e("ImgPreviewAdapter.msgnull", 1, "img click msg is null.");
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoStoryPiecesPart", 2, "ptv panel down");
     }
-    QLog.e("ImgPreviewAdapter.emonull", 1, "img click emo is null.");
+    if (wut.a(this.a) != null)
+    {
+      wut.a(this.a).setAlpha(1.0F);
+      wut.a(this.a).setVisibility(4);
+      wut.a(this.a).b().a(Boolean.valueOf(false));
+    }
+    wut.b(this.a);
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wuu
  * JD-Core Version:    0.7.0.1
  */

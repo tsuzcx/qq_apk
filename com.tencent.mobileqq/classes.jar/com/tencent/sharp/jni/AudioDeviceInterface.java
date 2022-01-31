@@ -1,6 +1,5 @@
 package com.tencent.sharp.jni;
 
-import amfx;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.pm.PackageManager;
@@ -10,6 +9,7 @@ import android.media.AudioTrack;
 import android.os.Build;
 import android.os.Build.VERSION;
 import android.os.Environment;
+import bede;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -2655,7 +2655,7 @@ public class AudioDeviceInterface
       if (QLog.isColorLevel()) {
         QLog.w("TRAE", 2, "uninitTRAEAudioManager , stopService");
       }
-      TraeAudioManager.d();
+      TraeAudioManager.c();
     }
     while (!QLog.isColorLevel()) {
       return;
@@ -2669,7 +2669,7 @@ public class AudioDeviceInterface
     this.switchState = 0;
     if (this._as != null)
     {
-      this._as.f();
+      this._as.e();
       this._as.a();
       this._as = null;
     }
@@ -2683,7 +2683,7 @@ public class AudioDeviceInterface
     this.switchState = 0;
     this._streamType = TraeAudioManager.b(this._audioStreamTypePolicy);
     if (this._as == null) {
-      this._as = new TraeAudioSession(this._context, new amfx(this));
+      this._as = new TraeAudioSession(this._context, new bede(this));
     }
     this._preDone = false;
     if (this._as != null) {
@@ -2691,12 +2691,12 @@ public class AudioDeviceInterface
     }
     int i;
     int j;
-    label208:
+    label211:
     for (;;)
     {
       try
       {
-        this._as.e();
+        this._as.b(-1030L);
         this._as.a(this._modePolicy, this._streamType);
         i = 7;
         j = i - 1;
@@ -2712,7 +2712,7 @@ public class AudioDeviceInterface
         {
           this._precon.await(1L, TimeUnit.SECONDS);
           if (!QLog.isColorLevel()) {
-            break label208;
+            break label211;
           }
           QLog.e("TRAE", 2, "call_preprocess waiting...  as:" + this._as);
           i = j;

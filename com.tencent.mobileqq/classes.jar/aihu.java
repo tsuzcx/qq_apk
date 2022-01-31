@@ -1,33 +1,41 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.aio.photo.AIOShortVideoData;
-import com.tencent.mobileqq.shortvideo.redbag.RedBagVideoManager;
-import com.tencent.mobileqq.shortvideo.redbag.VideoPlayIPCClient;
+import com.tencent.mobileqq.apollo.FriendCardApolloViewController;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class aihu
-  implements Runnable
+  extends baox
 {
-  public aihu(RedBagVideoManager paramRedBagVideoManager) {}
+  private aihu(FriendCardApolloViewController paramFriendCardApolloViewController) {}
   
-  public void run()
+  protected void onGetExploreMsg(boolean paramBoolean, Object paramObject)
   {
-    if (RedBagVideoManager.a(this.a) != null)
-    {
-      RedBagVideoManager.a(this.a).g = 1;
-      long l = RedBagVideoManager.a(this.a).a;
-      String str = RedBagVideoManager.a(this.a).e;
-      int i = RedBagVideoManager.a(this.a).h;
-      Bundle localBundle = new Bundle();
-      localBundle.putLong("VALUE_MSG_UINSEQ", l);
-      localBundle.putString("VALUE_MSG_FRIENDUIN", str);
-      localBundle.putInt("VALUE_MSG_ISTROOP", i);
-      localBundle.putString("VALUE_MSG_VIDEO_ID", RedBagVideoManager.a(this.a).c);
-      VideoPlayIPCClient.a().a("CMD_UPDATE_MSG_FOR_VIDEO_REDBAG_STAT", localBundle);
+    if (paramBoolean) {
+      try
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("FriendCardApolloViewController", 1, "[onGetExploreMsg] get info end");
+        }
+        paramObject = new JSONObject((String)paramObject);
+        if (paramObject.optInt("entry_id", -1) != 2) {
+          return;
+        }
+        FriendCardApolloViewController.a(this.a, paramObject.optString("icon_url"));
+        QLog.d("FriendCardApolloViewController", 2, "[onGetExploreMsg] iconUrl:" + FriendCardApolloViewController.a(this.a));
+        return;
+      }
+      catch (Exception paramObject)
+      {
+        return;
+      }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("FriendCardApolloViewController", 2, "[onGetExploreMsg] result:" + paramBoolean);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aihu
  * JD-Core Version:    0.7.0.1
  */

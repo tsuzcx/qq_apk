@@ -1,58 +1,63 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.FontSettingActivity;
-import com.tencent.mobileqq.activity.aio.item.TextItemBuilder.Holder;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.widget.AnimationTextView;
-import java.util.List;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
 
 public class sry
-  extends BaseAdapter
 {
-  public sry(FontSettingActivity paramFontSettingActivity) {}
+  public final int a;
+  public final int b;
+  public final int c;
   
-  public int getCount()
+  public sry(int paramInt1, int paramInt2)
   {
-    return this.a.jdField_a_of_type_JavaUtilList.size();
+    this.a = paramInt1;
+    this.b = paramInt2;
+    this.c = 1;
   }
   
-  public Object getItem(int paramInt)
+  public sry(int paramInt1, int paramInt2, int paramInt3)
   {
-    return this.a.jdField_a_of_type_JavaUtilList.get(paramInt);
+    this.a = paramInt1;
+    this.b = paramInt2;
+    this.c = paramInt3;
   }
   
-  public long getItemId(int paramInt)
+  public static sry a(SosoInterface.SosoLocation paramSosoLocation)
   {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    paramView = this.a.jdField_a_of_type_Ssb.a(paramInt, getCount(), (ChatMessage)this.a.jdField_a_of_type_JavaUtilList.get(paramInt), paramView, paramViewGroup, null);
-    paramViewGroup = (TextItemBuilder.Holder)paramView.getTag();
-    paramViewGroup.e.setOnClickListener(null);
-    if ((paramViewGroup.e instanceof AnimationTextView)) {
-      ((AnimationTextView)paramViewGroup.e).a = null;
+    if (paramSosoLocation != null) {
+      return new sry((int)(paramSosoLocation.a * 1000000.0D), (int)(paramSosoLocation.b * 1000000.0D));
     }
-    if ((FontSettingActivity.a(this.a)) && (paramInt == this.a.jdField_a_of_type_JavaUtilList.size() - 1))
+    return new sry(0, 0);
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if (this == paramObject) {}
+    do
     {
-      this.a.jdField_a_of_type_Boolean = true;
-      this.a.a();
-    }
-    if ((this.a.c) && (paramInt == this.a.jdField_a_of_type_JavaUtilList.size() - 1))
-    {
-      this.a.c = false;
-      FontSettingActivity.a(this.a).postDelayed(new srz(this), 100L);
-    }
-    return paramView;
+      return true;
+      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+        return false;
+      }
+      paramObject = (sry)paramObject;
+      if (this.a != paramObject.a) {
+        return false;
+      }
+    } while (this.b == paramObject.b);
+    return false;
+  }
+  
+  public int hashCode()
+  {
+    return this.a * 31 + this.b;
+  }
+  
+  public String toString()
+  {
+    return "GpsMsg{latitude=" + this.a + ", longitude=" + this.b + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     sry
  * JD-Core Version:    0.7.0.1
  */

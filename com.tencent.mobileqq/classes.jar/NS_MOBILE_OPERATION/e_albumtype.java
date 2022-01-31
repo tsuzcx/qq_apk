@@ -11,7 +11,7 @@ public final class e_albumtype
   public static final int _ENUM_ALBUM_TYPE_MOBILE = 1;
   public static final int _ENUM_ALBUM_TYPE_SECRET_TIETU = 7;
   public static final int _ENUM_ALBUM_TYPE_TIETU = 2;
-  private static e_albumtype[] a;
+  private static e_albumtype[] __values;
   private String __T = new String();
   private int __value;
   
@@ -21,7 +21,7 @@ public final class e_albumtype
     for (boolean bool = true;; bool = false)
     {
       $assertionsDisabled = bool;
-      a = new e_albumtype[3];
+      __values = new e_albumtype[3];
       ENUM_ALBUM_TYPE_MOBILE = new e_albumtype(0, 1, "ENUM_ALBUM_TYPE_MOBILE");
       ENUM_ALBUM_TYPE_TIETU = new e_albumtype(1, 2, "ENUM_ALBUM_TYPE_TIETU");
       ENUM_ALBUM_TYPE_SECRET_TIETU = new e_albumtype(2, 7, "ENUM_ALBUM_TYPE_SECRET_TIETU");
@@ -33,16 +33,16 @@ public final class e_albumtype
   {
     this.__T = paramString;
     this.__value = paramInt2;
-    a[paramInt1] = this;
+    __values[paramInt1] = this;
   }
   
   public static e_albumtype convert(int paramInt)
   {
     int i = 0;
-    while (i < a.length)
+    while (i < __values.length)
     {
-      if (a[i].value() == paramInt) {
-        return a[i];
+      if (__values[i].value() == paramInt) {
+        return __values[i];
       }
       i += 1;
     }
@@ -55,10 +55,10 @@ public final class e_albumtype
   public static e_albumtype convert(String paramString)
   {
     int i = 0;
-    while (i < a.length)
+    while (i < __values.length)
     {
-      if (a[i].toString().equals(paramString)) {
-        return a[i];
+      if (__values[i].toString().equals(paramString)) {
+        return __values[i];
       }
       i += 1;
     }
@@ -80,7 +80,7 @@ public final class e_albumtype
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     NS_MOBILE_OPERATION.e_albumtype
  * JD-Core Version:    0.7.0.1
  */

@@ -1,43 +1,22 @@
-import com.tencent.mobileqq.activity.specialcare.QQSpecialFriendSettingActivity;
-import com.tencent.mobileqq.activity.specialcare.QvipSpecialSoundManager.CallBack;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnSystemUiVisibilityChangeListener;
+import com.tencent.gdtad.api.motivevideo.GdtMotiveVideoFragment;
 
 public class ylo
-  implements QvipSpecialSoundManager.CallBack
+  implements View.OnSystemUiVisibilityChangeListener
 {
-  public ylo(QQSpecialFriendSettingActivity paramQQSpecialFriendSettingActivity) {}
+  public ylo(GdtMotiveVideoFragment paramGdtMotiveVideoFragment, View paramView) {}
   
-  public void a(boolean paramBoolean)
+  public void onSystemUiVisibilityChange(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQSpecialFriendSettingActivity", 2, "loadSpecialSoundConfig onResult: " + paramBoolean);
-    }
-    if (paramBoolean) {}
-    for (;;)
-    {
-      try
-      {
-        QQSpecialFriendSettingActivity.a(this.a);
-        return;
-      }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-        return;
-      }
-      finally
-      {
-        this.a.stopTitleProgress();
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("QQSpecialFriendSettingActivity", 2, "loadSpecialSoundConfig fail.");
-      }
+    if ((paramInt & 0x4) == 0) {
+      this.jdField_a_of_type_AndroidViewView.setSystemUiVisibility(3846);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ylo
  * JD-Core Version:    0.7.0.1
  */

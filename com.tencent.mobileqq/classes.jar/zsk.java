@@ -1,42 +1,19 @@
-import com.tencent.av.gaudio.AVNotifyCenter;
-import com.tencent.av.service.QavWrapper;
-import com.tencent.av.utils.GVideoGrayConfig.GVideoGrayConfigListener;
-import com.tencent.av.utils.GVideoGrayConfig.Record;
-import com.tencent.av.utils.VideoMsgTools;
-import com.tencent.mobileqq.app.QQGAudioMsgHandler;
-import com.tencent.qphone.base.util.BaseApplication;
-import cooperation.groupvideo.GroupVideoWrapper;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.JobSegment;
 
-public class zsk
-  implements GVideoGrayConfig.GVideoGrayConfigListener
+class zsk
+  extends JobSegment<armr, armr>
 {
-  public zsk(QQGAudioMsgHandler paramQQGAudioMsgHandler, long paramLong1, int paramInt, long paramLong2) {}
+  zsk(zsi paramzsi, String paramString, int paramInt) {}
   
-  public void a(int paramInt1, GVideoGrayConfig.Record paramRecord, int paramInt2)
+  protected void a(JobContext paramJobContext, armr paramarmr)
   {
-    if (paramInt1 == 0)
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqAppQQGAudioMsgHandler.jdField_a_of_type_ComTencentAvGaudioAVNotifyCenter != null)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqAppQQGAudioMsgHandler.jdField_a_of_type_ComTencentAvGaudioAVNotifyCenter.a(3, this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, 20, 1);
-        this.jdField_a_of_type_ComTencentMobileqqAppQQGAudioMsgHandler.jdField_a_of_type_ComTencentAvGaudioAVNotifyCenter.a(this.jdField_a_of_type_Long, true);
-        this.jdField_a_of_type_ComTencentMobileqqAppQQGAudioMsgHandler.jdField_a_of_type_ComTencentAvGaudioAVNotifyCenter.a(21, 1, Long.valueOf(this.jdField_a_of_type_Long).longValue(), 0L);
-      }
-      VideoMsgTools.a(this.jdField_a_of_type_ComTencentMobileqqAppQQGAudioMsgHandler.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1, 13, false, Long.toString(this.jdField_a_of_type_Long), Long.toString(this.b), false, null, false, this.jdField_a_of_type_Int, new Object[0]);
-      if (this.jdField_a_of_type_Int == 2) {
-        new GroupVideoWrapper(this.jdField_a_of_type_ComTencentMobileqqAppQQGAudioMsgHandler.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(new zsl(this));
-      }
-    }
-    else
-    {
-      return;
-    }
-    new QavWrapper(BaseApplication.getContext()).a(new zsm(this));
+    armw.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, 1, true, new zsl(this, this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     zsk
  * JD-Core Version:    0.7.0.1
  */

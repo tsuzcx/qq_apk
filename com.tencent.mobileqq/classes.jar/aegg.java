@@ -1,54 +1,59 @@
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.biz.troop.TroopMemberApiClient.Callback;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.jsp.UiApiPlugin;
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
-import cooperation.troop.TroopManageProxyActivity;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.qphone.base.util.QLog;
 
-public class aegg
-  implements TroopMemberApiClient.Callback
+class aegg
+  extends aodp
 {
-  public aegg(UiApiPlugin paramUiApiPlugin, String paramString) {}
+  aegg(aege paramaege) {}
   
-  public void a(Bundle paramBundle)
+  protected void a(aooa paramaooa)
   {
-    int i = 12;
-    if (paramBundle != null)
+    if (paramaooa == null) {}
+    do
     {
-      if (paramBundle.getBoolean("isSuccess"))
+      FileManagerEntity localFileManagerEntity;
+      do
       {
-        paramBundle = new Intent();
-        paramBundle.putExtra("troop_uin", this.jdField_a_of_type_JavaLangString);
-        if (this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.mRuntime.a() != null) {
-          i = this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.mRuntime.a().a(this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin, (byte)12);
-        }
-        TroopManageProxyActivity.a("troop_manage_plugin.apk", "管理群", TroopManageProxyActivity.class, this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.mRuntime.a(), paramBundle, TroopManageProxyActivity.a(this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.mRuntime.a()), "com.tencent.mobileqq.activity.TroopSetJoinTypeActivity", this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.mRuntime.a().getAccount(), i);
-      }
+        do
+        {
+          return;
+        } while (!(paramaooa.a instanceof FileManagerEntity));
+        localFileManagerEntity = (FileManagerEntity)paramaooa.a;
+      } while ((paramaooa.b == null) || (paramaooa.b.length() <= 0));
+      localFileManagerEntity.strThumbPath = paramaooa.b;
+      this.a.a.a().c(localFileManagerEntity);
+    } while (aege.a(this.a) == null);
+    aege.a(this.a).notifyDataSetChanged();
+  }
+  
+  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString, int paramInt)
+  {
+    if (aege.a(this.a) != null) {
+      aege.a(this.a).notifyDataSetChanged();
     }
-    else {
-      return;
+  }
+  
+  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MultiForwardActivity", 2, "OnFileTransferEnd : isSuccess[" + paramBoolean + "], uniseq[" + paramLong1 + "], nSessionId[" + paramLong2 + paramString1 + "], peerType[" + paramInt1 + "]");
     }
-    paramBundle = new JSONObject();
-    try
-    {
-      paramBundle.put("gc", this.jdField_a_of_type_JavaLangString);
-      paramBundle.put("ret", 1);
-      this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.m, new String[] { paramBundle.toString() });
-      return;
+    if (aege.a(this.a) != null) {
+      aege.a(this.a).notifyDataSetChanged();
     }
-    catch (JSONException paramBundle)
-    {
-      paramBundle.printStackTrace();
+  }
+  
+  protected void b(long paramLong1, long paramLong2, String paramString, int paramInt)
+  {
+    if (aege.a(this.a) != null) {
+      aege.a(this.a).notifyDataSetChanged();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aegg
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.data;
 
-import acbr;
+import amsc;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -8,7 +8,7 @@ import android.os.Parcelable.Creator;
 public class IPSiteModel$GameRich
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new acbr();
+  public static final Parcelable.Creator<GameRich> CREATOR = new amsc();
   public String anchorFaceUrl;
   public String anchorId;
   public String anchorName;

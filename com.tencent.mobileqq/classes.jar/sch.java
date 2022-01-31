@@ -1,20 +1,16 @@
-import com.tencent.av.utils.GVideoGrayConfig;
-import com.tencent.av.utils.GVideoGrayConfig.GVideoGrayConfigListener;
-import com.tencent.mobileqq.widget.QQProgressDialog.Callback;
+import java.net.URL;
 
-public final class sch
-  implements QQProgressDialog.Callback
+public abstract interface sch
 {
-  public sch(GVideoGrayConfig.GVideoGrayConfigListener paramGVideoGrayConfigListener) {}
+  public abstract void a(URL paramURL, int paramInt);
   
-  public void a()
-  {
-    GVideoGrayConfig.a().a(this.a);
-  }
+  public abstract void a(URL paramURL, Throwable paramThrowable);
+  
+  public abstract void a(URL paramURL, rcs paramrcs);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     sch
  * JD-Core Version:    0.7.0.1
  */

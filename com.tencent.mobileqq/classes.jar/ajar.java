@@ -1,35 +1,26 @@
-import android.view.View;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallEditActivity;
-import com.tencent.mobileqq.troop.logic.TroopAvatarWallEditCtrl;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.AdapterView.OnItemSelectedListener;
-
-class ajar
-  implements AdapterView.OnItemSelectedListener
+public class ajar
 {
-  ajar(ajap paramajap) {}
+  public static final int a;
+  public static final long a;
+  public static final String a;
+  public static final String b;
+  public static final String c;
+  public long b;
+  public long c;
+  public long d;
   
-  public void a(AdapterView paramAdapterView) {}
-  
-  public void b(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  static
   {
-    if (paramView == null) {
-      return;
-    }
-    this.a.a.a.jdField_a_of_type_Int = paramInt;
-    this.a.a.a.jdField_a_of_type_ComTencentMobileqqTroopLogicTroopAvatarWallEditCtrl.a(paramInt);
-    if (this.a.a.a.jdField_a_of_type_Boolean)
-    {
-      ReportController.b(this.a.a.a.app, "P_CliOper", "Grp_set", "", "Grp_Visdata", "nonmber_Clk_head", 0, 0, this.a.a.a.jdField_a_of_type_JavaLangString, "0", "", "");
-      return;
-    }
-    ReportController.b(this.a.a.a.app, "P_CliOper", "Grp_set", "", "Grp_Visdata", "nonmber_Clk_head", 0, 0, this.a.a.a.jdField_a_of_type_JavaLangString, "1", "", "");
+    jdField_a_of_type_JavaLangString = babp.i();
+    b = babp.e();
+    c = babp.g();
+    jdField_a_of_type_Int = babp.b();
+    jdField_a_of_type_Long = babp.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ajar
  * JD-Core Version:    0.7.0.1
  */

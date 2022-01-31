@@ -1,37 +1,46 @@
-import com.tencent.mobileqq.activity.QQSettingCleanActivity;
-import com.tencent.mobileqq.activity.QQSettingCleanActivity.IProgressCallback;
-import com.tencent.mobileqq.statistics.storage.StorageReport;
-import com.tencent.mobileqq.utils.SdCardUtil;
-import com.tencent.mobileqq.widget.CircleProgressBar;
-import com.tencent.qphone.base.util.QLog;
+import android.os.SystemClock;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import com.tencent.biz.qqstory.view.widget.QQStoryLoadingView;
 
-public class tph
-  implements Runnable
+class tph
+  implements tqk
 {
-  public tph(QQSettingCleanActivity paramQQSettingCleanActivity) {}
+  tph(tpg paramtpg) {}
   
-  public void run()
+  public boolean a(tqg paramtqg, int paramInt, Object paramObject)
   {
-    long l1 = SdCardUtil.a();
-    long l2 = SdCardUtil.a(this.a);
-    long l3 = SdCardUtil.b();
-    long l4 = SdCardUtil.b(this.a);
-    this.a.b = (l1 + l2);
-    this.a.e = (l3 + l4);
-    tpi localtpi = new tpi(this);
-    this.a.c = StorageReport.a().a(localtpi, 0, 98);
-    this.a.d = StorageReport.a().a(QQSettingCleanActivity.jdField_a_of_type_JavaUtilArrayList);
-    this.a.c -= this.a.d;
-    localtpi.a(100);
-    QLog.d("QQCleanActivity", 1, "SpaceInfo total: " + this.a.b + " ava: " + this.a.e + " qq: " + this.a.c + " file: " + this.a.d);
-    QLog.d("QQCleanActivity", 1, "SpaceInfo totalIner: " + l1 + " totalExter: " + l2 + " avaInter: " + l3 + " avaExter: " + l4);
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgressBar.setFinish(this.a.c, this.a.d, this.a.b - this.a.c - this.a.d - this.a.e, this.a.e, 3.0F);
-    this.a.runOnUiThread(new tpj(this.a, 5));
+    if (this.a.isCanceled()) {
+      return false;
+    }
+    urk.a(this.a.a.jdField_a_of_type_JavaLangString, "onInfo, [videoView=%d, what=%d, extra=%s]", Integer.valueOf(System.identityHashCode(paramtqg)), Integer.valueOf(paramInt), paramObject);
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      VideoViewVideoHolder.a(this.a.a).a(this.a.a, paramtqg, paramInt, paramObject);
+      return false;
+      urk.d(this.a.a.jdField_a_of_type_JavaLangString, "PLAYER_INFO_HW_DECODE_FAILED. extra=%s", new Object[] { paramObject });
+      continue;
+      VideoViewVideoHolder.d(this.a.a, ((Integer)paramObject).intValue());
+      continue;
+      VideoViewVideoHolder.a(this.a.a, 0L, "rendering-Start");
+      continue;
+      urk.d(this.a.a.jdField_a_of_type_JavaLangString, "start buffering, show loading view");
+      VideoViewVideoHolder.e(this.a.a, VideoViewVideoHolder.c(this.a.a) + 1);
+      VideoViewVideoHolder.a(this.a.a, SystemClock.uptimeMillis());
+      VideoViewVideoHolder.a(this.a.a, 8);
+      this.a.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryLoadingView.setVisibility(0);
+      continue;
+      VideoViewVideoHolder.f(this.a.a, (int)(VideoViewVideoHolder.d(this.a.a) + (SystemClock.uptimeMillis() - VideoViewVideoHolder.a(this.a.a))));
+      urk.d(this.a.a.jdField_a_of_type_JavaLangString, "end buffering, hide loading view");
+      this.a.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryLoadingView.setVisibility(8);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tph
  * JD-Core Version:    0.7.0.1
  */

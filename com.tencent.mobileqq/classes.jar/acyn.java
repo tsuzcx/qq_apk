@@ -1,19 +1,32 @@
-import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileCloudFileTabView;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.BaseChatPie;
 
 public class acyn
-  implements Runnable
+  implements acxg
 {
-  public acyn(QfileCloudFileTabView paramQfileCloudFileTabView) {}
+  private BaseChatPie a;
   
-  public void run()
+  public acyn(BaseChatPie paramBaseChatPie)
   {
-    QfileCloudFileTabView.a(this.a);
-    this.a.d();
+    this.a = paramBaseChatPie;
+  }
+  
+  public void a(int paramInt)
+  {
+    String str = this.a.c();
+    if (!TextUtils.isEmpty(str)) {
+      bara.a(this.a.a).a(str);
+    }
+  }
+  
+  public int[] a()
+  {
+    return new int[6];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     acyn
  * JD-Core Version:    0.7.0.1
  */

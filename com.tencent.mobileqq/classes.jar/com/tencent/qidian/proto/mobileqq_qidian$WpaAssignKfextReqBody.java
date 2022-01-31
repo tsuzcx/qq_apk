@@ -11,7 +11,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class mobileqq_qidian$WpaAssignKfextReqBody
-  extends MessageMicro
+  extends MessageMicro<WpaAssignKfextReqBody>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBoolField bool_need_sigmsg = PBField.initBool(false);
@@ -29,7 +29,7 @@ public final class mobileqq_qidian$WpaAssignKfextReqBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.qidian.proto.mobileqq_qidian.WpaAssignKfextReqBody
  * JD-Core Version:    0.7.0.1
  */

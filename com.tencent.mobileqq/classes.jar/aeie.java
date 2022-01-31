@@ -1,22 +1,21 @@
-import com.tencent.mobileqq.hitrate.PreloadProcHitSession;
-import com.tencent.mobileqq.leba.LebaWithFeeds;
-import com.tencent.mobileqq.webprocess.WebProcessManager.WebProcessStartListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 class aeie
-  implements WebProcessManager.WebProcessStartListener
+  implements View.OnClickListener
 {
-  aeie(aeid paramaeid) {}
+  aeie(aegy paramaegy, RelativeLayout paramRelativeLayout, LinearLayout paramLinearLayout) {}
   
-  public void a(boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    if (paramBoolean) {
-      LebaWithFeeds.a(this.a.a.a).a();
-    }
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout.removeView(this.jdField_a_of_type_AndroidWidgetLinearLayout);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aeie
  * JD-Core Version:    0.7.0.1
  */

@@ -1,33 +1,45 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.ItemAnimator;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import com.tencent.widget.itemtouchhelper.ItemTouchHelper;
-import com.tencent.widget.itemtouchhelper.ItemTouchHelper.Callback;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class ammg
-  implements Runnable
 {
-  public ammg(ItemTouchHelper paramItemTouchHelper, amml paramamml, int paramInt) {}
+  private Map<String, Long> a = new HashMap();
   
-  public void run()
+  public static ammg a(alzs[] paramArrayOfalzs)
   {
-    if ((this.jdField_a_of_type_ComTencentWidgetItemtouchhelperItemTouchHelper.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView != null) && (this.jdField_a_of_type_ComTencentWidgetItemtouchhelperItemTouchHelper.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.isAttachedToWindow()) && (!this.jdField_a_of_type_Amml.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_Amml.jdField_b_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder.getAdapterPosition() != -1))
+    if ((paramArrayOfalzs == null) || (paramArrayOfalzs.length <= 0)) {
+      return null;
+    }
+    localammg = new ammg();
+    try
     {
-      RecyclerView.ItemAnimator localItemAnimator = this.jdField_a_of_type_ComTencentWidgetItemtouchhelperItemTouchHelper.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getItemAnimator();
-      if (((localItemAnimator == null) || (!localItemAnimator.isRunning(null))) && (!this.jdField_a_of_type_ComTencentWidgetItemtouchhelperItemTouchHelper.a())) {
-        this.jdField_a_of_type_ComTencentWidgetItemtouchhelperItemTouchHelper.jdField_a_of_type_ComTencentWidgetItemtouchhelperItemTouchHelper$Callback.a(this.jdField_a_of_type_Amml.jdField_b_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder, this.jdField_a_of_type_Int);
+      paramArrayOfalzs = new JSONObject(paramArrayOfalzs[0].a);
+      Iterator localIterator = paramArrayOfalzs.keys();
+      while (localIterator.hasNext())
+      {
+        String str = (String)localIterator.next();
+        localammg.a.put(str, Long.valueOf(paramArrayOfalzs.getLong(str)));
       }
+      return localammg;
     }
-    else
+    catch (JSONException paramArrayOfalzs)
     {
-      return;
+      QLog.e("TencentDocPreviewConfigBean", 1, paramArrayOfalzs.getLocalizedMessage(), paramArrayOfalzs);
     }
-    this.jdField_a_of_type_ComTencentWidgetItemtouchhelperItemTouchHelper.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.post(this);
+  }
+  
+  public Map<String, Long> a()
+  {
+    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ammg
  * JD-Core Version:    0.7.0.1
  */

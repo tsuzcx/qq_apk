@@ -1,24 +1,30 @@
-import com.tencent.mobileqq.video.VipVideoPlayActivity;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparedListener;
+import android.text.TextUtils;
 
 public class aksj
-  implements TVK_IMediaPlayer.OnVideoPreparedListener
 {
-  public aksj(VipVideoPlayActivity paramVipVideoPlayActivity) {}
+  public String a;
+  public String b;
+  public String c;
   
-  public void onVideoPrepared(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  public String a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VipVideoPlayActivity", 2, "video player prepared");
+    if (TextUtils.isEmpty(this.b)) {
+      return "";
     }
-    this.a.runOnUiThread(new aksk(this));
+    return this.b;
+  }
+  
+  public String b()
+  {
+    if (TextUtils.isEmpty(this.c)) {
+      return "";
+    }
+    return this.c;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aksj
  * JD-Core Version:    0.7.0.1
  */

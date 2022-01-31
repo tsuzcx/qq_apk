@@ -1,28 +1,59 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.item.ShortVideoRealItemBuilder;
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import com.tencent.mobileqq.utils.FileUtils;
-import java.util.Map;
-
 public class vlk
-  implements Runnable
 {
-  public vlk(ShortVideoRealItemBuilder paramShortVideoRealItemBuilder, String paramString) {}
-  
-  public void run()
+  public static String a(int paramInt)
   {
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    for (;;)
     {
-      if (ShortVideoRealItemBuilder.a().size() == 0) {
-        RMVideoStateMgr.c(this.jdField_a_of_type_JavaLangString);
+      try
+      {
+        localObject = new RuntimeException("getStackTrace").getStackTrace();
+        localStringBuilder = new StringBuilder();
+        i = paramInt;
+        if (localObject.length > paramInt) {
+          break label69;
+        }
+        i = localObject.length;
       }
-      FileUtils.a(this.jdField_a_of_type_JavaLangString);
+      catch (Exception localException)
+      {
+        Object localObject;
+        StringBuilder localStringBuilder;
+        int i;
+        return "";
+      }
+      if (paramInt < i)
+      {
+        localStringBuilder.append(localObject[paramInt].toString());
+        paramInt += 1;
+      }
+      else
+      {
+        localObject = localStringBuilder.toString();
+        return localObject;
+        label69:
+        paramInt = 2;
+      }
     }
+  }
+  
+  public static void a(String paramString, int paramInt, long paramLong)
+  {
+    if (paramLong <= 0L)
+    {
+      vkw.a("unLikeRecommendFeed failed, because recommendId=" + paramLong, new Object[0]);
+      return;
+    }
+    vll localvll = new vll();
+    localvll.jdField_b_of_type_JavaLangString = paramString;
+    localvll.c = paramInt;
+    localvll.jdField_b_of_type_Long = paramLong;
+    localvll.d = 1;
+    slv.a().a(localvll, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vlk
  * JD-Core Version:    0.7.0.1
  */

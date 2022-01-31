@@ -1,55 +1,34 @@
-import com.tencent.biz.pubaccount.readinjoySearch.ReadInJoyNewSearchActivity;
+import android.view.View;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ReadInJoySearchHistoryEntity;
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mobileqq.data.AccountDetail;
 
-public class mvc
-  implements Runnable
+class mvc
+  implements begw
 {
-  public mvc(ReadInJoyNewSearchActivity paramReadInJoyNewSearchActivity, String paramString) {}
+  mvc(mut parammut, begr parambegr) {}
   
-  public void run()
+  public void OnClick(View paramView, int paramInt)
   {
-    EntityManager localEntityManager = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySearchReadInJoyNewSearchActivity.app.getEntityManagerFactory().createEntityManager();
-    List localList = localEntityManager.a(ReadInJoySearchHistoryEntity.class, true, null, null, null, null, " timestamp DESC ", null);
-    ReadInJoySearchHistoryEntity localReadInJoySearchHistoryEntity;
-    if (localList != null)
-    {
-      Iterator localIterator = localList.iterator();
-      while (localIterator.hasNext())
-      {
-        localReadInJoySearchHistoryEntity = (ReadInJoySearchHistoryEntity)localIterator.next();
-        if (localReadInJoySearchHistoryEntity.keyWord.equals(this.jdField_a_of_type_JavaLangString)) {
-          localEntityManager.b(localReadInJoySearchHistoryEntity);
-        }
-      }
+    if (this.jdField_a_of_type_Mut.f) {
+      return;
+    }
+    this.jdField_a_of_type_Mut.f = true;
+    if (paramInt == 0) {
+      this.jdField_a_of_type_Mut.jdField_a_of_type_Int = 0;
     }
     for (;;)
     {
-      if (localReadInJoySearchHistoryEntity != null) {
-        localList.remove(localReadInJoySearchHistoryEntity);
+      this.jdField_a_of_type_Mut.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Mut.jdField_a_of_type_Akig);
+      this.jdField_a_of_type_Mut.jdField_a_of_type_Akig = new akig(new mvd(this));
+      this.jdField_a_of_type_Mut.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Mut.jdField_a_of_type_Akig);
+      akil.a(this.jdField_a_of_type_Mut.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Mut.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.uin, this.jdField_a_of_type_Mut.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.name, this.jdField_a_of_type_Mut.jdField_a_of_type_Int);
+      this.jdField_a_of_type_Begr.dismiss();
+      return;
+      if (paramInt == 1) {
+        this.jdField_a_of_type_Mut.jdField_a_of_type_Int = 2;
+      } else if (paramInt == 2) {
+        this.jdField_a_of_type_Mut.jdField_a_of_type_Int = 1;
       }
-      if (localList.size() == 20)
-      {
-        localEntityManager.b((Entity)localList.get(localList.size() - 1));
-        localList.remove(localList.size() - 1);
-      }
-      for (;;)
-      {
-        localReadInJoySearchHistoryEntity = new ReadInJoySearchHistoryEntity();
-        localReadInJoySearchHistoryEntity.keyWord = this.jdField_a_of_type_JavaLangString;
-        localReadInJoySearchHistoryEntity.timestamp = System.currentTimeMillis();
-        localEntityManager.a(localReadInJoySearchHistoryEntity);
-        localEntityManager.a();
-        return;
-        new ArrayList();
-      }
-      localReadInJoySearchHistoryEntity = null;
     }
   }
 }

@@ -1,28 +1,39 @@
-import android.text.InputFilter;
-import android.text.Spanned;
-import com.tencent.mobileqq.activity.book.BookEditText;
-import com.tencent.mobileqq.text.QQText;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.troop.file.MoveFileActivity;
 
 public class wlh
-  implements InputFilter
+  implements DialogInterface.OnClickListener
 {
-  public wlh(BookEditText paramBookEditText) {}
+  public wlh(MoveFileActivity paramMoveFileActivity) {}
   
-  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a(paramSpanned.toString());
-    if (this.a.a(paramCharSequence.toString()) == 0) {
-      BookEditText.a(this.a);
+    paramDialogInterface = (xem)paramDialogInterface;
+    this.a.jdField_a_of_type_JavaLangString = paramDialogInterface.getInputValue().trim();
+    if (this.a.jdField_a_of_type_JavaLangString.length() > azjg.a)
+    {
+      paramDialogInterface.a(this.a.getString(2131631916), -65536);
+      awqx.b(this.a.app, "P_CliOper", "Grp_files", "", "file", "over_num", 0, 0, this.a.jdField_a_of_type_Long + "", "", "", "");
     }
-    while (!QQText.a(paramCharSequence.toString())) {
-      return paramCharSequence.subSequence(paramInt1, paramInt2 - paramInt1);
-    }
-    return "";
+    do
+    {
+      return;
+      if (azjg.a(this.a.jdField_a_of_type_JavaLangString))
+      {
+        paramDialogInterface.a(this.a.getString(2131631917), -65536);
+        awqx.b(this.a.app, "P_CliOper", "Grp_files", "", "file", "sensitive", 0, 0, this.a.jdField_a_of_type_Long + "", "0", "", "");
+        return;
+      }
+      paramDialogInterface.dismiss();
+    } while (azjg.a(this.a.app, this.a, this.a.jdField_a_of_type_Long) == 0);
+    wln.a(this.a.app, this.a.jdField_a_of_type_Long, "/", this.a.jdField_a_of_type_JavaLangString, MoveFileActivity.a(this.a));
+    this.a.a(2131631845);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wlh
  * JD-Core Version:    0.7.0.1
  */

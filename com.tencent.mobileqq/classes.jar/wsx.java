@@ -1,21 +1,21 @@
-import com.tencent.mobileqq.activity.contacts.fragment.FriendFragment;
-import com.tencent.mobileqq.app.MessageObserver;
+import android.support.annotation.Nullable;
+import com.tencent.biz.videostory.capture.AEVideoStoryGIFTplViewModel.2.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
 public class wsx
-  extends MessageObserver
+  implements bhwg<Boolean>
 {
-  private wsx(FriendFragment paramFriendFragment) {}
+  wsx(wsw paramwsw) {}
   
-  protected void f()
+  public void a(@Nullable Boolean paramBoolean)
   {
-    if (FriendFragment.b(this.a)) {
-      FriendFragment.a(this.a, 1400L, true);
-    }
+    ThreadManager.getSubThreadHandler().post(new AEVideoStoryGIFTplViewModel.2.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wsx
  * JD-Core Version:    0.7.0.1
  */

@@ -1,54 +1,26 @@
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.app.DataLineObserver;
-import com.tencent.mobileqq.data.DataLineMsgRecord;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.channel.QQStoryCmdHandler;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
 public class smg
-  extends DataLineObserver
+  extends SimpleJob<Void>
 {
-  public smg(Conversation paramConversation) {}
-  
-  protected void a(boolean paramBoolean, long paramLong, String paramString)
+  public smg(QQStoryCmdHandler paramQQStoryCmdHandler, String paramString, slz paramslz)
   {
-    super.a(paramBoolean, paramLong, paramString);
-    int i = DataLineMsgRecord.getDevTypeBySeId(paramLong);
-    if (i == 0) {
-      this.a.a(8, AppConstants.y, 6000);
-    }
-    while (i != 1) {
-      return;
-    }
-    this.a.a(8, AppConstants.z, 6000);
+    super(paramString);
   }
   
-  protected void a(boolean paramBoolean, Long paramLong, String paramString)
+  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
-    int i = DataLineMsgRecord.getDevTypeBySeId(paramLong.longValue());
-    if (i == 0) {
-      this.a.a(9, AppConstants.y, 6003);
-    }
-    while (i != 1) {
-      return;
-    }
-    this.a.a(8, AppConstants.z, 6003);
-  }
-  
-  protected void b(boolean paramBoolean, long paramLong, String paramString)
-  {
-    super.b(paramBoolean, paramLong, paramString);
-    int i = DataLineMsgRecord.getDevTypeBySeId(paramLong);
-    if (i == 0) {
-      this.a.a(8, AppConstants.y, 6000);
-    }
-    while (i != 1) {
-      return;
-    }
-    this.a.a(8, AppConstants.z, 6003);
+    this.jdField_a_of_type_ComTencentBizQqstoryChannelQQStoryCmdHandler.a(this.jdField_a_of_type_Slz);
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     smg
  * JD-Core Version:    0.7.0.1
  */

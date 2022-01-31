@@ -1,31 +1,37 @@
-import com.tencent.mobileqq.activity.contacts.adapter.ContactsTroopAdapter;
-import com.tencent.mobileqq.activity.contacts.fragment.TroopFragment;
-import com.tencent.mobileqq.app.AutomatorObserver;
 import com.tencent.qphone.base.util.QLog;
 
-public class wtu
-  extends AutomatorObserver
+class wtu
+  implements bgxw
 {
-  public wtu(TroopFragment paramTroopFragment) {}
-  
-  protected void a(int paramInt)
+  public void a(bgya parambgya, int paramInt)
   {
-    switch (paramInt)
-    {
-    }
-    do
-    {
+    if (paramInt <= 1) {
       return;
-      if (QLog.isColorLevel()) {
-        QLog.d("contacts.fragment.TroopFragment", 2, "onCacheInited " + paramInt);
-      }
-    } while (this.a.a == null);
-    this.a.a.d();
+    }
+    wtt.a().a(parambgya.a, paramInt);
+  }
+  
+  public void a(bgya parambgya, boolean paramBoolean)
+  {
+    if (parambgya == null) {
+      return;
+    }
+    parambgya.e = false;
+    if (paramBoolean) {
+      parambgya.d = true;
+    }
+    for (;;)
+    {
+      wtt.a().a(parambgya, paramBoolean);
+      wtt.a(wtt.a(), parambgya.a);
+      return;
+      QLog.e("PlayDownloadManagerWrap", 1, "download failed with id: " + parambgya.a);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wtu
  * JD-Core Version:    0.7.0.1
  */

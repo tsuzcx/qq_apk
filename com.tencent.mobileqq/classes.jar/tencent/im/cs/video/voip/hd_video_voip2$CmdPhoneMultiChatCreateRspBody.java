@@ -9,13 +9,13 @@ import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class hd_video_voip2$CmdPhoneMultiChatCreateRspBody
-  extends MessageMicro
+  extends MessageMicro<CmdPhoneMultiChatCreateRspBody>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_call_phone = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField bytes_call_prompt = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField bytes_conf_id = PBField.initBytes(ByteStringMicro.EMPTY);
-  public final PBRepeatMessageField msg_not_support_to_tel = PBField.initRepeatMessage(hd_video_voip2.TelInfo.class);
+  public final PBRepeatMessageField<hd_video_voip2.TelInfo> msg_not_support_to_tel = PBField.initRepeatMessage(hd_video_voip2.TelInfo.class);
   public final PBUInt32Field uint32_call_phone_type = PBField.initUInt32(0);
   
   static
@@ -28,7 +28,7 @@ public final class hd_video_voip2$CmdPhoneMultiChatCreateRspBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     tencent.im.cs.video.voip.hd_video_voip2.CmdPhoneMultiChatCreateRspBody
  * JD-Core Version:    0.7.0.1
  */

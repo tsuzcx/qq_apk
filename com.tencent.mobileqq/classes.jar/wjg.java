@@ -1,20 +1,24 @@
-import android.os.MessageQueue.IdleHandler;
-import com.tencent.mobileqq.activity.aio.zhitu.ZhituManager;
+import android.os.Bundle;
+import com.tencent.biz.troop.TroopMemberApiService;
 
 public class wjg
-  implements MessageQueue.IdleHandler
+  extends ajjh
 {
-  public wjg(ZhituManager paramZhituManager) {}
+  public wjg(TroopMemberApiService paramTroopMemberApiService) {}
   
-  public boolean queueIdle()
+  protected void onUpdateTroopHead(boolean paramBoolean, String paramString)
   {
-    this.a.b();
-    return false;
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("type", 30);
+    localBundle.putBoolean("isSuccess", paramBoolean);
+    localBundle.putSerializable("data", new Object[] { paramString });
+    localBundle.putSerializable("observer_type", Integer.valueOf(2));
+    this.a.a(3, localBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wjg
  * JD-Core Version:    0.7.0.1
  */

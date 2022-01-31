@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class AudioTransInterfaceTranslate$IntTransJoinSessionReq
-  extends MessageMicro
+  extends MessageMicro<IntTransJoinSessionReq>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 32 }, new String[] { "enum_business_type", "msg_crypt_info", "bool_translate", "uint32_data_timeout" }, new Object[] { Integer.valueOf(1), null, Boolean.valueOf(false), Integer.valueOf(0) }, IntTransJoinSessionReq.class);
   public final PBBoolField bool_translate = PBField.initBool(false);

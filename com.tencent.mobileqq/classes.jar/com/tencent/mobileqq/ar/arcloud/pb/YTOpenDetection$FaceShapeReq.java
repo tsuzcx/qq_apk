@@ -10,7 +10,7 @@ import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBStringField;
 
 public final class YTOpenDetection$FaceShapeReq
-  extends MessageMicro
+  extends MessageMicro<FaceShapeReq>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBStringField app_id = PBField.initString("");
@@ -28,7 +28,7 @@ public final class YTOpenDetection$FaceShapeReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.arcloud.pb.YTOpenDetection.FaceShapeReq
  * JD-Core Version:    0.7.0.1
  */

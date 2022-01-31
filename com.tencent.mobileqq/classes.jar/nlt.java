@@ -1,14 +1,33 @@
-import com.tencent.biz.qqstory.newshare.model.Job;
-import com.tencent.biz.qqstory.newshare.model.JobExecutor;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
+import com.tencent.widget.Switch;
 
 public class nlt
-  implements Runnable
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public nlt(JobExecutor paramJobExecutor, Job paramJob) {}
+  public nlt(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
   
-  public void run()
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelJob.a();
+    paramCompoundButton = this.a;
+    if (!paramBoolean) {}
+    for (boolean bool = true;; bool = false)
+    {
+      ReadInJoySettingActivity.a(paramCompoundButton, bool);
+      if ((!ReadInJoySettingActivity.a(this.a).isPressed()) || (this.a.c)) {
+        break label75;
+      }
+      if (paramBoolean) {
+        break;
+      }
+      ReadInJoySettingActivity.b(this.a, ReadInJoySettingActivity.a(this.a));
+      return;
+    }
+    ReadInJoySettingActivity.a(this.a).show();
+    return;
+    label75:
+    this.a.c = false;
   }
 }
 

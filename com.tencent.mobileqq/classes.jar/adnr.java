@@ -1,30 +1,27 @@
-import android.app.Activity;
-import com.tencent.mobileqq.filemanager.fileviewer.model.FileBrowserModelBase.OnVideoDataEventListener;
-import com.tencent.mobileqq.filemanager.fileviewer.presenter.VideoFilePresenter;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.etrump.mixlayout.ETTextView;
+import com.tencent.mobileqq.widget.BubbleImageView;
 
-public class adnr
-  implements FileBrowserModelBase.OnVideoDataEventListener
+class adnr
+  extends adrh
 {
-  public adnr(VideoFilePresenter paramVideoFilePresenter) {}
+  protected ViewGroup a;
+  protected ImageView a;
+  protected TextView a;
+  protected ETTextView a;
+  protected BubbleImageView a;
+  protected TextView b;
+  protected ETTextView b;
+  protected TextView c;
+  public int e;
   
-  public void a()
-  {
-    this.a.a.runOnUiThread(new adns(this));
-  }
-  
-  public void a(int paramInt, String paramString)
-  {
-    this.a.a(paramInt, paramString);
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    this.a.a.runOnUiThread(new adnt(this, paramString1));
-  }
+  adnr(adni paramadni) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     adnr
  * JD-Core Version:    0.7.0.1
  */

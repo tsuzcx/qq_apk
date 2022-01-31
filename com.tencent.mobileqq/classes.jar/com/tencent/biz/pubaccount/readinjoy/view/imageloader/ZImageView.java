@@ -1,28 +1,35 @@
 package com.tencent.biz.pubaccount.readinjoy.view.imageloader;
 
+import android.animation.ValueAnimator;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
+import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.ImageView;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageDownListener;
+import beoj;
 import com.tencent.qphone.base.util.QLog;
 import java.net.URL;
+import rct;
+import rcw;
+import rdc;
+import rde;
+import rdf;
+import sch;
 
 public class ZImageView
   extends ImageView
 {
-  static int jdField_a_of_type_Int = 300;
   static Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable = new ColorDrawable(-1);
-  long jdField_a_of_type_Long = 0L;
-  private DrawableController jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderDrawableController;
+  static int e = 300;
+  private ValueAnimator jdField_a_of_type_AndroidAnimationValueAnimator;
   private String jdField_a_of_type_JavaLangString = "zimage.ZImageView.v" + hashCode();
   private URL jdField_a_of_type_JavaNetURL;
-  boolean jdField_a_of_type_Boolean = false;
-  boolean b = false;
-  boolean c = true;
-  private boolean d;
+  protected rct a;
+  private boolean jdField_a_of_type_Boolean;
+  private Drawable jdField_b_of_type_AndroidGraphicsDrawableDrawable;
+  private boolean jdField_b_of_type_Boolean;
   
   public ZImageView(Context paramContext)
   {
@@ -44,150 +51,198 @@ public class ZImageView
   
   private void a()
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderDrawableController = new DrawableController(jdField_a_of_type_AndroidGraphicsDrawableDrawable, this);
+    this.jdField_a_of_type_Rct = new rct(jdField_a_of_type_AndroidGraphicsDrawableDrawable, this);
+    this.jdField_a_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofInt(new int[] { 0, 255 });
+    this.jdField_a_of_type_AndroidAnimationValueAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
+    this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(e);
+    this.jdField_a_of_type_AndroidAnimationValueAnimator.addListener(new rde(this));
+    this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new rdf(this));
+  }
+  
+  private void b()
+  {
+    if ((!this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_Rct.jdField_a_of_type_AndroidGraphicsDrawableDrawable != jdField_a_of_type_AndroidGraphicsDrawableDrawable))
+    {
+      this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = getBackground();
+      setBackgroundDrawable(this.jdField_a_of_type_Rct.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+      this.jdField_b_of_type_Boolean = true;
+      if (QLog.isColorLevel()) {
+        rdc.a(this.jdField_a_of_type_JavaLangString, "set alpha bg drawable !");
+      }
+    }
+  }
+  
+  private void c()
+  {
+    if (this.jdField_b_of_type_Boolean)
+    {
+      setBackgroundDrawable(this.jdField_b_of_type_AndroidGraphicsDrawableDrawable);
+      this.jdField_b_of_type_Boolean = false;
+      if (QLog.isColorLevel()) {
+        rdc.a(this.jdField_a_of_type_JavaLangString, "cancel alpha bg drawable !");
+      }
+    }
   }
   
   public ZImageView a(Drawable paramDrawable)
   {
     this.jdField_a_of_type_JavaNetURL = null;
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderDrawableController.a(paramDrawable);
-    return this;
-  }
-  
-  public ZImageView a(ImageRequest paramImageRequest, PublicAccountImageDownListener paramPublicAccountImageDownListener)
-  {
-    if ((paramImageRequest == null) || (paramImageRequest.jdField_a_of_type_JavaNetURL == null)) {
-      return this;
-    }
-    if (paramPublicAccountImageDownListener != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderDrawableController.a(paramPublicAccountImageDownListener);
-    }
-    this.jdField_a_of_type_JavaNetURL = null;
-    if (QLog.isColorLevel()) {
-      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "setImageForImageCollection url = " + paramImageRequest.jdField_a_of_type_JavaNetURL + " reqWidth = " + paramImageRequest.jdField_a_of_type_Int + " reqHeight = " + paramImageRequest.b);
-    }
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderDrawableController.a(paramImageRequest);
+    this.jdField_a_of_type_Rct.a(paramDrawable);
     return this;
   }
   
   public ZImageView a(URL paramURL)
   {
-    if (paramURL == null) {
+    beoj.a("ZImageView.setImage");
+    if (paramURL == null)
+    {
+      beoj.a();
       return this;
+    }
+    if ((this.jdField_a_of_type_JavaNetURL != null) && (this.jdField_a_of_type_JavaNetURL.getPath().equals(paramURL.getPath()))) {
+      QLog.d("ZImageView", 2, "setImage | same");
     }
     this.jdField_a_of_type_JavaNetURL = null;
     if (QLog.isColorLevel()) {
-      Utils.a(this.jdField_a_of_type_JavaLangString, "setImage " + paramURL);
+      rdc.a(this.jdField_a_of_type_JavaLangString, "setImage " + paramURL);
     }
     if (getWidth() > 0)
     {
-      ImageRequest localImageRequest = new ImageRequest();
-      localImageRequest.jdField_a_of_type_JavaNetURL = paramURL;
-      localImageRequest.jdField_a_of_type_Int = getWidth();
-      localImageRequest.b = getHeight();
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderDrawableController.a(localImageRequest);
+      beoj.a("ZImageView.newImageRequest");
+      rcw localrcw = new rcw();
+      localrcw.jdField_a_of_type_JavaNetURL = paramURL;
+      localrcw.jdField_a_of_type_Int = getWidth();
+      localrcw.b = getHeight();
+      this.jdField_a_of_type_Rct.a(localrcw);
+      beoj.a();
+    }
+    for (;;)
+    {
+      beoj.a();
+      return this;
+      this.jdField_a_of_type_JavaNetURL = paramURL;
+    }
+  }
+  
+  public ZImageView a(rcw paramrcw, sch paramsch)
+  {
+    if ((paramrcw == null) || (paramrcw.jdField_a_of_type_JavaNetURL == null)) {
       return this;
     }
-    this.jdField_a_of_type_JavaNetURL = paramURL;
+    if (paramsch != null) {
+      this.jdField_a_of_type_Rct.a(paramsch);
+    }
+    this.jdField_a_of_type_JavaNetURL = null;
+    if (QLog.isColorLevel()) {
+      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "setImageForImageCollection url = " + paramrcw.jdField_a_of_type_JavaNetURL + " reqWidth = " + paramrcw.jdField_a_of_type_Int + " reqHeight = " + paramrcw.b);
+    }
+    this.jdField_a_of_type_Rct.a(paramrcw);
     return this;
   }
   
+  @Deprecated
   public boolean a()
   {
-    return this.d;
+    return this.jdField_a_of_type_Boolean;
   }
   
   protected void onAttachedToWindow()
   {
     super.onAttachedToWindow();
-    if (QLog.isColorLevel()) {
-      Utils.a(this.jdField_a_of_type_JavaLangString, "onAttachedToWindow");
+    if (QLog.isColorLevel())
+    {
+      localObject = getParent();
+      if (localObject == null) {
+        break label63;
+      }
     }
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderDrawableController.b("onAttachedToWindow");
+    label63:
+    for (Object localObject = localObject.getClass().getName();; localObject = null)
+    {
+      rdc.a(this.jdField_a_of_type_JavaLangString, "onAttachedToWindow, parent: " + (String)localObject);
+      this.jdField_a_of_type_Rct.b("onAttachedToWindow");
+      return;
+    }
   }
   
   protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
     if (QLog.isColorLevel()) {
-      Utils.a(this.jdField_a_of_type_JavaLangString, "onDetachedFromWindow");
+      rdc.a(this.jdField_a_of_type_JavaLangString, "onDetachedFromWindow");
     }
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderDrawableController.a("onDetachedFromWindow");
+    this.jdField_a_of_type_Rct.a("onDetachedFromWindow");
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
     if (this.jdField_a_of_type_JavaNetURL != null)
     {
       if (QLog.isColorLevel()) {
-        Utils.a(this.jdField_a_of_type_JavaLangString, "onDraw dispatch load image");
+        rdc.a(this.jdField_a_of_type_JavaLangString, "onDraw dispatch load image");
       }
-      ImageRequest localImageRequest = new ImageRequest();
-      localImageRequest.jdField_a_of_type_JavaNetURL = this.jdField_a_of_type_JavaNetURL;
-      localImageRequest.jdField_a_of_type_Int = getWidth();
-      localImageRequest.b = getHeight();
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderDrawableController.a(localImageRequest);
+      rcw localrcw = new rcw();
+      localrcw.jdField_a_of_type_JavaNetURL = this.jdField_a_of_type_JavaNetURL;
+      localrcw.jdField_a_of_type_Int = getWidth();
+      localrcw.b = getHeight();
+      this.jdField_a_of_type_Rct.a(localrcw);
       this.jdField_a_of_type_JavaNetURL = null;
     }
-    if (this.jdField_a_of_type_Boolean)
-    {
-      if (this.jdField_a_of_type_Long == 0L)
-      {
-        this.jdField_a_of_type_Long = System.currentTimeMillis();
-        this.b = true;
-        this.c = false;
-      }
-      float f = (float)(System.currentTimeMillis() - this.jdField_a_of_type_Long) / jdField_a_of_type_Int;
-      if ((f < 0.0F) || (f > 1.0F)) {
-        break label173;
-      }
-      int i = (int)(f * 255.0F);
-      getDrawable().mutate().setAlpha(i);
-    }
-    for (;;)
-    {
-      super.onDraw(paramCanvas);
-      if ((this.b) && (!this.c)) {
-        invalidate();
-      }
-      return;
-      label173:
-      getDrawable().mutate().setAlpha(255);
-      this.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_Long = 0L;
-      this.b = false;
-      this.c = true;
-    }
+    super.onDraw(paramCanvas);
   }
   
   public void onFinishTemporaryDetach()
   {
     super.onFinishTemporaryDetach();
     if (QLog.isColorLevel()) {
-      Utils.a(this.jdField_a_of_type_JavaLangString, "onFinishTemporaryDetach");
+      rdc.a(this.jdField_a_of_type_JavaLangString, "onFinishTemporaryDetach");
     }
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderDrawableController.b("onFinishTemporaryDetach");
+    this.jdField_a_of_type_Rct.b("onFinishTemporaryDetach");
   }
   
   public void onStartTemporaryDetach()
   {
     super.onStartTemporaryDetach();
-    if (QLog.isColorLevel()) {
-      Utils.a(this.jdField_a_of_type_JavaLangString, "onStartTemporaryDetach");
+    if (QLog.isColorLevel())
+    {
+      localObject = getParent();
+      if (localObject == null) {
+        break label63;
+      }
     }
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderDrawableController.a("onStartTemporaryDetach");
+    label63:
+    for (Object localObject = localObject.getClass().getName();; localObject = null)
+    {
+      rdc.a(this.jdField_a_of_type_JavaLangString, "onStartTemporaryDetach, parent: " + (String)localObject);
+      this.jdField_a_of_type_Rct.a("onStartTemporaryDetach");
+      return;
+    }
   }
   
-  public void setPublicAccountImageDownListener(PublicAccountImageDownListener paramPublicAccountImageDownListener)
+  public void setImageDrawable(Drawable paramDrawable, boolean paramBoolean)
   {
-    if (paramPublicAccountImageDownListener != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderDrawableController.a(paramPublicAccountImageDownListener);
+    if (paramBoolean)
+    {
+      this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
+      b();
+      setImageDrawable(paramDrawable);
+      this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
+      return;
+    }
+    setImageDrawable(paramDrawable);
+  }
+  
+  public void setPublicAccountImageDownListener(sch paramsch)
+  {
+    if (paramsch != null) {
+      this.jdField_a_of_type_Rct.a(paramsch);
     }
   }
   
+  @Deprecated
   public void setRound(boolean paramBoolean)
   {
-    this.d = paramBoolean;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
 }
 

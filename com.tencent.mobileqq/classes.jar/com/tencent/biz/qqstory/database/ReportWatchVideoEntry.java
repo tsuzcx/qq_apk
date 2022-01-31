@@ -1,22 +1,22 @@
 package com.tencent.biz.qqstory.database;
 
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.unique;
+import atmo;
+import atoc;
 
 public class ReportWatchVideoEntry
-  extends Entity
+  extends atmo
 {
   public long createTime;
   public boolean isLiveVideo;
   public int source;
-  @unique
+  @atoc
   public String vid;
   public int vidType;
   public String videoUnionId;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.biz.qqstory.database.ReportWatchVideoEntry
  * JD-Core Version:    0.7.0.1
  */

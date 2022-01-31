@@ -1,10 +1,10 @@
 package com.tencent.biz.pubaccount.util;
 
-import com.tencent.mobileqq.persistence.Entity;
+import atmo;
 import com.tencent.mobileqq.statistics.Reporting;
 
 public class PAReportInfo
-  extends Entity
+  extends atmo
   implements Cloneable
 {
   public String actionName;

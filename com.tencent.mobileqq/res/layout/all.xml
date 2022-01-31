@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:gravity="center" android:id="@id/kxl" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <ProgressBar android:id="@id/i5n" android:visibility="gone" android:layout_width="20.0dip" android:layout_height="20.0dip" android:indeterminate="true" android:indeterminateDrawable="@drawable/o7" android:indeterminateBehavior="repeat" android:layout_alignParentTop="true" />
+        <ImageView android:id="@id/eex" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/bqq" android:layout_centerInParent="true" />
+        <TextView android:textSize="16.0dip" android:textStyle="bold" android:textColor="@color/skin_gray3" android:id="@id/kxk" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:text="@string/cat" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+    </LinearLayout>
+    <ImageView android:id="@id/fq7" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/d3x" android:scaleType="fitXY" android:layout_centerInParent="true" />
+</RelativeLayout>

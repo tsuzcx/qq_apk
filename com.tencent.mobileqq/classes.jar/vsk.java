@@ -1,24 +1,31 @@
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryScene;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.widget.ActionSheet;
-import java.io.File;
-import mqq.os.MqqHandler;
+import android.annotation.SuppressLint;
+import android.view.View;
+import android.view.View.AccessibilityDelegate;
+import android.view.accessibility.AccessibilityNodeProvider;
+import com.tencent.biz.qrcode.CustomAccessibilityDelegate.1;
 
+@SuppressLint({"NewApi"})
 public class vsk
-  implements Runnable
+  extends View.AccessibilityDelegate
 {
-  public vsk(AIOGalleryScene paramAIOGalleryScene, File paramFile, ActionSheet paramActionSheet) {}
+  private View jdField_a_of_type_AndroidViewView;
+  private Runnable jdField_a_of_type_JavaLangRunnable = new CustomAccessibilityDelegate.1(this);
+  private vsl jdField_a_of_type_Vsl;
   
-  public void run()
+  public vsk(View paramView, vsl paramvsl)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene.h != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene.h.equals(this.jdField_a_of_type_JavaIoFile.getPath())) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene.a(this.jdField_a_of_type_JavaIoFile).booleanValue()) && (this.jdField_a_of_type_ComTencentWidgetActionSheet.isShowing())) {
-      ThreadManager.getUIHandler().post(new vsl(this));
-    }
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_Vsl = paramvsl;
+  }
+  
+  public AccessibilityNodeProvider getAccessibilityNodeProvider(View paramView)
+  {
+    return new vsm(this);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     vsk
  * JD-Core Version:    0.7.0.1
  */

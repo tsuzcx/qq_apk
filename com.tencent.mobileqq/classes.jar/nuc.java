@@ -1,22 +1,26 @@
-import com.tencent.biz.qqstory.playvideo.player.VideoViewTVKImpl;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnCompletionListener;
-import mqq.os.MqqHandler;
+import android.graphics.Color;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 
-public class nuc
-  implements TVK_IMediaPlayer.OnCompletionListener
+class nuc
+  implements ViewBase.OnClickListener
 {
-  public nuc(VideoViewTVKImpl paramVideoViewTVKImpl) {}
+  nuc(ntu paramntu, ViewBase paramViewBase) {}
   
-  public void onCompletion(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  public void onClick(ViewBase paramViewBase)
   {
-    ThreadManager.getUIHandler().post(new nud(this));
+    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase instanceof nza)) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase.getNativeView().setBackgroundColor(Color.parseColor("#DBE5EF"));
+    }
+    if (this.jdField_a_of_type_Ntu.jdField_a_of_type_Nwk != null) {
+      this.jdField_a_of_type_Ntu.jdField_a_of_type_Nwk.a(this.jdField_a_of_type_Ntu.jdField_a_of_type_Nwk.a, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase.getNativeView(), this.jdField_a_of_type_Ntu.jdField_a_of_type_Nwx, new nud(this));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     nuc
  * JD-Core Version:    0.7.0.1
  */

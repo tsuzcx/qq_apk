@@ -1,17 +1,15 @@
-import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity;
-import com.tencent.biz.pubaccount.troopbarassit.TroopBarAssistantManager;
-import com.tencent.mobileqq.app.PublicAccountDataManager;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
 
 public class mwp
-  implements Runnable
+  implements DialogInterface.OnDismissListener
 {
-  public mwp(SubscriptFeedsActivity paramSubscriptFeedsActivity) {}
+  public mwp(AccountDetailActivity paramAccountDetailActivity) {}
   
-  public void run()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    ((PublicAccountDataManager)this.a.app.getManager(55)).a();
-    TroopBarAssistantManager.a().c(this.a.app);
+    this.a.p = false;
   }
 }
 

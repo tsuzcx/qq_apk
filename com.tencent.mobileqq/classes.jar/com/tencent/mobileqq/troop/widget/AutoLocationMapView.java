@@ -1,16 +1,17 @@
 package com.tencent.mobileqq.troop.widget;
 
-import ajyx;
 import android.content.Context;
 import android.os.Handler;
 import android.util.AttributeSet;
-import com.tencent.tencentmap.mapsdk.map.MapView;
+import azlw;
+import azlx;
+import com.tencent.tencentmap.mapsdk.maps.MapView;
 
 public class AutoLocationMapView
   extends MapView
 {
-  Handler a = new ajyx(this);
-  public AutoLocationMapView.AutoLocationCallback a;
+  Handler a = new azlw(this);
+  public azlx a;
   
   public AutoLocationMapView(Context paramContext)
   {
@@ -24,7 +25,7 @@ public class AutoLocationMapView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.AutoLocationMapView
  * JD-Core Version:    0.7.0.1
  */

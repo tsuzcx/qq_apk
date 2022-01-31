@@ -1,21 +1,29 @@
-import com.tencent.mobileqq.arcard.ARCardCameraRecordFragment;
+import android.view.View;
+import com.tencent.mobileqq.activity.ForwardFriendListActivity;
 
 public class aasg
-  implements Runnable
+  implements aiam
 {
-  public aasg(ARCardCameraRecordFragment paramARCardCameraRecordFragment) {}
+  public aasg(ForwardFriendListActivity paramForwardFriendListActivity) {}
   
-  public void run()
+  public void a(View paramView)
   {
-    if ((ARCardCameraRecordFragment.b(this.a)) && (ARCardCameraRecordFragment.c(this.a) != 0)) {
+    if (ForwardFriendListActivity.a(this.a))
+    {
+      ForwardFriendListActivity.b(this.a, paramView);
       return;
     }
-    this.a.a();
+    ForwardFriendListActivity.c(this.a, paramView);
+  }
+  
+  public boolean a(String paramString, int paramInt)
+  {
+    return ForwardFriendListActivity.a(this.a, paramString, paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aasg
  * JD-Core Version:    0.7.0.1
  */

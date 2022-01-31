@@ -1,6 +1,9 @@
 package NS_MOBILE_VIDEO.cnst;
 
-public abstract interface REALTIME_UGCKEY {}
+public abstract interface REALTIME_UGCKEY
+{
+  public static final String value = "REALTIME_UGCKEY";
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar

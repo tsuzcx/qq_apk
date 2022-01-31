@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.data;
 
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.unique;
+import atmo;
+import atoc;
 
 public class PhoneContactAdd
-  extends Entity
+  extends atmo
 {
-  @unique
+  @atoc
   public String mobileNo;
   public String name;
   public String remindInfo;

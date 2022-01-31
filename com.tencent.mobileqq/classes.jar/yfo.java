@@ -1,25 +1,10 @@
-import com.tencent.mobileqq.activity.selectmember.PhoneContactSelectActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.qcall.PstnObserver;
-
-public class yfo
-  extends PstnObserver
+class yfo
 {
-  public yfo(PhoneContactSelectActivity paramPhoneContactSelectActivity) {}
-  
-  public void a(String paramString, int paramInt1, int paramInt2)
-  {
-    if (this.a.a != null)
-    {
-      this.a.app.removeObserver(this.a.a);
-      this.a.a = null;
-    }
-    this.a.finish();
-  }
+  private static yfn a = new yfn();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     yfo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,28 +1,35 @@
-import com.tencent.biz.qqstory.newshare.job.UrlDrawableDownloadJob;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyFeedsActivity;
+import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.Map;
 
 public class nkq
-  implements URLDrawable.URLDrawableListener
+  extends ohe
 {
-  public nkq(UrlDrawableDownloadJob paramUrlDrawableDownloadJob) {}
+  public nkq(ReadInJoyFeedsActivity paramReadInJoyFeedsActivity) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  public void a(int paramInt1, int paramInt2)
   {
-    UrlDrawableDownloadJob.c(this.a, false);
+    if (ReadInJoyFeedsActivity.a(this.a) == 1)
+    {
+      ((KandianMergeManager)this.a.app.getManager(162)).b(1);
+      return;
+    }
+    ReadInJoyFeedsActivity.b(this.a, paramInt1);
+    ((nhr)this.a.a.get(Integer.valueOf(ReadInJoyFeedsActivity.a(this.a)))).i();
   }
   
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public void b(int paramInt)
   {
-    UrlDrawableDownloadJob.b(this.a, false);
+    this.a.a(paramInt);
   }
   
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public void c(int paramInt)
   {
-    this.a.a("UrlDrawableDownloadJob_dra", paramURLDrawable.getCurrDrawable());
-    UrlDrawableDownloadJob.a(this.a, true);
+    ReadInJoyFeedsActivity.a(this.a, paramInt);
+    if ((paramInt > 0) && (ReadInJoyFeedsActivity.a(this.a) == 0)) {
+      ((nhr)this.a.a.get(Integer.valueOf(ReadInJoyFeedsActivity.a(this.a)))).i();
+    }
   }
 }
 

@@ -1,54 +1,28 @@
-import android.text.Editable;
-import android.text.SpannableString;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.BaseTroopChatPie;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.troop.text.AtTroopMemberSpan;
-import com.tencent.widget.XEditTextEx;
-import com.tencent.widget.XPanelContainer;
+import NS_COMM.COMM.StCommonExt;
+import com.tencent.biz.videostory.network.VSNetworkHelper;
+import com.tencent.biz.videostory.network.request.SubscribeGetRecommendUserListRequest;
 
 public class vwd
-  implements Runnable
 {
-  public vwd(BaseTroopChatPie paramBaseTroopChatPie, boolean paramBoolean, String paramString1, String paramString2, int paramInt) {}
+  private long jdField_a_of_type_Long;
+  private COMM.StCommonExt jdField_a_of_type_NS_COMMCOMM$StCommonExt;
+  private vwf jdField_a_of_type_Vwf;
   
-  public void run()
+  public void a(String paramString)
   {
-    int i;
-    if (this.jdField_a_of_type_Boolean)
-    {
-      i = this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildBaseTroopChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.getSelectionStart();
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildBaseTroopChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.getEditableText().delete(i - 1, i);
-    }
-    SpannableString localSpannableString = AtTroopMemberSpan.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildBaseTroopChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildBaseTroopChatPie.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildBaseTroopChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildBaseTroopChatPie.y(), this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildBaseTroopChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx, true);
-    if ((localSpannableString == null) || (localSpannableString.length() == 0)) {}
-    do
-    {
-      return;
-      int j = this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildBaseTroopChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.getSelectionStart();
-      i = j;
-      if (j < 0) {
-        i = 0;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildBaseTroopChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.getEditableText().insert(i, localSpannableString);
-      BaseTroopChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildBaseTroopChatPie).a(1);
-      if (this.jdField_a_of_type_Int == 1)
-      {
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildBaseTroopChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_AIO", "", "AIOchat", "Press_AIOhead_sendatmsg", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildBaseTroopChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, "", "", "");
-        return;
-      }
-    } while (this.jdField_a_of_type_Int != 4);
-    if ((this.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_JavaLangString.equalsIgnoreCase("0")))
-    {
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildBaseTroopChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_AIO", "", "AIOchat", "Clk_atallmber_sendatallmsg", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildBaseTroopChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, "", "", "");
-      return;
-    }
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildBaseTroopChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_AIO", "", "AIOchat", "Input_atmber_sendatmsg", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildBaseTroopChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, "", "", "");
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    paramString = new SubscribeGetRecommendUserListRequest(paramString, this.jdField_a_of_type_NS_COMMCOMM$StCommonExt, 0, 1);
+    VSNetworkHelper.a().a(paramString, new vwe(this));
+  }
+  
+  public void a(vwf paramvwf)
+  {
+    this.jdField_a_of_type_Vwf = paramvwf;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     vwd
  * JD-Core Version:    0.7.0.1
  */

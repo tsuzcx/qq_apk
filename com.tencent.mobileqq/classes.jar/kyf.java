@@ -1,22 +1,58 @@
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.business.manager.pendant.PendantItem;
+import com.tencent.beacon.event.UserAction;
+import java.util.HashMap;
+import java.util.Map;
 
 public class kyf
-  implements Runnable
 {
-  public kyf(CustomWebView paramCustomWebView) {}
+  static long jdField_a_of_type_Long;
+  static String jdField_a_of_type_JavaLangString;
+  private static String b = "actAVFunChatDecorate";
   
-  public void run()
+  public static void a(String paramString, VideoAppInterface paramVideoAppInterface)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("CustomWebView", 2, "webview real destroy now");
+    if (paramVideoAppInterface.a(2))
+    {
+      paramVideoAppInterface = (PendantItem)((kyd)paramVideoAppInterface.a(2)).a();
+      if ((paramVideoAppInterface != null) && (!TextUtils.isEmpty(paramVideoAppInterface.getId()))) {
+        a(paramString, null);
+      }
     }
-    this.a.b();
+  }
+  
+  static void a(String paramString1, String paramString2)
+  {
+    long l1 = System.currentTimeMillis();
+    if (!lie.a(paramString2, jdField_a_of_type_JavaLangString))
+    {
+      if ((!TextUtils.isEmpty(jdField_a_of_type_JavaLangString)) && (jdField_a_of_type_Long != 0L))
+      {
+        long l2 = jdField_a_of_type_Long;
+        a(paramString1, jdField_a_of_type_JavaLangString, (l1 - l2) / 1000L);
+      }
+      jdField_a_of_type_JavaLangString = paramString2;
+      jdField_a_of_type_Long = l1;
+    }
+  }
+  
+  public static void a(String paramString1, String paramString2, long paramLong)
+  {
+    if (!TextUtils.isEmpty(paramString2))
+    {
+      long l = (System.currentTimeMillis() - paramLong) / 1000L;
+      HashMap localHashMap = new HashMap();
+      localHashMap.put("tempID", paramString2);
+      localHashMap.put("duration", l + "");
+      UserAction.onUserAction(b, true, -1L, -1L, localHashMap, true);
+      krx.c(paramString1, "onStateReport, ID: " + paramString2 + "  pendant time: " + paramLong);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     kyf
  * JD-Core Version:    0.7.0.1
  */

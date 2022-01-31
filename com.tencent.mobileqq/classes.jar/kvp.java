@@ -1,39 +1,33 @@
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity;
-import com.tencent.biz.pubaccount.Advertisement.data.AdvertisementItem;
-import com.tencent.biz.pubaccount.Advertisement.data.VideoDownloadItem;
-import com.tencent.mobileqq.imaxad.ImaxAdNetPresenter;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import java.util.HashMap;
 
-class kvp
-  implements ActionSheet.OnButtonClickListener
+public class kvp
 {
-  kvp(kvn paramkvn) {}
+  public int a;
+  protected HashMap<String, Integer> a;
   
-  public void OnClick(View paramView, int paramInt)
+  public static int a(kvp paramkvp, String paramString)
   {
-    PublicAccountAdvertisementActivity.a(this.a.a).dismiss();
-    if (paramView != null)
-    {
-      paramView = PublicAccountAdvertisementActivity.a(this.a.a).a(paramInt);
-      if (!TextUtils.isEmpty(paramView))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("PublicAccountAdvertisementActivity", 2, "action" + paramView);
-        }
-        ImaxAdNetPresenter.a().a(PublicAccountAdvertisementActivity.a(this.a.a), null, 3, 2);
-        ReportController.b(null, "dc00898", "", PublicAccountAdvertisementActivity.a(this.a.a).a.a, "0X80090FC", "0X80090FC", 0, 0, PublicAccountAdvertisementActivity.a(this.a.a).a.c, "", "", PublicAccountAdvertisementActivity.a(this.a.a).a.b);
-      }
+    if (paramkvp == null) {}
+    while ((paramkvp.a == null) || (!paramkvp.a.containsKey(paramString))) {
+      return 0;
     }
+    return ((Integer)paramkvp.a.get(paramString)).intValue();
+  }
+  
+  public static void a(kvp paramkvp, String paramString, int paramInt)
+  {
+    if (paramkvp == null) {
+      return;
+    }
+    if (paramkvp.a == null) {
+      paramkvp.a = new HashMap();
+    }
+    paramkvp.a.put(paramString, Integer.valueOf(paramInt));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     kvp
  * JD-Core Version:    0.7.0.1
  */

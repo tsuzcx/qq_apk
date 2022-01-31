@@ -1,19 +1,10 @@
-import com.tencent.mobileqq.tribe.fragment.TribeVideoPreviewFragment;
-import com.tencent.mobileqq.widget.QQToast;
-
-class aiyc
-  implements Runnable
+public abstract interface aiyc
 {
-  aiyc(aiyb paramaiyb) {}
-  
-  public void run()
-  {
-    QQToast.a(this.a.a.getActivity(), 2, "已保存到本地相册", 0).a();
-  }
+  public abstract void a(int paramInt1, int paramInt2, boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aiyc
  * JD-Core Version:    0.7.0.1
  */

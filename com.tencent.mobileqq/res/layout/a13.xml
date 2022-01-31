@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mobileqq.widget.SlideNotBackRecyclerView android:id="@id/i4n" android:background="@drawable/jh" android:layout_width="fill_parent" android:layout_height="wrap_content" android:listSelector="@null" android:numColumns="4" />
+</merge>

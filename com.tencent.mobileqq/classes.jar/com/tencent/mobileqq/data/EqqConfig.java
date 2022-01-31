@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.data;
 
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.unique;
+import atmo;
+import atoc;
 
 public class EqqConfig
-  extends Entity
+  extends atmo
 {
-  @unique
+  @atoc
   public String data;
   
   public EqqConfig() {}

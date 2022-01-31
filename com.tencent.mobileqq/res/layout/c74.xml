@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.biz.subscribe.widget.ShadowCardView android:layout_width="274.0dip" android:layout_height="wrap_content" shadowCardView:shadowBlur="13.0dip" shadowCardView:shadowBottomHeight="20.0dip" shadowCardView:shadowCardColor="#ffffffff" shadowCardView:shadowCardOffsetY="5.0dip" shadowCardView:shadowHeightColor="#ffecedf5" shadowCardView:shadowLeftHeight="8.0dip" shadowCardView:shadowRightHeight="8.0dip" shadowCardView:shadowRound="11.0dip" shadowCardView:shadowTopHeight="14.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:shadowCardView="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:paddingLeft="16.0dip" android:paddingTop="20.0dip" android:paddingRight="16.0dip" android:paddingBottom="20.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="18.0dip" android:layout_toLeftOf="@id/lb3" android:layout_alignParentLeft="true" android:layout_centerVertical="true">
+            <TextView android:textSize="16.0dip" android:textColor="#ff000000" android:ellipsize="end" android:id="@id/tv_name" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip">
+                <ImageView android:layout_width="17.0dip" android:layout_height="17.0dip" android:src="@drawable/i0k" android:scaleType="fitCenter" />
+                <TextView android:id="@id/mdk" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" />
+            </LinearLayout>
+        </LinearLayout>
+        <Button android:textSize="14.0dip" android:gravity="center" android:id="@id/lb3" android:focusable="false" android:duplicateParentState="false" android:layout_width="64.0dip" android:layout_height="32.0dip" android:text="@string/ka8" android:lines="1" android:includeFontPadding="false" android:layout_alignParentRight="true" android:layout_centerVertical="true" style="@style/i9" />
+    </RelativeLayout>
+</com.tencent.biz.subscribe.widget.ShadowCardView>

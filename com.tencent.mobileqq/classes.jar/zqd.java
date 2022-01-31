@@ -1,19 +1,12 @@
-import com.tencent.mobileqq.data.PhoneContact;
-import java.util.Comparator;
-
-class zqd
-  implements Comparator
+public class zqd
 {
-  zqd(zqc paramzqc) {}
-  
-  public int a(PhoneContact paramPhoneContact1, PhoneContact paramPhoneContact2)
-  {
-    return paramPhoneContact1.contactID - paramPhoneContact2.contactID;
-  }
+  long a;
+  long b;
+  long c;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     zqd
  * JD-Core Version:    0.7.0.1
  */

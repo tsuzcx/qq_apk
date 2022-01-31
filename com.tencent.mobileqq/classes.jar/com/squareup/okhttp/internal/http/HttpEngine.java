@@ -6,14 +6,10 @@ import com.squareup.okhttp.Connection;
 import com.squareup.okhttp.Headers;
 import com.squareup.okhttp.Headers.Builder;
 import com.squareup.okhttp.HttpUrl;
-import com.squareup.okhttp.Interceptor;
-import com.squareup.okhttp.Interceptor.Chain;
-import com.squareup.okhttp.MediaType;
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Protocol;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Request.Builder;
-import com.squareup.okhttp.RequestBody;
 import com.squareup.okhttp.Response;
 import com.squareup.okhttp.Response.Builder;
 import com.squareup.okhttp.ResponseBody;
@@ -29,39 +25,18 @@ import java.net.ProtocolException;
 import java.net.Proxy;
 import java.net.Proxy.Type;
 import java.util.Date;
-import java.util.List;
 import java.util.Map;
-import java.util.concurrent.TimeUnit;
 import javax.net.ssl.HostnameVerifier;
 import javax.net.ssl.SSLSocketFactory;
 import okio.Buffer;
 import okio.BufferedSink;
-import okio.BufferedSource;
 import okio.GzipSource;
 import okio.Okio;
 import okio.Sink;
-import okio.Source;
-import okio.Timeout;
 
 public final class HttpEngine
 {
-  private static final ResponseBody EMPTY_BODY = new ResponseBody()
-  {
-    public long contentLength()
-    {
-      return 0L;
-    }
-    
-    public MediaType contentType()
-    {
-      return null;
-    }
-    
-    public BufferedSource source()
-    {
-      return new Buffer();
-    }
-  };
+  private static final ResponseBody EMPTY_BODY = new HttpEngine.1();
   public static final int MAX_FOLLOW_UPS = 20;
   public final boolean bufferRequestBody;
   private BufferedSink bufferedRequestBody;
@@ -99,8 +74,7 @@ public final class HttpEngine
     }
   }
   
-  private Response cacheWritingResponse(final CacheRequest paramCacheRequest, Response paramResponse)
-    throws IOException
+  private Response cacheWritingResponse(CacheRequest paramCacheRequest, Response paramResponse)
   {
     if (paramCacheRequest == null) {}
     Sink localSink;
@@ -109,66 +83,17 @@ public final class HttpEngine
       return paramResponse;
       localSink = paramCacheRequest.body();
     } while (localSink == null);
-    paramCacheRequest = new Source()
-    {
-      boolean cacheRequestClosed;
-      
-      public void close()
-        throws IOException
-      {
-        if ((!this.cacheRequestClosed) && (!Util.discard(this, 100, TimeUnit.MILLISECONDS)))
-        {
-          this.cacheRequestClosed = true;
-          paramCacheRequest.abort();
-        }
-        this.val$source.close();
-      }
-      
-      public long read(Buffer paramAnonymousBuffer, long paramAnonymousLong)
-        throws IOException
-      {
-        try
-        {
-          paramAnonymousLong = this.val$source.read(paramAnonymousBuffer, paramAnonymousLong);
-          if (paramAnonymousLong == -1L)
-          {
-            if (!this.cacheRequestClosed)
-            {
-              this.cacheRequestClosed = true;
-              this.val$cacheBody.close();
-            }
-            return -1L;
-          }
-        }
-        catch (IOException paramAnonymousBuffer)
-        {
-          if (!this.cacheRequestClosed)
-          {
-            this.cacheRequestClosed = true;
-            paramCacheRequest.abort();
-          }
-          throw paramAnonymousBuffer;
-        }
-        paramAnonymousBuffer.copyTo(this.val$cacheBody.buffer(), paramAnonymousBuffer.size() - paramAnonymousLong, paramAnonymousLong);
-        this.val$cacheBody.emitCompleteSegments();
-        return paramAnonymousLong;
-      }
-      
-      public Timeout timeout()
-      {
-        return this.val$source.timeout();
-      }
-    };
+    paramCacheRequest = new HttpEngine.2(this, paramResponse.body().source(), paramCacheRequest, Okio.buffer(localSink));
     return paramResponse.newBuilder().body(new RealResponseBody(paramResponse.headers(), Okio.buffer(paramCacheRequest))).build();
   }
   
   private static Headers combine(Headers paramHeaders1, Headers paramHeaders2)
-    throws IOException
   {
+    int j = 0;
     Headers.Builder localBuilder = new Headers.Builder();
+    int k = paramHeaders1.size();
     int i = 0;
-    int j = paramHeaders1.size();
-    if (i < j)
+    if (i < k)
     {
       String str1 = paramHeaders1.name(i);
       String str2 = paramHeaders1.value(i);
@@ -182,9 +107,9 @@ public final class HttpEngine
         }
       }
     }
-    i = 0;
-    j = paramHeaders2.size();
-    if (i < j)
+    k = paramHeaders2.size();
+    i = j;
+    if (i < k)
     {
       paramHeaders1 = paramHeaders2.name(i);
       if ("Content-Length".equalsIgnoreCase(paramHeaders1)) {}
@@ -201,7 +126,6 @@ public final class HttpEngine
   }
   
   private HttpStream connect()
-    throws RouteException, RequestException, IOException
   {
     if (!this.networkRequest.method().equals("GET")) {}
     for (boolean bool = true;; bool = false) {
@@ -211,20 +135,21 @@ public final class HttpEngine
   
   private static Address createAddress(OkHttpClient paramOkHttpClient, Request paramRequest)
   {
-    SSLSocketFactory localSSLSocketFactory = null;
-    HostnameVerifier localHostnameVerifier = null;
     CertificatePinner localCertificatePinner = null;
+    SSLSocketFactory localSSLSocketFactory;
+    HostnameVerifier localHostnameVerifier;
     if (paramRequest.isHttps())
     {
       localSSLSocketFactory = paramOkHttpClient.getSslSocketFactory();
       localHostnameVerifier = paramOkHttpClient.getHostnameVerifier();
       localCertificatePinner = paramOkHttpClient.getCertificatePinner();
     }
-    String str = null;
-    if (paramRequest.header("host") != null) {
-      str = paramRequest.header("host");
+    for (;;)
+    {
+      return new Address(paramRequest.httpUrl().host(), paramRequest.httpUrl().port(), paramOkHttpClient.getDns(), paramOkHttpClient.getSocketFactory(), localSSLSocketFactory, localHostnameVerifier, localCertificatePinner, paramOkHttpClient.getAuthenticator(), paramOkHttpClient.getProxy(), paramOkHttpClient.getProtocols(), paramOkHttpClient.getConnectionSpecs(), paramOkHttpClient.getProxySelector());
+      localHostnameVerifier = null;
+      localSSLSocketFactory = null;
     }
-    return new Address(paramRequest.httpUrl().host(), paramRequest.httpUrl().port(), paramOkHttpClient.getDns(), paramOkHttpClient.getSocketFactory(), localSSLSocketFactory, localHostnameVerifier, localCertificatePinner, paramOkHttpClient.getAuthenticator(), paramOkHttpClient.getProxy(), paramOkHttpClient.getProtocols(), paramOkHttpClient.getConnectionSpecs(), paramOkHttpClient.getProxySelector(), str);
   }
   
   public static boolean hasBody(Response paramResponse)
@@ -242,7 +167,6 @@ public final class HttpEngine
   }
   
   private void maybeCache()
-    throws IOException
   {
     InternalCache localInternalCache = Internal.instance.internalCache(this.client);
     if (localInternalCache == null) {}
@@ -266,7 +190,6 @@ public final class HttpEngine
   }
   
   private Request networkRequest(Request paramRequest)
-    throws IOException
   {
     Request.Builder localBuilder = paramRequest.newBuilder();
     if (paramRequest.header("Host") == null) {
@@ -293,7 +216,6 @@ public final class HttpEngine
   }
   
   private Response readNetworkResponse()
-    throws IOException
   {
     this.httpStream.finishRequest();
     Response localResponse2 = this.httpStream.readResponseHeaders().request(this.networkRequest).handshake(this.streamAllocation.connection().getHandshake()).header(OkHeaders.SENT_MILLIS, Long.toString(this.sentRequestMillis)).header(OkHeaders.RECEIVED_MILLIS, Long.toString(System.currentTimeMillis())).build();
@@ -321,7 +243,6 @@ public final class HttpEngine
   }
   
   private Response unzip(Response paramResponse)
-    throws IOException
   {
     if ((!this.transparentGzip) || (!"gzip".equalsIgnoreCase(this.userResponse.header("Content-Encoding")))) {}
     while (paramResponse.body() == null) {
@@ -376,53 +297,59 @@ public final class HttpEngine
   }
   
   public Request followUpRequest()
-    throws IOException
   {
     if (this.userResponse == null) {
       throw new IllegalStateException();
     }
     Object localObject = this.streamAllocation.connection();
-    label43:
-    String str;
     if (localObject != null)
     {
       localObject = ((Connection)localObject).getRoute();
+      label34:
       if (localObject == null) {
         break label143;
       }
-      localObject = ((Route)localObject).getProxy();
+    }
+    String str;
+    label143:
+    for (localObject = ((Route)localObject).getProxy();; localObject = this.client.getProxy())
+    {
       int i = this.userResponse.code();
       str = this.userRequest.method();
       switch (i)
       {
+      default: 
+        return null;
+        localObject = null;
+        break label34;
       }
     }
-    label143:
-    do
-    {
-      do
-      {
-        do
-        {
-          return null;
-          localObject = null;
-          break;
-          localObject = this.client.getProxy();
-          break label43;
-          if (((Proxy)localObject).type() != Proxy.Type.HTTP) {
-            throw new ProtocolException("Received HTTP_PROXY_AUTH (407) code while not using proxy");
-          }
-          return OkHeaders.processAuthHeader(this.client.getAuthenticator(), this.userResponse, (Proxy)localObject);
-        } while (((!str.equals("GET")) && (!str.equals("HEAD"))) || (!this.client.getFollowRedirects()));
-        localObject = this.userResponse.header("Location");
-      } while (localObject == null);
-      localObject = this.userRequest.httpUrl().resolve((String)localObject);
-    } while ((localObject == null) || ((!((HttpUrl)localObject).scheme().equals(this.userRequest.httpUrl().scheme())) && (!this.client.getFollowSslRedirects())));
+    if (((Proxy)localObject).type() != Proxy.Type.HTTP) {
+      throw new ProtocolException("Received HTTP_PROXY_AUTH (407) code while not using proxy");
+    }
+    return OkHeaders.processAuthHeader(this.client.getAuthenticator(), this.userResponse, (Proxy)localObject);
+    if ((!str.equals("GET")) && (!str.equals("HEAD"))) {
+      return null;
+    }
+    if (!this.client.getFollowRedirects()) {
+      return null;
+    }
+    localObject = this.userResponse.header("Location");
+    if (localObject == null) {
+      return null;
+    }
+    localObject = this.userRequest.httpUrl().resolve((String)localObject);
+    if (localObject == null) {
+      return null;
+    }
+    if ((!((HttpUrl)localObject).scheme().equals(this.userRequest.httpUrl().scheme())) && (!this.client.getFollowSslRedirects())) {
+      return null;
+    }
     Request.Builder localBuilder = this.userRequest.newBuilder();
     if (HttpMethod.permitsRequestBody(str))
     {
       if (!HttpMethod.redirectsToGet(str)) {
-        break label375;
+        break label376;
       }
       localBuilder.method("GET", null);
     }
@@ -431,13 +358,11 @@ public final class HttpEngine
       localBuilder.removeHeader("Transfer-Encoding");
       localBuilder.removeHeader("Content-Length");
       localBuilder.removeHeader("Content-Type");
-      if (!sameConnection((HttpUrl)localObject))
-      {
-        localBuilder.removeHeader("Host");
+      if (!sameConnection((HttpUrl)localObject)) {
         localBuilder.removeHeader("Authorization");
       }
       return localBuilder.url((HttpUrl)localObject).build();
-      label375:
+      label376:
       localBuilder.method(str, null);
     }
   }
@@ -453,12 +378,9 @@ public final class HttpEngine
     {
       localObject = Okio.buffer((Sink)localObject);
       this.bufferedRequestBody = ((BufferedSink)localObject);
-    }
-    for (;;)
-    {
       return localObject;
-      localObject = null;
     }
+    return null;
   }
   
   public Connection getConnection()
@@ -498,7 +420,6 @@ public final class HttpEngine
   }
   
   public void readResponse()
-    throws IOException
   {
     if (this.userResponse != null) {}
     label418:
@@ -516,7 +437,7 @@ public final class HttpEngine
       if (this.forWebSocket) {
         this.httpStream.writeRequestHeaders(this.networkRequest);
       }
-      for (Object localObject = readNetworkResponse();; localObject = new NetworkInterceptorChain(0, this.networkRequest).proceed(this.networkRequest))
+      for (Object localObject = readNetworkResponse();; localObject = new HttpEngine.NetworkInterceptorChain(this, 0, this.networkRequest).proceed(this.networkRequest))
       {
         receiveHeaders(((Response)localObject).headers());
         if (this.cacheResponse == null) {
@@ -573,7 +494,6 @@ public final class HttpEngine
   }
   
   public void receiveHeaders(Headers paramHeaders)
-    throws IOException
   {
     CookieHandler localCookieHandler = this.client.getCookieHandler();
     if (localCookieHandler != null) {
@@ -607,7 +527,6 @@ public final class HttpEngine
   }
   
   public void releaseStreamAllocation()
-    throws IOException
   {
     this.streamAllocation.release();
   }
@@ -619,7 +538,6 @@ public final class HttpEngine
   }
   
   public void sendRequest()
-    throws RequestException, RouteException, IOException
   {
     if (this.cacheStrategy != null) {
       return;
@@ -687,79 +605,6 @@ public final class HttpEngine
       throw new IllegalStateException();
     }
     this.sentRequestMillis = System.currentTimeMillis();
-  }
-  
-  class NetworkInterceptorChain
-    implements Interceptor.Chain
-  {
-    private int calls;
-    private final int index;
-    private final Request request;
-    
-    NetworkInterceptorChain(int paramInt, Request paramRequest)
-    {
-      this.index = paramInt;
-      this.request = paramRequest;
-    }
-    
-    public Connection connection()
-    {
-      return HttpEngine.this.streamAllocation.connection();
-    }
-    
-    public Response proceed(Request paramRequest)
-      throws IOException
-    {
-      this.calls += 1;
-      Object localObject1;
-      Object localObject2;
-      if (this.index > 0)
-      {
-        localObject1 = (Interceptor)HttpEngine.this.client.networkInterceptors().get(this.index - 1);
-        localObject2 = connection().getRoute().getAddress();
-        if ((!paramRequest.httpUrl().host().equals(((Address)localObject2).getUriHost())) || (paramRequest.httpUrl().port() != ((Address)localObject2).getUriPort())) {
-          throw new IllegalStateException("network interceptor " + localObject1 + " must retain the same host and port");
-        }
-        if (this.calls > 1) {
-          throw new IllegalStateException("network interceptor " + localObject1 + " must call proceed() exactly once");
-        }
-      }
-      if (this.index < HttpEngine.this.client.networkInterceptors().size())
-      {
-        paramRequest = new NetworkInterceptorChain(HttpEngine.this, this.index + 1, paramRequest);
-        localObject2 = (Interceptor)HttpEngine.this.client.networkInterceptors().get(this.index);
-        localObject1 = ((Interceptor)localObject2).intercept(paramRequest);
-        if (paramRequest.calls != 1) {
-          throw new IllegalStateException("network interceptor " + localObject2 + " must call proceed() exactly once");
-        }
-        paramRequest = (Request)localObject1;
-        if (localObject1 == null) {
-          throw new NullPointerException("network interceptor " + localObject2 + " returned null");
-        }
-      }
-      else
-      {
-        HttpEngine.this.httpStream.writeRequestHeaders(paramRequest);
-        HttpEngine.access$102(HttpEngine.this, paramRequest);
-        if ((HttpEngine.this.permitsRequestBody(paramRequest)) && (paramRequest.body() != null))
-        {
-          localObject1 = Okio.buffer(HttpEngine.this.httpStream.createRequestBody(paramRequest, paramRequest.body().contentLength()));
-          paramRequest.body().writeTo((BufferedSink)localObject1);
-          ((BufferedSink)localObject1).close();
-        }
-        paramRequest = HttpEngine.this.readNetworkResponse();
-        int i = paramRequest.code();
-        if (((i == 204) || (i == 205)) && (paramRequest.body().contentLength() > 0L)) {
-          throw new ProtocolException("HTTP " + i + " had non-zero Content-Length: " + paramRequest.body().contentLength());
-        }
-      }
-      return paramRequest;
-    }
-    
-    public Request request()
-    {
-      return this.request;
-    }
   }
 }
 

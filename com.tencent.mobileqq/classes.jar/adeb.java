@@ -1,47 +1,26 @@
-import com.tencent.mobileqq.filemanager.core.FileUploader;
-import com.tencent.mobileqq.filemanager.core.FileUploader.IFlowControl;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.wstt.SSCM.SSCM;
-import com.tencent.wstt.SSCM.Utils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
-public class adeb
-  implements FileUploader.IFlowControl
+class adeb
+  implements apca
 {
-  private SSCM jdField_a_of_type_ComTencentWsttSSCMSSCM = new SSCM();
-  
-  public adeb(FileUploader paramFileUploader)
-  {
-    this.jdField_a_of_type_ComTencentWsttSSCMSSCM.a();
-  }
-  
-  public int a(long paramLong1, long paramLong2)
-  {
-    int j = this.jdField_a_of_type_ComTencentWsttSSCMSSCM.a(BaseApplication.getContext(), paramLong2, paramLong1, 1048576);
-    int k = Utils.a(BaseApplication.getContext());
-    int i;
-    if (k != 1)
-    {
-      i = j;
-      if (k != 2) {}
-    }
-    else
-    {
-      i = j;
-      if (j > 16384) {
-        i = 16384;
-      }
-    }
-    return i;
-  }
+  adeb(addx paramaddx, FileManagerEntity paramFileManagerEntity) {}
   
   public void a()
   {
-    this.jdField_a_of_type_ComTencentWsttSSCMSSCM.b();
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType() == 0)
+    {
+      this.jdField_a_of_type_Addx.a.a().b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
+      return;
+    }
+    this.jdField_a_of_type_Addx.a.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
   }
+  
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     adeb
  * JD-Core Version:    0.7.0.1
  */

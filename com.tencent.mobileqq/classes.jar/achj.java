@@ -1,68 +1,48 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.data.CustomEmotionData;
-import com.tencent.mobileqq.emosm.favroaming.EmoticonFromGroupDBManager;
-import com.tencent.mobileqq.emosm.favroaming.EmoticonFromGroupManager;
-import com.tencent.mobileqq.emosm.favroaming.FavroamingDBManager;
-import com.tencent.mobileqq.emosm.favroaming.FavroamingManager;
+import Wallet.AcsGetMsgRsp;
+import android.os.Bundle;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.activateFriend.QQNotifySettingBaseFragment;
+import com.tencent.mobileqq.activity.activateFriend.QQNotifySettingBaseFragment.1.1;
+import com.tencent.mobileqq.activity.activateFriend.QQNotifySettingBaseFragment.1.2;
 import com.tencent.qphone.base.util.QLog;
-import java.io.IOException;
-import java.net.URL;
-import java.util.List;
+import mqq.observer.BusinessObserver;
 
-class achj
-  implements URLDrawable.URLDrawableListener
+public class achj
+  implements BusinessObserver
 {
-  achj(achi paramachi, URLDrawable paramURLDrawable, CustomEmotionData paramCustomEmotionData, FavroamingManager paramFavroamingManager, FavroamingDBManager paramFavroamingDBManager) {}
+  public achj(QQNotifySettingBaseFragment paramQQNotifySettingBaseFragment) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    EmoticonFromGroupManager.a(this.jdField_a_of_type_Achi.a).a.remove(this.jdField_a_of_type_ComTencentImageURLDrawable);
-  }
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    EmoticonFromGroupManager.a(this.jdField_a_of_type_Achi.a).a.remove(this.jdField_a_of_type_ComTencentImageURLDrawable);
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    EmoticonFromGroupManager.a(this.jdField_a_of_type_Achi.a).a.remove(this.jdField_a_of_type_ComTencentImageURLDrawable);
-    paramURLDrawable = this.jdField_a_of_type_Achi.a.a(this.jdField_a_of_type_ComTencentImageURLDrawable.getURL().toString());
-    if (this.jdField_a_of_type_Achi.a.a(paramURLDrawable)) {}
-    String str;
-    do
-    {
-      do
-      {
-        return;
-        str = EmoticonFromGroupManager.a(this.jdField_a_of_type_Achi.a, paramURLDrawable);
-      } while ("".equals(str));
-      this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.emoPath = str;
-      this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.md5 = paramURLDrawable;
-    } while ("".equals(str));
-    try
+    if ((QQNotifySettingBaseFragment.a(this.a).isShowing()) && (QQNotifySettingBaseFragment.a(this.a) != null)) {
+      QQNotifySettingBaseFragment.a(this.a).dismiss();
+    }
+    if (paramInt == 2005)
     {
       if (QLog.isColorLevel()) {
-        QLog.i("EmoticonFromGroup_Manager", 4, "onLoadSuccessed upload emo " + paramURLDrawable);
+        QLog.d(QQNotifySettingBaseFragment.a(), 2, "acs msg succ");
       }
-      this.jdField_a_of_type_ComTencentImageURLDrawable.saveTo(str);
-      this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingFavroamingManager.a(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData);
-      this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingFavroamingDBManager.c(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData);
+      if (!paramBoolean) {
+        break label114;
+      }
+      paramBundle = (AcsGetMsgRsp)paramBundle.getSerializable("rsp");
+      if (paramBundle != null) {
+        QQNotifySettingBaseFragment.a(this.a).post(new QQNotifySettingBaseFragment.1.1(this, paramBundle));
+      }
+    }
+    else
+    {
       return;
     }
-    catch (IOException paramURLDrawable)
-    {
-      paramURLDrawable.printStackTrace();
-      QLog.d("EmoticonFromGroup_Manager", 1, paramURLDrawable, new Object[0]);
-    }
+    QQNotifySettingBaseFragment.a(this.a).post(new QQNotifySettingBaseFragment.1.2(this));
+    return;
+    label114:
+    this.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     achj
  * JD-Core Version:    0.7.0.1
  */

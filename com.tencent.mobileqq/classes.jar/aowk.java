@@ -1,28 +1,39 @@
+import android.text.TextUtils;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.biz.qqstory.takevideo.localmedia.baoutils.common.Callbacks.Callback;
-import dov.com.tencent.biz.qqstory.takevideo.localmedia.demos.MediaCodecThumbnailGenerator.ThumbnailProgress;
-import dov.com.tencent.mobileqq.richmedia.mediacodec.utils.MediaUtil;
-import dov.com.tencent.mobileqq.richmedia.mediacodec.utils.MediaUtil.FrameWithoutBlackResult;
+import java.util.UUID;
 
-public final class aowk
-  implements Callbacks.Callback
+class aowk
+  extends ajey
 {
-  public aowk(MediaUtil.FrameWithoutBlackResult paramFrameWithoutBlackResult) {}
+  aowk(aovz paramaovz) {}
   
-  public Void a(Boolean paramBoolean, MediaCodecThumbnailGenerator.ThumbnailProgress paramThumbnailProgress)
+  protected void a(Object paramObject)
   {
-    if (paramThumbnailProgress.jdField_a_of_type_AndroidGraphicsBitmap != null)
-    {
-      this.a.jdField_a_of_type_AndroidGraphicsBitmap = paramThumbnailProgress.jdField_a_of_type_AndroidGraphicsBitmap;
-      this.a.jdField_a_of_type_Long = paramThumbnailProgress.jdField_a_of_type_Long;
-      QLog.e(MediaUtil.a(), 2, "MediaCodecThumbnailGenerator progress " + paramThumbnailProgress.jdField_a_of_type_Long);
+    Object localObject = this.a.jdField_a_of_type_Aotf.a();
+    paramObject = (ayqd)paramObject;
+    if (((FileManagerEntity)localObject).TroopUin != paramObject.b) {
+      if (QLog.isDevelopLevel()) {
+        QLog.d("TroopFileModel<FileAssistant>", 4, "difference troop uin file");
+      }
     }
-    return null;
+    do
+    {
+      return;
+      if (TextUtils.isEmpty(aovz.a(this.a)))
+      {
+        localObject = azjg.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (FileManagerEntity)localObject);
+        if (((ayqd)localObject).a != null) {
+          aovz.a(this.a, ((ayqd)localObject).a.toString());
+        }
+      }
+    } while ((paramObject.a == null) || (aovz.a(this.a) == null) || (!aovz.a(this.a).equals(paramObject.a.toString())));
+    aovz.a(this.a, paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aowk
  * JD-Core Version:    0.7.0.1
  */

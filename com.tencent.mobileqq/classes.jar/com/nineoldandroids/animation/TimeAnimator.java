@@ -3,7 +3,7 @@ package com.nineoldandroids.animation;
 public class TimeAnimator
   extends ValueAnimator
 {
-  private TimeListener mListener;
+  private TimeAnimator.TimeListener mListener;
   private long mPreviousTime = -1L;
   
   void animateValue(float paramFloat) {}
@@ -41,14 +41,9 @@ public class TimeAnimator
   
   void initAnimation() {}
   
-  public void setTimeListener(TimeListener paramTimeListener)
+  public void setTimeListener(TimeAnimator.TimeListener paramTimeListener)
   {
     this.mListener = paramTimeListener;
-  }
-  
-  public static abstract interface TimeListener
-  {
-    public abstract void onTimeUpdate(TimeAnimator paramTimeAnimator, long paramLong1, long paramLong2);
   }
 }
 

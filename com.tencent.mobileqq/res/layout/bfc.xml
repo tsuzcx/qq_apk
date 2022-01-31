@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mobileqq.profile.view.SoftInputDetectView android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/ivv" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="fitXY" android:layout_alignBottom="@id/ivy" />
+    <View android:id="@id/iw3" android:layout_width="fill_parent" android:layout_height="20.0dip" />
+    <RelativeLayout android:id="@id/iw5" android:layout_width="fill_parent" android:layout_height="37.0dip" android:layout_below="@id/iw3">
+        <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
+            <TextView android:textSize="17.0dip" android:textColor="#ff03081a" android:layout_gravity="center_horizontal" android:id="@id/iw4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/rj5" />
+            <TextView android:textSize="10.0dip" android:textColor="#ff878b99" android:layout_gravity="center_horizontal" android:id="@id/m8w" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+        </LinearLayout>
+        <TextView android:textSize="17.0sp" android:textColor="#ff03081a" android:id="@id/ivx" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:text="@string/rj4" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+        <TextView android:textColor="#ff03081a" android:gravity="center" android:id="@id/ivu" android:background="@drawable/cr1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:text="@null" android:singleLine="true" android:includeFontPadding="false" android:layout_centerVertical="true" android:contentDescription="@string/button_back" />
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/ivy" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/iw5">
+        <com.tencent.mobileqq.richstatus.sign.BoxShadowLayout android:id="@id/dwr" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="6.0dip" android:layout_marginTop="20.0dip" android:layout_marginRight="6.0dip" android:layout_marginBottom="1.0dip" android:layout_centerHorizontal="true" />
+        <TextView android:textSize="14.0dip" android:textColor="@color/bp" android:gravity="center" android:id="@id/iw1" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="30.0dip" android:layout_marginLeft="28.0dip" android:layout_marginTop="3.0dip" android:text="@string/rj7" android:drawableLeft="@drawable/hv9" android:drawablePadding="2.0dip" android:layout_below="@id/dwr" android:layout_alignLeft="@id/dwr" />
+        <View android:id="@id/iw2" android:background="@drawable/a0l" android:visibility="gone" android:layout_width="9.0dip" android:layout_height="9.0dip" android:layout_marginTop="-2.0dip" android:layout_marginRight="4.0dip" android:layout_toRightOf="@id/iw1" android:layout_below="@id/dwr" />
+        <TextView android:textSize="14.0dip" android:textColor="@color/al3" android:gravity="center" android:id="@id/m8v" android:background="@drawable/hh3" android:layout_width="88.0dip" android:layout_height="29.0dip" android:layout_marginTop="3.0dip" android:layout_marginRight="27.0dip" android:layout_marginBottom="@dimen/n7" android:text="@string/rj2" android:layout_below="@id/dwr" android:layout_alignRight="@id/dwr" />
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/iw7" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/ivy" />
+</com.tencent.mobileqq.profile.view.SoftInputDetectView>

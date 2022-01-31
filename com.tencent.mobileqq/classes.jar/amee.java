@@ -1,44 +1,108 @@
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.preference.PreferenceManager;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqprotect.qsec.ICloudAVEngine.ResultBundle;
-import java.util.Date;
+import org.json.JSONObject;
 
-final class amee
-  extends amei
+public class amee
+  extends alzl<amed>
 {
-  amee(amed paramamed)
+  public static int a(Context paramContext, String paramString)
   {
-    super(null);
+    return PreferenceManager.getDefaultSharedPreferences(paramContext).getInt(paramString + "_" + "poke_msg_btn_is_show", 0);
   }
   
-  public boolean a(String paramString, ICloudAVEngine.ResultBundle paramResultBundle)
+  public static void a(Context paramContext, String paramString, int paramInt)
   {
-    if (this.a.size() >= this.a.maxSize())
+    paramContext = PreferenceManager.getDefaultSharedPreferences(paramContext).edit();
+    paramContext.putInt(paramString + "_" + "poke_msg_btn_is_show", paramInt);
+    paramContext.apply();
+  }
+  
+  public int a()
+  {
+    return 439;
+  }
+  
+  @NonNull
+  public amed a(int paramInt)
+  {
+    return new amed(0);
+  }
+  
+  @Nullable
+  public amed a(alzs[] paramArrayOfalzs)
+  {
+    j = 0;
+    i = j;
+    if (paramArrayOfalzs != null)
     {
-      amed.a(this.a, false);
-      if (QLog.isColorLevel()) {
-        QLog.d("QSec.AVEngine", 2, "Cache not load completely.");
+      i = j;
+      if (paramArrayOfalzs.length > 0) {
+        paramArrayOfalzs = paramArrayOfalzs[0].a;
       }
-      return false;
     }
-    if (paramResultBundle.a > new Date().getTime())
+    try
     {
       if (QLog.isColorLevel()) {
-        QLog.d("QSec.AVEngine", 2, String.format("Add cache entry, key: %s, %s", new Object[] { paramString, paramResultBundle.toString() }));
+        QLog.d("handlePushMsgBtnConfig", 2, "handlePushMsgBtnConfig. strContent = " + paramArrayOfalzs);
       }
-      this.a.put(paramString, paramResultBundle);
+      i = new JSONObject(paramArrayOfalzs).getInt("isPushSwitchShow");
     }
-    for (;;)
+    catch (Exception paramArrayOfalzs)
     {
-      return true;
-      if (QLog.isColorLevel()) {
-        QLog.d("QSec.AVEngine", 2, String.format("Discard expired entry, key: %s, %s", new Object[] { paramString, paramResultBundle.toString() }));
+      for (;;)
+      {
+        i = j;
+        if (QLog.isColorLevel())
+        {
+          QLog.e("handlePushMsgBtnConfig", 2, "PushMsgBtnConfig parse error", paramArrayOfalzs);
+          i = j;
+        }
       }
     }
+    return new amed(i);
+  }
+  
+  public Class a()
+  {
+    return amed.class;
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(amed paramamed)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("handlePushMsgBtnConfig", 2, "handlePushMsgBtnConfig. onUpdate = " + paramamed.a);
+    }
+    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    a(localQQAppInterface.getApp(), localQQAppInterface.getAccount(), paramamed.a);
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amee
  * JD-Core Version:    0.7.0.1
  */

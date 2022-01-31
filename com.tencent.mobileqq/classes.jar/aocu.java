@@ -1,23 +1,30 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.qqstory.support.report.VideoEditReport;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoMusic;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
+import android.view.View;
+import android.widget.CheckBox;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
+import com.tencent.mobileqq.widget.CircleFileStateView;
 
 public class aocu
-  implements DialogInterface.OnDismissListener
+  implements Cloneable
 {
-  public aocu(EditVideoMusic paramEditVideoMusic) {}
+  public int a;
+  public View a;
+  public CheckBox a;
+  public RelativeLayout a;
+  public TextView a;
+  public AsyncImageView a;
+  public CircleFileStateView a;
+  public Object a;
+  public int b;
+  public TextView b;
+  public int c;
   
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    this.a.a.a(0);
-    VideoEditReport.a("0X80076DD");
-  }
+  public aocu(aocs paramaocs) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aocu
  * JD-Core Version:    0.7.0.1
  */

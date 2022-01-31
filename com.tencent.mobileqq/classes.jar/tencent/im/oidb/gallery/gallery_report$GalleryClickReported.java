@@ -11,7 +11,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class gallery_report$GalleryClickReported
-  extends MessageMicro
+  extends MessageMicro<GalleryClickReported>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField city = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -22,7 +22,7 @@ public final class gallery_report$GalleryClickReported
   public final PBUInt32Field is_read_repeaded = PBField.initUInt32(0);
   public final PBFloatField mem_size = PBField.initFloat(0.0F);
   public final PBUInt64Field no_use_time = PBField.initUInt64(0L);
-  public final PBRepeatMessageField one_pic_reported = PBField.initRepeatMessage(gallery_report.OnePicReported.class);
+  public final PBRepeatMessageField<gallery_report.OnePicReported> one_pic_reported = PBField.initRepeatMessage(gallery_report.OnePicReported.class);
   public final PBUInt32Field phone_type = PBField.initUInt32(0);
   public final PBUInt32Field pic_num = PBField.initUInt32(0);
   public final PBUInt32Field pos = PBField.initUInt32(0);
@@ -41,7 +41,7 @@ public final class gallery_report$GalleryClickReported
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     tencent.im.oidb.gallery.gallery_report.GalleryClickReported
  * JD-Core Version:    0.7.0.1
  */

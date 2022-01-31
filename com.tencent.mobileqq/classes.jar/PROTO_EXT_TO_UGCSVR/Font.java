@@ -8,23 +8,28 @@ public final class Font
   extends JceStruct
 {
   static int cache_font_size = 0;
+  static int cache_hideFlag = 0;
   public int font_size;
+  public int hideFlag;
   
   public Font() {}
   
-  public Font(int paramInt)
+  public Font(int paramInt1, int paramInt2)
   {
-    this.font_size = paramInt;
+    this.font_size = paramInt1;
+    this.hideFlag = paramInt2;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
   {
     this.font_size = paramJceInputStream.read(this.font_size, 0, false);
+    this.hideFlag = paramJceInputStream.read(this.hideFlag, 1, false);
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.font_size, 0);
+    paramJceOutputStream.write(this.hideFlag, 1);
   }
 }
 

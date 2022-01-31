@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBStringField;
 
 public final class appoint_define$Elem
-  extends MessageMicro
+  extends MessageMicro<Elem>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18 }, new String[] { "str_content", "msg_face_info" }, new Object[] { "", null }, Elem.class);
   public appoint_define.Face msg_face_info = new appoint_define.Face();

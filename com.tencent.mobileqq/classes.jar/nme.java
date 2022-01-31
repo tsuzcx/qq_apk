@@ -1,26 +1,57 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.channel.CmdTaskManger.UIThreadCallback;
-import com.tencent.biz.qqstory.network.request.StoryShareTranslateTokenRequest;
-import com.tencent.biz.qqstory.network.request.StoryShareTranslateTokenRequest.StoryShareTranslateTokenResponse;
-import com.tencent.biz.qqstory.newshare.util.StoryShareEncryptHelper.DecryptCallback;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadinjoyJumpActivity;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadinjoyJumpActivity.2.1;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import mqq.os.MqqHandler;
 
-class nme
-  extends CmdTaskManger.UIThreadCallback
+public class nme
+  extends ohe
 {
-  nme(nmd paramnmd, long paramLong, QQProgressDialog paramQQProgressDialog) {}
+  public nme(ReadinjoyJumpActivity paramReadinjoyJumpActivity) {}
   
-  public void a(@NonNull StoryShareTranslateTokenRequest paramStoryShareTranslateTokenRequest, @Nullable StoryShareTranslateTokenRequest.StoryShareTranslateTokenResponse paramStoryShareTranslateTokenResponse, @NonNull ErrorMessage paramErrorMessage)
+  public void a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqstory.share.trans.helper", 2, "decrypt done costTime = " + (System.currentTimeMillis() - this.jdField_a_of_type_Long) + ", resp:" + paramStoryShareTranslateTokenResponse);
+    super.a(paramString);
+    QLog.d("ReadinjoyJumpActivity", 1, "webCallback : " + paramString);
+    ThreadManager.getUIHandler().post(new ReadinjoyJumpActivity.2.1(this));
+  }
+  
+  public void a(boolean paramBoolean, List<Long> paramList, List<ArticleInfo> paramList1)
+  {
+    QLog.d("ReadinjoyJumpActivity", 1, "68b resp, succ : " + paramBoolean + ", ids : " + paramList + ", articles : " + paramList1);
+    if ((paramList == null) || (!paramList.contains(Long.valueOf(ReadinjoyJumpActivity.a(this.a))))) {}
+    do
+    {
+      return;
+      ThreadManager.getUIHandler().removeCallbacks(ReadinjoyJumpActivity.a(this.a));
+    } while ((ReadinjoyJumpActivity.a(this.a)) || (ReadinjoyJumpActivity.b(this.a)));
+    if ((paramBoolean) && (paramList1 != null) && (!paramList1.isEmpty()))
+    {
+      int i = 0;
+      while (i < paramList1.size())
+      {
+        paramList = (ArticleInfo)paramList1.get(i);
+        if (paramList.mArticleID == ReadinjoyJumpActivity.a(this.a))
+        {
+          ReadinjoyJumpActivity.a(this.a, paramList);
+          if ((oci.a(ReadinjoyJumpActivity.a(this.a)) == 0) && (obz.a(ReadinjoyJumpActivity.a(this.a).mArticleContentUrl, 0L, ReadinjoyJumpActivity.a(this.a).mFeedType, ReadinjoyJumpActivity.a(this.a))))
+          {
+            paramList = ogy.a().a();
+            if (paramList != null)
+            {
+              paramList.a(ReadinjoyJumpActivity.a(this.a).mArticleContentUrl, ReadinjoyJumpActivity.a(this.a).innerUniqueID, ReadinjoyJumpActivity.a(this.a).publishUin + "", 1, this.a);
+              return;
+            }
+          }
+          ReadinjoyJumpActivity.b(this.a);
+          return;
+        }
+        i += 1;
+      }
     }
-    StoryReportor.a("StoryShareEncryptHelper", "decrypt", 0, 0, new String[] { String.valueOf(System.currentTimeMillis() - this.jdField_a_of_type_Long) });
-    this.jdField_a_of_type_Nmd.a.a(paramStoryShareTranslateTokenResponse, this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog);
+    ReadinjoyJumpActivity.a(this.a);
   }
 }
 

@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class qqavopensdkSsoTunnel$STAVCtrlParamRsp
-  extends MessageMicro
+  extends MessageMicro<STAVCtrlParamRsp>
 {
   public static final int CTRLPARAM_FIELD_NUMBER = 3;
   public static final int SVRVER_FIELD_NUMBER = 2;

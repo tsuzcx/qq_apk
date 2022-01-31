@@ -1,18 +1,23 @@
-import com.tencent.mobileqq.imaxad.ImaxAdVideoPreloadManager;
+import android.os.Handler;
+import android.os.Message;
+import android.view.View;
 
-public class aebl
-  implements Runnable
+class aebl
+  extends Handler
 {
-  public aebl(ImaxAdVideoPreloadManager paramImaxAdVideoPreloadManager, int paramInt) {}
+  aebl(aebk paramaebk) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    ImaxAdVideoPreloadManager.a(this.jdField_a_of_type_ComTencentMobileqqImaxadImaxAdVideoPreloadManager, this.jdField_a_of_type_Int);
+    super.handleMessage(paramMessage);
+    if (this.a.p.isShown()) {
+      this.a.p.setVisibility(8);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aebl
  * JD-Core Version:    0.7.0.1
  */

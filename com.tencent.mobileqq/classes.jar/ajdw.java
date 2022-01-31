@@ -1,19 +1,10 @@
-import android.os.Handler;
-import com.tencent.mobileqq.troop.activity.TroopBarReplyActivity;
-
-class ajdw
-  implements Runnable
+public abstract interface ajdw
 {
-  ajdw(ajdu paramajdu) {}
-  
-  public void run()
-  {
-    this.a.a.a.sendEmptyMessage(1006);
-  }
+  public abstract void a(ajdu paramajdu, String paramString1, String paramString2, String paramString3);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ajdw
  * JD-Core Version:    0.7.0.1
  */

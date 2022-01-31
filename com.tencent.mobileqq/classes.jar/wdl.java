@@ -1,61 +1,106 @@
+import NS_QWEB_PROTOCAL.PROTOCAL.StQWebRsp;
 import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.biz.pubaccount.ecshopassit.EcshopReportHandler;
-import com.tencent.gdtad.net.GdtAdHandler;
-import com.tencent.gdtad.net.GdtAdHandler.ReportInfo;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForArkApp;
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.List;
+import android.os.Bundle;
+import android.support.annotation.CallSuper;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBInt64Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Random;
+import mqq.app.AppRuntime;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
-public class wdl
-  implements Runnable
+public abstract class wdl
+  extends MSFServlet
 {
-  public wdl(PublicAccountChatPie paramPublicAccountChatPie) {}
+  private static String a;
+  protected int a;
   
-  public void run()
+  static
   {
-    if (this.a.Y) {}
-    EcshopReportHandler localEcshopReportHandler;
-    do
+    jdField_a_of_type_JavaLangString = "com.tencent.biz.subscribe.servlet.CertifiedAccountAbstractServlet";
+  }
+  
+  public static String a()
+  {
+    String str = BaseApplicationImpl.sApplication.getRuntime().getAccount();
+    StringBuilder localStringBuilder = new StringBuilder(50);
+    SimpleDateFormat localSimpleDateFormat = new SimpleDateFormat("MMddHHmmss");
+    Random localRandom = new Random();
+    localRandom.setSeed(System.currentTimeMillis());
+    localStringBuilder.append(str).append("_").append(localSimpleDateFormat.format(new Date())).append(System.currentTimeMillis() % 1000L).append("_").append(localRandom.nextInt(90000) + 10000);
+    return localStringBuilder.toString();
+  }
+  
+  protected abstract void a(Intent paramIntent, Bundle paramBundle, byte[] paramArrayOfByte);
+  
+  @CallSuper
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  {
+    Bundle localBundle = new Bundle();
+    try
     {
-      return;
-      this.a.Y = true;
-      localEcshopReportHandler = (EcshopReportHandler)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(88);
-      localObject1 = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
-    } while ((localObject1 == null) || (((List)localObject1).isEmpty()) || (localEcshopReportHandler == null));
-    Object localObject1 = (ChatMessage)((List)localObject1).get(((List)localObject1).size() - 1);
-    Object localObject2 = ((ChatMessage)localObject1).getExtInfoFromExtStr("public_account_msg_id");
-    if ("1".equals(((ChatMessage)localObject1).getExtInfoFromExtStr("is_AdArrive_Msg")))
-    {
-      localObject2 = new GdtAdHandler.ReportInfo();
-      ((GdtAdHandler.ReportInfo)localObject2).jdField_a_of_type_Int = 2;
-      localObject1 = GdtAdHandler.a((GdtAdHandler.ReportInfo)localObject2, (MessageRecord)localObject1);
-      ((GdtAdHandler)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(110)).a((GdtAdHandler.ReportInfo)localObject1, null);
+      localBundle.putLong("key_index", paramIntent.getLongExtra("key_index", -1L));
+      if (paramFromServiceMsg != null)
+      {
+        if (paramFromServiceMsg.isSuccess())
+        {
+          PROTOCAL.StQWebRsp localStQWebRsp = new PROTOCAL.StQWebRsp();
+          localStQWebRsp.mergeFrom(bakc.b(paramFromServiceMsg.getWupBuffer()));
+          localBundle.putLong("key_index", localStQWebRsp.Seq.get());
+          localBundle.putLong("retCode", localStQWebRsp.retCode.get());
+          localBundle.putString("errMsg", localStQWebRsp.errMsg.get().toStringUtf8());
+          a(paramIntent, localBundle, localStQWebRsp.busiBuff.get().toByteArray());
+          return;
+        }
+        localBundle.putLong("retCode", paramFromServiceMsg.getBusinessFailCode());
+        localBundle.putString("errMsg", paramFromServiceMsg.getBusinessFailMsg());
+        notifyObserver(paramIntent, this.jdField_a_of_type_Int, false, localBundle, null);
+        return;
+      }
     }
-    for (;;)
+    catch (Throwable paramFromServiceMsg)
     {
-      int i = this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getIntent().getIntExtra("jump_from", 4);
-      if (i != 2) {
-        break;
-      }
-      localEcshopReportHandler.a(134243865, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, null, null, null, i, false);
+      QLog.e(jdField_a_of_type_JavaLangString, 1, paramFromServiceMsg + "onReceive error");
+      notifyObserver(paramIntent, this.jdField_a_of_type_Int, false, localBundle, null);
       return;
-      if ((localObject1 instanceof MessageForArkApp)) {
-        localEcshopReportHandler.a(134243863, ((ChatMessage)localObject1).senderuin, (String)localObject2, null, null, 0L, false);
-      } else {
-        localEcshopReportHandler.a(134243857, ((ChatMessage)localObject1).senderuin, (String)localObject2, null, null, 0L, false);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "onReceive. inform  resultcode fail.");
+    }
+    notifyObserver(paramIntent, this.jdField_a_of_type_Int, false, localBundle, null);
+  }
+  
+  @CallSuper
+  public void onSend(Intent paramIntent, Packet paramPacket)
+  {
+    Object localObject = null;
+    if (paramPacket != null) {}
+    for (paramPacket = paramPacket.toMsg();; paramPacket = null)
+    {
+      if (paramPacket != null)
+      {
+        String str = paramPacket.getServiceCmd();
+        paramPacket = localObject;
+        if (paramIntent != null) {
+          paramPacket = paramIntent.getStringExtra("traceid");
+        }
+        QLog.i("certified-account-cmd", 1, "send request cmd=" + str + " traceId=" + paramPacket);
       }
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wdl
  * JD-Core Version:    0.7.0.1
  */

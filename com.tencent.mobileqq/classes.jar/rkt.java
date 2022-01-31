@@ -1,33 +1,31 @@
-import android.graphics.Bitmap;
-import android.graphics.drawable.Drawable;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.AccountManageActivity;
-import java.util.HashMap;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import java.lang.ref.WeakReference;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 class rkt
-  implements Runnable
+  implements begy
 {
-  rkt(rks paramrks, boolean paramBoolean, String paramString, Bitmap paramBitmap, Drawable paramDrawable) {}
+  rkt(rkr paramrkr, String paramString) {}
   
-  public void run()
+  public void onDismiss()
   {
-    if (this.jdField_a_of_type_Boolean)
+    JSONObject localJSONObject = new JSONObject();
+    try
     {
-      this.jdField_a_of_type_Rks.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangString);
-      AccountManageActivity.b(this.jdField_a_of_type_Rks.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity).put(this.jdField_a_of_type_Rks.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString);
-    }
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
-    {
-      this.jdField_a_of_type_Rks.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
+      localJSONObject.put("index", -1);
+      localJSONObject.put("type", 1);
+      if (rkr.a(this.jdField_a_of_type_Rkr) != null) {
+        ((BridgeModule)rkr.a(this.jdField_a_of_type_Rkr).get()).invokeCallJS(this.jdField_a_of_type_JavaLangString, localJSONObject);
+      }
       return;
     }
-    this.jdField_a_of_type_Rks.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+    catch (JSONException localJSONException) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     rkt
  * JD-Core Version:    0.7.0.1
  */

@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBStringField;
 
 public final class smart_device_proxy$CgiRsp
-  extends MessageMicro
+  extends MessageMicro<CgiRsp>
 {
   public static final int BYTES_RSP_FIELD_NUMBER = 3;
   public static final int INT32_ERRORCODE_FIELD_NUMBER = 1;
@@ -27,7 +27,7 @@ public final class smart_device_proxy$CgiRsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     tencent.im.cs.smart_device_proxy.smart_device_proxy.CgiRsp
  * JD-Core Version:    0.7.0.1
  */

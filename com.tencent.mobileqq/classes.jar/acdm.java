@@ -1,26 +1,48 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.app.msgcache.CacheConstants;
-import com.tencent.mobileqq.database.corrupt.DBFixConfigActivity;
-import mqq.app.AppRuntime;
-import mqq.app.MobileQQ;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.UncommonlyUsedContactsActivity;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.data.Friends;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class acdm
-  implements CompoundButton.OnCheckedChangeListener
+  extends ajfo
 {
-  public acdm(DBFixConfigActivity paramDBFixConfigActivity, AppRuntime paramAppRuntime) {}
+  public acdm(UncommonlyUsedContactsActivity paramUncommonlyUsedContactsActivity) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  protected void onCardDownload(boolean paramBoolean, Object paramObject)
   {
-    CacheConstants.b = paramBoolean;
-    this.jdField_a_of_type_MqqAppAppRuntime.getApplication().getSharedPreferences(CacheConstants.a, 0).edit().putBoolean(CacheConstants.c, paramBoolean).commit();
+    if (!paramBoolean) {
+      return;
+    }
+    if ((paramObject instanceof Card)) {}
+    for (paramObject = (Card)paramObject;; paramObject = null)
+    {
+      if ((paramObject != null) && (!TextUtils.isEmpty(paramObject.uin)))
+      {
+        Iterator localIterator = this.a.jdField_a_of_type_JavaUtilArrayList.iterator();
+        acds localacds;
+        do
+        {
+          if (!localIterator.hasNext()) {
+            break;
+          }
+          localacds = (acds)localIterator.next();
+        } while ((localacds.a == null) || (!(localacds.a instanceof Friends)) || (!paramObject.uin.equals(((Friends)localacds.a).uin)));
+      }
+      for (int i = 1; i != 0; i = 0)
+      {
+        UncommonlyUsedContactsActivity.a(this.a);
+        this.a.jdField_a_of_type_Acdq.notifyDataSetChanged();
+        return;
+      }
+      break;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     acdm
  * JD-Core Version:    0.7.0.1
  */

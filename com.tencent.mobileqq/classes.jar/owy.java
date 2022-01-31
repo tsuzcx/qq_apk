@@ -1,90 +1,50 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Parcelable;
-import android.text.TextUtils;
-import com.tencent.biz.qrcode.CodeMaskManager;
-import com.tencent.biz.qrcode.CodeMaskManager.Callback;
-import com.tencent.biz.qrcode.activity.QRDisplayActivity;
-import com.tencent.biz.qrcode.util.QRUtils;
+import android.content.Context;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 import com.tencent.qphone.base.util.QLog;
-import java.io.IOException;
-import java.util.concurrent.atomic.AtomicBoolean;
 
 public class owy
-  extends Thread
+  implements ViewBase.OnClickListener
 {
-  Bundle jdField_a_of_type_AndroidOsBundle;
-  CodeMaskManager.Callback jdField_a_of_type_ComTencentBizQrcodeCodeMaskManager$Callback;
-  AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+  Context jdField_a_of_type_AndroidContentContext;
+  ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
   
-  public owy(CodeMaskManager paramCodeMaskManager, CodeMaskManager.Callback paramCallback, Bundle paramBundle)
+  public owy(ArticleInfo paramArticleInfo, Context paramContext, int paramInt)
   {
-    super("qr_code_mask_prepare_thread");
-    this.jdField_a_of_type_ComTencentBizQrcodeCodeMaskManager$Callback = paramCallback;
-    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
   }
   
-  Bundle a()
+  private void a()
   {
-    try
+    ndn.a(null, null, "0X80097D7", "0X80097D7", 0, 0, "", "", "", "", false);
+  }
+  
+  public void onClick(ViewBase paramViewBase)
+  {
+    String str = "";
+    paramViewBase = str;
+    if (this.jdField_a_of_type_AndroidContentContext != null)
     {
-      if (this.jdField_a_of_type_AndroidOsBundle.containsKey("qrsz"))
+      paramViewBase = str;
+      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo != null)
       {
-        Object localObject1 = ((QRDisplayActivity)this.jdField_a_of_type_ComTencentBizQrcodeCodeMaskManager.jdField_a_of_type_AndroidAppActivity).a();
-        boolean bool = TextUtils.isEmpty((CharSequence)localObject1);
-        if (!bool) {
-          try
+        paramViewBase = str;
+        if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo != null)
+        {
+          paramViewBase = str;
+          if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.f != null)
           {
-            localObject1 = QRUtils.a((String)localObject1, this.jdField_a_of_type_AndroidOsBundle.getInt("qrsz"));
-            if (localObject1 == null) {
-              return null;
-            }
-          }
-          catch (Exception localException)
-          {
-            for (;;)
-            {
-              localObject2 = null;
-            }
+            paramViewBase = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.f;
+            obz.e(this.jdField_a_of_type_AndroidContentContext, paramViewBase);
           }
         }
       }
-      if (this.jdField_a_of_type_AndroidOsBundle.containsKey("bkgUrl"))
-      {
-        localObject2 = CodeMaskManager.a(this.jdField_a_of_type_ComTencentBizQrcodeCodeMaskManager, this.jdField_a_of_type_AndroidOsBundle.getString("bkgUrl"));
-        this.jdField_a_of_type_AndroidOsBundle.putParcelable("bkg", (Parcelable)localObject2);
-        this.jdField_a_of_type_AndroidOsBundle.remove("bkgUrl");
-      }
-      if (this.jdField_a_of_type_AndroidOsBundle.containsKey("qrbkgUrl"))
-      {
-        localObject2 = CodeMaskManager.a(this.jdField_a_of_type_ComTencentBizQrcodeCodeMaskManager, this.jdField_a_of_type_AndroidOsBundle.getString("qrbkgUrl"));
-        this.jdField_a_of_type_AndroidOsBundle.putParcelable("qrbkg", (Parcelable)localObject2);
-        this.jdField_a_of_type_AndroidOsBundle.remove("qrbkgUrl");
-      }
-      Object localObject2 = this.jdField_a_of_type_AndroidOsBundle;
-      return localObject2;
     }
-    catch (OutOfMemoryError localOutOfMemoryError)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("CodeMaskManager", 2, localOutOfMemoryError.getMessage());
-      }
-      System.gc();
-      return null;
-    }
-    catch (IOException localIOException)
-    {
-      label184:
-      break label184;
-    }
-  }
-  
-  public void run()
-  {
-    Bundle localBundle = a();
-    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true)) {
-      this.jdField_a_of_type_ComTencentBizQrcodeCodeMaskManager.jdField_a_of_type_AndroidOsHandler.post(new owz(this, localBundle));
-    }
+    QLog.d("OnFriendsBiuClickListener", 1, "jump channel,  context:" + this.jdField_a_of_type_AndroidContentContext + "  url:" + paramViewBase);
+    a();
   }
 }
 

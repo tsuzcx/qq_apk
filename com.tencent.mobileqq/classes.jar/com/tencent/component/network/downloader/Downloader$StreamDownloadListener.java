@@ -3,7 +3,7 @@ package com.tencent.component.network.downloader;
 public abstract interface Downloader$StreamDownloadListener
   extends Downloader.DownloadListener
 {
-  public abstract void a(String paramString1, String paramString2);
+  public abstract void onStreamDownloadProgress(String paramString1, String paramString2);
 }
 
 

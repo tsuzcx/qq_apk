@@ -2,13 +2,10 @@ package com.tencent.mobileqq.shortvideo.dancemachine;
 
 public class ResourceManager$GeneralResource
 {
-  public String a;
-  private String b = ResourceManager.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineResourceManager);
+  public String bgPic = this.prefix_bgm + "bg.png";
+  private String prefix_bgm = ResourceManager.access$000(this.this$0);
   
-  public ResourceManager$GeneralResource(ResourceManager paramResourceManager)
-  {
-    this.jdField_a_of_type_JavaLangString = (this.b + "bg.png");
-  }
+  public ResourceManager$GeneralResource(ResourceManager paramResourceManager) {}
 }
 
 

@@ -1,19 +1,24 @@
-import com.tencent.mobileqq.data.MessageForInteractAndFollow;
-import com.tencent.mobileqq.data.MsgBoxInterFollowManager;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.TroopTransferActivity;
 
 public class accs
-  implements Runnable
+  implements View.OnTouchListener
 {
-  public accs(MsgBoxInterFollowManager paramMsgBoxInterFollowManager, MessageForInteractAndFollow paramMessageForInteractAndFollow) {}
+  public accs(TroopTransferActivity paramTroopTransferActivity) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    MsgBoxInterFollowManager.access$000(this.jdField_a_of_type_ComTencentMobileqqDataMsgBoxInterFollowManager, this.jdField_a_of_type_ComTencentMobileqqDataMessageForInteractAndFollow);
+    if (paramMotionEvent.getAction() == 1) {
+      this.a.b();
+    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     accs
  * JD-Core Version:    0.7.0.1
  */

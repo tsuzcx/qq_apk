@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class SubMsgType0x27$OneRoamPriv
-  extends MessageMicro
+  extends MessageMicro<OneRoamPriv>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24 }, new String[] { "uint64_fuin", "uint32_priv_tag", "uint32_priv_value" }, new Object[] { Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0) }, OneRoamPriv.class);
   public final PBUInt32Field uint32_priv_tag = PBField.initUInt32(0);

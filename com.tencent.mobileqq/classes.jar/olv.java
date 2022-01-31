@@ -1,22 +1,24 @@
-import com.tencent.biz.qqstory.takevideo.EditMusicExport;
-import com.tencent.biz.qqstory.takevideo.EditSubtitleExport;
-import com.tencent.biz.qqstory.takevideo.HWEditLocalVideoPlayer;
+import com.tencent.biz.pubaccount.readinjoy.gifvideo.base.video.VideoView;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnDownloadCallbackListener;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class olv
-  implements Runnable
+  implements TVK_IMediaPlayer.OnDownloadCallbackListener
 {
-  public olv(HWEditLocalVideoPlayer paramHWEditLocalVideoPlayer) {}
+  public olv(VideoView paramVideoView) {}
   
-  public void run()
+  public void OnDownloadCallback(String paramString)
   {
-    Object localObject = (EditMusicExport)this.a.a(EditMusicExport.class);
-    if (localObject != null) {
-      ((EditMusicExport)localObject).b();
+    try
+    {
+      paramString = new JSONObject(paramString);
+      paramString.getInt("callBackType");
+      int i = paramString.getInt("fileSize");
+      this.a.setFileSize(i);
+      return;
     }
-    localObject = (EditSubtitleExport)this.a.a(EditSubtitleExport.class);
-    if (localObject != null) {
-      ((EditSubtitleExport)localObject).b();
-    }
+    catch (JSONException paramString) {}
   }
 }
 

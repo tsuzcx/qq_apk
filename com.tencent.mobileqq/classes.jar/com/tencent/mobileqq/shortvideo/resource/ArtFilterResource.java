@@ -2,11 +2,15 @@ package com.tencent.mobileqq.shortvideo.resource;
 
 public abstract interface ArtFilterResource
 {
-  public abstract String a();
+  public abstract String getCommonPrefix();
   
-  public abstract String b();
+  public abstract String getFilterResPath();
   
-  public abstract String c();
+  public abstract String getModelPath();
+  
+  public abstract String getReshapePath();
+  
+  public abstract String getSoPathDir();
 }
 
 

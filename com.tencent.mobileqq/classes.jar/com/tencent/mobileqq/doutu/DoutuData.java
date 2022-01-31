@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.doutu;
 
-import acfy;
+import amxp;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.notColumn;
+import atmo;
+import atnz;
 
 public class DoutuData
-  extends Entity
+  extends atmo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new acfy();
+  public static final Parcelable.Creator<DoutuData> CREATOR = new amxp();
   public String pic_down_url;
   public int pic_height;
   public String pic_md5;
   public long pic_size;
-  @notColumn
+  @atnz
   public int pic_type = 1;
   public int pic_width;
   public String suppliers_name;

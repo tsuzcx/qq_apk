@@ -1,116 +1,34 @@
-import android.annotation.TargetApi;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.qphone.base.util.QLog;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.lang.reflect.Array;
-import java.util.Arrays;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import org.json.JSONObject;
 
-@TargetApi(14)
 public class otx
+  implements owa
 {
-  static String a(InputStream paramInputStream)
+  public TemplateBean a(int paramInt, JSONObject paramJSONObject)
   {
-    try
-    {
-      paramInputStream = new BufferedReader(new InputStreamReader(paramInputStream));
-      StringBuilder localStringBuilder = new StringBuilder();
-      for (;;)
-      {
-        String str = paramInputStream.readLine();
-        if (str == null) {
-          break;
-        }
-        localStringBuilder.append(str);
-      }
-      paramInputStream = localStringBuilder.toString();
-    }
-    catch (IOException paramInputStream)
-    {
-      SLog.c("Q.qqstory.ffmpeg.FFmpeg", "error converting input stream to string", paramInputStream);
-      return null;
-    }
-    return paramInputStream;
+    return null;
   }
   
-  static void a(Process paramProcess)
+  public JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
   {
-    if (paramProcess != null) {
-      paramProcess.destroy();
+    return ota.a(paramBaseArticleInfo);
+  }
+  
+  public void a(int paramInt1, Container paramContainer, opw paramopw, int paramInt2)
+  {
+    ArticleInfo localArticleInfo = paramopw.a();
+    if ((localArticleInfo != null) && (localArticleInfo.isAccountShown)) {
+      oxx.a(paramContainer, paramopw);
     }
   }
   
-  public static void a(otq paramotq)
+  public boolean a(int paramInt, Container paramContainer, opw paramopw, ViewBase paramViewBase)
   {
-    if ((paramotq != null) && (!paramotq.a()))
-    {
-      if (paramotq.jdField_a_of_type_JavaLangProcess != null)
-      {
-        paramotq.jdField_a_of_type_JavaLangProcess.destroy();
-        paramotq.jdField_a_of_type_JavaLangProcess = null;
-      }
-      if (!paramotq.isCancelled()) {
-        paramotq.cancel(true);
-      }
-      SLog.e("Q.qqstory.ffmpeg.FFmpeg", "kill ffmpeg task", new Object[] { Arrays.toString(paramotq.jdField_a_of_type_ArrayOfJavaLangString) });
-    }
-  }
-  
-  public static boolean a(File paramFile)
-  {
-    boolean bool2 = true;
-    boolean bool1;
-    if ((paramFile == null) || (!paramFile.exists())) {
-      bool1 = false;
-    }
-    do
-    {
-      do
-      {
-        return bool1;
-        bool1 = bool2;
-      } while (paramFile.canExecute());
-      bool1 = bool2;
-    } while (paramFile.setExecutable(true));
     return false;
-  }
-  
-  static boolean a(Process paramProcess)
-  {
-    if (paramProcess == null) {}
-    for (;;)
-    {
-      return true;
-      try
-      {
-        paramProcess.exitValue();
-        if (QLog.isColorLevel())
-        {
-          QLog.d("Q.qqstory.ffmpeg.FFmpegCmd", 2, "isProcessCompleted: true  in  process.exitValue()");
-          return true;
-        }
-      }
-      catch (IllegalThreadStateException paramProcess)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.qqstory.ffmpeg.FFmpegCmd", 2, "IllegalThreadStateException e, ", paramProcess);
-        }
-      }
-    }
-    return false;
-  }
-  
-  public static Object[] a(Object[] paramArrayOfObject1, Object[] paramArrayOfObject2)
-  {
-    int i = paramArrayOfObject1.length;
-    int j = paramArrayOfObject2.length;
-    Object[] arrayOfObject = (Object[])Array.newInstance(paramArrayOfObject1.getClass().getComponentType(), i + j);
-    System.arraycopy(paramArrayOfObject1, 0, arrayOfObject, 0, i);
-    System.arraycopy(paramArrayOfObject2, 0, arrayOfObject, i, j);
-    return arrayOfObject;
   }
 }
 

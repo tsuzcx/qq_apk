@@ -1,29 +1,26 @@
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyObserver;
-import com.tencent.biz.pubaccount.readinjoy.view.headers.ReadInJoyDiandianHeaderController;
-import com.tencent.biz.pubaccount.readinjoy.view.headers.ReadInJoyDiandianHeaderController.HeaderListAdapter;
-import com.tencent.widget.ListView;
-import java.util.List;
+import android.view.View;
+import android.widget.Button;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.image.URLImageView;
 
 public class mtp
-  extends ReadInJoyObserver
 {
-  public mtp(ReadInJoyDiandianHeaderController paramReadInJoyDiandianHeaderController) {}
+  View jdField_a_of_type_AndroidViewView;
+  Button jdField_a_of_type_AndroidWidgetButton;
+  FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
+  public ImageView a;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
+  public ImageView b;
+  TextView b;
+  ImageView jdField_c_of_type_AndroidWidgetImageView;
+  TextView jdField_c_of_type_AndroidWidgetTextView;
+  ImageView d;
+  ImageView e;
   
-  public void c(boolean paramBoolean, List paramList)
-  {
-    if ((!paramBoolean) || (paramList == null) || (paramList.size() == 0))
-    {
-      ReadInJoyDiandianHeaderController.a(this.a).removeHeaderView(ReadInJoyDiandianHeaderController.a(this.a));
-      return;
-    }
-    if (ReadInJoyDiandianHeaderController.a(this.a).findHeaderViewPosition(ReadInJoyDiandianHeaderController.a(this.a)) < 0) {
-      ReadInJoyDiandianHeaderController.a(this.a).addHeaderView(ReadInJoyDiandianHeaderController.a(this.a));
-    }
-    ReadInJoyDiandianHeaderController.a(this.a, false);
-    ReadInJoyDiandianHeaderController.a(this.a).clear();
-    ReadInJoyDiandianHeaderController.a(this.a).addAll(paramList);
-    ReadInJoyDiandianHeaderController.a(this.a).notifyDataSetChanged();
-  }
+  public mtp(mtc parammtc) {}
 }
 
 

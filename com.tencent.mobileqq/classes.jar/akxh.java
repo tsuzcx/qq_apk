@@ -1,53 +1,45 @@
-import android.content.res.Resources;
-import android.net.Uri;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserScreenShotHandler;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.content.Context;
+import android.opengl.GLES20;
+import com.tencent.qphone.base.util.QLog;
 
 public class akxh
-  implements View.OnClickListener
 {
-  public akxh(SwiftBrowserScreenShotHandler paramSwiftBrowserScreenShotHandler) {}
-  
-  public void onClick(View paramView)
+  public static int a(String paramString1, Context paramContext, int paramInt, String paramString2)
   {
-    paramView = "";
-    Object localObject = Uri.parse(this.a.jdField_a_of_type_JavaLangString);
-    try
+    int i = 0;
+    paramInt = GLES20.glCreateShader(paramInt);
+    GLES20.glShaderSource(paramInt, paramString2);
+    GLES20.glCompileShader(paramInt);
+    paramContext = new int[1];
+    GLES20.glGetShaderiv(paramInt, 35713, paramContext, 0);
+    if (paramContext[0] == 0)
     {
-      localObject = ((Uri)localObject).getQueryParameter("article_id");
-      paramView = (View)localObject;
+      QLog.e(paramString1, 1, "Error compiling shader: " + GLES20.glGetShaderInfoLog(paramInt));
+      GLES20.glDeleteShader(paramInt);
+      paramInt = i;
     }
-    catch (Exception localException)
+    for (;;)
     {
-      for (;;)
-      {
-        localException.printStackTrace();
+      if (paramInt == 0) {}
+      return paramInt;
+    }
+  }
+  
+  public static void a(String paramString1, String paramString2)
+  {
+    for (;;)
+    {
+      int i = GLES20.glGetError();
+      if (i == 0) {
+        break;
       }
-      this.a.f(this.a.e);
-    }
-    localObject = paramView;
-    if (paramView == null) {
-      localObject = "";
-    }
-    ReportController.b(null, "dc00899", "Pb_account_lifeservice", "", "0X8006A1D", "0X8006A1D", 0, 0, "", (String)localObject, "", "");
-    PublicAccountReportUtils.a("0X8006A1D", "", "", (String)localObject, "", "");
-    if (this.a.jdField_a_of_type_Boolean)
-    {
-      this.a.b = true;
-      QQToast.a(BaseApplicationImpl.getContext(), 0, 2131438489, 0).b(BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131558448));
-      return;
+      QLog.e(paramString1, 1, paramString2 + ": glError " + i);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     akxh
  * JD-Core Version:    0.7.0.1
  */

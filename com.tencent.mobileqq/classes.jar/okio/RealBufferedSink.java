@@ -1,7 +1,6 @@
 package okio;
 
 import java.io.EOFException;
-import java.io.IOException;
 import java.io.OutputStream;
 import java.nio.charset.Charset;
 
@@ -26,41 +25,40 @@ final class RealBufferedSink
   }
   
   public void close()
-    throws IOException
   {
     if (this.closed) {}
-    label46:
-    label57:
     do
     {
       return;
       localObject2 = null;
-      Object localObject1 = localObject2;
-      try
+      localObject1 = localObject2;
+      for (;;)
       {
-        if (this.buffer.size > 0L)
+        try
         {
-          this.sink.write(this.buffer, this.buffer.size);
-          localObject1 = localObject2;
+          if (this.buffer.size > 0L)
+          {
+            this.sink.write(this.buffer, this.buffer.size);
+            localObject1 = localObject2;
+          }
         }
-      }
-      catch (Throwable localThrowable1)
-      {
-        break label46;
-      }
-      try
-      {
-        this.sink.close();
-        localObject2 = localObject1;
-      }
-      catch (Throwable localThrowable2)
-      {
-        localObject2 = localThrowable1;
-        if (localThrowable1 != null) {
-          break label57;
+        catch (Throwable localThrowable1)
+        {
+          continue;
         }
-        localObject2 = localThrowable2;
-        break label57;
+        try
+        {
+          this.sink.close();
+          localObject2 = localObject1;
+        }
+        catch (Throwable localThrowable2)
+        {
+          localObject2 = localObject1;
+          if (localObject1 != null) {
+            continue;
+          }
+          localObject2 = localThrowable2;
+        }
       }
       this.closed = true;
     } while (localObject2 == null);
@@ -68,7 +66,6 @@ final class RealBufferedSink
   }
   
   public BufferedSink emit()
-    throws IOException
   {
     if (this.closed) {
       throw new IllegalStateException("closed");
@@ -81,7 +78,6 @@ final class RealBufferedSink
   }
   
   public BufferedSink emitCompleteSegments()
-    throws IOException
   {
     if (this.closed) {
       throw new IllegalStateException("closed");
@@ -94,7 +90,6 @@ final class RealBufferedSink
   }
   
   public void flush()
-    throws IOException
   {
     if (this.closed) {
       throw new IllegalStateException("closed");
@@ -107,47 +102,7 @@ final class RealBufferedSink
   
   public OutputStream outputStream()
   {
-    new OutputStream()
-    {
-      public void close()
-        throws IOException
-      {
-        RealBufferedSink.this.close();
-      }
-      
-      public void flush()
-        throws IOException
-      {
-        if (!RealBufferedSink.this.closed) {
-          RealBufferedSink.this.flush();
-        }
-      }
-      
-      public String toString()
-      {
-        return RealBufferedSink.this + ".outputStream()";
-      }
-      
-      public void write(int paramAnonymousInt)
-        throws IOException
-      {
-        if (RealBufferedSink.this.closed) {
-          throw new IOException("closed");
-        }
-        RealBufferedSink.this.buffer.writeByte((byte)paramAnonymousInt);
-        RealBufferedSink.this.emitCompleteSegments();
-      }
-      
-      public void write(byte[] paramAnonymousArrayOfByte, int paramAnonymousInt1, int paramAnonymousInt2)
-        throws IOException
-      {
-        if (RealBufferedSink.this.closed) {
-          throw new IOException("closed");
-        }
-        RealBufferedSink.this.buffer.write(paramAnonymousArrayOfByte, paramAnonymousInt1, paramAnonymousInt2);
-        RealBufferedSink.this.emitCompleteSegments();
-      }
-    };
+    return new RealBufferedSink.1(this);
   }
   
   public Timeout timeout()
@@ -161,7 +116,6 @@ final class RealBufferedSink
   }
   
   public BufferedSink write(ByteString paramByteString)
-    throws IOException
   {
     if (this.closed) {
       throw new IllegalStateException("closed");
@@ -171,7 +125,6 @@ final class RealBufferedSink
   }
   
   public BufferedSink write(Source paramSource, long paramLong)
-    throws IOException
   {
     for (;;)
     {
@@ -188,7 +141,6 @@ final class RealBufferedSink
   }
   
   public BufferedSink write(byte[] paramArrayOfByte)
-    throws IOException
   {
     if (this.closed) {
       throw new IllegalStateException("closed");
@@ -198,7 +150,6 @@ final class RealBufferedSink
   }
   
   public BufferedSink write(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
-    throws IOException
   {
     if (this.closed) {
       throw new IllegalStateException("closed");
@@ -208,7 +159,6 @@ final class RealBufferedSink
   }
   
   public void write(Buffer paramBuffer, long paramLong)
-    throws IOException
   {
     if (this.closed) {
       throw new IllegalStateException("closed");
@@ -218,7 +168,6 @@ final class RealBufferedSink
   }
   
   public long writeAll(Source paramSource)
-    throws IOException
   {
     if (paramSource == null) {
       throw new IllegalArgumentException("source == null");
@@ -236,7 +185,6 @@ final class RealBufferedSink
   }
   
   public BufferedSink writeByte(int paramInt)
-    throws IOException
   {
     if (this.closed) {
       throw new IllegalStateException("closed");
@@ -246,7 +194,6 @@ final class RealBufferedSink
   }
   
   public BufferedSink writeDecimalLong(long paramLong)
-    throws IOException
   {
     if (this.closed) {
       throw new IllegalStateException("closed");
@@ -256,7 +203,6 @@ final class RealBufferedSink
   }
   
   public BufferedSink writeHexadecimalUnsignedLong(long paramLong)
-    throws IOException
   {
     if (this.closed) {
       throw new IllegalStateException("closed");
@@ -266,7 +212,6 @@ final class RealBufferedSink
   }
   
   public BufferedSink writeInt(int paramInt)
-    throws IOException
   {
     if (this.closed) {
       throw new IllegalStateException("closed");
@@ -276,7 +221,6 @@ final class RealBufferedSink
   }
   
   public BufferedSink writeIntLe(int paramInt)
-    throws IOException
   {
     if (this.closed) {
       throw new IllegalStateException("closed");
@@ -286,7 +230,6 @@ final class RealBufferedSink
   }
   
   public BufferedSink writeLong(long paramLong)
-    throws IOException
   {
     if (this.closed) {
       throw new IllegalStateException("closed");
@@ -296,7 +239,6 @@ final class RealBufferedSink
   }
   
   public BufferedSink writeLongLe(long paramLong)
-    throws IOException
   {
     if (this.closed) {
       throw new IllegalStateException("closed");
@@ -306,7 +248,6 @@ final class RealBufferedSink
   }
   
   public BufferedSink writeShort(int paramInt)
-    throws IOException
   {
     if (this.closed) {
       throw new IllegalStateException("closed");
@@ -316,7 +257,6 @@ final class RealBufferedSink
   }
   
   public BufferedSink writeShortLe(int paramInt)
-    throws IOException
   {
     if (this.closed) {
       throw new IllegalStateException("closed");
@@ -326,7 +266,6 @@ final class RealBufferedSink
   }
   
   public BufferedSink writeString(String paramString, int paramInt1, int paramInt2, Charset paramCharset)
-    throws IOException
   {
     if (this.closed) {
       throw new IllegalStateException("closed");
@@ -336,7 +275,6 @@ final class RealBufferedSink
   }
   
   public BufferedSink writeString(String paramString, Charset paramCharset)
-    throws IOException
   {
     if (this.closed) {
       throw new IllegalStateException("closed");
@@ -346,7 +284,6 @@ final class RealBufferedSink
   }
   
   public BufferedSink writeUtf8(String paramString)
-    throws IOException
   {
     if (this.closed) {
       throw new IllegalStateException("closed");
@@ -356,7 +293,6 @@ final class RealBufferedSink
   }
   
   public BufferedSink writeUtf8(String paramString, int paramInt1, int paramInt2)
-    throws IOException
   {
     if (this.closed) {
       throw new IllegalStateException("closed");
@@ -366,7 +302,6 @@ final class RealBufferedSink
   }
   
   public BufferedSink writeUtf8CodePoint(int paramInt)
-    throws IOException
   {
     if (this.closed) {
       throw new IllegalStateException("closed");

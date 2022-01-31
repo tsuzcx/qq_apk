@@ -1,16 +1,13 @@
-import com.tencent.biz.qqstory.model.lbs.LbsManager;
-import com.tencent.biz.qqstory.support.logging.SLog;
-
-public class nhs
-  implements Runnable
+class nhs
+  implements qrs
 {
-  public nhs(LbsManager paramLbsManager, int paramInt) {}
+  nhs(nhr paramnhr) {}
   
-  public void run()
+  public void a(int paramInt)
   {
-    SLog.d("LbsManager", "onLocation Timeout  %d ms", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) });
-    this.jdField_a_of_type_ComTencentBizQqstoryModelLbsLbsManager.a(false, this.jdField_a_of_type_ComTencentBizQqstoryModelLbsLbsManager.b);
-    LbsManager.a(this.jdField_a_of_type_ComTencentBizQqstoryModelLbsLbsManager, true);
+    if (this.a.jdField_a_of_type_Qvd != null) {
+      this.a.jdField_a_of_type_Qvd.a(paramInt, this.a.jdField_a_of_type_Int);
+    }
   }
 }
 

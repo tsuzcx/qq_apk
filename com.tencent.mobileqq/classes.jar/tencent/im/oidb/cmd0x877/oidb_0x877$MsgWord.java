@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBField;
 
 public final class oidb_0x877$MsgWord
-  extends MessageMicro
+  extends MessageMicro<MsgWord>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_buluo_word = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -26,7 +26,7 @@ public final class oidb_0x877$MsgWord
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     tencent.im.oidb.cmd0x877.oidb_0x877.MsgWord
  * JD-Core Version:    0.7.0.1
  */

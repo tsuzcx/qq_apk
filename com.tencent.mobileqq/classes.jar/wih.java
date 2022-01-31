@@ -1,24 +1,21 @@
-import com.tencent.mobileqq.activity.aio.tips.LightalkBlueTipsBar;
-import com.tencent.mobileqq.activity.aio.tips.LightalkBlueTipsBarData;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.biz.tribe.TribeVideoPlugin;
 
 public class wih
-  implements Runnable
+  implements View.OnTouchListener
 {
-  public wih(LightalkBlueTipsBar paramLightalkBlueTipsBar) {}
+  public wih(TribeVideoPlugin paramTribeVideoPlugin) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    LightalkBlueTipsBarData localLightalkBlueTipsBarData = LightalkBlueTipsBarData.a();
-    if (localLightalkBlueTipsBarData != null)
-    {
-      this.a.a = localLightalkBlueTipsBarData.d;
-      this.a.b = localLightalkBlueTipsBarData.e;
-    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wih
  * JD-Core Version:    0.7.0.1
  */

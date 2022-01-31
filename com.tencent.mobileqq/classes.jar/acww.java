@@ -1,21 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
+import com.tencent.mobileqq.hiboom.FontBubblePanelView;
 
 public class acww
-  implements View.OnClickListener
+  implements acxg
 {
-  public acww(UniformDownloadActivity paramUniformDownloadActivity) {}
+  public void a(int paramInt) {}
   
-  public void onClick(View paramView)
+  public int[] a()
   {
-    this.a.finish();
-    this.a.overridePendingTransition(0, 0);
+    return new int[6];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     acww
  * JD-Core Version:    0.7.0.1
  */

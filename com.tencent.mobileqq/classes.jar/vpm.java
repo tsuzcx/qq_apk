@@ -1,16 +1,20 @@
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.biz.qqstory.view.segment.SegmentList;
 
 public class vpm
-  extends vpk
+  implements Handler.Callback
 {
-  public vpm(QQAppInterface paramQQAppInterface)
+  public vpm(SegmentList paramSegmentList) {}
+  
+  public boolean handleMessage(Message paramMessage)
   {
-    super(paramQQAppInterface);
+    return SegmentList.a(this.a, paramMessage);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vpm
  * JD-Core Version:    0.7.0.1
  */

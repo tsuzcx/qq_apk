@@ -1,20 +1,34 @@
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
-import dov.com.tencent.biz.qqstory.takevideo.HWEditImportVideoPlayer;
-import java.util.Map;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.app.FileMultiMsgManager.BuddyUploadTaskExcuter.1;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.qphone.base.util.QLog;
 
 class aoek
-  implements Runnable
+  implements aofq
 {
-  aoek(aoej paramaoej, Map paramMap) {}
+  aoek(aoej paramaoej, ByteStringMicro paramByteStringMicro, String paramString) {}
   
-  public void run()
+  public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Aoej.a.a.a(this.jdField_a_of_type_JavaUtilMap);
+    aoea.a(this.jdField_a_of_type_Aoej.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileMultiMsgManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_Aoei.jdField_a_of_type_Aoea).a().a(aoei.a(this.jdField_a_of_type_Aoej.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileMultiMsgManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_Aoei));
+    if (paramBoolean)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_Aoej.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileMultiMsgManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_Aoei.jdField_a_of_type_JavaLangString + " sendLocalFileToBuddyBySHA uploadFile success");
+      }
+      this.jdField_a_of_type_Aoej.jdField_a_of_type_Aofv.a(this.jdField_a_of_type_Aoej.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileMultiMsgManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqPbByteStringMicro.toByteArray(), 5000, 3, null);
+      aoei.a(this.jdField_a_of_type_Aoej.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileMultiMsgManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_Aoei).putString("_m_ForwardUuid", this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_Aoej.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileMultiMsgManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_Aoex.a(this.jdField_a_of_type_JavaLangString, aoei.a(this.jdField_a_of_type_Aoej.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileMultiMsgManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_Aoei));
+      return;
+    }
+    QLog.e("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_Aoej.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileMultiMsgManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_Aoei.jdField_a_of_type_JavaLangString + " BuddyUploadTaskExcuter faild");
+    this.jdField_a_of_type_Aoej.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileMultiMsgManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_Aoex.a(aoea.a(this.jdField_a_of_type_Aoej.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileMultiMsgManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_Aoei.jdField_a_of_type_Long, false), true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aoek
  * JD-Core Version:    0.7.0.1
  */

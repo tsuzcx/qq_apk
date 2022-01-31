@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.activity.recent.data;
 
+import acnu;
+import ajoy;
+import akaq;
 import android.content.Context;
 import android.text.TextUtils;
 import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.aio.XMLMessageUtils;
 import com.tencent.mobileqq.activity.recent.MsgSummary;
 import com.tencent.mobileqq.activity.recent.RecentBaseData;
-import com.tencent.mobileqq.app.PublicAccountDataManager;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.ConversationFacade;
 import com.tencent.mobileqq.app.message.QQMessageFacade;
 import com.tencent.mobileqq.app.message.QQMessageFacade.Message;
 import com.tencent.mobileqq.data.PAMessage;
@@ -21,30 +21,30 @@ import java.util.List;
 public class RecentPubAccountAssistantItem
   extends RecentBaseData
 {
-  private PubAccountAssistantData a;
+  private PubAccountAssistantData mData;
   
   public RecentPubAccountAssistantItem(PubAccountAssistantData paramPubAccountAssistantData)
   {
     if (paramPubAccountAssistantData == null) {
       throw new NullPointerException("PubAccountAssistantData is null");
     }
-    this.jdField_a_of_type_ComTencentMobileqqDataPubAccountAssistantData = paramPubAccountAssistantData;
-    this.jdField_b_of_type_Int = 3;
+    this.mData = paramPubAccountAssistantData;
+    this.mUnreadFlag = 3;
   }
   
   public int a()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqDataPubAccountAssistantData.mType;
+    return this.mData.mType;
   }
   
   public long a()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqDataPubAccountAssistantData.mLastMsgTime;
+    return this.mData.mLastMsgTime;
   }
   
   public String a()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqDataPubAccountAssistantData.mUin;
+    return this.mData.mUin;
   }
   
   public void a(QQAppInterface paramQQAppInterface, Context paramContext)
@@ -62,16 +62,16 @@ public class RecentPubAccountAssistantItem
       Object localObject2;
       if (localMessage != null)
       {
-        this.jdField_a_of_type_Long = localMessage.time;
+        this.mDisplayTime = localMessage.time;
         localObject1 = paramQQAppInterface.a();
         if (localObject1 != null)
         {
-          this.jdField_c_of_type_Int = ((ConversationFacade)localObject1).a(localMessage.frienduin, localMessage.istroop);
-          localObject1 = (PublicAccountDataManager)paramQQAppInterface.getManager(55);
+          this.mUnreadNum = ((akaq)localObject1).a(localMessage.frienduin, localMessage.istroop);
+          localObject1 = (ajoy)paramQQAppInterface.getManager(56);
           if (localObject1 == null) {
             break label606;
           }
-          localObject2 = ((PublicAccountDataManager)localObject1).b((String)localObject3);
+          localObject2 = ((ajoy)localObject1).b((String)localObject3);
           if (localObject2 == null) {
             break label606;
           }
@@ -85,7 +85,7 @@ public class RecentPubAccountAssistantItem
         if (localObject1 == null) {
           localObject2 = localObject3;
         }
-        this.jdField_b_of_type_JavaLangString = ((String)localObject2);
+        this.mTitleName = ((String)localObject2);
         localObject2 = a();
         if (localMessage != null)
         {
@@ -97,42 +97,42 @@ public class RecentPubAccountAssistantItem
         else
         {
           label196:
-          if ((TextUtils.isEmpty(((MsgSummary)localObject2).b)) && (TextUtils.isEmpty(((MsgSummary)localObject2).jdField_c_of_type_JavaLangCharSequence)))
+          if ((TextUtils.isEmpty(((MsgSummary)localObject2).strContent)) && (TextUtils.isEmpty(((MsgSummary)localObject2).suffix)))
           {
             if (str != null) {
               break label538;
             }
             str = "";
             label227:
-            ((MsgSummary)localObject2).b = str;
+            ((MsgSummary)localObject2).strContent = str;
           }
           a(paramQQAppInterface);
           a(paramQQAppInterface, (MsgSummary)localObject2);
           a(paramQQAppInterface, paramContext, (MsgSummary)localObject2);
-          if (!AppSetting.b) {
+          if (!AppSetting.c) {
             break;
           }
           paramQQAppInterface = new StringBuilder(24);
-          paramQQAppInterface.append(this.jdField_b_of_type_JavaLangString);
-          if (this.jdField_c_of_type_Int != 0) {
+          paramQQAppInterface.append(this.mTitleName);
+          if (this.mUnreadNum != 0) {
             break label541;
           }
         }
         for (;;)
         {
-          if (this.jdField_d_of_type_JavaLangCharSequence != null) {
-            paramQQAppInterface.append(this.jdField_d_of_type_JavaLangCharSequence + ",");
+          if (this.mMsgExtroInfo != null) {
+            paramQQAppInterface.append(this.mMsgExtroInfo + ",");
           }
-          paramQQAppInterface.append(this.jdField_c_of_type_JavaLangCharSequence).append(' ').append(this.jdField_c_of_type_JavaLangString);
-          this.jdField_d_of_type_JavaLangString = paramQQAppInterface.toString();
+          paramQQAppInterface.append(this.mLastMsg).append(' ').append(this.mShowTime);
+          this.mContentDesc = paramQQAppInterface.toString();
           return;
-          this.jdField_c_of_type_Int = 0;
+          this.mUnreadNum = 0;
           break;
-          this.jdField_a_of_type_Long = 0L;
-          this.jdField_c_of_type_Int = 0;
+          this.mDisplayTime = 0L;
+          this.mUnreadNum = 0;
           break;
-          ((MsgSummary)localObject2).b = "";
-          localObject3 = XMLMessageUtils.a(localMessage);
+          ((MsgSummary)localObject2).strContent = "";
+          localObject3 = acnu.a(localMessage);
           if ((localObject3 == null) || (((PAMessage)localObject3).items == null) || (((PAMessage)localObject3).items.size() == 0))
           {
             a(localMessage, i, paramQQAppInterface, paramContext, (MsgSummary)localObject2);
@@ -144,18 +144,18 @@ public class RecentPubAccountAssistantItem
           }
           for (;;)
           {
-            ((MsgSummary)localObject2).b = ((CharSequence)localObject1);
+            ((MsgSummary)localObject2).strContent = ((CharSequence)localObject1);
             break;
           }
           label538:
           break label227;
           label541:
-          if (this.jdField_c_of_type_Int == 1) {
+          if (this.mUnreadNum == 1) {
             paramQQAppInterface.append("有一条未读");
-          } else if (this.jdField_c_of_type_Int == 2) {
+          } else if (this.mUnreadNum == 2) {
             paramQQAppInterface.append("有两条未读");
-          } else if (this.jdField_c_of_type_Int > 0) {
-            paramQQAppInterface.append("有").append(this.jdField_c_of_type_Int).append("条未读");
+          } else if (this.mUnreadNum > 0) {
+            paramQQAppInterface.append("有").append(this.mUnreadNum).append("条未读");
           }
         }
         label606:
@@ -171,7 +171,7 @@ public class RecentPubAccountAssistantItem
   
   public long b()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqDataPubAccountAssistantData.mLastDraftTime;
+    return this.mData.mLastDraftTime;
   }
 }
 

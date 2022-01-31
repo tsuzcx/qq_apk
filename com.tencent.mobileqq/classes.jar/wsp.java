@@ -1,24 +1,22 @@
-import com.tencent.mobileqq.activity.contacts.adapter.ContactsDeviceAdapter;
-import com.tencent.mobileqq.activity.contacts.fragment.DeviceFragment;
-import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.biz.videostory.capture.AEVideoStoryDashboardPart.6.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
+import mqq.os.MqqHandler;
 
 public class wsp
-  extends FriendListObserver
+  implements EIPCResultCallback
 {
-  public wsp(DeviceFragment paramDeviceFragment) {}
+  wsp(wsj paramwsj) {}
   
-  protected void onPullIpad()
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    if (this.a.a == null) {
-      return;
-    }
-    this.a.a.d();
-    this.a.a.notifyDataSetChanged();
+    ThreadManager.getUIHandler().post(new AEVideoStoryDashboardPart.6.1(this, paramEIPCResult));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wsp
  * JD-Core Version:    0.7.0.1
  */

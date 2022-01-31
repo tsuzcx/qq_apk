@@ -1,24 +1,45 @@
-import android.content.Context;
-import android.view.View;
-import com.tencent.mobileqq.nearby.now.view.viewmodel.PlayOperationViewModel;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentProtocol;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import com.tencent.mobileqq.activity.contacts.fragment.AlphabetFriendFragment;
+import com.tencent.mobileqq.activity.contacts.fragment.ContactsBaseFragment;
+import com.tencent.mobileqq.activity.contacts.fragment.DeviceFragment;
+import com.tencent.mobileqq.activity.contacts.fragment.FriendFragment;
+import com.tencent.mobileqq.activity.contacts.fragment.PhoneContactFragment;
+import com.tencent.mobileqq.activity.contacts.fragment.PublicAccountFragment;
+import com.tencent.mobileqq.activity.contacts.fragment.RecommendFriendFragment;
+import com.tencent.mobileqq.activity.contacts.fragment.TroopFragment;
 
 public class afey
-  implements ActionSheet.OnButtonClickListener
 {
-  public afey(PlayOperationViewModel paramPlayOperationViewModel, String paramString1, String[] paramArrayOfString, String paramString2, Context paramContext, ActionSheet paramActionSheet) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public static ContactsBaseFragment a(int paramInt)
   {
-    NearbyMomentProtocol.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewViewmodelPlayOperationViewModel.a, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ArrayOfJavaLangString[paramInt], this.b, new afez(this));
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    Object localObject;
+    switch (paramInt)
+    {
+    default: 
+      localObject = new FriendFragment();
+    }
+    for (;;)
+    {
+      ((ContactsBaseFragment)localObject).d(paramInt);
+      return localObject;
+      localObject = new RecommendFriendFragment();
+      continue;
+      localObject = new FriendFragment();
+      continue;
+      localObject = new TroopFragment();
+      continue;
+      localObject = new PublicAccountFragment();
+      continue;
+      localObject = new DeviceFragment();
+      continue;
+      localObject = new PhoneContactFragment();
+      continue;
+      localObject = new AlphabetFriendFragment();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     afey
  * JD-Core Version:    0.7.0.1
  */

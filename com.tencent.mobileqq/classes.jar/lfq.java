@@ -1,21 +1,39 @@
-import com.tencent.biz.common.offline.HtmlOffline;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
+import android.os.Handler;
+import android.os.HandlerThread;
+import android.os.Looper;
+import android.os.Message;
+import android.os.Process;
 
-public class lfq
-  implements Runnable
+public abstract class lfq
+  extends lfu
 {
-  public lfq(ReadInJoyNewFeedsActivity paramReadInJoyNewFeedsActivity) {}
+  protected Handler a;
   
-  public void run()
+  public lfq()
   {
-    HtmlOffline.b("2378", this.a.app, true, new lfr(this));
-    HtmlOffline.b("2464", this.a.app, true, new lfs(this));
-    HtmlOffline.b("2463", this.a.app, true, new lft(this));
+    HandlerThread localHandlerThread = new HandlerThread("OffscreenGLThread" + (int)(Math.random() * 100.0D));
+    localHandlerThread.start();
+    this.a = new lfr(localHandlerThread.getLooper(), this);
+  }
+  
+  protected abstract void a(Message paramMessage);
+  
+  protected void b()
+  {
+    super.b();
+    Process.setThreadPriority(0);
+    krx.c("GLContextThread", "init: ");
+  }
+  
+  protected void d()
+  {
+    super.e();
+    this.a.getLooper().quit();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lfq
  * JD-Core Version:    0.7.0.1
  */

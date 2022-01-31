@@ -1,24 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
-import com.tencent.mobileqq.activity.SpaceLowNoticeActiviy;
+import android.util.LruCache;
 
-public class tya
-  implements DialogInterface.OnKeyListener
+class tya
+  extends LruCache<String, txs>
 {
-  public tya(SpaceLowNoticeActiviy paramSpaceLowNoticeActiviy) {}
-  
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  tya(txz paramtxz, int paramInt)
   {
-    if (paramInt == 4) {
-      this.a.finish();
-    }
-    return false;
+    super(paramInt);
+  }
+  
+  protected void a(boolean paramBoolean, String paramString, txs paramtxs1, txs paramtxs2)
+  {
+    super.entryRemoved(paramBoolean, paramString, paramtxs1, paramtxs2);
+    txq.a("story.icon.ShareGroupIconManager", "entryRemoved key = %s" + paramString);
+    paramtxs1.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tya
  * JD-Core Version:    0.7.0.1
  */

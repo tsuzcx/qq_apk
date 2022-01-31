@@ -1,26 +1,27 @@
 package com.tencent.mobileqq.nearby.now.view.widget;
 
-import affz;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.BaseAdapter;
 import android.widget.LinearLayout;
-import com.tencent.av.utils.UITools;
+import asra;
+import asrc;
 import com.tencent.widget.HorizontalListView;
 import java.util.List;
+import mjg;
 
 public class StartLiveTopicLabelListView
   extends LinearLayout
 {
-  private int jdField_a_of_type_Int = 2130842859;
+  private int jdField_a_of_type_Int = 2130844581;
   private Context jdField_a_of_type_AndroidContentContext;
-  private BaseAdapter jdField_a_of_type_AndroidWidgetBaseAdapter = new affz(this);
-  private StartLiveTopicLabelListView.IAddTopicClickListener jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetStartLiveTopicLabelListView$IAddTopicClickListener;
+  private BaseAdapter jdField_a_of_type_AndroidWidgetBaseAdapter = new asra(this);
+  private asrc jdField_a_of_type_Asrc;
   private HorizontalListView jdField_a_of_type_ComTencentWidgetHorizontalListView;
   private final String jdField_a_of_type_JavaLangString = "TopicLabelListView";
-  private List jdField_a_of_type_JavaUtilList;
+  private List<String> jdField_a_of_type_JavaUtilList;
   private int b = -1;
-  private int c = 2130842858;
+  private int c = 2130844580;
   private int d = -1;
   
   public StartLiveTopicLabelListView(Context paramContext)
@@ -45,12 +46,12 @@ public class StartLiveTopicLabelListView
   {
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_ComTencentWidgetHorizontalListView = new HorizontalListView(paramContext);
-    this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setDividerWidth((int)UITools.a(paramContext, 5.0F));
+    this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setDividerWidth((int)mjg.a(paramContext, 5.0F));
     this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setAdapter(this.jdField_a_of_type_AndroidWidgetBaseAdapter);
     addView(this.jdField_a_of_type_ComTencentWidgetHorizontalListView, -1, -1);
   }
   
-  public void setData(List paramList)
+  public void setData(List<String> paramList)
   {
     this.jdField_a_of_type_JavaUtilList = paramList;
     this.jdField_a_of_type_AndroidWidgetBaseAdapter.notifyDataSetChanged();

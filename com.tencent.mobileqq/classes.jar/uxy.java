@@ -1,20 +1,20 @@
-import com.tencent.mobileqq.activity.aio.doodle.PlayLastLogic;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 
-public class uxy
-  implements Runnable
+class uxy
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public uxy(PlayLastLogic paramPlayLastLogic) {}
+  uxy(uxx paramuxx) {}
   
-  public void run()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (this.a.a == 0) {
-      PlayLastLogic.a(this.a, true);
-    }
+    this.a.p = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.a.b.g();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     uxy
  * JD-Core Version:    0.7.0.1
  */

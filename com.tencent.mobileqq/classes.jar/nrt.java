@@ -1,17 +1,13 @@
-import android.view.GestureDetector;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.biz.qqstory.playvideo.MyVideoVisiblePersonPageView;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
 
 public class nrt
-  implements View.OnTouchListener
+  implements ViewBase.IBuilder
 {
-  public nrt(MyVideoVisiblePersonPageView paramMyVideoVisiblePersonPageView) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public ViewBase build(VafContext paramVafContext)
   {
-    return this.a.a.onTouchEvent(paramMotionEvent);
+    return new nrp(paramVafContext);
   }
 }
 

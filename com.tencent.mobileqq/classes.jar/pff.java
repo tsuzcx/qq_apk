@@ -1,18 +1,22 @@
-import com.tencent.biz.webviewbase.AbsBaseWebViewActivity;
-import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
-import com.tencent.smtt.sdk.WebView;
+import android.widget.PopupWindow.OnDismissListener;
 
-public class pff
-  extends pfn
+class pff
+  implements PopupWindow.OnDismissListener
 {
-  public pff(AbsBaseWebViewActivity paramAbsBaseWebViewActivity)
-  {
-    super(paramAbsBaseWebViewActivity, null);
-  }
+  pff(pez parampez, beki parambeki) {}
   
-  public WebResourceResponse shouldInterceptRequest(WebView paramWebView, String paramString)
+  public void onDismiss()
   {
-    return a(paramWebView, paramString);
+    this.jdField_a_of_type_Beki.a(1.0F);
+    if (this.jdField_a_of_type_Pez.a.b)
+    {
+      qhp localqhp = this.jdField_a_of_type_Pez.a.a();
+      if (localqhp != null)
+      {
+        localqhp.c();
+        this.jdField_a_of_type_Pez.a.b = false;
+      }
+    }
   }
 }
 

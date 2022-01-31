@@ -1,24 +1,26 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.model.VidToVideoInfoPuller;
-import com.tencent.biz.qqstory.network.BatchHandlerListPuller.IPullResultCallback;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import java.util.List;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
 
-public class nhl
-  implements BatchHandlerListPuller.IPullResultCallback
+class nhl
+  implements Animator.AnimatorListener
 {
-  public nhl(VidToVideoInfoPuller paramVidToVideoInfoPuller, List paramList) {}
+  nhl(nhi paramnhi) {}
   
-  public void a(boolean paramBoolean)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("Vid list to video info list finish !");
-    if (paramBoolean) {}
-    for (String str = "Every task success";; str = "Some task error")
-    {
-      SLog.d("Q.qqstory.net:VidToVideoInfoPuller", str);
-      this.jdField_a_of_type_ComTencentBizQqstoryModelVidToVideoInfoPuller.a(this.jdField_a_of_type_JavaUtilList, new ErrorMessage(), true, paramBoolean);
-      return;
-    }
+    nhi.a(false);
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    nhi.a(false);
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    nhi.a(true);
   }
 }
 

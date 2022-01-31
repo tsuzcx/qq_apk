@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:paddingLeft="10.0dip" android:paddingRight="10.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:background="@drawable/dz5" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/ggy" android:layout_centerHorizontal="true">
+            <RelativeLayout android:id="@id/gh1" android:background="@color/um" android:padding="5.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip">
+                <ImageView android:id="@id/gh0" android:layout_width="170.0dip" android:layout_height="170.0dip" android:layout_centerInParent="true" />
+                <ImageView android:background="@drawable/dz8" android:layout_width="42.0dip" android:layout_height="42.0dip" android:layout_centerInParent="true" />
+            </RelativeLayout>
+            <TextView android:textSize="20.0sp" android:textColor="@color/um" android:ellipsize="end" android:gravity="center" android:id="@id/gh9" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="10.0dip" android:text="@string/q2o" android:singleLine="true" android:includeFontPadding="false" android:maxLength="14" />
+            <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/gh3" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <TextView android:textSize="16.0sp" android:textColor="@color/um" android:layout_gravity="center_vertical" android:id="@id/gh2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/q3h" android:includeFontPadding="false" />
+                <TextSwitcher android:textSize="16.0sp" android:layout_gravity="center_vertical" android:id="@id/ggd" android:layout_width="wrap_content" android:layout_height="wrap_content" android:inAnimation="@anim/ew" android:outAnimation="@anim/ex" />
+                <TextView android:textSize="16.0sp" android:textColor="@color/um" android:layout_gravity="center_vertical" android:id="@id/gh8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/q2w" android:includeFontPadding="false" />
+            </LinearLayout>
+            <com.tenpay.sdk.view.QueueDrawableView android:id="@id/h2k" android:layout_width="fill_parent" android:layout_height="48.0dip" android:layout_marginLeft="40.0dip" android:layout_marginTop="10.0dip" android:layout_marginRight="40.0dip" android:layout_marginBottom="10.0dip" />
+        </LinearLayout>
+        <TextView android:textSize="14.0sp" android:textColor="@color/w5" android:id="@id/ggy" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="18.0dip" android:text="@string/q45" android:drawableRight="@drawable/dww" android:drawablePadding="5.0dip" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+        <ImageView android:id="@id/gh5" android:layout_width="45.0dip" android:layout_height="45.0dip" android:src="@drawable/a4m" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
+    </RelativeLayout>
+</LinearLayout>

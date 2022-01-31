@@ -10,7 +10,7 @@ import com.tencent.mobileqq.pb.PBInt64Field;
 import com.tencent.mobileqq.pb.PBStringField;
 
 public final class MqqComicHeadPb$ComicRspHead
-  extends MessageMicro
+  extends MessageMicro<ComicRspHead>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBStringField cmd = PBField.initString("");
@@ -31,7 +31,7 @@ public final class MqqComicHeadPb$ComicRspHead
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.pb.mqqcomic.MqqComicHeadPb.ComicRspHead
  * JD-Core Version:    0.7.0.1
  */

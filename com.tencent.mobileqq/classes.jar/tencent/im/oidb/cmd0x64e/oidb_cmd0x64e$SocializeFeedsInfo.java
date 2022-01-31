@@ -10,7 +10,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class oidb_cmd0x64e$SocializeFeedsInfo
-  extends MessageMicro
+  extends MessageMicro<SocializeFeedsInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_comments = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -21,7 +21,7 @@ public final class oidb_cmd0x64e$SocializeFeedsInfo
   public oidb_cmd0x64e.SocializeFeedsExtInfo msg_socialize_feeds_ext_info = new oidb_cmd0x64e.SocializeFeedsExtInfo();
   public oidb_cmd0x64e.UGCFeedsInfo msg_ugc_topic_feeds_info = new oidb_cmd0x64e.UGCFeedsInfo();
   public oidb_cmd0x64e.VerifyResult msg_verify_result = new oidb_cmd0x64e.VerifyResult();
-  public final PBRepeatMessageField rpt_recommend_list = PBField.initRepeatMessage(oidb_cmd0x64e.SocializeFeedsInfoUser.class);
+  public final PBRepeatMessageField<oidb_cmd0x64e.SocializeFeedsInfoUser> rpt_recommend_list = PBField.initRepeatMessage(oidb_cmd0x64e.SocializeFeedsInfoUser.class);
   public final PBUInt32Field uint32_biu_count = PBField.initUInt32(0);
   public final PBUInt32Field uint32_biu_time = PBField.initUInt32(0);
   public final PBUInt32Field uint32_comments_count = PBField.initUInt32(0);
@@ -41,7 +41,7 @@ public final class oidb_cmd0x64e$SocializeFeedsInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     tencent.im.oidb.cmd0x64e.oidb_cmd0x64e.SocializeFeedsInfo
  * JD-Core Version:    0.7.0.1
  */

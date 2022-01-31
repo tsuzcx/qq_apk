@@ -1,22 +1,24 @@
-import com.tencent.mobileqq.profile.PersonalityLabel.PLUploadManager;
-import com.tencent.mobileqq.profile.PersonalityLabel.PLUploadManager.UploadListener;
-import java.util.List;
+import android.view.View;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DrawHbFragment;
 
 public class agrw
-  implements Runnable
+  implements agrf
 {
-  public agrw(PLUploadManager paramPLUploadManager, List paramList, long paramLong) {}
+  public agrw(DrawHbFragment paramDrawHbFragment, View paramView) {}
   
-  public void run()
+  public void a(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPLUploadManager.a != null) {
-      this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPLUploadManager.a.a(this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Long);
+    if (paramInt == 0)
+    {
+      this.jdField_a_of_type_AndroidViewView.findViewById(2131302444).setVisibility(8);
+      return;
     }
+    this.jdField_a_of_type_AndroidViewView.findViewById(2131302444).setVisibility(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     agrw
  * JD-Core Version:    0.7.0.1
  */

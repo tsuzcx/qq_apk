@@ -1,19 +1,21 @@
-import com.tencent.mobileqq.armap.ARMapActivity;
-import com.tencent.mobileqq.armap.map.ARMapEngine;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
 
-public class abhh
-  implements Runnable
+class abhh
+  implements DialogInterface.OnClickListener
 {
-  public abhh(ARMapActivity paramARMapActivity, long paramLong) {}
+  abhh(abhe paramabhe) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ARMapEngine.removePOITask(this.jdField_a_of_type_Long);
+    this.a.a.setResult(4004);
+    this.a.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abhh
  * JD-Core Version:    0.7.0.1
  */

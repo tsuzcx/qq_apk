@@ -8,9 +8,9 @@ public final class f
   extends JceStruct
 {
   static byte[] d;
-  public int a;
-  public byte[] b;
-  public long c;
+  public int a = 0;
+  public byte[] b = null;
+  public long c = 0L;
   
   public f() {}
   

@@ -1,277 +1,293 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.BaseAdapter;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.activity.aio.item.ApolloItemBuilder.ApolloGifDownloader;
-import com.tencent.mobileqq.apollo.ApolloManager;
-import com.tencent.mobileqq.apollo.ApolloResponseManager;
-import com.tencent.mobileqq.apollo.utils.ApolloDaoManager;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ApolloActionData;
-import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.app.Activity;
+import android.content.Intent;
+import android.os.SystemClock;
+import android.text.TextUtils;
+import android.util.Log;
+import com.tencent.gdtad.aditem.GdtAd;
+import com.tencent.mobileqq.pb.MessageMicro;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Random;
+import java.util.Map;
+import tencent.gdt.landing_page_collect_data.LandingPageCollectData;
+import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
+import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo;
+import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo.TraceInfo;
 
 public class ysr
-  extends BaseAdapter
+  implements yso
 {
-  int jdField_a_of_type_Int;
-  Context jdField_a_of_type_AndroidContentContext;
-  List jdField_a_of_type_JavaUtilList = new ArrayList();
+  private int jdField_a_of_type_Int = 0;
+  private long jdField_a_of_type_Long = -2147483648L;
+  private ysq jdField_a_of_type_Ysq;
+  private int jdField_b_of_type_Int;
+  private long jdField_b_of_type_Long = -2147483648L;
   
-  public ysr(ApolloResponseManager paramApolloResponseManager, Context paramContext)
+  public ysr(ysq paramysq)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Ysq = paramysq;
   }
   
-  public void a(List paramList, int paramInt)
+  private long a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("ApolloResponseManager", 2, "new actions:" + paramList.toString());
+    if (this.jdField_a_of_type_Long == -2147483648L) {
+      return -2147483648L;
     }
-    this.jdField_a_of_type_Int = paramInt;
-    Object localObject1;
-    int j;
-    if ((paramList != null) && (!paramList.isEmpty()))
+    return SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long;
+  }
+  
+  private String a(String paramString)
+  {
+    String str2 = "";
+    if (this.jdField_a_of_type_Ysq != null) {}
+    for (Activity localActivity = this.jdField_a_of_type_Ysq.a();; localActivity = null)
     {
-      this.jdField_a_of_type_JavaUtilList.clear();
-      localObject2 = (ApolloDaoManager)this.jdField_a_of_type_ComTencentMobileqqApolloApolloResponseManager.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(154);
-      localObject4 = (ApolloManager)this.jdField_a_of_type_ComTencentMobileqqApolloApolloResponseManager.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(152);
-      localObject3 = new ArrayList();
-      localObject1 = new ArrayList();
-      i = paramList.size();
-      paramInt = 0;
-      if (paramInt < i)
+      String str1 = str2;
+      if (localActivity != null)
       {
-        j = ((Integer)paramList.get(paramInt)).intValue();
-        ApolloActionData localApolloActionData = ((ApolloDaoManager)localObject2).a(j);
-        if (localApolloActionData == null) {}
-        for (;;)
-        {
-          paramInt += 1;
-          break;
-          if ((localApolloActionData.feeType == 9) && ((((ApolloManager)localObject4).a == null) || (!((ApolloManager)localObject4).a.containsKey(Integer.valueOf(localApolloActionData.actionId)))))
-          {
-            ApolloManager localApolloManager = (ApolloManager)this.jdField_a_of_type_ComTencentMobileqqApolloApolloResponseManager.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(152);
-            if ((!localApolloManager.a(this.jdField_a_of_type_ComTencentMobileqqApolloApolloResponseManager.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c())) || (localApolloManager.a(this.jdField_a_of_type_ComTencentMobileqqApolloApolloResponseManager.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c()) < localApolloActionData.vipLevel)) {
-              QLog.e("ApolloResponseManager", 1, "remove vip data:" + localApolloActionData.actionName + ",id:" + j);
-            }
-          }
-          else if ((localApolloActionData.feeType != 1) && ((localApolloActionData.isShow == 0) || (((ApolloManager)localObject4).a == null) || (!((ApolloManager)localObject4).a.containsKey(Integer.valueOf(localApolloActionData.actionId)))))
-          {
-            QLog.e("ApolloResponseManager", 1, "remove " + localApolloActionData.feeType + " data:" + localApolloActionData.actionName + ",id:" + j);
-            continue;
-          }
-          ((List)localObject1).add(localApolloActionData);
+        str1 = str2;
+        if (localActivity.getIntent() != null) {
+          str1 = localActivity.getIntent().getStringExtra(paramString);
         }
       }
-      if (((List)localObject1).size() < 2) {
-        QLog.e("ApolloResponseManager", 1, "invalid data size:" + ((List)localObject1).size());
-      }
+      Log.i("GdtWebReportQQ", "name = " + paramString + ", s = " + str1);
+      return str1;
     }
-    else
+  }
+  
+  private void a(GdtAd paramGdtAd)
+  {
+    Log.i("GdtWebReportQQ", "ACTION_REDIRECT_FAIL -- 2 -- \t" + a());
+    yoe localyoe = new yoe();
+    localyoe.jdField_a_of_type_ComTencentGdtadAditemGdtAd = paramGdtAd;
+    localyoe.jdField_a_of_type_TencentGdtLanding_page_collect_data$LandingPageCollectData.landing_page_action_type.set(2);
+    localyoe.jdField_a_of_type_TencentGdtLanding_page_collect_data$LandingPageCollectData.latency_ms.set(a());
+    localyoe.jdField_a_of_type_TencentGdtLanding_page_collect_data$LandingPageCollectData.landing_error_code.set(0);
+    a(localyoe);
+  }
+  
+  private void a(GdtAd paramGdtAd, int paramInt, Map<String, Object> paramMap)
+  {
+    Log.i("GdtWebReportQQ", "ACTION_LOAD_FAILED -- 4 -- " + paramInt + "\t" + a());
+    this.jdField_b_of_type_Long = SystemClock.elapsedRealtime();
+    int i = 0;
+    paramInt = i;
+    if (paramMap != null)
     {
-      return;
-    }
-    Collections.sort((List)localObject1, this.jdField_a_of_type_ComTencentMobileqqApolloApolloResponseManager.jdField_a_of_type_JavaUtilComparator);
-    Object localObject2 = new Random();
-    int i = ((List)localObject1).size() - 1;
-    paramInt = 0;
-    if (paramInt < 2)
-    {
-      if (i <= 1)
+      paramInt = i;
+      if (paramMap.containsKey("errorCode"))
       {
-        this.jdField_a_of_type_JavaUtilList.add(Integer.valueOf(((ApolloActionData)((List)localObject1).get(paramInt)).actionId));
-        ((List)localObject3).add(Integer.valueOf(((ApolloActionData)((List)localObject1).get(paramInt)).feeType));
-      }
-      for (;;)
-      {
-        paramInt += 1;
-        break;
-        if (((List)localObject1).get(paramInt) != null)
-        {
-          j = ((ApolloActionData)((List)localObject1).get(paramInt)).feeType;
-          if (j == 1)
-          {
-            int k;
-            do
-            {
-              j = ((Random)localObject2).nextInt(i - paramInt + 1) + paramInt;
-              k = ((ApolloActionData)((List)localObject1).get(j)).actionId;
-            } while (this.jdField_a_of_type_JavaUtilList.contains(Integer.valueOf(k)));
-            this.jdField_a_of_type_JavaUtilList.add(Integer.valueOf(k));
-            ((List)localObject3).add(Integer.valueOf(((ApolloActionData)((List)localObject1).get(j)).feeType));
-          }
-          else
-          {
-            this.jdField_a_of_type_JavaUtilList.add(Integer.valueOf(((ApolloActionData)((List)localObject1).get(paramInt)).actionId));
-            ((List)localObject3).add(Integer.valueOf(j));
-          }
+        paramInt = i;
+        if ((paramMap.get("errorCode") instanceof Integer)) {
+          paramInt = Math.abs(((Integer)paramMap.get("errorCode")).intValue());
         }
       }
     }
-    notifyDataSetChanged();
-    Object localObject4 = String.valueOf(this.jdField_a_of_type_ComTencentMobileqqApolloApolloResponseManager.jdField_a_of_type_JavaLangString);
-    paramInt = ApolloUtil.b(this.jdField_a_of_type_ComTencentMobileqqApolloApolloResponseManager.jdField_a_of_type_Int);
-    i = this.jdField_a_of_type_Int;
-    if (paramList.size() > 0)
-    {
-      localObject1 = String.valueOf(paramList.get(0));
-      if (((List)localObject3).size() <= 0) {
-        break label894;
-      }
-      localObject2 = String.valueOf(((List)localObject3).get(0));
-      label804:
-      if (paramList.size() <= 1) {
-        break label901;
-      }
-      paramList = String.valueOf(paramList.get(1));
-      label825:
-      if (((List)localObject3).size() <= 1) {
-        break label907;
-      }
+    paramMap = new yoe();
+    paramMap.jdField_a_of_type_ComTencentGdtadAditemGdtAd = paramGdtAd;
+    paramMap.jdField_a_of_type_TencentGdtLanding_page_collect_data$LandingPageCollectData.landing_page_action_type.set(4);
+    paramMap.jdField_a_of_type_TencentGdtLanding_page_collect_data$LandingPageCollectData.latency_ms.set(a());
+    paramMap.jdField_a_of_type_TencentGdtLanding_page_collect_data$LandingPageCollectData.landing_error_code.set(paramInt);
+    a(paramMap);
+  }
+  
+  public static void a(yoe paramyoe)
+  {
+    if (paramyoe.jdField_a_of_type_TencentGdtLanding_page_collect_data$LandingPageCollectData.latency_ms.has()) {
+      yod.a(paramyoe);
     }
-    label901:
-    label907:
-    for (Object localObject3 = String.valueOf(((List)localObject3).get(1));; localObject3 = "0")
+  }
+  
+  public static boolean a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {}
+    for (;;)
     {
-      VipUtils.a(null, "cmshow", "Apollo", "quickresponsepv", (String)localObject4, paramInt, i, new String[] { localObject1, localObject2, paramList, localObject3 });
-      return;
-      localObject1 = "0";
+      return false;
+      try
+      {
+        paramString = new URL(paramString).getHost();
+        String[] arrayOfString = "ttc.gdt.qq.com#c.gdt.qq.com#xc.gdt.qq.com".split("#");
+        int j = arrayOfString.length;
+        int i = 0;
+        while (i < j)
+        {
+          boolean bool = paramString.equals(arrayOfString[i]);
+          if (bool) {
+            return true;
+          }
+          i += 1;
+        }
+        return false;
+      }
+      catch (Exception paramString) {}
+    }
+  }
+  
+  private long b()
+  {
+    if (this.jdField_b_of_type_Long == -2147483648L) {
+      return -2147483648L;
+    }
+    return SystemClock.elapsedRealtime() - this.jdField_b_of_type_Long;
+  }
+  
+  private void b(GdtAd paramGdtAd)
+  {
+    Log.i("GdtWebReportQQ", "ACTION_REDIRECT_SUCESS -- 1 -- \t" + a());
+    yoe localyoe = new yoe();
+    localyoe.jdField_a_of_type_ComTencentGdtadAditemGdtAd = paramGdtAd;
+    localyoe.jdField_a_of_type_TencentGdtLanding_page_collect_data$LandingPageCollectData.landing_page_action_type.set(1);
+    localyoe.jdField_a_of_type_TencentGdtLanding_page_collect_data$LandingPageCollectData.latency_ms.set(a());
+    localyoe.jdField_a_of_type_TencentGdtLanding_page_collect_data$LandingPageCollectData.landing_error_code.set(0);
+    a(localyoe);
+  }
+  
+  private void c(GdtAd paramGdtAd)
+  {
+    Log.i("GdtWebReportQQ", "ACTION_BACK -- 5 -- \t" + a());
+    yoe localyoe = new yoe();
+    localyoe.jdField_a_of_type_ComTencentGdtadAditemGdtAd = paramGdtAd;
+    localyoe.jdField_a_of_type_TencentGdtLanding_page_collect_data$LandingPageCollectData.landing_page_action_type.set(5);
+    localyoe.jdField_a_of_type_TencentGdtLanding_page_collect_data$LandingPageCollectData.latency_ms.set(b());
+    localyoe.jdField_a_of_type_TencentGdtLanding_page_collect_data$LandingPageCollectData.landing_error_code.set(0);
+    a(localyoe);
+  }
+  
+  private void d(GdtAd paramGdtAd)
+  {
+    Log.i("GdtWebReportQQ", "ACTION_PAUSE -- 6 -- \t" + a());
+    yoe localyoe = new yoe();
+    localyoe.jdField_a_of_type_ComTencentGdtadAditemGdtAd = paramGdtAd;
+    localyoe.jdField_a_of_type_TencentGdtLanding_page_collect_data$LandingPageCollectData.landing_page_action_type.set(6);
+    localyoe.jdField_a_of_type_TencentGdtLanding_page_collect_data$LandingPageCollectData.latency_ms.set(b());
+    localyoe.jdField_a_of_type_TencentGdtLanding_page_collect_data$LandingPageCollectData.landing_error_code.set(0);
+    a(localyoe);
+  }
+  
+  private void e(GdtAd paramGdtAd)
+  {
+    Log.i("GdtWebReportQQ", "ACTION_EXIT -- 7 -- \t" + a());
+    yoe localyoe = new yoe();
+    localyoe.jdField_a_of_type_ComTencentGdtadAditemGdtAd = paramGdtAd;
+    localyoe.jdField_a_of_type_TencentGdtLanding_page_collect_data$LandingPageCollectData.landing_page_action_type.set(7);
+    localyoe.jdField_a_of_type_TencentGdtLanding_page_collect_data$LandingPageCollectData.latency_ms.set(b());
+    localyoe.jdField_a_of_type_TencentGdtLanding_page_collect_data$LandingPageCollectData.landing_error_code.set(0);
+    a(localyoe);
+  }
+  
+  private void f(GdtAd paramGdtAd)
+  {
+    Log.i("GdtWebReportQQ", "ACTION_LOAD_SUCCESS -- 3 -- \t" + a());
+    this.jdField_b_of_type_Long = SystemClock.elapsedRealtime();
+    yoe localyoe = new yoe();
+    localyoe.jdField_a_of_type_ComTencentGdtadAditemGdtAd = paramGdtAd;
+    localyoe.jdField_a_of_type_TencentGdtLanding_page_collect_data$LandingPageCollectData.landing_page_action_type.set(3);
+    localyoe.jdField_a_of_type_TencentGdtLanding_page_collect_data$LandingPageCollectData.latency_ms.set(a());
+    localyoe.jdField_a_of_type_TencentGdtLanding_page_collect_data$LandingPageCollectData.landing_error_code.set(0);
+    a(localyoe);
+  }
+  
+  public boolean a(String paramString, long paramLong, Map<String, Object> paramMap)
+  {
+    Object localObject1 = a("GdtWebReportQQ_ACTION_URL");
+    Object localObject2 = a("GdtWebReportQQ_TRACE_ID");
+    if ((TextUtils.isEmpty((CharSequence)localObject1)) || (TextUtils.isEmpty((CharSequence)localObject2)))
+    {
+      Log.i("GdtWebReportQQ", "ljh, empty traceURL or traceID");
+      return false;
+    }
+    qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo.TraceInfo localTraceInfo = new qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo.TraceInfo();
+    localTraceInfo.traceid.set((String)localObject2);
+    localObject2 = new qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo();
+    ((qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo)localObject2).landing_page_report_url.set((String)localObject1);
+    ((qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo)localObject2).trace_info.set(localTraceInfo);
+    localObject1 = new qq_ad_get.QQAdGetRsp.AdInfo();
+    ((qq_ad_get.QQAdGetRsp.AdInfo)localObject1).report_info.set((MessageMicro)localObject2);
+    localObject1 = new GdtAd((qq_ad_get.QQAdGetRsp.AdInfo)localObject1);
+    switch (this.jdField_a_of_type_Int)
+    {
+    default: 
+      if (this.jdField_b_of_type_Int == 1)
+      {
+        if ((paramLong != 8589934593L) || (this.jdField_a_of_type_Int != 1) || (a(paramString))) {
+          break label434;
+        }
+        b((GdtAd)localObject1);
+        this.jdField_b_of_type_Int = 2;
+      }
       break;
-      label894:
-      localObject2 = "0";
-      break label804;
-      paramList = "0";
-      break label825;
-    }
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    Object localObject1 = this.jdField_a_of_type_AndroidContentContext.getResources();
-    int i = ((Integer)getItem(paramInt)).intValue();
-    Object localObject2;
-    Object localObject3;
-    if (paramView == null)
-    {
-      paramViewGroup = new ysq(this.jdField_a_of_type_ComTencentMobileqqApolloApolloResponseManager);
-      paramView = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
-      ((LinearLayout)paramView).setOrientation(1);
-      localObject2 = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
-      ((LinearLayout)localObject2).setBackgroundResource(2130838537);
-      ((LinearLayout)localObject2).setOrientation(0);
-      localObject3 = new URLImageView(this.jdField_a_of_type_AndroidContentContext);
-      int j = AIOUtils.a(28.0F, (Resources)localObject1);
-      Object localObject4 = new LinearLayout.LayoutParams(j, j);
-      ((LinearLayout.LayoutParams)localObject4).leftMargin = AIOUtils.a(2.2F, (Resources)localObject1);
-      ((LinearLayout.LayoutParams)localObject4).gravity = 16;
-      ((LinearLayout)localObject2).addView((View)localObject3, (ViewGroup.LayoutParams)localObject4);
-      localObject4 = new TextView(this.jdField_a_of_type_AndroidContentContext);
-      ((TextView)localObject4).setTextSize(11.0F);
-      ((TextView)localObject4).setMaxLines(1);
-      ((TextView)localObject4).setIncludeFontPadding(false);
-      ((TextView)localObject4).setGravity(1);
-      ((TextView)localObject4).setTextColor(((Resources)localObject1).getColor(2131494225));
-      LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
-      localLayoutParams.gravity = 16;
-      ((LinearLayout)localObject2).addView((View)localObject4, localLayoutParams);
-      paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)localObject3);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localObject4);
-      localObject3 = new View(this.jdField_a_of_type_AndroidContentContext);
-      paramViewGroup.jdField_a_of_type_AndroidViewView = ((View)localObject3);
-      ((LinearLayout)paramView).addView((View)localObject2);
-      ((LinearLayout)paramView).addView((View)localObject3);
-      paramView.setTag(paramViewGroup);
     }
     for (;;)
     {
-      paramView.setTag(2131362418, Integer.valueOf(i));
-      paramView.setTag(2131362419, Integer.valueOf(this.jdField_a_of_type_Int));
-      localObject2 = paramViewGroup.jdField_a_of_type_AndroidViewView;
-      float f;
-      if (paramInt == this.jdField_a_of_type_JavaUtilList.size() - 1)
-      {
-        f = 8.0F;
-        label333:
-        ((View)localObject2).setMinimumHeight(AIOUtils.a(f, (Resources)localObject1));
+      return false;
+      if (paramLong != 8589934593L) {
+        break;
       }
-      try
-      {
-        localObject2 = URLDrawable.URLDrawableOptions.obtain();
-        ((URLDrawable.URLDrawableOptions)localObject2).mPlayGifImage = true;
-        ((URLDrawable.URLDrawableOptions)localObject2).mFailedDrawable = ((Resources)localObject1).getDrawable(2130838093);
-        ((URLDrawable.URLDrawableOptions)localObject2).mLoadingDrawable = ((Resources)localObject1).getDrawable(2130838094);
-        localObject1 = new URL("apollo_gif", "", String.valueOf(i));
-        localObject3 = new File(ApolloItemBuilder.ApolloGifDownloader.a(i));
-        paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView.setTag(Integer.valueOf(i));
-        if (((File)localObject3).exists())
-        {
-          localObject1 = URLDrawable.getDrawable((File)localObject3, (URLDrawable.URLDrawableOptions)localObject2);
-          paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable((Drawable)localObject1);
-        }
-        for (;;)
-        {
-          label454:
-          localObject1 = ((ApolloDaoManager)this.jdField_a_of_type_ComTencentMobileqqApolloApolloResponseManager.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(154)).a(i);
-          if (localObject1 != null)
-          {
-            localObject1 = ((ApolloActionData)localObject1).actionName;
-            paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject1);
-          }
-          paramView.setOnClickListener(this.jdField_a_of_type_ComTencentMobileqqApolloApolloResponseManager.jdField_a_of_type_AndroidViewView$OnClickListener);
-          return paramView;
-          paramViewGroup = (ysq)paramView.getTag();
-          break;
-          f = 5.0F;
-          break label333;
-          localObject1 = URLDrawable.getDrawable((URL)localObject1, (URLDrawable.URLDrawableOptions)localObject2);
-          ((URLDrawable)localObject1).setTag(Integer.valueOf(i));
-          paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable((Drawable)localObject1);
-        }
+      if ((a(paramString)) && (this.jdField_b_of_type_Int == 0)) {
+        this.jdField_b_of_type_Int = 1;
       }
-      catch (Throwable localThrowable)
+      this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
+      this.jdField_a_of_type_Int = 1;
+      break;
+      if (paramLong == 8589934594L)
       {
-        break label454;
+        this.jdField_a_of_type_Int = 2;
+        f((GdtAd)localObject1);
+        break;
+      }
+      if (paramLong == 8589934595L)
+      {
+        this.jdField_a_of_type_Int = 3;
+        a((GdtAd)localObject1, 1, paramMap);
+        break;
+      }
+      if (paramLong == 8589934601L)
+      {
+        this.jdField_a_of_type_Int = 4;
+        a((GdtAd)localObject1, 94, paramMap);
+        c((GdtAd)localObject1);
+        break;
+      }
+      if (paramLong != 8589934597L) {
+        break;
+      }
+      this.jdField_a_of_type_Int = 4;
+      a((GdtAd)localObject1, 95, paramMap);
+      d((GdtAd)localObject1);
+      break;
+      if ((paramLong != 8589934601L) && (paramLong != 8589934597L)) {
+        break;
+      }
+      e((GdtAd)localObject1);
+      this.jdField_a_of_type_Int = 4;
+      break;
+      if (paramLong == 8589934593L)
+      {
+        this.jdField_a_of_type_Int = 4;
+        c((GdtAd)localObject1);
+        this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
+        break;
+      }
+      if (paramLong != 8589934597L) {
+        break;
+      }
+      this.jdField_a_of_type_Int = 4;
+      d((GdtAd)localObject1);
+      break;
+      label434:
+      if ((a(paramString)) && ((paramLong == 8589934598L) || (paramLong == 8589934595L)))
+      {
+        this.jdField_b_of_type_Int = 2;
+        a((GdtAd)localObject1);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ysr
  * JD-Core Version:    0.7.0.1
  */

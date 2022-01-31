@@ -1,24 +1,24 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.armap.FrameBmpCache;
-import com.tencent.mobileqq.armap.SdCardImageAnimView;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class abke
-  implements Runnable
+  implements alva
 {
-  public abke(SdCardImageAnimView paramSdCardImageAnimView) {}
+  public abke(QQBrowserActivity paramQQBrowserActivity) {}
   
-  public void run()
+  public void a()
   {
-    if (SdCardImageAnimView.a(this.a) != null)
-    {
-      Bitmap localBitmap = SdCardImageAnimView.a(this.a).a(0);
-      this.a.post(new abkf(this, localBitmap));
-    }
+    QLog.d("WebLog_QQBrowserActivity", 1, "onPageSwipeClose");
+  }
+  
+  public void b()
+  {
+    QLog.d("WebLog_QQBrowserActivity", 1, "onPageSwipeNotClose");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abke
  * JD-Core Version:    0.7.0.1
  */

@@ -23,8 +23,8 @@ public class d
   private static long g = 0L;
   private static long h = 0L;
   private static final long i = 600000L;
-  private static int j;
-  private Socket c;
+  private static int j = 0;
+  private Socket c = null;
   
   public d(Context paramContext)
   {
@@ -182,7 +182,7 @@ public class d
     catch (IOException paramArrayOfByte)
     {
       j += 1;
-      if (j > com.tencent.mobileqq.msf.core.a.a.aK()) {
+      if (j > com.tencent.mobileqq.msf.core.a.a.aL()) {
         a.j();
       }
       QLog.d("NormalSocketAdaptor", 1, "failed to send in normal way " + paramArrayOfByte.toString());

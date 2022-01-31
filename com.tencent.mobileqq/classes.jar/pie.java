@@ -1,16 +1,12 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.biz.webviewplugin.UrlCheckPlugin;
 
-public class pie
+class pie
   implements View.OnClickListener
 {
-  public pie(UrlCheckPlugin paramUrlCheckPlugin) {}
+  pie(pid parampid) {}
   
-  public void onClick(View paramView)
-  {
-    this.a.a();
-  }
+  public void onClick(View paramView) {}
 }
 
 

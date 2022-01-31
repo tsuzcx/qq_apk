@@ -1,37 +1,32 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.QQLSActivity;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.VersionUtils;
-import mqq.os.MqqHandler;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import java.io.File;
 
-public class tns
-  implements Animation.AnimationListener
+class tns
+  implements tpn
 {
-  public tns(QQLSActivity paramQQLSActivity) {}
+  private tns(tnp paramtnp) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(VideoViewVideoHolder paramVideoViewVideoHolder, String paramString1, String paramString2, File paramFile, boolean paramBoolean) {}
+  
+  public void a(VideoViewVideoHolder paramVideoViewVideoHolder, tqg paramtqg) {}
+  
+  public boolean a(VideoViewVideoHolder paramVideoViewVideoHolder, tqg paramtqg, int paramInt, Object paramObject)
   {
-    this.a.a.removeMessages(99);
-    if (VersionUtils.g())
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("QQLSActivity", 2, "do SmoothFinish");
-      }
-      QQLSActivity.g(this.a);
-      this.a.finish();
-      return;
-    }
-    this.a.a.postAtFrontOfQueue(new tnt(this));
+    return false;
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public boolean a(VideoViewVideoHolder paramVideoViewVideoHolder, tqg paramtqg, boolean paramBoolean)
+  {
+    return this.a.a.a(paramVideoViewVideoHolder, paramtqg, paramBoolean);
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void b(VideoViewVideoHolder paramVideoViewVideoHolder, tqg paramtqg) {}
+  
+  public void c(VideoViewVideoHolder paramVideoViewVideoHolder, tqg paramtqg) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tns
  * JD-Core Version:    0.7.0.1
  */

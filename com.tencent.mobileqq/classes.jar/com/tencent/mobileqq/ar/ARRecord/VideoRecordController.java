@@ -1,5 +1,15 @@
 package com.tencent.mobileqq.ar.ARRecord;
 
+import akku;
+import akkv;
+import akky;
+import aklh;
+import akli;
+import aklk;
+import akll;
+import aklm;
+import akln;
+import akpb;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -7,53 +17,47 @@ import android.opengl.EGL14;
 import android.opengl.GLES20;
 import android.opengl.GLUtils;
 import android.opengl.Matrix;
+import android.os.Build;
 import android.os.Handler;
 import android.os.Handler.Callback;
 import android.os.Message;
-import android.os.SystemClock;
-import android.text.TextUtils;
 import android.view.Surface;
-import com.tencent.av.ui.funchat.record.FileSwapHelper;
-import com.tencent.mobileqq.ar.ARRecord.renderer.ARTextureRender;
-import com.tencent.mobileqq.ar.ScanEntranceDPC;
-import com.tencent.mobileqq.arcard.ARCardUtils;
-import com.tencent.mobileqq.filemanager.util.FileUtil;
-import com.tencent.mobileqq.richmedia.mediacodec.encoder.EglCore;
-import com.tencent.mobileqq.richmedia.mediacodec.encoder.EncodeConfig;
-import com.tencent.mobileqq.richmedia.mediacodec.renderer.TextureRender;
+import apdh;
+import auzd;
+import auzf;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.ttpic.openapi.filter.TextureRender;
 import java.io.File;
+import mcg;
 
 public class VideoRecordController
-  implements Handler.Callback, ARVideoRecordDataSource, VideoEncoder.VideoEncoderCallback
+  implements akky, akli, Handler.Callback
 {
   private static final Object jdField_a_of_type_JavaLangObject = new Object();
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
+  private aklh jdField_a_of_type_Aklh;
+  private akll jdField_a_of_type_Akll;
+  private aklm jdField_a_of_type_Aklm;
+  private akln jdField_a_of_type_Akln;
   private Context jdField_a_of_type_AndroidContentContext;
   private Handler jdField_a_of_type_AndroidOsHandler;
   private Surface jdField_a_of_type_AndroidViewSurface;
+  private auzf jdField_a_of_type_Auzf;
   private AudioRecordController jdField_a_of_type_ComTencentMobileqqArARRecordAudioRecordController;
-  private VideoEncoder jdField_a_of_type_ComTencentMobileqqArARRecordVideoEncoder;
-  private VideoEncoderWindowSurface jdField_a_of_type_ComTencentMobileqqArARRecordVideoEncoderWindowSurface;
-  private VideoRecordController.RecordListener jdField_a_of_type_ComTencentMobileqqArARRecordVideoRecordController$RecordListener;
   private VideoRecordController.State jdField_a_of_type_ComTencentMobileqqArARRecordVideoRecordController$State = VideoRecordController.State.IDLE;
-  private ARTextureRender jdField_a_of_type_ComTencentMobileqqArARRecordRendererARTextureRender;
-  private EncodeConfig jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderEncodeConfig;
-  private TextureRender jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererTextureRender;
+  private TextureRender jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender;
   private File jdField_a_of_type_JavaIoFile;
-  private String jdField_a_of_type_JavaLangString = "";
+  private String jdField_a_of_type_JavaLangString;
   private boolean jdField_a_of_type_Boolean;
   private float[] jdField_a_of_type_ArrayOfFloat;
   private int jdField_b_of_type_Int = -1;
   private long jdField_b_of_type_Long;
-  private String jdField_b_of_type_JavaLangString;
   private boolean jdField_b_of_type_Boolean;
   private float[] jdField_b_of_type_ArrayOfFloat;
   private long jdField_c_of_type_Long;
   private boolean jdField_c_of_type_Boolean;
-  private long jdField_d_of_type_Long;
-  private boolean jdField_d_of_type_Boolean;
+  private boolean d;
   private boolean e;
   private boolean f;
   private boolean g;
@@ -72,28 +76,27 @@ public class VideoRecordController
   {
     try
     {
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {}
-      for (Object localObject = ARCardUtils.a(this.jdField_a_of_type_JavaLangString);; localObject = VideoEncoderUtils.b())
+      File localFile = new File(aklk.b());
+      if ((this.jdField_a_of_type_JavaIoFile != null) && (this.jdField_a_of_type_JavaIoFile.exists()))
       {
-        localObject = new File((String)localObject);
-        if ((this.jdField_a_of_type_JavaIoFile == null) || (!this.jdField_a_of_type_JavaIoFile.exists()) || (!this.jdField_a_of_type_JavaIoFile.renameTo((File)localObject))) {
-          break;
+        boolean bool = this.jdField_a_of_type_JavaIoFile.renameTo(localFile);
+        if (bool) {
+          return localFile;
         }
-        return localObject;
       }
-      return null;
     }
     catch (Exception localException)
     {
       QLog.e("VideoRecordController", 1, "renameTempVideoFile fail.", localException);
     }
+    return null;
   }
   
   private void a(int paramInt1, int paramInt2)
   {
     QLog.d("VideoRecordController", 2, String.format("loadWaterMarkTexture screenWidth=%s screenHeight=%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }));
     if (this.jdField_b_of_type_Int == -1) {
-      this.jdField_b_of_type_Int = 2130838187;
+      this.jdField_b_of_type_Int = 2130838459;
     }
     try
     {
@@ -151,11 +154,11 @@ public class VideoRecordController
       localMessage.arg1 = paramInt;
       localMessage.obj = paramString;
       localMessage.sendToTarget();
-      ARRecordReport.a().a(paramInt, paramLong);
+      akku.a().a(paramInt, paramLong);
     }
   }
   
-  private void c(int paramInt)
+  private void b(int paramInt)
   {
     int m = 1;
     int k;
@@ -176,16 +179,16 @@ public class VideoRecordController
         k = 11;
       }
       if (!this.jdField_b_of_type_Boolean) {
-        d(k);
+        c(k);
       }
-      f();
+      d();
       return;
       label63:
       m = 0;
     }
   }
   
-  private void d(int paramInt)
+  private void c(int paramInt)
   {
     QLog.d("VideoRecordController", 2, String.format("notifyRecordError errorType=%s", new Object[] { Integer.valueOf(paramInt) }));
     if (this.jdField_a_of_type_AndroidOsHandler != null)
@@ -193,18 +196,11 @@ public class VideoRecordController
       Message localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(105);
       localMessage.arg1 = paramInt;
       localMessage.sendToTarget();
-      ARRecordReport.a().a(paramInt);
+      akku.a().a(paramInt);
     }
   }
   
-  private void e()
-  {
-    if ((this.jdField_a_of_type_JavaIoFile != null) && (this.jdField_a_of_type_JavaIoFile.exists())) {
-      this.jdField_a_of_type_JavaIoFile.delete();
-    }
-  }
-  
-  private boolean e()
+  private boolean c()
   {
     boolean bool = true;
     QLog.d("VideoRecordController", 2, String.format("startRecord mState=%s mIsRecording=%s", new Object[] { this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoRecordController$State, Boolean.valueOf(this.jdField_a_of_type_Boolean) }));
@@ -218,7 +214,7 @@ public class VideoRecordController
           this.j = false;
           this.jdField_c_of_type_Boolean = false;
           this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoRecordController$State = VideoRecordController.State.STARTING;
-          this.jdField_d_of_type_Boolean = false;
+          this.d = false;
           this.e = false;
           this.f = false;
           this.g = false;
@@ -230,18 +226,10 @@ public class VideoRecordController
     }
   }
   
-  private void f()
-  {
-    QLog.d("VideoRecordController", 2, "notifyRecordStart");
-    if (this.jdField_a_of_type_AndroidOsHandler != null) {
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(102);
-    }
-  }
-  
-  private boolean f()
+  private boolean d()
   {
     boolean bool = true;
-    QLog.d("VideoRecordController", 2, String.format("stopRecord mState=%s mIsRecording=%s mNotSaveRecordFile=%s mHaveErrorHappened=%s mHaveMaxRecord=%s mHaveSDCardFull=%s", new Object[] { this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoRecordController$State, Boolean.valueOf(this.jdField_a_of_type_Boolean), Boolean.valueOf(this.jdField_d_of_type_Boolean), Boolean.valueOf(this.e), Boolean.valueOf(this.f), Boolean.valueOf(this.g) }));
+    QLog.d("VideoRecordController", 2, String.format("stopRecord mState=%s mIsRecording=%s mNotSaveRecordFile=%s mHaveErrorHappened=%s mHaveMaxRecord=%s mHaveSDCardFull=%s", new Object[] { this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoRecordController$State, Boolean.valueOf(this.jdField_a_of_type_Boolean), Boolean.valueOf(this.d), Boolean.valueOf(this.e), Boolean.valueOf(this.f), Boolean.valueOf(this.g) }));
     for (;;)
     {
       synchronized (jdField_a_of_type_JavaLangObject)
@@ -252,13 +240,13 @@ public class VideoRecordController
           {
             this.jdField_a_of_type_ComTencentMobileqqArARRecordAudioRecordController.c();
             this.jdField_a_of_type_ComTencentMobileqqArARRecordAudioRecordController = null;
-            this.jdField_b_of_type_JavaLangString = null;
+            this.jdField_a_of_type_JavaLangString = null;
           }
-          if (this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoEncoder != null)
+          if (this.jdField_a_of_type_Aklh != null)
           {
-            this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoEncoder.a();
+            this.jdField_a_of_type_Aklh.a();
             this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoRecordController$State = VideoRecordController.State.STOPPING;
-            this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoEncoder = null;
+            this.jdField_a_of_type_Aklh = null;
             if (this.jdField_a_of_type_AndroidViewSurface != null)
             {
               this.jdField_a_of_type_AndroidViewSurface.release();
@@ -272,7 +260,7 @@ public class VideoRecordController
           }
           QLog.e("VideoRecordController", 1, "stopRecord VideoEncoder is starting.");
           if (!this.jdField_b_of_type_Boolean) {
-            d(11);
+            c(11);
           }
           this.jdField_a_of_type_Boolean = false;
           this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoRecordController$State = VideoRecordController.State.IDLE;
@@ -282,22 +270,37 @@ public class VideoRecordController
     }
   }
   
+  private void e()
+  {
+    if ((this.jdField_a_of_type_JavaIoFile != null) && (this.jdField_a_of_type_JavaIoFile.exists())) {
+      this.jdField_a_of_type_JavaIoFile.delete();
+    }
+  }
+  
+  private void f()
+  {
+    QLog.d("VideoRecordController", 2, "notifyRecordStart");
+    if (this.jdField_a_of_type_AndroidOsHandler != null) {
+      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(102);
+    }
+  }
+  
   private void g()
   {
     long l1 = System.currentTimeMillis();
     long l2 = this.jdField_b_of_type_Long;
     long l3 = this.jdField_c_of_type_Long;
-    long l4 = FileSwapHelper.a();
+    long l4 = mcg.a();
     if (l1 - l2 - l3 >= 60000L)
     {
       this.f = true;
-      f();
+      d();
       return;
     }
     if (l4 <= 5242880L)
     {
       this.g = true;
-      f();
+      d();
       return;
     }
     h();
@@ -333,7 +336,7 @@ public class VideoRecordController
   public void a(int paramInt)
   {
     QLog.d("VideoRecordController", 2, String.format("onEncodeError errorCode=%s", new Object[] { Integer.valueOf(paramInt) }));
-    c(paramInt);
+    b(paramInt);
     synchronized (jdField_a_of_type_JavaLangObject)
     {
       this.jdField_a_of_type_Boolean = false;
@@ -352,38 +355,38 @@ public class VideoRecordController
         return;
       }
       this.jdField_a_of_type_Long = l;
-      if ((this.jdField_c_of_type_Boolean) && (this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoEncoder != null) && (!this.j))
+      if ((this.jdField_c_of_type_Boolean) && (this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Aklh != null) && (!this.j))
       {
         l = this.jdField_c_of_type_Long;
         paramLong -= l;
       }
       try
       {
-        this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoEncoderWindowSurface.b();
-        GLES20.glViewport(0, 0, this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderEncodeConfig.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderEncodeConfig.jdField_b_of_type_Int);
+        this.jdField_a_of_type_Akll.b();
+        GLES20.glViewport(0, 0, this.jdField_a_of_type_Auzf.jdField_a_of_type_Int, this.jdField_a_of_type_Auzf.jdField_b_of_type_Int);
         GLES20.glClearColor(0.0F, 0.0F, 0.0F, 1.0F);
         GLES20.glClear(16640);
         GLES20.glDepthMask(false);
         GLES20.glDisable(2929);
-        this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererTextureRender.a(paramInt1, paramInt2, paramArrayOfFloat1, paramArrayOfFloat2);
+        this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender.drawTexture(paramInt1, paramInt2, paramArrayOfFloat1, paramArrayOfFloat2);
         if (this.i)
         {
           GLES20.glEnable(3042);
           GLES20.glBlendFunc(1, 771);
-          this.jdField_a_of_type_ComTencentMobileqqArARRecordRendererARTextureRender.a(3553, this.jdField_a_of_type_Int, this.jdField_a_of_type_ArrayOfFloat, this.jdField_b_of_type_ArrayOfFloat);
+          this.jdField_a_of_type_Akln.a(3553, this.jdField_a_of_type_Int, this.jdField_a_of_type_ArrayOfFloat, this.jdField_b_of_type_ArrayOfFloat);
           GLES20.glDisable(3042);
         }
-        this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoEncoderWindowSurface.a(paramLong);
-        this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoEncoderWindowSurface.c();
-        this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoEncoderWindowSurface.a();
-        this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoEncoder.a(paramLong);
+        this.jdField_a_of_type_Akll.a(paramLong);
+        this.jdField_a_of_type_Akll.c();
+        this.jdField_a_of_type_Akll.a();
+        this.jdField_a_of_type_Aklh.a(paramLong);
       }
       catch (Exception paramArrayOfFloat1)
       {
         for (;;)
         {
           QLog.e("VideoRecordController", 1, "onVideoFrameAvailable render encode surface fail.", paramArrayOfFloat1);
-          c(4);
+          b(4);
         }
       }
       return;
@@ -392,66 +395,58 @@ public class VideoRecordController
   
   public void a(long paramLong) {}
   
-  public void a(VideoRecordController.RecordListener paramRecordListener)
+  public void a(aklm paramaklm)
   {
-    QLog.d("VideoRecordController", 2, String.format("setVideoRecordListener listener=%s", new Object[] { paramRecordListener }));
-    this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoRecordController$RecordListener = paramRecordListener;
+    QLog.d("VideoRecordController", 2, String.format("setVideoRecordListener listener=%s", new Object[] { paramaklm }));
+    this.jdField_a_of_type_Aklm = paramaklm;
   }
   
-  public void a(EglCore paramEglCore, int paramInt1, int paramInt2)
+  public void a(auzd paramauzd, int paramInt1, int paramInt2)
   {
     QLog.d("VideoRecordController", 2, String.format("doStartRecord mState=%s mIsRecording=%s", new Object[] { this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoRecordController$State, Boolean.valueOf(this.jdField_a_of_type_Boolean) }));
     synchronized (jdField_a_of_type_JavaLangObject)
     {
       boolean bool = this.jdField_a_of_type_Boolean;
       if (bool) {}
-      try
+      for (;;)
       {
-        String str = VideoEncoderUtils.a();
-        this.jdField_a_of_type_JavaIoFile = new File(str);
-        this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderEncodeConfig = new EncodeConfig(str, 540, (int)(540 / paramInt1 * paramInt2) / 16 * 16, 2048000, 1, false, 0);
-        this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderEncodeConfig.a(EGL14.eglGetCurrentContext());
-        this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoEncoder = new VideoEncoder();
-        this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoEncoder.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderEncodeConfig, this);
-        this.jdField_a_of_type_AndroidViewSurface = this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoEncoder.a();
-        this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoEncoderWindowSurface = new VideoEncoderWindowSurface(paramEglCore, this.jdField_a_of_type_AndroidViewSurface);
-        this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererTextureRender = new TextureRender();
-        this.jdField_a_of_type_ComTencentMobileqqArARRecordRendererARTextureRender = new ARTextureRender();
-        a(this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderEncodeConfig.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderEncodeConfig.jdField_b_of_type_Int);
-        if (!FileUtil.a(this.jdField_b_of_type_JavaLangString)) {
-          break label257;
-        }
-        this.jdField_a_of_type_ComTencentMobileqqArARRecordAudioRecordController = new PcmRecordController(this, this.jdField_b_of_type_JavaLangString);
-        this.jdField_a_of_type_ComTencentMobileqqArARRecordAudioRecordController.b();
-        f();
-        this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoRecordController$State = VideoRecordController.State.STARTED;
-      }
-      catch (Exception paramEglCore)
-      {
-        for (;;)
+        try
         {
-          label257:
-          QLog.e("VideoRecordController", 1, "doStartRecord fail.", paramEglCore);
-          c(1);
+          String str = aklk.a();
+          this.jdField_a_of_type_JavaIoFile = new File(str);
+          paramInt2 = (int)(540 / paramInt1 * paramInt2) / 16;
+          if (!Build.MODEL.equalsIgnoreCase("CAM-TL00")) {
+            continue;
+          }
+          paramInt1 = 1024000;
+          this.jdField_a_of_type_Auzf = new auzf(str, 540, paramInt2 * 16, paramInt1, 1, false, 0);
+          this.jdField_a_of_type_Auzf.a(EGL14.eglGetCurrentContext());
+          this.jdField_a_of_type_Aklh = new aklh();
+          this.jdField_a_of_type_Aklh.a(this.jdField_a_of_type_Auzf, this);
+          this.jdField_a_of_type_AndroidViewSurface = this.jdField_a_of_type_Aklh.a();
+          this.jdField_a_of_type_Akll = new akll(paramauzd, this.jdField_a_of_type_AndroidViewSurface);
+          this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender = new TextureRender();
+          this.jdField_a_of_type_Akln = new akln();
+          a(this.jdField_a_of_type_Auzf.jdField_a_of_type_Int, this.jdField_a_of_type_Auzf.jdField_b_of_type_Int);
+          if (!apdh.a(this.jdField_a_of_type_JavaLangString)) {
+            continue;
+          }
+          this.jdField_a_of_type_ComTencentMobileqqArARRecordAudioRecordController = new PcmRecordController(this, this.jdField_a_of_type_JavaLangString);
+          this.jdField_a_of_type_ComTencentMobileqqArARRecordAudioRecordController.b();
+          f();
+          this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoRecordController$State = VideoRecordController.State.STARTED;
         }
+        catch (Exception paramauzd)
+        {
+          QLog.e("VideoRecordController", 1, "doStartRecord fail.", paramauzd);
+          b(1);
+          continue;
+        }
+        return;
+        paramInt1 = 5120000;
       }
-      return;
       this.jdField_a_of_type_ComTencentMobileqqArARRecordAudioRecordController = new MicRecordController(this);
     }
-  }
-  
-  public void a(String paramString)
-  {
-    if (!TextUtils.isEmpty(paramString))
-    {
-      this.jdField_a_of_type_JavaLangString = paramString;
-      this.h = true;
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.i = paramBoolean;
   }
   
   public void a(byte[] paramArrayOfByte, long paramLong)
@@ -459,9 +454,9 @@ public class VideoRecordController
     synchronized (jdField_a_of_type_JavaLangObject)
     {
       long l = this.jdField_c_of_type_Long;
-      if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoEncoder != null) && (!this.j))
+      if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Aklh != null) && (!this.j))
       {
-        this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoEncoder.a(paramArrayOfByte, paramLong - l);
+        this.jdField_a_of_type_Aklh.a(paramArrayOfByte, paramLong - l);
         this.jdField_c_of_type_Boolean = true;
       }
       return;
@@ -487,7 +482,7 @@ public class VideoRecordController
   public boolean a(boolean paramBoolean, String paramString)
   {
     boolean bool = true;
-    if (!ScanEntranceDPC.a().jdField_d_of_type_Boolean)
+    if (!akpb.a().d)
     {
       QLog.w("VideoRecordController", 2, "startVideoRecord record is disable.");
       return false;
@@ -501,17 +496,17 @@ public class VideoRecordController
         return false;
       }
     }
-    this.jdField_b_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_JavaLangString = paramString;
     if (!paramBoolean)
     {
-      if ((this.jdField_b_of_type_Boolean) || (!e())) {
+      if ((this.jdField_b_of_type_Boolean) || (!c())) {
         break label262;
       }
       this.jdField_b_of_type_Boolean = true;
       if (this.jdField_a_of_type_AndroidOsHandler != null) {
         this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(100, 4000L);
       }
-      ARRecordReport.a().a();
+      akku.a().a();
       paramBoolean = bool;
     }
     for (;;)
@@ -523,14 +518,14 @@ public class VideoRecordController
         this.jdField_b_of_type_Long = System.currentTimeMillis();
         f();
         h();
-        ARRecordReport.a().a(true);
+        akku.a().a(true);
         paramBoolean = bool;
       }
-      else if (e())
+      else if (c())
       {
         this.jdField_b_of_type_Long = System.currentTimeMillis();
         g();
-        ARRecordReport.a().a(false);
+        akku.a().a(false);
         paramBoolean = bool;
         if (this.jdField_a_of_type_AndroidOsHandler != null)
         {
@@ -549,7 +544,7 @@ public class VideoRecordController
   public boolean a(boolean paramBoolean1, boolean paramBoolean2)
   {
     boolean bool = true;
-    if (!ScanEntranceDPC.a().jdField_d_of_type_Boolean)
+    if (!akpb.a().d)
     {
       QLog.w("VideoRecordController", 2, "stopVideoRecord record is disable.");
       return false;
@@ -563,8 +558,8 @@ public class VideoRecordController
     if ((this.jdField_b_of_type_Boolean) || ((!paramBoolean1) && (!paramBoolean2)))
     {
       paramBoolean1 = true;
-      this.jdField_d_of_type_Boolean = paramBoolean1;
-      if (!f()) {
+      this.d = paramBoolean1;
+      if (!d()) {
         break label155;
       }
       paramBoolean1 = bool;
@@ -586,11 +581,6 @@ public class VideoRecordController
   public void b()
   {
     QLog.d("VideoRecordController", 2, "onEncodeRealStart");
-  }
-  
-  public void b(int paramInt)
-  {
-    this.jdField_b_of_type_Int = paramInt;
   }
   
   public boolean b()
@@ -618,7 +608,7 @@ public class VideoRecordController
         if (l < 1000L) {}
         for (int k = 1;; k = 0)
         {
-          if ((!this.jdField_d_of_type_Boolean) && (k == 0)) {
+          if ((!this.d) && (k == 0)) {
             break label119;
           }
           QLog.w("VideoRecordController", 1, "onEncodeFinish not valid record, delete temp file.");
@@ -626,7 +616,7 @@ public class VideoRecordController
           if (k == 0) {
             break;
           }
-          c(11);
+          b(11);
           break;
         }
         label119:
@@ -636,7 +626,7 @@ public class VideoRecordController
         }
         String str = ((File)???).getAbsolutePath();
         if (!this.h) {
-          ARRecordUtils.a((File)???);
+          akkv.a((File)???);
         }
         QLog.d("VideoRecordController", 2, String.format("onEncodeFinish filePath=%s", new Object[] { str }));
         if (this.f) {
@@ -649,47 +639,27 @@ public class VideoRecordController
       }
       QLog.e("VideoRecordController", 1, "onEncodeFinish rename file fail, delete temp file.");
       e();
-      c(12);
-    }
-  }
-  
-  public boolean c()
-  {
-    synchronized (jdField_a_of_type_JavaLangObject)
-    {
-      if ((this.jdField_a_of_type_Boolean) && (!this.j) && (this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoRecordController$State == VideoRecordController.State.STARTED))
-      {
-        this.j = true;
-        this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoRecordController$State = VideoRecordController.State.PAUSE;
-        if (this.jdField_a_of_type_ComTencentMobileqqArARRecordAudioRecordController != null) {
-          this.jdField_a_of_type_ComTencentMobileqqArARRecordAudioRecordController.d();
-        }
-        this.jdField_d_of_type_Long = SystemClock.elapsedRealtimeNanos();
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoRecordController", 2, String.format("pauseRecord, isRecording: %s, isSuc: %s, mState: %s", new Object[] { Boolean.valueOf(this.jdField_a_of_type_Boolean), Boolean.valueOf(false), this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoRecordController$State }));
-      }
-      return false;
+      b(12);
     }
   }
   
   public void d()
   {
     QLog.d("VideoRecordController", 2, "releaseGLResource");
-    if (this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoEncoderWindowSurface != null)
+    if (this.jdField_a_of_type_Akll != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoEncoderWindowSurface.d();
-      this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoEncoderWindowSurface = null;
+      this.jdField_a_of_type_Akll.d();
+      this.jdField_a_of_type_Akll = null;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererTextureRender != null)
+    if (this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererTextureRender.a();
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererTextureRender = null;
+      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender.release();
+      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender = null;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqArARRecordRendererARTextureRender != null)
+    if (this.jdField_a_of_type_Akln != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqArARRecordRendererARTextureRender.a();
-      this.jdField_a_of_type_ComTencentMobileqqArARRecordRendererARTextureRender = null;
+      this.jdField_a_of_type_Akln.a();
+      this.jdField_a_of_type_Akln = null;
     }
     if (this.jdField_a_of_type_Int > 0)
     {
@@ -697,34 +667,6 @@ public class VideoRecordController
       this.jdField_a_of_type_Int = 0;
       this.jdField_a_of_type_ArrayOfFloat = null;
       this.jdField_b_of_type_ArrayOfFloat = null;
-    }
-  }
-  
-  public boolean d()
-  {
-    boolean bool2 = true;
-    for (;;)
-    {
-      synchronized (jdField_a_of_type_JavaLangObject)
-      {
-        if ((this.jdField_a_of_type_Boolean) && (this.j))
-        {
-          this.j = false;
-          this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoRecordController$State = VideoRecordController.State.STARTED;
-          this.jdField_c_of_type_Long += SystemClock.elapsedRealtimeNanos() - this.jdField_d_of_type_Long;
-          bool1 = bool2;
-          if (this.jdField_a_of_type_ComTencentMobileqqArARRecordAudioRecordController != null)
-          {
-            this.jdField_a_of_type_ComTencentMobileqqArARRecordAudioRecordController.e();
-            bool1 = bool2;
-          }
-          if (QLog.isColorLevel()) {
-            QLog.d("VideoRecordController", 2, String.format("continueRecord, isRecording: %s, isSuc:%s", new Object[] { Boolean.valueOf(this.jdField_a_of_type_Boolean), Boolean.valueOf(bool1) }));
-          }
-          return bool1;
-        }
-      }
-      boolean bool1 = false;
     }
   }
   
@@ -745,28 +687,28 @@ public class VideoRecordController
             {
               return true;
             } while (!this.jdField_b_of_type_Boolean);
-            this.jdField_d_of_type_Boolean = true;
-            f();
+            this.d = true;
+            d();
             return true;
             g();
             return true;
-          } while ((this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoRecordController$RecordListener == null) || (this.jdField_b_of_type_Boolean));
-          this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoRecordController$RecordListener.i();
+          } while ((this.jdField_a_of_type_Aklm == null) || (this.jdField_b_of_type_Boolean));
+          this.jdField_a_of_type_Aklm.h();
           return true;
-        } while ((this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoRecordController$RecordListener == null) || (this.jdField_b_of_type_Boolean));
-        this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoRecordController$RecordListener.a(paramMessage.arg1, paramMessage.arg2);
+        } while ((this.jdField_a_of_type_Aklm == null) || (this.jdField_b_of_type_Boolean));
+        this.jdField_a_of_type_Aklm.a(paramMessage.arg1, paramMessage.arg2);
         return true;
-      } while ((this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoRecordController$RecordListener == null) || (this.jdField_b_of_type_Boolean));
-      this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoRecordController$RecordListener.a(paramMessage.arg1, (String)paramMessage.obj);
+      } while ((this.jdField_a_of_type_Aklm == null) || (this.jdField_b_of_type_Boolean));
+      this.jdField_a_of_type_Aklm.a(paramMessage.arg1, (String)paramMessage.obj);
       return true;
-    } while ((this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoRecordController$RecordListener == null) || (this.jdField_b_of_type_Boolean));
-    this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoRecordController$RecordListener.c(paramMessage.arg1);
+    } while ((this.jdField_a_of_type_Aklm == null) || (this.jdField_b_of_type_Boolean));
+    this.jdField_a_of_type_Aklm.c(paramMessage.arg1);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARRecord.VideoRecordController
  * JD-Core Version:    0.7.0.1
  */

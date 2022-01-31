@@ -15,13 +15,14 @@ class SDKEngine
   private static int REBOOT_CALLED_TIMES_MAX = 3;
   private static final String TAG = "SDKEngine";
   private static String mCalledCountKey = null;
-  private static int mInitCount;
+  static int mInitCount;
   private static SDKEngine mInstance = null;
   private static int mTbsCoreVersion = 0;
   static boolean mTbsNeedReboot;
   private boolean mIsInited = false;
   private boolean mTbsAvailable = false;
   private TbsWizard mTbsWizard = null;
+  private TbsWizard mTbsWizardTmp = null;
   private File mX5CorePath = null;
   
   static
@@ -36,70 +37,70 @@ class SDKEngine
     // Byte code:
     //   0: iconst_0
     //   1: istore_2
-    //   2: new 61	java/io/File
+    //   2: new 64	java/io/File
     //   5: dup
     //   6: aload_0
-    //   7: getfield 53	com/tencent/smtt/sdk/SDKEngine:mX5CorePath	Ljava/io/File;
+    //   7: getfield 56	com/tencent/smtt/sdk/SDKEngine:mX5CorePath	Ljava/io/File;
     //   10: ldc 8
-    //   12: invokespecial 64	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   12: invokespecial 67	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
     //   15: astore 4
     //   17: aload 4
-    //   19: invokevirtual 68	java/io/File:exists	()Z
+    //   19: invokevirtual 71	java/io/File:exists	()Z
     //   22: istore_3
     //   23: iload_3
     //   24: ifne +26 -> 50
     //   27: iconst_0
     //   28: ifeq +11 -> 39
-    //   31: new 70	java/lang/NullPointerException
+    //   31: new 73	java/lang/NullPointerException
     //   34: dup
-    //   35: invokespecial 71	java/lang/NullPointerException:<init>	()V
+    //   35: invokespecial 74	java/lang/NullPointerException:<init>	()V
     //   38: athrow
     //   39: iload_2
     //   40: ireturn
     //   41: astore 4
     //   43: aload 4
-    //   45: invokevirtual 74	java/io/IOException:printStackTrace	()V
+    //   45: invokevirtual 77	java/io/IOException:printStackTrace	()V
     //   48: iconst_0
     //   49: ireturn
-    //   50: new 76	java/io/BufferedInputStream
+    //   50: new 79	java/io/BufferedInputStream
     //   53: dup
-    //   54: new 78	java/io/FileInputStream
+    //   54: new 81	java/io/FileInputStream
     //   57: dup
     //   58: aload 4
-    //   60: invokespecial 81	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   63: invokespecial 84	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   60: invokespecial 84	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   63: invokespecial 87	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
     //   66: astore 5
     //   68: aload 5
     //   70: astore 4
-    //   72: new 86	java/util/Properties
+    //   72: new 89	java/util/Properties
     //   75: dup
-    //   76: invokespecial 87	java/util/Properties:<init>	()V
+    //   76: invokespecial 90	java/util/Properties:<init>	()V
     //   79: astore 6
     //   81: aload 5
     //   83: astore 4
     //   85: aload 6
     //   87: aload 5
-    //   89: invokevirtual 90	java/util/Properties:load	(Ljava/io/InputStream;)V
+    //   89: invokevirtual 93	java/util/Properties:load	(Ljava/io/InputStream;)V
     //   92: aload 5
     //   94: astore 4
     //   96: aload 6
-    //   98: getstatic 41	com/tencent/smtt/sdk/SDKEngine:mCalledCountKey	Ljava/lang/String;
-    //   101: ldc 92
-    //   103: invokevirtual 96	java/util/Properties:getProperty	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   106: invokestatic 102	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
-    //   109: invokevirtual 105	java/lang/Integer:intValue	()I
+    //   98: getstatic 42	com/tencent/smtt/sdk/SDKEngine:mCalledCountKey	Ljava/lang/String;
+    //   101: ldc 95
+    //   103: invokevirtual 99	java/util/Properties:getProperty	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   106: invokestatic 105	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
+    //   109: invokevirtual 108	java/lang/Integer:intValue	()I
     //   112: istore_1
     //   113: iload_1
     //   114: istore_2
     //   115: aload 5
     //   117: ifnull -78 -> 39
     //   120: aload 5
-    //   122: invokevirtual 108	java/io/BufferedInputStream:close	()V
+    //   122: invokevirtual 111	java/io/BufferedInputStream:close	()V
     //   125: iload_1
     //   126: ireturn
     //   127: astore 4
     //   129: aload 4
-    //   131: invokevirtual 74	java/io/IOException:printStackTrace	()V
+    //   131: invokevirtual 77	java/io/IOException:printStackTrace	()V
     //   134: iload_1
     //   135: ireturn
     //   136: astore 6
@@ -108,16 +109,16 @@ class SDKEngine
     //   141: aload 5
     //   143: astore 4
     //   145: aload 6
-    //   147: invokevirtual 109	java/lang/Exception:printStackTrace	()V
+    //   147: invokevirtual 112	java/lang/Exception:printStackTrace	()V
     //   150: aload 5
     //   152: ifnull -113 -> 39
     //   155: aload 5
-    //   157: invokevirtual 108	java/io/BufferedInputStream:close	()V
+    //   157: invokevirtual 111	java/io/BufferedInputStream:close	()V
     //   160: iconst_0
     //   161: ireturn
     //   162: astore 4
     //   164: aload 4
-    //   166: invokevirtual 74	java/io/IOException:printStackTrace	()V
+    //   166: invokevirtual 77	java/io/IOException:printStackTrace	()V
     //   169: iconst_0
     //   170: ireturn
     //   171: astore 5
@@ -126,12 +127,12 @@ class SDKEngine
     //   176: aload 4
     //   178: ifnull +8 -> 186
     //   181: aload 4
-    //   183: invokevirtual 108	java/io/BufferedInputStream:close	()V
+    //   183: invokevirtual 111	java/io/BufferedInputStream:close	()V
     //   186: aload 5
     //   188: athrow
     //   189: astore 4
     //   191: aload 4
-    //   193: invokevirtual 74	java/io/IOException:printStackTrace	()V
+    //   193: invokevirtual 77	java/io/IOException:printStackTrace	()V
     //   196: goto -10 -> 186
     //   199: astore 5
     //   201: goto -25 -> 176
@@ -219,6 +220,11 @@ class SDKEngine
     mTbsCoreVersion = paramInt;
   }
   
+  public void clearTbsWizardTmp()
+  {
+    this.mTbsWizardTmp = null;
+  }
+  
   public String getCrashExtraMessage()
   {
     if ((this.mTbsWizard == null) || (QbSdk.mIsSysWebViewForced)) {
@@ -255,14 +261,14 @@ class SDKEngine
   public void init(Context paramContext, boolean paramBoolean1, boolean paramBoolean2, TbsInitPerformanceRecorder paramTbsInitPerformanceRecorder)
   {
     boolean bool2;
-    label271:
-    label291:
+    label273:
+    label293:
     Object localObject3;
     Object localObject2;
-    label442:
-    label472:
-    label493:
-    label508:
+    label444:
+    label474:
+    label495:
+    label510:
     Object localObject4;
     int i;
     for (;;)
@@ -309,7 +315,7 @@ class SDKEngine
             continue;
           }
           paramBoolean2 = true;
-          break label825;
+          break label869;
           bool1 = paramBoolean1;
           if (paramBoolean1)
           {
@@ -318,7 +324,7 @@ class SDKEngine
             TbsLog.i("SDKEngine", "isTbsCoreLegal: " + bool1 + "; cost: " + (System.currentTimeMillis() - l));
           }
           if (!bool1) {
-            break label711;
+            break label755;
           }
           paramBoolean1 = this.mTbsAvailable;
           if (!paramBoolean1) {
@@ -331,7 +337,7 @@ class SDKEngine
         bool1 = false;
         continue;
         paramBoolean2 = false;
-        break label825;
+        break label869;
         paramBoolean1 = false;
         continue;
         try
@@ -348,13 +354,13 @@ class SDKEngine
             paramTbsInitPerformanceRecorder.recordPerformanceEvent("read_core_info", (byte)2);
           }
           if (!paramBoolean1) {
-            break label493;
+            break label495;
           }
           localObject3 = new File(TbsShareManager.getAvailableTbsCorePath(paramContext));
           localObject2 = TbsInstaller.getInstance().getTbsCoreShareDir(paramContext);
           localObject1 = TbsShareManager.getAvailableTbsCoreHostContext(paramContext);
           if (localObject2 != null) {
-            break label839;
+            break label883;
           }
           this.mTbsAvailable = false;
           QbSdk.forceSysWebViewInner(paramContext, "SDKEngine::useSystemWebView by error_tbs_core_dexopt_dir null!");
@@ -363,7 +369,7 @@ class SDKEngine
         {
           TbsLog.e("SDKEngine", "useSystemWebView by exception: " + paramTbsInitPerformanceRecorder);
           if (paramTbsInitPerformanceRecorder != null) {
-            break label696;
+            break label740;
           }
         }
         TbsCoreLoadStat.getInstance().setLoadErrorCode(paramContext, 326);
@@ -387,65 +393,80 @@ class SDKEngine
       TbsLog.addLog(996, null, new Object[0]);
       localObject2 = TbsInstaller.getInstance().getTbsCoreShareDir(paramContext);
       if (mTbsCoreVersion == 25436) {
-        break label842;
+        break label886;
       }
       if (mTbsCoreVersion != 25437) {
-        break label848;
+        break label892;
       }
-      break label842;
-      label582:
+      break label886;
+      label584:
       if (i == 0) {
-        break label854;
+        break label898;
       }
     }
-    label696:
-    label711:
-    label839:
-    label842:
-    label848:
-    label854:
+    label898:
     for (Object localObject1 = paramContext.getApplicationContext();; localObject1 = paramContext)
     {
       if (localObject2 == null)
       {
         this.mTbsAvailable = false;
         QbSdk.forceSysWebViewInner(paramContext, "SDKEngine::useSystemWebView by tbs_core_share_dir null!");
-        break label271;
-        if (TbsShareManager.getHostCorePathAppDefined() != null) {}
-        for (localObject2 = TbsShareManager.getHostCorePathAppDefined();; localObject2 = ((File)localObject2).getAbsolutePath())
+        break label273;
+        if (TbsShareManager.getHostCorePathAppDefined() != null)
         {
+          localObject2 = TbsShareManager.getHostCorePathAppDefined();
+          label626:
           TbsLog.i("SDKEngine", "SDKEngine init optDir is " + (String)localObject2);
-          this.mTbsWizard = new TbsWizard(paramContext, (Context)localObject1, ((File)localObject3).getAbsolutePath(), (String)localObject2, (String[])localObject4, QbSdk.sLibraryPath, paramTbsInitPerformanceRecorder);
+          if (this.mTbsWizardTmp == null) {
+            break label709;
+          }
+          this.mTbsWizard = this.mTbsWizardTmp;
+          this.mTbsWizard.continueInit(paramContext, (Context)localObject1, ((File)localObject3).getAbsolutePath(), (String)localObject2, (String[])localObject4, QbSdk.sLibraryPath, paramTbsInitPerformanceRecorder);
+        }
+        for (;;)
+        {
           this.mTbsAvailable = true;
           break;
+          localObject2 = ((File)localObject2).getAbsolutePath();
+          break label626;
+          label709:
+          this.mTbsWizard = new TbsWizard(paramContext, (Context)localObject1, ((File)localObject3).getAbsolutePath(), (String)localObject2, (String[])localObject4, QbSdk.sLibraryPath, paramTbsInitPerformanceRecorder);
         }
+        label740:
         TbsCoreLoadStat.getInstance().setLoadErrorCode(paramContext, 327, paramTbsInitPerformanceRecorder);
-        break label442;
+        break label444;
+        label755:
         paramTbsInitPerformanceRecorder = "can_load_x5=" + bool2 + "; is_compatible=" + paramBoolean2;
         TbsLog.e("SDKEngine", "SDKEngine.init canLoadTbs=false; failure: " + paramTbsInitPerformanceRecorder);
         if ((QbSdk.mIsSysWebViewForced) && (this.mTbsAvailable)) {
-          break label472;
+          break label474;
         }
         this.mTbsAvailable = false;
         TbsCoreLoadStat.getInstance().setLoadErrorCode(paramContext, 405, new Throwable(paramTbsInitPerformanceRecorder));
-        break label472;
+        break label474;
       }
       localObject4 = localObject2;
       localObject3 = localObject2;
       localObject2 = localObject4;
-      break label508;
+      break label510;
+      label869:
       if ((!bool2) || (!paramBoolean2)) {
-        break label291;
+        break label293;
       }
       paramBoolean1 = true;
       break;
-      break label508;
+      label883:
+      break label510;
+      label886:
       i = 1;
-      break label582;
+      break label584;
+      label892:
       i = 0;
-      break label582;
+      break label584;
     }
   }
+  
+  public void initAndNotLoadSo(Context paramContext, boolean paramBoolean1, boolean paramBoolean2, TbsInitPerformanceRecorder paramTbsInitPerformanceRecorder) {}
   
   boolean isInited()
   {
@@ -488,7 +509,7 @@ class SDKEngine
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.smtt.sdk.SDKEngine
  * JD-Core Version:    0.7.0.1
  */

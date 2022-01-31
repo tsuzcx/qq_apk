@@ -1,0 +1,37 @@
+package com.tencent.open.agent;
+
+import android.graphics.Bitmap;
+import android.os.Message;
+import apmt;
+import bbuf;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.protofile.getappinfo.GetAppInfoProto.MsgIconsurl;
+import com.tencent.qqconnect.wtlogin.OpenSDKAppInterface;
+import cooperation.qqfav.util.HandlerPlus;
+
+public class AuthorityActivity$8$5
+  implements Runnable
+{
+  public AuthorityActivity$8$5(bbuf parambbuf, GetAppInfoProto.MsgIconsurl paramMsgIconsurl) {}
+  
+  public void run()
+  {
+    apmt.a("KEY_GET_APP_ICON");
+    Bitmap localBitmap = AuthorityActivity.a(this.jdField_a_of_type_ComTencentProtofileGetappinfoGetAppInfoProto$MsgIconsurl.url.get());
+    apmt.a("KEY_GET_APP_ICON", this.jdField_a_of_type_Bbuf.a.jdField_a_of_type_Bciz);
+    this.jdField_a_of_type_Bbuf.a.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.a(AuthorityActivity.e, localBitmap);
+    if (localBitmap != null)
+    {
+      Message localMessage = new Message();
+      localMessage.obj = localBitmap;
+      localMessage.what = 4;
+      this.jdField_a_of_type_Bbuf.a.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.sendMessage(localMessage);
+    }
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+ * Qualified Name:     com.tencent.open.agent.AuthorityActivity.8.5
+ * JD-Core Version:    0.7.0.1
+ */

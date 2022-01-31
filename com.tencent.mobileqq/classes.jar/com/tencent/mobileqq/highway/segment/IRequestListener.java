@@ -1,10 +1,12 @@
 package com.tencent.mobileqq.highway.segment;
 
+import com.tencent.mobileqq.highway.conn.IConnection;
+
 public abstract interface IRequestListener
 {
   public abstract void handleConnClosed();
   
-  public abstract void handleError(int paramInt, String paramString);
+  public abstract void handleError(int paramInt, String paramString, IConnection paramIConnection);
   
   public abstract void handleResponse(HwResponse paramHwResponse);
   
@@ -18,7 +20,7 @@ public abstract interface IRequestListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.tencent.mobileqq.highway.segment.IRequestListener
  * JD-Core Version:    0.7.0.1
  */

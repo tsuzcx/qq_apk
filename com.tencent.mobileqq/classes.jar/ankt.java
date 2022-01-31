@@ -1,29 +1,26 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.font.FontInterface.TrueTypeResult;
-import cooperation.qzone.webviewplugin.QzonePersonalizeJsPlugin;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.data.IPSiteModel.Goods;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 
-public class ankt
-  implements FontInterface.TrueTypeResult
+class ankt
+  implements View.OnClickListener
 {
-  public ankt(QzonePersonalizeJsPlugin paramQzonePersonalizeJsPlugin) {}
+  ankt(anks paramanks, IPSiteModel.Goods paramGoods) {}
   
-  public void a(int paramInt, String paramString1, String paramString2)
+  public void onClick(View paramView)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("QzonePersonalizeJsPlugin", 4, "FontInterface.TrueTypeResult font:" + paramInt + ", fontPath:" + paramString1);
-    }
-    if (TextUtils.isEmpty(paramString1))
-    {
-      QzonePersonalizeJsPlugin.a(this.a, paramString2, -2, "font download failed.");
-      return;
-    }
-    QzonePersonalizeJsPlugin.a(this.a, paramString2, 0, "success");
+    paramView = new Intent(anks.a(this.jdField_a_of_type_Anks), QQBrowserActivity.class);
+    paramView.putExtra("hide_operation_bar", true);
+    VasWebviewUtil.openQQBrowserWithoutAD(anks.a(this.jdField_a_of_type_Anks), this.jdField_a_of_type_ComTencentMobileqqDataIPSiteModel$Goods.url, -1L, paramView, false, -1);
+    VasWebviewUtil.reportCommercialDrainage(anks.a(this.jdField_a_of_type_Anks), "IP", "aio_productclk", "", 0, 0, 0, anks.b(this.jdField_a_of_type_Anks), anks.c(this.jdField_a_of_type_Anks), "", "", "", "", "", 0, 0, 0, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ankt
  * JD-Core Version:    0.7.0.1
  */

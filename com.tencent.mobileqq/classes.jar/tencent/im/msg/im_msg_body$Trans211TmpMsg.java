@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class im_msg_body$Trans211TmpMsg
-  extends MessageMicro
+  extends MessageMicro<Trans211TmpMsg>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_msg_body = PBField.initBytes(ByteStringMicro.EMPTY);

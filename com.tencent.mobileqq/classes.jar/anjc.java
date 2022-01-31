@@ -1,30 +1,18 @@
-import cooperation.qzone.plugin.IQZonePluginManager;
-import cooperation.qzone.plugin.PluginRecord;
-import cooperation.qzone.plugin.QZonePluginMangerHelper;
-import cooperation.qzone.plugin.QZonePluginMangerHelper.OnQzonePluginClientReadyListner;
-import cooperation.qzone.video.QzoneLiveVideoInterface;
+import android.view.View;
+import android.widget.ImageView;
+import com.tencent.image.URLImageView;
 
-public final class anjc
-  implements QZonePluginMangerHelper.OnQzonePluginClientReadyListner
+public class anjc
 {
-  public anjc(String paramString) {}
+  View jdField_a_of_type_AndroidViewView;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  public URLImageView a;
   
-  public void a(IQZonePluginManager paramIQZonePluginManager)
-  {
-    if (paramIQZonePluginManager == null) {
-      QZonePluginMangerHelper.a(QzoneLiveVideoInterface.getContext(), this);
-    }
-    do
-    {
-      return;
-      paramIQZonePluginManager = paramIQZonePluginManager.a(this.a);
-    } while (paramIQZonePluginManager == null);
-    QzoneLiveVideoInterface.access$002(paramIQZonePluginManager.c);
-  }
+  public anjc(anja paramanja) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     anjc
  * JD-Core Version:    0.7.0.1
  */

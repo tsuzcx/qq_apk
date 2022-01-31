@@ -1,40 +1,23 @@
-import Wallet.GoldMsgGetReq;
-import Wallet.GoldMsgGetRsp;
-import Wallet.GoldMsgSetReq;
-import Wallet.GoldMsgSetRsp;
-import android.content.Context;
-import android.content.Intent;
+import android.content.DialogInterface.OnClickListener;
 import android.view.View;
-import com.tencent.mobileqq.activity.qwallet.GoldMsgSettingActivity;
+import android.view.View.OnClickListener;
 
-public abstract class xfd
+class xfd
+  implements View.OnClickListener
 {
-  final int jdField_a_of_type_Int;
-  Context jdField_a_of_type_AndroidContentContext;
-  final String c;
-  final String d;
-  final String e;
+  xfd(xfc paramxfc, DialogInterface.OnClickListener paramOnClickListener) {}
   
-  xfd(GoldMsgSettingActivity paramGoldMsgSettingActivity, Context paramContext, Intent paramIntent, String paramString1, String paramString2, String paramString3, int paramInt)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.c = paramString1;
-    this.d = paramString2;
-    this.e = paramString3;
-    this.jdField_a_of_type_Int = paramInt;
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Xfc, -2);
+    }
+    this.jdField_a_of_type_Xfc.dismiss();
   }
-  
-  public abstract void a(View paramView);
-  
-  void a(boolean paramBoolean, GoldMsgGetReq paramGoldMsgGetReq, GoldMsgGetRsp paramGoldMsgGetRsp) {}
-  
-  void a(boolean paramBoolean, GoldMsgSetReq paramGoldMsgSetReq, GoldMsgSetRsp paramGoldMsgSetRsp) {}
-  
-  abstract boolean a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     xfd
  * JD-Core Version:    0.7.0.1
  */

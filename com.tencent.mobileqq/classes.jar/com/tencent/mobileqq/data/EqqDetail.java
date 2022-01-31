@@ -1,6 +1,9 @@
 package com.tencent.mobileqq.data;
 
-import com.tencent.biz.eqq.CrmUtils;
+import ajjy;
+import atmo;
+import atnz;
+import atoc;
 import com.tencent.mobileqq.mp.mobileqq_mp.ConfigGroupInfo;
 import com.tencent.mobileqq.mp.mobileqq_mp.ConfigInfo;
 import com.tencent.mobileqq.mp.mobileqq_mp.EqqAccountInfo;
@@ -11,25 +14,23 @@ import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.notColumn;
-import com.tencent.mobileqq.persistence.unique;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
+import mqb;
 
 public class EqqDetail
-  extends Entity
+  extends atmo
 {
   public byte[] accountData;
   public String address = "";
-  @notColumn
-  public String certifiedDescription = "腾讯认证公众号";
+  @atnz
+  public String certifiedDescription = ajjy.a(2131638401);
   public int certifiedGrade;
   public String displayNumber = "";
   public long eqqAccountFlag;
   public int followType;
-  public List groupInfoList;
+  public List<mobileqq_mp.ConfigGroupInfo> groupInfoList;
   public boolean isConfirmed;
   public boolean isRecvMsg;
   public String latitude = "";
@@ -38,12 +39,12 @@ public class EqqDetail
   public boolean mIsSyncLbs;
   public boolean mIsSyncLbsSelected;
   public int mShowMsgFlag = -1;
-  public String name = "公众帐号";
+  public String name = ajjy.a(2131638402);
   public String phoneNumber = "";
   public String realSummary = "";
   public int seqno;
-  public String summary = "挺好的";
-  @unique
+  public String summary = ajjy.a(2131638400);
+  @atoc
   public String uin;
   
   public EqqDetail() {}
@@ -65,7 +66,7 @@ public class EqqDetail
     long l;
     int i;
     int j;
-    label349:
+    label358:
     int n;
     int k;
     if (((mobileqq_mp.EqqAccountInfo)localObject).account_flag.has())
@@ -78,34 +79,33 @@ public class EqqDetail
       this.accountData = paramGetEqqAccountDetailInfoResponse.toByteArray();
       this.mShowMsgFlag = -1;
       if ((!paramGetEqqAccountDetailInfoResponse.config_group_info.has()) || (paramGetEqqAccountDetailInfoResponse.config_group_info.isEmpty())) {
-        break label749;
+        break label757;
       }
       paramGetEqqAccountDetailInfoResponse = paramGetEqqAccountDetailInfoResponse.config_group_info.get();
       if ((paramGetEqqAccountDetailInfoResponse == null) || (paramGetEqqAccountDetailInfoResponse.size() <= 0)) {
-        break label749;
+        break label757;
       }
       paramGetEqqAccountDetailInfoResponse = paramGetEqqAccountDetailInfoResponse.iterator();
       i = 0;
       j = 0;
       if (!paramGetEqqAccountDetailInfoResponse.hasNext()) {
-        break label746;
+        break label754;
       }
       localObject = (mobileqq_mp.ConfigGroupInfo)paramGetEqqAccountDetailInfoResponse.next();
       n = i;
       k = j;
       if (!((mobileqq_mp.ConfigGroupInfo)localObject).config_info.has()) {
-        break label737;
+        break label745;
       }
       n = i;
       k = j;
       if (((mobileqq_mp.ConfigGroupInfo)localObject).config_info.isEmpty()) {
-        break label737;
+        break label745;
       }
       localObject = ((mobileqq_mp.ConfigGroupInfo)localObject).config_info.get().iterator();
       int m = j;
       j = i;
-      label482:
-      label636:
+      label491:
       do
       {
         do
@@ -113,7 +113,7 @@ public class EqqDetail
           n = j;
           k = m;
           if (!((Iterator)localObject).hasNext()) {
-            break label737;
+            break label745;
           }
           mobileqq_mp.ConfigInfo localConfigInfo = (mobileqq_mp.ConfigInfo)((Iterator)localObject).next();
           k = m;
@@ -158,10 +158,11 @@ public class EqqDetail
         j = i;
         m = k;
       } while (i == 0);
+      label644:
       j = k;
-      label660:
+      label668:
       if ((j == 0) || (i == 0)) {
-        break label734;
+        break label742;
       }
     }
     for (;;)
@@ -173,28 +174,28 @@ public class EqqDetail
       l = 0L;
       break;
       i = 0;
-      break label482;
+      break label491;
       this.mIsSyncLbsSelected = false;
       this.mIsAgreeSyncLbs = false;
       i = 1;
-      break label636;
+      break label644;
       this.mIsSyncLbsSelected = true;
       this.mIsAgreeSyncLbs = true;
       i = 1;
-      break label636;
+      break label644;
       this.mIsSyncLbsSelected = true;
       this.mIsAgreeSyncLbs = false;
       i = 1;
-      break label636;
-      label734:
-      break label349;
-      label737:
+      break label644;
+      label742:
+      break label358;
+      label745:
       i = n;
       j = k;
-      break label660;
-      label746:
+      break label668;
+      label754:
       continue;
-      label749:
+      label757:
       i = 0;
     }
   }
@@ -224,7 +225,7 @@ public class EqqDetail
   
   public boolean hasIvrAbility()
   {
-    if (!CrmUtils.a) {
+    if (!mqb.a) {
       if (QLog.isDevelopLevel()) {
         QLog.d("EqqDetail", 4, "Don't support sharp");
       }

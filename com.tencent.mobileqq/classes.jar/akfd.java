@@ -1,26 +1,14 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.troopshare.TroopShareUtility;
-import com.tencent.mobileqq.widget.QQToast;
-
-public class akfd
-  implements akfg
+public abstract interface akfd
 {
-  public akfd(TroopShareUtility paramTroopShareUtility) {}
+  public abstract void a();
   
-  public void a(boolean paramBoolean, String paramString)
-  {
-    if (paramBoolean)
-    {
-      this.a.d = paramString;
-      TroopShareUtility.e(this.a);
-      return;
-    }
-    QQToast.a(BaseApplicationImpl.getContext(), 1, "分享群聊失败!", 0).a();
-  }
+  public abstract boolean a();
+  
+  public abstract boolean b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akfd
  * JD-Core Version:    0.7.0.1
  */

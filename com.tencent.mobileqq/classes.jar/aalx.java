@@ -1,30 +1,30 @@
-import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
-import com.tencent.mobileqq.ar.arengine.ARCloudControl;
-import com.tencent.mobileqq.ar.arengine.ARFaceDataCollector;
+import android.text.TextUtils;
+import com.tencent.mobileqq.data.PhoneContact;
+import java.util.Comparator;
 
-public class aalx
-  implements Runnable
+public final class aalx
+  implements Comparator<PhoneContact>
 {
-  public aalx(ARCloudControl paramARCloudControl, byte[] paramArrayOfByte) {}
-  
-  public void run()
+  public int a(PhoneContact paramPhoneContact1, PhoneContact paramPhoneContact2)
   {
-    if (this.jdField_a_of_type_ArrayOfByte == null)
+    boolean bool1 = TextUtils.isEmpty(paramPhoneContact1.pinyinFirst);
+    boolean bool2 = TextUtils.isEmpty(paramPhoneContact2.pinyinFirst);
+    if ((bool1) || (bool2))
     {
-      ARCloudControl.a(this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudControl, true);
-      ARCloudControl.b(this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudControl, true);
+      if ((bool1) && (bool2)) {
+        return 0;
+      }
+      if (bool2) {
+        return -1;
+      }
+      return 1;
     }
-    while (this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudControl.a.recognitions == null) {
-      return;
-    }
-    ARFaceDataCollector.a().a();
-    ARFaceDataCollector.a().a = System.currentTimeMillis();
-    ARCloudControl.a(this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudControl, this.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudControl.a.recognitions);
+    return paramPhoneContact1.pinyinFirst.toLowerCase().charAt(0) - paramPhoneContact2.pinyinFirst.toLowerCase().charAt(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aalx
  * JD-Core Version:    0.7.0.1
  */

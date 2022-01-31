@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class SafeReport$LogItem
-  extends MessageMicro
+  extends MessageMicro<LogItem>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_rpt_data = PBField.initBytes(ByteStringMicro.EMPTY);

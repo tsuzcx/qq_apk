@@ -1,25 +1,64 @@
-import com.tencent.biz.troop.VideoCombineHelper;
-import com.tencent.biz.troop.VideoCombineHelper.Callback;
+import android.app.Activity;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeShareView;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AdapterView;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class pbr
-  extends pcg
+  implements behi
 {
-  public pbr(VideoCombineHelper paramVideoCombineHelper, VideoCombineHelper.Callback paramCallback, String paramString)
-  {
-    super(paramVideoCombineHelper);
-  }
+  public pbr(NativeShareView paramNativeShareView) {}
   
-  public void b(boolean paramBoolean)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (QLog.isColorLevel())
-    {
-      QLog.d(".troop.VideoCombineHelper", 2, "splitAudio end : isSuccess = " + paramBoolean);
-      QLog.d(".troop.trace_video_combine", 2, "splitAudioTime: " + (System.currentTimeMillis() - this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper.a));
-      this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper.a = System.currentTimeMillis();
+    if (QLog.isColorLevel()) {
+      QLog.d("NativeShareView", 2, "OnItemClickListener : position = " + paramInt + ", view = " + paramView + ", id = " + paramLong);
     }
-    if (!paramBoolean) {
-      this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$Callback.a(this.jdField_a_of_type_JavaLangString, false, "splitAudio done.");
+    paramAdapterView = paramView.getTag();
+    if (paramAdapterView == null) {
+      return;
+    }
+    if (NativeShareView.a(this.a) != null) {
+      NativeShareView.a(this.a).run();
+    }
+    int i = ((avgw)paramAdapterView).a.c;
+    paramInt = 0;
+    switch (i)
+    {
+    }
+    for (;;)
+    {
+      paramAdapterView = new JSONObject();
+      try
+      {
+        paramAdapterView.put("channel_type", paramInt);
+        ndn.a(null, "", "0X800A3BE", "0X800A3BE", 0, 0, "", "", "", paramAdapterView.toString(), false);
+        return;
+        paramInt = 6;
+        rvu.c();
+        continue;
+        rvu.a((Activity)NativeShareView.a(this.a));
+        paramInt = 1;
+        continue;
+        rvu.a((BaseActivity)NativeShareView.a(this.a));
+        paramInt = 2;
+        continue;
+        rvu.b((Activity)NativeShareView.a(this.a));
+        paramInt = 3;
+        continue;
+        rvu.c((Activity)NativeShareView.a(this.a));
+        paramInt = 4;
+      }
+      catch (JSONException paramView)
+      {
+        for (;;)
+        {
+          QLog.e("NativeShareView", 1, paramView, new Object[0]);
+        }
+      }
     }
   }
 }

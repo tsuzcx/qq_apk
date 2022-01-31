@@ -3,59 +3,20 @@ package com.squareup.okhttp.internal.framed;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.zip.DataFormatException;
-import java.util.zip.Inflater;
-import okio.Buffer;
 import okio.BufferedSource;
 import okio.ByteString;
-import okio.ForwardingSource;
 import okio.InflaterSource;
 import okio.Okio;
-import okio.Source;
 
 class NameValueBlockReader
 {
   private int compressedLimit;
-  private final InflaterSource inflaterSource = new InflaterSource(new ForwardingSource(paramBufferedSource)new Inflater
-  {
-    public long read(Buffer paramAnonymousBuffer, long paramAnonymousLong)
-      throws IOException
-    {
-      if (NameValueBlockReader.this.compressedLimit == 0) {
-        return -1L;
-      }
-      paramAnonymousLong = super.read(paramAnonymousBuffer, Math.min(paramAnonymousLong, NameValueBlockReader.this.compressedLimit));
-      if (paramAnonymousLong == -1L) {
-        return -1L;
-      }
-      NameValueBlockReader.access$002(NameValueBlockReader.this, (int)(NameValueBlockReader.this.compressedLimit - paramAnonymousLong));
-      return paramAnonymousLong;
-    }
-  }, new Inflater()
-  {
-    public int inflate(byte[] paramAnonymousArrayOfByte, int paramAnonymousInt1, int paramAnonymousInt2)
-      throws DataFormatException
-    {
-      int j = super.inflate(paramAnonymousArrayOfByte, paramAnonymousInt1, paramAnonymousInt2);
-      int i = j;
-      if (j == 0)
-      {
-        i = j;
-        if (needsDictionary())
-        {
-          setDictionary(Spdy3.DICTIONARY);
-          i = super.inflate(paramAnonymousArrayOfByte, paramAnonymousInt1, paramAnonymousInt2);
-        }
-      }
-      return i;
-    }
-  });
+  private final InflaterSource inflaterSource = new InflaterSource(new NameValueBlockReader.1(this, paramBufferedSource), new NameValueBlockReader.2(this));
   private final BufferedSource source = Okio.buffer(this.inflaterSource);
   
   public NameValueBlockReader(BufferedSource paramBufferedSource) {}
   
   private void doneReading()
-    throws IOException
   {
     if (this.compressedLimit > 0)
     {
@@ -67,20 +28,17 @@ class NameValueBlockReader
   }
   
   private ByteString readByteString()
-    throws IOException
   {
     int i = this.source.readInt();
     return this.source.readByteString(i);
   }
   
   public void close()
-    throws IOException
   {
     this.source.close();
   }
   
   public List<Header> readNameValueBlock(int paramInt)
-    throws IOException
   {
     this.compressedLimit += paramInt;
     int i = this.source.readInt();

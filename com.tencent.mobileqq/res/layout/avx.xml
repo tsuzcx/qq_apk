@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/laba_entrys_layout" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include android:id="@id/e6t" layout="@layout/aw0" />
+    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="56.0dip">
+        <include android:id="@id/qzone_feed_entry" android:layout_width="fill_parent" android:layout_height="56.0dip" layout="@layout/m4" />
+    </LinearLayout>
+</LinearLayout>

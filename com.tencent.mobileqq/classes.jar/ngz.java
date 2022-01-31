@@ -1,34 +1,16 @@
-import com.tencent.biz.qqstory.model.TroopNickNameManager;
-import com.tencent.biz.qqstory.model.TroopNickNameManager.TroopNickNameUpdateEvent;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tribe.async.dispatch.Dispatcher;
-import com.tribe.async.dispatch.Dispatchers;
-import java.util.ArrayList;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class ngz
-  implements Runnable
+class ngz
+  implements View.OnClickListener
 {
-  public ngz(TroopNickNameManager paramTroopNickNameManager, String paramString, QQUserUIItem paramQQUserUIItem, boolean paramBoolean1, boolean paramBoolean2) {}
+  ngz(ngv paramngv) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryModelTroopNickNameManager.a.c(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.qq) != null)
-    {
-      localTroopNickNameUpdateEvent = new TroopNickNameManager.TroopNickNameUpdateEvent();
-      localArrayList = new ArrayList();
-      localArrayList.add(this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.qq);
-      localTroopNickNameUpdateEvent.jdField_a_of_type_JavaUtilList = localArrayList;
-      localTroopNickNameUpdateEvent.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-      Dispatchers.get().dispatch(localTroopNickNameUpdateEvent);
-    }
-    while (this.jdField_a_of_type_Boolean)
-    {
-      TroopNickNameManager.TroopNickNameUpdateEvent localTroopNickNameUpdateEvent;
-      ArrayList localArrayList;
-      return;
-    }
-    this.jdField_a_of_type_ComTencentBizQqstoryModelTroopNickNameManager.a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem, this.jdField_a_of_type_JavaLangString, this.b);
+    QLog.i("DailyHeaderViewController", 1, "[onClick] clickToRefresh");
+    ngv.a(this.a, 5);
   }
 }
 

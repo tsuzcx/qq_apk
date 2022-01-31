@@ -1,29 +1,28 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.proteus.listeners.OnTopicRecommendHeaderFollowClickListener;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import com.tencent.av.ui.MultiVideoMembersListviewAvtivity;
+import java.util.Comparator;
 
 public class lvz
-  implements ActionSheet.OnButtonClickListener
+  implements Comparator<kth>
 {
-  public lvz(OnTopicRecommendHeaderFollowClickListener paramOnTopicRecommendHeaderFollowClickListener) {}
+  public lvz(MultiVideoMembersListviewAvtivity paramMultiVideoMembersListviewAvtivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public int a(kth paramkth1, kth paramkth2)
   {
-    switch (paramInt)
-    {
+    if ((paramkth2.b) && (paramkth1.b)) {
+      return paramkth2.d - paramkth1.d;
     }
-    for (;;)
-    {
-      OnTopicRecommendHeaderFollowClickListener.a(this.a).dismiss();
-      return;
-      OnTopicRecommendHeaderFollowClickListener.a(this.a, false);
+    if ((!paramkth2.b) && (!paramkth1.b)) {
+      return paramkth2.d - paramkth1.d;
     }
+    if ((paramkth2.b) && (!paramkth1.b)) {
+      return 1;
+    }
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lvz
  * JD-Core Version:    0.7.0.1
  */

@@ -1,9 +1,7 @@
 package com.tencent.mobileqq.highway.netprobe;
 
 import android.content.Context;
-import android.os.Handler;
 import android.os.HandlerThread;
-import android.os.Looper;
 import android.os.Message;
 import android.os.SystemClock;
 import java.lang.ref.WeakReference;
@@ -25,7 +23,7 @@ public class WeakNetLearner
   private AtomicInteger doneNum = new AtomicInteger(0);
   private volatile boolean isDestroy;
   public long lastReportTime = -1L;
-  private ProbeHandler probeHandler;
+  private WeakNetLearner.ProbeHandler probeHandler;
   private HandlerThread probeThread;
   private HashMap<String, Long> repeactTaskMonitor;
   private HashMap<String, String> reports;
@@ -39,7 +37,7 @@ public class WeakNetLearner
     this.cb = paramWeakNetCallback;
     this.probeThread.setName("Highway-BDH-WeakNet");
     this.probeThread.start();
-    this.probeHandler = new ProbeHandler(this.probeThread.getLooper());
+    this.probeHandler = new WeakNetLearner.ProbeHandler(this, this.probeThread.getLooper());
   }
   
   private void doAfterOverflow()
@@ -65,7 +63,7 @@ public class WeakNetLearner
       for (;;)
       {
         if (!localIterator.hasNext()) {
-          break label227;
+          break label238;
         }
         localObject2 = (Map.Entry)localIterator.next();
         str1 = (String)((Map.Entry)localObject2).getKey();
@@ -76,37 +74,38 @@ public class WeakNetLearner
         localHashMap.put(str1.trim(), localObject2);
         ((ArrayList)localObject1).add(str1);
       }
-      j = 1;
+      k = 1;
     }
     finally {}
-    int j;
-    int k = 0;
+    int k;
+    int j = 0;
     int i = 1000;
     label144:
     String str2;
     if (i <= ((String)localObject2).length())
     {
-      str2 = ((String)localObject2).substring(k, i);
-      k = i;
+      str2 = ((String)localObject2).substring(j, i);
       if (i + 1000 < ((String)localObject2).length()) {
-        break label267;
+        break label278;
       }
-      i = ((String)localObject2).length();
     }
-    for (;;)
+    label278:
+    for (j = ((String)localObject2).length();; j = i + 1000)
     {
-      localHashMap1.put(str1.trim() + "_" + j, str2);
-      j += 1;
+      localHashMap1.put(str1.trim() + "_" + k, str2);
+      int m = k + 1;
+      k = j;
+      j = i;
+      i = k;
+      k = m;
       break label144;
       break;
-      label227:
+      label238:
       localObject1 = ((ArrayList)localObject1).iterator();
       while (((Iterator)localObject1).hasNext()) {
         paramHashMap.remove((String)((Iterator)localObject1).next());
       }
       return localHashMap1;
-      label267:
-      i += 1000;
     }
   }
   
@@ -152,65 +151,29 @@ public class WeakNetLearner
   
   public boolean startProbe(ProbeTask paramProbeTask)
   {
-    if ((paramProbeTask == null) || (this.isDestroy)) {}
-    long l;
-    do
-    {
+    if ((paramProbeTask == null) || (this.isDestroy)) {
       return false;
-      ??? = (Long)this.repeactTaskMonitor.get(paramProbeTask.getKey());
-      l = SystemClock.uptimeMillis();
-      if (??? == null) {
-        break;
-      }
-    } while (l - ((Long)???).longValue() < 60000L);
-    for (;;)
-    {
-      if (1 != 0) {}
-      synchronized (this.repeactTaskMonitor)
-      {
-        this.repeactTaskMonitor.put(paramProbeTask.getKey(), Long.valueOf(l));
-        paramProbeTask.learner = new WeakReference(this);
-        ??? = this.probeHandler.obtainMessage();
-        ((Message)???).what = 1;
-        ((Message)???).obj = paramProbeTask;
-        this.probeHandler.sendMessage((Message)???);
-        return true;
-      }
     }
-  }
-  
-  public static abstract interface PROBE_REASON
-  {
-    public static final int CONNTIMEOUT_ERROR = -1202;
-    public static final int INVALID_DATA = -1101;
-    public static final int READTIMEOUT_ERROR = -1201;
-    public static final int TRANSACTION_FAIL = -1102;
-  }
-  
-  class ProbeHandler
-    extends Handler
-  {
-    public static final int START = 1;
-    
-    public ProbeHandler(Looper paramLooper)
-    {
-      super();
+    ??? = (Long)this.repeactTaskMonitor.get(paramProbeTask.getKey());
+    long l = SystemClock.uptimeMillis();
+    if ((??? != null) && (l - ((Long)???).longValue() < 60000L)) {
+      return false;
     }
-    
-    public void handleMessage(Message paramMessage)
+    synchronized (this.repeactTaskMonitor)
     {
-      switch (paramMessage.what)
-      {
-      default: 
-        return;
-      }
-      ((ProbeTask)paramMessage.obj).startProbe();
+      this.repeactTaskMonitor.put(paramProbeTask.getKey(), Long.valueOf(l));
+      paramProbeTask.learner = new WeakReference(this);
+      ??? = this.probeHandler.obtainMessage();
+      ((Message)???).what = 1;
+      ((Message)???).obj = paramProbeTask;
+      this.probeHandler.sendMessage((Message)???);
+      return true;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.tencent.mobileqq.highway.netprobe.WeakNetLearner
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,29 @@
-import com.tencent.mobileqq.ptt.preop.PreDownloadParams.Params;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
 
 class agyf
+  implements View.OnClickListener
 {
-  public int a;
-  public final PreDownloadParams.Params a;
-  public int b;
-  public int c;
-  public int d;
-  public int e;
+  agyf(agxq paramagxq) {}
   
-  public agyf(int paramInt)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqPttPreopPreDownloadParams$Params = new PreDownloadParams.Params();
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentMobileqqPttPreopPreDownloadParams$Params.jdField_a_of_type_Int = -2147483648;
+    if (akgo.a().a() == 4) {
+      awqx.b(agxq.a(this.a).app, "CliOper", "", "", "0X8004DA4", "0X8004DA4", 0, 0, akgn.b(), akgo.b(), akgo.a(), "0");
+    }
+    for (;;)
+    {
+      this.a.a(12, 0);
+      this.a.a(-1, null);
+      return;
+      awqx.b(agxq.a(this.a).app, "CliOper", "", "", "0X8004DA3", "0X8004DA3", 0, 0, akgn.b(), akgo.b(), akgo.a(), "0");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agyf
  * JD-Core Version:    0.7.0.1
  */

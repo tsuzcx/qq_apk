@@ -1,18 +1,18 @@
-import com.tencent.gdtad.views.video.GdtVideoCommonView;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
 
 public class qrl
-  implements Runnable
+  implements bepb
 {
-  public qrl(GdtVideoCommonView paramGdtVideoCommonView) {}
+  public qrl(ReadInJoyListViewGroup paramReadInJoyListViewGroup) {}
   
-  public void run()
+  public void a()
   {
-    this.a.d();
+    this.a.a(new qrm(this, "onListViewDrawFinished"));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     qrl
  * JD-Core Version:    0.7.0.1
  */

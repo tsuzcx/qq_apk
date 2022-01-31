@@ -1,24 +1,18 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.profile.view.BreatheEffectView;
+import android.graphics.Bitmap;
 
-public class agvg
-  implements Animation.AnimationListener
+class agvg
+  implements aliw
 {
-  public agvg(BreatheEffectView paramBreatheEffectView) {}
+  agvg(agvf paramagvf) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(String paramString1, String paramString2, Bitmap paramBitmap)
   {
-    this.a.c();
+    agvf.a(this.a, paramString1, paramBitmap);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     agvg
  * JD-Core Version:    0.7.0.1
  */

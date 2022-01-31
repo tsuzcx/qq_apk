@@ -1,85 +1,232 @@
-import com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeInfo;
-import com.tencent.biz.qqstory.playmode.util.MsgTabVideoData;
-import com.tencent.biz.qqstory.playmode.util.MsgTabVideoDataProvider;
-import com.tencent.biz.qqstory.playmode.util.MsgTabVideoDataProvider.MsgTabVideoDataEvent;
-import com.tencent.biz.qqstory.playmode.util.MsgTabVideoDataProvider.OnRequestVideoListListener;
+import android.app.Activity;
+import android.app.Dialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import android.content.DialogInterface.OnShowListener;
+import android.content.res.Resources;
+import android.os.Bundle;
+import android.os.SystemClock;
+import android.text.TextUtils;
+import android.util.DisplayMetrics;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.view.Window;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.biz.pubaccount.readinjoy.ad.view.ReadInJoyAdPopSheetDialog.2;
+import com.tencent.biz.pubaccount.readinjoy.ad.view.ReadInJoyAdPopSheetDialog.3;
+import com.tencent.biz.ui.TouchWebView;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.widget.WebViewProgressBar;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
+import mqq.os.MqqHandler;
+import org.json.JSONObject;
 
 public class nqz
-  implements Runnable
+  extends Dialog
+  implements DialogInterface.OnDismissListener, DialogInterface.OnShowListener
 {
-  public nqz(MsgTabVideoDataProvider paramMsgTabVideoDataProvider, MsgTabNodeInfo paramMsgTabNodeInfo1, MsgTabNodeInfo paramMsgTabNodeInfo2, int paramInt1, boolean paramBoolean1, List paramList, int paramInt2, boolean paramBoolean2) {}
+  private static final String jdField_a_of_type_JavaLangString = nqz.class.getName();
+  private long jdField_a_of_type_Long;
+  private Activity jdField_a_of_type_AndroidAppActivity;
+  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
+  private bbpa jdField_a_of_type_Bbpa;
+  private TouchWebView jdField_a_of_type_ComTencentBizUiTouchWebView;
+  private WebViewProgressBar jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBar;
+  private nrd jdField_a_of_type_Nrd;
+  private ysc jdField_a_of_type_Ysc;
+  private long jdField_b_of_type_Long;
+  private String jdField_b_of_type_JavaLangString;
+  private String c;
+  private String d;
   
-  public void run()
+  public nqz(Activity paramActivity)
   {
-    MsgTabVideoDataProvider.MsgTabVideoDataEvent localMsgTabVideoDataEvent = new MsgTabVideoDataProvider.MsgTabVideoDataEvent();
-    localMsgTabVideoDataEvent.jdField_b_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeInfo = this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeInfo;
-    localMsgTabVideoDataEvent.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeInfo = this.jdField_b_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeInfo;
-    localMsgTabVideoDataEvent.jdField_b_of_type_Int = this.jdField_a_of_type_Int;
-    Object localObject;
-    int i;
-    if (!this.jdField_a_of_type_Boolean) {
+    super(paramActivity, 2131690181);
+    b();
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+  }
+  
+  public nqz(Activity paramActivity, String paramString1, String paramString2, String paramString3)
+  {
+    this(paramActivity);
+    if (paramString1 != null)
+    {
+      this.jdField_b_of_type_JavaLangString = paramString1;
+      this.c = paramString2;
+      this.d = paramString3;
+    }
+    this.jdField_b_of_type_Long = SystemClock.currentThreadTimeMillis();
+  }
+  
+  public static nqz a(Activity paramActivity, String paramString1, String paramString2, String paramString3)
+  {
+    return new nqz(paramActivity, paramString1, paramString2, paramString3);
+  }
+  
+  private void a()
+  {
+    for (;;)
+    {
+      try
+      {
+        localObject1 = this.c + "&acttype=9000&rsptype=1";
+        l = SystemClock.currentThreadTimeMillis();
+        localObject3 = "";
+        Object localObject4 = new Bundle();
+        localObject1 = mpl.a(BaseApplicationImpl.getContext(), (String)localObject1, "GET", null, (Bundle)localObject4);
+        if (localObject1 == null) {
+          continue;
+        }
+        localObject1 = new String((byte[])localObject1);
+        if (QLog.isColorLevel()) {
+          QLog.d(jdField_a_of_type_JavaLangString, 1, new Object[] { "loadForm result = ", localObject1 });
+        }
+        localObject1 = new JSONObject((String)localObject1);
+        i = ((JSONObject)localObject1).getInt("ret");
+        if (i != 0) {
+          continue;
+        }
+        localObject4 = ((JSONObject)localObject1).getJSONObject("data");
+        localObject1 = localObject3;
+        if (localObject4 != null)
+        {
+          localObject3 = ((JSONObject)localObject4).optString("clickid");
+          localObject1 = localObject3;
+          if (QLog.isColorLevel())
+          {
+            QLog.d(jdField_a_of_type_JavaLangString, 2, "loadForm clickid = " + (String)localObject3);
+            localObject1 = localObject3;
+          }
+        }
+      }
+      catch (Exception localException)
+      {
+        Object localObject1;
+        long l;
+        Object localObject3;
+        int i;
+        if (!QLog.isColorLevel()) {
+          return;
+        }
+        QLog.d(jdField_a_of_type_JavaLangString, 2, "loadForm exception:" + localException.getMessage());
+        return;
+        Object localObject2 = localObject3;
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.d(jdField_a_of_type_JavaLangString, 1, new Object[] { Integer.valueOf(2), "requestAdData bytes null" });
+        localObject2 = localObject3;
+        continue;
+      }
+      localObject3 = localObject1;
+      if (TextUtils.isEmpty((CharSequence)localObject1)) {
+        localObject3 = this.d;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d(jdField_a_of_type_JavaLangString, 2, "loadForm: get click id costTime=" + (SystemClock.currentThreadTimeMillis() - l));
+      }
+      localObject1 = this.jdField_b_of_type_JavaLangString + "&click_id=" + (String)localObject3;
+      ThreadManager.getUIHandler().post(new ReadInJoyAdPopSheetDialog.3(this, (String)localObject1));
+      return;
+      localObject1 = localObject3;
       if (QLog.isColorLevel())
       {
-        localObject = this.jdField_b_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeInfo.jdField_a_of_type_JavaLangString;
-        if (this.jdField_a_of_type_JavaUtilList == null)
-        {
-          i = 0;
-          QLog.d("Q.qqstory.msgTab.MsgTabVideoDataProvider", 2, new Object[] { "request video list not success. nodeId=", localObject, ", videolist size=", Integer.valueOf(i) });
-        }
-      }
-      else
-      {
-        localMsgTabVideoDataEvent.c = this.jdField_b_of_type_Int;
-        if (this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilMsgTabVideoDataProvider.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilMsgTabVideoDataProvider$OnRequestVideoListListener != null) {
-          this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilMsgTabVideoDataProvider.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilMsgTabVideoDataProvider$OnRequestVideoListListener.b(localMsgTabVideoDataEvent);
-        }
+        QLog.d(jdField_a_of_type_JavaLangString, 2, "retCode = " + i);
+        localObject1 = localObject3;
       }
     }
-    label323:
-    do
+  }
+  
+  private void a(Activity paramActivity)
+  {
+    AppInterface localAppInterface = (AppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null).getAppRuntime("modular_web");
+    this.jdField_a_of_type_ComTencentBizUiTouchWebView = new TouchWebView(paramActivity);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout.removeAllViews();
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_ComTencentBizUiTouchWebView, new RelativeLayout.LayoutParams(-1, -1));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
+    this.jdField_a_of_type_Ysc = new nrc(this, paramActivity.getApplicationContext(), paramActivity, null, localAppInterface);
+    this.jdField_a_of_type_Ysc.a(this.jdField_a_of_type_ComTencentBizUiTouchWebView);
+    new baym(this.jdField_a_of_type_Ysc).a(null, localAppInterface, null);
+  }
+  
+  private void b()
+  {
+    View localView = getLayoutInflater().inflate(2131494225, null);
+    ((RelativeLayout)localView.findViewById(2131306150)).setOnClickListener(new nrb(this));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBar = ((WebViewProgressBar)localView.findViewById(2131306308));
+    this.jdField_a_of_type_Bbpa = new bbpa();
+    this.jdField_a_of_type_Bbpa.a(this.jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBar);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBar.setController(this.jdField_a_of_type_Bbpa);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localView.findViewById(2131306153));
+    setOnDismissListener(this);
+    setOnShowListener(this);
+    Object localObject = BaseApplicationImpl.getContext();
+    int i = ((Context)localObject).getResources().getDisplayMetrics().widthPixels;
+    int j = ((Context)localObject).getResources().getDisplayMetrics().heightPixels;
+    int k = (int)(i * 0.94D);
+    int m = (int)(k * 0.72D);
+    localObject = (RelativeLayout)localView.findViewById(2131306151);
+    if (localObject != null)
     {
-      return;
-      i = this.jdField_a_of_type_JavaUtilList.size();
-      break;
-      if (!this.jdField_b_of_type_Boolean)
-      {
-        this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilMsgTabVideoDataProvider.jdField_a_of_type_JavaUtilMap.put(this.jdField_b_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilList);
-        if (QLog.isColorLevel())
-        {
-          localObject = this.jdField_b_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeInfo.jdField_a_of_type_JavaLangString;
-          if (this.jdField_a_of_type_JavaUtilList != null) {
-            break label323;
-          }
-        }
-      }
-      for (i = 0;; i = this.jdField_a_of_type_JavaUtilList.size())
-      {
-        QLog.d("Q.qqstory.msgTab.MsgTabVideoDataProvider", 2, new Object[] { "add memory cache. nodeId=", localObject, ", videolist size=", Integer.valueOf(i) });
-        localMsgTabVideoDataEvent.jdField_a_of_type_Boolean = true;
-        if (this.jdField_a_of_type_JavaUtilList == null) {
-          break label430;
-        }
-        localObject = this.jdField_a_of_type_JavaUtilList.iterator();
-        while (((Iterator)localObject).hasNext())
-        {
-          MsgTabVideoData localMsgTabVideoData = (MsgTabVideoData)((Iterator)localObject).next();
-          localMsgTabVideoDataEvent.jdField_a_of_type_JavaUtilList.add(localMsgTabVideoData.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
-          if ((!localMsgTabVideoData.jdField_b_of_type_Boolean) && (!localMsgTabVideoDataEvent.jdField_b_of_type_JavaUtilList.contains(localMsgTabVideoData.jdField_a_of_type_JavaLangString))) {
-            localMsgTabVideoDataEvent.jdField_b_of_type_JavaUtilList.add(localMsgTabVideoData.jdField_a_of_type_JavaLangString);
-          }
-        }
-      }
-      localMsgTabVideoDataEvent.jdField_a_of_type_Int = MsgTabVideoDataProvider.a(this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Int);
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.qqstory.msgTab.MsgTabVideoDataProvider", 2, new Object[] { "findFirstPlayIndex=", Integer.valueOf(localMsgTabVideoDataEvent.jdField_a_of_type_Int), ", nodeId=", this.jdField_b_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeInfo.jdField_a_of_type_JavaLangString, ", currentNodeId=", this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeInfo.jdField_a_of_type_JavaLangString, ", requestType=", Integer.valueOf(this.jdField_a_of_type_Int) });
-      }
-    } while (this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilMsgTabVideoDataProvider.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilMsgTabVideoDataProvider$OnRequestVideoListListener == null);
-    label430:
-    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilMsgTabVideoDataProvider.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilMsgTabVideoDataProvider$OnRequestVideoListListener.b(localMsgTabVideoDataEvent);
+      localObject = ((RelativeLayout)localObject).getLayoutParams();
+      ((ViewGroup.LayoutParams)localObject).width = k;
+      ((ViewGroup.LayoutParams)localObject).height = m;
+    }
+    setContentView(localView);
+    getWindow().setLayout(i, j);
+  }
+  
+  public void a(nrd paramnrd)
+  {
+    this.jdField_a_of_type_Nrd = paramnrd;
+  }
+  
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "onDismiss h5Url = " + this.jdField_b_of_type_JavaLangString);
+    }
+    if (this.jdField_a_of_type_Ysc != null)
+    {
+      this.jdField_a_of_type_Ysc.c();
+      this.jdField_a_of_type_Ysc = null;
+    }
+    if (this.jdField_a_of_type_Nrd != null) {
+      this.jdField_a_of_type_Nrd.a();
+    }
+  }
+  
+  public void onShow(DialogInterface paramDialogInterface)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "onShow h5Url = " + this.jdField_b_of_type_JavaLangString);
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBar != null) {
+      this.jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBar.setVisibility(0);
+    }
+    if (this.jdField_a_of_type_Bbpa != null) {
+      this.jdField_a_of_type_Bbpa.a((byte)0);
+    }
+    if (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null) {
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(4);
+    }
+    ThreadManager.excute(new ReadInJoyAdPopSheetDialog.2(this), 128, null, true);
+  }
+  
+  public void show()
+  {
+    getWindow().setFlags(8, 8);
+    super.show();
+    getWindow().getDecorView().setSystemUiVisibility(2);
+    getWindow().getDecorView().setOnSystemUiVisibilityChangeListener(new nra(this));
+    getWindow().clearFlags(8);
   }
 }
 

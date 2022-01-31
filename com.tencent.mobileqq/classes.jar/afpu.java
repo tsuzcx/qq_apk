@@ -1,98 +1,40 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.nearby.now.protocol.CsTask.Callback;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentProtocol.GetMomentListCallback;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.pb.now.ilive_feeds_read.ReadNearUserFeedsRsp;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
+import android.view.View;
 
-public final class afpu
-  implements CsTask.Callback
+class afpu
+  extends apfd
 {
-  public afpu(int paramInt, NearbyMomentProtocol.GetMomentListCallback paramGetMomentListCallback) {}
+  afpu(afps paramafps) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void a(View paramView)
   {
-    boolean bool3 = false;
-    bool2 = false;
-    bool1 = true;
-    paramBundle = new ArrayList();
-    int i = this.jdField_a_of_type_Int;
-    ilive_feeds_read.ReadNearUserFeedsRsp localReadNearUserFeedsRsp;
-    if (paramInt == 0) {
-      localReadNearUserFeedsRsp = new ilive_feeds_read.ReadNearUserFeedsRsp();
-    }
-    for (;;)
+    if ((afps.a(this.a)) && (afps.a(this.a) != null))
     {
-      try
-      {
-        localReadNearUserFeedsRsp.mergeFrom(paramArrayOfByte);
-        if (!localReadNearUserFeedsRsp.result.has())
-        {
-          QLog.i("NearbyMomentProtocol", 1, "getMomentList, don't has result");
-          paramInt = i;
-          if (this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyMomentProtocol$GetMomentListCallback != null) {
-            this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyMomentProtocol$GetMomentListCallback.a(bool2, paramBundle, bool1, paramInt);
-          }
-          return;
-        }
-        if (localReadNearUserFeedsRsp.result.get() == 0) {
-          if (QLog.isColorLevel()) {
-            QLog.i("NearbyMomentProtocol", 2, "endFlag=" + localReadNearUserFeedsRsp.end_flag.get() + ",size=" + localReadNearUserFeedsRsp.infos.size() + ",total=" + localReadNearUserFeedsRsp.total.get());
-          }
-        }
+      if (paramView.getId() != 2131299880) {
+        break label43;
       }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-      {
-        bool2 = false;
-        bool1 = true;
-      }
-      try
-      {
-        paramBundle.addAll(localReadNearUserFeedsRsp.infos.get());
-        paramInt = localReadNearUserFeedsRsp.end_flag.get();
-        bool1 = bool3;
-        if (paramInt == 1) {
-          bool1 = true;
-        }
-      }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-      {
-        for (;;)
-        {
-          bool2 = true;
-          bool1 = true;
-        }
-      }
-      try
-      {
-        paramInt = localReadNearUserFeedsRsp.pos.get();
-        bool2 = true;
-      }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-      {
-        bool2 = true;
-        break label281;
-      }
-      QLog.i("NearbyMomentProtocol", 1, "getMomentList error, result =" + localReadNearUserFeedsRsp.result.get() + ",errMsg=" + localReadNearUserFeedsRsp.err_msg.get());
-      paramInt = i;
-      continue;
-      label281:
-      QLog.i("NearbyMomentProtocol", 1, "getMomentList, e=" + paramArrayOfByte.toString());
-      paramInt = i;
-      continue;
-      QLog.i("NearbyMomentProtocol", 1, "getMomentList, 0xada_0 errorCode=" + paramInt);
-      paramInt = i;
+      afps.a(this.a).a(1);
     }
+    label43:
+    do
+    {
+      return;
+      if (paramView.getId() == 2131299885)
+      {
+        afps.a(this.a).a(3);
+        return;
+      }
+      if (paramView.getId() == 2131299881)
+      {
+        afps.a(this.a).a(2);
+        return;
+      }
+    } while (paramView.getId() != 2131299879);
+    afps.a(this.a).a(4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     afpu
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,15 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyBBCircleFragment;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import android.content.Context;
+import java.util.Map;
 
-class mot
-  implements Animation.AnimationListener
+public abstract interface mot
 {
-  mot(mos parammos) {}
+  public abstract int a(Context paramContext, String paramString);
   
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    if (this.a.a != null) {
-      PublicFragmentActivity.a(this.a.a, ReadInJoyBBCircleFragment.class);
-    }
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public abstract void a(Context paramContext, String paramString1, String paramString2, String paramString3, moc parammoc, Map<String, String> paramMap);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     mot
  * JD-Core Version:    0.7.0.1
  */

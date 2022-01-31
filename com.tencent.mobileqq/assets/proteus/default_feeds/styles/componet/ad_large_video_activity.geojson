@@ -1,0 +1,55 @@
+{
+    "view_type": "UIView",
+    "view_id":"id_large_video_activity_wrapper",
+    "direction": "horizontal",
+    "event_type":"cmd_large_video_activity_wrapper_click",
+    "align_parent_center_horizontal":"YES",
+    "align_parent_bottom": "YES",
+    "margin_bottom":"48",
+    "height":{
+        "type":"absolutely",
+        "value":"18"
+    },
+    "width":{
+        "type":"wrap_content"
+    },
+    "attributes":{
+        "setAttatchInfo:":"-1"
+    },
+    "subviews":[
+                {
+                "view_type": "UILabel",
+                "view_id":"id_large_video_activity_label",
+                "margin_left":"0",
+                "margin_top":"0",
+                "height":{
+                    "type":"wrap_content"
+                },
+                "width":{
+                "type":"wrap_content"
+                },
+                "attributes":{
+                "setRichText:":"-1",
+                "setTextColorString:": "#FFFFFF",
+                "setFontSizeString:": "14"
+                }
+                },
+                {
+                "view_type": "UIImageView",
+                "view_id":"id_large_video_activity_img",
+                "margin_left":"6",
+                "margin_top":"4",
+                "height":{
+                "type":"wrap_content"
+                },
+                "width":{
+                "type":"wrap_content"
+                },
+                "attributes":{
+                "loadImageWithPath:":"-1"
+                }
+                }
+    ]
+    
+}
+    

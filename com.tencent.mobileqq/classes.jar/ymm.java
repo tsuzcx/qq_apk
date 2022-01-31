@@ -1,17 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
+import android.app.Activity;
+import android.content.Intent;
 
-public class ymm
-  implements View.OnClickListener
+public abstract interface ymm
 {
-  public ymm(SpecailCareListActivity paramSpecailCareListActivity) {}
+  public abstract Activity a();
   
-  public void onClick(View paramView) {}
+  public abstract void a();
+  
+  public abstract void a(int paramInt, Intent paramIntent);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ymm
  * JD-Core Version:    0.7.0.1
  */

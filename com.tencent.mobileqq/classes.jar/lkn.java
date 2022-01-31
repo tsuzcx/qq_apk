@@ -1,104 +1,53 @@
-import com.tencent.biz.pubaccount.readinjoy.capture.ReadInJoyCameraVideoMergeHelper;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import android.graphics.Rect;
 
 public class lkn
+  extends lko
 {
-  private BufferedReader jdField_a_of_type_JavaIoBufferedReader;
-  private InputStream jdField_a_of_type_JavaIoInputStream;
-  private InputStreamReader jdField_a_of_type_JavaIoInputStreamReader;
-  public Process a;
+  public lkj a;
+  public int b;
+  public int c;
   
-  public void a()
+  public lkn(lkj paramlkj)
   {
-    if (this.jdField_a_of_type_JavaLangProcess != null)
+    this.jdField_b_of_type_Long = 1800L;
+    this.a = paramlkj;
+  }
+  
+  public void a(long paramLong)
+  {
+    super.a(paramLong);
+    Rect localRect = this.a.a();
+    int i = (localRect.left + localRect.right - this.jdField_b_of_type_Int) / 2;
+    int j = (localRect.top + localRect.bottom - this.c) / 2;
+    int k = (localRect.left + localRect.right + this.jdField_b_of_type_Int) / 2;
+    int m = localRect.top;
+    a(i, j, k, (localRect.bottom + m + this.c) / 2);
+    if (this.a.a != null) {
+      a(this.a.a());
+    }
+    for (;;)
     {
-      this.jdField_a_of_type_JavaIoInputStream = this.jdField_a_of_type_JavaLangProcess.getInputStream();
-      this.jdField_a_of_type_JavaIoInputStreamReader = new InputStreamReader(this.jdField_a_of_type_JavaIoInputStream);
-      this.jdField_a_of_type_JavaIoBufferedReader = new BufferedReader(this.jdField_a_of_type_JavaIoInputStreamReader);
+      b(this.a.a());
+      return;
+      a(0);
     }
   }
   
   public void b()
   {
-    if (this.jdField_a_of_type_JavaLangProcess != null) {}
-    try
-    {
-      for (;;)
-      {
-        String str = this.jdField_a_of_type_JavaIoBufferedReader.readLine();
-        if (str == null) {
-          break;
-        }
-        ReadInJoyCameraVideoMergeHelper.a("[@] compressVideo log:" + str);
-      }
-      label176:
-      return;
-    }
-    catch (IOException localIOException1)
-    {
-      for (;;)
-      {
-        try
-        {
-          if (this.jdField_a_of_type_JavaIoInputStream != null) {
-            this.jdField_a_of_type_JavaIoInputStream.close();
-          }
-          if (this.jdField_a_of_type_JavaIoInputStreamReader != null) {
-            this.jdField_a_of_type_JavaIoInputStreamReader.close();
-          }
-          if (this.jdField_a_of_type_JavaIoBufferedReader != null) {
-            this.jdField_a_of_type_JavaIoBufferedReader.close();
-          }
-          return;
-        }
-        catch (IOException localIOException3) {}
-        try
-        {
-          if (this.jdField_a_of_type_JavaIoInputStream != null) {
-            this.jdField_a_of_type_JavaIoInputStream.close();
-          }
-          if (this.jdField_a_of_type_JavaIoInputStreamReader != null) {
-            this.jdField_a_of_type_JavaIoInputStreamReader.close();
-          }
-          if (this.jdField_a_of_type_JavaIoBufferedReader == null) {
-            continue;
-          }
-          this.jdField_a_of_type_JavaIoBufferedReader.close();
-          return;
-        }
-        catch (IOException localIOException2)
-        {
-          return;
-        }
-      }
-    }
-    finally
-    {
-      try
-      {
-        if (this.jdField_a_of_type_JavaIoInputStream != null) {
-          this.jdField_a_of_type_JavaIoInputStream.close();
-        }
-        if (this.jdField_a_of_type_JavaIoInputStreamReader != null) {
-          this.jdField_a_of_type_JavaIoInputStreamReader.close();
-        }
-        if (this.jdField_a_of_type_JavaIoBufferedReader != null) {
-          this.jdField_a_of_type_JavaIoBufferedReader.close();
-        }
-      }
-      catch (IOException localIOException4)
-      {
-        break label176;
-      }
-    }
+    super.b();
+    this.a = null;
+  }
+  
+  public void b(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    this.jdField_b_of_type_Int = (paramInt1 * 152 / 160);
+    this.c = (paramInt1 * 152 / 160);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lkn
  * JD-Core Version:    0.7.0.1
  */

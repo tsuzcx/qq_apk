@@ -1,27 +1,36 @@
+import android.view.View.OnClickListener;
 import android.widget.TextView;
-import dov.com.tencent.biz.qqstory.takevideo.EditProviderPart;
+import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileCloudFileTabView;
 
 public class aoak
-  implements Runnable
+  implements aoaq
 {
-  public aoak(EditProviderPart paramEditProviderPart, boolean paramBoolean) {}
+  public aoak(QfileCloudFileTabView paramQfileCloudFileTabView) {}
   
-  public void run()
+  public View.OnClickListener a(TextView paramTextView)
   {
-    if (EditProviderPart.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditProviderPart) == null) {
-      return;
-    }
-    if (this.jdField_a_of_type_Boolean)
-    {
-      EditProviderPart.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditProviderPart).setVisibility(0);
-      return;
-    }
-    EditProviderPart.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditProviderPart).setVisibility(8);
+    this.a.a = paramTextView;
+    return new aoal(this);
+  }
+  
+  public boolean a()
+  {
+    return this.a.c;
+  }
+  
+  public boolean b()
+  {
+    return this.a.b;
+  }
+  
+  public boolean c()
+  {
+    return QfileCloudFileTabView.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aoak
  * JD-Core Version:    0.7.0.1
  */

@@ -1,38 +1,88 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.highway.HwEngine;
-import com.tencent.mobileqq.transfile.C2CPicUploadProcessor;
+import android.os.Build.VERSION;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-public class aitx
-  implements Runnable
+final class aitx
+  implements aiud
 {
-  public aitx(C2CPicUploadProcessor paramC2CPicUploadProcessor) {}
+  aitx(aifg paramaifg, int[] paramArrayOfInt, AppInterface paramAppInterface, aiud paramaiud, boolean paramBoolean, int paramInt) {}
   
-  public void run()
+  public void onDownLoadFinish(boolean paramBoolean, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2)
   {
-    switch (this.a.v)
+    if (paramBoolean)
     {
-    default: 
-      return;
-    case 0: 
-      this.a.d("<BDH_LOG> sendFileNotBlockCallThread() BUT current status is INIT");
-      return;
-    case 2: 
-      this.a.d("<BDH_LOG> sendFileNotBlockCallThread() resume HTTP channel");
-      this.a.r();
-      return;
+      File localFile;
+      if ((Build.VERSION.SDK_INT < 24) && (BaseApplicationImpl.sProcessId == 1))
+      {
+        localFile = new File(aitw.a(1, paramInt1), "dress.zip");
+        if (!localFile.exists()) {}
+      }
+      try
+      {
+        paramArrayOfInt = aiys.f;
+        if (paramInt1 == 0) {
+          paramArrayOfInt = aiys.c + "/def/dress/";
+        }
+        new File(paramArrayOfInt).mkdirs();
+        mpx.a(localFile, paramArrayOfInt);
+        paramArrayOfInt = aitw.a(paramInt1);
+        if ((paramArrayOfInt != null) && (paramArrayOfInt.length > 0))
+        {
+          int j = paramArrayOfInt.length;
+          int i = 0;
+          while (i < j)
+          {
+            int k = paramArrayOfInt[i];
+            aitw.a(this.jdField_a_of_type_Aifg, 2, k);
+            i += 1;
+          }
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("ApolloResDownloader", 2, "downloadApolloResOrder down load role succ  id: " + paramInt1 + ", uin: " + paramString);
+        }
+      }
+      catch (Exception paramArrayOfInt)
+      {
+        for (;;)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("ApolloResDownloader", 2, "downloadApolloResOrder unZipFile file error resType->" + paramInt1 + " error->" + paramArrayOfInt.getMessage(), paramArrayOfInt);
+          }
+        }
+      }
+      catch (OutOfMemoryError paramArrayOfInt)
+      {
+        do
+        {
+          for (;;)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("ApolloResDownloader", 2, "downloadApolloResOrder unZipFile file error resType->" + paramInt1 + " error->" + paramArrayOfInt.getMessage());
+            }
+          }
+        } while (this.jdField_a_of_type_Aiud == null);
+        this.jdField_a_of_type_Aiud.onDownLoadFinish(true, paramString, this.jdField_a_of_type_Int, this.jdField_a_of_type_ArrayOfInt, paramInt2);
+        return;
+      }
+      if ((this.jdField_a_of_type_ArrayOfInt != null) && (this.jdField_a_of_type_ArrayOfInt.length > 0)) {
+        aitw.b(this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramString, this.jdField_a_of_type_Aiud, -1, this.jdField_a_of_type_ArrayOfInt, -1, -1, this.jdField_a_of_type_Boolean);
+      }
     }
-    if (this.a.b != null)
+    do
     {
-      this.a.d("<BDH_LOG> sendFileNotBlockCallThread() resume BDH channel");
-      this.a.a.getHwEngine().resumeTransactionTask(this.a.b);
       return;
-    }
-    this.a.d("<BDH_LOG> sendFileNotBlockCallThread() resume BDH channel, but trans == null");
+      if (this.jdField_a_of_type_Aiud != null) {
+        this.jdField_a_of_type_Aiud.onDownLoadFinish(false, paramString, this.jdField_a_of_type_Int, this.jdField_a_of_type_ArrayOfInt, paramInt2);
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("ApolloResDownloader", 2, "downloadApolloResOrder down load role fail id: " + this.jdField_a_of_type_Int + ", uin:" + paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aitx
  * JD-Core Version:    0.7.0.1
  */

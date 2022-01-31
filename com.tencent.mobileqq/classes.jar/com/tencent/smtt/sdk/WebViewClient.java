@@ -44,6 +44,8 @@ public class WebViewClient
   
   public void onLoadResource(WebView paramWebView, String paramString) {}
   
+  public void onPageCommitVisible(WebView paramWebView, String paramString) {}
+  
   public void onPageFinished(WebView paramWebView, String paramString) {}
   
   public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
@@ -134,7 +136,7 @@ public class WebViewClient
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.smtt.sdk.WebViewClient
  * JD-Core Version:    0.7.0.1
  */

@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class msgrevoke_userdef$MsgInfoUserDef$MsgInfoDef
-  extends MessageMicro
+  extends MessageMicro<MsgInfoDef>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32 }, new String[] { "uint32_msg_seq", "long_msg_id", "long_msg_num", "long_msg_index" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) }, MsgInfoDef.class);
   public final PBUInt32Field long_msg_id = PBField.initUInt32(0);
@@ -16,7 +16,7 @@ public final class msgrevoke_userdef$MsgInfoUserDef$MsgInfoDef
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     tencent.im.msgrevoke.msgrevoke_userdef.MsgInfoUserDef.MsgInfoDef
  * JD-Core Version:    0.7.0.1
  */

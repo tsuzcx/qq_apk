@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/e_8" android:background="#fffafafa" android:visibility="gone" android:layout_width="2.0dip" android:layout_height="62.0dip" android:layout_marginLeft="66.0dip" android:layout_alignParentLeft="true" />
+    <RelativeLayout android:gravity="center_vertical" android:paddingTop="13.0dip" android:paddingBottom="11.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <TextView android:textSize="28.0dip" android:textColor="#ff000000" android:id="@id/l6k" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:text="2017" android:layout_centerVertical="true" />
+        <TextView android:textSize="14.0dip" android:textColor="#ffbbbbbb" android:id="@id/kq9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="6.0dip" android:text="共5条小视频" android:layout_toRightOf="@id/l6k" android:layout_centerVertical="true" />
+        <TextView android:textSize="14.0dip" android:textColor="#ff000000" android:id="@id/ktp" android:padding="6.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="6.0dip" android:text="@string/r88" android:drawableLeft="@drawable/fk0" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    </RelativeLayout>
+</RelativeLayout>

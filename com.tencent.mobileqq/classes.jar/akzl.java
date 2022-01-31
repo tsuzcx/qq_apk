@@ -1,21 +1,26 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.werewolves.HalfScreenBrowserActivity;
+import com.tencent.ark.ark.VariantWrapper;
 
-public class akzl
-  implements View.OnClickListener
+class akzl
+  implements alai
 {
-  public akzl(HalfScreenBrowserActivity paramHalfScreenBrowserActivity) {}
+  akzl(akyy paramakyy, long paramLong) {}
   
-  public void onClick(View paramView)
+  public void a(long paramLong)
   {
-    this.a.finish();
-    this.a.overridePendingTransition(0, 0);
+    ark.VariantWrapper localVariantWrapper = this.jdField_a_of_type_Akyy.a.a(paramLong);
+    if (localVariantWrapper != null) {
+      localVariantWrapper.Reset();
+    }
+  }
+  
+  public void a(boolean paramBoolean, double paramDouble1, double paramDouble2)
+  {
+    akyv.a(this.jdField_a_of_type_Akyy.a, this.jdField_a_of_type_Long, paramBoolean, paramDouble1, paramDouble2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     akzl
  * JD-Core Version:    0.7.0.1
  */

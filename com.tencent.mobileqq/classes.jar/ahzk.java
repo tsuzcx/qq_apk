@@ -1,23 +1,22 @@
-import android.widget.ImageView;
-import com.tencent.mobileqq.search.presenter.SearchTemplatePresenter;
+import android.widget.CheckBox;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
+import com.tencent.mobileqq.widget.CircleFileStateView;
 
 public class ahzk
-  implements Runnable
+  implements Cloneable
 {
-  public ahzk(SearchTemplatePresenter paramSearchTemplatePresenter, boolean paramBoolean, ImageView paramImageView) {}
+  public int a;
+  public CheckBox a;
+  public RelativeLayout a;
+  public TextView a;
+  public AsyncImageView a;
+  public CircleFileStateView a;
+  public Object a;
+  public TextView b;
   
-  public void run()
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130845571);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqSearchPresenterSearchTemplatePresenter.a(this.jdField_a_of_type_AndroidWidgetImageView);
-      return;
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130845570);
-    }
-  }
+  public ahzk(ahzj paramahzj) {}
 }
 
 

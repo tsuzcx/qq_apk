@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.data;
 
 import android.text.TextUtils;
-import com.tencent.mobileqq.persistence.Entity;
+import atmo;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 public class LbsReportInfo
-  extends Entity
+  extends atmo
 {
   public float accuracy;
   public double alt;
@@ -21,7 +21,7 @@ public class LbsReportInfo
   public long operTime;
   public String province;
   
-  public static ArrayList convert2StrList(ArrayList paramArrayList)
+  public static ArrayList<String> convert2StrList(ArrayList<LbsReportInfo> paramArrayList)
   {
     if ((paramArrayList == null) || (paramArrayList.isEmpty())) {
       return null;

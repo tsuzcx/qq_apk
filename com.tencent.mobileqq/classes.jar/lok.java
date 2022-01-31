@@ -1,45 +1,35 @@
-import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
-import com.tencent.mobileqq.activity.ChatActivityFacade;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.smallscreen.SmallScreenDialogActivity;
+import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.qphone.base.util.QLog;
 
 public class lok
-  implements Runnable
+  extends BroadcastReceiver
 {
-  public lok(KandianMergeManager paramKandianMergeManager, MessageRecord paramMessageRecord) {}
+  public lok(SmallScreenDialogActivity paramSmallScreenDialogActivity) {}
   
-  public void run()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    KandianMergeManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineKandianMergeManager).a().a(AppConstants.at, 7220, false, false);
-    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.extInt == 2)
+    if (paramIntent.getAction().equals("tencent.video.v2q.SmallScreenState"))
     {
-      KandianMergeManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineKandianMergeManager).a().b(AppConstants.at, 7220, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq);
-      if (KandianMergeManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineKandianMergeManager).get() > 0) {
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineKandianMergeManager.c(2);
+      int i = paramIntent.getIntExtra("SmallScreenState", -1);
+      long l = min.a(paramIntent);
+      boolean bool = lor.c(this.a.a.getApp());
+      if ((AudioHelper.e()) || (bool)) {
+        QLog.w(SmallScreenDialogActivity.a(this.a), 1, "Receiver ACTION_SMALL_SCREEN_STATE, isFloatWindowOpAllowed[" + bool + "], state[" + i + "], seq[" + l + "]");
+      }
+      if (bool) {
+        this.a.finish();
       }
     }
-    do
-    {
-      return;
-      if (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.extInt == 1)
-      {
-        SessionInfo localSessionInfo = new SessionInfo();
-        localSessionInfo.jdField_a_of_type_JavaLangString = AppConstants.as;
-        localSessionInfo.jdField_a_of_type_Int = 1008;
-        ChatActivityFacade.a(KandianMergeManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineKandianMergeManager), localSessionInfo);
-        return;
-      }
-    } while (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.extInt != 5);
-    KandianMergeManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineKandianMergeManager).a().b(AppConstants.at, 7220, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lok
  * JD-Core Version:    0.7.0.1
  */

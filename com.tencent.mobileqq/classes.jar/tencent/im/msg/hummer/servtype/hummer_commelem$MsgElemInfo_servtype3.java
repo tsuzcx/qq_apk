@@ -6,7 +6,7 @@ import tencent.im.msg.im_msg_body.CustomFace;
 import tencent.im.msg.im_msg_body.NotOnlineImage;
 
 public final class hummer_commelem$MsgElemInfo_servtype3
-  extends MessageMicro
+  extends MessageMicro<MsgElemInfo_servtype3>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18 }, new String[] { "flash_troop_pic", "flash_c2c_pic" }, new Object[] { null, null }, MsgElemInfo_servtype3.class);
   public im_msg_body.NotOnlineImage flash_c2c_pic = new im_msg_body.NotOnlineImage();

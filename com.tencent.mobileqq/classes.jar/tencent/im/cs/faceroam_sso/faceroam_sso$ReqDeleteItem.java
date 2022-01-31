@@ -7,14 +7,14 @@ import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.mobileqq.pb.PBStringField;
 
 public final class faceroam_sso$ReqDeleteItem
-  extends MessageMicro
+  extends MessageMicro<ReqDeleteItem>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10 }, new String[] { "filename" }, new Object[] { "" }, ReqDeleteItem.class);
-  public final PBRepeatField filename = PBField.initRepeat(PBStringField.__repeatHelper__);
+  public final PBRepeatField<String> filename = PBField.initRepeat(PBStringField.__repeatHelper__);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     tencent.im.cs.faceroam_sso.faceroam_sso.ReqDeleteItem
  * JD-Core Version:    0.7.0.1
  */

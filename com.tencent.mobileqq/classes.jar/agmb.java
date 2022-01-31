@@ -1,25 +1,28 @@
-import android.widget.ImageView;
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.PopupWindow;
+import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class agmb
-  implements Runnable
+public class agmb
+  implements View.OnClickListener
 {
-  agmb(agma paramagma) {}
+  public agmb(TroopUnAccalimedRedPacketList paramTroopUnAccalimedRedPacketList) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    long l = System.currentTimeMillis() - ScanTorchActivity.a(this.a.a);
-    if (l > 500L)
-    {
-      ScanTorchActivity.d(this.a.a, ScanTorchActivity.b(this.a.a));
-      return;
+    TroopUnAccalimedRedPacketList.a(this.a, true);
+    if (TroopUnAccalimedRedPacketList.a(this.a) != null) {
+      agwj.a(TroopUnAccalimedRedPacketList.a(this.a), TroopUnAccalimedRedPacketList.a(this.a).getCurrentAccountUin(), 2, "", 0L, 162, "aio.hongbaolist.back", "", "");
     }
-    ScanTorchActivity.b(this.a.a).postDelayed(new agmc(this), 500L - l);
+    if (this.a.a != null) {
+      this.a.a.dismiss();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     agmb
  * JD-Core Version:    0.7.0.1
  */

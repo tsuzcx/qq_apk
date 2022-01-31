@@ -17,7 +17,6 @@ public class AVDecodeFactory
   }
   
   public static AbstractAVDecode newDecodeUncatched(AVDecodeOption paramAVDecodeOption)
-    throws AVideoException
   {
     if (paramAVDecodeOption.mDecodeType == 0) {
       return AVDecode.newInstanceUncatched(paramAVDecodeOption);

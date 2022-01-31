@@ -1,25 +1,12 @@
-import com.tencent.mobileqq.adapter.RecommendFriendAdapter;
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.app.MayknowRecommendManager;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
 
-public class yoj
-  extends FriendListObserver
+public abstract interface yoj
 {
-  public yoj(RecommendFriendAdapter paramRecommendFriendAdapter) {}
-  
-  protected void onMayknowStateChanged(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("RecommendFriendAdapter", 2, "onStatesChanged ");
-    }
-    RecommendFriendAdapter.a(this.a, RecommendFriendAdapter.a(this.a).a());
-    this.a.notifyDataSetChanged();
-  }
+  public abstract void reportImpression(View paramView);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     yoj
  * JD-Core Version:    0.7.0.1
  */

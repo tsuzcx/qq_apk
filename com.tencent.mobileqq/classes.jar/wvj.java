@@ -1,34 +1,40 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadinjoySPEventReport;
-import com.tencent.mobileqq.activity.main.LebaTabRedTouch.RefreshCallback;
-import com.tencent.mobileqq.activity.main.MainAssistObserver;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.RedTypeInfo;
+import NS_QQ_STORY_CLIENT.CLIENT.StGetWatermarkDictRsp;
+import NS_QQ_STORY_CLIENT.CLIENT.StWatermarkDict;
+import android.util.Log;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
-public class wvj
-  implements LebaTabRedTouch.RefreshCallback
+class wvj
+  implements wxx<CLIENT.StGetWatermarkDictRsp>
 {
-  public wvj(MainAssistObserver paramMainAssistObserver) {}
+  wvj(wvh paramwvh) {}
   
-  public void a(BusinessInfoCheckUpdate.RedTypeInfo paramRedTypeInfo)
+  public void a(boolean paramBoolean, long paramLong, String paramString, CLIENT.StGetWatermarkDictRsp paramStGetWatermarkDictRsp)
   {
-    boolean bool = true;
-    Object localObject = this.a.a.obtainMessage(1);
-    ((Message)localObject).obj = paramRedTypeInfo;
-    this.a.a.sendMessage((Message)localObject);
-    localObject = ReadinjoySPEventReport.a();
-    if (paramRedTypeInfo != null) {}
-    for (;;)
+    if (paramBoolean)
     {
-      ((ReadinjoySPEventReport)localObject).b(bool);
+      paramString = paramStGetWatermarkDictRsp.extInfo;
+      paramStGetWatermarkDictRsp = paramStGetWatermarkDictRsp.vecWatermarkDict.get();
+      paramString = new HashMap();
+      paramStGetWatermarkDictRsp = paramStGetWatermarkDictRsp.iterator();
+      while (paramStGetWatermarkDictRsp.hasNext())
+      {
+        CLIENT.StWatermarkDict localStWatermarkDict = (CLIENT.StWatermarkDict)paramStGetWatermarkDictRsp.next();
+        paramString.put(localStWatermarkDict.key.get(), localStWatermarkDict.value.get());
+      }
+      wvh.a(this.a, paramString);
       return;
-      bool = false;
     }
+    Log.d(wvh.a(), "retCode:" + paramLong + " errMSg:" + paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wvj
  * JD-Core Version:    0.7.0.1
  */

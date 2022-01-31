@@ -1,8 +1,14 @@
 package com.tencent.mobileqq.app.soso;
 
+import akgf;
+import android.os.Parcel;
+import android.os.Parcelable;
+import android.os.Parcelable.Creator;
+
 public final class SosoInterface$SosoCell
-  implements Comparable
+  implements Parcelable, Comparable<SosoCell>
 {
+  public static final Parcelable.Creator<SosoCell> CREATOR = new akgf();
   public int a;
   public boolean a;
   public int b;
@@ -20,9 +26,44 @@ public final class SosoInterface$SosoCell
     this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
+  public SosoInterface$SosoCell(Parcel paramParcel)
+  {
+    this.jdField_a_of_type_Int = paramParcel.readInt();
+    this.b = paramParcel.readInt();
+    this.c = paramParcel.readInt();
+    this.d = paramParcel.readInt();
+    this.e = paramParcel.readInt();
+    if (paramParcel.readByte() != 0) {}
+    for (boolean bool = true;; bool = false)
+    {
+      this.jdField_a_of_type_Boolean = bool;
+      return;
+    }
+  }
+  
   public int a(SosoCell paramSosoCell)
   {
     return this.d - paramSosoCell.d;
+  }
+  
+  public int describeContents()
+  {
+    return 0;
+  }
+  
+  public void writeToParcel(Parcel paramParcel, int paramInt)
+  {
+    paramParcel.writeInt(this.jdField_a_of_type_Int);
+    paramParcel.writeInt(this.b);
+    paramParcel.writeInt(this.c);
+    paramParcel.writeInt(this.d);
+    paramParcel.writeInt(this.e);
+    if (this.jdField_a_of_type_Boolean) {}
+    for (paramInt = 1;; paramInt = 0)
+    {
+      paramParcel.writeByte((byte)paramInt);
+      return;
+    }
   }
 }
 

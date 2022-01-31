@@ -1,24 +1,63 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.app.CardHandler;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqCheckActivity;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspCheckActivity;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 
-class stm
-  implements DialogInterface.OnClickListener
+public class stm
+  extends slz
 {
-  stm(stk paramstk) {}
+  public static String a = skt.a("StorySvc.check_activity");
+  public String b;
+  public final String c;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public stm(String paramString)
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqAppCardHandler.j();
-    this.a.jdField_a_of_type_ComTencentMobileqqAppCardHandler.a(this.a.jdField_a_of_type_Stg.a.a.a.a, "");
+    this.c = paramString;
+  }
+  
+  public String a()
+  {
+    return a;
+  }
+  
+  public slu a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspCheckActivity localRspCheckActivity = new qqstory_service.RspCheckActivity();
+    try
+    {
+      localRspCheckActivity.mergeFrom(paramArrayOfByte);
+      return new stn(localRspCheckActivity);
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      for (;;)
+      {
+        paramArrayOfByte.printStackTrace();
+      }
+    }
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqCheckActivity localReqCheckActivity = new qqstory_service.ReqCheckActivity();
+    if (!TextUtils.isEmpty(this.c)) {
+      localReqCheckActivity.adcode.set(Long.valueOf(this.c).longValue());
+    }
+    urk.a("MsgTabCheckActiveRequest", "client version=%s", "8.2.6");
+    localReqCheckActivity.version.set("8.2.6");
+    return localReqCheckActivity.toByteArray();
+  }
+  
+  public String toString()
+  {
+    return "MsgTabCheckActiveRequest{value='" + this.b + '\'' + ", adCode='" + this.c + '\'' + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     stm
  * JD-Core Version:    0.7.0.1
  */

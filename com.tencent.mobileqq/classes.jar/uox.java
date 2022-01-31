@@ -1,20 +1,29 @@
-import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder;
-import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder.ViewHolder;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.support.annotation.NonNull;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class uox
-  implements Runnable
+  extends QQUIEventReceiver<uoh, spk>
 {
-  public uox(BaseBubbleBuilder paramBaseBubbleBuilder, BaseBubbleBuilder.ViewHolder paramViewHolder, ChatMessage paramChatMessage) {}
-  
-  public void run()
+  public uox(@NonNull uoh paramuoh)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseBubbleBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseBubbleBuilder$ViewHolder.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage, this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseBubbleBuilder$ViewHolder.jdField_a_of_type_ComTencentMobileqqBubbleBubbleInfo);
+    super(paramuoh);
+  }
+  
+  public void a(@NonNull uoh paramuoh, @NonNull spk paramspk)
+  {
+    if (paramspk.a) {
+      uoh.d(paramuoh);
+    }
+  }
+  
+  public Class acceptEventClass()
+  {
+    return spk.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     uox
  * JD-Core Version:    0.7.0.1
  */

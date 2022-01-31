@@ -1,45 +1,71 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.channel.CmdTaskManger.CommandCallback;
-import com.tencent.biz.qqstory.model.LikeManager;
-import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.biz.qqstory.storyHome.detail.model.DetailLikeListLoader.GetLikeListRequest;
-import com.tencent.biz.qqstory.storyHome.detail.model.DetailLikeListLoader.GetLikeListResponse;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tribe.async.async.JobContext;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.comment.ui.ReadInJoyCommentLikeView;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
 
-class nzc
-  implements CmdTaskManger.CommandCallback
+public class nzc
+  extends ViewBase
 {
-  nzc(nzb paramnzb, JobContext paramJobContext, String paramString) {}
+  private ReadInJoyCommentLikeView a;
   
-  public void a(@NonNull DetailLikeListLoader.GetLikeListRequest paramGetLikeListRequest, @Nullable DetailLikeListLoader.GetLikeListResponse paramGetLikeListResponse, @NonNull ErrorMessage paramErrorMessage)
+  public nzc(VafContext paramVafContext)
   {
-    if (this.jdField_a_of_type_ComTribeAsyncAsyncJobContext.isJobCancelled())
+    super(paramVafContext);
+    this.a = new ReadInJoyCommentLikeView(paramVafContext.getContext());
+  }
+  
+  public void a(nzk paramnzk)
+  {
+    this.a.setOnLikeListener(paramnzk);
+  }
+  
+  public int getComMeasuredHeight()
+  {
+    return this.a.getComMeasuredHeight();
+  }
+  
+  public int getComMeasuredWidth()
+  {
+    return this.a.getComMeasuredWidth();
+  }
+  
+  public View getNativeView()
+  {
+    return this.a;
+  }
+  
+  public void onComLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    this.a.comLayout(paramInt1, paramInt2, paramInt3, paramInt4);
+  }
+  
+  public void onComMeasure(int paramInt1, int paramInt2)
+  {
+    this.a.measureComponent(paramInt1, paramInt2);
+  }
+  
+  public void onParseValueFinished()
+  {
+    super.onParseValueFinished();
+    this.a.setVisibility(0);
+  }
+  
+  public boolean setAttribute(int paramInt, Object paramObject)
+  {
+    switch (paramInt)
     {
-      SLog.d("Q.qqstory.detail:DetailFeedAllInfoPullSegment", "feed like info pull segment cancel on net respond");
-      return;
+    default: 
+      return super.setAttribute(paramInt, paramObject);
     }
-    if ((paramGetLikeListResponse == null) || (paramErrorMessage.isFail()))
-    {
-      SLog.d("Q.qqstory.detail:DetailFeedAllInfoPullSegment", "request fail for like request");
-      nzb.a(this.jdField_a_of_type_Nzb, paramErrorMessage);
-      return;
+    if (((paramObject instanceof nwx)) && (((nwx)paramObject).a != null)) {
+      this.a.a(((nwx)paramObject).a);
     }
-    if (this.jdField_a_of_type_Nzb.a == 0) {}
-    for (boolean bool = false;; bool = true)
-    {
-      ((LikeManager)SuperManager.a(15)).a(paramGetLikeListResponse.a, this.jdField_a_of_type_JavaLangString, bool, true);
-      paramGetLikeListRequest = new nyw(bool, paramGetLikeListResponse.a, paramGetLikeListResponse.b, paramGetLikeListResponse.c);
-      nzb.a(this.jdField_a_of_type_Nzb, paramGetLikeListRequest);
-      return;
-    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     nzc
  * JD-Core Version:    0.7.0.1
  */

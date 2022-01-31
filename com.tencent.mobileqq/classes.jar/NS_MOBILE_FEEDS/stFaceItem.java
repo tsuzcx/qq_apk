@@ -9,7 +9,7 @@ public final class stFaceItem
   extends JceStruct
 {
   static int cache_quanstate = 0;
-  static ArrayList cache_recommend_infos = new ArrayList();
+  static ArrayList<FaceRecommendInfo> cache_recommend_infos = new ArrayList();
   public boolean FromSys = true;
   public String faceUrl = "";
   public String faceid = "";
@@ -20,7 +20,7 @@ public final class stFaceItem
   public String photo_id = "";
   public String quanid = "";
   public int quanstate;
-  public ArrayList recommend_infos;
+  public ArrayList<FaceRecommendInfo> recommend_infos;
   public String target_groupid = "";
   public String targetnick = "";
   public long targetuin;
@@ -38,7 +38,7 @@ public final class stFaceItem
   
   public stFaceItem() {}
   
-  public stFaceItem(String paramString1, long paramLong1, long paramLong2, long paramLong3, long paramLong4, int paramInt, long paramLong5, String paramString2, String paramString3, long paramLong6, String paramString4, long paramLong7, String paramString5, String paramString6, boolean paramBoolean1, String paramString7, ArrayList paramArrayList, String paramString8, boolean paramBoolean2)
+  public stFaceItem(String paramString1, long paramLong1, long paramLong2, long paramLong3, long paramLong4, int paramInt, long paramLong5, String paramString2, String paramString3, long paramLong6, String paramString4, long paramLong7, String paramString5, String paramString6, boolean paramBoolean1, String paramString7, ArrayList<FaceRecommendInfo> paramArrayList, String paramString8, boolean paramBoolean2)
   {
     this.photo_id = paramString1;
     this.x = paramLong1;
@@ -125,7 +125,7 @@ public final class stFaceItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     NS_MOBILE_FEEDS.stFaceItem
  * JD-Core Version:    0.7.0.1
  */

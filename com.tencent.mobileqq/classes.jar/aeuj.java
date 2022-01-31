@@ -1,39 +1,28 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.nearby.NearbyIconDecoder;
-import com.tencent.mobileqq.util.IIconDecoder.IIconListener;
-import java.util.Iterator;
+import com.tencent.biz.pubaccount.readinjoy.struct.ChannelInfo;
+import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
 import java.util.List;
 
 public class aeuj
-  implements Runnable
+  extends ohe
 {
-  public aeuj(NearbyIconDecoder paramNearbyIconDecoder, String paramString, Bitmap paramBitmap) {}
+  public aeuj(ClassificationSearchActivity paramClassificationSearchActivity) {}
   
-  public void run()
+  public void f(boolean paramBoolean, List<ChannelInfo> paramList)
   {
-    try
+    if (paramBoolean)
     {
-      String[] arrayOfString = this.jdField_a_of_type_JavaLangString.split("_s_");
-      if ((arrayOfString.length == 3) && (this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyIconDecoder.a != null))
+      if ((paramList != null) && (!paramList.isEmpty()))
       {
-        int i = Integer.parseInt(arrayOfString[0]);
-        int j = Integer.parseInt(arrayOfString[2]);
-        Iterator localIterator = this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyIconDecoder.a.iterator();
-        while (localIterator.hasNext()) {
-          ((IIconDecoder.IIconListener)localIterator.next()).a(i, arrayOfString[1], j, this.jdField_a_of_type_AndroidGraphicsBitmap);
-        }
+        this.a.c.clear();
+        this.a.c.addAll(paramList);
       }
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      localThrowable.printStackTrace();
+      ClassificationSearchActivity.b(this.a, true);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aeuj
  * JD-Core Version:    0.7.0.1
  */

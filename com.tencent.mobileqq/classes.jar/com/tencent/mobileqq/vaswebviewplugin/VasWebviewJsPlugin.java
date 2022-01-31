@@ -1,18 +1,17 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
+import ajjy;
+import anad;
+import anah;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.widget.Toast;
-import com.tencent.biz.AuthorizeConfig;
-import com.tencent.biz.common.util.Util;
+import anfc;
+import bbac;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.emosm.Client.onRemoteRespObserver;
-import com.tencent.mobileqq.emosm.DataFactory;
-import com.tencent.mobileqq.emosm.web.WebIPCOperator;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
 import com.tencent.qphone.base.util.QLog;
 import java.io.UnsupportedEncodingException;
 import java.lang.reflect.InvocationTargetException;
@@ -22,6 +21,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import mkw;
+import mpw;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -29,10 +30,10 @@ public abstract class VasWebviewJsPlugin
   extends VasBasePlugin
 {
   private static final String TAG = "VasWebviewJsPlugin";
-  AuthorizeConfig authCfg;
-  public Client.onRemoteRespObserver mOnRemoteResp = new VasWebviewJsPlugin.1(this);
+  mkw authCfg;
+  public anad mOnRemoteResp = new VasWebviewJsPlugin.1(this);
   
-  private Method getMethod(Class paramClass, String paramString)
+  private Method getMethod(Class<?> paramClass, String paramString)
   {
     Object localObject1 = null;
     Object localObject2 = null;
@@ -127,7 +128,7 @@ public abstract class VasWebviewJsPlugin
     return false;
   }
   
-  public boolean call(String paramString, List paramList)
+  public boolean call(String paramString, List<String> paramList)
   {
     Method[] arrayOfMethod = getClass().getDeclaredMethods();
     Object localObject2 = null;
@@ -219,7 +220,7 @@ public abstract class VasWebviewJsPlugin
     super.callJs(paramString1 + "({'result':-1,'message':'" + paramString2 + "'})");
   }
   
-  protected boolean excuteEvent(String paramString, long paramLong, Map paramMap)
+  protected boolean excuteEvent(String paramString, long paramLong, Map<String, Object> paramMap)
   {
     return false;
   }
@@ -246,7 +247,7 @@ public abstract class VasWebviewJsPlugin
     }
     Bundle localBundle = new Bundle();
     localBundle.putString("domain", paramJSONObject);
-    sendRemoteReq(DataFactory.a("getDomainIpList", paramString, this.mOnRemoteResp.key, localBundle), false, false);
+    sendRemoteReq(anah.a("getDomainIpList", paramString, this.mOnRemoteResp.key, localBundle), false, false);
   }
   
   public void getVipType(JSONObject paramJSONObject, String paramString)
@@ -271,7 +272,7 @@ public abstract class VasWebviewJsPlugin
     }
     Bundle localBundle = new Bundle();
     localBundle.putString("uin", paramJSONObject);
-    sendRemoteReq(DataFactory.a("getUserVipType", paramString, this.mOnRemoteResp.key, localBundle), false, false);
+    sendRemoteReq(anah.a("getUserVipType", paramString, this.mOnRemoteResp.key, localBundle), false, false);
   }
   
   protected boolean handleEmojiSchemaRequest(String paramString1, String paramString2)
@@ -284,7 +285,7 @@ public abstract class VasWebviewJsPlugin
     {
       return bool;
       if (QLog.isDevelopLevel()) {
-        QLog.d("VasWebviewJsPlugin", 4, "handleSchemaRequest:" + Util.b(paramString1, new String[0]));
+        QLog.d("VasWebviewJsPlugin", 4, "handleSchemaRequest:" + mpw.b(paramString1, new String[0]));
       }
     } while (paramString1.startsWith("qqvip:") == true);
     if (!Uri.parse(paramString1).getScheme().equals("qqjsbridge"))
@@ -315,7 +316,7 @@ public abstract class VasWebviewJsPlugin
     return call(paramString2, (List)localObject);
   }
   
-  public boolean handleEvent(String paramString, long paramLong, Map paramMap)
+  public boolean handleEvent(String paramString, long paramLong, Map<String, Object> paramMap)
   {
     if (paramLong == 8589934593L) {}
     for (;;)
@@ -400,22 +401,22 @@ public abstract class VasWebviewJsPlugin
   {
     super.onCreate();
     if (this.authCfg == null) {
-      this.authCfg = AuthorizeConfig.a();
+      this.authCfg = mkw.a();
     }
-    WebIPCOperator.a().a(this.mOnRemoteResp);
+    anfc.a().a(this.mOnRemoteResp);
   }
   
   public void onDestroy()
   {
     super.onDestroy();
-    WebIPCOperator.a().b(this.mOnRemoteResp);
+    anfc.a().b(this.mOnRemoteResp);
   }
   
   void onDisconnectWithService() {}
   
   void onPushMsg(Bundle paramBundle) {}
   
-  public void onResponse(Bundle paramBundle)
+  protected void onResponse(Bundle paramBundle)
   {
     Object localObject;
     String str;
@@ -458,25 +459,25 @@ public abstract class VasWebviewJsPlugin
   
   public void sendRemoteReq(Bundle paramBundle, boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (!WebIPCOperator.a().a())
+    if (!anfc.a().a())
     {
       if (paramBoolean2) {
-        Toast.makeText(BaseApplicationImpl.getApplication(), "正在初始化服务，请稍候尝试", 0).show();
+        Toast.makeText(BaseApplicationImpl.getApplication(), ajjy.a(2131650261), 0).show();
       }
       QLog.e("VasWebviewJsPlugin", 1, "sendRemoteReq error ipc service not ready");
       return;
     }
     if (paramBoolean1)
     {
-      WebIPCOperator.a().b(paramBundle);
+      anfc.a().b(paramBundle);
       return;
     }
-    WebIPCOperator.a().a(paramBundle);
+    anfc.a().a(paramBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.VasWebviewJsPlugin
  * JD-Core Version:    0.7.0.1
  */

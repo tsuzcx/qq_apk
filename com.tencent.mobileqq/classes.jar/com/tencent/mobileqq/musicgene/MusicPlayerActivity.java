@@ -1,12 +1,5 @@
 package com.tencent.mobileqq.musicgene;
 
-import aesy;
-import aetd;
-import aete;
-import aetf;
-import aetg;
-import aeti;
-import aetj;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.ServiceConnection;
@@ -25,52 +18,63 @@ import android.view.View.OnClickListener;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.biz.webviewplugin.Share;
+import arey;
+import arfg;
+import arfr;
+import arzf;
+import arzh;
+import arzw;
+import asag;
+import asaj;
+import asak;
+import asal;
+import asam;
+import asan;
+import asao;
+import asap;
+import asaq;
+import asar;
+import awqx;
+import bfqn;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.ForwardRecentActivity;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.lyric.data.Lyric;
-import com.tencent.mobileqq.lyric.util.LyricParseHelper;
-import com.tencent.mobileqq.lyric.widget.LyricViewController;
 import com.tencent.mobileqq.lyric.widget.LyricViewDetail;
 import com.tencent.mobileqq.lyric.widget.LyricViewInternal;
-import com.tencent.mobileqq.music.IQQPlayerCallback.Stub;
-import com.tencent.mobileqq.music.IQQPlayerService;
 import com.tencent.mobileqq.music.QQPlayerService;
 import com.tencent.mobileqq.music.SongInfo;
-import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.QZoneShareManager;
 import java.util.ArrayList;
 import java.util.HashMap;
 import mqq.app.MobileQQ;
+import xdt;
 
 public class MusicPlayerActivity
   extends BaseActivity
 {
-  private static final HashMap jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private static final HashMap jdField_b_of_type_JavaUtilHashMap = new HashMap();
-  private static final HashMap jdField_c_of_type_JavaUtilHashMap = new HashMap();
-  private static final HashMap jdField_d_of_type_JavaUtilHashMap = new HashMap();
-  private final aetg jdField_a_of_type_Aetg = new aetg(this);
-  private final ServiceConnection jdField_a_of_type_AndroidContentServiceConnection = new aetd(this);
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new aesy(this);
+  private static final HashMap<String, Long> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private static final HashMap<String, String> jdField_b_of_type_JavaUtilHashMap = new HashMap();
+  private static final HashMap<String, asaq> jdField_c_of_type_JavaUtilHashMap = new HashMap();
+  private final ServiceConnection jdField_a_of_type_AndroidContentServiceConnection = new asaj(this);
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new asag(this);
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private Lyric jdField_a_of_type_ComTencentMobileqqLyricDataLyric;
-  private LyricViewController jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewController;
+  private arey jdField_a_of_type_Arey;
+  private arfr jdField_a_of_type_Arfr;
+  private final arzf jdField_a_of_type_Arzf = new asak(this);
+  private arzh jdField_a_of_type_Arzh;
+  private arzw jdField_a_of_type_Arzw = new asal(this);
+  private final asan jdField_a_of_type_Asan = new asan(this);
+  private final asao jdField_a_of_type_Asao = new asao(this);
+  private asar jdField_a_of_type_Asar;
   public LyricViewDetail a;
-  private final IQQPlayerCallback.Stub jdField_a_of_type_ComTencentMobileqqMusicIQQPlayerCallback$Stub = new aete(this);
-  private IQQPlayerService jdField_a_of_type_ComTencentMobileqqMusicIQQPlayerService;
-  private final MusicPlayerActivity.MusicPlayerObserver jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerActivity$MusicPlayerObserver = new MusicPlayerActivity.MusicPlayerObserver(this);
-  private MusicPlayerHandler jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerHandler;
   private ImageView jdField_b_of_type_AndroidWidgetImageView;
   private TextView jdField_b_of_type_AndroidWidgetTextView;
-  private Lyric jdField_b_of_type_ComTencentMobileqqLyricDataLyric;
+  private arey jdField_b_of_type_Arey;
   private ImageView jdField_c_of_type_AndroidWidgetImageView;
-  private ImageView jdField_d_of_type_AndroidWidgetImageView;
+  private ImageView d;
   
   private static Point a(Activity paramActivity)
   {
@@ -91,17 +95,17 @@ public class MusicPlayerActivity
     return localPoint;
   }
   
-  private String a(IQQPlayerService paramIQQPlayerService, SongInfo paramSongInfo, long paramLong)
+  private String a(arzh paramarzh, SongInfo paramSongInfo, long paramLong)
   {
     String str2 = "";
     String str1 = str2;
     if (paramSongInfo != null)
     {
-      if (paramLong == paramSongInfo.jdField_a_of_type_Long) {
-        paramSongInfo.jdField_a_of_type_Int = 4;
+      if (paramLong == paramSongInfo.a) {
+        paramSongInfo.jdField_b_of_type_Int = 4;
       }
       str1 = str2;
-      switch (paramSongInfo.jdField_a_of_type_Int)
+      switch (paramSongInfo.jdField_b_of_type_Int)
       {
       default: 
         str1 = str2;
@@ -113,27 +117,27 @@ public class MusicPlayerActivity
       if (TextUtils.isEmpty(str1))
       {
         paramSongInfo = str1;
-        if (paramIQQPlayerService != null) {
+        if (paramarzh != null) {
           paramSongInfo = null;
         }
       }
       try
       {
-        paramIQQPlayerService = paramIQQPlayerService.a();
+        paramarzh = paramarzh.a();
         paramSongInfo = str1;
-        if (paramIQQPlayerService != null) {
-          paramSongInfo = paramIQQPlayerService.getString("KEY_SOURCE_NAME");
+        if (paramarzh != null) {
+          paramSongInfo = paramarzh.getString("KEY_SOURCE_NAME");
         }
         return paramSongInfo;
-        str1 = getString(2131435123);
+        str1 = getString(2131629110);
         continue;
-        str1 = getString(2131438503);
+        str1 = getString(2131628820);
       }
-      catch (RemoteException paramIQQPlayerService)
+      catch (RemoteException paramarzh)
       {
         for (;;)
         {
-          paramIQQPlayerService = paramSongInfo;
+          paramarzh = paramSongInfo;
         }
       }
     }
@@ -143,15 +147,15 @@ public class MusicPlayerActivity
   {
     String str = "";
     if (paramSongInfo != null) {
-      str = paramSongInfo.b + "_____" + String.valueOf(paramSongInfo.jdField_a_of_type_Long);
+      str = paramSongInfo.jdField_b_of_type_JavaLangString + "_____" + String.valueOf(paramSongInfo.a);
     }
     return str;
   }
   
   private void a()
   {
-    IQQPlayerService localIQQPlayerService = this.jdField_a_of_type_ComTencentMobileqqMusicIQQPlayerService;
-    if (localIQQPlayerService == null)
+    arzh localarzh = this.jdField_a_of_type_Arzh;
+    if (localarzh == null)
     {
       QLog.e("MusicPlayerActivity", 1, new Object[] { "updateLyricPosition() exception", "mService is null!" });
       return;
@@ -160,7 +164,7 @@ public class MusicPlayerActivity
     {
       try
       {
-        Object localObject1 = localIQQPlayerService.a();
+        Object localObject1 = localarzh.a();
         if (localObject1 == null) {
           break label383;
         }
@@ -181,7 +185,7 @@ public class MusicPlayerActivity
         if (TextUtils.isEmpty((CharSequence)localObject1))
         {
           this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewDetail.setVisibility(4);
-          this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewController.b();
+          this.jdField_a_of_type_Arfr.b();
           return;
         }
       }
@@ -195,31 +199,31 @@ public class MusicPlayerActivity
         a(localException, this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewDetail);
         this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewDetail.setTag(Long.valueOf(l1));
       }
-      int i = localIQQPlayerService.a();
+      int i = localarzh.a();
       this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewDetail.setVisibility(0);
-      long l2 = localIQQPlayerService.g();
+      long l2 = localarzh.g();
       long l1 = l2;
       if (l2 < 0L) {
         l1 = 0L;
       }
       int j = (int)l1;
-      if (localIQQPlayerService.a())
+      if (localarzh.a())
       {
-        boolean bool = this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewController.a();
+        boolean bool = this.jdField_a_of_type_Arfr.a();
         if (!bool) {
-          this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewController.a();
+          this.jdField_a_of_type_Arfr.a();
         }
         QLog.i("MusicPlayerActivity", 1, "LyricTest updateLyricPosition() try to seek! playPosition:" + l1 + " seekPosition:" + j + " isPlaying:" + bool);
-        this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewController.a(j);
+        this.jdField_a_of_type_Arfr.a(j);
         return;
       }
       if (3 == i)
       {
-        this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewController.a(j);
-        this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewController.c();
+        this.jdField_a_of_type_Arfr.a(j);
+        this.jdField_a_of_type_Arfr.c();
         return;
       }
-      this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewController.b();
+      this.jdField_a_of_type_Arfr.b();
       return;
       label368:
       l2 = -1L;
@@ -241,15 +245,15 @@ public class MusicPlayerActivity
     }
   }
   
-  private void a(aetj paramaetj, String paramString)
+  private void a(asaq paramasaq, String paramString)
   {
-    aeti localaeti = new aeti(paramaetj.jdField_a_of_type_JavaLangString, paramaetj.b, paramaetj.e, paramaetj.d, paramaetj.c, "http://qzonestyle.gtimg.cn/ac/qzone/applogo/16/308/100497308_16.gif");
-    Message localMessage = Message.obtain(this.jdField_a_of_type_Aetg, 51);
+    asap localasap = new asap(paramasaq.jdField_a_of_type_JavaLangString, paramasaq.jdField_b_of_type_JavaLangString, paramasaq.e, paramasaq.d, paramasaq.c, "http://qzonestyle.gtimg.cn/ac/qzone/applogo/16/308/100497308_16.gif");
+    Message localMessage = Message.obtain(this.jdField_a_of_type_Asan, 51);
     localMessage.arg1 = 1;
-    localMessage.obj = localaeti;
+    localMessage.obj = localasap;
     localMessage.sendToTarget();
-    Message.obtain(this.jdField_a_of_type_Aetg, 53).sendToTarget();
-    a(paramaetj.jdField_a_of_type_JavaLangString, paramaetj.b, paramaetj.e, paramString, paramaetj.jdField_a_of_type_Boolean, true);
+    Message.obtain(this.jdField_a_of_type_Asan, 53).sendToTarget();
+    a(paramasaq.jdField_a_of_type_JavaLangString, paramasaq.jdField_b_of_type_JavaLangString, paramasaq.e, paramString, paramasaq.jdField_a_of_type_Boolean, true);
   }
   
   private void a(String paramString, LyricViewDetail paramLyricViewDetail)
@@ -258,16 +262,16 @@ public class MusicPlayerActivity
     do
     {
       return;
-      this.jdField_b_of_type_ComTencentMobileqqLyricDataLyric = LyricParseHelper.a(paramString, true);
-      if (this.jdField_b_of_type_ComTencentMobileqqLyricDataLyric == null) {
-        this.jdField_a_of_type_ComTencentMobileqqLyricDataLyric = LyricParseHelper.a(paramString, false);
+      this.jdField_b_of_type_Arey = arfg.a(paramString, true);
+      if (this.jdField_b_of_type_Arey == null) {
+        this.jdField_a_of_type_Arey = arfg.a(paramString, false);
       }
-    } while ((this.jdField_b_of_type_ComTencentMobileqqLyricDataLyric == null) && (this.jdField_a_of_type_ComTencentMobileqqLyricDataLyric == null));
-    this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewController.b();
+    } while ((this.jdField_b_of_type_Arey == null) && (this.jdField_a_of_type_Arey == null));
+    this.jdField_a_of_type_Arfr.b();
     paramLyricViewDetail.a().setHighlightCurrentLine(true);
     paramLyricViewDetail.a().setHighlightLineNumber(2);
-    this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewController.a(paramLyricViewDetail);
-    this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewController.a(this.jdField_b_of_type_ComTencentMobileqqLyricDataLyric, this.jdField_a_of_type_ComTencentMobileqqLyricDataLyric, null);
+    this.jdField_a_of_type_Arfr.a(paramLyricViewDetail);
+    this.jdField_a_of_type_Arfr.a(this.jdField_b_of_type_Arey, this.jdField_a_of_type_Arey, null);
   }
   
   private void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
@@ -286,12 +290,12 @@ public class MusicPlayerActivity
     localBundle.putString("strurt_msgid", "0");
     localBundle.putString("struct_url", this.app.c());
     localBundle.putBoolean("from_web", true);
-    QZoneShareManager.a(this.app, this, localBundle, null, 0);
+    bfqn.a(this.app, this, localBundle, null, 0);
   }
   
   private void a(String paramString1, String paramString2, String paramString3, String paramString4, boolean paramBoolean1, boolean paramBoolean2)
   {
-    Message localMessage = Message.obtain(this.jdField_a_of_type_Aetg, 52);
+    Message localMessage = Message.obtain(this.jdField_a_of_type_Asan, 52);
     Bundle localBundle = new Bundle();
     localBundle.putString("KEY_SONG_NAME", paramString1);
     localBundle.putString("KEY_SINGER_NAME", paramString2);
@@ -332,46 +336,46 @@ public class MusicPlayerActivity
     localIntent.putExtra("req_share_id", 1101244924L);
     localIntent.putExtra("pkg_name", "com.tencent.mobileqq");
     localIntent.putExtra("image_url_remote", paramString4);
-    localIntent.putExtra("brief_key", BaseApplicationImpl.getContext().getString(2131430119, new Object[] { str }));
+    localIntent.putExtra("brief_key", BaseApplicationImpl.getContext().getString(2131630985, new Object[] { str }));
     localIntent.putExtra("audio_url", paramString5);
     localIntent.putExtra("req_type", 2);
-    localIntent.putExtra("openerProc", MobileQQ.getMobileQQ().getProcessName());
+    localIntent.putExtra("openerProc", MobileQQ.getMobileQQ().getQQProcessName());
     if (this.app != null)
     {
-      localIntent.putExtra("struct_share_key_source_name", getString(2131433018));
-      Share.a(this.app, this, this.app.getAccount(), 1101244924L, 3000L, new aetf(this, localIntent));
+      localIntent.putExtra("struct_share_key_source_name", getString(2131624591));
+      xdt.a(this.app, this, this.app.getAccount(), 1101244924L, 3000L, new asam(this, localIntent));
     }
   }
   
-  protected boolean doOnCreate(Bundle paramBundle)
+  public boolean doOnCreate(Bundle paramBundle)
   {
     this.mNeedStatusTrans = false;
     boolean bool = super.doOnCreate(paramBundle);
     try
     {
-      setContentView(2130969110);
+      setContentView(2131493747);
       bindService(new Intent(this, QQPlayerService.class), this.jdField_a_of_type_AndroidContentServiceConnection, 33);
-      paramBundle = findViewById(2131365211);
-      View localView = findViewById(2131365210);
+      paramBundle = findViewById(2131304916);
+      View localView = findViewById(2131304905);
       int i = a(this).x;
       paramBundle.getLayoutParams().height = i;
       localView.getLayoutParams().height = i;
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365216));
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365221));
-      this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131365219));
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131365218));
-      this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131365220));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131304915));
+      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131304909));
+      this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131304911));
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131304913));
+      this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131304908));
       this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-      this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerHandler = ((MusicPlayerHandler)this.app.a(92));
-      this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewDetail = ((LyricViewDetail)findViewById(2131365217));
-      this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewController = new LyricViewController(this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewDetail);
-      findViewById(2131365213).setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+      this.jdField_a_of_type_Asar = ((asar)this.app.a(92));
+      this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewDetail = ((LyricViewDetail)findViewById(2131304912));
+      this.jdField_a_of_type_Arfr = new arfr(this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewDetail);
+      findViewById(2131304906).setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
       this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-      this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131365214));
-      this.jdField_d_of_type_AndroidWidgetImageView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+      this.d = ((ImageView)findViewById(2131304914));
+      this.d.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
       this.jdField_c_of_type_AndroidWidgetImageView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-      addObserver(this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerActivity$MusicPlayerObserver);
-      ReportController.b(this.app, "CliOper", "", "", "0X8006826", "0X8006826", 0, 0, "", "", "", "");
+      addObserver(this.jdField_a_of_type_Asao);
+      awqx.b(this.app, "CliOper", "", "", "0X8006826", "0X8006826", 0, 0, "", "", "", "");
       return bool;
     }
     catch (OutOfMemoryError paramBundle)
@@ -381,16 +385,16 @@ public class MusicPlayerActivity
     return false;
   }
   
-  protected void doOnDestroy()
+  public void doOnDestroy()
   {
-    IQQPlayerService localIQQPlayerService = this.jdField_a_of_type_ComTencentMobileqqMusicIQQPlayerService;
-    if (localIQQPlayerService != null) {}
+    arzh localarzh = this.jdField_a_of_type_Arzh;
+    if (localarzh != null) {}
     try
     {
-      localIQQPlayerService.b(this.jdField_a_of_type_ComTencentMobileqqMusicIQQPlayerCallback$Stub);
+      localarzh.b(this.jdField_a_of_type_Arzf);
       label19:
       unbindService(this.jdField_a_of_type_AndroidContentServiceConnection);
-      removeObserver(this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerActivity$MusicPlayerObserver);
+      removeObserver(this.jdField_a_of_type_Asao);
       super.doOnDestroy();
       return;
     }
@@ -400,12 +404,12 @@ public class MusicPlayerActivity
     }
   }
   
-  protected void onDestroy()
+  public void onDestroy()
   {
     try
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewController != null) {
-        this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewController.b();
+      if (this.jdField_a_of_type_Arfr != null) {
+        this.jdField_a_of_type_Arfr.b();
       }
       super.onDestroy();
       return;
@@ -421,7 +425,7 @@ public class MusicPlayerActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.musicgene.MusicPlayerActivity
  * JD-Core Version:    0.7.0.1
  */

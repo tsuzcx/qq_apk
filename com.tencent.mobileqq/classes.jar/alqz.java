@@ -1,37 +1,28 @@
-import com.tencent.open.appcircle.st.AppCircleReportManager;
-import com.tencent.open.base.LogUtility;
-import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.open.downloadnew.DownloadManager;
-import com.tencent.open.downloadnew.common.DownloadDBHelper;
-import com.tencent.open.downloadnew.common.PackageInstallReceiver;
+import android.annotation.TargetApi;
+import android.hardware.Camera;
+import android.hardware.Camera.Face;
+import android.hardware.Camera.FaceDetectionListener;
+import android.os.Handler;
+import com.tencent.mobileqq.camera.CameraManagerImpl.FaceDetectionCallbackForward.1;
+import com.tencent.qphone.base.util.QLog;
 
+@TargetApi(14)
 public class alqz
-  implements Runnable
+  implements Camera.FaceDetectionListener
 {
-  public alqz(PackageInstallReceiver paramPackageInstallReceiver, String paramString1, String paramString2) {}
+  private final alqo jdField_a_of_type_Alqo;
+  private final alqs jdField_a_of_type_Alqs;
+  private final Handler jdField_a_of_type_AndroidOsHandler;
   
-  public void run()
+  public void onFaceDetection(Camera.Face[] paramArrayOfFace, Camera paramCamera)
   {
-    LogUtility.c(this.jdField_a_of_type_ComTencentOpenDownloadnewCommonPackageInstallReceiver.jdField_a_of_type_JavaLangString, "ACTION_PACKAGE_ADDED >> " + this.jdField_a_of_type_JavaLangString);
-    DownloadInfo localDownloadInfo = DownloadDBHelper.a().a(this.b);
-    if (localDownloadInfo != null)
-    {
-      LogUtility.c(this.jdField_a_of_type_ComTencentOpenDownloadnewCommonPackageInstallReceiver.jdField_a_of_type_JavaLangString, "ACTION_PACKAGE_ADDED info != null>> " + localDownloadInfo.toString() + " " + localDownloadInfo.b + " " + localDownloadInfo.d);
-      DownloadManager.a().d(localDownloadInfo);
-      AppCircleReportManager.a().a(101, localDownloadInfo);
-    }
-    for (;;)
-    {
-      DownloadManager.a().a(6, localDownloadInfo);
-      return;
-      localDownloadInfo = new DownloadInfo("", this.b);
-      LogUtility.c(this.jdField_a_of_type_ComTencentOpenDownloadnewCommonPackageInstallReceiver.jdField_a_of_type_JavaLangString, "ACTION_PACKAGE_ADDED info == null>> " + localDownloadInfo.toString());
-    }
+    QLog.d("Q.camera.CameraManagerImpl", 2, "[onFaceDetection] faces = " + paramArrayOfFace + ", length = " + paramArrayOfFace.length);
+    this.jdField_a_of_type_AndroidOsHandler.post(new CameraManagerImpl.FaceDetectionCallbackForward.1(this, paramArrayOfFace));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     alqz
  * JD-Core Version:    0.7.0.1
  */

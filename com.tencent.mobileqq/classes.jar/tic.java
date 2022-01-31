@@ -1,21 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
-
 class tic
-  implements DialogInterface.OnClickListener
+  implements tmy
 {
-  tic(tib paramtib) {}
+  tic(tia paramtia) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    ThreadManager.getSubThreadHandler().post(new tid(this));
-  }
+  public void a(int paramInt1, int paramInt2) {}
+  
+  public void a(int paramInt1, int paramInt2, float paramFloat, int paramInt3) {}
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tic
  * JD-Core Version:    0.7.0.1
  */

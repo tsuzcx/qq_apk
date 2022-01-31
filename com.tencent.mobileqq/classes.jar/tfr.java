@@ -1,30 +1,17 @@
-import com.tencent.mobileqq.activity.MainFragment;
-import com.tencent.mobileqq.activity.main.MainAssistObserver;
-import com.tencent.mobileqq.app.QIMNewFriendManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-
-public class tfr
-  implements Runnable
+class tfr
+  implements swj
 {
-  public tfr(MainFragment paramMainFragment) {}
+  tfr(tfp paramtfp, swi paramswi) {}
   
-  public void run()
+  public void a(boolean paramBoolean)
   {
-    if (this.a.a != null) {
-      this.a.a.a();
-    }
-    if (MainFragment.a(this.a) != null)
-    {
-      MainFragment.a(this.a).addObserver(MainFragment.a(this.a));
-      ((QIMNewFriendManager)MainFragment.a(this.a).getManager(256)).a(MainFragment.a(this.a));
-      MainFragment.a(this.a).registObserver(MainFragment.a(this.a));
-    }
-    MainFragment.a(this.a, false);
+    this.jdField_a_of_type_Swi.a();
+    this.jdField_a_of_type_Tfp.c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tfr
  * JD-Core Version:    0.7.0.1
  */

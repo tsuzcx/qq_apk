@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class FavoriteCKVData$KandianFavoriteBizData
-  extends MessageMicro
+  extends MessageMicro<KandianFavoriteBizData>
 {
   public static final int Article = 1;
   public static final int PictureCollection = 3;
@@ -34,7 +34,7 @@ public final class FavoriteCKVData$KandianFavoriteBizData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     tencent.im.oidb.FavoriteCKVData.KandianFavoriteBizData
  * JD-Core Version:    0.7.0.1
  */

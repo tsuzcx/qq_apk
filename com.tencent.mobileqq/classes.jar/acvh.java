@@ -1,41 +1,152 @@
-import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity;
-import com.tencent.mobileqq.filemanager.widget.FileWebView.TitilebarEventInterface;
+import android.util.SparseArray;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class acvh
-  implements FileWebView.TitilebarEventInterface
 {
-  public acvh(FilePreviewActivity paramFilePreviewActivity) {}
+  private static acvh jdField_a_of_type_Acvh;
+  private SparseArray<acvg> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+  private AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
   
-  public void a() {}
-  
-  public void a(boolean paramBoolean) {}
-  
-  public void b()
+  private acvg a(long paramLong, boolean paramBoolean)
   {
-    if ((this.a.jdField_a_of_type_Boolean) || (this.a.f)) {
-      return;
-    }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFilePreviewDataReporter != null)
+    int i = this.jdField_a_of_type_AndroidUtilSparseArray.size() - 1;
+    while (i >= 0)
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFilePreviewDataReporter.l = "3";
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFilePreviewDataReporter.e = System.currentTimeMillis();
+      acvg localacvg = (acvg)this.jdField_a_of_type_AndroidUtilSparseArray.valueAt(i);
+      if ((localacvg != null) && (localacvg.a(paramLong, paramBoolean))) {
+        return localacvg;
+      }
+      i -= 1;
     }
-    this.a.runOnUiThread(new acvi(this));
+    return null;
   }
   
-  public void c() {}
+  public static acvh a()
+  {
+    if (jdField_a_of_type_Acvh == null) {}
+    try
+    {
+      if (jdField_a_of_type_Acvh == null) {
+        jdField_a_of_type_Acvh = new acvh();
+      }
+      return jdField_a_of_type_Acvh;
+    }
+    finally {}
+  }
   
-  public void d() {}
+  public int a()
+  {
+    return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.incrementAndGet();
+  }
   
-  public void e() {}
+  public void a(long paramLong1, long paramLong2, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ForwardOrderManager", 2, "mapUniSeqId:: newSeq -> " + paramLong1 + ", originSeq -> " + paramLong2 + ", id -> " + paramInt);
+    }
+    acvg localacvg = (acvg)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+    if (localacvg != null) {
+      localacvg.a(paramLong1, paramLong2);
+    }
+  }
   
-  public void f() {}
+  public void a(SessionInfo paramSessionInfo, String paramString, int paramInt)
+  {
+    a(paramSessionInfo, paramString, new ArrayList(), 1, paramInt);
+  }
   
-  public void g() {}
+  public void a(SessionInfo paramSessionInfo, String paramString, List<MessageRecord> paramList, int paramInt1, int paramInt2)
+  {
+    ArrayList localArrayList = new ArrayList();
+    if ((paramList != null) && (paramList.size() > 0))
+    {
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        MessageRecord localMessageRecord = (MessageRecord)paramList.next();
+        localArrayList.add(Long.valueOf(localMessageRecord.uniseq));
+        if (QLog.isColorLevel()) {
+          QLog.d("ForwardOrderManager", 2, "onPreForward :: mr.uniseq -> " + localMessageRecord.uniseq + ", forwardID -> " + paramInt2);
+        }
+      }
+    }
+    if (paramInt1 == 1) {}
+    for (paramList = new acvn();; paramList = new acvi())
+    {
+      this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt2, paramList.a(paramSessionInfo, paramString, localArrayList, paramInt2));
+      return;
+    }
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, long paramLong)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ForwardOrderManager", 2, "onSendResult newSeq -> " + paramLong + ", mForwardEntities.size() => " + this.jdField_a_of_type_AndroidUtilSparseArray.size());
+    }
+    acvg localacvg = a(paramLong, false);
+    if ((localacvg != null) && (localacvg.a(paramQQAppInterface, paramLong))) {
+      this.jdField_a_of_type_AndroidUtilSparseArray.remove(localacvg.a);
+    }
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, long paramLong, int paramInt)
+  {
+    acvg localacvg = (acvg)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+    if (localacvg != null) {
+      localacvg.a(paramQQAppInterface, paramLong);
+    }
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord)
+  {
+    try
+    {
+      acvg localacvg = a(paramMessageRecord.uniseq, true);
+      if (localacvg != null) {
+        localacvg.a(paramQQAppInterface, paramMessageRecord);
+      }
+      return;
+    }
+    finally {}
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, List<MessageRecord> paramList)
+  {
+    if (paramList != null) {
+      try
+      {
+        if (paramList.size() > 0)
+        {
+          paramList = paramList.iterator();
+          while (paramList.hasNext()) {
+            a(paramQQAppInterface, (MessageRecord)paramList.next());
+          }
+        }
+      }
+      finally {}
+    }
+  }
+  
+  public void a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2, int paramInt)
+  {
+    try
+    {
+      ((acvg)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt)).b(paramMessageRecord1.uniseq, paramMessageRecord2.uniseq);
+      return;
+    }
+    finally {}
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     acvh
  * JD-Core Version:    0.7.0.1
  */

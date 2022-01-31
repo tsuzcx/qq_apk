@@ -1,20 +1,26 @@
-import android.graphics.drawable.Drawable;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.nearby.picbrowser.GalleryItemVideo;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
 
-public class afgi
-  implements Runnable
+class afgi
+  extends ajjh
 {
-  public afgi(GalleryItemVideo paramGalleryItemVideo, URLImageView paramURLImageView, Drawable paramDrawable) {}
+  afgi(afgd paramafgd) {}
   
-  public void run()
+  protected void onMayKnowEntryStateChanged(boolean paramBoolean, Bundle paramBundle)
   {
-    this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+    if (QLog.isColorLevel()) {
+      QLog.d("CTEntryMng", 2, "onMayKnowEntryStateChanged isSuccess=" + paramBoolean);
+    }
+    if (paramBoolean)
+    {
+      afgd.a(this.a, true);
+      afgd.a(this.a);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     afgi
  * JD-Core Version:    0.7.0.1
  */

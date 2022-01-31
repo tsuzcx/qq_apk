@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a04c2" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mobileqq.widget.CircleProgress android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0702" android:layout_width="125.0dip" android:layout_height="125.0dip" android:scaleType="center" android:layout_centerInParent="true" />
-    <TextView android:textSize="14.0sp" android:textColor="#7fffffff" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="正在上传..." android:layout_centerInParent="true" />
-    <TextView android:textSize="16.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0069" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a15c8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b2d4c" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a0702" android:layout_centerInParent="true" />
-</RelativeLayout>

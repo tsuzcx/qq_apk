@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class GetTroopAioTopAD$AdInfo
-  extends MessageMicro
+  extends MessageMicro<AdInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34, 40, 48, 58 }, new String[] { "uint32_ad_id", "str_background_url", "str_more_url", "str_pic_url", "uint32_valid_interval", "ad_show_type", "msg_ext_adinfo" }, new Object[] { Integer.valueOf(0), "", "", "", Integer.valueOf(0), Integer.valueOf(0), null }, AdInfo.class);
   public final PBEnumField ad_show_type = PBField.initEnum(0);
@@ -21,7 +21,7 @@ public final class GetTroopAioTopAD$AdInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     tencent.im.oidb.inner.cmdGroupAdGetAdInfo.GetTroopAioTopAD.AdInfo
  * JD-Core Version:    0.7.0.1
  */

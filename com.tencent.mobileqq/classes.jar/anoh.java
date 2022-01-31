@@ -1,48 +1,48 @@
-import android.content.Context;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.utils.AudioUtil;
-import com.tencent.mobileqq.utils.QQRecorder;
-import cooperation.troop_homework.jsp.TroopHWVoiceController;
-import cooperation.troop_homework.jsp.TroopHWVoiceController.RecordCallback;
-import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 public class anoh
-  extends Handler
 {
-  public anoh(TroopHWVoiceController paramTroopHWVoiceController) {}
+  public int a;
+  public String a;
+  public HashMap<String, anoi> a;
+  public List<String> a;
+  public boolean a;
+  public int b;
+  public String b;
+  public List<String> b = new ArrayList();
+  public int c;
+  public String c;
+  public int d;
+  public String d;
+  public int e;
+  public String e;
+  public int f;
+  public String f;
+  public int g;
+  public String g;
+  public int h;
+  public String h;
+  public int i;
+  public String i;
+  public int j = 2;
+  public String j;
+  public int k = 50;
+  public String k;
+  public int l = 1;
+  public String l;
+  public String m;
   
-  public void handleMessage(Message paramMessage)
+  public anoh()
   {
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          if (TroopHWVoiceController.a(this.a) != null) {
-            TroopHWVoiceController.a(this.a).a(1, TroopHWVoiceController.a(this.a));
-          }
-        } while (!(paramMessage.obj instanceof String));
-        paramMessage = (String)paramMessage.obj;
-        this.a.d(paramMessage);
-        this.a.c(paramMessage);
-        return;
-        TroopHWVoiceController.a(this.a).c();
-        AudioUtil.b(2131230744, false);
-      } while (this.a.a == null);
-      paramMessage = (Context)this.a.a.get();
-    } while (paramMessage == null);
-    AudioUtil.a(paramMessage, false);
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     anoh
  * JD-Core Version:    0.7.0.1
  */

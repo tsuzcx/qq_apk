@@ -1,18 +1,19 @@
 package com.tencent.mobileqq.data;
 
+import ajyo;
+import akbm;
 import android.text.TextUtils;
-import com.tencent.mobileqq.app.fms.MessageSearchUtils;
-import com.tencent.mobileqq.app.message.MsgProxyUtils;
-import com.tencent.mobileqq.persistence.notColumn;
+import atnz;
+import awuw;
 import com.tencent.mobileqq.structmsg.AbsShareMsg;
 import com.tencent.mobileqq.structmsg.AbsStructMsg;
-import com.tencent.mobileqq.structmsg.StructMsgFactory;
+import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
 import com.tencent.mobileqq.structmsg.StructMsgForImageShare;
 
 public class MessageForStructing
   extends MessageForRichText
 {
-  @notColumn
+  @atnz
   public boolean bDynicMsg;
   public AbsStructMsg structingMsg;
   
@@ -22,6 +23,34 @@ public class MessageForStructing
   {
     copyStructingMsg(paramMessageRecord);
     this.uniseq = paramMessageRecord.uniseq;
+  }
+  
+  public static String getReplySummary(ChatMessage paramChatMessage)
+  {
+    StringBuilder localStringBuilder = new StringBuilder(32);
+    MessageForStructing localMessageForStructing;
+    if ((paramChatMessage instanceof MessageForStructing))
+    {
+      localMessageForStructing = (MessageForStructing)paramChatMessage;
+      if ((localMessageForStructing.structingMsg instanceof StructMsgForGeneralShare))
+      {
+        if (localMessageForStructing.structingMsg.mMsgServiceID != 95) {
+          break label85;
+        }
+        localStringBuilder.append("[在线文档]").append(((StructMsgForGeneralShare)localMessageForStructing.structingMsg).mContentTitle);
+      }
+    }
+    for (;;)
+    {
+      if (localStringBuilder.length() == 0) {
+        localStringBuilder.append(paramChatMessage.getSummaryMsg());
+      }
+      return localStringBuilder.toString();
+      label85:
+      if (localMessageForStructing.structingMsg.mMsgServiceID == 33) {
+        localStringBuilder.append("[链接]").append(((StructMsgForGeneralShare)localMessageForStructing.structingMsg).mContentTitle);
+      }
+    }
   }
   
   public void copyStructingMsg(MessageRecord paramMessageRecord)
@@ -50,13 +79,13 @@ public class MessageForStructing
     this.time = paramMessageRecord.time;
     this.versionCode = paramMessageRecord.versionCode;
     this.vipBubbleID = paramMessageRecord.vipBubbleID;
-    this.structingMsg = StructMsgFactory.a(this.msgData);
+    this.structingMsg = awuw.a(this.msgData);
   }
   
   protected void doParse()
   {
     if (!this.bDynicMsg) {
-      this.structingMsg = StructMsgFactory.a(this.msgData);
+      this.structingMsg = awuw.a(this.msgData);
     }
   }
   
@@ -71,7 +100,7 @@ public class MessageForStructing
     String str1 = str2;
     if (this.structingMsg != null)
     {
-      boolean bool = MessageSearchUtils.a(String.valueOf(this.structingMsg.mMsgServiceID));
+      boolean bool = ajyo.a(String.valueOf(this.structingMsg.mMsgServiceID));
       str1 = str2;
       if ((this.structingMsg instanceof AbsShareMsg))
       {
@@ -115,7 +144,7 @@ public class MessageForStructing
   
   public boolean isSupportFTS()
   {
-    return MsgProxyUtils.v(this.istroop);
+    return akbm.v(this.istroop);
   }
   
   public boolean isSupportReply()
@@ -123,12 +152,12 @@ public class MessageForStructing
     return true;
   }
   
-  protected void postRead()
+  public void postRead()
   {
     parse();
   }
   
-  protected void prewrite()
+  public void prewrite()
   {
     if (this.structingMsg != null) {}
     try

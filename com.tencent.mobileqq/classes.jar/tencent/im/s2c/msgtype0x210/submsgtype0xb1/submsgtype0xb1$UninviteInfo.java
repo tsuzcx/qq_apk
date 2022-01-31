@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class submsgtype0xb1$UninviteInfo
-  extends MessageMicro
+  extends MessageMicro<UninviteInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26 }, new String[] { "uint64_uin", "uint64_group_code", "str_id" }, new Object[] { Long.valueOf(0L), Long.valueOf(0L), "" }, UninviteInfo.class);
   public final PBStringField str_id = PBField.initString("");

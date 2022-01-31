@@ -19,14 +19,7 @@ public class DenoiseRender
   {
     this.mContextReference = new WeakReference(paramContext);
     Log.d("DenoiseRender", "new DenoiseRender");
-    addTaskBeforeProcess(new Runnable()
-    {
-      public void run()
-      {
-        DenoiseRender.access$002(DenoiseRender.this, new QQAVImageDenoiseFilter());
-        DenoiseRender.this.mDenoiseFilter.init();
-      }
-    });
+    addTaskBeforeProcess(new DenoiseRender.1(this));
   }
   
   public void destroy()
@@ -62,23 +55,15 @@ public class DenoiseRender
     return new EffectTexture(this.mOutTextureId, this.mOutFbo, this.mWidth, this.mHeight);
   }
   
-  public void setUpdateRate(final float paramFloat)
+  public void setUpdateRate(float paramFloat)
   {
     Log.d("DenoiseRender", "setUpdateRate updateRate = " + paramFloat);
-    addTaskBeforeProcess(new Runnable()
-    {
-      public void run()
-      {
-        if (DenoiseRender.this.mDenoiseFilter != null) {
-          DenoiseRender.this.mDenoiseFilter.setUpdateRate(paramFloat);
-        }
-      }
-    });
+    addTaskBeforeProcess(new DenoiseRender.2(this, paramFloat));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.av.video.effect.denoise.DenoiseRender
  * JD-Core Version:    0.7.0.1
  */

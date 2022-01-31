@@ -1,15 +1,15 @@
 package cooperation.qzone.model;
 
-import anci;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
+import bfwm;
 
 public class VideoInfo$VideoRemark
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new anci();
+  public static final Parcelable.Creator<VideoRemark> CREATOR = new bfwm();
   public int a;
   public String a;
   public int b;

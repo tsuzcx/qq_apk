@@ -1,30 +1,35 @@
-import android.os.Handler;
-import android.os.Message;
-import android.os.SystemClock;
-import com.tencent.widget.ProgressPieView;
+import java.util.ArrayList;
 
 public class amko
-  extends Handler
 {
-  long jdField_a_of_type_Long;
+  private amkp jdField_a_of_type_Amkp;
+  private String jdField_a_of_type_JavaLangString;
   
-  public amko(ProgressPieView paramProgressPieView) {}
-  
-  public void handleMessage(Message paramMessage)
+  public amko()
   {
-    int i = (int)(SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long);
-    if (i < this.jdField_a_of_type_ComTencentWidgetProgressPieView.a)
-    {
-      this.jdField_a_of_type_ComTencentWidgetProgressPieView.setProgress(i);
-      sendEmptyMessageDelayed(0, 1L);
-      return;
-    }
-    this.jdField_a_of_type_ComTencentWidgetProgressPieView.setProgress(this.jdField_a_of_type_ComTencentWidgetProgressPieView.a);
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Amkp = new amkp();
+  }
+  
+  public amko(String paramString, amkp paramamkp)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Amkp = paramamkp;
+  }
+  
+  public amkp a()
+  {
+    return this.jdField_a_of_type_Amkp;
+  }
+  
+  public boolean a()
+  {
+    return (this.jdField_a_of_type_Amkp == null) || (this.jdField_a_of_type_Amkp.a == null) || (this.jdField_a_of_type_Amkp.a.size() <= 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amko
  * JD-Core Version:    0.7.0.1
  */

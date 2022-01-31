@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/xr" android:background="@drawable/fe" android:clickable="false" android:layout_width="fill_parent" android:layout_height="180.0dip" android:layout_alignParentBottom="true"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@id/apw" android:layout_width="52.0dip" android:layout_height="52.0dip" android:layout_alignParentBottom="true" />
+    <com.tencent.mobileqq.ar.ARRecord.ARVideoRecordButtonView android:id="@id/ej9" android:clickable="false" android:layout_width="36.0dip" android:layout_height="36.0dip" android:layout_marginLeft="16.0dip" android:layout_marginBottom="16.0dip" android:layout_alignParentBottom="true" />
+    <TextView android:textSize="16.0dip" android:textColor="@color/al3" android:id="@id/wz" android:background="@drawable/ddn" android:paddingLeft="10.0dip" android:paddingTop="6.0dip" android:paddingRight="10.0dip" android:layout_width="wrap_content" android:layout_height="43.0dip" android:layout_marginLeft="15.0dip" android:layout_marginBottom="6.0dip" android:text="点击录制你的AR视频" android:layout_above="@id/ej9" />
+    <TextView android:textSize="12.0dip" android:textColor="#ffffffff" android:gravity="center" android:id="@id/x1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginBottom="36.0dip" android:text="@string/jr2" android:includeFontPadding="false" android:layout_toRightOf="@id/ej9" android:layout_alignParentBottom="true" />
+    <TextView android:textSize="12.0dip" android:textColor="#ffffffff" android:gravity="center" android:id="@id/x0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginBottom="20.0dip" android:text="0.00M" android:includeFontPadding="false" android:layout_toRightOf="@id/ej9" android:layout_alignParentBottom="true" />
+</RelativeLayout>

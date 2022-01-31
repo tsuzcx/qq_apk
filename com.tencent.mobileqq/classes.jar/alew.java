@@ -1,65 +1,39 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.widget.TabDragAnimationView;
+import com.tencent.ark.ArkAppPreloader.PreloadAppCallback;
+import com.tencent.ark.open.ArkAppMgr;
+import com.tencent.qphone.base.util.QLog;
 
-public final class alew
-  implements ValueAnimator.AnimatorUpdateListener
+class alew
+  implements ArkAppPreloader.PreloadAppCallback
 {
-  public float a;
-  private final TabDragAnimationView a;
-  public float b = 0.0F;
-  private float c;
-  private float d;
-  private float e;
-  private float f;
+  alew(aleu paramaleu) {}
   
-  public alew(TabDragAnimationView paramTabDragAnimationView)
+  public void beginAppload(String paramString, int paramInt)
   {
-    this.jdField_a_of_type_Float = 0.0F;
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTabDragAnimationView = paramTabDragAnimationView;
-  }
-  
-  public void a()
-  {
-    this.c = this.jdField_a_of_type_ComTencentMobileqqWidgetTabDragAnimationView.c;
-    this.jdField_d_of_type_Float = this.jdField_a_of_type_ComTencentMobileqqWidgetTabDragAnimationView.jdField_d_of_type_Float;
-    this.e = (this.c - this.jdField_a_of_type_Float);
-    this.f = (this.jdField_d_of_type_Float - this.b);
-  }
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    float f2 = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    if ((f2 < 0.1F) && (this.jdField_a_of_type_Float == 0.0F) && (this.b == 0.0F))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetTabDragAnimationView.jdField_d_of_type_Int = 1;
-      this.jdField_a_of_type_ComTencentMobileqqWidgetTabDragAnimationView.c();
-      paramValueAnimator.cancel();
-      paramValueAnimator.removeUpdateListener(this);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetTabDragAnimationView.a = null;
-      return;
+    if (paramInt == 1) {
+      aleo.a(paramString);
     }
-    float f1;
-    if (f2 < 0.1F)
+  }
+  
+  public void onAppLoaded(boolean paramBoolean, String paramString, int paramInt)
+  {
+    if (paramInt == 1)
     {
-      f1 = this.e;
-      if (f2 >= 0.1F) {
-        break label126;
+      aleo.b(paramString);
+      if (QLog.isColorLevel()) {
+        QLog.e("ArkApp.ArkAppPreDownloadMgr", 2, new Object[] { "profiling preload app appname=", paramString, ",success=", Boolean.valueOf(paramBoolean) });
       }
     }
-    label126:
-    for (f2 = this.f;; f2 = this.f * (1.0F - f2))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetTabDragAnimationView.a(this.c - f1, this.jdField_d_of_type_Float - f2, false);
-      return;
-      f1 = this.e * (1.0F - f2);
-      break;
-    }
+  }
+  
+  public void onReleaseAndReload(String paramString, int paramInt)
+  {
+    QLog.i("ArkApp.ArkAppPreDownloadMgr", 1, "profiling onReleaseAndReload begin app = " + paramString);
+    ArkAppMgr.getInstance().getAppPathByName(paramString, "", "0.0.0.1", null, new alex(this, paramString));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     alew
  * JD-Core Version:    0.7.0.1
  */

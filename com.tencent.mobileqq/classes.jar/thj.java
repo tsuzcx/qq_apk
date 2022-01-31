@@ -1,20 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.NotificationActivity;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-public class thj
-  implements DialogInterface.OnClickListener
+class thj
 {
-  public thj(NotificationActivity paramNotificationActivity) {}
+  public ImageView a;
+  public TextView a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    NotificationActivity.a(this.a, NotificationActivity.b(this.a));
-  }
+  thj(thi paramthi) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     thj
  * JD-Core Version:    0.7.0.1
  */

@@ -3,17 +3,19 @@ package com.tencent.common.galleryactivity;
 import android.view.View;
 import android.widget.BaseAdapter;
 import com.tencent.image.URLDrawable;
+import xgm;
+import xgu;
 
 public abstract class AbstractImageAdapter
   extends BaseAdapter
 {
-  AbstractImageListModel jdField_a_of_type_ComTencentCommonGalleryactivityAbstractImageListModel;
-  private AbstractProgressView jdField_a_of_type_ComTencentCommonGalleryactivityAbstractProgressView;
+  xgm jdField_a_of_type_Xgm;
+  private xgu jdField_a_of_type_Xgu;
   
-  private AbstractProgressView a(int paramInt)
+  private xgu a(int paramInt)
   {
-    if ((this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractImageListModel != null) && (paramInt == this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractImageListModel.b())) {
-      return this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractProgressView;
+    if ((this.jdField_a_of_type_Xgm != null) && (paramInt == this.jdField_a_of_type_Xgm.b())) {
+      return this.jdField_a_of_type_Xgu;
     }
     return null;
   }
@@ -49,61 +51,61 @@ public abstract class AbstractImageAdapter
     }
   }
   
-  public AbstractImageListModel a()
+  public xgm a()
   {
-    return this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractImageListModel;
+    return this.jdField_a_of_type_Xgm;
   }
   
   public void a(int paramInt1, int paramInt2)
   {
-    AbstractProgressView localAbstractProgressView = a(paramInt1);
-    if (localAbstractProgressView != null) {
-      localAbstractProgressView.a(paramInt2);
+    xgu localxgu = a(paramInt1);
+    if (localxgu != null) {
+      localxgu.a(paramInt2);
     }
   }
   
   public void a(int paramInt, boolean paramBoolean)
   {
-    AbstractProgressView localAbstractProgressView = a(paramInt);
-    if (localAbstractProgressView != null) {
-      localAbstractProgressView.c();
+    xgu localxgu = a(paramInt);
+    if (localxgu != null) {
+      localxgu.c();
     }
   }
   
   public abstract void a(View paramView, int paramInt);
   
-  public void a(AbstractImageListModel paramAbstractImageListModel)
+  public void a(xgm paramxgm)
   {
-    this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractImageListModel = paramAbstractImageListModel;
+    this.jdField_a_of_type_Xgm = paramxgm;
   }
   
-  public void a(AbstractProgressView paramAbstractProgressView)
+  public void a(xgu paramxgu)
   {
-    this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractProgressView = paramAbstractProgressView;
+    this.jdField_a_of_type_Xgu = paramxgu;
   }
   
   public void b(int paramInt1, int paramInt2)
   {
-    AbstractProgressView localAbstractProgressView = a(paramInt1);
-    if ((localAbstractProgressView != null) && (localAbstractProgressView.a())) {
-      localAbstractProgressView.a(paramInt2);
+    xgu localxgu = a(paramInt1);
+    if ((localxgu != null) && (localxgu.a())) {
+      localxgu.a(paramInt2);
     }
   }
   
   public int getCount()
   {
-    if (this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractImageListModel == null) {
+    if (this.jdField_a_of_type_Xgm == null) {
       return 0;
     }
-    return this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractImageListModel.a();
+    return this.jdField_a_of_type_Xgm.a();
   }
   
   public Object getItem(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractImageListModel == null) {
+    if (this.jdField_a_of_type_Xgm == null) {
       return null;
     }
-    return this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractImageListModel.a(paramInt);
+    return this.jdField_a_of_type_Xgm.a(paramInt);
   }
   
   public long getItemId(int paramInt)

@@ -1,21 +1,17 @@
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qlink.QQProxyForQlink;
+import org.json.JSONObject;
 
-public class amum
-  implements Runnable
+public abstract class amum
 {
-  public amum(QQProxyForQlink paramQQProxyForQlink) {}
+  public String a;
+  public boolean a = true;
   
-  public void run()
-  {
-    QLog.i("QQProxyForQlink", 1, "[QLINK]-QQ UI_LOG:QQProxyForQlink. onAppInit....");
-    QQProxyForQlink.a(this.a);
-    QQProxyForQlink.b(this.a);
-  }
+  public abstract JSONObject a();
+  
+  public abstract boolean a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amum
  * JD-Core Version:    0.7.0.1
  */

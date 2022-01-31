@@ -11,7 +11,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class nearby$Cmd0x1RspBody
-  extends MessageMicro
+  extends MessageMicro<Cmd0x1RspBody>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public nearby.FansInfo FansInfo_fans = new nearby.FansInfo();
@@ -26,8 +26,9 @@ public final class nearby$Cmd0x1RspBody
   public final PBBytesField bytes_mask_gift_reason = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField bytes_mask_msg_reason = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField bytes_qunlist_url = PBField.initBytes(ByteStringMicro.EMPTY);
-  public final PBRepeatMessageField rpt_BarInfo_bars = PBField.initRepeatMessage(nearby.BarInfo.class);
-  public final PBRepeatMessageField rpt_FeedInfo_feeds = PBField.initRepeatMessage(nearby.FeedInfo.class);
+  public nearby.NearbyJumpInfo nearby_popover_info = new nearby.NearbyJumpInfo();
+  public final PBRepeatMessageField<nearby.BarInfo> rpt_BarInfo_bars = PBField.initRepeatMessage(nearby.BarInfo.class);
+  public final PBRepeatMessageField<nearby.FeedInfo> rpt_FeedInfo_feeds = PBField.initRepeatMessage(nearby.FeedInfo.class);
   public final PBStringField str_jump_app_result_msg = PBField.initString("");
   public final PBStringField str_jump_app_url = PBField.initString("");
   public final PBStringField str_plus_download_app_msg = PBField.initString("");
@@ -50,7 +51,7 @@ public final class nearby$Cmd0x1RspBody
     ByteStringMicro localByteStringMicro7 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro8 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro9 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 34, 42, 50, 56, 66, 74, 82, 90, 96, 104, 114, 120, 130, 138, 146, 152, 162, 168, 178, 186, 194 }, new String[] { "uint32_seq", "uint32_err_code", "bytes_err_msg", "rpt_FeedInfo_feeds", "bytes_feeds_url", "rpt_BarInfo_bars", "uint32_bars_num", "bytes_bars_url", "FansInfo_fans", "bytes_qunlist_url", "bytes_chat_sig", "bool_follow", "uint32_if_mask_msg", "bytes_mask_msg_reason", "uint32_if_mask_gift", "bytes_mask_gift_reason", "bytes_feed_wording", "bytes_feed_wording_title", "uint32_high_score_num", "bytes_face_score_config", "uint32_jump_app_open", "str_jump_app_result_msg", "str_jump_app_url", "str_plus_download_app_msg" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro1, null, localByteStringMicro2, null, Integer.valueOf(0), localByteStringMicro3, null, localByteStringMicro4, localByteStringMicro5, Boolean.valueOf(false), Integer.valueOf(0), localByteStringMicro6, Integer.valueOf(0), localByteStringMicro7, localByteStringMicro8, localByteStringMicro9, Integer.valueOf(0), null, Integer.valueOf(0), "", "", "" }, Cmd0x1RspBody.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 34, 42, 50, 56, 66, 74, 82, 90, 96, 104, 114, 120, 130, 138, 146, 152, 162, 168, 178, 186, 194, 202 }, new String[] { "uint32_seq", "uint32_err_code", "bytes_err_msg", "rpt_FeedInfo_feeds", "bytes_feeds_url", "rpt_BarInfo_bars", "uint32_bars_num", "bytes_bars_url", "FansInfo_fans", "bytes_qunlist_url", "bytes_chat_sig", "bool_follow", "uint32_if_mask_msg", "bytes_mask_msg_reason", "uint32_if_mask_gift", "bytes_mask_gift_reason", "bytes_feed_wording", "bytes_feed_wording_title", "uint32_high_score_num", "bytes_face_score_config", "uint32_jump_app_open", "str_jump_app_result_msg", "str_jump_app_url", "str_plus_download_app_msg", "nearby_popover_info" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro1, null, localByteStringMicro2, null, Integer.valueOf(0), localByteStringMicro3, null, localByteStringMicro4, localByteStringMicro5, Boolean.valueOf(false), Integer.valueOf(0), localByteStringMicro6, Integer.valueOf(0), localByteStringMicro7, localByteStringMicro8, localByteStringMicro9, Integer.valueOf(0), null, Integer.valueOf(0), "", "", "", null }, Cmd0x1RspBody.class);
   }
 }
 

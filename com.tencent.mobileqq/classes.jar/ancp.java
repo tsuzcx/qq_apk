@@ -1,23 +1,18 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.model.WeishiPictureUrl;
+import com.tencent.mobileqq.data.CustomEmotionBase;
 
-public final class ancp
-  implements Parcelable.Creator
+public class ancp<T extends CustomEmotionBase>
 {
-  public WeishiPictureUrl a(Parcel paramParcel)
-  {
-    return new WeishiPictureUrl(paramParcel);
-  }
+  public void a() {}
   
-  public WeishiPictureUrl[] a(int paramInt)
-  {
-    return new WeishiPictureUrl[paramInt];
-  }
+  public void a(int paramInt) {}
+  
+  public void a(T paramT, int paramInt1, int paramInt2) {}
+  
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ancp
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,29 @@
-import android.os.Vibrator;
-import com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeListManager;
+import android.os.Handler;
+import android.os.Message;
+import java.lang.ref.WeakReference;
 
-public class njb
-  implements Runnable
+class njb
+  extends Handler
 {
-  public njb(MsgTabStoryNodeListManager paramMsgTabStoryNodeListManager) {}
+  private WeakReference<niz> a;
   
-  public void run()
+  public njb(niz paramniz)
   {
-    MsgTabStoryNodeListManager.a(this.a).vibrate(20L);
+    this.a = new WeakReference(paramniz);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    niz localniz = (niz)this.a.get();
+    if ((localniz == null) || (!localniz.b())) {
+      return;
+    }
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    localniz.b();
   }
 }
 

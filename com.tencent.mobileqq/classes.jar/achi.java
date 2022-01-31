@@ -1,113 +1,101 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.CustomEmotionData;
-import com.tencent.mobileqq.data.EmoticonFromGroupEntity;
-import com.tencent.mobileqq.emosm.favroaming.EmoticonFromGroupDBManager;
-import com.tencent.mobileqq.emosm.favroaming.EmoticonFromGroupManager;
-import com.tencent.mobileqq.emosm.favroaming.FavroamingDBManager;
-import com.tencent.mobileqq.emosm.favroaming.FavroamingManager;
+import android.app.Activity;
+import android.app.Dialog;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Animatable;
+import android.graphics.drawable.ColorDrawable;
+import android.view.KeyEvent;
+import android.view.LayoutInflater;
+import android.view.Window;
+import android.view.animation.AccelerateDecelerateInterpolator;
+import android.view.animation.TranslateAnimation;
+import android.widget.ImageView;
 import com.tencent.qphone.base.util.QLog;
-import java.io.IOException;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.widget.immersive.ImmersiveUtils;
 
 public class achi
-  implements Runnable
+  extends Dialog
 {
-  public achi(EmoticonFromGroupManager paramEmoticonFromGroupManager, List paramList) {}
+  Context jdField_a_of_type_AndroidContentContext = null;
+  Animatable jdField_a_of_type_AndroidGraphicsDrawableAnimatable = null;
   
-  public void run()
+  public achi(Context paramContext)
   {
-    FavroamingDBManager localFavroamingDBManager = (FavroamingDBManager)EmoticonFromGroupManager.a(this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingEmoticonFromGroupManager).getManager(148);
-    FavroamingManager localFavroamingManager = (FavroamingManager)EmoticonFromGroupManager.a(this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingEmoticonFromGroupManager).getManager(102);
-    if (QLog.isColorLevel()) {
-      QLog.i("EmoticonFromGroup_Manager", 2, "Call getFavEmoticonList from onUploadPic.");
-    }
-    Object localObject1 = localFavroamingDBManager.a();
-    ArrayList localArrayList = new ArrayList(30);
-    if (localObject1 != null)
+    super(paramContext);
+    a(paramContext);
+  }
+  
+  protected void a(Context paramContext)
+  {
+    super.requestWindowFeature(1);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    setContentView(LayoutInflater.from(paramContext).inflate(2131495031, null));
+    paramContext = getWindow();
+    if (paramContext != null)
     {
-      int k = 0;
-      for (i = 1;; i = j)
+      paramContext.setLayout(-1, -1);
+      paramContext.setBackgroundDrawable(new ColorDrawable(0));
+      if (ImmersiveUtils.isSupporImmersive() == 1) {
+        paramContext.addFlags(67108864);
+      }
+    }
+    setCanceledOnTouchOutside(false);
+    paramContext = (ImageView)super.findViewById(2131306876);
+    TranslateAnimation localTranslateAnimation = new TranslateAnimation(1, -1.0F, 2, 1.0F, 1, 0.0F, 1, 0.0F);
+    localTranslateAnimation.setInterpolator(new AccelerateDecelerateInterpolator());
+    localTranslateAnimation.setDuration(800L);
+    localTranslateAnimation.setRepeatCount(-1);
+    paramContext.startAnimation(localTranslateAnimation);
+    super.setCancelable(false);
+  }
+  
+  public void dismiss()
+  {
+    super.dismiss();
+    if (this.jdField_a_of_type_AndroidGraphicsDrawableAnimatable != null) {
+      this.jdField_a_of_type_AndroidGraphicsDrawableAnimatable.stop();
+    }
+  }
+  
+  public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
+  {
+    if (paramInt == 4) {
+      try
       {
-        j = i;
-        if (k >= ((List)localObject1).size()) {
-          break;
+        dismiss();
+        if ((this.jdField_a_of_type_AndroidContentContext instanceof Activity)) {
+          ((Activity)this.jdField_a_of_type_AndroidContentContext).finish();
         }
-        int m = ((CustomEmotionData)((List)localObject1).get(k)).emoId;
-        j = i;
-        if (i < m) {
-          j = m;
-        }
-        k += 1;
+        return false;
       }
-    }
-    int j = 1;
-    int i = this.jdField_a_of_type_JavaUtilList.size();
-    for (;;)
-    {
-      i -= 1;
-      if (i < 0) {
-        break;
-      }
-      localObject1 = new CustomEmotionData();
-      ((CustomEmotionData)localObject1).uin = EmoticonFromGroupManager.a(this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingEmoticonFromGroupManager).c();
-      j += 1;
-      ((CustomEmotionData)localObject1).emoId = j;
-      localArrayList.add(localObject1);
-    }
-    j = localArrayList.size();
-    i = 0;
-    Object localObject2;
-    if (i < j)
-    {
-      localObject2 = (EmoticonFromGroupEntity)this.jdField_a_of_type_JavaUtilList.get(i);
-      localObject1 = (CustomEmotionData)localArrayList.get(i);
-      localObject2 = (URLDrawable)this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingEmoticonFromGroupManager.a((EmoticonFromGroupEntity)localObject2, 1, -1, null);
-      if (1 != ((URLDrawable)localObject2).getStatus())
+      catch (Exception paramKeyEvent)
       {
-        EmoticonFromGroupManager.a(this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingEmoticonFromGroupManager).jdField_a_of_type_JavaUtilList.add(localObject2);
-        ((URLDrawable)localObject2).setURLDrawableListener(new achj(this, (URLDrawable)localObject2, (CustomEmotionData)localObject1, localFavroamingManager, localFavroamingDBManager));
-        ((URLDrawable)localObject2).startDownload();
-      }
-    }
-    for (;;)
-    {
-      i += 1;
-      break;
-      String str1 = this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingEmoticonFromGroupManager.a(((URLDrawable)localObject2).getURL().toString());
-      if (this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingEmoticonFromGroupManager.a(str1)) {
-        return;
-      }
-      String str2 = EmoticonFromGroupManager.a(this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingEmoticonFromGroupManager, str1);
-      if (!"".equals(str2))
-      {
-        ((CustomEmotionData)localObject1).emoPath = str2;
-        ((CustomEmotionData)localObject1).md5 = str1;
-        if (!"".equals(str2)) {
-          try
-          {
-            if (QLog.isColorLevel()) {
-              QLog.i("EmoticonFromGroup_Manager", 4, "normal upload emo " + str1);
-            }
-            ((URLDrawable)localObject2).saveTo(str2);
-            localFavroamingManager.a((CustomEmotionData)localObject1);
-            localFavroamingDBManager.c((CustomEmotionData)localObject1);
-          }
-          catch (IOException localIOException)
-          {
-            localIOException.printStackTrace();
-            QLog.d("EmoticonFromGroup_Manager", 1, localIOException, new Object[0]);
+        for (;;)
+        {
+          if (QLog.isDevelopLevel()) {
+            paramKeyEvent.printStackTrace();
           }
         }
+      }
+    }
+    return super.onKeyDown(paramInt, paramKeyEvent);
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    if (this.jdField_a_of_type_AndroidContentContext != null)
+    {
+      this.jdField_a_of_type_AndroidGraphicsDrawableAnimatable = ((Animatable)this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839117));
+      if (this.jdField_a_of_type_AndroidGraphicsDrawableAnimatable != null) {
+        this.jdField_a_of_type_AndroidGraphicsDrawableAnimatable.start();
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     achi
  * JD-Core Version:    0.7.0.1
  */

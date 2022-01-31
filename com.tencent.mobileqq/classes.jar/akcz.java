@@ -1,31 +1,37 @@
-import com.tencent.mobileqq.surfaceviewaction.action.Action.OnActionEndListener;
-import com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite;
-import com.tencent.mobileqq.troopgift.TroopGiftToAllSurfaceView;
-import com.tencent.mobileqq.troopgift.TroopGiftToAllSurfaceView.Options;
+import java.util.Comparator;
 
 public class akcz
-  implements Action.OnActionEndListener
+  implements Comparator<akda>
 {
-  public akcz(TroopGiftToAllSurfaceView paramTroopGiftToAllSurfaceView) {}
+  private int a;
   
-  public void a()
+  public akcz(int paramInt)
   {
-    if (TroopGiftToAllSurfaceView.a(this.a).d == 0) {
-      this.a.a(1, TroopGiftToAllSurfaceView.a(this.a));
+    this.a = paramInt;
+  }
+  
+  public int a(akda paramakda1, akda paramakda2)
+  {
+    if (this.a == 2) {
+      if (paramakda1.b <= paramakda2.b) {}
     }
-    for (;;)
+    while (paramakda1.a > paramakda2.a)
     {
-      if ((TroopGiftToAllSurfaceView.a(this.a) instanceof VideoSprite)) {
-        ((VideoSprite)TroopGiftToAllSurfaceView.a(this.a)).b(TroopGiftToAllSurfaceView.a(this.a));
+      return -1;
+      if (paramakda1.b < paramakda2.b) {
+        return 1;
       }
-      return;
-      this.a.a(0, TroopGiftToAllSurfaceView.a(this.a));
+      return 0;
     }
+    if (paramakda1.a < paramakda2.a) {
+      return 1;
+    }
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akcz
  * JD-Core Version:    0.7.0.1
  */

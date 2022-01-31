@@ -10,7 +10,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class ArticleComment$ReportGalleryInfoRequest
-  extends MessageMicro
+  extends MessageMicro<ReportGalleryInfoRequest>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBUInt32Field article_id = PBField.initUInt32(0);
@@ -24,7 +24,7 @@ public final class ArticleComment$ReportGalleryInfoRequest
   public final PBBytesField os = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBUInt64Field puin = PBField.initUInt64(0L);
   public final PBUInt32Field recommend_index = PBField.initUInt32(0);
-  public final PBRepeatMessageField recommend_info = PBField.initRepeatMessage(ArticleComment.RecommendInfo.class);
+  public final PBRepeatMessageField<ArticleComment.RecommendInfo> recommend_info = PBField.initRepeatMessage(ArticleComment.RecommendInfo.class);
   public final PBBytesField rowkey = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBUInt32Field site_id = PBField.initUInt32(0);
   public final PBBytesField subv = PBField.initBytes(ByteStringMicro.EMPTY);

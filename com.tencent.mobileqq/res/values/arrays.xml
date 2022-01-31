@@ -1,92 +1,351 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string-array name="name">
-        <item>查看名片</item>
-        <item>删除好友</item>
-        <item>移至分组</item>
+    <string-array name="a">
+        <item>仅删除帐号</item>
+        <item>删除帐号和本地记录</item>
+    </string-array>
+    <string-array name="b">
         <item>添加到桌面</item>
     </string-array>
-    <string-array name="APKTOOL_DUPLICATE_array_0x7f090001">
-        <item>查看名片</item>
-        <item>删除好友</item>
-        <item>添加到桌面</item>
+    <string-array name="c">
+        <item>@string/cvy</item>
+        <item>@string/cvz</item>
     </string-array>
-    <string-array name="APKTOOL_DUPLICATE_array_0x7f090002">
-        <item>添加到桌面</item>
-    </string-array>
-    <string-array name="APKTOOL_DUPLICATE_array_0x7f090003">
-        <item>从会话列表中移除</item>
-        <item>清空会话列表</item>
-    </string-array>
-    <string-array name="APKTOOL_DUPLICATE_array_0x7f090004">
-        <item>添加到桌面</item>
-        <item>从会话列表中移除</item>
-        <item>清空会话列表</item>
-    </string-array>
-    <string-array name="APKTOOL_DUPLICATE_array_0x7f090005">
-        <item>清空会话列表</item>
-    </string-array>
-    <string-array name="APKTOOL_DUPLICATE_array_0x7f090006">
-        <item>从打招呼列表中移除</item>
-    </string-array>
-    <string-array name="APKTOOL_DUPLICATE_array_0x7f090007">
-        <item>删除表情</item>
-        <item>发送表情</item>
-    </string-array>
-    <string-array name="APKTOOL_DUPLICATE_array_0x7f090008">
-        <item>发送截图</item>
-        <item>从相册选择</item>
-    </string-array>
-    <string-array name="APKTOOL_DUPLICATE_array_0x7f090009">
-        <item>从相册选择</item>
-        <item>拍照</item>
-    </string-array>
-    <string-array name="APKTOOL_DUPLICATE_array_0x7f09000a">
-        <item>@string/APKTOOL_DUPLICATE_string_0x7f0b1d47</item>
-        <item>@string/APKTOOL_DUPLICATE_string_0x7f0b1d48</item>
-    </string-array>
-    <string-array name="APKTOOL_DUPLICATE_array_0x7f09000b">
-        <item>删除消息</item>
-        <item>清空所有验证消息</item>
-    </string-array>
-    <string-array name="APKTOOL_DUPLICATE_array_0x7f09000c">
-        <item>删除消息</item>
-        <item>清空所有广播消息</item>
-    </string-array>
-    <string-array name="APKTOOL_DUPLICATE_array_0x7f09000d">
-        <item>清空所有验证消息</item>
-    </string-array>
-    <string-array name="APKTOOL_DUPLICATE_array_0x7f09000e">
-        <item>@string/APKTOOL_DUPLICATE_string_0x7f0b1eb8</item>
-        <item>@string/APKTOOL_DUPLICATE_string_0x7f0b1eb9</item>
-        <item>@string/APKTOOL_DUPLICATE_string_0x7f0b1eba</item>
-    </string-array>
-    <string-array name="APKTOOL_DUPLICATE_array_0x7f09000f">
-        <item>@string/APKTOOL_DUPLICATE_string_0x7f0b1eb8</item>
-        <item>@string/APKTOOL_DUPLICATE_string_0x7f0b1eba</item>
-    </string-array>
-    <string-array name="APKTOOL_DUPLICATE_array_0x7f090010">
-        <item>添加新分组</item>
-    </string-array>
-    <string-array name="APKTOOL_DUPLICATE_array_0x7f090011">
-        <item>接收群消息</item>
-    </string-array>
-    <string-array name="APKTOOL_DUPLICATE_array_0x7f090012">
-        <item>屏蔽群消息</item>
-    </string-array>
-    <string-array name="APKTOOL_DUPLICATE_array_0x7f090013">
-        <item>接收所有群消息</item>
-    </string-array>
-    <string-array name="APKTOOL_DUPLICATE_array_0x7f090014">
+    <string-array name="d">
         <item>屏蔽所有群消息</item>
     </string-array>
-    <integer-array name="APKTOOL_DUPLICATE_array_0x7f090015">
+    <string-array name="e">
+        <item>接收所有群消息</item>
+    </string-array>
+    <string-array name="f">
+        <item>热映电影</item>
+        <item>附近美食</item>
+        <item>新歌推荐</item>
+        <item>热门漫画</item>
+    </string-array>
+    <string-array name="g">
+        <item>拨打电话</item>
+        <item>拨打免费电话</item>
+        <item>发送短信</item>
+        <item>取消</item>
+    </string-array>
+    <string-array name="h">
+        <item>拨打电话</item>
+        <item>拨打免费电话</item>
+        <item>取消</item>
+    </string-array>
+    <string-array name="i">
+        <item>让我们在谈人生、聊理想之前，先看完这本《%s》吧！</item>
+        <item>凭我对你的了解，这本《%s》很适合你，你怎么能不读？</item>
+        <item>知道你和我的差距在哪吗？看完这本《%s》就知道了。</item>
+        <item>我精挑细选才送你这本《%s》，一定要好好研读哦！</item>
+        <item>与其在别处浪费光阴，不如好好品味这本《%s》。</item>
+        <item>别让你的心灵长满枯草，请用这本《%s》来拯救你。</item>
+        <item>学无止境，送你《%s》继续进步吧！</item>
+    </string-array>
+    <integer-array name="j">
         <item>0</item>
         <item>1</item>
         <item>20</item>
         <item>21</item>
     </integer-array>
-    <string-array name="APKTOOL_DUPLICATE_array_0x7f090016">
+    <string-array name="k">
+        <item>添加新分组</item>
+    </string-array>
+    <string-array name="l">
+        <item>删除表情</item>
+        <item>发送表情</item>
+    </string-array>
+    <string-array name="m">
+        <item>已成功约到人</item>
+        <item>时间冲突</item>
+        <item>约不到人</item>
+        <item>约会内容不满意</item>
+        <item>其他</item>
+    </string-array>
+    <integer-array name="n">
+        <item>14082801</item>
+        <item>14082802</item>
+        <item>14082803</item>
+        <item>14082804</item>
+        <item>14082805</item>
+    </integer-array>
+    <string-array name="o">
+        <item>自驾</item>
+        <item>飞机</item>
+        <item>火车/高铁</item>
+        <item>汽车</item>
+        <item>邮轮</item>
+        <item>骑行</item>
+        <item>其他交通工具</item>
+        <item>交通工具不限</item>
+    </string-array>
+    <string-array name="p">
+        <item>@string/fgb</item>
+        <item>@string/fhs</item>
+        <item>@string/fez</item>
+    </string-array>
+    <string-array name="q">
+        <item>限男生</item>
+        <item>限妹子</item>
+        <item>不限</item>
+    </string-array>
+    <string-array name="r">
+        <item>孤独寂寞求饭友</item>
+        <item>交个朋友，吃饭聊天</item>
+        <item>饭量小，求喂饱</item>
+        <item>这家餐厅不错，一起去吧</item>
+    </string-array>
+    <integer-array name="s">
+        <item>1408280101</item>
+        <item>1408280102</item>
+        <item>1408280103</item>
+        <item>1408280104</item>
+    </integer-array>
+    <integer-array name="t">
+        <item>1111110100</item>
+        <item>1111110200</item>
+        <item>1111110300</item>
+        <item>1111110400</item>
+        <item>1111110500</item>
+    </integer-array>
+    <string-array name="u">
+        <item>以歌会友</item>
+        <item>麦霸求PK</item>
+        <item>唱到下一个天亮</item>
+        <item>把我喜欢的歌唱给你听</item>
+    </string-array>
+    <integer-array name="v">
+        <item>1408280301</item>
+        <item>1408280302</item>
+        <item>1408280303</item>
+        <item>1408280304</item>
+    </integer-array>
+    <string-array name="w">
+        <item>看看电影，聊聊人生</item>
+        <item>找个人安静地看场电影</item>
+        <item>寻最佳影友</item>
+        <item>新片上映，走起</item>
+    </string-array>
+    <integer-array name="x">
+        <item>1408280201</item>
+        <item>1408280202</item>
+        <item>1408280203</item>
+        <item>1408280204</item>
+    </integer-array>
+    <string-array name="y">
+        <item>小白求指导</item>
+        <item>寻个同伴，互相监督</item>
+        <item>不运动会死星人</item>
+        <item>拒绝宅，挥洒汗水</item>
+    </string-array>
+    <integer-array name="z">
+        <item>1408280401</item>
+        <item>1408280402</item>
+        <item>1408280403</item>
+        <item>1408280404</item>
+    </integer-array>
+    <string-array name="a0">
+        <item>搭伴回家，同路求捡</item>
+        <item>一次说走就走的旅行</item>
+        <item>陪你看遍世间风景</item>
+        <item>文艺青年的行走，爱拍照的来</item>
+    </string-array>
+    <integer-array name="a1">
+        <item>1412150501</item>
+        <item>1412150502</item>
+        <item>1412150503</item>
+        <item>1412150504</item>
+    </integer-array>
+    <string-array name="a2">
+        <item>不限</item>
+        <item>2人</item>
+        <item>3-5人</item>
+        <item>6-8人</item>
+        <item>8人以上</item>
+    </string-array>
+    <string-array name="a3">
+        <item>吃饭</item>
+        <item>看电影</item>
+        <item>唱歌</item>
+        <item>出行</item>
+        <item>运动</item>
+    </string-array>
+    <integer-array name="a4">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>5</item>
+        <item>4</item>
+    </integer-array>
+    <string-array name="a5">
+        <item>约人吃饭</item>
+        <item>约人看电影</item>
+        <item>约人唱歌</item>
+        <item>约人运动</item>
+    </string-array>
+    <string-array name="a6">
+        <item>我买单</item>
+        <item>求请客</item>
+        <item>AA</item>
+    </string-array>
+    <string-array name="a7">
+        <item>不限</item>
+        <item>自驾</item>
+        <item>飞机</item>
+        <item>火车/高铁</item>
+        <item>汽车</item>
+        <item>邮轮</item>
+        <item>骑行</item>
+        <item>其他</item>
+    </string-array>
+    <string-array name="a8">
+        <item>清空所有验证消息</item>
+    </string-array>
+    <string-array name="a9">
+        <item>删除消息</item>
+        <item>清空所有广播消息</item>
+    </string-array>
+    <string-array name="a_">
+        <item>查看名片</item>
+        <item>删除好友</item>
+        <item>移至分组</item>
+        <item>添加到桌面</item>
+    </string-array>
+    <string-array name="aa">
+        <item>查看名片</item>
+        <item>删除好友</item>
+        <item>添加到桌面</item>
+    </string-array>
+    <string-array name="ab">
+        <item>从打招呼列表中移除</item>
+    </string-array>
+    <string-array name="ac">
+        <item>删除消息</item>
+        <item>清空所有验证消息</item>
+    </string-array>
+    <string-array name="ad">
+        <item>清空会话列表</item>
+    </string-array>
+    <string-array name="ae">
+        <item>从会话列表中移除</item>
+        <item>清空会话列表</item>
+    </string-array>
+    <string-array name="af">
+        <item>男</item>
+        <item>女</item>
+        <item>取消</item>
+    </string-array>
+    <string-array name="ag">
+        <item>拍照</item>
+        <item>从相册选择</item>
+    </string-array>
+    <string-array name="ah">
+        <item>China 中国大陆 86 11 常用地区</item>
+        <item>Hong Kong 中国香港 852 8 常用地区</item>
+        <item>Macau 中国澳门 853 8 常用地区</item>
+        <item>Taiwan 中国台湾 886 10 常用地区</item>
+        <item>Japan 日本 81 11 常用地区</item>
+        <item>USA 美国 1 10 常用地区</item>
+        <item>United Kingdom 英国 44 10 常用地区</item>
+        <item>Australia 澳大利亚 61 10 常用地区</item>
+        <item>Canada 加拿大 1 7 常用地区</item>
+    </string-array>
+    <string-array name="ai">
+        <item>常用地区</item>
+    </string-array>
+    <string-array name="aj">
+        <item>.mp2</item>
+        <item>.mp3</item>
+        <item>.wav</item>
+        <item>.ogg</item>
+        <item>.mid</item>
+        <item>.midi</item>
+        <item>.m3u</item>
+        <item>.m4a</item>
+        <item>.m4b</item>
+        <item>.m4p</item>
+        <item>.mpga</item>
+        <item>.wma</item>
+        <item>.amr</item>
+    </string-array>
+    <string-array name="ak">
+        <item>.chm</item>
+    </string-array>
+    <string-array name="al">
+        <item>.xls</item>
+        <item>.xlsx</item>
+    </string-array>
+    <string-array name="am">
+        <item>.png</item>
+        <item>.gif</item>
+        <item>.jpg</item>
+        <item>.jpeg</item>
+        <item>.bmp</item>
+        <item>.ico</item>
+    </string-array>
+    <string-array name="an">
+        <item>.ppt</item>
+        <item>.pptx</item>
+    </string-array>
+    <string-array name="ao">
+        <item>.apk</item>
+        <item>.jar</item>
+        <item>.zip</item>
+        <item>.rar</item>
+        <item>.gz</item>
+        <item>.tar</item>
+        <item>.img</item>
+    </string-array>
+    <string-array name="ap">
+        <item>.pdf</item>
+    </string-array>
+    <string-array name="aq">
+        <item>.txt</item>
+        <item>.java</item>
+        <item>.c</item>
+        <item>.cpp</item>
+        <item>.py</item>
+        <item>.xml</item>
+        <item>.json</item>
+        <item>.log</item>
+    </string-array>
+    <string-array name="ar">
+        <item>.wmv</item>
+        <item>.mp4</item>
+        <item>.rmvb</item>
+        <item>.avi</item>
+        <item>.flv</item>
+        <item>.rm</item>
+        <item>.asf</item>
+        <item>.mov</item>
+        <item>.mpg</item>
+        <item>.3gp</item>
+        <item>.m4u</item>
+        <item>.mpeg</item>
+        <item>.m4v</item>
+        <item>.vob</item>
+        <item>.mkv</item>
+        <item>.mpe</item>
+    </string-array>
+    <string-array name="as">
+        <item>.htm</item>
+        <item>.html</item>
+        <item>.php</item>
+        <item>.jsp</item>
+    </string-array>
+    <string-array name="at">
+        <item>.doc</item>
+        <item>.docx</item>
+        <item>.dot</item>
+    </string-array>
+    <string-array name="au">
+        <item>删除所选记录</item>
+        <item>删除所选文件</item>
+        <item>转发</item>
+        <item>存到微云</item>
+    </string-array>
+    <string-array name="av">
         <item>查看更多资料</item>
         <item>修改备注</item>
         <item>移动分组</item>
@@ -114,269 +373,20 @@
         <item>从相册选择图片</item>
         <item>从手机相册选择图片</item>
         <item>从空间相册选择图片</item>
-        <item>查看历史头像</item>
+        <item>查看头像</item>
         <item>手机相册</item>
         <item>空间相册</item>
+        <item></item>
+        <item>资料卡设置</item>
+        <item>消息列表</item>
     </string-array>
-    <string-array name="APKTOOL_DUPLICATE_array_0x7f090017">
-        <item>@string/APKTOOL_DUPLICATE_string_0x7f0b169e</item>
-        <item>@string/APKTOOL_DUPLICATE_string_0x7f0b169f</item>
-        <item>取消</item>
+    <string-array name="aw">
+        <item>未填写</item>
+        <item>老师</item>
+        <item>家长</item>
+        <item>学生</item>
     </string-array>
-    <string-array name="APKTOOL_DUPLICATE_array_0x7f090018">
-        <item>@string/APKTOOL_DUPLICATE_string_0x7f0b09d2</item>
-        <item>@string/APKTOOL_DUPLICATE_string_0x7f0b09d3</item>
-        <item>@string/APKTOOL_DUPLICATE_string_0x7f0b09d4</item>
-        <item>取消</item>
-    </string-array>
-    <string-array name="APKTOOL_DUPLICATE_array_0x7f090019">
-        <item>拍照</item>
-        <item>从相册选择</item>
-    </string-array>
-    <string-array name="APKTOOL_DUPLICATE_array_0x7f09001a">
-        <item>男</item>
-        <item>女</item>
-        <item>取消</item>
-    </string-array>
-    <string-array name="APKTOOL_DUPLICATE_array_0x7f09001b">
-        <item>仅删除帐号</item>
-        <item>删除帐号和本地记录</item>
-    </string-array>
-    <string-array name="APKTOOL_DUPLICATE_array_0x7f09001c">
-        <item>让我们在谈人生、聊理想之前，先看完这本《%s》吧！</item>
-        <item>凭我对你的了解，这本《%s》很适合你，你怎么能不读？</item>
-        <item>知道你和我的差距在哪吗？看完这本《%s》就知道了。</item>
-        <item>我精挑细选才送你这本《%s》，一定要好好研读哦！</item>
-        <item>与其在别处浪费光阴，不如好好品味这本《%s》。</item>
-        <item>别让你的心灵长满枯草，请用这本《%s》来拯救你。</item>
-        <item>学无止境，送你《%s》继续进步吧！</item>
-    </string-array>
-    <string-array name="APKTOOL_DUPLICATE_array_0x7f09001d">
-        <item>筛选</item>
-        <item>我的资料</item>
-        <item>清除位置信息并退出</item>
-    </string-array>
-    <string-array name="APKTOOL_DUPLICATE_array_0x7f09001e">
-        <item>@string/APKTOOL_DUPLICATE_string_0x7f0b2811</item>
-        <item>@string/APKTOOL_DUPLICATE_string_0x7f0b2800</item>
-        <item>@string/APKTOOL_DUPLICATE_string_0x7f0b27f2</item>
-    </string-array>
-    <string-array name="APKTOOL_DUPLICATE_array_0x7f09001f">
-        <item>今天</item>
-        <item>一周内</item>
-        <item>一周前</item>
-        <item>一个月前</item>
-        <item>三个月前</item>
-        <item>半年前</item>
-        <item>一年前</item>
-        <item>从未发言</item>
-    </string-array>
-    <string-array name="APKTOOL_DUPLICATE_array_0x7f090020">
-        <item>限男生</item>
-        <item>限妹子</item>
-        <item>不限</item>
-    </string-array>
-    <string-array name="APKTOOL_DUPLICATE_array_0x7f090021">
-        <item>我买单</item>
-        <item>求请客</item>
-        <item>AA</item>
-    </string-array>
-    <string-array name="APKTOOL_DUPLICATE_array_0x7f090022">
-        <item>不限</item>
-        <item>2人</item>
-        <item>3-5人</item>
-        <item>6-8人</item>
-        <item>8人以上</item>
-    </string-array>
-    <string-array name="APKTOOL_DUPLICATE_array_0x7f090023">
-        <item>不限</item>
-        <item>自驾</item>
-        <item>飞机</item>
-        <item>火车/高铁</item>
-        <item>汽车</item>
-        <item>邮轮</item>
-        <item>骑行</item>
-        <item>其他</item>
-    </string-array>
-    <string-array name="APKTOOL_DUPLICATE_array_0x7f090024">
-        <item>自驾</item>
-        <item>飞机</item>
-        <item>火车/高铁</item>
-        <item>汽车</item>
-        <item>邮轮</item>
-        <item>骑行</item>
-        <item>其他交通工具</item>
-        <item>交通工具不限</item>
-    </string-array>
-    <string-array name="APKTOOL_DUPLICATE_array_0x7f090025">
-        <item>约人吃饭</item>
-        <item>约人看电影</item>
-        <item>约人唱歌</item>
-        <item>约人运动</item>
-    </string-array>
-    <string-array name="APKTOOL_DUPLICATE_array_0x7f090026">
-        <item>孤独寂寞求饭友</item>
-        <item>交个朋友，吃饭聊天</item>
-        <item>饭量小，求喂饱</item>
-        <item>这家餐厅不错，一起去吧</item>
-    </string-array>
-    <string-array name="APKTOOL_DUPLICATE_array_0x7f090027">
-        <item>看看电影，聊聊人生</item>
-        <item>找个人安静地看场电影</item>
-        <item>寻最佳影友</item>
-        <item>新片上映，走起</item>
-    </string-array>
-    <string-array name="APKTOOL_DUPLICATE_array_0x7f090028">
-        <item>以歌会友</item>
-        <item>麦霸求PK</item>
-        <item>唱到下一个天亮</item>
-        <item>把我喜欢的歌唱给你听</item>
-    </string-array>
-    <string-array name="APKTOOL_DUPLICATE_array_0x7f090029">
-        <item>小白求指导</item>
-        <item>寻个同伴，互相监督</item>
-        <item>不运动会死星人</item>
-        <item>拒绝宅，挥洒汗水</item>
-    </string-array>
-    <string-array name="APKTOOL_DUPLICATE_array_0x7f09002a">
-        <item>搭伴回家，同路求捡</item>
-        <item>一次说走就走的旅行</item>
-        <item>陪你看遍世间风景</item>
-        <item>文艺青年的行走，爱拍照的来</item>
-    </string-array>
-    <string-array name="APKTOOL_DUPLICATE_array_0x7f09002b">
-        <item>已成功约到人</item>
-        <item>时间冲突</item>
-        <item>约不到人</item>
-        <item>约会内容不满意</item>
-        <item>其他</item>
-    </string-array>
-    <string-array name="APKTOOL_DUPLICATE_array_0x7f09002c">
-        <item>吃饭</item>
-        <item>看电影</item>
-        <item>唱歌</item>
-        <item>出行</item>
-        <item>运动</item>
-    </string-array>
-    <integer-array name="APKTOOL_DUPLICATE_array_0x7f09002d">
-        <item>1</item>
-        <item>2</item>
-        <item>3</item>
-        <item>5</item>
-        <item>4</item>
-    </integer-array>
-    <integer-array name="APKTOOL_DUPLICATE_array_0x7f09002e">
-        <item>1408280101</item>
-        <item>1408280102</item>
-        <item>1408280103</item>
-        <item>1408280104</item>
-    </integer-array>
-    <integer-array name="APKTOOL_DUPLICATE_array_0x7f09002f">
-        <item>1408280201</item>
-        <item>1408280202</item>
-        <item>1408280203</item>
-        <item>1408280204</item>
-    </integer-array>
-    <integer-array name="APKTOOL_DUPLICATE_array_0x7f090030">
-        <item>1408280301</item>
-        <item>1408280302</item>
-        <item>1408280303</item>
-        <item>1408280304</item>
-    </integer-array>
-    <integer-array name="APKTOOL_DUPLICATE_array_0x7f090031">
-        <item>1408280401</item>
-        <item>1408280402</item>
-        <item>1408280403</item>
-        <item>1408280404</item>
-    </integer-array>
-    <integer-array name="APKTOOL_DUPLICATE_array_0x7f090032">
-        <item>1412150501</item>
-        <item>1412150502</item>
-        <item>1412150503</item>
-        <item>1412150504</item>
-    </integer-array>
-    <integer-array name="APKTOOL_DUPLICATE_array_0x7f090033">
-        <item>1111110100</item>
-        <item>1111110200</item>
-        <item>1111110300</item>
-        <item>1111110400</item>
-        <item>1111110500</item>
-    </integer-array>
-    <integer-array name="APKTOOL_DUPLICATE_array_0x7f090034">
-        <item>14082801</item>
-        <item>14082802</item>
-        <item>14082803</item>
-        <item>14082804</item>
-        <item>14082805</item>
-    </integer-array>
-    <string-array name="APKTOOL_DUPLICATE_array_0x7f090035">
-        <item>今天</item>
-        <item>一周内</item>
-        <item>一周前</item>
-        <item>一个月前</item>
-        <item>三个月前</item>
-        <item>半年前</item>
-        <item>一年前</item>
-        <item>两年前</item>
-        <item>三年前</item>
-        <item>五年前</item>
-        <item>七年前</item>
-        <item>十年前</item>
-    </string-array>
-    <string-array name="APKTOOL_DUPLICATE_array_0x7f090036">
-        <item>成员分布</item>
-        <item>邀请好友加入</item>
-        <item>删除成员</item>
-    </string-array>
-    <string-array name="APKTOOL_DUPLICATE_array_0x7f090037">
-        <item>成员分布</item>
-        <item>礼物榜</item>
-        <item>邀请新成员</item>
-        <item>删除成员</item>
-    </string-array>
-    <string-array name="APKTOOL_DUPLICATE_array_0x7f090038">
-        <item>默认排序</item>
-        <item>优先在线成员</item>
-        <item>按活跃时间</item>
-        <item>按加群时间</item>
-    </string-array>
-    <string-array name="APKTOOL_DUPLICATE_array_0x7f090039">
-        <item>默认排序</item>
-        <item>优先在线成员</item>
-        <item>按活跃时间排序</item>
-        <item>按加群时间排序</item>
-    </string-array>
-    <string-array name="APKTOOL_DUPLICATE_array_0x7f09003a">
-        <item>默认排序</item>
-        <item>按职务排序</item>
-        <item>礼物榜</item>
-        <item>发起多人聊天</item>
-        <item>邀请新成员</item>
-        <item>删除群成员</item>
-    </string-array>
-    <string-array name="APKTOOL_DUPLICATE_array_0x7f09003b">
-        <item>潜水</item>
-        <item>冒泡</item>
-        <item>吐槽</item>
-        <item>活跃</item>
-        <item>话唠</item>
-        <item>传说</item>
-    </string-array>
-    <string-array name="APKTOOL_DUPLICATE_array_0x7f09003c">
-        <item>≤5km</item>
-        <item>≤10km</item>
-        <item>≤50km</item>
-        <item>≤500km</item>
-        <item>≤1000km</item>
-        <item>≤2000km</item>
-        <item>≤10000km</item>
-        <item>远在天边</item>
-        <item>未知</item>
-    </string-array>
-    <string-array name="APKTOOL_DUPLICATE_array_0x7f09003d">
-        <item>删除未付款成员</item>
-    </string-array>
-    <string-array name="APKTOOL_DUPLICATE_array_0x7f09003e">
+    <string-array name="ax">
         <item>授权给好友</item>
         <item>修改设备备注</item>
         <item>检查设备更新</item>
@@ -388,173 +398,243 @@
         <item>举报</item>
         <item>购买智能设备</item>
     </string-array>
-    <string-array name="APKTOOL_DUPLICATE_array_0x7f09003f">
-        <item>被选为约会对象</item>
-        <item>收到的报名</item>
-        <item>收到的评论</item>
-        <item>已结束的约会</item>
-    </string-array>
-    <string-array name="APKTOOL_DUPLICATE_array_0x7f090040">
-        <item>去过的地方</item>
-        <item>爱吃的美食</item>
-        <item>常用的品牌</item>
-        <item>喜欢的运动</item>
-        <item>喜欢的电影</item>
-        <item>喜欢的明星</item>
-        <item>喜欢的游戏</item>
-    </string-array>
-    <string-array name="APKTOOL_DUPLICATE_array_0x7f090041">
-        <item>旅游</item>
-        <item>美食</item>
-        <item>时尚</item>
-        <item>运动</item>
-        <item>电影</item>
-        <item>音乐</item>
-        <item>游戏</item>
-    </string-array>
-    <string-array name="APKTOOL_DUPLICATE_array_0x7f090042">
-        <item>未填写</item>
-        <item>老师</item>
-        <item>家长</item>
-        <item>学生</item>
-    </string-array>
-    <string-array name="APKTOOL_DUPLICATE_array_0x7f090043">
-        <item>确定解除</item>
-    </string-array>
-    <string-array name="APKTOOL_DUPLICATE_array_0x7f090044">
-        <item>热映电影</item>
-        <item>附近美食</item>
-        <item>新歌推荐</item>
-        <item>热门漫画</item>
-    </string-array>
-    <string-array name="APKTOOL_DUPLICATE_array_0x7f090045">
-        <item>个人头像违规</item>
-        <item>昵称违规</item>
-        <item>内容违规</item>
-    </string-array>
-    <string-array name="APKTOOL_DUPLICATE_array_0x7f090046">
-        <item>拨打电话</item>
-        <item>拨打免费电话</item>
-        <item>发送短信</item>
-        <item>取消</item>
-    </string-array>
-    <string-array name="APKTOOL_DUPLICATE_array_0x7f090047">
-        <item>拨打电话</item>
-        <item>拨打免费电话</item>
-        <item>取消</item>
-    </string-array>
-    <string-array name="APKTOOL_DUPLICATE_array_0x7f090048">
+    <string-array name="ay">
         <item>图片</item>
         <item>视频</item>
         <item>文件</item>
         <item>文字</item>
     </string-array>
-    <string-array name="APKTOOL_DUPLICATE_array_0x7f090049">
-        <item>.png</item>
-        <item>.gif</item>
-        <item>.jpg</item>
-        <item>.jpeg</item>
-        <item>.bmp</item>
-        <item>.ico</item>
+    <array name="az">
+        <item>@drawable/ct8</item>
+        <item>@drawable/ct9</item>
+        <item>@drawable/ct_</item>
+        <item>@drawable/cta</item>
+        <item>@drawable/ctb</item>
+        <item>@drawable/ctc</item>
+        <item>@drawable/ctd</item>
+        <item>@drawable/cte</item>
+        <item>@drawable/ctf</item>
+        <item>@drawable/ctg</item>
+        <item>@drawable/cth</item>
+    </array>
+    <array name="b0">
+        <item>@drawable/cti</item>
+        <item>@drawable/ctj</item>
+        <item>@drawable/ctk</item>
+        <item>@drawable/ctl</item>
+        <item>@drawable/ctm</item>
+        <item>@drawable/ctn</item>
+        <item>@drawable/cto</item>
+        <item>@drawable/ctp</item>
+        <item>@drawable/ctq</item>
+        <item>@drawable/ctr</item>
+        <item>@drawable/cts</item>
+    </array>
+    <array name="b1">
+        <item>@drawable/ctt</item>
+        <item>@drawable/ctu</item>
+        <item>@drawable/ctv</item>
+        <item>@drawable/ctw</item>
+        <item>@drawable/ctx</item>
+        <item>@drawable/cty</item>
+        <item>@drawable/ctz</item>
+        <item>@drawable/cu0</item>
+        <item>@drawable/cu1</item>
+        <item>@drawable/cu2</item>
+        <item>@drawable/cu3</item>
+        <item>@drawable/cu4</item>
+        <item>@drawable/cu5</item>
+        <item>@drawable/cu6</item>
+        <item>@drawable/cu7</item>
+        <item>@drawable/cu8</item>
+        <item>@drawable/cu9</item>
+        <item>@drawable/cu_</item>
+        <item>@drawable/cua</item>
+        <item>@drawable/cub</item>
+        <item>@drawable/cuc</item>
+        <item>@drawable/cud</item>
+        <item>@drawable/cue</item>
+        <item>@drawable/cuf</item>
+        <item>@drawable/cug</item>
+        <item>@drawable/cuh</item>
+        <item>@drawable/cui</item>
+        <item>@drawable/cuj</item>
+        <item>@drawable/cuk</item>
+    </array>
+    <array name="b2">
+        <item>@drawable/cul</item>
+        <item>@drawable/cum</item>
+        <item>@drawable/cun</item>
+        <item>@drawable/cuo</item>
+        <item>@drawable/cup</item>
+        <item>@drawable/cuq</item>
+        <item>@drawable/cur</item>
+        <item>@drawable/cus</item>
+        <item>@drawable/cut</item>
+        <item>@drawable/cuu</item>
+        <item>@drawable/cuv</item>
+        <item>@drawable/cuw</item>
+        <item>@drawable/cux</item>
+        <item>@drawable/cuy</item>
+        <item>@drawable/cuz</item>
+        <item>@drawable/cv0</item>
+        <item>@drawable/cv1</item>
+        <item>@drawable/cv2</item>
+        <item>@drawable/cv3</item>
+        <item>@drawable/cv4</item>
+        <item>@drawable/cv5</item>
+        <item>@drawable/cv6</item>
+        <item>@drawable/cv7</item>
+        <item>@drawable/cv8</item>
+        <item>@drawable/cv9</item>
+        <item>@drawable/cv_</item>
+        <item>@drawable/cva</item>
+        <item>@drawable/cvb</item>
+        <item>@drawable/cvc</item>
+    </array>
+    <array name="b3">
+        <item>@drawable/cvd</item>
+        <item>@drawable/cve</item>
+        <item>@drawable/cvf</item>
+        <item>@drawable/cvg</item>
+        <item>@drawable/cvh</item>
+        <item>@drawable/cvi</item>
+        <item>@drawable/cvj</item>
+        <item>@drawable/cvk</item>
+        <item>@drawable/cvl</item>
+        <item>@drawable/cvm</item>
+        <item>@drawable/cvn</item>
+    </array>
+    <array name="b4">
+        <item>@drawable/cvo</item>
+        <item>@drawable/cvp</item>
+        <item>@drawable/cvq</item>
+        <item>@drawable/cvr</item>
+        <item>@drawable/cvs</item>
+        <item>@drawable/cvt</item>
+        <item>@drawable/cvu</item>
+        <item>@drawable/cvv</item>
+        <item>@drawable/cvw</item>
+        <item>@drawable/cvx</item>
+        <item>@drawable/cvy</item>
+        <item>@drawable/cvz</item>
+        <item>@drawable/cw0</item>
+        <item>@drawable/cw1</item>
+        <item>@drawable/cw2</item>
+        <item>@drawable/cw3</item>
+        <item>@drawable/cw4</item>
+        <item>@drawable/cw5</item>
+        <item>@drawable/cw6</item>
+        <item>@drawable/cw7</item>
+        <item>@drawable/cw8</item>
+        <item>@drawable/cw9</item>
+        <item>@drawable/cw_</item>
+        <item>@drawable/cwa</item>
+        <item>@drawable/cwb</item>
+        <item>@drawable/cwc</item>
+        <item>@drawable/cwd</item>
+        <item>@drawable/cwe</item>
+        <item>@drawable/cwf</item>
+    </array>
+    <array name="b5">
+        <item>@drawable/cwg</item>
+        <item>@drawable/cwh</item>
+        <item>@drawable/cwi</item>
+        <item>@drawable/cwj</item>
+        <item>@drawable/cwk</item>
+        <item>@drawable/cwl</item>
+        <item>@drawable/cwm</item>
+        <item>@drawable/cwn</item>
+        <item>@drawable/cwo</item>
+        <item>@drawable/cwp</item>
+    </array>
+    <array name="b6">
+        <item>@drawable/cwq</item>
+        <item>@drawable/cwr</item>
+        <item>@drawable/cws</item>
+        <item>@drawable/cwt</item>
+        <item>@drawable/cwu</item>
+        <item>@drawable/cwv</item>
+        <item>@drawable/cww</item>
+        <item>@drawable/cwx</item>
+        <item>@drawable/cwy</item>
+        <item>@drawable/cwz</item>
+        <item>@drawable/cx0</item>
+        <item>@drawable/cx1</item>
+        <item>@drawable/cx2</item>
+        <item>@drawable/cx3</item>
+        <item>@drawable/cx4</item>
+        <item>@drawable/cx5</item>
+        <item>@drawable/cx6</item>
+        <item>@drawable/cx7</item>
+        <item>@drawable/cx8</item>
+        <item>@drawable/cx9</item>
+        <item>@drawable/cx_</item>
+        <item>@drawable/cxa</item>
+        <item>@drawable/cxb</item>
+        <item>@drawable/cxc</item>
+        <item>@drawable/cxd</item>
+        <item>@drawable/cxe</item>
+        <item>@drawable/cxf</item>
+        <item>@drawable/cxg</item>
+        <item>@drawable/cxh</item>
+        <item>@drawable/cxi</item>
+    </array>
+    <array name="b7">
+        <item>@drawable/cxj</item>
+        <item>@drawable/cxk</item>
+        <item>@drawable/cxl</item>
+        <item>@drawable/cxm</item>
+        <item>@drawable/cxn</item>
+        <item>@drawable/cxo</item>
+        <item>@drawable/cxp</item>
+        <item>@drawable/cxq</item>
+        <item>@drawable/cxr</item>
+        <item>@drawable/cxs</item>
+        <item>@drawable/cxt</item>
+    </array>
+    <array name="b8">
+        <item>@drawable/cxu</item>
+        <item>@drawable/cxv</item>
+        <item>@drawable/cxw</item>
+        <item>@drawable/cxx</item>
+        <item>@drawable/cxy</item>
+        <item>@drawable/cxz</item>
+        <item>@drawable/cy0</item>
+        <item>@drawable/cy1</item>
+        <item>@drawable/cy2</item>
+        <item>@drawable/cy3</item>
+        <item>@drawable/cy4</item>
+        <item>@drawable/cy5</item>
+        <item>@drawable/cy6</item>
+        <item>@drawable/cy7</item>
+        <item>@drawable/cy8</item>
+        <item>@drawable/cy9</item>
+        <item>@drawable/cy_</item>
+        <item>@drawable/cya</item>
+        <item>@drawable/cyb</item>
+        <item>@drawable/cyc</item>
+        <item>@drawable/cyd</item>
+        <item>@drawable/cye</item>
+        <item>@drawable/cyf</item>
+        <item>@drawable/cyg</item>
+        <item>@drawable/cyh</item>
+        <item>@drawable/cyi</item>
+        <item>@drawable/cyj</item>
+        <item>@drawable/cyk</item>
+        <item>@drawable/cyl</item>
+    </array>
+    <string-array name="b9">
+        <item>筛选</item>
+        <item>我的资料</item>
+        <item>清除位置信息并退出</item>
     </string-array>
-    <string-array name="APKTOOL_DUPLICATE_array_0x7f09004a">
-        <item>.mp2</item>
-        <item>.mp3</item>
-        <item>.wav</item>
-        <item>.ogg</item>
-        <item>.mid</item>
-        <item>.midi</item>
-        <item>.m3u</item>
-        <item>.m4a</item>
-        <item>.m4b</item>
-        <item>.m4p</item>
-        <item>.mpga</item>
-        <item>.wma</item>
-        <item>.amr</item>
+    <string-array name="b_">
+        <item>@string/cgd</item>
+        <item>@string/cge</item>
+        <item>取消</item>
     </string-array>
-    <string-array name="APKTOOL_DUPLICATE_array_0x7f09004b">
-        <item>.wmv</item>
-        <item>.mp4</item>
-        <item>.rmvb</item>
-        <item>.avi</item>
-        <item>.flv</item>
-        <item>.rm</item>
-        <item>.asf</item>
-        <item>.mov</item>
-        <item>.mpg</item>
-        <item>.3gp</item>
-        <item>.m4u</item>
-        <item>.mpeg</item>
-        <item>.m4v</item>
-        <item>.vob</item>
-        <item>.mkv</item>
-        <item>.mpe</item>
-    </string-array>
-    <string-array name="APKTOOL_DUPLICATE_array_0x7f09004c">
-        <item>.apk</item>
-        <item>.jar</item>
-        <item>.zip</item>
-        <item>.rar</item>
-        <item>.gz</item>
-        <item>.tar</item>
-        <item>.img</item>
-    </string-array>
-    <string-array name="APKTOOL_DUPLICATE_array_0x7f09004d">
-        <item>.htm</item>
-        <item>.html</item>
-        <item>.php</item>
-        <item>.jsp</item>
-    </string-array>
-    <string-array name="APKTOOL_DUPLICATE_array_0x7f09004e">
-        <item>.txt</item>
-        <item>.java</item>
-        <item>.c</item>
-        <item>.cpp</item>
-        <item>.py</item>
-        <item>.xml</item>
-        <item>.json</item>
-        <item>.log</item>
-    </string-array>
-    <string-array name="APKTOOL_DUPLICATE_array_0x7f09004f">
-        <item>.doc</item>
-        <item>.docx</item>
-        <item>.dot</item>
-    </string-array>
-    <string-array name="APKTOOL_DUPLICATE_array_0x7f090050">
-        <item>.xls</item>
-        <item>.xlsx</item>
-    </string-array>
-    <string-array name="APKTOOL_DUPLICATE_array_0x7f090051">
-        <item>.ppt</item>
-        <item>.pptx</item>
-    </string-array>
-    <string-array name="APKTOOL_DUPLICATE_array_0x7f090052">
-        <item>.pdf</item>
-    </string-array>
-    <string-array name="APKTOOL_DUPLICATE_array_0x7f090053">
-        <item>.chm</item>
-    </string-array>
-    <string-array name="APKTOOL_DUPLICATE_array_0x7f090054">
-        <item>删除所选记录</item>
-        <item>删除所选文件</item>
-        <item>转发</item>
-        <item>存到微云</item>
-    </string-array>
-    <string-array name="APKTOOL_DUPLICATE_array_0x7f090055">
-        <item>China 中国大陆 86 11 常用地区</item>
-        <item>Hong Kong 中国香港 852 8 常用地区</item>
-        <item>Macau 中国澳门 853 8 常用地区</item>
-        <item>Taiwan 中国台湾 886 10 常用地区</item>
-        <item>Japan 日本 81 11 常用地区</item>
-        <item>USA 美国 1 10 常用地区</item>
-        <item>United Kingdom 英国 44 10 常用地区</item>
-        <item>Australia 澳大利亚 61 10 常用地区</item>
-        <item>Canada 加拿大 1 7 常用地区</item>
-    </string-array>
-    <string-array name="APKTOOL_DUPLICATE_array_0x7f090056">
-        <item>常用地区</item>
-    </string-array>
-    <string-array name="APKTOOL_DUPLICATE_array_0x7f090057">
+    <string-array name="ba">
         <item>Algeria 阿尔及利亚 213 6 A</item>
         <item>Afghanistan 阿富汗 93 6 A</item>
         <item>Argentina 阿根廷 54 7 A</item>
@@ -726,7 +806,7 @@
         <item>Chile 智利 56 7 Z</item>
         <item>Central African Republic 中非共和国 236 6 Z</item>
     </string-array>
-    <string-array name="APKTOOL_DUPLICATE_array_0x7f090058">
+    <string-array name="bb">
         <item>A</item>
         <item>B</item>
         <item>C</item>
@@ -754,94 +834,185 @@
         <item>Y</item>
         <item>Z</item>
     </string-array>
-    <array name="APKTOOL_DUPLICATE_array_0x7f090059">
-        <item>@drawable/APKTOOL_DUPLICATE_drawable_0x7f020a91</item>
-        <item>@drawable/APKTOOL_DUPLICATE_drawable_0x7f020a92</item>
+    <string-array name="bc">
+        <item>从相册选择</item>
+        <item>拍照</item>
+    </string-array>
+    <string-array name="bd">
+        <item>0.5</item>
+        <item>1.0</item>
+        <item>1.5</item>
+        <item>2</item>
+        <item>2.5</item>
+        <item>3.0</item>
+    </string-array>
+    <array name="be">
+        <item>@drawable/db1</item>
+        <item>@drawable/db2</item>
     </array>
-    <array name="APKTOOL_DUPLICATE_array_0x7f09005a">
-        <item>@drawable/APKTOOL_DUPLICATE_drawable_0x7f020a90</item>
+    <array name="bf">
+        <item>@drawable/db0</item>
     </array>
-    <string-array name="APKTOOL_DUPLICATE_array_0x7f09005b">
+    <string-array name="bg">
+        <item>被选为约会对象</item>
+        <item>收到的报名</item>
+        <item>收到的评论</item>
+        <item>已结束的约会</item>
+    </string-array>
+    <string-array name="bh">
+        <item>发布广告</item>
+        <item>内容涉黄</item>
+        <item>恶意骚扰</item>
+    </string-array>
+    <string-array name="bi">
+        <item>个人头像违规</item>
+        <item>昵称违规</item>
+        <item>内容违规</item>
+    </string-array>
+    <string-array name="bj">
+        <item>" · "</item>
+        <item>"  "</item>
+    </string-array>
+    <string-array name="bo">
+        <item>添加到桌面</item>
+        <item>从会话列表中移除</item>
+        <item>清空会话列表</item>
+    </string-array>
+    <string-array name="bp">
+        <item>去过的地方</item>
+        <item>爱吃的美食</item>
+        <item>常用的品牌</item>
+        <item>喜欢的运动</item>
+        <item>喜欢的电影</item>
+        <item>喜欢的明星</item>
+        <item>喜欢的游戏</item>
+    </string-array>
+    <string-array name="bq">
+        <item>旅游</item>
+        <item>美食</item>
+        <item>时尚</item>
+        <item>运动</item>
+        <item>电影</item>
+        <item>音乐</item>
+        <item>游戏</item>
+    </string-array>
+    <string-array name="br">
+        <item>发送截图</item>
+        <item>从相册选择</item>
+    </string-array>
+    <string-array name="bs">
+        <item>@string/h1_</item>
+        <item>@string/e8</item>
+    </string-array>
+    <string-array name="bt">
+        <item>@string/h1_</item>
+        <item>@string/h13</item>
+        <item>@string/e8</item>
+    </string-array>
+    <string-array name="bu">
+        <item>确定解除</item>
+    </string-array>
+    <string-array name="bv">
         <item>从本设备中删除</item>
         <item>从群文件中删除</item>
         <item>取消</item>
     </string-array>
-    <string-array name="APKTOOL_DUPLICATE_array_0x7f09005c">
-        <item>101</item>
-        <item>102</item>
-        <item>103</item>
-        <item>104</item>
-        <item>105</item>
-        <item>106</item>
+    <string-array name="bw">
+        <item>@string/duy</item>
+        <item>@string/dut</item>
+        <item>@string/duv</item>
+        <item>取消</item>
     </string-array>
-    <string-array name="APKTOOL_DUPLICATE_array_0x7f09005d">
-        <item>301</item>
-        <item>302</item>
-        <item>303</item>
-        <item>304</item>
-        <item>305</item>
-        <item>306</item>
+    <string-array name="bx">
+        <item>倔强青铜</item>
+        <item>秩序白银</item>
+        <item>荣耀黄金</item>
+        <item>尊贵铂金</item>
+        <item>永恒钻石</item>
+        <item>至尊星耀</item>
+        <item>最强王者</item>
     </string-array>
-    <string-array name="APKTOOL_DUPLICATE_array_0x7f09005e">
-        <item>107</item>
-        <item>401</item>
+    <string-array name="by">
+        <item>成员分布</item>
+        <item>邀请好友加入</item>
+        <item>删除成员</item>
     </string-array>
-    <string-array name="APKTOOL_DUPLICATE_array_0x7f09005f">
-        <item>501</item>
-        <item>502</item>
-        <item>503</item>
-        <item>504</item>
-        <item>505</item>
-        <item>506</item>
-        <item>507</item>
-        <item>508</item>
-        <item>509</item>
-        <item>qrcodecolor</item>
-        <item>601</item>
-        <item>401</item>
+    <string-array name="bz">
+        <item>成员分布</item>
+        <item>批量加好友</item>
+        <item>邀请新成员</item>
+        <item>删除成员</item>
     </string-array>
-    <string-array name="APKTOOL_DUPLICATE_array_0x7f090060">
-        <item>" · "</item>
-        <item>"  "</item>
+    <string-array name="c0">
+        <item>默认排序</item>
+        <item>按职务排序</item>
+        <item>礼物榜</item>
+        <item>发起多人聊天</item>
+        <item>邀请新成员</item>
+        <item>删除群成员</item>
     </string-array>
-    <string-array name="APKTOOL_DUPLICATE_array_0x7f090061">
-        <item>月点击超千万次神作：罗布泊之咒</item>
-        <item>小时代三部曲完结篇：刺金时代</item>
-        <item>盗猎者的诡异经历：鬼藏人</item>
-        <item>比外星美男叫兽更具魅力的男主</item>
-        <item>独家推荐：宅斗版后宫《甄嬛传》</item>
-        <item>治愈系：温暖写手叶非夜新书来袭</item>
-        <item>卧底女警行动时神秘失联</item>
-        <item>幽灵诅咒！死亡校舍排行</item>
+    <string-array name="c1">
+        <item>删除未付款成员</item>
     </string-array>
-    <string-array name="APKTOOL_DUPLICATE_array_0x7f090062">
-        <item>作者：周德东</item>
-        <item>作者：郭敬明</item>
-        <item>作者：李达</item>
-        <item>寻找属于你的“都敏俊”</item>
-        <item>不要小看女人</item>
-        <item>男神不要太多哦</item>
-        <item>女警神秘失联</item>
-        <item>死亡宿舍推荐</item>
+    <string-array name="c2">
+        <item>今天</item>
+        <item>一周内</item>
+        <item>一周前</item>
+        <item>一个月前</item>
+        <item>三个月前</item>
+        <item>半年前</item>
+        <item>一年前</item>
+        <item>从未发言</item>
     </string-array>
-    <string-array name="APKTOOL_DUPLICATE_array_0x7f090063">
-        <item>中国恐怖小说第一人周德东百万字巨著火热连载中，腾讯独家首发，本书集青春、爱情、悬疑、探险、魔幻于一体，共1001次高潮。邀您一起踏上惊心动魄的“罗布泊之旅”！</item>
-        <item>林萧、顾里、南湘、唐宛如四位主角的故事，画上出乎意料同时又无可辩驳的句号。郭敬明导演同名电影《小时代》最后一部2014年7月上映。前两季交错铺设下的伏笔，将在本季密集引爆。</item>
-        <item>30年前，一支由“死人”组建的勘探队进入杀龙岭，中国隐藏了数千年的终极秘密首次拉开大幕：莽莽丛林背后，究竟隐藏了什么秘密？“一切动物都指向那个终极——天黑莫上山，夜半鬼藏人……</item>
-        <item>此男主，前无古人后无来者，时有怪癖，却极富魅力，追其原因：多金、帅气、人间难遇！要如何把土豪变成自己的？攻略在此，不看后悔哦~</item>
-        <item>伯父冷漠，未婚夫背叛，视若亲母的伯母二十万两银子将她卖为商人妾，彻底断送了她的一生。重生归来，她决心报仇，那些践踏她的人，她必以牙还牙，加倍奉还！</item>
-        <item>“男神大人，小女子有罪，对您有跟踪罪，窥视罪，梦中情人罪……”林深深对着面前冷若冰霜的美男子——锦洋嘴里谢罪，脑内YY，心里大恨：老娘阅男无数，居然栽了！</item>
-        <item>王牌卧底执行公务时突然失联，神秘失踪。她到底遭遇何事，现又身在何处？</item>
-        <item>为寻找失踪的姐姐，她考入姐姐之前的同一所大学。入校当天天，一连串离奇事件就在宿舍接连上演，姐姐的失踪是否与这些有关？事件背后的真相到底是……</item>
+    <string-array name="c3">
+        <item>今天</item>
+        <item>一周内</item>
+        <item>一周前</item>
+        <item>一个月前</item>
+        <item>三个月前</item>
+        <item>半年前</item>
+        <item>一年前</item>
+        <item>两年前</item>
+        <item>三年前</item>
+        <item>五年前</item>
+        <item>七年前</item>
+        <item>十年前</item>
     </string-array>
-    <string-array name="APKTOOL_DUPLICATE_array_0x7f090064">
-        <item>热门书籍</item>
-        <item>热门书籍</item>
-        <item>热门书籍</item>
-        <item>热门书籍</item>
-        <item>热门书籍</item>
-        <item>大神推荐</item>
-        <item>热门书籍</item>
-        <item>热门书籍</item>
+    <string-array name="c4">
+        <item>潜水</item>
+        <item>冒泡</item>
+        <item>吐槽</item>
+        <item>活跃</item>
+        <item>话唠</item>
+        <item>传说</item>
+    </string-array>
+    <string-array name="c5">
+        <item>≤5km</item>
+        <item>≤10km</item>
+        <item>≤50km</item>
+        <item>≤500km</item>
+        <item>≤1000km</item>
+        <item>≤2000km</item>
+        <item>≤10000km</item>
+        <item>远在天边</item>
+        <item>未知</item>
+    </string-array>
+    <string-array name="c6">
+        <item>默认排序</item>
+        <item>优先在线成员</item>
+        <item>按活跃时间排序</item>
+        <item>按加群时间排序</item>
+    </string-array>
+    <string-array name="c7">
+        <item>默认排序</item>
+        <item>优先在线成员</item>
+        <item>按活跃时间</item>
+        <item>按加群时间</item>
+    </string-array>
+    <string-array name="c8">
+        <item>屏蔽群消息</item>
+    </string-array>
+    <string-array name="c9">
+        <item>接收群消息</item>
     </string-array>
 </resources>

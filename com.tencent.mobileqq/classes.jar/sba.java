@@ -1,30 +1,46 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.ChatActivityUtils.StartVideoListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
-import java.util.Map;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionPreloadManager;
+import com.tencent.mobileqq.widget.ImageProgressCircle;
+import com.tencent.qphone.base.util.QLog;
+import java.net.URL;
 
-public final class sba
-  implements DialogInterface.OnClickListener
+class sba
+  implements sch
 {
-  public sba(QQAppInterface paramQQAppInterface, int paramInt, String paramString1, String paramString2, boolean paramBoolean1, Context paramContext, String paramString3, String paramString4, ChatActivityUtils.StartVideoListener paramStartVideoListener, String paramString5, Map paramMap, boolean paramBoolean2, boolean paramBoolean3) {}
+  sba(sau paramsau, boolean paramBoolean, long paramLong, ImageProgressCircle paramImageProgressCircle) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(URL paramURL, int paramInt)
   {
-    ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, null, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, true);
-    if (this.jdField_a_of_type_Boolean) {
-      ReportController.b(null, "CliOper", "", "", "Two_call", "Clk_shield_btn", 0, 0, "1", "", "", "");
+    if (QLog.isColorLevel()) {
+      QLog.d("PublicAccountImageCollectionAdapter", 2, "loadImage onLoadProgressed");
     }
-    ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Boolean, this.d, false, true, this.jdField_a_of_type_ComTencentMobileqqActivityChatActivityUtils$StartVideoListener, this.e, this.jdField_a_of_type_JavaUtilMap, this.jdField_b_of_type_Boolean, this.jdField_c_of_type_Boolean, false);
-    paramDialogInterface.dismiss();
+    sau.a(this.jdField_a_of_type_Sau, this.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle, paramInt);
+  }
+  
+  public void a(URL paramURL, Throwable paramThrowable)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PublicAccountImageCollectionAdapter", 2, "loadImage onLoadFailed");
+    }
+    if (!this.jdField_a_of_type_Boolean) {
+      PublicAccountImageCollectionPreloadManager.a().b(false, this.jdField_a_of_type_Long);
+    }
+    sau.a(this.jdField_a_of_type_Sau, this.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle);
+  }
+  
+  public void a(URL paramURL, rcs paramrcs)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PublicAccountImageCollectionAdapter", 2, "loadImage onLoadSuccessed");
+    }
+    if (!this.jdField_a_of_type_Boolean) {
+      PublicAccountImageCollectionPreloadManager.a().b(true, this.jdField_a_of_type_Long);
+    }
+    sau.a(this.jdField_a_of_type_Sau, this.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     sba
  * JD-Core Version:    0.7.0.1
  */

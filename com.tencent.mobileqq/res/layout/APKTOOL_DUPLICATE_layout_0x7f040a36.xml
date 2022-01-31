@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2df9" android:paddingTop="12.0dip" android:paddingRight="12.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentTop="true" android:layout_alignParentRight="true"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <include layout="@layout/APKTOOL_DUPLICATE_layout_0x7f040a37" />
-    <Button android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2dfa" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021e1b" android:layout_width="24.0dip" android:layout_height="24.0dip" android:contentDescription="定时" />
-    <TextView android:textSize="14.0sp" android:textColor="#ffffffff" android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2dfb" android:paddingRight="12.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" android:text="定时" />
-    <Button android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2dfc" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021ec4" android:layout_width="24.0dip" android:layout_height="24.0dip" android:contentDescription="超清" />
-    <TextView android:textSize="14.0sp" android:textColor="#ffffffff" android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2dfd" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" android:text="超清" />
-</LinearLayout>

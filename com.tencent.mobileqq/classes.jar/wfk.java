@@ -1,20 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
 
 public class wfk
-  implements DialogInterface.OnClickListener
+  implements View.OnTouchListener
 {
-  public wfk(TroopChatPie paramTroopChatPie) {}
+  public wfk(VideoPlayerView paramVideoPlayerView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.a.A();
+    VideoPlayerView.a(this.a);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wfk
  * JD-Core Version:    0.7.0.1
  */

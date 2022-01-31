@@ -1,112 +1,24 @@
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView.IphonePickListener;
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView.PickerViewAdapter;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnDismissListener;
-import java.util.List;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
 public class syh
-  implements IphonePickerView.IphonePickListener, IphonePickerView.PickerViewAdapter, ActionSheet.OnDismissListener
+  extends sfo
 {
-  int jdField_a_of_type_Int;
-  ActionSheet jdField_a_of_type_ComTencentWidgetActionSheet;
-  final List jdField_a_of_type_JavaUtilList;
-  syj jdField_a_of_type_Syj;
-  int b;
+  public final String a;
   
-  public syh(ActionSheet paramActionSheet, List paramList, String paramString, syj paramsyj)
+  public syh(ErrorMessage paramErrorMessage, String paramString)
   {
-    this.jdField_a_of_type_ComTencentWidgetActionSheet = paramActionSheet;
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_Int = 0;
-    this.b = paramList.indexOf(paramString);
-    if (this.b < 0) {
-      this.b = 0;
-    }
-    this.jdField_a_of_type_Syj = paramsyj;
+    this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public int a()
+  public String toString()
   {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public int b()
-  {
-    return this.b;
-  }
-  
-  public int getColumnCount()
-  {
-    return 1;
-  }
-  
-  public int getRowCount(int paramInt)
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public String getText(int paramInt1, int paramInt2)
-  {
-    String str2 = "";
-    String str1 = str2;
-    if (paramInt1 == 0)
-    {
-      str1 = str2;
-      if (paramInt2 >= 0)
-      {
-        str1 = str2;
-        if (paramInt2 < this.jdField_a_of_type_JavaUtilList.size()) {
-          str1 = (String)this.jdField_a_of_type_JavaUtilList.get(paramInt2);
-        }
-      }
-    }
-    return str1;
-  }
-  
-  public void onConfirmBtClicked()
-  {
-    if ((this.jdField_a_of_type_Syj != null) && (this.b >= 0) && (this.b < this.jdField_a_of_type_JavaUtilList.size())) {
-      this.jdField_a_of_type_Syj.a(1, (String)this.jdField_a_of_type_JavaUtilList.get(this.b));
-    }
-    if (this.jdField_a_of_type_ComTencentWidgetActionSheet != null) {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-    }
-  }
-  
-  public void onDismiss()
-  {
-    if ((this.jdField_a_of_type_Syj != null) && (this.b >= 0) && (this.b < this.jdField_a_of_type_JavaUtilList.size())) {
-      this.jdField_a_of_type_Syj.a(2, (String)this.jdField_a_of_type_JavaUtilList.get(this.b));
-    }
-  }
-  
-  public void onItemSelected(int paramInt1, int paramInt2)
-  {
-    int i = paramInt1;
-    if (paramInt1 != 0) {
-      i = 0;
-    }
-    if (paramInt2 < 0) {
-      paramInt1 = 0;
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Int = i;
-      this.b = paramInt1;
-      if ((this.jdField_a_of_type_Syj != null) && (this.b >= 0) && (this.b < this.jdField_a_of_type_JavaUtilList.size())) {
-        this.jdField_a_of_type_Syj.a(0, (String)this.jdField_a_of_type_JavaUtilList.get(this.b));
-      }
-      return;
-      paramInt1 = paramInt2;
-      if (paramInt2 >= this.jdField_a_of_type_JavaUtilList.size()) {
-        paramInt1 = this.jdField_a_of_type_JavaUtilList.size() - 1;
-      }
-    }
+    return "ReportEvent{vid='" + this.jdField_a_of_type_JavaLangString + '\'' + "} ";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     syh
  * JD-Core Version:    0.7.0.1
  */

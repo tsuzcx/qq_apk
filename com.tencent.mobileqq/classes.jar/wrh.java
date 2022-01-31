@@ -1,35 +1,42 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.contacts.adapter.ContactsDisAdapter;
-import com.tencent.widget.SimpleTextView;
-import com.tencent.widget.SwipRightMenuBuilder.SwipRightMenuItem;
-import com.tencent.widget.SwipTextViewMenuBuilder;
+import android.support.annotation.Nullable;
+import camera.XEFFECT_MATERIALS_GENERAL_DATASTRUCT.MetaMaterial;
+import java.util.Iterator;
+import java.util.List;
 
-public class wrh
-  extends SwipTextViewMenuBuilder
+class wrh
+  implements bhwg<wqg>
 {
-  public wrh(ContactsDisAdapter paramContactsDisAdapter, int paramInt1, int paramInt2, int[] paramArrayOfInt1, int paramInt3, int[] paramArrayOfInt2, int[] paramArrayOfInt3, int[] paramArrayOfInt4)
-  {
-    super(paramInt1, paramInt2, paramArrayOfInt1, paramInt3, paramArrayOfInt2, paramArrayOfInt3, paramArrayOfInt4);
-  }
+  wrh(wrc paramwrc) {}
   
-  public View a(int paramInt, Object paramObject, SwipRightMenuBuilder.SwipRightMenuItem paramSwipRightMenuItem, View.OnClickListener paramOnClickListener)
+  public void a(@Nullable wqg paramwqg)
   {
-    paramSwipRightMenuItem = super.a(paramInt, paramObject, paramSwipRightMenuItem, paramOnClickListener);
-    if ((paramSwipRightMenuItem instanceof SimpleTextView)) {
-      paramSwipRightMenuItem.setTag(paramObject);
+    if (paramwqg == null) {
+      return;
     }
-    return paramSwipRightMenuItem;
-  }
-  
-  public void a(int paramInt, Object paramObject, SwipRightMenuBuilder.SwipRightMenuItem[] paramArrayOfSwipRightMenuItem)
-  {
-    this.a.a(paramInt, paramArrayOfSwipRightMenuItem, paramObject);
+    wqk localwqk;
+    do
+    {
+      Iterator localIterator;
+      do
+      {
+        localIterator = wrc.a(this.a).iterator();
+      } while (!localIterator.hasNext());
+      localwqk = (wqk)localIterator.next();
+      if (!localwqk.jdField_a_of_type_JavaLangString.equals(paramwqg.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial.id)) {
+        break;
+      }
+      if (localwqk.jdField_a_of_type_Int != paramwqg.jdField_a_of_type_Int)
+      {
+        localwqk.jdField_a_of_type_Int = paramwqg.jdField_a_of_type_Int;
+        wrc.a(this.a).notifyItemChanged(wrc.a(this.a).indexOf(localwqk) + 1);
+      }
+    } while ((localwqk.jdField_a_of_type_Int != 2) || (!localwqk.jdField_a_of_type_JavaLangString.equals(wrc.a(this.a))));
+    wrc.a(this.a).a(localwqk);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wrh
  * JD-Core Version:    0.7.0.1
  */

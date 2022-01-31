@@ -1,23 +1,16 @@
-import com.tencent.biz.qqstory.model.WeatherDataProvider;
-import com.tencent.biz.qqstory.model.lbs.BasicLocation;
-import com.tencent.biz.qqstory.model.lbs.LbsManager.LbsUpdateListener;
-import com.tencent.biz.qqstory.support.logging.SLog;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
-public class nhm
-  implements LbsManager.LbsUpdateListener
+class nhm
+  implements Animation.AnimationListener
 {
-  public nhm(WeatherDataProvider paramWeatherDataProvider) {}
+  nhm(nhi paramnhi) {}
   
-  public void a(boolean paramBoolean, BasicLocation paramBasicLocation)
-  {
-    SLog.b("WeatherDataProvider", "WeatherLbsListener: onLbsUpdate, isSuccess=" + paramBoolean);
-    if ((paramBoolean) && (paramBasicLocation != null))
-    {
-      this.a.a(paramBasicLocation.b, paramBasicLocation.a);
-      return;
-    }
-    this.a.a(false, null);
-  }
+  public void onAnimationEnd(Animation paramAnimation) {}
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

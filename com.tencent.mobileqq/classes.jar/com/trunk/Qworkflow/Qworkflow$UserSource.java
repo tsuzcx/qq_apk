@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class Qworkflow$UserSource
-  extends MessageMicro
+  extends MessageMicro<UserSource>
 {
   public static final int FROM_FRIEND = 3;
   public static final int FROM_GROUP = 1;

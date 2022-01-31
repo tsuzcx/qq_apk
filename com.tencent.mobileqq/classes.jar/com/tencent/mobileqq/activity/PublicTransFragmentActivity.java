@@ -3,11 +3,12 @@ package com.tencent.mobileqq.activity;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import com.tencent.mobileqq.fragment.PublicBaseFragment;
 
 public class PublicTransFragmentActivity
   extends PublicFragmentActivity
 {
-  public static void b(Activity paramActivity, Intent paramIntent, Class paramClass, int paramInt)
+  public static void b(Activity paramActivity, Intent paramIntent, Class<? extends PublicBaseFragment> paramClass, int paramInt)
   {
     Intent localIntent = paramIntent;
     if (paramIntent == null) {
@@ -18,7 +19,7 @@ public class PublicTransFragmentActivity
     paramActivity.startActivityForResult(localIntent, paramInt);
   }
   
-  public static void b(Context paramContext, Intent paramIntent, Class paramClass)
+  public static void b(Context paramContext, Intent paramIntent, Class<? extends PublicBaseFragment> paramClass)
   {
     Intent localIntent = paramIntent;
     if (paramIntent == null) {

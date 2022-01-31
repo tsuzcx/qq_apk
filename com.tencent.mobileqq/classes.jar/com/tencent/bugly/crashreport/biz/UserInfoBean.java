@@ -9,7 +9,7 @@ import java.util.Map;
 public class UserInfoBean
   implements Parcelable
 {
-  public static final Parcelable.Creator<UserInfoBean> CREATOR = new Parcelable.Creator() {};
+  public static final Parcelable.Creator<UserInfoBean> CREATOR = new UserInfoBean.1();
   public long a;
   public int b;
   public String c;

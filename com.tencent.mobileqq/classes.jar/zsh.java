@@ -1,26 +1,23 @@
-import com.tencent.av.gaudio.AVNotifyCenter;
-import com.tencent.av.utils.GVideoGrayConfig.GVideoGrayConfigListener;
-import com.tencent.av.utils.GVideoGrayConfig.Record;
-import com.tencent.mobileqq.app.QQGAudioMsgHandler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-public class zsh
-  implements GVideoGrayConfig.GVideoGrayConfigListener
+class zsh
+  implements DialogInterface.OnCancelListener
 {
-  public zsh(QQGAudioMsgHandler paramQQGAudioMsgHandler, long paramLong, int paramInt) {}
+  zsh(zsd paramzsd, zsc paramzsc, zru paramzru, JSONObject paramJSONObject, zrt paramzrt) {}
   
-  public void a(int paramInt1, GVideoGrayConfig.Record paramRecord, int paramInt2)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    if (paramInt1 == 0)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQGAudioMsgHandler.a.a(10, 1, this.jdField_a_of_type_Long, null, this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQGAudioMsgHandler.a.a(7, this.jdField_a_of_type_Long, 2, 21, this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQGAudioMsgHandler.a.a(21, 1, this.jdField_a_of_type_Long, 0L);
-    }
+    this.jdField_a_of_type_Zsd.d();
+    QLog.i("DoraemonOpenAPI.apiMgr", 1, "cancel " + this.jdField_a_of_type_Zsc.a);
+    zsd.c(this.jdField_a_of_type_Zsd, 4, this.jdField_a_of_type_Zru, this.jdField_a_of_type_OrgJsonJSONObject, this.jdField_a_of_type_Zrt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     zsh
  * JD-Core Version:    0.7.0.1
  */

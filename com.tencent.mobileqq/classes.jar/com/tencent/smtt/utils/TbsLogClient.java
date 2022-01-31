@@ -4,7 +4,6 @@ import android.content.Context;
 import android.os.Environment;
 import android.os.Looper;
 import android.os.Process;
-import android.util.Log;
 import android.widget.TextView;
 import java.io.File;
 import java.text.SimpleDateFormat;
@@ -79,10 +78,7 @@ public class TbsLogClient
   
   public void d(String paramString1, String paramString2) {}
   
-  public void e(String paramString1, String paramString2)
-  {
-    Log.e(paramString1, paramString2);
-  }
+  public void e(String paramString1, String paramString2) {}
   
   public void i(String paramString1, String paramString2) {}
   
@@ -94,7 +90,7 @@ public class TbsLogClient
   public void showLog(String paramString)
   {
     if (this.mView != null) {
-      this.mView.post(new LogRunnable(paramString));
+      this.mView.post(new TbsLogClient.LogRunnable(this, paramString));
     }
   }
   
@@ -139,28 +135,10 @@ public class TbsLogClient
       localException.printStackTrace();
     }
   }
-  
-  private class LogRunnable
-    implements Runnable
-  {
-    String mLog = null;
-    
-    LogRunnable(String paramString)
-    {
-      this.mLog = paramString;
-    }
-    
-    public void run()
-    {
-      if (TbsLogClient.this.mView != null) {
-        TbsLogClient.this.mView.append(this.mLog + "\n");
-      }
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.smtt.utils.TbsLogClient
  * JD-Core Version:    0.7.0.1
  */

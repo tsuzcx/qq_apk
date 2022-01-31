@@ -1,27 +1,35 @@
-import android.view.animation.OvershootInterpolator;
-import com.tencent.mobileqq.armap.ARMapOpenRedPackDialog;
-import com.tencent.mobileqq.portal.SanHuaView;
+import com.tencent.mobileqq.activity.PublicAccountListActivity;
+import com.tencent.mobileqq.data.PublicAccountInfo;
 
 public class abjb
-  extends OvershootInterpolator
+  extends ajpe
 {
-  private boolean jdField_a_of_type_Boolean;
+  public abjb(PublicAccountListActivity paramPublicAccountListActivity) {}
   
-  public abjb(ARMapOpenRedPackDialog paramARMapOpenRedPackDialog) {}
-  
-  public float getInterpolation(float paramFloat)
+  public void a(int paramInt, PublicAccountInfo paramPublicAccountInfo)
   {
-    if ((!this.jdField_a_of_type_Boolean) && (paramFloat > 0.7D))
-    {
-      this.jdField_a_of_type_Boolean = true;
-      ARMapOpenRedPackDialog.a(this.jdField_a_of_type_ComTencentMobileqqArmapARMapOpenRedPackDialog).a();
+    if (paramInt == 0) {
+      this.a.c();
     }
-    return (float)(1.0D - Math.pow(2.718281828459045D, 5.0F * -paramFloat) * Math.cos(8.0F * paramFloat));
+  }
+  
+  public void a(int paramInt, boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      this.a.c();
+    }
+  }
+  
+  public void b(int paramInt, PublicAccountInfo paramPublicAccountInfo)
+  {
+    if (paramInt == 0) {
+      this.a.c();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abjb
  * JD-Core Version:    0.7.0.1
  */

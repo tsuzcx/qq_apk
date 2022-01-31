@@ -6,7 +6,7 @@ import android.os.HandlerThread;
 public class CommonTaskThread
   extends HandlerThread
 {
-  private Handler a;
+  private Handler handler;
   
   public CommonTaskThread(String paramString)
   {
@@ -14,27 +14,27 @@ public class CommonTaskThread
     start();
   }
   
-  public void a(Runnable paramRunnable)
+  public void post(Runnable paramRunnable)
   {
     try
     {
-      if (this.a == null) {
-        this.a = new Handler(getLooper());
+      if (this.handler == null) {
+        this.handler = new Handler(getLooper());
       }
-      this.a.post(paramRunnable);
+      this.handler.post(paramRunnable);
       return;
     }
     finally {}
   }
   
-  public void a(Runnable paramRunnable, long paramLong)
+  public void postDelay(Runnable paramRunnable, long paramLong)
   {
     try
     {
-      if (this.a == null) {
-        this.a = new Handler(getLooper());
+      if (this.handler == null) {
+        this.handler = new Handler(getLooper());
       }
-      this.a.postDelayed(paramRunnable, paramLong);
+      this.handler.postDelayed(paramRunnable, paramLong);
       return;
     }
     finally {}

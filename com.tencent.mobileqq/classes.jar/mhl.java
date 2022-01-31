@@ -1,26 +1,24 @@
-import android.os.Handler;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
-import java.lang.ref.WeakReference;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.utils.PopupDialog;
 
 public class mhl
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public mhl(VideoFeedsPlayManager paramVideoFeedsPlayManager) {}
+  public mhl(PopupDialog paramPopupDialog) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (VideoFeedsPlayManager.a(this.a) == null) {
-      return;
+    if (PopupDialog.a.b != null) {
+      PopupDialog.a.b.onClick(paramDialogInterface, paramInt);
     }
-    VideoFeedsPlayManager.a(this.a).removeMessages(-2);
-    new WeakReference(VideoFeedsPlayManager.a(this.a));
-    new WeakReference(VideoFeedsPlayManager.a(this.a));
-    VideoFeedsPlayManager.a(this.a).sendEmptyMessage(-2);
+    paramDialogInterface.dismiss();
+    PopupDialog.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     mhl
  * JD-Core Version:    0.7.0.1
  */

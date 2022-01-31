@@ -1,7 +1,8 @@
 package com.tencent.mobileqq.data;
 
+import atmo;
+import atnz;
 import com.tencent.mobileqq.persistence.ConflictClause;
-import com.tencent.mobileqq.persistence.notColumn;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 import java.util.Timer;
 
@@ -17,7 +18,7 @@ public class PrinterItemMsgRecord
   public static final int status_running = 2;
   public static final int status_transfer_fail = 12;
   public String filename;
-  @notColumn
+  @atnz
   public Timer mTimer_for_Print;
   public double progress;
   public int status = 1;
@@ -53,7 +54,7 @@ public class PrinterItemMsgRecord
     return null;
   }
   
-  protected Class getClassForTable()
+  public Class<? extends atmo> getClassForTable()
   {
     return PrinterItemMsgRecord.class;
   }
@@ -63,7 +64,7 @@ public class PrinterItemMsgRecord
     return "mr_dataline_printer";
   }
   
-  protected void postRead() {}
+  public void postRead() {}
 }
 
 

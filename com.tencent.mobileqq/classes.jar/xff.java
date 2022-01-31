@@ -1,23 +1,10 @@
-import android.view.View;
-import android.view.View.OnFocusChangeListener;
-import com.tencent.mobileqq.activity.qwallet.GoldMsgSettingActivity;
-import com.tencent.mobileqq.activity.qwallet.goldmsg.GoldMsgAioState;
-
-class xff
-  implements View.OnFocusChangeListener
+public abstract interface xff
 {
-  xff(xfe paramxfe) {}
-  
-  public void onFocusChange(View paramView, boolean paramBoolean)
-  {
-    if (!paramBoolean) {
-      GoldMsgAioState.a(this.a.a.getWindow(), this.a.a, paramView);
-    }
-  }
+  public abstract void a(boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     xff
  * JD-Core Version:    0.7.0.1
  */

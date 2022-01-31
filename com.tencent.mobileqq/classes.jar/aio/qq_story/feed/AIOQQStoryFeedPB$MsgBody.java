@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class AIOQQStoryFeedPB$MsgBody
-  extends MessageMicro
+  extends MessageMicro<MsgBody>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 32 }, new String[] { "uint32_keep_time", "uint32_latest_qzone_time", "msg_aio_feed", "uint64_msg_time" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), null, Long.valueOf(0L) }, MsgBody.class);
   public AIOQQStoryFeedPB.AIOQQStoryFeed msg_aio_feed = new AIOQQStoryFeedPB.AIOQQStoryFeed();

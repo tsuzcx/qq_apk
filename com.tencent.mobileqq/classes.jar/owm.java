@@ -1,23 +1,13 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.animation.ValueAnimator;
-import com.tencent.biz.qqstory.widget.RotateCircleImageView;
-
-public class owm
-  implements Animator.AnimatorListener
+class owm
+  implements pjw
 {
-  public owm(RotateCircleImageView paramRotateCircleImageView) {}
+  owm(owl paramowl, opw paramopw, qoe paramqoe) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void a()
   {
-    RotateCircleImageView.b(this.a).start();
+    obz.a = this.jdField_a_of_type_Opw.a();
+    obz.a(this.jdField_a_of_type_Qoe.a(), this.jdField_a_of_type_Opw.a(), 2);
   }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

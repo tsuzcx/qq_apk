@@ -1,20 +1,28 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarRecordActivity;
+import android.os.Handler;
+import android.widget.Toast;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.SendMultiPictureHelper.6.1;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.msf.sdk.handler.INetEventHandler;
 
-class abqt
-  implements DialogInterface.OnClickListener
+public class abqt
+  implements INetEventHandler
 {
-  abqt(abqs paramabqs) {}
+  abqt(abqn paramabqn) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onNetChangeEvent(boolean paramBoolean)
   {
-    this.a.a.finish();
+    if (!paramBoolean)
+    {
+      Toast.makeText(BaseApplicationImpl.getApplication(), this.a.a.getString(2131628955), 1).show();
+      SendMultiPictureHelper.6.1 local1 = new SendMultiPictureHelper.6.1(this);
+      new Handler().postDelayed(local1, 3000L);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abqt
  * JD-Core Version:    0.7.0.1
  */

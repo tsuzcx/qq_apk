@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class publicaccount_recommend$BusinessRecommend
-  extends MessageMicro
+  extends MessageMicro<BusinessRecommend>
 {
   public static final int ACCOUNT_FIELD_NUMBER = 5;
   public static final int ACCOUNT_FLAG_FIELD_NUMBER = 15;

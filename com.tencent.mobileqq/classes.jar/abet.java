@@ -1,23 +1,20 @@
-import com.tencent.mobileqq.ark.ArkMessageServerLogic.ServerCheckCallback;
-import com.tencent.mobileqq.ark.ArkRecommendLogic;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.NotificationActivity;
 
 public class abet
-  implements ArkMessageServerLogic.ServerCheckCallback
+  implements View.OnClickListener
 {
-  public abet(ArkRecommendLogic paramArkRecommendLogic, WeakReference paramWeakReference) {}
+  public abet(NotificationActivity paramNotificationActivity) {}
   
-  public void a(ArrayList paramArrayList)
+  public void onClick(View paramView)
   {
-    if (paramArrayList != null) {
-      ArkRecommendLogic.a(this.jdField_a_of_type_ComTencentMobileqqArkArkRecommendLogic, paramArrayList, null, this.jdField_a_of_type_JavaLangRefWeakReference, 4);
-    }
+    this.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     abet
  * JD-Core Version:    0.7.0.1
  */

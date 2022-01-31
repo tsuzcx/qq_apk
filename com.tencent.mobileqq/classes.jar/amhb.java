@@ -1,47 +1,46 @@
-import android.view.View;
-import com.tencent.widget.AbsListView;
+import android.text.TextUtils;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class amhb
-  extends amhm
-  implements Runnable
 {
-  private amhb(AbsListView paramAbsListView)
+  private Map<String, amhc> a = new HashMap();
+  
+  public static amhb a(alzs[] paramArrayOfalzs)
   {
-    super(paramAbsListView, null);
+    if ((paramArrayOfalzs == null) || (paramArrayOfalzs.length <= 0)) {
+      return null;
+    }
+    localamhb = new amhb();
+    try
+    {
+      paramArrayOfalzs = new JSONObject(paramArrayOfalzs[0].a);
+      Iterator localIterator = paramArrayOfalzs.keys();
+      while (localIterator.hasNext())
+      {
+        String str = (String)localIterator.next();
+        JSONObject localJSONObject = paramArrayOfalzs.getJSONObject(str);
+        localamhb.a.put(str, amhc.a(localJSONObject));
+      }
+      return localamhb;
+    }
+    catch (JSONException paramArrayOfalzs) {}
   }
   
-  public void run()
+  public static amhc a(String paramString)
   {
-    View localView;
-    if ((this.a.isPressed()) && (this.a.mSelectedPosition >= 0))
-    {
-      int i = this.a.mSelectedPosition;
-      int j = this.a.mFirstPosition;
-      localView = this.a.getChildAt(i - j);
-      if (this.a.mDataChanged) {
-        break label108;
-      }
-      if (!a()) {
-        break label128;
-      }
+    if ((!TextUtils.isEmpty(paramString)) && (amgy.a() != null)) {
+      return (amhc)amgy.a().a().get(paramString);
     }
-    label128:
-    for (boolean bool = this.a.performLongPress(localView, this.a.mSelectedPosition, this.a.mSelectedRowId);; bool = false)
-    {
-      if (bool)
-      {
-        this.a.setPressed(false);
-        localView.setPressed(false);
-      }
-      label108:
-      do
-      {
-        return;
-        this.a.setPressed(false);
-      } while (localView == null);
-      localView.setPressed(false);
-      return;
-    }
+    return null;
+  }
+  
+  public Map<String, amhc> a()
+  {
+    return this.a;
   }
 }
 

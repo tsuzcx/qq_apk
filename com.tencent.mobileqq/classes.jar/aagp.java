@@ -1,23 +1,31 @@
-import com.tencent.mobileqq.ar.ARNativeBridge;
-import com.tencent.mobileqq.ar.ARRenderModel.ARWorldCupGlobalSceneRenderable;
-import com.tencent.qphone.base.util.QLog;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.ChatFragment;
+import com.tencent.mobileqq.activity.fling.TopGestureLayout.InterceptTouchEventListener;
 
 public class aagp
-  implements Runnable
+  implements TopGestureLayout.InterceptTouchEventListener
 {
-  public aagp(ARWorldCupGlobalSceneRenderable paramARWorldCupGlobalSceneRenderable) {}
+  public aagp(ChatFragment paramChatFragment) {}
   
-  public void run()
+  public void OnDispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    QLog.i("ARWorldCupGlobalSceneRenderable", 1, "zoomOutWorldCupSparks.");
-    if (ARWorldCupGlobalSceneRenderable.a(this.a) != null) {
-      ARWorldCupGlobalSceneRenderable.a(this.a).native_hiddenBigScreen();
+    if (this.a.a != null) {
+      this.a.a.b(paramMotionEvent);
     }
+  }
+  
+  public boolean OnInterceptTouchEvent(MotionEvent paramMotionEvent)
+  {
+    if (this.a.a != null) {
+      return this.a.a.a(paramMotionEvent);
+    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aagp
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.data;
 
 import android.text.TextUtils;
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.unique;
+import atmo;
+import atoc;
 
 public class ApolloFavActionData
-  extends Entity
+  extends atmo
 {
   public int acitonId;
   public int audioId;
   public float audioStartTime;
-  @unique
+  @atoc
   public long favId;
   public int playOriginalAudio;
   public String text;

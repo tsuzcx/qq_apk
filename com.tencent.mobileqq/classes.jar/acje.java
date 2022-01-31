@@ -1,72 +1,35 @@
-import android.os.Bundle;
+import android.media.AudioManager;
 import android.os.Handler;
-import com.tencent.mobileqq.emosm.web.MessengerService;
-import com.tencent.mobileqq.richstatus.IStatusListener;
-import com.tencent.mobileqq.richstatus.RichStatus;
-import com.tencent.mobileqq.richstatus.TipsInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Message;
+import com.tencent.mobileqq.activity.aio.AudioPlayer;
 
 public class acje
-  implements IStatusListener
+  extends Handler
 {
-  public acje(MessengerService paramMessengerService) {}
+  public acje(AudioPlayer paramAudioPlayer) {}
   
-  public void a(int paramInt, RichStatus paramRichStatus, Object paramObject)
+  public void handleMessage(Message paramMessage)
   {
-    if (this.a.b != null)
+    if ((paramMessage.what == 1000) && (AudioPlayer.a(this.a) == 0) && (this.a.a()))
     {
-      this.a.b.putString("cmd", "ipc_signature_setordelete");
-      paramRichStatus = new Bundle();
-      paramRichStatus.putInt("result", paramInt);
-      paramRichStatus.putBoolean("hasTipsInfo", false);
-      if ((paramObject instanceof TipsInfo))
-      {
-        paramObject = (TipsInfo)paramObject;
-        if (paramObject.jdField_b_of_type_Int > 0)
-        {
-          paramRichStatus.putInt("result", paramObject.jdField_a_of_type_Int);
-          paramRichStatus.putBoolean("hasTipsInfo", true);
-          paramRichStatus.putInt("tips_type", paramObject.jdField_b_of_type_Int);
-          paramRichStatus.putString("tips_titleWording", paramObject.jdField_a_of_type_JavaLangString);
-          paramRichStatus.putString("tips_wording", paramObject.jdField_b_of_type_JavaLangString);
-          paramRichStatus.putString("tips_rightBtnWording", paramObject.jdField_c_of_type_JavaLangString);
-          paramRichStatus.putString("tips_leftBtnWording", paramObject.d);
-          paramRichStatus.putString("tips_vipType", paramObject.e);
-          paramRichStatus.putInt("tips_vipMonth", paramObject.jdField_c_of_type_Int);
-          paramRichStatus.putString("tips_url", paramObject.f);
-        }
+      int i = AudioPlayer.a(this.a).getStreamVolume(AudioPlayer.a(this.a).b);
+      int j = AudioPlayer.a(this.a).getStreamMaxVolume(AudioPlayer.a(this.a).b);
+      if (i / j <= 0.18F) {
+        break label126;
       }
-      this.a.b.putBundle("response", paramRichStatus);
-      this.a.a(this.a.b);
-      this.a.b = null;
-    }
-  }
-  
-  public void a(int paramInt, boolean paramBoolean)
-  {
-    if (paramInt == -1) {
-      if (this.a.a != null) {
-        this.a.a.post(new acjf(this));
+      AudioPlayer.a(this.a, 1);
+      if (AudioPlayer.a(this.a) != null) {
+        AudioPlayer.a(this.a).c(this.a, AudioPlayer.a(this.a));
       }
     }
-    while (this.a.c == null) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("SigImg2Zone", 4, "isSync: " + paramBoolean);
-    }
-    Bundle localBundle = new Bundle();
-    localBundle.putBoolean("isSync", paramBoolean);
-    this.a.c.putBundle("response", localBundle);
-    this.a.a(this.a.c);
-    this.a.c = null;
+    return;
+    label126:
+    AudioPlayer.a(this.a).sendEmptyMessageDelayed(1000, 200L);
   }
-  
-  public void b(int paramInt, boolean paramBoolean) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     acje
  * JD-Core Version:    0.7.0.1
  */

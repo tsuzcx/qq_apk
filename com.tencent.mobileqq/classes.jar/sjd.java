@@ -1,33 +1,35 @@
-import android.support.v4.view.ViewPager.SimpleOnPageChangeListener;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import com.tencent.mobileqq.util.TroopReportor;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.base.videoupload.StoryVideoUploadManager.VideoCompositeRec.1;
+import com.tribe.async.async.Boss;
+import com.tribe.async.async.Bosses;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class sjd
-  extends ViewPager.SimpleOnPageChangeListener
+  extends QQUIEventReceiver<sis, sjv>
 {
-  public sjd(ChatSettingForTroop paramChatSettingForTroop) {}
-  
-  public void onPageSelected(int paramInt)
+  public sjd(@NonNull sis paramsis)
   {
-    super.onPageSelected(paramInt);
-    if ((this.a.d == 1) || (this.a.a.isMember))
+    super(paramsis);
+  }
+  
+  public void a(@NonNull sis paramsis, @NonNull sjv paramsjv)
+  {
+    if (paramsjv.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
     {
-      TroopReportor.a("Grp_set_new", "grpData_admin", "slide_head", 0, 0, new String[] { this.a.a.troopUin, TroopReportor.a(this.a.a) });
-      return;
+      urk.b("Q.qqstory.publish.upload:StoryVideoUploadManager", "get event update  vid:%s video path:%s", paramsjv.jdField_a_of_type_JavaLangString, paramsjv.b);
+      Bosses.get().postLightWeightJob(new StoryVideoUploadManager.VideoCompositeRec.1(this, paramsis, paramsjv), 0);
     }
-    String str2 = this.a.a.troopUin;
-    if (this.a.a.isMember) {}
-    for (String str1 = "1";; str1 = "0")
-    {
-      TroopReportor.a("Grp_set_new", "grpData_visitor", "slide_head", 0, 0, new String[] { str2, str1 });
-      return;
-    }
+  }
+  
+  public Class acceptEventClass()
+  {
+    return sjv.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     sjd
  * JD-Core Version:    0.7.0.1
  */

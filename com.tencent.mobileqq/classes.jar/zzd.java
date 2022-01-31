@@ -1,19 +1,20 @@
-import com.tencent.mobileqq.app.TroopHandler;
-import com.tencent.mobileqq.app.message.C2CMessageProcessor;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ArkFullScreenAppActivity.8.1.1;
 
 public class zzd
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public zzd(C2CMessageProcessor paramC2CMessageProcessor, TroopHandler paramTroopHandler, String paramString) {}
+  public zzd(ArkFullScreenAppActivity.8.1.1 param1) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppTroopHandler.a(this.jdField_a_of_type_JavaLangString, Boolean.valueOf(true));
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     zzd
  * JD-Core Version:    0.7.0.1
  */

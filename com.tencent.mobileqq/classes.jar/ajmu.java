@@ -1,18 +1,10 @@
-import com.tencent.mobileqq.troop.filemanager.upload.TroopFileUploadMgr;
-
-public class ajmu
-  implements Runnable
+public abstract interface ajmu
 {
-  public ajmu(TroopFileUploadMgr paramTroopFileUploadMgr) {}
-  
-  public void run()
-  {
-    this.a.a(2, null);
-  }
+  public abstract void a(String paramString, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajmu
  * JD-Core Version:    0.7.0.1
  */

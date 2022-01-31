@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBInt32Field;
 
 public final class subcmd0x51b$ReqBody
-  extends MessageMicro
+  extends MessageMicro<ReqBody>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34 }, new String[] { "int32_cmd", "msg_get_single_roam_msg_req", "msg_get_single_cluster_msg_req", "msg_del_single_cluster_msg_req" }, new Object[] { Integer.valueOf(0), null, null, null }, ReqBody.class);
   public final PBInt32Field int32_cmd = PBField.initInt32(0);
@@ -16,7 +16,7 @@ public final class subcmd0x51b$ReqBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     tencent.im.cs.cmd0x6ff.subcmd0x51b.ReqBody
  * JD-Core Version:    0.7.0.1
  */

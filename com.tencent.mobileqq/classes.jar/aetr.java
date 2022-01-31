@@ -1,29 +1,22 @@
-import SecurityAccountServer.RespondQueryQQBindingStat;
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.mybusiness.MyBusinessManager;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.mobileqq.activity.contact.addcontact.AddContactsView;
+import com.tencent.widget.SwipListView;
 
-public class aetr
-  implements Runnable
+class aetr
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public aetr(MyBusinessManager paramMyBusinessManager) {}
+  aetr(aetq paramaetq) {}
   
-  public void run()
+  public void onGlobalLayout()
   {
-    RespondQueryQQBindingStat localRespondQueryQQBindingStat = ((PhoneContactManagerImp)this.a.a.getManager(10)).a();
-    String str = "";
-    int i = 0;
-    if (localRespondQueryQQBindingStat != null)
-    {
-      str = localRespondQueryQQBindingStat.mobileNo;
-      i = localRespondQueryQQBindingStat.type;
-    }
-    this.a.a(str, i, "");
+    this.a.a.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    this.a.a.setListViewHeightBasedOnChildren(this.a.a.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aetr
  * JD-Core Version:    0.7.0.1
  */

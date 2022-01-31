@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="46.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0a3e" android:layout_width="14.0dip" android:layout_height="10.0dip" android:layout_marginLeft="11.0dip" android:layout_marginRight="11.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020c0b" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
-    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1ab9" android:layout_width="23.0dip" android:layout_height="23.0dip" android:layout_marginLeft="8.0dip" android:layout_marginRight="8.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021836" android:layout_toRightOf="@id/APKTOOL_DUPLICATE_id_0x7f0a0a3e" android:layout_centerVertical="true" />
-    <TextView android:textSize="18.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c054c" android:gravity="center|left" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0a3f" android:paddingLeft="8.0dip" android:layout_width="fill_parent" android:layout_height="46.0dip" android:text="QQ好友" android:layout_toRightOf="@id/APKTOOL_DUPLICATE_id_0x7f0a1ab9" />
-    <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0a41" android:background="#ffdedfe0" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginLeft="36.0dip" android:layout_alignParentBottom="true" />
-</RelativeLayout>

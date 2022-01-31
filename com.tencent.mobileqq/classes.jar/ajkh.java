@@ -1,23 +1,21 @@
-import android.content.Context;
-import android.widget.ScrollView;
-import com.tencent.mobileqq.troop.enterEffect.TroopEnterEffectController;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class ajkh
-  extends ScrollView
+final class ajkh
+  implements DialogInterface.OnClickListener
 {
-  public ajkh(TroopEnterEffectController paramTroopEnterEffectController, Context paramContext)
-  {
-    super(paramContext);
-  }
+  ajkh(QQAppInterface paramQQAppInterface) {}
   
-  public void setOverScrollMode(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super.setOverScrollMode(2);
+    paramDialogInterface.dismiss();
+    awqx.b(this.a, "CliOper", "", "", "0X8004C6C", "0X8004C6C", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajkh
  * JD-Core Version:    0.7.0.1
  */

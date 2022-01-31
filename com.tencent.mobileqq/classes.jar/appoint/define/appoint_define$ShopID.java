@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class appoint_define$ShopID
-  extends MessageMicro
+  extends MessageMicro<ShopID>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16 }, new String[] { "str_shopid", "uint32_sp" }, new Object[] { "", Integer.valueOf(0) }, ShopID.class);
   public final PBStringField str_shopid = PBField.initString("");

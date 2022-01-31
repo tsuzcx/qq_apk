@@ -1,21 +1,40 @@
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.mobileqq.shortvideo.hwcodec.VideoSourceHelper;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoPlayer;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public class aodl
-  implements Runnable
+class aodl
+  implements View.OnClickListener
 {
-  public aodl(EditVideoPlayer paramEditVideoPlayer, int paramInt) {}
+  aodl(aodk paramaodk) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    SLog.a("Q.qqstory.record.EditVideoPlayer", "setPlayMode %d", Integer.valueOf(this.jdField_a_of_type_Int));
-    VideoSourceHelper.nativeSetPlayMode(this.jdField_a_of_type_Int);
+    acju localacju = (acju)aciy.a(paramView);
+    int i;
+    ChatMessage localChatMessage;
+    if (localacju != null)
+    {
+      i = -1;
+      localChatMessage = apck.a(localacju.a);
+      if (!this.a.a(localChatMessage)) {
+        break label50;
+      }
+      i = 0;
+    }
+    for (;;)
+    {
+      this.a.a(paramView, localacju, localChatMessage, i);
+      return;
+      label50:
+      if (this.a.b(localChatMessage)) {
+        i = 1;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aodl
  * JD-Core Version:    0.7.0.1
  */

@@ -1,38 +1,22 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment;
-import com.tencent.mobileqq.service.message.MessageUtils;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
 
 public class ahiq
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public ahiq(ReceiptMessageDetailFragment paramReceiptMessageDetailFragment) {}
+  public ahiq(NewFlowCameraActivity paramNewFlowCameraActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReceiptMessageDetailFragment", 2, "mSendFetchReadStatusRequestRunnable");
-    }
-    switch (ReceiptMessageDetailFragment.a(this.a).jdField_a_of_type_Int)
-    {
-    default: 
-      return;
-    case 3000: 
-      ReceiptMessageDetailFragment.e(this.a);
-      return;
-    case 0: 
-      ReceiptMessageDetailFragment.a(this.a).addObserver(ReceiptMessageDetailFragment.b(this.a), false);
-      ReceiptMessageDetailFragment.b(this.a, ReceiptMessageDetailFragment.a(this.a).a().b(ReceiptMessageDetailFragment.a(this.a), ReceiptMessageDetailFragment.a(this.a, ReceiptMessageDetailFragment.a(this.a).jdField_a_of_type_JavaLangString), ReceiptMessageDetailFragment.a(this.a), MessageUtils.a(ReceiptMessageDetailFragment.b(this.a))));
-      return;
-    }
-    ReceiptMessageDetailFragment.f(this.a);
+    urp.a("video_shoot", "down_now", 0, 0, new String[0]);
+    aqod.b(null);
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ahiq
  * JD-Core Version:    0.7.0.1
  */

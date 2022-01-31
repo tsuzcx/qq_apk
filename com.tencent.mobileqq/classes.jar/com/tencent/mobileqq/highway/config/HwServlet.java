@@ -11,6 +11,7 @@ import com.tencent.mobileqq.highway.protocol.subcmd0x501.RspBody;
 import com.tencent.mobileqq.highway.protocol.subcmd0x501.SubCmd0x501ReqBody;
 import com.tencent.mobileqq.highway.protocol.subcmd0x501.SubCmd0x501Rspbody;
 import com.tencent.mobileqq.highway.protocol.subcmd0x501.SubCmd0x501Rspbody.DynTimeOutConf;
+import com.tencent.mobileqq.highway.protocol.subcmd0x501.SubCmd0x501Rspbody.Ip6Addr;
 import com.tencent.mobileqq.highway.protocol.subcmd0x501.SubCmd0x501Rspbody.IpAddr;
 import com.tencent.mobileqq.highway.protocol.subcmd0x501.SubCmd0x501Rspbody.IpLearnConf;
 import com.tencent.mobileqq.highway.protocol.subcmd0x501.SubCmd0x501Rspbody.NetSegConf;
@@ -18,6 +19,7 @@ import com.tencent.mobileqq.highway.protocol.subcmd0x501.SubCmd0x501Rspbody.Open
 import com.tencent.mobileqq.highway.protocol.subcmd0x501.SubCmd0x501Rspbody.PTVConf;
 import com.tencent.mobileqq.highway.protocol.subcmd0x501.SubCmd0x501Rspbody.ShortVideoConf;
 import com.tencent.mobileqq.highway.protocol.subcmd0x501.SubCmd0x501Rspbody.SrvAddrs;
+import com.tencent.mobileqq.highway.utils.BdhLogUtil;
 import com.tencent.mobileqq.highway.utils.BdhSegTimeoutUtil;
 import com.tencent.mobileqq.highway.utils.EndPoint;
 import com.tencent.mobileqq.highway.utils.PTVUpConfigInfo;
@@ -34,7 +36,10 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import java.net.Inet6Address;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -61,26 +66,33 @@ public class HwServlet
   private static final String PARAM_SIZE = "buffersize";
   private static final String PARAM_TYPE = "mType";
   private static final String PARAM_UIN = "param_uin";
-  private static final String TAG = "ConfigManager";
+  private static final String TAG = "HWConfigManager";
   private static AppRuntime mApp;
+  public static WeakReference<HwServlet.OnGetConfigListener> mGetConfigListener;
   private static AtomicBoolean mHasStart = new AtomicBoolean(false);
   private static String mUin;
   
   public static void getConfig(AppRuntime paramAppRuntime, String paramString)
   {
+    getConfig(paramAppRuntime, paramString, null);
+  }
+  
+  public static void getConfig(AppRuntime paramAppRuntime, String paramString, HwServlet.OnGetConfigListener paramOnGetConfigListener)
+  {
+    if (paramOnGetConfigListener != null) {
+      mGetConfigListener = new WeakReference(paramOnGetConfigListener);
+    }
     if (mHasStart.get()) {
       return;
     }
     mHasStart.set(true);
-    if (QLog.isColorLevel()) {
-      QLog.d("ConfigManager", 2, "HwServlet.getConfig()");
-    }
+    BdhLogUtil.LogEvent("C", "HwServlet.getConfig()");
     mApp = paramAppRuntime;
     mUin = paramString;
-    NewIntent localNewIntent = new NewIntent(paramAppRuntime.getApplication(), HwServlet.class);
-    localNewIntent.putExtra("param_req_type", 181);
-    localNewIntent.putExtra("param_uin", Long.parseLong(paramString));
-    paramAppRuntime.startServlet(localNewIntent);
+    paramOnGetConfigListener = new NewIntent(paramAppRuntime.getApplication(), HwServlet.class);
+    paramOnGetConfigListener.putExtra("param_req_type", 181);
+    paramOnGetConfigListener.putExtra("param_uin", Long.parseLong(paramString));
+    paramAppRuntime.startServlet(paramOnGetConfigListener);
   }
   
   public static boolean isNetworkTypeMobile(int paramInt)
@@ -96,34 +108,47 @@ public class HwServlet
   
   public static void reportTraffic(AppRuntime paramAppRuntime, String paramString1, int paramInt, String paramString2, boolean paramBoolean, long paramLong)
   {
-    int k = 1;
+    int j = 1;
     if ((paramAppRuntime == null) || (paramLong <= 0L)) {
       return;
     }
-    int i = 0;
     for (;;)
     {
       try
       {
-        j = ((ConnectivityManager)BaseApplication.getContext().getSystemService("connectivity")).getActiveNetworkInfo().getType();
-        if (j != 1) {
+        i = ((ConnectivityManager)BaseApplication.getContext().getSystemService("connectivity")).getActiveNetworkInfo().getType();
+        if (i != 1) {
           continue;
         }
         i = 2;
       }
-      catch (Exception localException)
+      catch (Exception localException1)
       {
-        int j;
-        NewIntent localNewIntent;
-        localException.printStackTrace();
-        continue;
+        try
+        {
+          NewIntent localNewIntent;
+          if (isNetworkTypeMobile(i) == true)
+          {
+            i = 1;
+            continue;
+          }
+          int k = NetConnInfoCenterImpl.getSystemNetworkType();
+          i = k;
+        }
+        catch (Exception localException2)
+        {
+          int i;
+          break label185;
+        }
+        localException1 = localException1;
+        i = 0;
       }
       localNewIntent = new NewIntent(paramAppRuntime.getApplication(), HwServlet.class);
       localNewIntent.putExtra("param_req_type", 182);
       localNewIntent.putExtra("ip", paramString1);
       localNewIntent.putExtra("port", paramInt);
       localNewIntent.putExtra("mType", paramString2);
-      paramInt = k;
+      paramInt = j;
       if (paramBoolean) {
         paramInt = 0;
       }
@@ -132,30 +157,13 @@ public class HwServlet
       localNewIntent.putExtra("networktype", i);
       paramAppRuntime.startServlet(localNewIntent);
       return;
-      if (j == 0)
-      {
+      if (i == 0) {
         i = 1;
-      }
-      else
-      {
-        i = j;
-        if (isNetworkTypeMobile(j) == true)
-        {
-          i = 1;
-        }
-        else
-        {
-          i = j;
-          j = NetConnInfoCenterImpl.getSystemNetworkType();
-          i = j;
-        }
+      } else {
+        label185:
+        localException1.printStackTrace();
       }
     }
-  }
-  
-  public static void reportTraffic4GetIpList(AppRuntime paramAppRuntime, String paramString, int paramInt, boolean paramBoolean, long paramLong)
-  {
-    reportTraffic(paramAppRuntime, paramString, paramInt, "HttpConn.0x6ff_501", paramBoolean, paramLong);
   }
   
   public static void reportTraffic4PicUp(AppRuntime paramAppRuntime, String paramString, int paramInt, boolean paramBoolean, long paramLong)
@@ -166,12 +174,10 @@ public class HwServlet
   private boolean reqGetIPList(Intent paramIntent, Packet paramPacket)
   {
     long l = paramIntent.getLongExtra("param_uin", 0L);
-    if ((l == 0L) && (QLog.isColorLevel())) {
-      QLog.d("ConfigManager", 2, "HwServlet.reqGetIPList() fail due to uin=0");
+    if (l == 0L) {
+      BdhLogUtil.LogEvent("C", "HwServlet.reqGetIPList() fail due to uin=0");
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("ConfigManager", 2, "HwServlet.reqGetIPList() req get ip list..");
-    }
+    BdhLogUtil.LogEvent("C", "HwServlet.reqGetIPList() req get ip list..");
     paramIntent = new subcmd0x501.SubCmd0x501ReqBody();
     paramIntent.uint64_uin.set(l);
     paramIntent.uint32_idc_id.set(0);
@@ -195,25 +201,18 @@ public class HwServlet
   
   private void respGetIPList(Intent paramIntent, FromServiceMsg paramFromServiceMsg, AppRuntime paramAppRuntime, String paramString)
   {
-    boolean bool;
-    if (QLog.isColorLevel())
-    {
-      bool = paramFromServiceMsg.isSuccess();
-      localObject1 = new StringBuilder().append("HwServlet.respGetIPList()  is ");
-      if (!bool) {
-        break label65;
-      }
-    }
-    label65:
+    boolean bool = paramFromServiceMsg.isSuccess();
+    Object localObject1 = new StringBuilder().append("HwServlet.respGetIPList()  is ");
+    if (bool) {}
     for (paramIntent = "";; paramIntent = "not")
     {
-      QLog.d("ConfigManager", 2, paramIntent + " success");
+      BdhLogUtil.LogEvent("C", paramIntent + " success");
       if (paramFromServiceMsg.isSuccess()) {
         break;
       }
       return;
     }
-    Object localObject1 = ConfigManager.getInstance(null, null, 0, null);
+    localObject1 = ConfigManager.getInstance(null, null);
     paramIntent = new subcmd0x501.RspBody();
     for (;;)
     {
@@ -227,11 +226,11 @@ public class HwServlet
         SessionInfo.updateSessionInfo(paramFromServiceMsg.bytes_httpconn_sig_session.get().toByteArray(), paramFromServiceMsg.bytes_session_key.get().toByteArray(), paramString);
         paramFromServiceMsg = paramFromServiceMsg.rpt_msg_httpconn_addrs.get();
         if ((paramFromServiceMsg == null) || (paramFromServiceMsg.size() == 0)) {
-          break label890;
+          break label994;
         }
         paramFromServiceMsg = paramFromServiceMsg.iterator();
         if (!paramFromServiceMsg.hasNext()) {
-          break label874;
+          break label985;
         }
         localObject2 = (subcmd0x501.SubCmd0x501Rspbody.SrvAddrs)paramFromServiceMsg.next();
         if (((subcmd0x501.SubCmd0x501Rspbody.SrvAddrs)localObject2).uint32_service_type.get() != 10) {
@@ -243,17 +242,41 @@ public class HwServlet
         paramFromServiceMsg.shortVideoSegConfList = new ArrayList();
         Object localObject3 = ((subcmd0x501.SubCmd0x501Rspbody.SrvAddrs)localObject2).rpt_msg_addrs.get();
         int i;
+        Object localObject4;
+        ArrayList localArrayList;
+        String str;
+        int j;
         if ((localObject3 != null) && (((List)localObject3).size() != 0))
         {
           i = 0;
           if (i < ((List)localObject3).size())
           {
-            subcmd0x501.SubCmd0x501Rspbody.IpAddr localIpAddr = (subcmd0x501.SubCmd0x501Rspbody.IpAddr)((List)localObject3).get(i);
-            ArrayList localArrayList = paramFromServiceMsg.ipList;
-            String str = spliceCircleUrl(localIpAddr.uint32_ip.get());
-            int j = localIpAddr.uint32_port.get();
-            if (localIpAddr.uint32_same_isp.get() != 1) {
-              break label906;
+            localObject4 = (subcmd0x501.SubCmd0x501Rspbody.IpAddr)((List)localObject3).get(i);
+            localArrayList = paramFromServiceMsg.ipList;
+            str = spliceCircleUrl(((subcmd0x501.SubCmd0x501Rspbody.IpAddr)localObject4).uint32_ip.get());
+            j = ((subcmd0x501.SubCmd0x501Rspbody.IpAddr)localObject4).uint32_port.get();
+            if (((subcmd0x501.SubCmd0x501Rspbody.IpAddr)localObject4).uint32_same_isp.get() != 1) {
+              break label1003;
+            }
+            bool = true;
+            localArrayList.add(new EndPoint(str, j, bool));
+            i += 1;
+            continue;
+          }
+        }
+        paramFromServiceMsg.ipv6List = new ArrayList();
+        localObject3 = ((subcmd0x501.SubCmd0x501Rspbody.SrvAddrs)localObject2).rpt_msg_addrs_v6.get();
+        if ((localObject3 != null) && (((List)localObject3).size() != 0))
+        {
+          i = 0;
+          if (i < ((List)localObject3).size())
+          {
+            localObject4 = (subcmd0x501.SubCmd0x501Rspbody.Ip6Addr)((List)localObject3).get(i);
+            localArrayList = paramFromServiceMsg.ipv6List;
+            str = spliceIpv6Url(((subcmd0x501.SubCmd0x501Rspbody.Ip6Addr)localObject4).bytes_ip6.get().toByteArray());
+            j = ((subcmd0x501.SubCmd0x501Rspbody.Ip6Addr)localObject4).uint32_port.get();
+            if (((subcmd0x501.SubCmd0x501Rspbody.Ip6Addr)localObject4).uint32_same_isp.get() != 1) {
+              break label1009;
             }
             bool = true;
             localArrayList.add(new EndPoint(str, j, bool));
@@ -280,74 +303,68 @@ public class HwServlet
           {
             paramAppRuntime = (subcmd0x501.SubCmd0x501Rspbody.IpLearnConf)paramIntent.msg_subcmd_0x501_rsp_body.msg_ip_learn_conf.get();
             if ((paramAppRuntime.uint32_refresh_cached_ip.has()) && (paramAppRuntime.uint32_refresh_cached_ip.get() == 1) && (localObject1 != null)) {
-              ((ConfigManager)localObject1).refreshIpLearning();
+              IpContainer.refreshIpLearning();
             }
-            if ((!paramAppRuntime.uint32_enable_ip_learn.has()) || (paramAppRuntime.uint32_enable_ip_learn.get() != 1)) {
-              break label827;
+            if ((paramAppRuntime.uint32_enable_ip_learn.has()) && (paramAppRuntime.uint32_enable_ip_learn.get() == 1)) {
+              com.tencent.mobileqq.highway.iplearning.IpLearningImpl.sEnableIpLearning = 1;
             }
-            com.tencent.mobileqq.highway.iplearning.IpLearningImpl.sEnableIpLearning = 1;
           }
-          if (paramIntent.msg_subcmd_0x501_rsp_body.msg_dyn_timeout_conf.has()) {
-            BdhSegTimeoutUtil.updateFromSrv((subcmd0x501.SubCmd0x501Rspbody.DynTimeOutConf)paramIntent.msg_subcmd_0x501_rsp_body.msg_dyn_timeout_conf.get());
+          else
+          {
+            if (paramIntent.msg_subcmd_0x501_rsp_body.msg_dyn_timeout_conf.has()) {
+              BdhSegTimeoutUtil.updateFromSrv((subcmd0x501.SubCmd0x501Rspbody.DynTimeOutConf)paramIntent.msg_subcmd_0x501_rsp_body.msg_dyn_timeout_conf.get());
+            }
+            if (paramIntent.msg_subcmd_0x501_rsp_body.msg_open_up_conf.has()) {
+              OpenUpConfig.updateFromSrv((subcmd0x501.SubCmd0x501Rspbody.OpenUpConf)paramIntent.msg_subcmd_0x501_rsp_body.msg_open_up_conf.get());
+            }
+            if (!paramIntent.msg_subcmd_0x501_rsp_body.msg_short_video_conf.has()) {
+              break label955;
+            }
+            paramAppRuntime = ((subcmd0x501.SubCmd0x501Rspbody.ShortVideoConf)paramIntent.msg_subcmd_0x501_rsp_body.msg_short_video_conf.get()).rpt_msg_netsegconf.get();
+            if ((paramAppRuntime == null) || (paramAppRuntime.size() == 0)) {
+              break label945;
+            }
+            i = 0;
+            if (i >= paramAppRuntime.size()) {
+              break label945;
+            }
+            paramString = (subcmd0x501.SubCmd0x501Rspbody.NetSegConf)paramAppRuntime.get(i);
+            paramFromServiceMsg.shortVideoSegConfList.add(new HwNetSegConf(paramString.uint32_net_type.get(), paramString.uint32_segsize.get(), paramString.uint32_segnum.get(), paramString.uint32_curconnnum.get()));
+            i += 1;
+            continue;
           }
-          if (paramIntent.msg_subcmd_0x501_rsp_body.msg_open_up_conf.has()) {
-            OpenUpConfig.updateFromSrv((subcmd0x501.SubCmd0x501Rspbody.OpenUpConf)paramIntent.msg_subcmd_0x501_rsp_body.msg_open_up_conf.get());
-          }
-          if (!paramIntent.msg_subcmd_0x501_rsp_body.msg_short_video_conf.has()) {
-            break label844;
-          }
-          paramAppRuntime = ((subcmd0x501.SubCmd0x501Rspbody.ShortVideoConf)paramIntent.msg_subcmd_0x501_rsp_body.msg_short_video_conf.get()).rpt_msg_netsegconf.get();
-          if ((paramAppRuntime == null) || (paramAppRuntime.size() == 0)) {
-            break label834;
-          }
-          i = 0;
-          if (i >= paramAppRuntime.size()) {
-            break label834;
-          }
-          paramString = (subcmd0x501.SubCmd0x501Rspbody.NetSegConf)paramAppRuntime.get(i);
-          paramFromServiceMsg.shortVideoSegConfList.add(new HwNetSegConf(paramString.uint32_net_type.get(), paramString.uint32_segsize.get(), paramString.uint32_segnum.get(), paramString.uint32_curconnnum.get()));
-          i += 1;
+        }
+        else
+        {
+          BdhLogUtil.LogEvent("C", "HwServlet.respGetIPList() cfg == null");
           continue;
         }
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("ConfigManager", 2, "HwServlet.respGetIPList() cfg == null");
-        continue;
-        if (!QLog.isColorLevel()) {
-          break;
-        }
+        com.tencent.mobileqq.highway.iplearning.IpLearningImpl.sEnableIpLearning = 0;
       }
       catch (InvalidProtocolBufferMicroException paramIntent)
       {
-        paramIntent.printStackTrace();
+        BdhLogUtil.LogException("C", "respGetIPList", paramIntent);
+        return;
       }
-      QLog.d("ConfigManager", 2, paramIntent.getMessage());
-      return;
-      label827:
-      com.tencent.mobileqq.highway.iplearning.IpLearningImpl.sEnableIpLearning = 0;
       continue;
-      label834:
+      label945:
       VideoUpConfigInfo.updateFromSrc(paramIntent.msg_subcmd_0x501_rsp_body.msg_short_video_conf);
-      label844:
+      label955:
       if (!paramIntent.msg_subcmd_0x501_rsp_body.msg_ptv_conf.has()) {
         break;
       }
       PTVUpConfigInfo.updateFromSrc((subcmd0x501.SubCmd0x501Rspbody.PTVConf)paramIntent.msg_subcmd_0x501_rsp_body.msg_ptv_conf.get());
       return;
-      label874:
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("ConfigManager", 2, "HwServlet.respGetIPList() cannot find HwServlet.HIGHWAY_SERVICE_TYPE");
+      label985:
+      BdhLogUtil.LogEvent("C", "HwServlet.respGetIPList() cannot find HwServlet.HIGHWAY_SERVICE_TYPE");
       return;
-      label890:
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("ConfigManager", 2, "HwServlet.respGetIPList() srvAddrList == null || srvAddrList.size() == 0");
+      label994:
+      BdhLogUtil.LogEvent("C", "HwServlet.respGetIPList() srvAddrList == null || srvAddrList.size() == 0");
       return;
-      label906:
+      label1003:
+      bool = false;
+      continue;
+      label1009:
       bool = false;
     }
   }
@@ -362,6 +379,20 @@ public class HwServlet
     return localStringBuilder.toString();
   }
   
+  public static String spliceIpv6Url(byte[] paramArrayOfByte)
+  {
+    try
+    {
+      paramArrayOfByte = Inet6Address.getByAddress(paramArrayOfByte).getHostAddress();
+      return paramArrayOfByte;
+    }
+    catch (UnknownHostException paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
+    }
+    return null;
+  }
+  
   public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
     mHasStart.set(false);
@@ -369,13 +400,21 @@ public class HwServlet
     String str = paramFromServiceMsg.getServiceCmd();
     if (str == null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ConfigManager", 2, "cmd == null");
-      }
+      BdhLogUtil.LogEvent("C", "cmd == null");
       return;
     }
-    if (str.equals("HttpConn.0x6ff_501")) {
+    if (str.equals("HttpConn.0x6ff_501"))
+    {
       respGetIPList(paramIntent, paramFromServiceMsg, mApp, mUin);
+      if (mGetConfigListener != null)
+      {
+        paramIntent = (HwServlet.OnGetConfigListener)mGetConfigListener.get();
+        if (paramIntent != null)
+        {
+          paramIntent.onGetConfig();
+          mGetConfigListener = null;
+        }
+      }
     }
     mApp = null;
   }
@@ -399,7 +438,7 @@ public class HwServlet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.tencent.mobileqq.highway.config.HwServlet
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/root_layout" android:background="#fff9f9fb" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include layout="@layout/adk" />
+    <View android:layout_marginTop="20.0dip" style="@style/ta" />
+    <RelativeLayout android:orientation="vertical" android:background="@color/al3" android:layout_width="fill_parent" android:layout_height="45.0dip">
+        <TextView android:textSize="16.0sp" android:textColor="@color/bp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:text="@string/ex5" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+        <com.tenpay.sdk.view.Switch android:id="@id/gju" android:layout_width="wrap_content" android:layout_height="30.0dip" android:layout_marginRight="15.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    </RelativeLayout>
+    <View style="@style/ta" />
+    <LinearLayout android:layout_width="fill_parent" android:layout_height="45.0dip">
+        <TextView android:textSize="13.0sp" android:textColor="#ff808080" android:id="@id/gjt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="12.0dip" />
+    </LinearLayout>
+</LinearLayout>

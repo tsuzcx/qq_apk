@@ -1,28 +1,21 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.gdtad.views.canvas.framework.GdtCanvasScrollView;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
 
 public class qqx
-  implements View.OnTouchListener
+  extends omr
 {
-  public qqx(GdtCanvasScrollView paramGdtCanvasScrollView) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public qqx(ReadInJoyListViewGroup paramReadInJoyListViewGroup, String paramString)
   {
-    switch (paramMotionEvent.getAction())
-    {
-    }
-    do
-    {
-      return false;
-    } while (GdtCanvasScrollView.a(this.a));
-    return true;
+    super(paramString);
+  }
+  
+  public void a(oml paramoml)
+  {
+    paramoml.b(ReadInJoyListViewGroup.a(this.a), this.a.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     qqx
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,18 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.NearbyActivity;
+import android.support.v4.view.ViewPager;
 
-public class tgw
-  extends Handler
+class tgw
+  implements bbom
 {
-  public tgw(NearbyActivity paramNearbyActivity) {}
+  tgw(tgv paramtgv) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onTabSelected(int paramInt1, int paramInt2)
   {
-    if (!this.a.c)
-    {
-      this.a.f();
-      this.a.b.removeMessages(this.a.d);
-      sendEmptyMessageDelayed(this.a.d, this.a.n);
-    }
+    this.a.a.setCurrentItem(paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tgw
  * JD-Core Version:    0.7.0.1
  */

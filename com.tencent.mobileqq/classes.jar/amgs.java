@@ -1,26 +1,72 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.FrameHelperActivity.QQSettingMeListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
-import com.tencent.mobileqq.widget.RandomCoverView;
-import com.tencent.util.DrawerCoverUtil;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
-public final class amgs
-  extends VasQuickUpdateManager.CallBacker
+public class amgs
+  extends alzl<amgr>
 {
-  public amgs(BaseActivity paramBaseActivity, QQAppInterface paramQQAppInterface, Card paramCard, RandomCoverView paramRandomCoverView, FrameHelperActivity.QQSettingMeListener paramQQSettingMeListener, boolean paramBoolean) {}
-  
-  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
+  public int a()
   {
-    DrawerCoverUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataCard, this.jdField_a_of_type_ComTencentMobileqqWidgetRandomCoverView, this.jdField_a_of_type_ComTencentMobileqqAppFrameHelperActivity$QQSettingMeListener, this.jdField_a_of_type_Boolean);
-    paramVasQuickUpdateManager.b(this);
+    return 158;
+  }
+  
+  @NonNull
+  public amgr a(int paramInt)
+  {
+    return new amgr();
+  }
+  
+  @Nullable
+  public amgr a(alzs[] paramArrayOfalzs)
+  {
+    if ((paramArrayOfalzs != null) && (paramArrayOfalzs.length > 0) && (paramArrayOfalzs[0] != null))
+    {
+      amgr localamgr = amgr.a(paramArrayOfalzs[0].a);
+      if (QLog.isColorLevel()) {
+        QLog.d("WVSecurityConfProcessor", 2, "onParsed " + paramArrayOfalzs[0].a);
+      }
+      return localamgr;
+    }
+    return null;
+  }
+  
+  public Class<amgr> a()
+  {
+    return amgr.class;
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(amgr paramamgr)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("WVSecurityConfProcessor", 2, "onUpdate " + paramamgr.toString());
+    }
+  }
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amgs
  * JD-Core Version:    0.7.0.1
  */

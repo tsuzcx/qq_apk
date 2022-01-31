@@ -7,9 +7,9 @@ import com.tencent.mobileqq.app.automator.Automator;
 public class VideoConfigUpdate
   extends AsyncStep
 {
-  protected int a()
+  public int a()
   {
-    this.a.b.m();
+    this.a.app.l();
     return 7;
   }
 }

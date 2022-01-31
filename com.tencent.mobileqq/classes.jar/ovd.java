@@ -1,13 +1,22 @@
-import com.tencent.biz.qqstory.view.segment.SegmentList;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.UrlJumpInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 
-public class ovd
-  implements Runnable
+class ovd
+  implements ViewBase.OnClickListener
 {
-  public ovd(SegmentList paramSegmentList) {}
+  ovd(ouz paramouz, ArticleInfo paramArticleInfo, Container paramContainer) {}
   
-  public void run()
+  public void onClick(ViewBase paramViewBase)
   {
-    this.a.springBackOverScrollHeaderView();
+    paramViewBase = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.multiVideoColumnInfo.b;
+    if (paramViewBase != null)
+    {
+      qcn.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), paramViewBase);
+      ouz.a(this.jdField_a_of_type_Ouz, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, 3, paramViewBase.e, "");
+    }
   }
 }
 

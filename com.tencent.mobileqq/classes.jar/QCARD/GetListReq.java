@@ -11,10 +11,10 @@ public final class GetListReq
   extends JceStruct
 {
   static LBSInfo cache_lbs_info = new LBSInfo();
-  static Map cache_map_folderid_index = new HashMap();
+  static Map<Integer, String> cache_map_folderid_index = new HashMap();
   public int condition;
   public LBSInfo lbs_info;
-  public Map map_folderid_index;
+  public Map<Integer, String> map_folderid_index;
   public int req_type;
   public long sequence;
   public String skey = "";

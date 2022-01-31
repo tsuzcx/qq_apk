@@ -1,74 +1,41 @@
-import android.graphics.drawable.Drawable;
-import android.text.Editable;
-import android.widget.EditText;
-import com.tencent.mobileqq.emoticonview.EmoticonCallback;
-import com.tencent.mobileqq.emoticonview.EmoticonInfo;
-import com.tencent.mobileqq.emoticonview.SystemEmoticonInfo;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.qphone.base.util.QLog;
 
-public final class angm
-  implements EmoticonCallback
+class angm
+  implements arok<EmoticonPackage>
 {
-  public angm(EditText paramEditText) {}
+  angm(angj paramangj, anla paramanla) {}
   
-  public void a(EmoticonInfo paramEmoticonInfo)
+  public void a(EmoticonPackage paramEmoticonPackage)
   {
-    if ((paramEmoticonInfo == null) || (this.a == null)) {}
-    int i;
-    int j;
-    do
+    boolean bool;
+    if (paramEmoticonPackage != null)
     {
-      do
+      this.jdField_a_of_type_Anla.j = paramEmoticonPackage.type;
+      anla localanla = this.jdField_a_of_type_Anla;
+      if (paramEmoticonPackage.isAPNG == 2)
       {
-        return;
-      } while (!(paramEmoticonInfo instanceof SystemEmoticonInfo));
-      i = this.a.getSelectionStart();
-      j = this.a.getSelectionEnd();
-    } while ((i < 0) || (j < 0) || (j < i) || (this.a == null) || (this.a.getEditableText() == null));
-    this.a.getEditableText().replace(i, j, com.tencent.mobileqq.text.TextUtils.c(((SystemEmoticonInfo)paramEmoticonInfo).a));
-  }
-  
-  public void a(EmoticonInfo paramEmoticonInfo1, EmoticonInfo paramEmoticonInfo2, Drawable paramDrawable) {}
-  
-  public boolean a(EmoticonInfo paramEmoticonInfo)
-  {
-    return true;
-  }
-  
-  public void b()
-  {
-    if (this.a == null) {}
-    for (;;)
-    {
-      return;
-      if (this.a.getSelectionStart() != 0) {
-        try
-        {
-          Editable localEditable = this.a.getText();
-          int i = this.a.getSelectionStart();
-          int j = android.text.TextUtils.getOffsetBefore(this.a.getText(), i);
-          if (i != j)
-          {
-            localEditable.delete(Math.min(i, j), Math.max(i, j));
-            return;
-          }
-        }
-        catch (Exception localException)
-        {
-          localException.printStackTrace();
-        }
+        bool = true;
+        localanla.c = bool;
       }
     }
+    for (;;)
+    {
+      angj.a(this.jdField_a_of_type_Angj).a(this.jdField_a_of_type_Anla);
+      if (QLog.isColorLevel()) {
+        QLog.d("SogouEmoji", 2, "func sendEmoji ends, type:" + this.jdField_a_of_type_Anla.j);
+      }
+      return;
+      bool = false;
+      break;
+      this.jdField_a_of_type_Anla.j = 3;
+    }
   }
-  
-  public void b(EmoticonInfo paramEmoticonInfo) {}
-  
-  public void c() {}
-  
-  public void setting() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     angm
  * JD-Core Version:    0.7.0.1
  */

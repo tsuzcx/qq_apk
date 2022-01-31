@@ -2,7 +2,7 @@ package com.tencent.component.network.utils;
 
 public class StringUtil
 {
-  public static boolean a(String paramString1, String paramString2)
+  public static boolean startsWithIgnoreCase(String paramString1, String paramString2)
   {
     if (paramString1 == paramString2) {
       return true;

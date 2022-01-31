@@ -1,26 +1,20 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAdapter;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils.VideoFileSaveRunnable;
-import mqq.os.MqqHandler;
+import com.tencent.qphone.base.util.QLog;
 
 class meg
-  implements DialogInterface.OnClickListener
+  implements mfh
 {
-  meg(mef parammef, String paramString) {}
+  meg(med parammed) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    ThreadManager.getFileThreadHandler().post(new ShortVideoUtils.VideoFileSaveRunnable(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Mef.a.a, VideoFeedsAdapter.a(this.jdField_a_of_type_Mef.a).getIntent().getExtras().getString("thumbfile_md5") + ".mp4", true));
+    QLog.w("AVRedBag", 1, "mResultUI 关闭了");
+    this.a.a = null;
+    lja.a().b(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     meg
  * JD-Core Version:    0.7.0.1
  */

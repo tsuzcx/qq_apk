@@ -1,89 +1,78 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.qq.taf.jce.HexUtil;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.qphone.base.util.MD5;
-import com.tencent.qqprotect.singleupdate.MD5FileUtil;
-import java.io.File;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import org.xml.sax.Attributes;
+import org.xml.sax.helpers.DefaultHandler;
 
-public class aies
+class aies
+  extends DefaultHandler
 {
-  public static aiet a(String paramString)
+  private int jdField_a_of_type_Int;
+  private ArrayList<String> jdField_a_of_type_JavaUtilArrayList;
+  
+  public int a()
   {
-    return new aiet(paramString);
+    return this.jdField_a_of_type_Int;
   }
   
-  public static String a()
+  public ArrayList<String> a()
   {
-    return BaseApplicationImpl.getApplication().getSharedPreferences("short_video_mgr_sp", 4).getString("sv_md5_version_soname_key", "d000_1");
+    return this.jdField_a_of_type_JavaUtilArrayList;
   }
   
-  public static String a(File paramFile)
+  public void characters(char[] paramArrayOfChar, int paramInt1, int paramInt2)
   {
-    return FileUtils.a(paramFile);
+    paramArrayOfChar = paramArrayOfChar.toString();
+    QLog.d("SAXForHandler", 4, "characters: " + paramArrayOfChar);
   }
   
-  public static String a(String paramString)
+  public void endDocument()
   {
-    try
-    {
-      String str1 = HexUtil.bytes2HexStr(MD5.getFileMd5(paramString));
-      VideoEnvironment.a("ShortVideoSoManager:computeMd5[MD5.getFileMd5]md5=" + str1, null);
-      String str3;
-      if (str1 != null)
+    QLog.d("SAXForHandler", 4, "endDocument");
+    super.endDocument();
+  }
+  
+  public void endElement(String paramString1, String paramString2, String paramString3)
+  {
+    QLog.d("SAXForHandler", 4, "endElement uri:" + paramString1 + " localName:" + paramString2 + " qName:" + paramString3);
+  }
+  
+  public void startDocument()
+  {
+    QLog.d("SAXForHandler", 4, "startDocument");
+    this.jdField_a_of_type_JavaUtilArrayList = null;
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  }
+  
+  public void startElement(String paramString1, String paramString2, String paramString3, Attributes paramAttributes)
+  {
+    int j = 0;
+    int i = 0;
+    QLog.d("SAXForHandler", 4, "startElement: uri:" + paramString1 + " localName:" + paramString2 + " qName:" + paramString3);
+    if ("config".equals(paramString2)) {
+      while (i < paramAttributes.getLength())
       {
-        str3 = str1;
-        if (!"".equals(str1)) {}
+        this.jdField_a_of_type_Int = Integer.valueOf(paramAttributes.getValue(i)).intValue();
+        QLog.d("SAXForHandler", 4, "startElement: localName:" + paramString2 + " value: " + this.jdField_a_of_type_Int);
+        i += 1;
       }
-      else
+    }
+    if ("Elem".equals(paramString2))
+    {
+      i = j;
+      while (i < paramAttributes.getLength())
       {
-        str3 = b(paramString);
-      }
-      return str3;
-    }
-    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
-    {
-      for (;;)
-      {
-        VideoEnvironment.a("ShortVideoSoManager:computeMd5[MD5.getFileMd5] ", localUnsatisfiedLinkError);
-        String str2 = b(paramString);
+        paramString1 = paramAttributes.getValue(i);
+        paramString3 = paramAttributes.getLocalName(i);
+        QLog.d("SAXForHandler", 4, "startElement: localName:" + paramString2 + "name: " + paramString3 + " url: " + paramString1);
+        this.jdField_a_of_type_JavaUtilArrayList.add(paramString1);
+        i += 1;
       }
     }
-  }
-  
-  public static final String a(String paramString1, String paramString2)
-  {
-    return paramString1 + '_' + paramString2;
-  }
-  
-  public static boolean a(String paramString)
-  {
-    SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("short_video_mgr_sp", 4).edit();
-    localEditor.putString("sv_md5_version_soname_key", paramString);
-    boolean bool = localEditor.commit();
-    VideoEnvironment.a("ShortVideoSoManager.storeSoNewVersion saveAVCodecOK=" + bool, null);
-    return bool;
-  }
-  
-  static String b(String paramString)
-  {
-    try
-    {
-      paramString = MD5FileUtil.a(new File(paramString));
-      return paramString;
-    }
-    catch (Exception paramString)
-    {
-      VideoEnvironment.a("ShortVideoSoManager:computeMd5[getFileMD5String]", paramString);
-    }
-    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aies
  * JD-Core Version:    0.7.0.1
  */

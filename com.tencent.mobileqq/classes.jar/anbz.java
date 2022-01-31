@@ -1,23 +1,26 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.model.GpsInfo4LocalImage;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
 
-public final class anbz
-  implements Parcelable.Creator
+class anbz
+  implements DialogInterface.OnClickListener
 {
-  public GpsInfo4LocalImage a(Parcel paramParcel)
-  {
-    return new GpsInfo4LocalImage(paramParcel.readFloat(), paramParcel.readFloat());
-  }
+  anbz(anbw paramanbw, BaseActivity paramBaseActivity) {}
   
-  public GpsInfo4LocalImage[] a(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return null;
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
+    }
+    if (paramInt == 1) {
+      baoz.a(anbw.a(this.jdField_a_of_type_Anbw), this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, "mvip.n.a.bqsc_ql", 3, "1450000516", "CJCLUBT", anbw.a(this.jdField_a_of_type_Anbw).getString(2131654075), "");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     anbz
  * JD-Core Version:    0.7.0.1
  */

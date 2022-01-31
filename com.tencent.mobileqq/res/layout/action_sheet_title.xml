@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:gravity="center" android:clickable="false" android:layout_width="fill_parent" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d007f" android:minHeight="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d007f"
+<RelativeLayout android:gravity="center" android:clickable="false" android:layout_width="fill_parent" android:layout_height="@dimen/hz" android:minHeight="@dimen/hz"
   xmlns:android="http://schemas.android.com/apk/res/android">
     <TextView android:id="@id/action_sheet_title" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/action_sheet_title_style" />
-    <TextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0405" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="2.0dip" android:layout_below="@id/action_sheet_title" style="@style/action_sheet_secondary_title_style" />
+    <TextView android:id="@id/d0" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="2.0dip" android:layout_below="@id/action_sheet_title" style="@style/action_sheet_secondary_title_style" />
 </RelativeLayout>

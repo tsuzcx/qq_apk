@@ -1,23 +1,51 @@
-import com.tencent.mobileqq.app.message.BaseMessageManagerForTroopAndDisc;
-import com.tencent.mobileqq.app.message.MsgProxyUtils;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import java.util.Map;
+import com.tencent.mobileqq.activity.AgeSelectionActivity;
+import java.util.Calendar;
 
-class zyw
-  implements Runnable
+public class zyw
+  implements alxq
 {
-  zyw(zyv paramzyv) {}
+  private zyw(AgeSelectionActivity paramAgeSelectionActivity) {}
   
-  public void run()
+  public int a()
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqAppMessageBaseMessageManagerForTroopAndDisc.a.b.containsKey(MsgProxyUtils.a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Int))) {
-      this.a.jdField_a_of_type_ComTencentMobileqqAppMessageBaseMessageManagerForTroopAndDisc.a.b.remove(MsgProxyUtils.a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Int));
+    return 3;
+  }
+  
+  public int a(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return 0;
+    case 0: 
+      return AgeSelectionActivity.a(this.a) - AgeSelectionActivity.b(this.a) + 1;
+    case 1: 
+      return 12;
     }
+    Calendar localCalendar = Calendar.getInstance();
+    localCalendar.set(1, AgeSelectionActivity.c(this.a) + AgeSelectionActivity.b(this.a));
+    localCalendar.set(2, AgeSelectionActivity.d(this.a));
+    localCalendar.set(5, 1);
+    return localCalendar.getActualMaximum(5);
+  }
+  
+  public String a(int paramInt1, int paramInt2)
+  {
+    switch (paramInt1)
+    {
+    default: 
+      return "";
+    case 0: 
+      return AgeSelectionActivity.b(this.a) + paramInt2 + ajjy.a(2131634223);
+    case 1: 
+      return paramInt2 + 1 + ajjy.a(2131634220);
+    }
+    return paramInt2 + 1 + ajjy.a(2131634221);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     zyw
  * JD-Core Version:    0.7.0.1
  */

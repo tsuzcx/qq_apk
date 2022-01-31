@@ -1,21 +1,41 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.HotChatPie;
-import com.tencent.mobileqq.app.HotChatHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.SharedPreferences.Editor;
+import com.tencent.biz.subscribe.comment.EmoView;
 
-public class vzv
-  implements Runnable
+class vzv
+  implements wbk
 {
-  public vzv(HotChatPie paramHotChatPie) {}
+  vzv(vzs paramvzs) {}
   
-  public void run()
+  public void a()
   {
-    ((HotChatHandler)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(35)).a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getLongAccountUin(), this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+    if (vzs.a(this.a))
+    {
+      vzs.b(this.a, false);
+      vzs.a(this.a).setVisibility(0);
+    }
+    for (;;)
+    {
+      vzs.a(this.a, false);
+      return;
+      this.a.dismiss();
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    if (vzs.a(this.a) != paramInt)
+    {
+      vzs.a(this.a, paramInt);
+      vzs.a(this.a);
+      vzs.a(this.a).putInt("GroupSoftKeyboardHeight", paramInt);
+      vzs.a(this.a).commit();
+    }
+    vzs.a(this.a, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     vzv
  * JD-Core Version:    0.7.0.1
  */

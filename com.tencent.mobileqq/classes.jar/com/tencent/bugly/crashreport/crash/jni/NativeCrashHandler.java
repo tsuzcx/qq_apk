@@ -3,7 +3,6 @@ package com.tencent.bugly.crashreport.crash.jni;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import com.tencent.bugly.crashreport.common.strategy.StrategyBean;
-import com.tencent.bugly.crashreport.crash.CrashDetailBean;
 import com.tencent.bugly.crashreport.crash.c;
 import com.tencent.bugly.proguard.w;
 import com.tencent.bugly.proguard.x;
@@ -282,73 +281,73 @@ public class NativeCrashHandler
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 55	com/tencent/bugly/crashreport/crash/jni/NativeCrashHandler:j	Z
+    //   3: getfield 53	com/tencent/bugly/crashreport/crash/jni/NativeCrashHandler:j	Z
     //   6: ifne +17 -> 23
-    //   9: ldc_w 283
+    //   9: ldc_w 281
     //   12: iconst_0
     //   13: anewarray 4	java/lang/Object
-    //   16: invokestatic 136	com/tencent/bugly/proguard/x:d	(Ljava/lang/String;[Ljava/lang/Object;)Z
+    //   16: invokestatic 134	com/tencent/bugly/proguard/x:d	(Ljava/lang/String;[Ljava/lang/Object;)Z
     //   19: pop
     //   20: aload_0
     //   21: monitorexit
     //   22: return
     //   23: aload_0
-    //   24: invokevirtual 286	com/tencent/bugly/crashreport/crash/jni/NativeCrashHandler:unregist	()Ljava/lang/String;
+    //   24: invokevirtual 284	com/tencent/bugly/crashreport/crash/jni/NativeCrashHandler:unregist	()Ljava/lang/String;
     //   27: ifnull +34 -> 61
-    //   30: ldc_w 288
+    //   30: ldc_w 286
     //   33: iconst_0
     //   34: anewarray 4	java/lang/Object
-    //   37: invokestatic 144	com/tencent/bugly/proguard/x:a	(Ljava/lang/String;[Ljava/lang/Object;)Z
+    //   37: invokestatic 142	com/tencent/bugly/proguard/x:a	(Ljava/lang/String;[Ljava/lang/Object;)Z
     //   40: pop
     //   41: aload_0
     //   42: iconst_0
-    //   43: putfield 55	com/tencent/bugly/crashreport/crash/jni/NativeCrashHandler:j	Z
+    //   43: putfield 53	com/tencent/bugly/crashreport/crash/jni/NativeCrashHandler:j	Z
     //   46: goto -26 -> 20
     //   49: astore_1
-    //   50: ldc_w 290
+    //   50: ldc_w 288
     //   53: iconst_0
     //   54: anewarray 4	java/lang/Object
-    //   57: invokestatic 148	com/tencent/bugly/proguard/x:c	(Ljava/lang/String;[Ljava/lang/Object;)Z
+    //   57: invokestatic 146	com/tencent/bugly/proguard/x:c	(Ljava/lang/String;[Ljava/lang/Object;)Z
     //   60: pop
-    //   61: ldc 205
-    //   63: ldc 234
+    //   61: ldc 203
+    //   63: ldc 232
     //   65: aconst_null
     //   66: iconst_1
-    //   67: anewarray 209	java/lang/Class
+    //   67: anewarray 207	java/lang/Class
     //   70: dup
     //   71: iconst_0
-    //   72: getstatic 235	java/lang/Boolean:TYPE	Ljava/lang/Class;
+    //   72: getstatic 233	java/lang/Boolean:TYPE	Ljava/lang/Class;
     //   75: aastore
     //   76: iconst_1
     //   77: anewarray 4	java/lang/Object
     //   80: dup
     //   81: iconst_0
     //   82: iconst_0
-    //   83: invokestatic 238	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   83: invokestatic 236	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
     //   86: aastore
-    //   87: invokestatic 216	com/tencent/bugly/proguard/z:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Class;[Ljava/lang/Object;)Ljava/lang/Object;
+    //   87: invokestatic 214	com/tencent/bugly/proguard/z:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Class;[Ljava/lang/Object;)Ljava/lang/Object;
     //   90: pop
     //   91: aload_0
     //   92: iconst_0
-    //   93: putfield 55	com/tencent/bugly/crashreport/crash/jni/NativeCrashHandler:j	Z
-    //   96: ldc_w 288
+    //   93: putfield 53	com/tencent/bugly/crashreport/crash/jni/NativeCrashHandler:j	Z
+    //   96: ldc_w 286
     //   99: iconst_0
     //   100: anewarray 4	java/lang/Object
-    //   103: invokestatic 144	com/tencent/bugly/proguard/x:a	(Ljava/lang/String;[Ljava/lang/Object;)Z
+    //   103: invokestatic 142	com/tencent/bugly/proguard/x:a	(Ljava/lang/String;[Ljava/lang/Object;)Z
     //   106: pop
     //   107: goto -87 -> 20
     //   110: astore_1
-    //   111: ldc_w 290
+    //   111: ldc_w 288
     //   114: iconst_0
     //   115: anewarray 4	java/lang/Object
-    //   118: invokestatic 148	com/tencent/bugly/proguard/x:c	(Ljava/lang/String;[Ljava/lang/Object;)Z
+    //   118: invokestatic 146	com/tencent/bugly/proguard/x:c	(Ljava/lang/String;[Ljava/lang/Object;)Z
     //   121: pop
     //   122: aload_0
     //   123: iconst_0
-    //   124: putfield 53	com/tencent/bugly/crashreport/crash/jni/NativeCrashHandler:i	Z
+    //   124: putfield 51	com/tencent/bugly/crashreport/crash/jni/NativeCrashHandler:i	Z
     //   127: aload_0
     //   128: iconst_0
-    //   129: putfield 51	com/tencent/bugly/crashreport/crash/jni/NativeCrashHandler:h	Z
+    //   129: putfield 49	com/tencent/bugly/crashreport/crash/jni/NativeCrashHandler:h	Z
     //   132: goto -112 -> 20
     //   135: astore_1
     //   136: aload_0
@@ -432,60 +431,65 @@ public class NativeCrashHandler
   
   protected final void a()
   {
+    int i2 = 0;
     long l1 = z.b();
     long l2 = c.g;
     long l3 = z.b();
     Object localObject1 = new File(this.f);
-    if ((((File)localObject1).exists()) && (((File)localObject1).isDirectory()))
+    if ((((File)localObject1).exists()) && (((File)localObject1).isDirectory())) {}
+    for (;;)
     {
-      localObject1 = ((File)localObject1).listFiles();
-      if ((localObject1 != null) && (localObject1.length != 0)) {}
-    }
-    else
-    {
-      return;
-    }
-    int i6 = localObject1.length;
-    int i1 = 0;
-    int i3 = 0;
-    int i2;
-    for (int i4 = 0; i1 < i6; i4 = i2)
-    {
-      Object localObject2 = localObject1[i1];
-      String str = localObject2.getName();
-      int i5 = i3;
-      i2 = i4;
-      if (str.contains("_"))
+      int i1;
+      int i4;
+      int i5;
+      try
       {
-        i5 = i3;
-        i2 = i4;
-        if (str.endsWith(".txt"))
+        localObject1 = ((File)localObject1).listFiles();
+        if (localObject1 != null)
         {
-          long l4 = localObject2.lastModified();
-          if (l4 >= l1 - l2)
-          {
-            i5 = i3;
-            i2 = i4;
-            if (l4 < 86400000L + l3) {}
+          if (localObject1.length == 0) {
+            return;
           }
-          else
+          int i6 = localObject1.length;
+          i1 = 0;
+          i3 = 0;
+          if (i1 < i6)
           {
-            x.a("[Native] Delete record file: %s", new Object[] { localObject2.getAbsolutePath() });
-            i4 += 1;
-            i5 = i3;
-            i2 = i4;
-            if (localObject2.delete())
+            Object localObject2 = localObject1[i1];
+            long l4 = localObject2.lastModified();
+            if (l4 >= l1 - l2)
             {
-              i5 = i3 + 1;
-              i2 = i4;
+              i4 = i2;
+              i5 = i3;
+              if (l4 < 86400000L + l3) {
+                break label205;
+              }
             }
+            x.a("[Native] Delete record file: %s", new Object[] { localObject2.getAbsolutePath() });
+            i3 += 1;
+            i4 = i2;
+            i5 = i3;
+            if (!localObject2.delete()) {
+              break label205;
+            }
+            i4 = i2 + 1;
+            i5 = i3;
+            break label205;
           }
+          x.c("[Native] Number of record files overdue: %d, has deleted: %d", new Object[] { Integer.valueOf(i3), Integer.valueOf(i2) });
+          return;
         }
       }
+      catch (Throwable localThrowable)
+      {
+        x.a(localThrowable);
+      }
+      return;
+      label205:
       i1 += 1;
-      i3 = i5;
+      i2 = i4;
+      int i3 = i5;
     }
-    x.c("[Native] Number of record files overdue: %d, has deleted: %d", new Object[] { Integer.valueOf(i4), Integer.valueOf(i3) });
   }
   
   public boolean appendLogToNative(String paramString1, String paramString2, String paramString3)
@@ -530,33 +534,9 @@ public class NativeCrashHandler
   
   protected native boolean appendWholeNativeLog(String paramString);
   
-  public void checkUploadRecordCrash(long paramLong)
+  public void checkUploadRecordCrash()
   {
-    this.d.a(new Runnable()
-    {
-      public final void run()
-      {
-        if (!z.a(NativeCrashHandler.a(NativeCrashHandler.this), "native_record_lock", 10000L))
-        {
-          x.a("[Native] Failed to lock file for handling native crash record.", new Object[0]);
-          return;
-        }
-        if (!NativeCrashHandler.b()) {
-          NativeCrashHandler.a(NativeCrashHandler.this, 999, "false");
-        }
-        CrashDetailBean localCrashDetailBean = b.a(NativeCrashHandler.a(NativeCrashHandler.this), NativeCrashHandler.b(NativeCrashHandler.this), NativeCrashHandler.c(NativeCrashHandler.this));
-        if (localCrashDetailBean != null)
-        {
-          x.a("[Native] Get crash from native record.", new Object[0]);
-          if (!NativeCrashHandler.d(NativeCrashHandler.this).a(localCrashDetailBean)) {
-            NativeCrashHandler.d(NativeCrashHandler.this).a(localCrashDetailBean, 3000L, false);
-          }
-          b.a(false, NativeCrashHandler.b(NativeCrashHandler.this));
-        }
-        NativeCrashHandler.this.a();
-        z.b(NativeCrashHandler.a(NativeCrashHandler.this), "native_record_lock");
-      }
-    }, paramLong);
+    this.d.a(new NativeCrashHandler.1(this));
   }
   
   public boolean filterSigabrtSysLog()
@@ -642,45 +622,45 @@ public class NativeCrashHandler
     //   4: aload_1
     //   5: ifnull +35 -> 40
     //   8: aload_1
-    //   9: getfield 384	com/tencent/bugly/crashreport/common/strategy/StrategyBean:g	Z
+    //   9: getfield 369	com/tencent/bugly/crashreport/common/strategy/StrategyBean:g	Z
     //   12: aload_0
-    //   13: getfield 55	com/tencent/bugly/crashreport/crash/jni/NativeCrashHandler:j	Z
+    //   13: getfield 53	com/tencent/bugly/crashreport/crash/jni/NativeCrashHandler:j	Z
     //   16: if_icmpeq +24 -> 40
-    //   19: ldc_w 386
+    //   19: ldc_w 371
     //   22: iconst_1
     //   23: anewarray 4	java/lang/Object
     //   26: dup
     //   27: iconst_0
     //   28: aload_1
-    //   29: getfield 384	com/tencent/bugly/crashreport/common/strategy/StrategyBean:g	Z
-    //   32: invokestatic 238	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   29: getfield 369	com/tencent/bugly/crashreport/common/strategy/StrategyBean:g	Z
+    //   32: invokestatic 236	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
     //   35: aastore
-    //   36: invokestatic 136	com/tencent/bugly/proguard/x:d	(Ljava/lang/String;[Ljava/lang/Object;)Z
+    //   36: invokestatic 134	com/tencent/bugly/proguard/x:d	(Ljava/lang/String;[Ljava/lang/Object;)Z
     //   39: pop
-    //   40: invokestatic 84	com/tencent/bugly/crashreport/common/strategy/a:a	()Lcom/tencent/bugly/crashreport/common/strategy/a;
-    //   43: invokevirtual 389	com/tencent/bugly/crashreport/common/strategy/a:c	()Lcom/tencent/bugly/crashreport/common/strategy/StrategyBean;
-    //   46: getfield 384	com/tencent/bugly/crashreport/common/strategy/StrategyBean:g	Z
+    //   40: invokestatic 82	com/tencent/bugly/crashreport/common/strategy/a:a	()Lcom/tencent/bugly/crashreport/common/strategy/a;
+    //   43: invokevirtual 374	com/tencent/bugly/crashreport/common/strategy/a:c	()Lcom/tencent/bugly/crashreport/common/strategy/StrategyBean;
+    //   46: getfield 369	com/tencent/bugly/crashreport/common/strategy/StrategyBean:g	Z
     //   49: ifeq +44 -> 93
     //   52: aload_0
-    //   53: getfield 57	com/tencent/bugly/crashreport/crash/jni/NativeCrashHandler:k	Z
+    //   53: getfield 55	com/tencent/bugly/crashreport/crash/jni/NativeCrashHandler:k	Z
     //   56: ifeq +37 -> 93
     //   59: iload_2
     //   60: aload_0
-    //   61: getfield 55	com/tencent/bugly/crashreport/crash/jni/NativeCrashHandler:j	Z
+    //   61: getfield 53	com/tencent/bugly/crashreport/crash/jni/NativeCrashHandler:j	Z
     //   64: if_icmpeq +26 -> 90
-    //   67: ldc_w 391
+    //   67: ldc_w 376
     //   70: iconst_1
     //   71: anewarray 4	java/lang/Object
     //   74: dup
     //   75: iconst_0
     //   76: iload_2
-    //   77: invokestatic 238	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   77: invokestatic 236	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
     //   80: aastore
-    //   81: invokestatic 144	com/tencent/bugly/proguard/x:a	(Ljava/lang/String;[Ljava/lang/Object;)Z
+    //   81: invokestatic 142	com/tencent/bugly/proguard/x:a	(Ljava/lang/String;[Ljava/lang/Object;)Z
     //   84: pop
     //   85: aload_0
     //   86: iload_2
-    //   87: invokespecial 393	com/tencent/bugly/crashreport/crash/jni/NativeCrashHandler:b	(Z)V
+    //   87: invokespecial 378	com/tencent/bugly/crashreport/crash/jni/NativeCrashHandler:b	(Z)V
     //   90: aload_0
     //   91: monitorexit
     //   92: return
@@ -745,6 +725,11 @@ public class NativeCrashHandler
   protected native boolean putNativeKeyValue(String paramString1, String paramString2);
   
   protected native String regist(String paramString, boolean paramBoolean, int paramInt);
+  
+  public void removeEmptyNativeRecordFiles()
+  {
+    b.c(this.f);
+  }
   
   protected native String removeNativeKeyValue(String paramString);
   

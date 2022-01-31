@@ -1,43 +1,27 @@
-import com.tencent.mobileqq.apollo.ApolloRenderDriver;
-import com.tencent.mobileqq.apollo.ITriggerRenderCallback;
-import com.tencent.util.WeakReferenceHandler;
-import java.lang.ref.WeakReference;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.gdtad.views.videoimax.TransitionContext;
 
 public class ysl
-  implements Runnable
+  extends AnimatorListenerAdapter
 {
-  private WeakReference a;
+  public ysl(TransitionContext paramTransitionContext) {}
   
-  public ysl(ApolloRenderDriver paramApolloRenderDriver)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    this.a = new WeakReference(paramApolloRenderDriver);
+    super.onAnimationCancel(paramAnimator);
+    this.a.a();
   }
   
-  public void run()
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    ApolloRenderDriver localApolloRenderDriver;
-    if ((this.a != null) && (this.a.get() != null))
-    {
-      localApolloRenderDriver = (ApolloRenderDriver)this.a.get();
-      if ((localApolloRenderDriver != null) && (localApolloRenderDriver.jdField_a_of_type_ComTencentMobileqqApolloITriggerRenderCallback != null) && (localApolloRenderDriver.jdField_a_of_type_ComTencentUtilWeakReferenceHandler != null))
-      {
-        localApolloRenderDriver.jdField_a_of_type_ComTencentMobileqqApolloITriggerRenderCallback.onRender();
-        if (((ApolloRenderDriver)this.a.get()).jdField_a_of_type_Int <= 0) {
-          break label101;
-        }
-      }
-    }
-    label101:
-    for (int i = 1000 / ((ApolloRenderDriver)this.a.get()).jdField_a_of_type_Int;; i = 50)
-    {
-      localApolloRenderDriver.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.postDelayed(this, i);
-      return;
-    }
+    super.onAnimationEnd(paramAnimator);
+    this.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ysl
  * JD-Core Version:    0.7.0.1
  */

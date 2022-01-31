@@ -1,30 +1,23 @@
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ar.model.ArWebInfo;
 
-public class akwi
+public final class akwi
+  implements Parcelable.Creator<ArWebInfo>
 {
-  public long a;
-  public String a;
-  public String b;
-  public String c;
-  
-  public String toString()
+  public ArWebInfo a(Parcel paramParcel)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    Date localDate = new Date(this.jdField_a_of_type_Long);
-    localStringBuilder.append(new SimpleDateFormat("HH:mm:ss").format(localDate));
-    localStringBuilder.append(" ");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(".");
-    localStringBuilder.append(this.b);
-    localStringBuilder.append(":");
-    localStringBuilder.append(this.c);
-    return localStringBuilder.toString();
+    return new ArWebInfo(paramParcel);
+  }
+  
+  public ArWebInfo[] a(int paramInt)
+  {
+    return new ArWebInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     akwi
  * JD-Core Version:    0.7.0.1
  */

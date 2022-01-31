@@ -1,19 +1,29 @@
-import android.view.ViewGroup;
-import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
+import android.content.Intent;
+import com.dataline.activities.PrinterActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import java.util.ArrayList;
 
-public class ajol
-  implements Runnable
+class ajol
+  implements apca
 {
-  public ajol(PublishHomeWorkFragment paramPublishHomeWorkFragment) {}
+  ajol(ajoj paramajoj, BaseActivity paramBaseActivity, String paramString) {}
   
-  public void run()
+  public void a()
   {
-    PublishHomeWorkFragment.b(this.a).setVisibility(0);
+    Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, PrinterActivity.class);
+    localIntent.putExtra(baae.h, 55);
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(this.jdField_a_of_type_JavaLangString);
+    localIntent.putStringArrayListExtra("PhotoConst.PHOTO_PATHS", localArrayList);
+    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.startActivity(localIntent);
+    awqx.b(this.jdField_a_of_type_Ajoj.a, "CliOper", "", "", "0X8004059", "0X8004059", 0, 0, "", "", "", "");
   }
+  
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajol
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,14 @@
-import com.tencent.gamecenter.activities.GameCenterActivity.GameCenterFragment;
-import com.tencent.open.downloadnew.MyAppApi;
+import android.os.Bundle;
 
-public class qnv
-  implements Runnable
+public abstract interface qnv
 {
-  public qnv(GameCenterActivity.GameCenterFragment paramGameCenterFragment) {}
+  public abstract void a(Bundle paramBundle);
   
-  public void run()
-  {
-    MyAppApi.a();
-  }
+  public abstract void a(String paramString, Bundle paramBundle);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     qnv
  * JD-Core Version:    0.7.0.1
  */

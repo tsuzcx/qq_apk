@@ -1,21 +1,17 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.widget.ImageView;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyArticleDetailActivity.ReadInJoyArticleDetailFragment;
-
-class ldv
-  extends AnimatorListenerAdapter
+public class ldv
 {
-  ldv(ldu paramldu) {}
+  public long a;
+  public long b;
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public ldv(long paramLong1, long paramLong2)
   {
-    this.a.a.a.setVisibility(8);
+    this.a = paramLong1;
+    this.b = paramLong2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     ldv
  * JD-Core Version:    0.7.0.1
  */

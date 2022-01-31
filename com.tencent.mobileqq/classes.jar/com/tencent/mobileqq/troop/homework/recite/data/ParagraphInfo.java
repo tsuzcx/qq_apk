@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.troop.homework.recite.data;
 
+import aknk;
 import android.text.TextUtils;
-import com.tencent.mobileqq.ar.ArConfigUtils;
+import azxy;
+import azya;
 import com.tencent.mobileqq.troop.homework.recite.ui.PinyinTextView;
-import com.tencent.mobileqq.util.JSONUtils.FieldName;
-import com.tencent.mobileqq.util.JSONUtils.NotKey;
 import com.tencent.qphone.base.util.QLog;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -14,22 +14,24 @@ import java.util.List;
 public class ParagraphInfo
   implements Serializable
 {
-  @JSONUtils.FieldName(a="content_html")
+  @azxy(a="con_py_tone_mark")
+  public String con_py_tone_mark;
+  @azxy(a="content_html")
   public String content_html;
-  @JSONUtils.FieldName(a="content_pinyin")
+  @azxy(a="content_pinyin")
   public String content_pinyin;
-  @JSONUtils.NotKey
+  @azya
   private String[] mContents;
-  @JSONUtils.NotKey
+  @azya
   private String[] mDisplayPinyins;
-  @JSONUtils.NotKey
+  @azya
   private String[] mOriginalPinyins;
-  @JSONUtils.NotKey
+  @azya
   public int paragraphPos = -1;
-  @JSONUtils.FieldName(a="pid")
+  @azxy(a="pid")
   public int pid;
-  @JSONUtils.NotKey
-  public List wordList;
+  @azya
+  public List<WordInfo> wordList;
   
   public String[] generateOrGetContents()
   {
@@ -40,7 +42,7 @@ public class ParagraphInfo
     if (TextUtils.isEmpty(this.content_html)) {
       return new String[0];
     }
-    this.content_html = ArConfigUtils.a(this.content_html.trim()).replace("​", "");
+    this.content_html = aknk.a(this.content_html.trim()).replace("​", "");
     this.mContents = new String[this.content_html.length()];
     while (i < this.content_html.length())
     {
@@ -52,53 +54,96 @@ public class ParagraphInfo
     return this.mContents;
   }
   
-  public List generateOrGetWordInfoList(int paramInt)
+  public String[] generateOrGetPinyinWithTone()
+  {
+    if (this.mDisplayPinyins != null) {
+      return this.mDisplayPinyins;
+    }
+    if (TextUtils.isEmpty(this.con_py_tone_mark)) {
+      return generateOrgetDisplayPinyins();
+    }
+    this.con_py_tone_mark = this.con_py_tone_mark.replace("​", " ");
+    this.mDisplayPinyins = this.con_py_tone_mark.split(" ");
+    return this.mDisplayPinyins;
+  }
+  
+  public List<WordInfo> generateOrGetWordInfoList(int paramInt)
   {
     if (this.wordList != null) {
       return this.wordList;
     }
     generateOrgetOriginalPinyins();
-    generateOrgetDisplayPinyins();
+    generateOrGetPinyinWithTone();
     generateOrGetContents();
     this.wordList = new ArrayList(this.mContents.length);
-    int i = 0;
-    try
-    {
-      while (i < this.mContents.length)
-      {
-        WordInfo localWordInfo = new WordInfo();
-        localWordInfo.paragraphPos = paramInt;
-        localWordInfo.wordPos = i;
-        localWordInfo.text = this.mContents[i];
-        if (!PinyinTextView.a(localWordInfo.text))
-        {
-          localWordInfo.pinyin2Display = this.mDisplayPinyins[i];
-          Object localObject = this.mOriginalPinyins[i];
-          ArrayList localArrayList = new ArrayList();
-          int j = ((String)localObject).indexOf("[");
-          if (j != -1)
-          {
-            localArrayList.add(((String)localObject).substring(0, j));
-            localObject = ((String)localObject).substring(j + 1, ((String)localObject).length() - 1).split(",");
-            j = 0;
-            while (j < localObject.length)
-            {
-              localArrayList.add(localObject[j]);
-              j += 1;
-            }
-          }
-          localArrayList.add(localObject);
-          localWordInfo.pinyin2Detect = localArrayList;
-        }
-        this.wordList.add(localWordInfo);
-        i += 1;
-      }
+    if (this.mDisplayPinyins == null) {
       return this.wordList;
     }
-    catch (IndexOutOfBoundsException localIndexOutOfBoundsException)
+    int i = 0;
+    for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.e(ParagraphInfo.class.getSimpleName(), 2, "IndexOutOfBoundsException:" + localIndexOutOfBoundsException.toString());
+      int j;
+      try
+      {
+        if (i < this.mContents.length)
+        {
+          WordInfo localWordInfo = new WordInfo();
+          localWordInfo.paragraphPos = paramInt;
+          localWordInfo.wordPos = i;
+          localWordInfo.text = this.mContents[i];
+          if (!PinyinTextView.a(localWordInfo.text))
+          {
+            localWordInfo.pinyin2Display = this.mDisplayPinyins[i];
+            Object localObject = this.mOriginalPinyins[i];
+            ArrayList localArrayList = new ArrayList();
+            j = ((String)localObject).indexOf("[");
+            if (j != -1)
+            {
+              localArrayList.add(((String)localObject).substring(0, j));
+              localObject = ((String)localObject).substring(j + 1, ((String)localObject).length() - 1);
+              if (((String)localObject).contains("，"))
+              {
+                localObject = ((String)localObject).split("，");
+                break label317;
+                if (j < localObject.length)
+                {
+                  localArrayList.add(localObject[j]);
+                  j += 1;
+                  continue;
+                }
+              }
+              else
+              {
+                localObject = ((String)localObject).split(",");
+                break label317;
+              }
+            }
+            else
+            {
+              localArrayList.add(localObject);
+            }
+            localWordInfo.pinyin2Detect = localArrayList;
+          }
+          else
+          {
+            this.wordList.add(localWordInfo);
+            i += 1;
+          }
+        }
+        else
+        {
+          return this.wordList;
+        }
+      }
+      catch (IndexOutOfBoundsException localIndexOutOfBoundsException)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e(ParagraphInfo.class.getSimpleName(), 2, "IndexOutOfBoundsException:" + localIndexOutOfBoundsException.toString());
+        }
+      }
+      label317:
+      if (localIndexOutOfBoundsException != null) {
+        j = 0;
       }
     }
   }
@@ -170,7 +215,7 @@ public class ParagraphInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.recite.data.ParagraphInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -203,16 +203,16 @@ public class SysCoreQUA2Utils
   
   private static String getPrFromPP(String paramString)
   {
-    if (paramString.equals("com.tencent.mm")) {
+    if ("com.tencent.mm".equals(paramString)) {
       return "WX";
     }
-    if (paramString.equals("com.tencent.mobileqq")) {
+    if ("com.tencent.mobileqq".equals(paramString)) {
       return "QQ";
     }
-    if (paramString.equals("com.qzone")) {
+    if ("com.qzone".equals(paramString)) {
       return "QZ";
     }
-    if (paramString.equals("com.tencent.mtt")) {
+    if ("com.tencent.mtt".equals(paramString)) {
       return "QB";
     }
     return "TRD";
@@ -250,7 +250,7 @@ public class SysCoreQUA2Utils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.smtt.utils.SysCoreQUA2Utils
  * JD-Core Version:    0.7.0.1
  */

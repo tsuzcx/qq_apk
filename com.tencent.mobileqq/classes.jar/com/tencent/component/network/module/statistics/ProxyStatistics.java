@@ -8,20 +8,18 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import pph;
-import ppi;
 
 public class ProxyStatistics
 {
-  private final Map a = new HashMap();
-  private final Map b = new HashMap();
+  private final Map<String, ProxyStatistics.StatisticsUnit> mDominantUnitCache = new HashMap();
+  private final Map<String, FixedLinkedList<ProxyStatistics.StatisticsUnit>> mStatisticsCache = new HashMap();
   
-  public static ProxyStatistics a()
+  public static ProxyStatistics getInstance()
   {
-    return pph.a;
+    return ProxyStatistics.InstanceHolder.INSTANCE;
   }
   
-  private void a(List paramList, String paramString)
+  private void updateStatistics(List<ProxyStatistics.StatisticsUnit> paramList, String paramString)
   {
     boolean bool2 = true;
     if (paramList == null) {
@@ -29,35 +27,35 @@ public class ProxyStatistics
     }
     for (;;)
     {
-      ppi localppi;
+      ProxyStatistics.StatisticsUnit localStatisticsUnit;
       int i;
       int k;
       int j;
-      synchronized (this.b)
+      synchronized (this.mDominantUnitCache)
       {
-        localppi = (ppi)this.b.get(paramString);
-        if (localppi != null) {
+        localStatisticsUnit = (ProxyStatistics.StatisticsUnit)this.mDominantUnitCache.get(paramString);
+        if (localStatisticsUnit != null) {
           break label223;
         }
-        localppi = new ppi();
-        this.b.put(paramString, localppi);
-        paramString = localppi;
+        localStatisticsUnit = new ProxyStatistics.StatisticsUnit();
+        this.mDominantUnitCache.put(paramString, localStatisticsUnit);
+        paramString = localStatisticsUnit;
         paramList = paramList.iterator();
         i = 0;
         k = 0;
         j = 0;
         if (paramList.hasNext())
         {
-          localppi = (ppi)paramList.next();
-          if (localppi == null) {
+          localStatisticsUnit = (ProxyStatistics.StatisticsUnit)paramList.next();
+          if (localStatisticsUnit == null) {
             continue;
           }
           int m = j + 1;
           j = k;
-          if (localppi.a) {
+          if (localStatisticsUnit.allowProxy) {
             j = k + 1;
           }
-          if (!localppi.b) {
+          if (!localStatisticsUnit.apnProxy) {
             break label220;
           }
           i += 1;
@@ -71,7 +69,7 @@ public class ProxyStatistics
       if (k / j > 0.5F)
       {
         bool1 = true;
-        paramString.a = bool1;
+        paramString.allowProxy = bool1;
         if (i / j <= 0.5F) {
           break label214;
         }
@@ -79,7 +77,7 @@ public class ProxyStatistics
       label214:
       for (boolean bool1 = bool2;; bool1 = false)
       {
-        paramString.b = bool1;
+        paramString.apnProxy = bool1;
         return;
         bool1 = false;
         break;
@@ -87,63 +85,63 @@ public class ProxyStatistics
       label220:
       continue;
       label223:
-      paramString = localppi;
+      paramString = localStatisticsUnit;
     }
   }
   
-  public void a(Context paramContext, boolean paramBoolean1, boolean paramBoolean2)
+  public boolean getAPNProxy()
+  {
+    String str = NetworkManager.getApnValue();
+    synchronized (this.mDominantUnitCache)
+    {
+      ProxyStatistics.StatisticsUnit localStatisticsUnit2 = (ProxyStatistics.StatisticsUnit)this.mDominantUnitCache.get(str);
+      ProxyStatistics.StatisticsUnit localStatisticsUnit1 = localStatisticsUnit2;
+      if (localStatisticsUnit2 == null)
+      {
+        localStatisticsUnit1 = new ProxyStatistics.StatisticsUnit();
+        this.mDominantUnitCache.put(str, localStatisticsUnit1);
+      }
+      return localStatisticsUnit1.apnProxy;
+    }
+  }
+  
+  public boolean getAllowProxy()
+  {
+    String str = NetworkManager.getApnValue();
+    synchronized (this.mDominantUnitCache)
+    {
+      ProxyStatistics.StatisticsUnit localStatisticsUnit2 = (ProxyStatistics.StatisticsUnit)this.mDominantUnitCache.get(str);
+      ProxyStatistics.StatisticsUnit localStatisticsUnit1 = localStatisticsUnit2;
+      if (localStatisticsUnit2 == null)
+      {
+        localStatisticsUnit1 = new ProxyStatistics.StatisticsUnit();
+        this.mDominantUnitCache.put(str, localStatisticsUnit1);
+      }
+      return localStatisticsUnit1.allowProxy;
+    }
+  }
+  
+  public void report(Context paramContext, boolean paramBoolean1, boolean paramBoolean2)
   {
     if (!NetworkUtils.isMobileConnected(paramContext)) {
       return;
     }
-    ppi localppi = new ppi();
-    localppi.a = paramBoolean1;
-    localppi.b = paramBoolean2;
-    synchronized (this.a)
+    ProxyStatistics.StatisticsUnit localStatisticsUnit = new ProxyStatistics.StatisticsUnit();
+    localStatisticsUnit.allowProxy = paramBoolean1;
+    localStatisticsUnit.apnProxy = paramBoolean2;
+    synchronized (this.mStatisticsCache)
     {
       String str = NetworkManager.getApnValue();
-      FixedLinkedList localFixedLinkedList = (FixedLinkedList)this.a.get(str);
+      FixedLinkedList localFixedLinkedList = (FixedLinkedList)this.mStatisticsCache.get(str);
       paramContext = localFixedLinkedList;
       if (localFixedLinkedList == null)
       {
         paramContext = new FixedLinkedList(3, false);
-        this.a.put(str, paramContext);
+        this.mStatisticsCache.put(str, paramContext);
       }
-      paramContext.add(0, localppi);
-      a(paramContext, str);
+      paramContext.add(0, localStatisticsUnit);
+      updateStatistics(paramContext, str);
       return;
-    }
-  }
-  
-  public boolean a()
-  {
-    String str = NetworkManager.getApnValue();
-    synchronized (this.b)
-    {
-      ppi localppi2 = (ppi)this.b.get(str);
-      ppi localppi1 = localppi2;
-      if (localppi2 == null)
-      {
-        localppi1 = new ppi();
-        this.b.put(str, localppi1);
-      }
-      return localppi1.a;
-    }
-  }
-  
-  public boolean b()
-  {
-    String str = NetworkManager.getApnValue();
-    synchronized (this.b)
-    {
-      ppi localppi2 = (ppi)this.b.get(str);
-      ppi localppi1 = localppi2;
-      if (localppi2 == null)
-      {
-        localppi1 = new ppi();
-        this.b.put(str, localppi1);
-      }
-      return localppi1.b;
     }
   }
 }

@@ -1,15 +1,15 @@
-import com.tencent.widget.ActionSheet.OnDismissListener;
+import android.graphics.Bitmap;
+import java.util.List;
 
-class vdx
-  implements ActionSheet.OnDismissListener
+public class vdx
 {
-  vdx(vdw paramvdw) {}
-  
-  public void onDismiss() {}
+  public int a;
+  public List<String> a;
+  public List<Bitmap> b;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vdx
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.data;
 
 import android.text.TextUtils;
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.unique;
+import atmo;
+import atoc;
 
 public class PrecoverRetryInfo
-  extends Entity
+  extends atmo
 {
   public String businessId;
   public int itemRetryCount;
   public String md5;
-  @unique
+  @atoc
   public String pk;
   public long retryUpdateTime;
   public int totalRetryCount;
@@ -32,17 +32,17 @@ public class PrecoverRetryInfo
     this.pk = null;
   }
   
-  protected void postRead()
+  public void postRead()
   {
     super.postRead();
   }
   
-  protected void postwrite()
+  public void postwrite()
   {
     super.postwrite();
   }
   
-  protected void prewrite()
+  public void prewrite()
   {
     super.prewrite();
     if ((!TextUtils.isEmpty(this.businessId)) && (!TextUtils.isEmpty(this.md5)))

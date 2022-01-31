@@ -1,28 +1,16 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.structmsg.view.StructMsgItemVideo;
+import org.json.JSONObject;
 
-class aior
-  implements DialogInterface.OnClickListener
+public abstract interface aior
 {
-  aior(aioq paramaioq, Context paramContext, View paramView) {}
+  public abstract String a();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    StructMsgItemVideo.a(this.jdField_a_of_type_Aioq.a, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidViewView);
-    if ((this.jdField_a_of_type_AndroidContentContext instanceof BaseActivity)) {
-      ReportController.b(((BaseActivity)this.jdField_a_of_type_AndroidContentContext).app, "CliOper", "", "", "0X8005BA3", "0X8005BA3", 0, 0, "", "", "", "");
-    }
-    paramDialogInterface.dismiss();
-  }
+  public abstract JSONObject a(aioq paramaioq, JSONObject paramJSONObject);
+  
+  public abstract int c();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aior
  * JD-Core Version:    0.7.0.1
  */

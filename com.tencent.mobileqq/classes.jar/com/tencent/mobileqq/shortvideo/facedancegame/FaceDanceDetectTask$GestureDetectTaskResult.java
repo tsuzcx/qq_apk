@@ -2,8 +2,8 @@ package com.tencent.mobileqq.shortvideo.facedancegame;
 
 public class FaceDanceDetectTask$GestureDetectTaskResult
 {
-  public String a;
-  public boolean a = false;
+  public String type;
+  public boolean vaild = false;
 }
 
 

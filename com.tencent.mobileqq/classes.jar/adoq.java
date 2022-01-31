@@ -1,36 +1,21 @@
-import android.app.Activity;
-import android.view.View;
-import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.filemanager.settings.FMSettingInterface.MoveFileCallback;
-import com.tencent.mobileqq.filemanager.settings.FMSettings;
-import com.tencent.mobileqq.filemanager.util.FileManagerReporter;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.data.MessageForShortVideo;
 
-public class adoq
-  implements Runnable
+class adoq
+  implements DialogInterface.OnClickListener
 {
-  public adoq(FMSettings paramFMSettings, Activity paramActivity, List paramList, FMSettingInterface.MoveFileCallback paramMoveFileCallback) {}
+  adoq(adoi paramadoi, MessageForShortVideo paramMessageForShortVideo, long paramLong, boolean paramBoolean) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    View localView = RelativeLayout.inflate(this.jdField_a_of_type_AndroidAppActivity, 2130970045, null);
-    TextView localTextView = (TextView)localView.findViewById(2131366640);
-    localTextView.setText(this.jdField_a_of_type_ComTencentMobileqqFilemanagerSettingsFMSettings.jdField_a_of_type_JavaLangString);
-    ((TextView)localView.findViewById(2131368832)).setText(this.jdField_a_of_type_ComTencentMobileqqFilemanagerSettingsFMSettings.b);
-    ProgressBar localProgressBar = (ProgressBar)localView.findViewById(2131364142);
-    localProgressBar.setVisibility(8);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerSettingsFMSettings.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(this.jdField_a_of_type_AndroidAppActivity, 0, 2130968848, "下载通知", this.jdField_a_of_type_ComTencentMobileqqFilemanagerSettingsFMSettings.jdField_a_of_type_JavaLangString + '\n' + this.jdField_a_of_type_ComTencentMobileqqFilemanagerSettingsFMSettings.b, "取消", "确定", new ador(this, localTextView, localProgressBar), new adow(this)).addView(localView);
-    FileManagerReporter.a("0X8005BE1");
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerSettingsFMSettings.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
+    this.jdField_a_of_type_Adoi.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo, this.jdField_a_of_type_Long, this.jdField_a_of_type_Boolean);
+    aweg.jdField_a_of_type_Boolean = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     adoq
  * JD-Core Version:    0.7.0.1
  */

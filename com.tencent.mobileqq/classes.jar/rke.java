@@ -1,44 +1,50 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AboutActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.ark.debug.ArkIDESettingFragment;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.biz.pubaccount.readinjoy.view.pullrefresh.RefreshAnimView;
+import com.tencent.viola.ui.view.VRefreshLayout;
+import com.tencent.viola.ui.view.VRefreshLayout.onRefreshStateChangeListener;
 
-public class rke
-  implements View.OnClickListener
+class rke
+  implements VRefreshLayout.onRefreshStateChangeListener
 {
-  public rke(AboutActivity paramAboutActivity) {}
+  rke(rkd paramrkd, RefreshAnimView paramRefreshAnimView, VRefreshLayout paramVRefreshLayout) {}
   
-  public void onClick(View paramView)
+  public void onRefreshMove(int paramInt)
   {
-    if (!TextUtils.isEmpty(AboutActivity.b())) {}
-    for (int i = Integer.parseInt(AboutActivity.b());; i = 0)
+    int i = this.jdField_a_of_type_ComTencentViolaUiViewVRefreshLayout.getHeaderHeight();
+    if ((paramInt <= i) && (!rkd.a(this.jdField_a_of_type_Rkd)))
     {
-      if (i < 5)
-      {
-        AboutActivity.a(AboutActivity.a(this.a));
-        i = Integer.parseInt(AboutActivity.b());
-        if (i == 5)
-        {
-          ArkIDESettingFragment.a("");
-          ArkIDESettingFragment.a().b();
-          QQToast.a(BaseApplication.getContext(), BaseActivity.sTopActivity.getString(2131438861), 0).a();
-          ArkAppCenter.b("ArkDebugSwitch", String.format("show flag=%d", new Object[] { Integer.valueOf(i) }));
-        }
-        return;
-      }
-      ArkAppCenter.b("ArkDebugSwitch", String.format("ArkDebug is open and click limit=%d", new Object[] { Integer.valueOf(i) }));
-      return;
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewPullrefreshRefreshAnimView.a();
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewPullrefreshRefreshAnimView.a(paramInt / i);
     }
+  }
+  
+  public void onStateEnd()
+  {
+    rkd.a(this.jdField_a_of_type_Rkd, false);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewPullrefreshRefreshAnimView.a(1000L);
+  }
+  
+  public void onStateFinish(boolean paramBoolean, String paramString)
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewPullrefreshRefreshAnimView.a(paramBoolean, paramString);
+  }
+  
+  public void onStateIdel()
+  {
+    rkd.a(this.jdField_a_of_type_Rkd, false);
+  }
+  
+  public void onStatePulling() {}
+  
+  public void onStateRefreshing()
+  {
+    rkd.a(this.jdField_a_of_type_Rkd, true);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewPullrefreshRefreshAnimView.a();
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewPullrefreshRefreshAnimView.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     rke
  * JD-Core Version:    0.7.0.1
  */

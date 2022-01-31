@@ -1,18 +1,25 @@
-import com.tencent.mobileqq.ar.arengine.AREngine;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.qphone.base.util.QLog;
 
 public class aanu
-  implements Runnable
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public aanu(AREngine paramAREngine) {}
+  public aanu(Conversation paramConversation) {}
   
-  public void run()
+  public boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
-    AREngine.a(this.a);
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.recent", 2, " gestureDetector onDoubleTap");
+    }
+    Conversation.i(this.a);
+    return super.onDoubleTap(paramMotionEvent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aanu
  * JD-Core Version:    0.7.0.1
  */

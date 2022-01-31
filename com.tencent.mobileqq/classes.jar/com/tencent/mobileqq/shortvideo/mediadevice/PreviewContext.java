@@ -1,22 +1,30 @@
 package com.tencent.mobileqq.shortvideo.mediadevice;
 
+import ahhk;
 import android.hardware.Camera;
 import android.os.Build;
 import android.os.Handler;
 import android.os.Message;
 import android.os.SystemClock;
+import awha;
+import awib;
+import awii;
+import awij;
+import awim;
+import awir;
+import awix;
+import awje;
+import awjh;
+import awji;
+import bghf;
 import com.tencent.maxvideo.common.AVIOStruct;
 import com.tencent.maxvideo.common.ControlFlagEnum;
 import com.tencent.maxvideo.mediadevice.AVCodec;
-import com.tencent.mobileqq.activity.richmedia.FlowCameraMqqAction;
 import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import com.tencent.mobileqq.shortvideo.common.GloableValue;
 import com.tencent.mobileqq.shortvideo.hwcodec.SVHwEncoder;
-import com.tencent.mobileqq.shortvideo.hwcodec.SVHwEncoder.HwFrame;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.thread.QzoneBaseThread;
 import cooperation.qzone.thread.QzoneHandlerThreadFactory;
-import cooperation.qzone.video.QzoneVideoBeaconReport;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -33,14 +41,14 @@ public class PreviewContext
   AVCodec mAVCodec = null;
   public boolean mActivtiyDestory = false;
   int mBlockIndex = 0;
-  public CameraProxy mCamera;
+  public awir mCamera;
   private boolean mCheckedDataValid;
   private boolean mDisablePrivilage;
-  public AtomicReference mEncodeRef = new AtomicReference(null);
-  ArrayList mFrameCountArray = new ArrayList();
+  public AtomicReference<SVHwEncoder> mEncodeRef = new AtomicReference(null);
+  ArrayList<Integer> mFrameCountArray = new ArrayList();
   private int mFrameIndex;
   private volatile boolean mFrameProcessEnd;
-  List mFrameSrcList = new ArrayList();
+  List<AVIOStruct> mFrameSrcList = new ArrayList();
   private boolean mInitHwEncode;
   int mLastFrameIndex = 0;
   public Handler mMsghandler;
@@ -56,11 +64,11 @@ public class PreviewContext
   public boolean notifyFirstFrame;
   long updateTime = 0L;
   
-  public PreviewContext(CameraProxy paramCameraProxy, int paramInt1, int paramInt2)
+  public PreviewContext(awir paramawir, int paramInt1, int paramInt2)
   {
-    this.mCamera = paramCameraProxy;
-    paramCameraProxy.jdField_b_of_type_Int = paramInt1;
-    paramCameraProxy.c = paramInt2;
+    this.mCamera = paramawir;
+    paramawir.jdField_b_of_type_Int = paramInt1;
+    paramawir.c = paramInt2;
     this.mInitHwEncode = initHwCallBackSecurity();
     this.mFrameProcessEnd = false;
     this.mVideoFrameWrite.getAndSet(0);
@@ -150,7 +158,7 @@ public class PreviewContext
   public void addUserBufferRecycle(byte[] paramArrayOfByte)
   {
     if (paramArrayOfByte != null) {
-      CameraControl.a().a(true, paramArrayOfByte);
+      awij.a().a(true, paramArrayOfByte);
     }
   }
   
@@ -159,8 +167,8 @@ public class PreviewContext
     SVHwEncoder localSVHwEncoder = (SVHwEncoder)this.mEncodeRef.get();
     if (localSVHwEncoder != null)
     {
-      localHwFrame = localSVHwEncoder.a();
-      if (localHwFrame == null) {
+      localawib = localSVHwEncoder.a();
+      if (localawib == null) {
         if (QLog.isColorLevel()) {
           QLog.d("PreviewContext", 2, "[@] encodeOneFrameNotify frame is null");
         }
@@ -171,23 +179,23 @@ public class PreviewContext
       int i;
       do
       {
-        SVHwEncoder.HwFrame localHwFrame;
+        awib localawib;
         return;
         int j = localSVHwEncoder.jdField_a_of_type_Int;
         try
         {
-          i = getProcessedFrameData(localHwFrame.jdField_a_of_type_ArrayOfByte, this.mTimeStamp, j);
+          i = getProcessedFrameData(localawib.jdField_a_of_type_ArrayOfByte, this.mTimeStamp, j);
           if (QLog.isColorLevel()) {
             QLog.d("PreviewContext", 2, "[@] HandleVideo: error=" + i + " colorspace=" + j);
           }
           if (i == 0)
           {
-            localHwFrame.jdField_a_of_type_Int = 0;
-            localHwFrame.jdField_b_of_type_Int = localHwFrame.jdField_a_of_type_ArrayOfByte.length;
-            localHwFrame.jdField_a_of_type_Long = this.mTimeStamp[0];
-            localHwFrame.jdField_a_of_type_Boolean = false;
-            localHwFrame.jdField_b_of_type_Boolean = true;
-            localSVHwEncoder.a(localHwFrame, true);
+            localawib.jdField_a_of_type_Int = 0;
+            localawib.jdField_b_of_type_Int = localawib.jdField_a_of_type_ArrayOfByte.length;
+            localawib.jdField_a_of_type_Long = this.mTimeStamp[0];
+            localawib.jdField_a_of_type_Boolean = false;
+            localawib.jdField_b_of_type_Boolean = true;
+            localSVHwEncoder.a(localawib, true);
             return;
           }
         }
@@ -236,155 +244,163 @@ public class PreviewContext
       if (this.mCheckedDataValid) {
         break label248;
       }
-      if (!CameraCompatibleList.a(CameraCompatibleList.p)) {
+      if (!awii.a(awii.p)) {
         break label240;
       }
       this.mDisablePrivilage = checkIsDisablePrivilage(paramArrayOfByte, 32);
-      label192:
       this.mCheckedDataValid = true;
       if (!this.mDisablePrivilage) {
         break label255;
       }
       this.mCamera.a.a(12, new Object[] { "camera disabled zero data." });
     }
-    label564:
-    label590:
-    label1003:
+    label240:
+    label248:
+    while (this.mDisablePrivilage) {
+      for (;;)
+      {
+        return;
+        this.frameCount += 1;
+        break;
+        this.mDisablePrivilage = false;
+      }
+    }
+    label255:
+    if (paramArrayOfByte == null)
+    {
+      awij.a().a(true);
+      return;
+    }
+    this.mRecordToCache = 0;
+    if (!this.mPTVRealBeauty) {
+      sendFirstFrameMsg();
+    }
+    if (!this.mFrameSrcList.isEmpty()) {}
     for (;;)
     {
-      return;
-      this.frameCount += 1;
-      break;
-      label240:
-      this.mDisablePrivilage = false;
-      break label192;
-      label248:
-      if (!this.mDisablePrivilage)
+      Object localObject;
+      try
       {
-        label255:
-        if (paramArrayOfByte == null)
-        {
-          CameraControl.a().a(true);
-          return;
-        }
-        this.mRecordToCache = 0;
-        if (!this.mPTVRealBeauty) {
-          sendFirstFrameMsg();
-        }
-        paramCamera = null;
-        if (!this.mFrameSrcList.isEmpty()) {
-          paramCamera = (AVIOStruct)this.mFrameSrcList.get(this.mFrameSrcList.size() - 1);
-        }
-        Object localObject;
+        paramCamera = (AVIOStruct)this.mFrameSrcList.get(this.mFrameSrcList.size() - 1);
         if (paramCamera != null)
         {
-          if (!Lock.jdField_a_of_type_Boolean) {
-            break label590;
+          if (!awjh.jdField_a_of_type_Boolean) {
+            continue;
           }
-          if (paramCamera.pControlFlag != ControlFlagEnum.NONE.getValue()) {
-            break label564;
-          }
-          localObject = CameraControl.a().a();
-          i = CameraControl.a().a();
-          paramCamera.vWidth = ((CameraControl.CustomSize)localObject).jdField_a_of_type_Int;
-          paramCamera.vHeight = ((CameraControl.CustomSize)localObject).jdField_b_of_type_Int;
-          paramCamera.vFormat = i;
-          paramCamera.vOrientation = CameraControl.a().b();
-          paramCamera.vFPS = CodecParam.g;
-          paramCamera.pControlFlag = ControlFlagEnum.OPEN_FILE_AND_WRITE_FRAME_DATA.getValue();
-          paramCamera.vBitrate = CodecParam.f;
-          paramCamera.pCodec = CodecParam.jdField_b_of_type_Int;
-        }
-        for (;;)
-        {
-          if ((paramCamera != null) && (paramCamera.isWriteFrame()))
+          if (paramCamera.pControlFlag == ControlFlagEnum.NONE.getValue())
           {
-            boolean bool = checkPreviewDataLength(paramCamera, paramArrayOfByte);
-            if (QLog.isColorLevel()) {
-              QLog.d("PreviewContext", 2, "[@] onPreviewFrame PreviewDataLength error : " + bool + " Build.MODEL=" + Build.MODEL + " Build.CPU_ABI=" + Build.CPU_ABI);
-            }
-            if (bool)
-            {
-              this.mCamera.a.a(8, new Object[] { "unacceptable camera preview data" });
-              if (1 != FlowCameraMqqAction.jdField_a_of_type_Int) {
-                break;
-              }
-              QzoneVideoBeaconReport.a(GloableValue.jdField_a_of_type_Long + "", "qzone_video_record", "8", null);
-              return;
-              if (paramCamera.pControlFlag != ControlFlagEnum.OPEN_FILE_AND_WRITE_FRAME_DATA.getValue()) {
-                continue;
-              }
-              paramCamera.pControlFlag = ControlFlagEnum.WRITE_FRAME_DATA.getValue();
-              continue;
-              if (paramCamera.pControlFlag == ControlFlagEnum.WRITE_FRAME_DATA.getValue())
-              {
-                paramCamera.pControlFlag = ControlFlagEnum.WRITE_FRAME_DATA_AND_CLOSE_FILE.getValue();
-                continue;
-              }
-              if (paramCamera.pControlFlag != ControlFlagEnum.WRITE_FRAME_DATA_AND_CLOSE_FILE.getValue()) {
-                continue;
-              }
-              paramCamera.pControlFlag = ControlFlagEnum.NONE.getValue();
-              continue;
-            }
-            i = this.mFrameIndex;
-            this.mFrameIndex = (i + 1);
-            paramCamera.pFrameIndex = i;
-            paramCamera.vFrameTime = SystemClock.elapsedRealtime();
-            this.mWriteFrameCount += 1;
-            this.mRecordToCache = 1;
-            if (!this.mPTVRealBeauty)
-            {
-              this.mVideoFrameWrite.incrementAndGet();
-              this.mAVCodec.copyQQBuf(paramArrayOfByte, paramCamera);
-              QzoneHandlerThreadFactory.getHandlerThread("Normal_HandlerThread", false).post(new PreviewContext.HandleVideo(this));
-            }
+            localObject = awij.a().a();
+            i = awij.a().a();
+            paramCamera.vWidth = ((awim)localObject).jdField_a_of_type_Int;
+            paramCamera.vHeight = ((awim)localObject).jdField_b_of_type_Int;
+            paramCamera.vFormat = i;
+            paramCamera.vOrientation = awij.a().b();
+            paramCamera.vFPS = awje.g;
+            paramCamera.pControlFlag = ControlFlagEnum.OPEN_FILE_AND_WRITE_FRAME_DATA.getValue();
+            paramCamera.vBitrate = awje.f;
+            paramCamera.pCodec = awje.jdField_b_of_type_Int;
           }
         }
-        if (this.mPTVRealBeauty)
+        else
         {
-          localObject = Message.obtain(this.mMsghandler);
-          ((Message)localObject).what = -16716526;
-          ((Message)localObject).arg1 = this.mRecordToCache;
-          ((Message)localObject).arg2 = 1;
-          ((Message)localObject).obj = paramArrayOfByte;
-          if (this.mRecordToCache == 1)
-          {
-            PreviewContext.VFrameData localVFrameData = new PreviewContext.VFrameData();
-            localVFrameData.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-            localVFrameData.jdField_a_of_type_ComTencentMaxvideoCommonAVIOStruct = ((AVIOStruct)paramCamera.clone());
-            ((Message)localObject).obj = localVFrameData;
-            if (this.mMsghandler != null) {
-              this.mMsghandler.sendMessage((Message)localObject);
-            }
+          if ((paramCamera == null) || (!paramCamera.isWriteFrame())) {
+            break label728;
           }
-        }
-        for (;;)
-        {
-          if (!QLog.isColorLevel()) {
-            break label1003;
-          }
-          QLog.d("PreviewContext", 2, "[@] onPreviewFrame end,mFrameIndex  = " + this.mFrameIndex);
-          return;
+          boolean bool = checkPreviewDataLength(paramCamera, paramArrayOfByte);
           if (QLog.isColorLevel()) {
-            QLog.d("PreviewContext", 2, "[@] mPTVRealBeauty: [Build.MODEL=" + Build.MODEL + "]  mMsghandler=" + this.mMsghandler);
+            QLog.d("PreviewContext", 2, "[@] onPreviewFrame PreviewDataLength error : " + bool + " Build.MODEL=" + Build.MODEL + " Build.CPU_ABI=" + Build.CPU_ABI);
           }
-          paramCamera = CameraControl.a().a();
-          if (paramCamera == null) {
-            break;
-          }
-          i = CameraControl.a().a();
-          this.mPTVRealBeautyCache.vWidth = paramCamera.jdField_a_of_type_Int;
-          this.mPTVRealBeautyCache.vHeight = paramCamera.jdField_b_of_type_Int;
-          this.mPTVRealBeautyCache.vFormat = i;
-          if (!checkPreviewDataLength(this.mPTVRealBeautyCache, paramArrayOfByte)) {
-            break label811;
+          if (!bool) {
+            continue;
           }
           this.mCamera.a.a(8, new Object[] { "unacceptable camera preview data" });
+          if (1 != ahhk.jdField_a_of_type_Int) {
+            break;
+          }
+          bghf.a(awha.jdField_a_of_type_Long + "", "qzone_video_record", "8", null);
           return;
-          CameraControl.a().a(true, paramArrayOfByte);
         }
       }
+      catch (ArrayIndexOutOfBoundsException paramCamera)
+      {
+        paramCamera = null;
+        continue;
+        if (paramCamera.pControlFlag != ControlFlagEnum.OPEN_FILE_AND_WRITE_FRAME_DATA.getValue()) {
+          continue;
+        }
+        paramCamera.pControlFlag = ControlFlagEnum.WRITE_FRAME_DATA.getValue();
+        continue;
+        if (paramCamera.pControlFlag == ControlFlagEnum.WRITE_FRAME_DATA.getValue())
+        {
+          paramCamera.pControlFlag = ControlFlagEnum.WRITE_FRAME_DATA_AND_CLOSE_FILE.getValue();
+          continue;
+        }
+        if (paramCamera.pControlFlag != ControlFlagEnum.WRITE_FRAME_DATA_AND_CLOSE_FILE.getValue()) {
+          continue;
+        }
+        paramCamera.pControlFlag = ControlFlagEnum.NONE.getValue();
+        continue;
+        i = this.mFrameIndex;
+        this.mFrameIndex = (i + 1);
+        paramCamera.pFrameIndex = i;
+        paramCamera.vFrameTime = SystemClock.elapsedRealtime();
+        this.mWriteFrameCount += 1;
+        this.mRecordToCache = 1;
+        if (!this.mPTVRealBeauty)
+        {
+          this.mVideoFrameWrite.incrementAndGet();
+          this.mAVCodec.copyQQBuf(paramArrayOfByte, paramCamera);
+          QzoneHandlerThreadFactory.getHandlerThread("Normal_HandlerThread", false).post(new PreviewContext.HandleVideo(this));
+        }
+      }
+      label728:
+      if (this.mPTVRealBeauty)
+      {
+        localObject = Message.obtain(this.mMsghandler);
+        ((Message)localObject).what = -16716526;
+        ((Message)localObject).arg1 = this.mRecordToCache;
+        ((Message)localObject).arg2 = 1;
+        ((Message)localObject).obj = paramArrayOfByte;
+        if (this.mRecordToCache == 1)
+        {
+          awji localawji = new awji();
+          localawji.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+          localawji.jdField_a_of_type_ComTencentMaxvideoCommonAVIOStruct = ((AVIOStruct)paramCamera.clone());
+          ((Message)localObject).obj = localawji;
+          if (this.mMsghandler != null) {
+            this.mMsghandler.sendMessage((Message)localObject);
+          }
+        }
+      }
+      for (;;)
+      {
+        label815:
+        if (!QLog.isColorLevel()) {
+          break label1007;
+        }
+        QLog.d("PreviewContext", 2, "[@] onPreviewFrame end,mFrameIndex  = " + this.mFrameIndex);
+        return;
+        if (QLog.isColorLevel()) {
+          QLog.d("PreviewContext", 2, "[@] mPTVRealBeauty: [Build.MODEL=" + Build.MODEL + "]  mMsghandler=" + this.mMsghandler);
+        }
+        paramCamera = awij.a().a();
+        if (paramCamera == null) {
+          break;
+        }
+        i = awij.a().a();
+        this.mPTVRealBeautyCache.vWidth = paramCamera.jdField_a_of_type_Int;
+        this.mPTVRealBeautyCache.vHeight = paramCamera.jdField_b_of_type_Int;
+        this.mPTVRealBeautyCache.vFormat = i;
+        if (!checkPreviewDataLength(this.mPTVRealBeautyCache, paramArrayOfByte)) {
+          break label815;
+        }
+        this.mCamera.a.a(8, new Object[] { "unacceptable camera preview data" });
+        return;
+        awij.a().a(true, paramArrayOfByte);
+      }
+      label1007:
+      break;
+      paramCamera = null;
     }
   }
   
@@ -492,7 +508,7 @@ public class PreviewContext
   
   public void startCapture()
   {
-    if (!Lock.jdField_a_of_type_Boolean) {
+    if (!awjh.jdField_a_of_type_Boolean) {
       return;
     }
     if (this.mFrameSrcList == null) {
@@ -526,7 +542,7 @@ public class PreviewContext
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.mediadevice.PreviewContext
  * JD-Core Version:    0.7.0.1
  */

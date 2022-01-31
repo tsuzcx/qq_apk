@@ -1,23 +1,23 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.ar.model.ArLBSActivity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.FavEmosmManageActivity;
 
-public final class aarp
-  implements Parcelable.Creator
+public class aarp
+  extends BroadcastReceiver
 {
-  public ArLBSActivity a(Parcel paramParcel)
-  {
-    return new ArLBSActivity(paramParcel);
-  }
+  public aarp(FavEmosmManageActivity paramFavEmosmManageActivity) {}
   
-  public ArLBSActivity[] a(int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    return new ArLBSActivity[paramInt];
+    if (FavEmosmManageActivity.a(this.a) != null) {
+      FavEmosmManageActivity.a(this.a).a(paramContext, paramIntent);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aarp
  * JD-Core Version:    0.7.0.1
  */

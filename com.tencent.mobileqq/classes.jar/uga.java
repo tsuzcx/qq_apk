@@ -1,60 +1,75 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import com.tencent.mobileqq.activity.TroopMemberListActivity.ATroopMember;
-import com.tencent.mobileqq.activity.TroopMemberListActivity.ListAdapter;
-import com.tencent.mobileqq.activity.TroopMemberListActivity.SearchResultAdapter;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tribe.async.dispatch.Dispatcher;
+import com.tribe.async.dispatch.IEventReceiver;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class uga
-  implements View.OnClickListener
+  implements IEventReceiver
 {
-  public uga(TroopMemberListActivity paramTroopMemberListActivity) {}
+  private int jdField_a_of_type_Int = -1;
+  private ajjh jdField_a_of_type_Ajjh = new ugb(this);
+  public QQUserUIItem a;
+  public String a;
+  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+  private ugc jdField_a_of_type_Ugc;
+  private ugd jdField_a_of_type_Ugd;
+  private uge jdField_a_of_type_Uge;
+  private ugf jdField_a_of_type_Ugf;
+  private ugg jdField_a_of_type_Ugg;
+  private int b = -1;
   
-  public void onClick(View paramView)
+  public uga(String paramString, @NonNull ugf paramugf)
   {
-    Object localObject = paramView.getTag();
-    if ((localObject == null) || (!(localObject instanceof Integer))) {}
-    int i;
-    do
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Ugf = paramugf;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Ugg = new ugg(this);
+    sgi.a().registerSubscriber(this.jdField_a_of_type_Ugg);
+    tfy.a().addObserver(this.jdField_a_of_type_Ajjh);
+    this.jdField_a_of_type_Ugc = new ugc(this);
+    sgi.a().registerSubscriber(this.jdField_a_of_type_Ugc);
+    this.jdField_a_of_type_Ugd = new ugd(this);
+    sgi.a().registerSubscriber(this.jdField_a_of_type_Ugd);
+    this.jdField_a_of_type_Uge = new uge(this);
+    sgi.a().registerSubscriber(this.jdField_a_of_type_Uge);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    urk.b("Q.qqstory.memories.MemoriesProfilePresenter", "request refresh user info data. from cache : %s.", Boolean.valueOf(paramBoolean));
+    if (paramBoolean)
     {
-      return;
-      i = ((Integer)localObject).intValue();
-    } while (i < 0);
-    paramView = paramView.findViewById(2131375137);
-    if ((paramView.getTag() != null) && ((paramView.getTag() instanceof Boolean))) {}
-    for (boolean bool = ((Boolean)paramView.getTag()).booleanValue();; bool = false)
-    {
-      if (bool)
-      {
-        paramView = (TroopMemberListActivity.ATroopMember)this.a.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity$SearchResultAdapter.getItem(i);
-        this.a.a(paramView);
-        if ((this.a.jdField_b_of_type_AndroidAppDialog != null) && (this.a.jdField_b_of_type_AndroidAppDialog.isShowing())) {
-          this.a.jdField_b_of_type_AndroidAppDialog.dismiss();
-        }
-        if (this.a.d != 11) {
-          break;
-        }
-        ReportController.b(this.a.app, "CliOper", "", "", "0X8006218", "0X8006218", 0, 0, "", "", "", "");
-        return;
-      }
-      paramView = (TroopMemberListActivity.ATroopMember)this.a.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity$ListAdapter.getItem(i);
-      this.a.a(paramView);
-      if (this.a.d == 11) {
-        ReportController.b(this.a.app, "CliOper", "", "", "0X8006219", "0X8006219", 0, 0, "", "", "", "");
-      }
-      if (this.a.d != 18) {
-        break;
-      }
-      ReportController.b(this.a.app, "dc00899", "Grp_chatRecord", "", "chatRecor_mber", "mber_clk", 0, 0, this.a.jdField_b_of_type_JavaLangString, "", "", "");
+      this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem = ((sqs)sqg.a(2)).b(this.jdField_a_of_type_JavaLangString);
+      urk.a("Q.qqstory.memories.MemoriesProfilePresenter", "get user info from cache: %s.", this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem);
       return;
     }
+    urk.a("Q.qqstory.memories.MemoriesProfilePresenter", "request user info by uid: %s.", this.jdField_a_of_type_JavaLangString);
+    new sxp().a(1, new srn("", this.jdField_a_of_type_JavaLangString), String.valueOf(hashCode()), true, true);
+  }
+  
+  public void b()
+  {
+    sgi.a().unRegisterSubscriber(this.jdField_a_of_type_Ugg);
+    tfy.a().removeObserver(this.jdField_a_of_type_Ajjh);
+    sgi.a().unRegisterSubscriber(this.jdField_a_of_type_Ugc);
+    sgi.a().unRegisterSubscriber(this.jdField_a_of_type_Ugd);
+    sgi.a().unRegisterSubscriber(this.jdField_a_of_type_Uge);
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+  }
+  
+  public boolean isValidate()
+  {
+    return !this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     uga
  * JD-Core Version:    0.7.0.1
  */

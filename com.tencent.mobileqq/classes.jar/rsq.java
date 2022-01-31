@@ -1,100 +1,89 @@
-import android.text.InputFilter;
-import android.text.Spanned;
-import com.tencent.mobileqq.activity.AuthDevRenameActivity;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class rsq
-  implements InputFilter
 {
-  private int jdField_a_of_type_Int = 32;
+  int jdField_a_of_type_Int = 0;
+  Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
+  String jdField_a_of_type_JavaLangString = "";
+  String b = "";
+  String c = "";
   
-  public rsq(AuthDevRenameActivity paramAuthDevRenameActivity) {}
-  
-  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
+  public rsq(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt1, int paramInt2, int paramInt3)
   {
-    int j = paramInt1;
-    int k = 0;
-    if (j < paramInt2)
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_JavaLangString = paramContext.getString(paramInt2);
+    this.b = "";
+    try
     {
-      i = paramCharSequence.charAt(j);
-      if (i < 128) {
-        i = 1;
-      }
-      for (;;)
-      {
-        j += 1;
-        k += i;
-        break;
-        if (i < 2048) {
-          i = 2;
-        } else {
-          i = 3;
-        }
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(paramInt3);
+      label66:
+      this.c = a(paramInt1);
+      return;
+    }
+    catch (Exception paramQQAppInterface)
+    {
+      break label66;
+    }
+  }
+  
+  public rsq(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt, String paramString1, String paramString2)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.c = a(paramInt);
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = rsp.a(paramContext, paramInt);
+    if (QLog.isColorLevel()) {
+      QLog.d("PublicAccountConfigUtil", 2, "PublicAccountConfigFolder mId: " + this.jdField_a_of_type_Int + " | mName: " + this.jdField_a_of_type_JavaLangString + " | mIconUrl: " + this.b + " | mUin : " + this.c);
+    }
+    if ((!TextUtils.isEmpty(this.b)) && (!TextUtils.isEmpty(this.c)))
+    {
+      paramString1 = abbd.b(paramContext, paramString2);
+      if (paramString1 != null) {
+        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramString1;
       }
     }
-    int n = paramSpanned.length();
-    int i = 0;
-    int m = 0;
-    if (m < n)
+    while (!QLog.isColorLevel())
     {
-      if ((m >= paramInt3) && (m < paramInt4)) {
-        break label272;
-      }
-      j = paramSpanned.charAt(m);
-      if (j < 128)
-      {
-        j = 1;
-        label127:
-        i = j + i;
-      }
+      return;
+      abbd.a(paramQQAppInterface, paramContext, paramString2, new abbe(paramContext, new rsr(this, paramQQAppInterface, this.c), new Object[0]));
+      return;
     }
-    label272:
-    for (;;)
+    QLog.d("PublicAccountConfigUtil", 2, "PublicAccountConfigFolder mIconUrl is empty");
+  }
+  
+  private String a(int paramInt)
+  {
+    switch (paramInt)
     {
-      m += 1;
-      break;
-      if (j < 2048)
-      {
-        j = 2;
-        break label127;
-      }
-      j = 3;
-      break label127;
-      i = this.jdField_a_of_type_Int - i;
-      if (i <= 0) {
-        return "";
-      }
-      if (i >= k) {
-        return null;
-      }
-      paramInt4 = paramInt1;
-      while (paramInt4 < paramInt2)
-      {
-        paramInt3 = paramCharSequence.charAt(paramInt4);
-        if (paramInt3 < 128) {
-          paramInt3 = 1;
-        }
-        for (;;)
-        {
-          i -= paramInt3;
-          if (i >= 0) {
-            break;
-          }
-          return paramCharSequence.subSequence(paramInt1, paramInt4);
-          if (paramInt3 < 2048) {
-            paramInt3 = 2;
-          } else {
-            paramInt3 = 3;
-          }
-        }
-        paramInt4 += 1;
-      }
-      return null;
+    default: 
+      return "";
+    case 1: 
+      return String.valueOf(7210);
+    case 2: 
+      return String.valueOf(ajed.ay);
     }
+    return String.valueOf(ajed.az);
+  }
+  
+  public Drawable a()
+  {
+    return this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     rsq
  * JD-Core Version:    0.7.0.1
  */

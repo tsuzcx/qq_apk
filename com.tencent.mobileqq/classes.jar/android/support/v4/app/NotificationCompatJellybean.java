@@ -8,6 +8,7 @@ import android.app.Notification.InboxStyle;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.os.Build.VERSION;
 import android.widget.RemoteViews;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -24,27 +25,30 @@ class NotificationCompatJellybean
       bool = true;
       paramContext = paramContext.setOngoing(bool);
       if ((paramNotification.flags & 0x8) == 0) {
-        break label239;
+        break label256;
       }
       bool = true;
       label112:
       paramContext = paramContext.setOnlyAlertOnce(bool);
       if ((paramNotification.flags & 0x10) == 0) {
-        break label245;
+        break label262;
       }
       bool = true;
       label132:
       paramContext = paramContext.setAutoCancel(bool).setDefaults(paramNotification.defaults).setContentTitle(paramCharSequence1).setContentText(paramCharSequence2).setSubText(paramCharSequence4).setContentInfo(paramCharSequence3).setContentIntent(paramPendingIntent1).setDeleteIntent(paramNotification.deleteIntent);
       if ((paramNotification.flags & 0x80) == 0) {
-        break label251;
+        break label268;
       }
     }
-    label239:
-    label245:
-    label251:
+    label256:
+    label262:
+    label268:
     for (boolean bool = true;; bool = false)
     {
       this.b = paramContext.setFullScreenIntent(paramPendingIntent2, bool).setLargeIcon(paramBitmap).setNumber(paramInt1).setUsesChronometer(paramBoolean2).setPriority(paramInt4).setProgress(paramInt2, paramInt3, paramBoolean1);
+      if (Build.VERSION.SDK_INT > 16) {
+        this.b.setShowWhen(true);
+      }
       return;
       bool = false;
       break;

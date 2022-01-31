@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class CouponProto$ReportReq
-  extends MessageMicro
+  extends MessageMicro<ReportReq>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18 }, new String[] { "type", "data" }, new Object[] { Integer.valueOf(0), "" }, ReportReq.class);
   public final PBStringField data = PBField.initString("");

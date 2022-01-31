@@ -1,27 +1,61 @@
-import android.support.v4.view.ViewCompat;
-import android.support.v7.widget.RecyclerView;
-import com.tencent.widget.itemtouchhelper.ItemTouchHelper;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 public class ammd
-  implements Runnable
+  extends alzl<ammc>
 {
-  public ammd(ItemTouchHelper paramItemTouchHelper) {}
-  
-  public void run()
+  public static ammc a()
   {
-    if ((this.a.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder != null) && (this.a.b()))
-    {
-      if (this.a.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder != null) {
-        this.a.a(this.a.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder);
-      }
-      this.a.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
-      ViewCompat.postOnAnimation(this.a.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView, this);
+    return (ammc)alzw.a().a(487);
+  }
+  
+  public int a()
+  {
+    return 487;
+  }
+  
+  @NonNull
+  public ammc a(int paramInt)
+  {
+    return new ammc();
+  }
+  
+  @Nullable
+  public ammc a(alzs[] paramArrayOfalzs)
+  {
+    if ((paramArrayOfalzs != null) && (paramArrayOfalzs.length > 0)) {
+      return ammc.a(paramArrayOfalzs);
     }
+    return null;
+  }
+  
+  public Class<ammc> a()
+  {
+    return ammc.class;
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(ammc paramammc) {}
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ammd
  * JD-Core Version:    0.7.0.1
  */

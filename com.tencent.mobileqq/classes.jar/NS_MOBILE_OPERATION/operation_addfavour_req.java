@@ -10,13 +10,13 @@ import java.util.Map;
 public final class operation_addfavour_req
   extends JceStruct
 {
-  static Map cache_busi_params;
-  static ArrayList cache_photo_url;
+  static Map<String, String> cache_busi_params;
+  static ArrayList<PhotoInformation> cache_photo_url;
   public long appid;
-  public Map busi_params;
+  public Map<String, String> busi_params;
   public String cellid = "";
   public long owner_uin;
-  public ArrayList photo_url;
+  public ArrayList<PhotoInformation> photo_url;
   public String sid = "";
   public long subid;
   public String text = "";
@@ -24,7 +24,7 @@ public final class operation_addfavour_req
   
   public operation_addfavour_req() {}
   
-  public operation_addfavour_req(long paramLong1, long paramLong2, long paramLong3, String paramString1, String paramString2, String paramString3, ArrayList paramArrayList, String paramString4, Map paramMap)
+  public operation_addfavour_req(long paramLong1, long paramLong2, long paramLong3, String paramString1, String paramString2, String paramString3, ArrayList<PhotoInformation> paramArrayList, String paramString4, Map<String, String> paramMap)
   {
     this.owner_uin = paramLong1;
     this.appid = paramLong2;
@@ -88,7 +88,7 @@ public final class operation_addfavour_req
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     NS_MOBILE_OPERATION.operation_addfavour_req
  * JD-Core Version:    0.7.0.1
  */

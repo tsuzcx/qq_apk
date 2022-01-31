@@ -1,60 +1,71 @@
-import android.app.Activity;
-import com.tencent.biz.qqstory.utils.WeishiGuideUtils;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.QIMManager;
-import dov.com.qq.im.capture.adapter.QIMPtvTemplateAdapter;
-import dov.com.qq.im.capture.adapter.QIMPtvTemplateAdapter.IPtvTemplateItemCallback;
-import dov.com.qq.im.capture.data.CaptureComboManager;
-import dov.com.qq.im.capture.predownload.QIMPredownManager;
-import dov.com.qq.im.capture.view.ProviderView.ProviderViewListener;
-import dov.com.tencent.mobileqq.activity.richmedia.FlowCameraMqqAction;
-import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
-import dov.com.tencent.mobileqq.shortvideo.QIMPtvTemplateManager;
-import java.util.ArrayList;
+import android.graphics.drawable.Drawable;
+import com.tencent.mobileqq.extendfriend.pulltorefresh.LoadingLayoutBase;
+import java.util.HashSet;
+import java.util.Iterator;
 
 public class antk
-  implements QIMPtvTemplateAdapter.IPtvTemplateItemCallback
+  implements antj
 {
-  public antk(QIMPtvTemplateAdapter paramQIMPtvTemplateAdapter) {}
+  private final HashSet<LoadingLayoutBase> a = new HashSet();
   
-  public void a(int paramInt)
+  public void a(LoadingLayoutBase paramLoadingLayoutBase)
   {
-    QIMPtvTemplateAdapter.a(this.a).f();
-    if (QLog.isColorLevel()) {
-      QLog.i("QIMPtvTemplateManager", 2, "PtvTemplateAdapter onItemClicked position: " + paramInt);
+    if (paramLoadingLayoutBase != null) {
+      this.a.add(paramLoadingLayoutBase);
     }
-    if ((paramInt < 0) || (paramInt >= this.a.jdField_a_of_type_JavaUtilArrayList.size())) {}
-    PtvTemplateManager.PtvTemplateInfo localPtvTemplateInfo;
-    do
-    {
-      return;
-      localPtvTemplateInfo = (PtvTemplateManager.PtvTemplateInfo)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-    } while (localPtvTemplateInfo == null);
-    QIMPtvTemplateAdapter.a(this.a, paramInt);
-    QIMPtvTemplateAdapter.jdField_b_of_type_Int = localPtvTemplateInfo.categoryId;
-    QIMPtvTemplateAdapter.jdField_b_of_type_JavaLangString = localPtvTemplateInfo.id;
-    if (localPtvTemplateInfo.isWsBanner())
-    {
-      WeishiGuideUtils.a(this.a.jdField_a_of_type_AndroidContentContext, localPtvTemplateInfo);
-      return;
+  }
+  
+  public void setLastUpdatedLabel(CharSequence paramCharSequence)
+  {
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext()) {
+      ((LoadingLayoutBase)localIterator.next()).setLastUpdatedLabel(paramCharSequence);
     }
-    ((QIMPredownManager)QIMManager.a(14)).a(localPtvTemplateInfo.id, 3);
-    if (!localPtvTemplateInfo.id.equals("0"))
-    {
-      QIMPtvTemplateManager localQIMPtvTemplateManager = (QIMPtvTemplateManager)QIMManager.a(3);
-      localQIMPtvTemplateManager.a(localPtvTemplateInfo, 111);
-      localQIMPtvTemplateManager.a(3, localPtvTemplateInfo.categoryId, localPtvTemplateInfo.id);
+  }
+  
+  public void setLoadingDrawable(Drawable paramDrawable)
+  {
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext()) {
+      ((LoadingLayoutBase)localIterator.next()).setLoadingDrawable(paramDrawable);
     }
-    this.a.a(null);
-    if (!localPtvTemplateInfo.usable) {
-      FlowCameraMqqAction.b("", "0X8006A1A");
+  }
+  
+  public void setPullLabel(CharSequence paramCharSequence)
+  {
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext()) {
+      ((LoadingLayoutBase)localIterator.next()).setPullLabel(paramCharSequence);
     }
-    ((CaptureComboManager)QIMManager.a(5)).a(this.a.c, (Activity)this.a.jdField_a_of_type_AndroidContentContext);
+  }
+  
+  public void setRefreshResultLabel(CharSequence paramCharSequence)
+  {
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext()) {
+      ((LoadingLayoutBase)localIterator.next()).setRefreshResultLabel(paramCharSequence);
+    }
+  }
+  
+  public void setRefreshingLabel(CharSequence paramCharSequence)
+  {
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext()) {
+      ((LoadingLayoutBase)localIterator.next()).setRefreshingLabel(paramCharSequence);
+    }
+  }
+  
+  public void setReleaseLabel(CharSequence paramCharSequence)
+  {
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext()) {
+      ((LoadingLayoutBase)localIterator.next()).setReleaseLabel(paramCharSequence);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     antk
  * JD-Core Version:    0.7.0.1
  */

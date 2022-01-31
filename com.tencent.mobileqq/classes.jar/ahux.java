@@ -1,23 +1,17 @@
-import com.tencent.mobileqq.scribble.ScribbleResMgr;
-import com.tencent.mobileqq.scribble.ScribbleResMgr.ResInfo;
-import java.util.Comparator;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
 
 public class ahux
-  implements Comparator
+  implements DialogInterface.OnClickListener
 {
-  public ahux(ScribbleResMgr paramScribbleResMgr) {}
+  public ahux(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
   
-  public int a(ScribbleResMgr.ResInfo paramResInfo1, ScribbleResMgr.ResInfo paramResInfo2)
-  {
-    if ((paramResInfo1 != null) && (paramResInfo2 != null)) {
-      return paramResInfo1.orderIndex - paramResInfo2.orderIndex;
-    }
-    return -1;
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ahux
  * JD-Core Version:    0.7.0.1
  */

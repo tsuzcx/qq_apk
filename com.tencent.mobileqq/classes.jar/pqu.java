@@ -1,55 +1,80 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Build.VERSION;
-import android.text.TextUtils;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.MessageMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import tencent.im.oidb.articlesummary.feeds_info.NowLiveInfo;
+import tencent.im.oidb.nowlive.nowlive.AnchorInfo;
+import tencent.im.oidb.nowlive.nowlive.LiveInfo;
+import tencent.im.oidb.nowlive.nowlive.MixInfo;
+import tencent.im.oidb.nowlive.nowlive.VideoInfo;
 
-class pqu
-  extends pqv
+public class pqu
 {
-  public pqu(pqr parampqr, SharedPreferences.Editor paramEditor)
-  {
-    super(paramEditor, parampqr.a());
-  }
+  private int jdField_a_of_type_Int;
+  private pqv jdField_a_of_type_Pqv = new pqv();
+  private int b;
   
-  public SharedPreferences.Editor clear()
+  public feeds_info.NowLiveInfo a()
   {
-    if (TextUtils.isEmpty(pqr.a(this.a))) {
-      super.clear();
+    feeds_info.NowLiveInfo localNowLiveInfo = new feeds_info.NowLiveInfo();
+    localNowLiveInfo.msg_type.set(this.jdField_a_of_type_Int);
+    localNowLiveInfo.uint32_timestamp.set(this.b);
+    nowlive.MixInfo localMixInfo = new nowlive.MixInfo();
+    Object localObject = new nowlive.AnchorInfo();
+    ((nowlive.AnchorInfo)localObject).fans.set(pqw.a(pqv.a(this.jdField_a_of_type_Pqv)));
+    ((nowlive.AnchorInfo)localObject).status.set(pqw.a(pqv.a(this.jdField_a_of_type_Pqv)));
+    ((nowlive.AnchorInfo)localObject).uin.set(pqw.b(pqv.a(this.jdField_a_of_type_Pqv)));
+    localMixInfo.anchor_info.set((MessageMicro)localObject);
+    localObject = new nowlive.LiveInfo();
+    if (pqx.a(pqv.a(this.jdField_a_of_type_Pqv)) != null) {
+      ((nowlive.LiveInfo)localObject).live_url.set(pqx.a(pqv.a(this.jdField_a_of_type_Pqv)));
+    }
+    if (pqx.b(pqv.a(this.jdField_a_of_type_Pqv)) != null) {
+      ((nowlive.LiveInfo)localObject).room_name.set(pqx.b(pqv.a(this.jdField_a_of_type_Pqv)));
+    }
+    if (pqx.c(pqv.a(this.jdField_a_of_type_Pqv)) != null) {
+      ((nowlive.LiveInfo)localObject).room_cover.set(pqx.c(pqv.a(this.jdField_a_of_type_Pqv)));
+    }
+    ((nowlive.LiveInfo)localObject).live_statue.set(pqx.a(pqv.a(this.jdField_a_of_type_Pqv)));
+    ((nowlive.LiveInfo)localObject).audience.set(pqx.b(pqv.a(this.jdField_a_of_type_Pqv)));
+    if (pqx.d(pqv.a(this.jdField_a_of_type_Pqv)) != null)
+    {
+      ((nowlive.LiveInfo)localObject).vid.set(ByteStringMicro.copyFromUtf8(pqx.d(pqv.a(this.jdField_a_of_type_Pqv))));
+      localMixInfo.live_info.set((MessageMicro)localObject);
+      localObject = new nowlive.VideoInfo();
+      if (pqy.a(pqv.a(this.jdField_a_of_type_Pqv)) != null) {
+        ((nowlive.VideoInfo)localObject).video_url.set(pqy.a(pqv.a(this.jdField_a_of_type_Pqv)));
+      }
+      if (pqy.b(pqv.a(this.jdField_a_of_type_Pqv)) != null) {
+        ((nowlive.VideoInfo)localObject).video_cover_url.set(pqy.b(pqv.a(this.jdField_a_of_type_Pqv)));
+      }
+      if (pqy.c(pqv.a(this.jdField_a_of_type_Pqv)) == null) {
+        break label410;
+      }
+      ((nowlive.VideoInfo)localObject).vid.set(ByteStringMicro.copyFromUtf8(pqy.c(pqv.a(this.jdField_a_of_type_Pqv))));
     }
     for (;;)
     {
-      return this;
-      Object localObject = this.a.a().getAll();
-      if ((localObject != null) && (!((Map)localObject).isEmpty()))
-      {
-        localObject = ((Map)localObject).keySet().iterator();
-        while (((Iterator)localObject).hasNext())
-        {
-          String str = (String)((Iterator)localObject).next();
-          if (pqr.a(pqr.a(this.a), str)) {
-            super.remove(str);
-          }
-        }
-      }
+      localMixInfo.video_info.set((MessageMicro)localObject);
+      localNowLiveInfo.mix_info.set(localMixInfo);
+      return localNowLiveInfo;
+      ((nowlive.LiveInfo)localObject).vid.set(ByteStringMicro.EMPTY);
+      break;
+      label410:
+      ((nowlive.VideoInfo)localObject).vid.set(ByteStringMicro.EMPTY);
     }
   }
   
-  public boolean commit()
+  public void a(pqv parampqv)
   {
-    if ((pqr.a(this.a)) && (Build.VERSION.SDK_INT >= 9))
-    {
-      super.apply();
-      return true;
-    }
-    return super.commit();
+    this.jdField_a_of_type_Pqv = parampqv;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     pqu
  * JD-Core Version:    0.7.0.1
  */

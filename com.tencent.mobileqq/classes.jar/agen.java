@@ -1,42 +1,53 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.now.enter.NowEnterManager;
-import com.tencent.mobileqq.now.enter.NowEnterManager.WebProcessBindCallback;
-import com.tencent.mobileqq.now.enter.NowFestivalEnterFragment;
-import com.tencent.mobileqq.statistics.ReportTask;
-import com.tencent.mobileqq.webprocess.WebProcessManager;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import android.os.Build.VERSION;
+import android.view.View;
+import com.tencent.mobileqq.app.BaseActivity;
 
-public class agen
-  implements NowEnterManager.WebProcessBindCallback
+class agen
+  implements begw
 {
-  public agen(NowFestivalEnterFragment paramNowFestivalEnterFragment) {}
+  agen(agem paramagem, begr parambegr) {}
   
-  public void a()
+  public void OnClick(View paramView, int paramInt)
   {
-    ((NowEnterManager)NowFestivalEnterFragment.a(this.a).app.getManager(264)).b(NowFestivalEnterFragment.a(this.a));
-    long l = System.currentTimeMillis() - NowFestivalEnterFragment.a(this.a);
-    if (QLog.isColorLevel())
-    {
-      QLog.i("NowFestivalEnterFragment", 2, "preStartWebProcess, startTime=" + NowFestivalEnterFragment.a(this.a));
-      QLog.i("NowFestivalEnterFragment", 2, "preStartWebProcess onBind, cost=" + l + "ms");
-      QLog.i("NowFestivalEnterFragment", 2, "preStartWebProcess, web module is exist=" + WebProcessManager.c());
-    }
-    if (NowFestivalEnterFragment.a(this.a).isFinishing()) {}
-    do
-    {
+    if ((this.jdField_a_of_type_Agem.jdField_a_of_type_ArrayOfInt == null) || (paramInt >= this.jdField_a_of_type_Agem.jdField_a_of_type_ArrayOfInt.length)) {
       return;
-      new ReportTask(NowFestivalEnterFragment.a(this.a).app).a("dc00899").b("Grp_AIO").c("year_icon").d("web_process_preload_cost").a(new String[] { String.valueOf(l) }).a();
-      NowFestivalEnterFragment.c(this.a, true);
-    } while ((!NowFestivalEnterFragment.b(this.a)) || (NowFestivalEnterFragment.c(this.a)));
-    NowFestivalEnterFragment.a(this.a);
+    }
+    switch (this.jdField_a_of_type_Agem.jdField_a_of_type_ArrayOfInt[paramInt])
+    {
+    }
+    for (;;)
+    {
+      try
+      {
+        this.jdField_a_of_type_Begr.dismiss();
+        return;
+      }
+      catch (Exception paramView)
+      {
+        paramView.printStackTrace();
+        return;
+      }
+      if (Build.VERSION.SDK_INT >= 23)
+      {
+        if (this.jdField_a_of_type_Agem.jdField_a_of_type_AndroidAppActivity.checkSelfPermission("android.permission.CAMERA") != 0) {
+          ((BaseActivity)this.jdField_a_of_type_Agem.jdField_a_of_type_AndroidAppActivity).requestPermissions(new ageo(this), 1, new String[] { "android.permission.CAMERA" });
+        } else {
+          agem.a(this.jdField_a_of_type_Agem);
+        }
+      }
+      else
+      {
+        agem.a(this.jdField_a_of_type_Agem);
+        continue;
+        ageu.b(this.jdField_a_of_type_Agem.jdField_a_of_type_AndroidAppActivity, ageu.d(this.jdField_a_of_type_Agem.c));
+      }
+    }
   }
-  
-  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agen
  * JD-Core Version:    0.7.0.1
  */

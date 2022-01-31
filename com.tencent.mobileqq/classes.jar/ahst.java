@@ -1,52 +1,92 @@
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
-import com.tencent.mobileqq.richmedia.mediacodec.MergeEditVideo;
-import com.tencent.mobileqq.richmedia.mediacodec.recorder.HWEncodeListener;
+import com.tencent.mobileqq.activity.selectmember.TroopAddFrdsInnerFrame;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.data.TroopMemberInfo;
+import java.util.Comparator;
 
 public class ahst
-  implements HWEncodeListener
+  implements Comparator<TroopMemberInfo>
 {
-  public ahst(MergeEditVideo paramMergeEditVideo, int[] paramArrayOfInt) {}
+  private ahst(TroopAddFrdsInnerFrame paramTroopAddFrdsInnerFrame) {}
   
-  public void a() {}
-  
-  public void a(String arg1)
+  public int a(TroopMemberInfo paramTroopMemberInfo1, TroopMemberInfo paramTroopMemberInfo2)
   {
-    StoryReportor.b("video_edit", "reEncodeResult", this.jdField_a_of_type_ArrayOfInt[0], 0, new String[] { ??? });
-    synchronized (MergeEditVideo.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecMergeEditVideo))
+    int j = 0;
+    int k = 0;
+    int i;
+    if (this.a.f == TroopAddFrdsInnerFrame.e)
     {
-      MergeEditVideo.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecMergeEditVideo, true);
-      MergeEditVideo.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecMergeEditVideo).notifyAll();
-      return;
-    }
-  }
-  
-  public void a_(int paramInt, Throwable arg2)
-  {
-    String str;
-    if (??? != null) {
-      str = ???.getMessage();
+      i = paramTroopMemberInfo1.addState - paramTroopMemberInfo2.addState;
+      if (i == 0) {
+        if (paramTroopMemberInfo1.commonFrdCnt == -2147483648)
+        {
+          i = 0;
+          if (paramTroopMemberInfo2.commonFrdCnt != -2147483648) {
+            break label189;
+          }
+          j = 0;
+          label56:
+          if ((i != 0) || (j != 0) || (TroopAddFrdsInnerFrame.a(this.a) == null)) {
+            break label257;
+          }
+          if ((!TroopAddFrdsInnerFrame.a(this.a).isTroopAdmin(paramTroopMemberInfo1.memberuin)) && (!TroopAddFrdsInnerFrame.a(this.a).isTroopOwner(paramTroopMemberInfo1.memberuin))) {
+            break label252;
+          }
+          i = 1;
+          label111:
+          if (!TroopAddFrdsInnerFrame.a(this.a).isTroopAdmin(paramTroopMemberInfo2.memberuin))
+          {
+            j = k;
+            if (!TroopAddFrdsInnerFrame.a(this.a).isTroopOwner(paramTroopMemberInfo2.memberuin)) {}
+          }
+          else
+          {
+            j = 1;
+          }
+          j -= i;
+          i = j;
+          if (j == 0) {
+            i = Long.signum(paramTroopMemberInfo2.last_active_time - paramTroopMemberInfo1.last_active_time);
+          }
+        }
+      }
     }
     for (;;)
     {
-      StoryReportor.b("video_edit", "reEncodeResult", this.jdField_a_of_type_ArrayOfInt[0], 0, new String[] { "", str });
-      SLog.e("MergeEditVideo", "encode error errorCode = " + paramInt + " Exception = " + ???);
-      MergeEditVideo.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecMergeEditVideo, paramInt);
-      synchronized (MergeEditVideo.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecMergeEditVideo))
+      return i;
+      i = paramTroopMemberInfo1.commonFrdCnt;
+      break;
+      label189:
+      j = paramTroopMemberInfo2.commonFrdCnt;
+      break label56;
+      return i;
+      i = j;
+      if (this.a.f == TroopAddFrdsInnerFrame.d)
       {
-        MergeEditVideo.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecMergeEditVideo, true);
-        MergeEditVideo.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecMergeEditVideo).notifyAll();
-        return;
-        str = "UNKNOWN ERROR";
+        i = j;
+        if (paramTroopMemberInfo1 != null)
+        {
+          i = j;
+          if (paramTroopMemberInfo1.displayedNamePinyinFirst != null)
+          {
+            i = j;
+            if (paramTroopMemberInfo2 != null)
+            {
+              return paramTroopMemberInfo1.displayedNamePinyinFirst.compareToIgnoreCase(paramTroopMemberInfo2.displayedNamePinyinFirst);
+              label252:
+              i = 0;
+              break label111;
+              label257:
+              i = j - i;
+            }
+          }
+        }
       }
     }
   }
-  
-  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ahst
  * JD-Core Version:    0.7.0.1
  */

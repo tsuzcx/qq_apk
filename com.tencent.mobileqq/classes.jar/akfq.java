@@ -1,20 +1,33 @@
-import com.tencent.mobileqq.unifiedebug.UnifiedDebugManager;
-import java.io.File;
-import java.io.FilenameFilter;
+import android.content.Intent;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class akfq
-  implements FilenameFilter
+  implements oqy
 {
-  public akfq(UnifiedDebugManager paramUnifiedDebugManager, String paramString) {}
+  private int jdField_a_of_type_Int;
+  private String jdField_a_of_type_JavaLangString;
+  private int b;
   
-  public boolean accept(File paramFile, String paramString)
+  public akfq(int paramInt1, int paramInt2, String paramString)
   {
-    return paramString.startsWith(this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public void a(boolean paramBoolean, String paramString, int paramInt)
+  {
+    paramString = new Intent("notify_main_subscribe_follow_state");
+    paramString.putExtra("follow_uin", this.jdField_a_of_type_JavaLangString);
+    paramString.putExtra("follow_uin_position", this.jdField_a_of_type_Int);
+    paramString.putExtra("follow_uin_smooth_dx", this.b);
+    paramString.putExtra("follow_uin_status", paramBoolean);
+    BaseApplication.getContext().sendBroadcast(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akfq
  * JD-Core Version:    0.7.0.1
  */

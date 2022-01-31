@@ -1,33 +1,18 @@
-import android.graphics.Bitmap;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.LineLayer.LayerEventListener;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout.DoodleEventListener;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
 public class aohx
-  implements LineLayer.LayerEventListener
 {
-  public aohx(DoodleLayout paramDoodleLayout) {}
+  long a;
+  public FileManagerEntity a;
   
-  public void a(Bitmap paramBitmap, boolean paramBoolean)
+  public aohx(FileManagerEntity paramFileManagerEntity)
   {
-    if (this.a.a != null) {
-      this.a.a.a(paramBitmap, paramBoolean);
-    }
-  }
-  
-  public void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
-  {
-    if (this.a.a != null)
-    {
-      SLog.b("DoodleLayout", "notify outside onDrawMosaic. width:" + paramInt1 + ",height:" + paramInt2);
-      this.a.a.a(paramArrayOfByte);
-    }
+    this.a = paramFileManagerEntity;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aohx
  * JD-Core Version:    0.7.0.1
  */

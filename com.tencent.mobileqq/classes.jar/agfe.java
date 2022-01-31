@@ -1,37 +1,44 @@
-import android.os.Handler;
-import android.text.TextUtils;
-import com.tencent.mobileqq.ocr.OCRRecognitionResultActivity;
-import com.tencent.mobileqq.ocr.OcrControl.OcrCallback;
-import com.tencent.mobileqq.ocr.data.OcrRecogResult;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.data.MessageForShortVideo;
+import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
 
 public class agfe
-  implements OcrControl.OcrCallback
 {
-  public agfe(OCRRecognitionResultActivity paramOCRRecognitionResultActivity) {}
+  public int a;
+  public long a;
+  public MessageForShortVideo a;
+  public String a;
+  public boolean a;
+  public String[] a;
+  public int b = -1;
+  public long b;
+  public String b;
+  public boolean b;
+  public long c;
+  public String c;
+  public boolean c;
+  public long d;
+  public boolean d;
+  public long e;
+  public boolean e;
   
-  public void a() {}
-  
-  public void a(int paramInt, OcrRecogResult paramOcrRecogResult, String paramString, long paramLong)
+  public agfe()
   {
-    if ((TextUtils.isEmpty(OCRRecognitionResultActivity.c(this.a))) || (!OCRRecognitionResultActivity.c(this.a).equals(paramString)))
-    {
-      QLog.d("OCRRecognitionResultActivity", 1, "OcrCallback onResult ignore, mRecogPicPath:" + OCRRecognitionResultActivity.c(this.a) + " ,imagePath:" + paramString);
-      return;
+    this.jdField_a_of_type_Long = -1L;
+  }
+  
+  public String a()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo == null) {
+      return this.jdField_a_of_type_JavaLangString;
     }
-    OCRRecognitionResultActivity.a(this.a).removeMessages(2);
-    OCRRecognitionResultActivity.a(this.a, 2);
-    if ((paramInt == 0) && (paramOcrRecogResult != null) && (!paramOcrRecogResult.isEmpty()) && (!TextUtils.isEmpty(paramOcrRecogResult.ocrContent)) && (!TextUtils.isEmpty(paramOcrRecogResult.ocrContent.trim())))
-    {
-      OCRRecognitionResultActivity.a(this.a).post(new agff(this, paramOcrRecogResult));
-      return;
-    }
-    OCRRecognitionResultActivity.a(this.a).post(new agfg(this));
+    this.jdField_a_of_type_JavaLangString = null;
+    this.jdField_a_of_type_JavaLangString = ShortVideoUtils.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo, "mp4");
+    return this.jdField_a_of_type_JavaLangString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agfe
  * JD-Core Version:    0.7.0.1
  */

@@ -1,31 +1,21 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.aio.item.ArkAppRootLayout.ArkSearchReportCallback;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.ark.ArkAppHandler;
-import com.tencent.mobileqq.data.ArkBabyqCardInfo;
-import com.tencent.mobileqq.data.MessageForArkBabyqReply;
-import java.lang.ref.WeakReference;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopRequestActivity;
 
 public class acbg
-  implements ArkAppRootLayout.ArkSearchReportCallback
+  implements View.OnClickListener
 {
-  public acbg(ArkBabyqCardInfo paramArkBabyqCardInfo) {}
+  public acbg(TroopRequestActivity paramTroopRequestActivity) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    if ((this.a.mBabyQReplyMsg != null) && (this.a.mBabyQReplyMsg.get() != null))
-    {
-      MessageForArkBabyqReply localMessageForArkBabyqReply = (MessageForArkBabyqReply)this.a.mBabyQReplyMsg.get();
-      QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
-      if (localQQAppInterface != null) {
-        ((ArkAppHandler)localQQAppInterface.a(95)).a(localMessageForArkBabyqReply.arkSearchType, 0, 2, this.a.extra, localMessageForArkBabyqReply.arkMsgId, this.a.appName, this.a.appView, null, 0, 0);
-      }
-    }
+    paramView = this.a.d;
+    azcm.a(this.a, paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     acbg
  * JD-Core Version:    0.7.0.1
  */

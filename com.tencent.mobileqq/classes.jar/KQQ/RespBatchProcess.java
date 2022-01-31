@@ -8,12 +8,12 @@ import java.util.ArrayList;
 public final class RespBatchProcess
   extends JceStruct
 {
-  static ArrayList cache_batch_response_list;
-  public ArrayList batch_response_list;
+  static ArrayList<BatchResponse> cache_batch_response_list;
+  public ArrayList<BatchResponse> batch_response_list;
   
   public RespBatchProcess() {}
   
-  public RespBatchProcess(ArrayList paramArrayList)
+  public RespBatchProcess(ArrayList<BatchResponse> paramArrayList)
   {
     this.batch_response_list = paramArrayList;
   }
@@ -38,7 +38,7 @@ public final class RespBatchProcess
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     KQQ.RespBatchProcess
  * JD-Core Version:    0.7.0.1
  */

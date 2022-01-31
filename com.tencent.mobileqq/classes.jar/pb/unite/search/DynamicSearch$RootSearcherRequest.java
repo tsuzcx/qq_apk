@@ -10,14 +10,14 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class DynamicSearch$RootSearcherRequest
-  extends MessageMicro
+  extends MessageMicro<RootSearcherRequest>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBUInt32Field business = PBField.initUInt32(0);
   public final PBBytesField cookie = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField ocean_data = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBUInt32Field page_size = PBField.initUInt32(0);
-  public final PBRepeatField rpt_busi_mask = PBField.initRepeat(PBUInt64Field.__repeatHelper__);
+  public final PBRepeatField<Long> rpt_busi_mask = PBField.initRepeat(PBUInt64Field.__repeatHelper__);
   public final PBUInt32Field use_all_mask = PBField.initUInt32(0);
   
   static

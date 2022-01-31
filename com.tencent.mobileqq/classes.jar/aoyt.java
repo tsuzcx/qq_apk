@@ -1,49 +1,157 @@
+import android.app.Activity;
+import android.graphics.Rect;
 import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.mobileqq.qipc.QIPCModule;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.shortvideo.redbag.VideoPlayIPCServer;
-import eipc.EIPCResult;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
-public class aoyt
-  extends QIPCModule
+public abstract class aoyt
 {
-  public aoyt(VideoPlayIPCServer paramVideoPlayIPCServer, String paramString)
+  public Activity a;
+  protected Bundle a;
+  public View a;
+  protected ViewGroup a;
+  protected ProgressBar a;
+  protected RelativeLayout a;
+  protected TextView a;
+  protected aoyu a;
+  protected View b;
+  protected TextView b;
+  protected TextView c;
+  
+  public aoyt(Activity paramActivity)
   {
-    super(paramString);
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
   }
   
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  public Rect a()
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoPlayIPCServer", 2, "onCall : action = " + paramString);
-    }
-    if ("CMD_UPDATE_MSG_FOR_VIDEO_FILE_STATUS".equals(paramString))
-    {
-      paramString = paramBundle.getString("VALUE_MSG_FRIENDUIN");
-      paramInt = paramBundle.getInt("VALUE_MSG_ISTROOP");
-      long l = paramBundle.getLong("VALUE_MSG_UINSEQ");
-      paramString = localQQAppInterface.a().b(paramString, paramInt, l);
-      if ((paramString instanceof MessageForShortVideo))
-      {
-        paramString = (MessageForShortVideo)paramString;
-        paramString.videoFileStatus = 2003;
-        paramString.transferedSize = 0;
-        paramString.videoFileProgress = 100;
-        paramString.serial();
-        localQQAppInterface.a().a(paramString.frienduin, paramInt, paramString.uniseq, paramString.msgData);
-      }
+    if (this.jdField_a_of_type_AndroidOsBundle != null) {
+      return (Rect)this.jdField_a_of_type_AndroidOsBundle.getParcelable("file_browser_params_thumb_bound");
     }
     return null;
+  }
+  
+  public View a()
+  {
+    return this.jdField_a_of_type_AndroidViewView;
+  }
+  
+  public abstract void a();
+  
+  public void a(int paramInt)
+  {
+    if (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null) {
+      this.jdField_a_of_type_AndroidWidgetProgressBar.setProgress(paramInt);
+    }
+  }
+  
+  public void a(Bundle paramBundle)
+  {
+    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
+  }
+  
+  public void a(View.OnClickListener paramOnClickListener)
+  {
+    if ((this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_AndroidWidgetRelativeLayout == null))
+    {
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131311855));
+      this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)this.jdField_a_of_type_AndroidViewView.findViewById(2131311826));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131311835));
+      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131300176));
+      this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131311825);
+    }
+    this.jdField_b_of_type_AndroidViewView.setOnClickListener(paramOnClickListener);
+  }
+  
+  public void a(aoyu paramaoyu)
+  {
+    this.jdField_a_of_type_Aoyu = paramaoyu;
+  }
+  
+  public void a(String paramString)
+  {
+    if (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null) {
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
+    }
+  }
+  
+  public void a(String paramString, View.OnClickListener paramOnClickListener)
+  {
+    if (this.c == null) {
+      this.c = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131305370));
+    }
+    if (this.c != null)
+    {
+      this.c.setText(paramString);
+      this.c.setOnClickListener(paramOnClickListener);
+      this.c.setVisibility(0);
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    TextView localTextView;
+    if (this.c != null)
+    {
+      localTextView = this.c;
+      if (!paramBoolean) {
+        break label24;
+      }
+    }
+    label24:
+    for (int i = 0;; i = 4)
+    {
+      localTextView.setVisibility(i);
+      return;
+    }
+  }
+  
+  public void b()
+  {
+    if (this.jdField_b_of_type_AndroidViewView != null) {
+      this.jdField_b_of_type_AndroidViewView.setVisibility(8);
+    }
+  }
+  
+  public void b(int paramInt)
+  {
+    if (this.jdField_b_of_type_AndroidWidgetTextView != null) {
+      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(paramInt);
+    }
+  }
+  
+  public void b(String paramString)
+  {
+    if (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null) {
+      this.jdField_b_of_type_AndroidWidgetTextView.setText(paramString);
+    }
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    RelativeLayout localRelativeLayout;
+    if (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null)
+    {
+      localRelativeLayout = this.jdField_a_of_type_AndroidWidgetRelativeLayout;
+      if (!paramBoolean) {
+        break label24;
+      }
+    }
+    label24:
+    for (int i = 0;; i = 8)
+    {
+      localRelativeLayout.setVisibility(i);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aoyt
  * JD-Core Version:    0.7.0.1
  */

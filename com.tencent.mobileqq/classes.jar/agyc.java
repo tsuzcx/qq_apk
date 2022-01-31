@@ -1,38 +1,56 @@
-import android.media.MediaPlayer;
-import com.tencent.mobileqq.ptt.player.AmrPlayer;
-import com.tencent.mobileqq.ptt.player.IPttPlayerListener;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.WeakReferenceHandler;
+import android.content.Intent;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
+import mqq.os.MqqHandler;
 
-public class agyc
-  extends Thread
+class agyc
+  implements View.OnClickListener
 {
-  private agyc(AmrPlayer paramAmrPlayer) {}
+  agyc(agxq paramagxq, auqh paramauqh, auql paramauql, BusinessInfoCheckUpdate.AppInfo paramAppInfo) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AmrPlayer", 2, "playAmr " + AmrPlayer.a(this.a));
-    }
-    try
+    this.jdField_a_of_type_Auqh.b("200001");
+    if ((this.jdField_a_of_type_Auql.d == null) || (TextUtils.isEmpty(this.jdField_a_of_type_Auql.d)))
     {
-      AmrPlayer.a(this.a).b();
-      AmrPlayer.a(this.a).start();
-      if (AmrPlayer.a(this.a, AmrPlayer.a(this.a) - 1000) > 0) {
-        AmrPlayer.a(this.a).seekTo(AmrPlayer.a(this.a));
+      paramView = this.jdField_a_of_type_Auql.c;
+      if (paramView == null)
+      {
+        paramView = "";
+        switch (this.jdField_a_of_type_Auql.jdField_a_of_type_Int)
+        {
+        }
       }
-      return;
     }
-    catch (Exception localException)
+    for (;;)
     {
-      while (AmrPlayer.a(this.a) == null) {}
-      AmrPlayer.a(this.a).sendEmptyMessage(1);
+      this.jdField_a_of_type_Agxq.a(this.jdField_a_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo, this.jdField_a_of_type_Auql.jdField_a_of_type_JavaLangString, 3);
+      agxq.a(this.jdField_a_of_type_Agxq).removeMessages(9);
+      agxq.a(this.jdField_a_of_type_Agxq).sendEmptyMessage(9);
+      return;
+      paramView = paramView.replace(" ", "_");
+      break;
+      bajr.a(agxq.a(this.jdField_a_of_type_Agxq), 3, String.format("mvip.gongneng.mobileqq.androiddaoqiqian.xufeivip%s", new Object[] { paramView }));
+      continue;
+      bajr.b(agxq.a(this.jdField_a_of_type_Agxq), 3, String.format("mvip.gongneng.mobileqq.androiddaoqiqian.xufeisvip%s", new Object[] { paramView }));
+      continue;
+      bajr.a(agxq.a(this.jdField_a_of_type_Agxq), 3, String.format("mvip.gongneng.mobileqq.androidyidaoqi.xufeivip%s", new Object[] { paramView }));
+      continue;
+      bajr.b(agxq.a(this.jdField_a_of_type_Agxq), 3, String.format("mvip.gongneng.mobileqq.androidyidaoqi.xufeisvip%s", new Object[] { paramView }));
+      continue;
+      paramView = new Intent(agxq.a(this.jdField_a_of_type_Agxq), QQBrowserActivity.class);
+      paramView.putExtra("url", this.jdField_a_of_type_Auql.d);
+      agxq.a(this.jdField_a_of_type_Agxq).startActivity(paramView);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agyc
  * JD-Core Version:    0.7.0.1
  */

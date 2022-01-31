@@ -1,45 +1,20 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.QZoneVipInfoManager;
-import mqq.app.AppRuntime;
+import java.util.List;
 
-public class amzy
-  implements SharedPreferences.OnSharedPreferenceChangeListener
+class amzy
+  implements anaf
 {
-  public amzy(QZoneVipInfoManager paramQZoneVipInfoManager) {}
+  amzy(amzx paramamzx) {}
   
-  public void onSharedPreferenceChanged(SharedPreferences paramSharedPreferences, String paramString)
+  public void a(List<anht> paramList)
   {
-    paramSharedPreferences = BaseApplicationImpl.getApplication().getRuntime();
-    if (paramSharedPreferences != null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("QZoneVipInfoManager", 2, "onSharedPreferenceChanged key = " + paramString);
-      }
-      if ((!QZoneVipInfoManager.a(this.a)) && (QZoneVipInfoManager.a(this.a) != null))
-      {
-        if (QZoneVipInfoManager.a(this.a, paramSharedPreferences.getAccount()).equals(paramString)) {
-          QZoneVipInfoManager.a(this.a, QZoneVipInfoManager.a(this.a).getInt(paramString, 0));
-        }
-        if (QZoneVipInfoManager.b(this.a, paramSharedPreferences.getAccount()).equals(paramString)) {
-          QZoneVipInfoManager.c(this.a, QZoneVipInfoManager.a(this.a).getString(paramString, null));
-        }
-        if (QZoneVipInfoManager.d(this.a, paramSharedPreferences.getAccount()).equals(paramString)) {
-          QZoneVipInfoManager.e(this.a, QZoneVipInfoManager.a(this.a).getString(paramString, null));
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("QZoneVipInfoManager", 2, "onSharedPreferenceChanged value = " + QZoneVipInfoManager.a(this.a) + " personlizedYellowVipUrl = " + QZoneVipInfoManager.a(this.a));
-        }
-      }
-      QZoneVipInfoManager.a(this.a, false);
+    if (this.a.a != null) {
+      this.a.a.b(paramList);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     amzy
  * JD-Core Version:    0.7.0.1
  */

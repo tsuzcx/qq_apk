@@ -9,12 +9,12 @@ import java.util.Map;
 public final class mobile_feeds_piece_public
   extends JceStruct
 {
-  static Map cache_extendinfo;
+  static Map<Integer, String> cache_extendinfo;
   static s_cover cache_host_cover = new s_cover();
-  static Map cache_stMapExtendinfo;
+  static Map<String, String> cache_stMapExtendinfo;
   static interest_list cache_uin_info = new interest_list();
   public String attach_info = "";
-  public Map extendinfo;
+  public Map<Integer, String> extendinfo;
   public int hasmore;
   public s_cover host_cover;
   public long host_imbitmap;
@@ -27,7 +27,7 @@ public final class mobile_feeds_piece_public
   public long newcount;
   public int no_update;
   public long req_count;
-  public Map stMapExtendinfo;
+  public Map<String, String> stMapExtendinfo;
   public interest_list uin_info;
   public String user_sid = "";
   
@@ -41,7 +41,7 @@ public final class mobile_feeds_piece_public
   
   public mobile_feeds_piece_public() {}
   
-  public mobile_feeds_piece_public(int paramInt1, long paramLong1, String paramString1, String paramString2, int paramInt2, long paramLong2, int paramInt3, int paramInt4, long paramLong3, long paramLong4, String paramString3, s_cover params_cover, interest_list paraminterest_list, Map paramMap1, int paramInt5, int paramInt6, Map paramMap2)
+  public mobile_feeds_piece_public(int paramInt1, long paramLong1, String paramString1, String paramString2, int paramInt2, long paramLong2, int paramInt3, int paramInt4, long paramLong3, long paramLong4, String paramString3, s_cover params_cover, interest_list paraminterest_list, Map<Integer, String> paramMap, int paramInt5, int paramInt6, Map<String, String> paramMap1)
   {
     this.hasmore = paramInt1;
     this.newcount = paramLong1;
@@ -56,10 +56,10 @@ public final class mobile_feeds_piece_public
     this.user_sid = paramString3;
     this.host_cover = params_cover;
     this.uin_info = paraminterest_list;
-    this.extendinfo = paramMap1;
+    this.extendinfo = paramMap;
     this.is_detail_report = paramInt5;
     this.network_report = paramInt6;
-    this.stMapExtendinfo = paramMap2;
+    this.stMapExtendinfo = paramMap1;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -120,7 +120,7 @@ public final class mobile_feeds_piece_public
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     NS_MOBILE_FEEDS.mobile_feeds_piece_public
  * JD-Core Version:    0.7.0.1
  */

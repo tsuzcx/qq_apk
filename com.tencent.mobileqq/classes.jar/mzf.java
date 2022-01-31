@@ -1,17 +1,15 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.util.PublicAccountH5AbilityPlugin;
-import com.tencent.biz.troop.TroopMemberApiClient.Callback;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.smtt.export.external.interfaces.JsResult;
 
-public class mzf
-  implements TroopMemberApiClient.Callback
+class mzf
+  implements DialogInterface.OnClickListener
 {
-  public mzf(PublicAccountH5AbilityPlugin paramPublicAccountH5AbilityPlugin) {}
+  mzf(mzd parammzd, JsResult paramJsResult) {}
   
-  public void a(Bundle paramBundle)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.a != null) {
-      this.a.k();
-    }
+    this.jdField_a_of_type_ComTencentSmttExportExternalInterfacesJsResult.cancel();
   }
 }
 

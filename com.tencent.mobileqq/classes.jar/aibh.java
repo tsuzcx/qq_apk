@@ -1,17 +1,14 @@
-import com.tencent.mobileqq.search.util.HighlightModel;
-import java.util.Comparator;
-
-public class aibh
-  implements Comparator
+class aibh
+  implements bekd
 {
-  public aibh(HighlightModel paramHighlightModel) {}
+  aibh(aibc paramaibc) {}
   
-  public int a(String paramString1, String paramString2)
+  public void onScrollStateChanged(int paramInt)
   {
-    if ((paramString1 == null) || (paramString2 == null)) {
-      return 0;
+    if (paramInt != 4097) {
+      return;
     }
-    return paramString2.length() - paramString1.length();
+    this.a.e();
   }
 }
 

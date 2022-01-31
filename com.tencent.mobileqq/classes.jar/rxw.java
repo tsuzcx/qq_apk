@@ -1,38 +1,95 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.apollo.utils.ApolloConstant;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
-import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.biz.pubaccount.weishi_new.report.WSPublicAccReport;
+import com.tencent.open.downloadnew.DownloadInfo;
+import java.util.List;
 
-class rxw
-  implements DialogInterface.OnClickListener
+final class rxw
+  extends rxt
 {
-  rxw(rxu paramrxu, int paramInt, boolean paramBoolean) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void installSucceed(String paramString1, String paramString2)
   {
-    paramDialogInterface = ApolloConstant.I + "&actionId=" + this.jdField_a_of_type_Int + "&_bid=2282";
-    Intent localIntent = new Intent(this.jdField_a_of_type_Rxu.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, QQBrowserActivity.class);
-    localIntent.putExtra("url", paramDialogInterface);
-    this.jdField_a_of_type_Rxu.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.startActivity(localIntent);
-    paramDialogInterface = this.jdField_a_of_type_Rxu.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    int i = ApolloUtil.b(this.jdField_a_of_type_Rxu.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
-    if (this.jdField_a_of_type_Boolean) {}
-    for (paramInt = 0;; paramInt = 1)
-    {
-      VipUtils.a(paramDialogInterface, "cmshow", "Apollo", "level_alert_view", i, paramInt, new String[] { "" + this.jdField_a_of_type_Int, "1" });
+    super.installSucceed(paramString1, paramString2);
+    if (!rxu.b()) {
       return;
     }
+    rxu.a(paramString1, paramString2, true);
+  }
+  
+  public void onDownloadCancel(DownloadInfo paramDownloadInfo)
+  {
+    sai.c("WeishiDownloadUtil", "qzone onDownloadCancel info = " + paramDownloadInfo);
+    if (rxu.a(paramDownloadInfo))
+    {
+      rxu.a();
+      int i = rxu.b();
+      WSPublicAccReport.getInstance().reportDownload(rxu.a(), i, 3, 2, 0);
+    }
+  }
+  
+  public void onDownloadError(DownloadInfo paramDownloadInfo, int paramInt1, String paramString, int paramInt2)
+  {
+    sai.d("WeishiDownloadUtil", "qzone onDownloadError info = " + paramDownloadInfo);
+    if (rxu.a(paramDownloadInfo))
+    {
+      rxu.a();
+      paramInt2 = rxu.b();
+      WSPublicAccReport.getInstance().reportDownload(rxu.a(), paramInt2, 3, 2, 0);
+      sai.d("WeishiDownloadUtil", "qzone  errorCode:" + paramInt1 + ", errorMsg: " + paramString);
+      rxu.a(paramDownloadInfo, paramInt1);
+    }
+  }
+  
+  public void onDownloadFinish(DownloadInfo paramDownloadInfo)
+  {
+    rxu.a();
+    sai.a("WeishiDownloadUtil", "qzone onDownloadFinish~~~");
+    int i = rxu.a();
+    int j = rxu.b();
+    if (j != 3)
+    {
+      sai.c("WeishiDownloadUtil", "onDownloadFinish return!qzone只有主动下载");
+      return;
+    }
+    if (!rxu.b())
+    {
+      sai.d("WeishiDownloadUtil", "这是Qzone的监听器，不响应qq onDownloadFinish eventId:" + i + ",eventType:" + j);
+      return;
+    }
+    rxu.a(paramDownloadInfo, i, j, "Qzone");
+  }
+  
+  public void onDownloadPause(DownloadInfo paramDownloadInfo)
+  {
+    super.onDownloadPause(paramDownloadInfo);
+    sai.d("WeishiDownloadUtil", "qzone onDownloadPause info = " + paramDownloadInfo);
+    if (rxu.a(paramDownloadInfo)) {
+      rxu.a();
+    }
+  }
+  
+  public void onDownloadUpdate(List<DownloadInfo> paramList)
+  {
+    super.onDownloadUpdate(paramList);
+    if (!rxu.b()) {}
+    while ((paramList == null) || (paramList.size() <= 0)) {
+      return;
+    }
+  }
+  
+  public void onDownloadWait(DownloadInfo paramDownloadInfo)
+  {
+    super.onDownloadWait(paramDownloadInfo);
+    sai.d("WeishiDownloadUtil", "qzone onDownloadWait info = " + paramDownloadInfo);
+  }
+  
+  public void packageReplaced(String paramString1, String paramString2)
+  {
+    super.packageReplaced(paramString1, paramString2);
+    sai.d("WeishiDownloadUtil", "qzone packageReplaced appid = " + paramString1 + ", packageName = " + paramString2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     rxw
  * JD-Core Version:    0.7.0.1
  */

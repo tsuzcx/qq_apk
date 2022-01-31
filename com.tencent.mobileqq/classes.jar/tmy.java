@@ -1,24 +1,14 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Handler;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBroadcastActivity;
-
-class tmy
-  implements View.OnClickListener
+public abstract interface tmy
 {
-  tmy(tmv paramtmv, SharedPreferences paramSharedPreferences, String paramString) {}
+  public abstract void a(int paramInt1, int paramInt2);
   
-  public void onClick(View paramView)
-  {
-    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean(this.jdField_a_of_type_JavaLangString, true).commit();
-    this.jdField_a_of_type_Tmv.a.a.sendEmptyMessageDelayed(1010, 1000L);
-  }
+  public abstract void a(int paramInt1, int paramInt2, float paramFloat, int paramInt3);
+  
+  public abstract void a(int paramInt1, int paramInt2, int paramInt3);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tmy
  * JD-Core Version:    0.7.0.1
  */

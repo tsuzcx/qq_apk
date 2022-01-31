@@ -1,37 +1,93 @@
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeListLoader;
-import com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeListLoader.OnMsgTabNodeListLoadListener;
-import com.tencent.biz.qqstory.network.handler.GetUserInfoHandler.UpdateUserInfoEvent;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.content.res.Configuration;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.TopBannerInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
 import java.util.List;
 
 class nhz
-  implements Runnable
+  extends ohe
 {
-  nhz(nhy paramnhy, GetUserInfoHandler.UpdateUserInfoEvent paramUpdateUserInfoEvent) {}
+  nhz(nhx paramnhx) {}
   
-  public void run()
+  public void a(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryNetworkHandlerGetUserInfoHandler$UpdateUserInfoEvent.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem != null) {
-      this.jdField_a_of_type_Nhy.a.a(this.jdField_a_of_type_ComTencentBizQqstoryNetworkHandlerGetUserInfoHandler$UpdateUserInfoEvent.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem);
+    if ((nhx.a(this.a) != null) && ((nhx.a(this.a) instanceof ReadInJoyListViewGroup))) {
+      ((ReadInJoyListViewGroup)nhx.a(this.a)).a(paramInt);
     }
-    Object localObject2;
-    if (this.jdField_a_of_type_ComTencentBizQqstoryNetworkHandlerGetUserInfoHandler$UpdateUserInfoEvent.jdField_a_of_type_JavaUtilList != null)
-    {
-      ??? = this.jdField_a_of_type_ComTencentBizQqstoryNetworkHandlerGetUserInfoHandler$UpdateUserInfoEvent.jdField_a_of_type_JavaUtilList.iterator();
-      while (((Iterator)???).hasNext())
-      {
-        localObject2 = (QQUserUIItem)((Iterator)???).next();
-        this.jdField_a_of_type_Nhy.a.a(this.jdField_a_of_type_ComTencentBizQqstoryNetworkHandlerGetUserInfoHandler$UpdateUserInfoEvent.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem);
-      }
+  }
+  
+  public void a(int paramInt, ArticleInfo paramArticleInfo, String paramString1, String paramString2)
+  {
+    if ((nhx.a(this.a) != null) && ((nhx.a(this.a) instanceof ReadInJoyListViewGroup))) {
+      ((ReadInJoyListViewGroup)nhx.a(this.a)).a(paramInt, paramArticleInfo, paramString1, paramString2);
     }
-    synchronized (this.jdField_a_of_type_Nhy.a.c)
+  }
+  
+  public void a(int paramInt, List<Long> paramList)
+  {
+    if ((nhx.a(this.a) != null) && ((nhx.a(this.a) instanceof ReadInJoyListViewGroup))) {
+      ((ReadInJoyListViewGroup)nhx.a(this.a)).a(paramInt, paramList);
+    }
+  }
+  
+  public void a(Configuration paramConfiguration)
+  {
+    if ((nhx.a(this.a) == 56) && (nhx.a(this.a) != null))
     {
-      localObject2 = this.jdField_a_of_type_Nhy.a.c.iterator();
-      if (((Iterator)localObject2).hasNext()) {
-        ((MsgTabNodeListLoader.OnMsgTabNodeListLoadListener)((Iterator)localObject2).next()).a();
-      }
+      nhx.a(this.a).d();
+      nhx.a(this.a).e();
+    }
+    if ((nhx.a(this.a) != null) && ((nhx.a(this.a) instanceof ReadInJoyListViewGroup))) {
+      ((ReadInJoyListViewGroup)nhx.a(this.a)).a(paramConfiguration);
+    }
+  }
+  
+  public void a(TopBannerInfo paramTopBannerInfo)
+  {
+    if ((nhx.a(this.a) != null) && ((nhx.a(this.a) instanceof ReadInJoyListViewGroup))) {
+      ((ReadInJoyListViewGroup)nhx.a(this.a)).a(paramTopBannerInfo);
+    }
+  }
+  
+  public void a(boolean paramBoolean, int paramInt, long paramLong, List<Long> paramList, List<ArticleInfo> paramList1)
+  {
+    if ((nhx.a(this.a) != null) && ((nhx.a(this.a) instanceof ReadInJoyListViewGroup))) {
+      ((ReadInJoyListViewGroup)nhx.a(this.a)).a(paramBoolean, paramInt, paramLong, paramList, paramList1);
+    }
+  }
+  
+  public void a(boolean paramBoolean1, int paramInt, List<Long> paramList, boolean paramBoolean2)
+  {
+    if ((nhx.a(this.a) != null) && ((nhx.a(this.a) instanceof ReadInJoyListViewGroup))) {
+      ((ReadInJoyListViewGroup)nhx.a(this.a)).a(paramBoolean1, paramInt, paramList, paramBoolean2);
+    }
+  }
+  
+  public void as_()
+  {
+    if ((nhx.a(this.a) != null) && ((nhx.a(this.a) instanceof ReadInJoyListViewGroup))) {
+      ((ReadInJoyListViewGroup)nhx.a(this.a)).q();
+    }
+  }
+  
+  public void b(int paramInt, List<Long> paramList)
+  {
+    if ((nhx.a(this.a) != null) && ((nhx.a(this.a) instanceof ReadInJoyListViewGroup))) {
+      ((ReadInJoyListViewGroup)nhx.a(this.a)).c(paramInt, paramList);
+    }
+  }
+  
+  public void b(boolean paramBoolean1, int paramInt, List<Long> paramList, boolean paramBoolean2)
+  {
+    if ((nhx.a(this.a) != null) && ((nhx.a(this.a) instanceof ReadInJoyListViewGroup))) {
+      ((ReadInJoyListViewGroup)nhx.a(this.a)).b(paramBoolean1, paramInt, paramList, paramBoolean2);
+    }
+  }
+  
+  public void c(int paramInt, List<Long> paramList)
+  {
+    if ((nhx.a(this.a) != null) && ((nhx.a(this.a) instanceof ReadInJoyListViewGroup))) {
+      ((ReadInJoyListViewGroup)nhx.a(this.a)).b(paramInt, paramList);
     }
   }
 }

@@ -1,24 +1,27 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.troop.utils.HttpWebCgiAsyncTask.Callback;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.support.v4.view.ViewPager.PageTransformer;
+import android.view.View;
+import com.tencent.biz.pubaccount.NativeAd.adapter.VerticleViewPager;
 
-class naa
-  implements HttpWebCgiAsyncTask.Callback
+public class naa
+  implements ViewPager.PageTransformer
 {
-  naa(mzz parammzz) {}
+  private naa(VerticleViewPager paramVerticleViewPager) {}
   
-  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
+  public void transformPage(View paramView, float paramFloat)
   {
-    if (paramJSONObject != null) {
-      if (QLog.isColorLevel()) {
-        QLog.w("PublicAccountUtil", 2, "videoPlayRealtimeReport:return result :" + paramJSONObject);
-      }
-    }
-    while (!QLog.isColorLevel()) {
+    if (paramFloat < -1.0F)
+    {
+      paramView.setAlpha(0.0F);
       return;
     }
-    QLog.w("PublicAccountUtil", 2, "videoPlayRealtimeReport:return result null");
+    if (paramFloat <= 1.0F)
+    {
+      paramView.setAlpha(1.0F);
+      paramView.setTranslationX(paramView.getWidth() * -paramFloat);
+      paramView.setTranslationY(paramView.getHeight() * paramFloat);
+      return;
+    }
+    paramView.setAlpha(0.0F);
   }
 }
 

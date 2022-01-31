@@ -1,21 +1,56 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
+import android.view.View;
+import android.widget.TextView;
 
 public class vme
-  implements ValueAnimator.AnimatorUpdateListener
+  extends vmg
 {
-  public vme(SixCombolEffectView paramSixCombolEffectView) {}
+  TextView a;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public vme(vmi paramvmi, View paramView)
   {
-    this.a.a = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.invalidate();
+    super(paramvmi, paramView);
+    this.a = ((TextView)paramView.findViewById(2131311256));
+    this.a.setMaxLines(1);
+    this.a.setSingleLine();
+  }
+  
+  public CharSequence a()
+  {
+    return this.a.getText();
+  }
+  
+  public void a(CharSequence paramCharSequence)
+  {
+    paramCharSequence = paramCharSequence.toString();
+    this.a.setText(paramCharSequence);
+    paramCharSequence = vlx.a(this.a, 1);
+    this.a.setText(paramCharSequence);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      this.a.setBackgroundResource(2130843700);
+      return;
+    }
+    this.a.setBackgroundResource(0);
+  }
+  
+  public CharSequence b()
+  {
+    return this.a.getHint();
+  }
+  
+  public void b(CharSequence paramCharSequence)
+  {
+    this.a.setHint(paramCharSequence);
+    this.a.setGravity(17);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vme
  * JD-Core Version:    0.7.0.1
  */

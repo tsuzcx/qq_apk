@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.app.automator.step;
 
+import axam;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
-import com.tencent.mobileqq.subaccount.SubAccountControll;
 import com.tencent.qphone.base.util.QLog;
 
 public class GetSubAccountSpecialCare
   extends AsyncStep
 {
-  protected int a()
+  public int a()
   {
     if (QLog.isColorLevel()) {
       QLog.d("QQInitHandler", 2, "GetSubAccountSpecialCare step...");
     }
-    if ((this.b == 95) && ((SubAccountControll.b(this.a.b, true)) || (SubAccountControll.c(this.a.b, true)))) {
-      SubAccountControll.a(this.a.b, false);
+    if ((this.b == 95) && ((axam.b(this.a.app, true)) || (axam.c(this.a.app, true)))) {
+      axam.a(this.a.app, false);
     }
-    SubAccountControll.b(this.a.b, true, null);
+    axam.b(this.a.app, true, null);
     return 7;
   }
 }

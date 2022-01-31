@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBInt32Field;
 
 public final class group_effect_commu$TGetSwitchOthersRsp0x8
-  extends MessageMicro
+  extends MessageMicro<TGetSwitchOthersRsp0x8>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16 }, new String[] { "ret", "forbid_others" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0) }, TGetSwitchOthersRsp0x8.class);
   public final PBInt32Field forbid_others = PBField.initInt32(0);

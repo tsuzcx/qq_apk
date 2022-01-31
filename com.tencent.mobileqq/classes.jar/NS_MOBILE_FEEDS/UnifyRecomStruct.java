@@ -9,13 +9,13 @@ import java.util.Map;
 public final class UnifyRecomStruct
   extends JceStruct
 {
-  static Map cache_compassInfoList;
-  static Map cache_newReportInfoList;
+  static Map<String, String> cache_compassInfoList;
+  static Map<Integer, String> cache_newReportInfoList;
   static ExposStuctInfo cache_stuExposInfo;
   static byte[] cache_vctBusiData = (byte[])new byte[1];
-  public Map compassInfoList;
+  public Map<String, String> compassInfoList;
   public int iPos;
-  public Map newReportInfoList;
+  public Map<Integer, String> newReportInfoList;
   public ExposStuctInfo stuExposInfo;
   public String ugckey = "";
   public byte[] vctBusiData;
@@ -32,14 +32,14 @@ public final class UnifyRecomStruct
   
   public UnifyRecomStruct() {}
   
-  public UnifyRecomStruct(int paramInt, byte[] paramArrayOfByte, ExposStuctInfo paramExposStuctInfo, Map paramMap1, String paramString, Map paramMap2)
+  public UnifyRecomStruct(int paramInt, byte[] paramArrayOfByte, ExposStuctInfo paramExposStuctInfo, Map<String, String> paramMap, String paramString, Map<Integer, String> paramMap1)
   {
     this.iPos = paramInt;
     this.vctBusiData = paramArrayOfByte;
     this.stuExposInfo = paramExposStuctInfo;
-    this.compassInfoList = paramMap1;
+    this.compassInfoList = paramMap;
     this.ugckey = paramString;
-    this.newReportInfoList = paramMap2;
+    this.newReportInfoList = paramMap1;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -74,7 +74,7 @@ public final class UnifyRecomStruct
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     NS_MOBILE_FEEDS.UnifyRecomStruct
  * JD-Core Version:    0.7.0.1
  */

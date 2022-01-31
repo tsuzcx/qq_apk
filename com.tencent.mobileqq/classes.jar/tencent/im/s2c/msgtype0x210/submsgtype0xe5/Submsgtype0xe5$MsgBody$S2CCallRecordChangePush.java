@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBFixed64Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class Submsgtype0xe5$MsgBody$S2CCallRecordChangePush
-  extends MessageMicro
+  extends MessageMicro<S2CCallRecordChangePush>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 17 }, new String[] { "uint64_kfext", "fixed64_timestamp" }, new Object[] { Long.valueOf(0L), Long.valueOf(0L) }, S2CCallRecordChangePush.class);
   public final PBFixed64Field fixed64_timestamp = PBField.initFixed64(0L);

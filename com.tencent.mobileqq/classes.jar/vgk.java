@@ -1,14 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.qqstory.takevideo.shareto.ShareToActivity;
+import com.tencent.mobileqq.data.RecentUser;
+import java.util.Comparator;
 
-public final class vgk
-  implements DialogInterface.OnClickListener
+public class vgk
+  implements Comparator<RecentUser>
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public vgk(ShareToActivity paramShareToActivity) {}
+  
+  public int a(RecentUser paramRecentUser1, RecentUser paramRecentUser2)
+  {
+    if (paramRecentUser1.lastmsgtime > paramRecentUser2.lastmsgtime) {
+      return -1;
+    }
+    if (paramRecentUser1.lastmsgtime < paramRecentUser2.lastmsgtime) {
+      return 1;
+    }
+    return 0;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vgk
  * JD-Core Version:    0.7.0.1
  */

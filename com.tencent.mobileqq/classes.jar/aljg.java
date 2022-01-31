@@ -1,33 +1,28 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.widget.AnyScaleTypeImageView;
-import com.tencent.open.agent.CardContainer;
-
-public class aljg
-  extends Handler
+public abstract interface aljg
 {
-  public aljg(CardContainer paramCardContainer, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public abstract void onRotationUpdateOriginal(float[] paramArrayOfFloat);
   
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      super.handleMessage(paramMessage);
-      return;
-      this.a.b.setImageDrawable(this.a.a);
-    }
-  }
+  public abstract void onRotationUpdateQuaternion(float[] paramArrayOfFloat);
+  
+  public abstract void onSensorSupport(int paramInt, boolean paramBoolean);
+  
+  public abstract void updateAccelerometer(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong);
+  
+  public abstract void updateAzimuth(float paramFloat);
+  
+  public abstract void updateGyroscope(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong);
+  
+  public abstract void updatePitch(float paramFloat);
+  
+  public abstract void updateRoll(float paramFloat);
+  
+  public abstract void updateRotation(float paramFloat1, float paramFloat2, float paramFloat3);
+  
+  public abstract void updateSensor(float paramFloat1, float paramFloat2, float paramFloat3);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aljg
  * JD-Core Version:    0.7.0.1
  */

@@ -1,145 +1,118 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.os.RemoteException;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pic.PicBusiManager;
-import com.tencent.mobileqq.richmedia.ICallBack;
-import com.tencent.mobileqq.richmedia.ICallBack.Stub;
-import com.tencent.mobileqq.richmedia.LOG;
-import com.tencent.mobileqq.richmedia.RichmediaService;
-import com.tencent.mobileqq.richmedia.VideoSendTaskManager;
-import com.tencent.mobileqq.transfile.ShortVideoPresendStats;
-import com.tencent.mobileqq.transfile.ShortVideoUploadABTest;
-import com.tencent.mobileqq.transfile.VideoSliceInfo;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.BinderWarpper;
-import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class ahlg
-  extends Handler
 {
-  final WeakReference a;
+  ahlh jdField_a_of_type_Ahlh;
+  private Object jdField_a_of_type_JavaLangObject = new Object();
+  ArrayList<ahlh> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   
-  public ahlg(Looper paramLooper, RichmediaService paramRichmediaService)
+  int a(ahlh paramahlh, boolean paramBoolean)
   {
-    super(paramLooper);
-    this.a = new WeakReference(paramRichmediaService);
+    int i = 1;
+    if (paramahlh == null) {}
+    int j;
+    do
+    {
+      do
+      {
+        return i;
+        paramahlh.jdField_a_of_type_Boolean = true;
+        j = paramahlh.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndSet(7);
+        if ((j == 3) && (paramahlh.jdField_c_of_type_JavaLangString != null) && (paramBoolean))
+        {
+          bace.d(paramahlh.jdField_c_of_type_JavaLangString);
+          paramahlh.jdField_c_of_type_JavaLangString = null;
+          return j;
+        }
+        i = j;
+      } while (j != 6);
+      i = j;
+    } while (paramahlh.jdField_b_of_type_JavaLangString == null);
+    bace.d(paramahlh.jdField_b_of_type_JavaLangString);
+    paramahlh.jdField_b_of_type_JavaLangString = null;
+    return j;
   }
   
-  public void handleMessage(Message paramMessage)
+  public ahlh a()
   {
-    boolean bool = false;
-    Object localObject1 = (RichmediaService)this.a.get();
-    if (localObject1 == null) {
-      return;
+    return this.jdField_a_of_type_Ahlh;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Ahlh != null) {
+      this.jdField_a_of_type_Ahlh.jdField_b_of_type_Boolean = false;
     }
-    Bundle localBundle = paramMessage.getData();
-    if (localBundle != null) {
-      localBundle.setClassLoader(getClass().getClassLoader());
-    }
-    for (int i = localBundle.getInt("msg_sub_cmd");; i = 0)
+    synchronized (this.jdField_a_of_type_JavaLangObject)
     {
-      switch (paramMessage.what)
-      {
-      }
-      while ((localBundle != null) && (paramMessage.what >= 100) && (paramMessage.what <= 106) && (QQAppInterface.class.isInstance(RichmediaService.b((RichmediaService)localObject1))))
-      {
-        Object localObject2 = localBundle.getString("vidoe_record_uniseq");
-        if (!TextUtils.isEmpty((CharSequence)localObject2)) {
-          break label332;
-        }
-        throw new IllegalArgumentException("VideoData id is " + (String)localObject2 + ", msg is " + paramMessage.what);
-        LOG.a("RichmediaService", "handleMessage MSG_C2S_REGISTER_CLIENT");
-        ((RichmediaService)localObject1).b = paramMessage.replyTo;
-        if (localBundle != null)
-        {
-          localObject2 = (BinderWarpper)localBundle.getParcelable("ICallBack_BinderWrapper");
-          if (localObject2 != null)
-          {
-            ((RichmediaService)localObject1).a = ICallBack.Stub.a(((BinderWarpper)localObject2).a);
-            localObject2 = new Bundle();
-            int[] arrayOfInt = PicBusiManager.a((QQAppInterface)RichmediaService.a((RichmediaService)localObject1));
-            try
-            {
-              ((Bundle)localObject2).putIntArray("key_compress_config", arrayOfInt);
-              ((RichmediaService)localObject1).a.a(6, (Bundle)localObject2);
-            }
-            catch (RemoteException localRemoteException)
-            {
-              LOG.a("RichmediaService", "ICALLBACK_CMD_INIT_COMPRESS_CONFIG remote error:" + localRemoteException);
-              localRemoteException.printStackTrace();
-            }
-            continue;
-            LOG.a("RichmediaService", "handleMessage MSG_C2S_UNREGISTER_CLIENT");
-            ((RichmediaService)localObject1).b = null;
-            ((RichmediaService)localObject1).a = null;
-          }
-        }
-      }
-      break;
-      label332:
-      localObject1 = (QQAppInterface)RichmediaService.c((RichmediaService)localObject1);
-      switch (paramMessage.what)
-      {
-      default: 
-        super.handleMessage(paramMessage);
-        return;
-      case 100: 
-        paramMessage = new VideoSliceInfo();
-        paramMessage.jdField_a_of_type_JavaLangString = localBundle.getString("video_slice_path");
-        paramMessage.jdField_a_of_type_Int = localBundle.getInt("video_slice_index");
-        paramMessage.jdField_c_of_type_Int = localBundle.getInt("video_slice_width");
-        paramMessage.d = localBundle.getInt("video_slice_height");
-        VideoSendTaskManager.a().a((QQAppInterface)localObject1, localRemoteException, paramMessage);
-        return;
-      case 102: 
-        paramMessage = new VideoSliceInfo();
-        paramMessage.jdField_a_of_type_Boolean = true;
-        VideoSendTaskManager.a().a((QQAppInterface)localObject1, localRemoteException, paramMessage);
-        return;
-      case 103: 
-        VideoSendTaskManager.a().b((QQAppInterface)localObject1, localRemoteException, localBundle);
-        return;
-      case 104: 
-        VideoSendTaskManager.a().a((QQAppInterface)localObject1, localRemoteException, localBundle);
-        return;
-      case 101: 
-        if (i == 2) {
-          bool = true;
-        }
-        i = localBundle.getInt("roll_back_reason");
-        VideoSendTaskManager.a().a((QQAppInterface)localObject1, localRemoteException, bool, i);
-        return;
-      case 105: 
-        VideoSendTaskManager.a().a((QQAppInterface)localObject1, localRemoteException);
-        paramMessage = new VideoSliceInfo();
-        paramMessage.b = true;
-        paramMessage.jdField_c_of_type_Boolean = localBundle.getBoolean("video_full_slice_sync_to_story", false);
-        if (QLog.isColorLevel()) {
-          QLog.d("PTV", 2, "clickSend si.mVideoSyncStory = " + paramMessage.jdField_c_of_type_Boolean);
-        }
-        VideoSendTaskManager.a().a((QQAppInterface)localObject1, localRemoteException, paramMessage);
-        return;
-      }
-      paramMessage = localBundle.getString("vidoe_record_uniseq");
-      i = localBundle.getInt("ab_test_video_duration");
-      long l1 = localBundle.getLong("ab_test_send_btn_click_time");
-      long l2 = localBundle.getLong("video_record_touch_up_time");
-      int j = localBundle.getInt("video_record_touch_up_times");
-      if (ShortVideoUploadABTest.a()) {
-        ShortVideoUploadABTest.a((QQAppInterface)localObject1, Long.valueOf(paramMessage).longValue(), l1, i);
-      }
-      ShortVideoPresendStats.a((QQAppInterface)localObject1, Long.valueOf(paramMessage).longValue(), l1, i, l2, j);
+      this.jdField_a_of_type_JavaUtilArrayList.add(this.jdField_a_of_type_Ahlh);
+      this.jdField_a_of_type_Ahlh = null;
       return;
     }
+  }
+  
+  public void a(String paramString, float paramFloat, int paramInt)
+  {
+    a(paramString, paramFloat, paramInt, 0);
+  }
+  
+  public void a(String paramString, float paramFloat, int paramInt1, int paramInt2)
+  {
+    if (this.jdField_a_of_type_Ahlh != null) {
+      this.jdField_a_of_type_Ahlh.jdField_b_of_type_Boolean = true;
+    }
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      this.jdField_a_of_type_JavaUtilArrayList.add(this.jdField_a_of_type_Ahlh);
+      this.jdField_a_of_type_Ahlh = null;
+      b(paramString, paramFloat, paramInt1, paramInt2);
+      return;
+    }
+  }
+  
+  void b()
+  {
+    ahlh localahlh = null;
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)
+      {
+        localahlh = (ahlh)this.jdField_a_of_type_JavaUtilArrayList.get(0);
+        this.jdField_a_of_type_JavaUtilArrayList.remove(0);
+      }
+      if ((localahlh == null) || (a(localahlh, localahlh.jdField_b_of_type_Boolean) != 2)) {}
+    }
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      this.jdField_a_of_type_JavaUtilArrayList.add(localahlh);
+      return;
+      localObject1 = finally;
+      throw localObject1;
+    }
+  }
+  
+  void b(String paramString, float paramFloat, int paramInt1, int paramInt2)
+  {
+    ahlh localahlh = new ahlh(this);
+    localahlh.jdField_a_of_type_Boolean = false;
+    localahlh.jdField_a_of_type_JavaLangString = paramString;
+    localahlh.jdField_a_of_type_Int = paramInt1;
+    localahlh.jdField_c_of_type_Int = paramInt2;
+    paramInt2 = (int)(localahlh.jdField_a_of_type_Int / paramFloat);
+    paramInt1 = paramInt2;
+    if (paramInt2 % 2 > 0) {
+      paramInt1 = paramInt2 - 1;
+    }
+    localahlh.jdField_b_of_type_Int = paramInt1;
+    this.jdField_a_of_type_Ahlh = localahlh;
+    localahlh.jdField_a_of_type_Ahli.jdField_a_of_type_Ahlh = localahlh;
+    localahlh.jdField_a_of_type_Ahli.execute(new Void[0]);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ahlg
  * JD-Core Version:    0.7.0.1
  */

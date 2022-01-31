@@ -1,22 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Handler;
-import com.tencent.mobileqq.activity.RegisterActivity;
+import android.content.Intent;
 
-public class tto
-  implements DialogInterface.OnClickListener
+public abstract interface tto
 {
-  public tto(RegisterActivity paramRegisterActivity) {}
+  public abstract void a(int paramInt1, int paramInt2, Intent paramIntent);
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-    this.a.a.sendEmptyMessage(1);
-  }
+  public abstract void b();
+  
+  public abstract void c();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tto
  * JD-Core Version:    0.7.0.1
  */

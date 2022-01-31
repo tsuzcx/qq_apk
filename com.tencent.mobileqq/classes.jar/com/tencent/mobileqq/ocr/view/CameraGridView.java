@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.ocr.view;
 
+import aciy;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Paint.Style;
 import android.util.AttributeSet;
 import android.view.View;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
 
 public class CameraGridView
   extends View
@@ -38,7 +38,7 @@ public class CameraGridView
     this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
     this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-1);
     this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(AIOUtils.a(0.5F, getResources()));
+    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(aciy.a(0.5F, getResources()));
   }
   
   protected void onDraw(Canvas paramCanvas)

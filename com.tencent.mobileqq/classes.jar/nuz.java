@@ -1,47 +1,71 @@
-import android.media.MediaCodec;
-import android.media.MediaFormat;
-import com.tencent.biz.qqstory.playvideo.player.mediaplayer.MediaExtractor;
+import android.text.TextPaint;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.biu.BiuEditText;
+import com.tencent.biz.pubaccount.readinjoy.biu.BiuNicknameSpan;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentComponentFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class nuz
-  extends nva
 {
-  private nuu a;
+  public int a;
+  public long a;
+  public CharSequence a;
+  public String a;
+  public CharSequence b;
   
-  public nuz(MediaExtractor paramMediaExtractor, boolean paramBoolean, int paramInt, nvc paramnvc, nuu paramnuu)
+  public nuz(ReadInJoyCommentComponentFragment paramReadInJoyCommentComponentFragment, String paramString, long paramLong, CharSequence paramCharSequence)
   {
-    super(paramMediaExtractor, paramBoolean, paramInt, paramnvc);
-    this.a = paramnuu;
-    a();
+    this(paramReadInJoyCommentComponentFragment, paramString, paramLong, paramCharSequence, 0);
   }
   
-  protected void a(MediaCodec paramMediaCodec, MediaFormat paramMediaFormat)
+  public nuz(ReadInJoyCommentComponentFragment paramReadInJoyCommentComponentFragment, String paramString, long paramLong, CharSequence paramCharSequence, int paramInt)
   {
-    super.a(paramMediaCodec, paramMediaFormat);
-    this.a.a(paramMediaFormat);
-  }
-  
-  protected void a(MediaFormat paramMediaFormat)
-  {
-    this.a.a(paramMediaFormat);
-  }
-  
-  public void a(nvb paramnvb, long paramLong)
-  {
-    this.a.a(paramnvb.jdField_a_of_type_JavaNioByteBuffer, paramnvb.jdField_a_of_type_Long);
-    b(paramnvb);
-  }
-  
-  protected boolean a()
-  {
-    if (!c()) {
-      return this.a.a() < 200000L;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Long = paramLong;
+    paramReadInJoyCommentComponentFragment = paramCharSequence;
+    if (paramCharSequence == null) {
+      paramReadInJoyCommentComponentFragment = "";
     }
-    return super.a();
+    this.b = paramReadInJoyCommentComponentFragment;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface)
+  {
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    {
+      this.jdField_a_of_type_JavaLangCharSequence = BiuNicknameSpan.a(babh.b(paramQQAppInterface, this.jdField_a_of_type_JavaLangString, true));
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangCharSequence)) {
+        break label79;
+      }
+      this.jdField_a_of_type_JavaLangCharSequence = this.jdField_a_of_type_JavaLangString;
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ReadInJoyCommentComponentFragment", 2, "nick name is " + this.jdField_a_of_type_JavaLangCharSequence);
+      }
+      return;
+      label79:
+      if ((int)Math.ceil(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentComponentFragment.a.getPaint().measureText(this.jdField_a_of_type_JavaLangCharSequence.toString())) <= 0) {
+        this.jdField_a_of_type_JavaLangCharSequence = this.jdField_a_of_type_JavaLangString;
+      }
+    }
+  }
+  
+  public String toString()
+  {
+    int i = 0;
+    if (!TextUtils.isEmpty(this.b)) {
+      i = this.b.length();
+    }
+    return "UserBiuInfo {uin=" + this.jdField_a_of_type_JavaLangString + ", nickName=" + this.jdField_a_of_type_JavaLangCharSequence + ", comment=" + this.b + ", length=" + i + ", feedid=" + this.jdField_a_of_type_Long + "}";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     nuz
  * JD-Core Version:    0.7.0.1
  */

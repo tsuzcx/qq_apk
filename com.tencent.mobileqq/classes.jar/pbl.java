@@ -1,44 +1,61 @@
-import android.os.Bundle;
-import com.tencent.biz.troop.TroopMemberApiService;
-import com.tencent.mobileqq.shortvideo.ShortVideoErrorReport;
-import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager;
-import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager.INet_ShortVideoResource;
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeGridImageView;
+import com.tencent.biz.pubaccount.readinjoy.view.SquareCornerTextImageView;
+import com.tencent.widget.AbsListView.LayoutParams;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
-class pbl
-  implements ShortVideoResourceManager.INet_ShortVideoResource
+public class pbl
+  extends BaseAdapter
 {
-  pbl(pbk parampbk) {}
+  List<URL> jdField_a_of_type_JavaUtilList = new ArrayList();
+  List<qvs> b = new ArrayList();
   
-  public void C_()
+  public pbl(NativeGridImageView paramNativeGridImageView) {}
+  
+  public List<URL> a()
   {
-    this.a.jdField_a_of_type_Paz.a.b = false;
+    return this.jdField_a_of_type_JavaUtilList;
   }
   
-  public void a(String paramString1, int paramInt, String paramString2)
+  public void a(pbm parampbm)
   {
-    if (paramString1.startsWith("new_qq_android_native_short_video_"))
+    this.b = parampbm.a();
+    this.jdField_a_of_type_JavaUtilList = parampbm.b();
+  }
+  
+  public int getCount()
+  {
+    return this.b.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return this.b.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    paramViewGroup = paramViewGroup.getContext();
+    if (paramView == null)
     {
-      if (paramInt == 0) {
-        break label146;
-      }
-      VideoEnvironment.a("TroopMemberApiService", "短视频插件下载失败[" + paramInt + "]", null);
-      ShortVideoResourceManager.a("资源下载失败，请稍后重试。");
-      ShortVideoErrorReport.a(2, paramInt);
-      this.a.jdField_a_of_type_AndroidOsBundle.putInt("result", 0);
+      paramView = new SquareCornerTextImageView(paramViewGroup);
+      paramView.setLayoutParams(new AbsListView.LayoutParams(-1, -2));
     }
     for (;;)
     {
-      VideoEnvironment.a("TroopMemberApiService", "name=" + paramString1 + ",result=" + paramInt + ",filePath=" + paramString2, null);
-      this.a.jdField_a_of_type_Paz.a.a(94, this.a.jdField_a_of_type_AndroidOsBundle);
-      this.a.jdField_a_of_type_Paz.a.b = false;
-      return;
-      label146:
-      this.a.jdField_a_of_type_AndroidOsBundle.putInt("result", -2);
+      ((SquareCornerTextImageView)paramView).a((qvs)this.b.get(paramInt));
+      return paramView;
     }
   }
-  
-  public void a(String paramString, long paramLong1, long paramLong2) {}
 }
 
 

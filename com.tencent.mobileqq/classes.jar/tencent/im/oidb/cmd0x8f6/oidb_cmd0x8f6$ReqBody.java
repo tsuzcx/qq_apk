@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class oidb_cmd0x8f6$ReqBody
-  extends MessageMicro
+  extends MessageMicro<ReqBody>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34 }, new String[] { "uint32_subcmd", "msg_get_umc", "msg_dec_umc", "msg_inc_umc" }, new Object[] { Integer.valueOf(0), null, null, null }, ReqBody.class);
   public oidb_cmd0x8f6.DecreaseUnreadMailCountReq msg_dec_umc = new oidb_cmd0x8f6.DecreaseUnreadMailCountReq();
@@ -16,7 +16,7 @@ public final class oidb_cmd0x8f6$ReqBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     tencent.im.oidb.cmd0x8f6.oidb_cmd0x8f6.ReqBody
  * JD-Core Version:    0.7.0.1
  */

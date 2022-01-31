@@ -1,30 +1,60 @@
-import android.app.Activity;
-import android.content.Intent;
-import com.tencent.biz.qqstory.takevideo.publish.PublishParam;
-import com.tencent.mobileqq.tribe.fragment.TribeTakeVideoHelper;
+import android.os.Bundle;
 import com.tencent.qphone.base.util.QLog;
 
-public final class aixw
-  implements aixy
+public class aixw
 {
-  public aixw(Activity paramActivity, Intent paramIntent, PublishParam paramPublishParam, String paramString) {}
-  
-  public void a()
+  public static void a(String paramString, Bundle paramBundle)
   {
-    QLog.d("tribe_publish_TakeVideoHelper", 4, "generate manifest file success.start publishing.");
-    TribeTakeVideoHelper.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidContentIntent, this.jdField_a_of_type_ComTencentBizQqstoryTakevideoPublishPublishParam, this.jdField_a_of_type_JavaLangString);
-  }
-  
-  public void b()
-  {
-    QLog.d("tribe_publish_TakeVideoHelper", 4, "generate manifest file error. let's exit.");
-    this.jdField_a_of_type_AndroidAppActivity.finish();
-    this.jdField_a_of_type_AndroidAppActivity.overridePendingTransition(0, 0);
+    if (paramBundle == null) {}
+    int i;
+    do
+    {
+      String str;
+      for (;;)
+      {
+        return;
+        try
+        {
+          if (aixs.a())
+          {
+            i = paramBundle.getInt("featureId");
+            str = paramBundle.getString("featureKey");
+            if ("action_begin_trace".equals(paramString))
+            {
+              aixs.a().a(i, str, paramBundle);
+              return;
+            }
+          }
+        }
+        catch (Exception paramString)
+        {
+          QLog.e("TraceReport", 1, paramString, new Object[0]);
+          return;
+        }
+      }
+      if ("action_end_trace".equals(paramString))
+      {
+        aixs.a().b(i, str, paramBundle);
+        return;
+      }
+      if ("action_report_span".equals(paramString))
+      {
+        aixs.a().c(i, str, paramBundle);
+        return;
+      }
+      if ("action_update_trace".equals(paramString))
+      {
+        aixs.a().a(i, paramBundle);
+        return;
+      }
+    } while (!"action_enable_trace".equals(paramString));
+    boolean bool = paramBundle.getBoolean("enable");
+    aixs.a().a(i, bool);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aixw
  * JD-Core Version:    0.7.0.1
  */

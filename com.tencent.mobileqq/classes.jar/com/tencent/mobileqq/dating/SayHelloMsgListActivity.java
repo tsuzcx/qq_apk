@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.dating;
 
-import acft;
-import acfu;
+import ajed;
+import akaq;
+import amvy;
+import amwt;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.text.TextUtils;
+import asez;
 import com.tencent.mobileqq.activity.recent.RecentBaseData;
 import com.tencent.mobileqq.activity.recent.data.RecentSayHelloListItem;
-import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.message.ConversationFacade;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.nearby.NearbyRelevantObserver;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -27,14 +27,14 @@ import mqq.os.MqqHandler;
 public class SayHelloMsgListActivity
   extends BaseMsgBoxActivity
 {
-  NearbyRelevantObserver a;
+  asez a;
   
   public SayHelloMsgListActivity()
   {
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyRelevantObserver = new acft(this);
+    this.jdField_a_of_type_Asez = new amwt(this);
   }
   
-  protected List a(List paramList)
+  protected List<RecentBaseData> a(List<MessageRecord> paramList)
   {
     ArrayList localArrayList1 = new ArrayList();
     long l1 = System.currentTimeMillis();
@@ -68,7 +68,7 @@ public class SayHelloMsgListActivity
       }
     }
     if (!localArrayList2.isEmpty()) {
-      ThreadManager.getFileThreadHandler().post(new acfu(this, localArrayList2));
+      ThreadManager.getFileThreadHandler().post(new SayHelloMsgListActivity.2(this, localArrayList2));
     }
     if (QLog.isDevelopLevel())
     {
@@ -78,7 +78,7 @@ public class SayHelloMsgListActivity
     return localArrayList1;
   }
   
-  protected void b(List paramList)
+  protected void b(List<MessageRecord> paramList)
   {
     Object localObject2 = null;
     if (paramList.size() == 0) {
@@ -93,7 +93,7 @@ public class SayHelloMsgListActivity
       {
         localIterator.remove();
       }
-      else if (DatingUtil.b(this.app, localMessageRecord.senderuin, localMessageRecord.istroop))
+      else if (amvy.b(this.app, localMessageRecord.senderuin, localMessageRecord.istroop))
       {
         localObject3 = localObject1;
         if (localObject1 == null) {
@@ -103,7 +103,7 @@ public class SayHelloMsgListActivity
         ((List)localObject3).add(localMessageRecord);
         localObject1 = localObject3;
       }
-      else if (DatingUtil.a(this.app, localMessageRecord.senderuin, localMessageRecord.istroop))
+      else if (amvy.a(this.app, localMessageRecord.senderuin, localMessageRecord.istroop))
       {
         localObject3 = localObject2;
         if (localObject2 == null) {
@@ -124,23 +124,23 @@ public class SayHelloMsgListActivity
     paramList.addAll(0, (Collection)localObject3);
   }
   
-  protected boolean doOnCreate(Bundle paramBundle)
+  public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setTitle(2131437972);
-    this.app.addObserver(this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyRelevantObserver, true);
+    super.setTitle(2131633374);
+    this.app.addObserver(this.jdField_a_of_type_Asez, true);
     return true;
   }
   
-  protected void doOnDestroy()
+  public void doOnDestroy()
   {
     super.doOnDestroy();
-    removeObserver(this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyRelevantObserver);
+    removeObserver(this.jdField_a_of_type_Asez);
   }
   
   public void finish()
   {
-    if ((this.jdField_a_of_type_Int == 1001) && (AppConstants.ae.equals(this.jdField_a_of_type_JavaLangString)))
+    if ((this.jdField_a_of_type_Int == 1001) && (ajed.ai.equals(this.jdField_a_of_type_JavaLangString)))
     {
       this.app.getPreferences().edit().putLong("sp_key_say_hello_msg_clean_unread_time", NetConnInfoCenter.getServerTime()).commit();
       this.app.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, true);
@@ -150,7 +150,7 @@ public class SayHelloMsgListActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.dating.SayHelloMsgListActivity
  * JD-Core Version:    0.7.0.1
  */

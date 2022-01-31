@@ -10,7 +10,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class oidb_0x9fb$RgroupInfo
-  extends MessageMicro
+  extends MessageMicro<RgroupInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_group_class_text = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -18,7 +18,7 @@ public final class oidb_0x9fb$RgroupInfo
   public final PBBytesField bytes_group_memo = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField bytes_group_name = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField bytes_recommend_reason = PBField.initBytes(ByteStringMicro.EMPTY);
-  public final PBRepeatMessageField rpt_group_label = PBField.initRepeatMessage(oidb_0x9fb.Label.class);
+  public final PBRepeatMessageField<oidb_0x9fb.Label> rpt_group_label = PBField.initRepeatMessage(oidb_0x9fb.Label.class);
   public final PBUInt32Field uint32_group_bitmap = PBField.initUInt32(0);
   public final PBUInt32Field uint32_group_class = PBField.initUInt32(0);
   public final PBUInt32Field uint32_group_face = PBField.initUInt32(0);
@@ -42,7 +42,7 @@ public final class oidb_0x9fb$RgroupInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     tencent.im.oidb.cmd0x9fb.oidb_0x9fb.RgroupInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,23 @@
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
+import android.view.View;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.widget.AdapterView;
 
 class acwo
-  implements Runnable
+  implements behi
 {
-  acwo(acwk paramacwk) {}
+  acwo(acwm paramacwm) {}
   
-  public void run()
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    UniformDownloadActivity.b(this.a.a).setVisibility(4);
+    paramAdapterView = (afss)acwm.a(this.a).a.getItem(paramInt - 1);
+    acwm.a(this.a, paramAdapterView);
+    acwm.a(this.a).dismiss();
+    awqx.b(acwm.a(this.a).a, "dc00898", "", "", "0X800A417", "0X800A417", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     acwo
  * JD-Core Version:    0.7.0.1
  */

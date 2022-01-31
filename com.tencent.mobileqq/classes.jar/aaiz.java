@@ -1,18 +1,26 @@
-import com.tencent.mobileqq.ar.ArConfigService;
-
 class aaiz
-  implements Runnable
+  extends aodp
 {
-  aaiz(aaiy paramaaiy, int paramInt) {}
+  aaiz(aait paramaait) {}
   
-  public void run()
+  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString, int paramInt)
   {
-    ArConfigService.a(this.jdField_a_of_type_Aaiy.a, this.jdField_a_of_type_Int);
+    this.a.a.notifyDataSetChanged();
+  }
+  
+  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
+  {
+    this.a.a.notifyDataSetChanged();
+  }
+  
+  protected void b(long paramLong1, long paramLong2, String paramString, int paramInt)
+  {
+    this.a.a.notifyDataSetChanged();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aaiz
  * JD-Core Version:    0.7.0.1
  */

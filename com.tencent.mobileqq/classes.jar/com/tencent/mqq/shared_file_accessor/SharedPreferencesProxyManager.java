@@ -2,170 +2,166 @@ package com.tencent.mqq.shared_file_accessor;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.os.HandlerThread;
-import android.os.Looper;
-import android.provider.Settings.System;
-import android.util.Log;
 import java.lang.ref.WeakReference;
-import java.util.Iterator;
 import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class SharedPreferencesProxyManager
 {
-  private static SharedPreferencesProxyManager a = null;
-  public static String sSystemSpExceptionMsg = null;
-  private Map b = new ConcurrentHashMap(5);
-  private Map c = new ConcurrentHashMap(5);
-  private g d = null;
-  private HandlerThread e = null;
-  private WeakReference f = null;
+  static boolean a;
+  static boolean b = false;
+  private static SharedPreferencesProxyManager c = null;
+  private static SharedPreferencesProxyManager.ISpLogCallback h;
+  public static String sSystemSpExceptionMsg;
+  private Map d = new ConcurrentHashMap(5);
+  private Map e = new ConcurrentHashMap(5);
+  private final Object[] f = new Object[8];
+  private WeakReference g = null;
   
-  private void c()
+  static
   {
-    try
+    a = false;
+    sSystemSpExceptionMsg = null;
+  }
+  
+  private SharedPreferencesProxyManager a(Context paramContext)
+  {
+    a(true, "SpManager", "init " + paramContext, null);
+    if (paramContext == null)
     {
-      if ((this.e == null) || (!this.e.isAlive()))
-      {
-        if ((this.e != null) && (!this.e.isAlive())) {
-          this.e.quit();
-        }
-        this.e = new HandlerThread("sp_worker", 0);
-        this.e.start();
+      a(true, "SpManager", "init context is null", new RuntimeException());
+      if (a) {
+        throw new RuntimeException("init context is null");
       }
-      return;
     }
-    finally {}
+    if ((this.g == null) && (paramContext != null))
+    {
+      k.a(paramContext);
+      this.g = new WeakReference(paramContext.getApplicationContext());
+    }
+    int i = 0;
+    while (i < 8)
+    {
+      this.f[i] = new Object();
+      i += 1;
+    }
+    return this;
+  }
+  
+  static void a(String paramString1, String paramString2, Object paramObject)
+  {
+    if (h != null) {
+      h.onIllegalModify(paramString1, paramString2, paramObject);
+    }
+  }
+  
+  private static void a(boolean paramBoolean, String paramString1, String paramString2, Exception paramException)
+  {
+    if (h != null) {
+      h.printLog(true, paramString1, paramString2, paramException);
+    }
+  }
+  
+  static boolean a()
+  {
+    return h != null;
   }
   
   public static SharedPreferencesProxyManager getInstance()
   {
-    if (a != null) {
-      return a;
+    if (c != null) {
+      return c;
     }
     try
     {
-      if (a == null) {
-        a = new SharedPreferencesProxyManager();
+      if (c == null) {
+        c = new SharedPreferencesProxyManager();
       }
-      return a;
+      return c;
     }
     finally {}
   }
   
-  final Context a()
+  public static void setLogCallback(SharedPreferencesProxyManager.ISpLogCallback paramISpLogCallback)
   {
-    return (Context)this.f.get();
+    h = paramISpLogCallback;
   }
   
-  final Looper b()
-  {
-    return this.e.getLooper();
-  }
-  
-  public g getCache()
-  {
-    return null;
-  }
-  
-  public SharedPreferences getProxy(String paramString, int paramInt)
+  final SharedPreferences a(String paramString, int paramInt, boolean paramBoolean)
   {
     String str = paramString;
     if (paramString == null) {
       str = "null";
     }
-    if (((paramInt & 0x4) == 4) && (!p.a)) {}
-    for (localMap = this.c;; localMap = this.b)
+    Map localMap;
+    if (((paramInt & 0x4) == 4) && (!k.b)) {
+      localMap = this.e;
+    }
+    for (;;)
     {
       SharedPreferences localSharedPreferences = (SharedPreferences)localMap.get(str);
       paramString = localSharedPreferences;
-      if (localSharedPreferences == null) {}
-      try
+      int i;
+      if (localSharedPreferences == null) {
+        i = Math.abs(str.hashCode() % 8);
+      }
+      synchronized (this.f[i])
       {
         localSharedPreferences = (SharedPreferences)localMap.get(str);
         paramString = localSharedPreferences;
         if (localSharedPreferences == null)
         {
-          paramString = new n(this.f, str, paramInt);
+          paramString = new i(this.g, str, paramInt, paramBoolean);
           localMap.put(str, paramString);
         }
         return paramString;
+        localMap = this.d;
       }
-      finally {}
     }
+  }
+  
+  public SharedPreferences getProxy(String paramString, int paramInt)
+  {
+    return a(paramString, paramInt, true);
   }
   
   public SharedPreferencesProxyManager init(Context paramContext)
   {
-    if (paramContext == null) {}
     try
     {
-      Log.e("SpUtils", "init context is null. ", new RuntimeException());
-      if ((this.f == null) && (paramContext != null))
-      {
-        p.a(paramContext);
-        this.f = new WeakReference(paramContext.getApplicationContext());
-        c();
-      }
-      return this;
+      paramContext = a(paramContext);
+      return paramContext;
     }
-    finally {}
+    finally
+    {
+      paramContext = finally;
+      throw paramContext;
+    }
   }
   
-  public void notifyLoginABegin() {}
+  public SharedPreferencesProxyManager init(Context paramContext, boolean paramBoolean)
+  {
+    try
+    {
+      a = paramBoolean;
+      paramContext = a(paramContext);
+      return paramContext;
+    }
+    finally
+    {
+      paramContext = finally;
+      throw paramContext;
+    }
+  }
+  
+  public void onCrashStart()
+  {
+    b = true;
+  }
   
   public void setCatLogEnabled(boolean paramBoolean) {}
   
-  public void setStrategy(String paramString)
-  {
-    Context localContext = (Context)this.f.get();
-    int i = 0;
-    int j = 0;
-    if (paramString != null) {}
-    try
-    {
-      i = Integer.valueOf(paramString).intValue();
-      if (localContext != null) {
-        Settings.System.putInt(localContext.getContentResolver(), "com.tencent.mobileqq.sp_strategy", i);
-      }
-      return;
-    }
-    catch (NumberFormatException paramString)
-    {
-      for (;;)
-      {
-        i = j;
-      }
-    }
-  }
-  
   public void setTimeLogEnabled(boolean paramBoolean) {}
-  
-  public void trySave()
-  {
-    if (this.f == null) {}
-    for (;;)
-    {
-      return;
-      if (p.a) {
-        try
-        {
-          Iterator localIterator = this.b.entrySet().iterator();
-          while (localIterator.hasNext())
-          {
-            SharedPreferences localSharedPreferences = (SharedPreferences)((Map.Entry)localIterator.next()).getValue();
-            if ((localSharedPreferences instanceof n)) {
-              ((n)localSharedPreferences).a();
-            }
-          }
-          p.b((Context)this.f.get());
-        }
-        catch (Throwable localThrowable) {}
-      }
-    }
-  }
 }
 
 

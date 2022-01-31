@@ -1,20 +1,31 @@
-import com.tencent.biz.pubaccount.readinjoy.view.BaseTabbar.TabHolder;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabbar;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabbar.Tab;
+import com.tencent.qphone.base.util.QLog;
 
 public class mov
-  implements Runnable
+  implements mos
 {
-  public mov(ReadinjoyTabbar paramReadinjoyTabbar, int paramInt, ReadinjoyTabbar.Tab paramTab) {}
-  
-  public void run()
+  public void a(String paramString1, int paramInt, String paramString2)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadinjoyTabbar.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadinjoyTabbar$Tab.a.a);
+    QLog.i(paramString1, paramInt, paramString2);
+  }
+  
+  public boolean a()
+  {
+    return QLog.isColorLevel();
+  }
+  
+  public void b(String paramString1, int paramInt, String paramString2)
+  {
+    QLog.d(paramString1, paramInt, paramString2);
+  }
+  
+  public boolean b()
+  {
+    return QLog.isDevelopLevel();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     mov
  * JD-Core Version:    0.7.0.1
  */

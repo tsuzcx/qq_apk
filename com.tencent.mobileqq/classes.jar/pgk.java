@@ -1,54 +1,47 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.common.offline.AsyncBack;
-import com.tencent.biz.webviewplugin.OfflinePlugin;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.Context;
+import android.widget.LinearLayout;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentHotQuestion;
+import com.tencent.widget.AbsListView.LayoutParams;
 
 public class pgk
-  implements AsyncBack
+  extends pez
 {
-  public pgk(OfflinePlugin paramOfflinePlugin) {}
-  
-  public void loaded(String paramString, int paramInt)
+  public pgk(Context paramContext, azwg paramazwg, qoe paramqoe)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("OfflinePluginQQ", 2, "-->offline:checkOfflineUp. result: " + paramString + ", code: " + paramInt);
-    }
-    if (paramInt == 9)
-    {
-      try
-      {
-        localObject = new JSONObject(paramString);
-        paramString = (String)localObject;
-      }
-      catch (JSONException localJSONException)
-      {
-        for (;;)
-        {
-          Object localObject;
-          localJSONException.printStackTrace();
-          if (QLog.isColorLevel()) {
-            QLog.i("OfflinePluginQQ", 2, "-->offline:checkUp loaded err:" + paramString);
-          }
-          paramString = null;
-        }
-      }
-      localObject = this.a.a.obtainMessage();
-      ((Message)localObject).arg1 = 3;
-      ((Message)localObject).obj = paramString;
-      this.a.a.sendMessage((Message)localObject);
-    }
-    while (paramInt != -1) {
-      return;
-    }
-    paramString = this.a.a.obtainMessage();
-    paramString.arg1 = 2;
-    this.a.a.sendMessage(paramString);
+    super(paramContext, paramazwg, paramqoe);
   }
   
-  public void progress(int paramInt) {}
+  public pez a()
+  {
+    this.jdField_a_of_type_Boolean = true;
+    return g();
+  }
+  
+  public pez d()
+  {
+    if (!this.jdField_a_of_type_Boolean) {
+      throw new Exception("buildComponent() must after buildComponent()!");
+    }
+    LinearLayout localLinearLayout = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
+    localLinearLayout.setOrientation(1);
+    localLinearLayout.setLayoutParams(new AbsListView.LayoutParams(aciy.a(150.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), -2));
+    if ((this.jdField_a_of_type_Pey != null) && ((this.jdField_a_of_type_Pey instanceof ComponentContentHotQuestion))) {
+      localLinearLayout.addView((ComponentContentHotQuestion)this.jdField_a_of_type_Pey);
+    }
+    a(localLinearLayout);
+    return this;
+  }
+  
+  public pez e()
+  {
+    return null;
+  }
+  
+  public pez g()
+  {
+    this.jdField_a_of_type_Pey = new ComponentContentHotQuestion(this.jdField_a_of_type_AndroidContentContext);
+    return this;
+  }
 }
 
 

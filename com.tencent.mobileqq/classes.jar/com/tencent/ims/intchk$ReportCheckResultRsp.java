@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class intchk$ReportCheckResultRsp
-  extends MessageMicro
+  extends MessageMicro<ReportCheckResultRsp>
 {
   public static final int BYTES_STRIKE_CONFIG_FIELD_NUMBER = 3;
   public static final int UINT32_INTCHK_ID_FIELD_NUMBER = 2;

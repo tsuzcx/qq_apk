@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public final class ApkDownUrl
   extends JceStruct
 {
-  static ArrayList<String> a;
+  static ArrayList<String> cache_urlList;
   public byte type = 0;
   public ArrayList<String> urlList = null;
   
@@ -23,12 +23,12 @@ public final class ApkDownUrl
   public void readFrom(JceInputStream paramJceInputStream)
   {
     this.type = paramJceInputStream.read(this.type, 0, true);
-    if (a == null)
+    if (cache_urlList == null)
     {
-      a = new ArrayList();
-      a.add("");
+      cache_urlList = new ArrayList();
+      cache_urlList.add("");
     }
-    this.urlList = ((ArrayList)paramJceInputStream.read(a, 1, true));
+    this.urlList = ((ArrayList)paramJceInputStream.read(cache_urlList, 1, true));
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -39,7 +39,7 @@ public final class ApkDownUrl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.tmdatasourcesdk.internal.protocol.jce.ApkDownUrl
  * JD-Core Version:    0.7.0.1
  */

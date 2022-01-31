@@ -1,18 +1,22 @@
-import dov.com.tencent.biz.qqstory.takevideo.poilist.PoiListLayout;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.mobileqq.filemanager.core.QfavFilePreviewController.1.1;
 
-class aolx
-  implements Runnable
+public class aolx
+  implements bfio
 {
-  aolx(aolv paramaolv) {}
+  aolx(aolw paramaolw) {}
   
-  public void run()
+  public boolean a(int paramInt, Bundle paramBundle)
   {
-    PoiListLayout.a(this.a.a, 1);
+    new Handler(Looper.getMainLooper()).post(new QfavFilePreviewController.1.1(this, paramBundle));
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aolx
  * JD-Core Version:    0.7.0.1
  */

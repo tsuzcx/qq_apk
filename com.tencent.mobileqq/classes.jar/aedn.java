@@ -1,44 +1,29 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.intervideo.now.DownloadEngine.IDownloadListener;
-import com.tencent.mobileqq.intervideo.now.DownloadEngine.NowDownloadManager;
-import com.tencent.mobileqq.intervideo.now.NowPlugin;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.txproxy.HostEventListener;
-import mqq.os.MqqHandler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.data.RecentUser;
 
-public class aedn
-  implements IDownloadListener
+class aedn
+  implements DialogInterface.OnClickListener
 {
-  public aedn(NowPlugin paramNowPlugin, HostEventListener paramHostEventListener, String paramString) {}
+  aedn(aedl paramaedl, String paramString) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    QLog.i("XProxy|NowProxy", 4, "onDownloadComplete------");
-    ThreadManager.getSubThreadHandler().post(new aedo(this));
-    NowPlugin.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoNowNowPlugin).a(this.jdField_a_of_type_JavaLangString);
-    NowPlugin.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoNowNowPlugin).a();
-  }
-  
-  public void a(int paramInt1, int paramInt2, String paramString)
-  {
-    QLog.i("XProxy|NowProxy", 4, "onDownloadFailed------");
-    if (this.jdField_a_of_type_ComTencentTxproxyHostEventListener != null) {
-      this.jdField_a_of_type_ComTencentTxproxyHostEventListener.onDownloadResult(paramInt1, paramInt2, "Helly Download Failed");
+    ((ajhh)this.jdField_a_of_type_Aedl.a.a.getManager(53)).c(this.jdField_a_of_type_JavaLangString);
+    paramDialogInterface = this.jdField_a_of_type_Aedl.a.a.a().a();
+    RecentUser localRecentUser = paramDialogInterface.b(this.jdField_a_of_type_JavaLangString, 3000);
+    if (localRecentUser != null) {
+      paramDialogInterface.b(localRecentUser);
     }
-    NowPlugin.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoNowNowPlugin).a(this.jdField_a_of_type_JavaLangString);
-    NowPlugin.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoNowNowPlugin).a();
-  }
-  
-  public void a(long paramLong1, long paramLong2, int paramInt)
-  {
-    if (this.jdField_a_of_type_ComTencentTxproxyHostEventListener != null) {
-      this.jdField_a_of_type_ComTencentTxproxyHostEventListener.onDownloadProgress(paramLong1, paramLong2);
-    }
+    ((ajhf)this.jdField_a_of_type_Aedl.a.a.a(6)).a();
+    this.jdField_a_of_type_Aedl.a.H();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aedn
  * JD-Core Version:    0.7.0.1
  */

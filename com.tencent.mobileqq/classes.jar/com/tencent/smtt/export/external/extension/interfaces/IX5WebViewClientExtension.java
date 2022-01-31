@@ -46,6 +46,8 @@ public abstract interface IX5WebViewClientExtension
   
   public abstract void onDoubleTapStart();
   
+  public abstract void onFakeLoginRecognised(Bundle paramBundle);
+  
   public abstract void onFlingScrollBegin(int paramInt1, int paramInt2, int paramInt3);
   
   public abstract void onFlingScrollEnd();
@@ -126,7 +128,7 @@ public abstract interface IX5WebViewClientExtension
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.smtt.export.external.extension.interfaces.IX5WebViewClientExtension
  * JD-Core Version:    0.7.0.1
  */

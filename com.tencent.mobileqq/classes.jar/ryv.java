@@ -1,63 +1,65 @@
-import android.view.KeyEvent;
-import android.view.View;
-import android.view.View.OnKeyListener;
-import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.XEditTextEx;
+import android.util.Log;
+import com.tencent.biz.pubaccount.weishi_new.net.WeishiIntent;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
+import mqq.app.AppRuntime;
 
 public class ryv
-  implements View.OnKeyListener, TextView.OnEditorActionListener
 {
-  private ryv(BaseChatPie paramBaseChatPie) {}
+  private static Object jdField_a_of_type_JavaLangObject = new Object();
+  private static ryv jdField_a_of_type_Ryv;
+  private String jdField_a_of_type_JavaLangString = "WeishiNewService";
   
-  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
+  public static ryv a()
   {
-    if (paramInt == 4)
+    if (jdField_a_of_type_Ryv == null) {}
+    synchronized (jdField_a_of_type_JavaLangObject)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.aio.BaseChatPie", 2, "IME_ACTION_SEND");
+      if (jdField_a_of_type_Ryv == null) {
+        jdField_a_of_type_Ryv = new ryv();
       }
-      this.a.al();
-      return true;
+      return jdField_a_of_type_Ryv;
     }
-    return false;
   }
   
-  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
+  public int a(ryw paramryw, ryn paramryn)
   {
-    if (paramKeyEvent.getKeyCode() == 66)
+    if (paramryw == null) {}
+    for (;;)
     {
-      if (paramKeyEvent.getAction() == 1)
+      return 1000004;
+      paramryw.a(paramryn);
+      paramryw.a = System.currentTimeMillis();
+      try
       {
-        paramView = this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getText().toString();
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.aio.BaseChatPie", 2, " sendOnEnterEnabled = " + this.a.l);
-        }
-        if ((this.a.l) && (paramView.length() > 0)) {
-          this.a.ak();
+        WeishiIntent localWeishiIntent = new WeishiIntent(BaseApplication.getContext(), ryy.class);
+        localWeishiIntent.setWithouLogin(true);
+        localWeishiIntent.a = ((ryz)paramryn);
+        if ((localWeishiIntent.a != null) && (localWeishiIntent.a.a != null))
+        {
+          paramryn = BaseApplicationImpl.getApplication().getRuntime();
+          if (paramryn != null)
+          {
+            paramryn.startServlet(localWeishiIntent);
+            Log.i("weishi", "cmd=" + paramryw.uniKey() + ", pkgId=" + paramryw.a() + " submit to MSF, isLogin: " + paramryn.isLogin());
+          }
+          else
+          {
+            Log.e("weishi", "app is null");
+          }
         }
       }
-      if (this.a.l) {
-        return true;
+      catch (Exception paramryw)
+      {
+        Log.e("weishi", "WeishiProtocolService occur exception. stack=" + paramryw.getLocalizedMessage());
       }
     }
-    else if ((paramKeyEvent.getKeyCode() == 67) && (paramKeyEvent.getAction() == 0) && (this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getSelectionStart() == 0) && (this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getSelectionEnd() == 0) && (this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getTag(2131362132) != null))
-    {
-      paramView = this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getCompoundDrawables();
-      this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.setCompoundDrawables(paramView[0], null, paramView[2], paramView[3]);
-      this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.setTag(2131362132, null);
-      this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.setSelection(0);
-      this.a.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText$SourceMsgInfo = null;
-      return true;
-    }
-    return false;
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     ryv
  * JD-Core Version:    0.7.0.1
  */

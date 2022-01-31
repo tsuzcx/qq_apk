@@ -6,8 +6,8 @@ import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import bazb;
 import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.webview.swift.SwiftIphoneTitleBarUI;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
 
 public class TroopTagViewActivity$TroopTagViewFragment
@@ -25,23 +25,23 @@ public class TroopTagViewActivity$TroopTagViewFragment
     this.jdField_b_of_type_Int = 1;
   }
   
-  protected int a(Bundle paramBundle)
+  public int a(Bundle paramBundle)
   {
     int i = super.a(paramBundle);
     if ((this.jdField_a_of_type_Int == 1) && (this.jdField_a_of_type_Boolean))
     {
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.c.setText(2131434568);
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.c.setVisibility(0);
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.a.setVisibility(8);
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.c.setOnClickListener(this);
+      this.jdField_a_of_type_Bazb.c.setText(2131626377);
+      this.jdField_a_of_type_Bazb.c.setVisibility(0);
+      this.jdField_a_of_type_Bazb.a.setVisibility(8);
+      this.jdField_a_of_type_Bazb.c.setOnClickListener(this);
       return i;
     }
-    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.c.setVisibility(8);
-    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.a.setVisibility(8);
+    this.jdField_a_of_type_Bazb.c.setVisibility(8);
+    this.jdField_a_of_type_Bazb.a.setVisibility(8);
     return i;
   }
   
-  protected boolean a(Bundle paramBundle)
+  public boolean a(Bundle paramBundle)
   {
     Bundle localBundle = this.jdField_a_of_type_AndroidContentIntent.getExtras();
     this.jdField_a_of_type_Int = localBundle.getInt("act_type", 3);
@@ -58,7 +58,7 @@ public class TroopTagViewActivity$TroopTagViewFragment
   
   public void onClick(View paramView)
   {
-    if (paramView == this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.c)
+    if (paramView == this.jdField_a_of_type_Bazb.c)
     {
       if ((this.jdField_a_of_type_Int == 1) && (this.jdField_a_of_type_Boolean))
       {
@@ -79,7 +79,7 @@ public class TroopTagViewActivity$TroopTagViewFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.TroopTagViewActivity.TroopTagViewFragment
  * JD-Core Version:    0.7.0.1
  */

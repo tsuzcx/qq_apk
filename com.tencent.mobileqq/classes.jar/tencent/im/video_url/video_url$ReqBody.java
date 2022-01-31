@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class video_url$ReqBody
-  extends MessageMicro
+  extends MessageMicro<ReqBody>
 {
   public static final int BYTES_MACHINE_INFO_FIELD_NUMBER = 3;
   public static final int BYTES_MOBILEQ_VER_FIELD_NUMBER = 6;
@@ -34,7 +34,7 @@ public final class video_url$ReqBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     tencent.im.video_url.video_url.ReqBody
  * JD-Core Version:    0.7.0.1
  */

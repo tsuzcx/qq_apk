@@ -1,24 +1,14 @@
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.device.file.DeviceAVFileMsgObserver;
-import com.tencent.mobileqq.transfile.TransProcessorHandler;
-
-public class qcg
-  extends TransProcessorHandler
+public abstract interface qcg
 {
-  public qcg(DeviceAVFileMsgObserver paramDeviceAVFileMsgObserver, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public abstract long a();
   
-  public void handleMessage(Message paramMessage)
-  {
-    this.a.a(paramMessage);
-  }
+  public abstract void a(int paramInt);
+  
+  public abstract long b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     qcg
  * JD-Core Version:    0.7.0.1
  */

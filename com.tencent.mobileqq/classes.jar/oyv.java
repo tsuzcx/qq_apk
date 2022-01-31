@@ -1,15 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.biz.qrcode.activity.QRJumpActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
 
 public class oyv
-  implements DialogInterface.OnCancelListener
+  implements ViewBase.IBuilder
 {
-  public oyv(QRJumpActivity paramQRJumpActivity) {}
-  
-  public void onCancel(DialogInterface paramDialogInterface)
+  public ViewBase build(VafContext paramVafContext)
   {
-    this.a.finish();
+    return new oyt(paramVafContext);
   }
 }
 

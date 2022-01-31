@@ -6,28 +6,28 @@ import java.util.ArrayList;
 import java.util.Random;
 
 final class BusinessReport$1
-  extends ArrayList
+  extends ArrayList<ReportObj>
 {
-  private final boolean a(ReportObj paramReportObj)
+  private final boolean isFailed(ReportObj paramReportObj)
   {
     return paramReportObj.retCode != 0;
   }
   
   public boolean add(ReportObj paramReportObj)
   {
-    if (a(paramReportObj))
+    if (isFailed(paramReportObj))
     {
-      QDLog.c("BusinessReport", "download a img fail. need report retCode=" + paramReportObj.retCode);
+      QDLog.w("BusinessReport", "download a img fail. need report retCode=" + paramReportObj.retCode);
       return super.add(paramReportObj);
     }
     if ((paramReportObj != null) && ((paramReportObj instanceof ReportHandler.DownloadReportObject)) && (((ReportHandler.DownloadReportObject)paramReportObj).needForceReport())) {
       return super.add(paramReportObj);
     }
-    int i = BusinessReport.a();
+    int i = BusinessReport.access$000();
     if (i <= 0) {
       return false;
     }
-    if (BusinessReport.a().nextInt(Math.round(100 / i)) == 0) {
+    if (BusinessReport.access$100().nextInt(Math.round(100 / i)) == 0) {
       return super.add(paramReportObj);
     }
     return false;

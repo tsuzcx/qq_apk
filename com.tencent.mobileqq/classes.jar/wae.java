@@ -1,34 +1,42 @@
-import android.app.Dialog;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StComment;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StReply;
+import android.view.View;
 import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.HotChatPie;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.HotChatHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.biz.subscribe.event.CommentListShowStateEvent;
 
 class wae
-  implements DialogInterface.OnClickListener
+  implements vzy
 {
-  wae(wad paramwad) {}
+  wae(vzz paramvzz, CertifiedAccountMeta.StComment paramStComment, CertifiedAccountMeta.StReply paramStReply) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildHotChatPie.h = new Dialog(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildHotChatPie.a(), 2131624516);
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildHotChatPie.h.setContentView(2130968595);
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildHotChatPie.h.setCancelable(true);
-    ((TextView)this.a.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildHotChatPie.h.findViewById(2131362781)).setText(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildHotChatPie.a().getString(2131434469));
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildHotChatPie.h.show();
-    ((HotChatHandler)this.a.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildHotChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(35)).b(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildHotChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildHotChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.b, this.a.jdField_a_of_type_ComTencentMobileqqDataChatMessage.senderuin, this.a.jdField_a_of_type_JavaLangString, 1);
-    ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildHotChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005D55", "0X8005D55", 0, 0, "", "", "", "");
+    vzz.a(this.jdField_a_of_type_Vzz, null);
+    if (vzz.a(this.jdField_a_of_type_Vzz) != null)
+    {
+      vzz.a(this.jdField_a_of_type_Vzz).b(null);
+      if ((vzz.c(this.jdField_a_of_type_Vzz)) && (vzz.b(this.jdField_a_of_type_Vzz) != null)) {
+        vzz.b(this.jdField_a_of_type_Vzz).setText(vzz.a(this.jdField_a_of_type_Vzz).a());
+      }
+      weh.a().a(vzz.a(this.jdField_a_of_type_Vzz), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StComment, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StReply, vzz.a(this.jdField_a_of_type_Vzz).a());
+      vzz.a(this.jdField_a_of_type_Vzz).a("");
+    }
+    if ((vzz.d(this.jdField_a_of_type_Vzz)) && (vzz.a(this.jdField_a_of_type_Vzz) != 0L))
+    {
+      vzz.a(this.jdField_a_of_type_Vzz, false);
+      vzz.c(this.jdField_a_of_type_Vzz, false);
+    }
+    if (vzz.a(this.jdField_a_of_type_Vzz) != null) {
+      vzz.a(this.jdField_a_of_type_Vzz).a();
+    }
+    if ((this.jdField_a_of_type_Vzz.b != null) && (this.jdField_a_of_type_Vzz.b.getVisibility() == 8)) {
+      wcj.a().a(new CommentListShowStateEvent(false));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wae
  * JD-Core Version:    0.7.0.1
  */

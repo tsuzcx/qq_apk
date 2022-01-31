@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@drawable/skin_setting_strip_bg_unpressed" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <CheckBox android:id="@id/kj6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:layout_marginBottom="10.0dip" android:checked="true" android:button="@drawable/ajf" android:text="@string/ias" android:drawablePadding="6.0dip" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" style="@style/C6_Font" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/kj9" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_above="@id/kj6" android:layout_alignParentLeft="true">
+        <Button android:id="@id/kj8" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_marginLeft="10.0dip" android:layout_marginRight="5.0dip" android:text="@string/rd0" android:layout_weight="1.0" style="@style/b9" />
+        <Button android:id="@id/kj7" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_marginLeft="5.0dip" android:layout_marginRight="10.0dip" android:text="@string/rd1" android:layout_weight="1.0" style="@style/bd" />
+    </LinearLayout>
+    <com.tencent.widget.ProtectedWebView android:id="@id/kj_" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="5.0dip" android:layout_marginTop="5.0dip" android:layout_marginRight="5.0dip" android:layout_marginBottom="10.0dip" android:layout_above="@id/kj9" android:layout_alignParentTop="true" />
+</RelativeLayout>

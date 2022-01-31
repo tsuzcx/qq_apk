@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class AccountSecurityInfo$AccSecInfoRequire
-  extends MessageMicro
+  extends MessageMicro<AccSecInfoRequire>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24 }, new String[] { "u64_uin", "str_version", "u32_client_type" }, new Object[] { Long.valueOf(0L), "", Integer.valueOf(0) }, AccSecInfoRequire.class);
   public final PBStringField str_version = PBField.initString("");

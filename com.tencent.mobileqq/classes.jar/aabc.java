@@ -1,43 +1,37 @@
-import android.os.Build.VERSION;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.app.msgnotify.MsgNotifyPushDialog;
+import com.tencent.mobileqq.activity.AuthDevActivity;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.widget.FormSimpleItem;
+import tencent.im.oidb.oidb_0x5e1.RspBody;
+import tencent.im.oidb.oidb_0x5e1.UdcUinData;
 
 public class aabc
-  implements View.OnTouchListener
+  extends atdj
 {
-  public aabc(MsgNotifyPushDialog paramMsgNotifyPushDialog, ImageView paramImageView) {}
+  public aabc(AuthDevActivity paramAuthDevActivity) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(String paramString1, int paramInt, String paramString2)
   {
-    int i;
-    if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 0))
+    super.a(paramString1, paramInt, paramString2);
+  }
+  
+  public void a(oidb_0x5e1.RspBody paramRspBody)
+  {
+    super.a(paramRspBody);
+    AuthDevActivity.a(this.a, paramRspBody);
+    int i = ((oidb_0x5e1.UdcUinData)AuthDevActivity.a(this.a).rpt_msg_uin_data.get(0)).user_login_guard_face.get();
+    FormSimpleItem localFormSimpleItem = AuthDevActivity.a(this.a);
+    if (i == 1) {}
+    for (paramRspBody = this.a.getString(2131626690);; paramRspBody = this.a.getString(2131626697))
     {
-      if (paramMotionEvent.getAction() != 1) {
-        break label45;
-      }
-      i = 255;
-      if (Build.VERSION.SDK_INT < 16) {
-        break label51;
-      }
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageAlpha(i);
-    }
-    for (;;)
-    {
-      return false;
-      label45:
-      i = 127;
-      break;
-      label51:
-      this.jdField_a_of_type_AndroidWidgetImageView.setAlpha(i);
+      localFormSimpleItem.setRightText(paramRspBody);
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aabc
  * JD-Core Version:    0.7.0.1
  */

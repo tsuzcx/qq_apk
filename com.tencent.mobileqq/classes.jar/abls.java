@@ -1,28 +1,20 @@
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.drawable.BitmapDrawable;
-import com.tencent.mobileqq.armap.TreasureBaseActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQMapActivity;
 
 public class abls
-  extends BitmapDrawable
+  implements View.OnClickListener
 {
-  public abls(TreasureBaseActivity paramTreasureBaseActivity, Resources paramResources, Bitmap paramBitmap1, float paramFloat, Bitmap paramBitmap2)
-  {
-    super(paramResources, paramBitmap1);
-  }
+  public abls(QQMapActivity paramQQMapActivity) {}
   
-  public void draw(Canvas paramCanvas)
+  public void onClick(View paramView)
   {
-    paramCanvas.save();
-    paramCanvas.rotate(this.jdField_a_of_type_Float, this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() / 2, this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() / 2);
-    super.draw(paramCanvas);
-    paramCanvas.restore();
+    this.a.onBackPressed();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abls
  * JD-Core Version:    0.7.0.1
  */

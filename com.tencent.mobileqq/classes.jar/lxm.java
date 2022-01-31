@@ -1,25 +1,28 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.LinearLayout;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.FeedItemCellTypeNoImageSocial;
+import android.widget.RelativeLayout;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.ui.QavOperationMenuView;
+import com.tencent.av.ui.QavPanel;
 
 public class lxm
-  implements View.OnTouchListener
+  implements lxr
 {
-  public lxm(FeedItemCellTypeNoImageSocial paramFeedItemCellTypeNoImageSocial, LinearLayout paramLinearLayout) {}
+  public lxm(QavPanel paramQavPanel) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(long paramLong, RelativeLayout paramRelativeLayout, boolean paramBoolean)
   {
-    if (paramMotionEvent.getAction() == 0) {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setDuplicateParentStateEnabled(false);
+    if ((paramBoolean) && ((paramRelativeLayout instanceof QavOperationMenuView)))
+    {
+      paramRelativeLayout = (QavOperationMenuView)paramRelativeLayout;
+      paramRelativeLayout.a(this.a.a.b("BEAUTY_SKIN"));
+      paramRelativeLayout.a();
     }
-    return false;
   }
+  
+  public void b(long paramLong, RelativeLayout paramRelativeLayout, boolean paramBoolean) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lxm
  * JD-Core Version:    0.7.0.1
  */

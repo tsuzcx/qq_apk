@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.activity.qwallet.red;
 
+import agql;
 import android.text.TextUtils;
 import java.io.Serializable;
 import java.util.Iterator;
@@ -13,7 +14,7 @@ public class QWRedConfig$PathInfo
 {
   private static final long serialVersionUID = 1L;
   public String path;
-  public List redInfos = new LinkedList();
+  public List<QWRedConfig.RedInfo> redInfos = new LinkedList();
   
   public static PathInfo parseToPathInfo(JSONObject paramJSONObject)
   {
@@ -52,7 +53,7 @@ public class QWRedConfig$PathInfo
     return null;
   }
   
-  public List getCurShowRedInfos()
+  public List<QWRedConfig.RedInfo> getCurShowRedInfos()
   {
     LinkedList localLinkedList = new LinkedList();
     Iterator localIterator = this.redInfos.iterator();
@@ -100,7 +101,7 @@ public class QWRedConfig$PathInfo
     }
   }
   
-  public QWalletRedManager.ShowInfo getShowInfo()
+  public agql getShowInfo()
   {
     Iterator localIterator = this.redInfos.iterator();
     boolean bool2 = false;
@@ -131,7 +132,7 @@ public class QWRedConfig$PathInfo
     }
     for (;;)
     {
-      return new QWalletRedManager.ShowInfo(bool2, bool1, (String)localObject2, (String)localObject1);
+      return new agql(bool2, bool1, (String)localObject2, (String)localObject1);
       if ((((QWRedConfig.RedInfo)localObject3).type == 3) && (!bool2))
       {
         localObject3 = ((QWRedConfig.RedInfo)localObject3).content;
@@ -189,7 +190,7 @@ public class QWRedConfig$PathInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.red.QWRedConfig.PathInfo
  * JD-Core Version:    0.7.0.1
  */

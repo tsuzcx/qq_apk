@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class ArticleComment$ReadPhotoItemInfo
-  extends MessageMicro
+  extends MessageMicro<ReadPhotoItemInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24 }, new String[] { "index", "item_remain_time", "item_type" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) }, ReadPhotoItemInfo.class);
   public final PBUInt32Field index = PBField.initUInt32(0);

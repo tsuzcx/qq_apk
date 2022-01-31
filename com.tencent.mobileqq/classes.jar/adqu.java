@@ -1,19 +1,17 @@
-import com.tencent.mobileqq.filemanager.util.UniformDownloaderAppBabySdk;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
 
-class adqu
-  implements Runnable
+public class adqu
+  implements DialogInterface.OnClickListener
 {
-  adqu(adqs paramadqs, String paramString1, int paramInt, String paramString2) {}
+  public adqu(StructingMsgItemBuilder paramStructingMsgItemBuilder) {}
   
-  public void run()
-  {
-    UniformDownloaderAppBabySdk.a(this.jdField_a_of_type_Adqs.a, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b);
-    UniformDownloaderAppBabySdk.a(this.jdField_a_of_type_Adqs.a);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     adqu
  * JD-Core Version:    0.7.0.1
  */

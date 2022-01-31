@@ -1,39 +1,54 @@
+import android.view.View;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager.INet_ShortVideoResource;
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
-import com.tencent.mobileqq.shortvideo.util.SoLoader;
-import dov.com.qq.im.capture.QIMManager;
-import dov.com.qq.im.capture.data.CaptureComboManager;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.widget.AdapterView;
+import java.util.List;
 
-public class aoxs
-  implements ShortVideoResourceManager.INet_ShortVideoResource
+class aoxs
+  implements behk
 {
-  private String a;
+  aoxs(aoxp paramaoxp) {}
   
-  public void C_()
-  {
-    VideoEnvironment.a(this.a, "onNetWorkNone...", null);
-  }
+  public void a(AdapterView<?> paramAdapterView) {}
   
-  public void a(String paramString1, int paramInt, String paramString2)
+  public void a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    VideoEnvironment.a(this.a, "onDownloadFinish| name=" + paramString1 + ",result=" + paramInt + ",filePath=" + paramString2, null);
-    if (paramString1.startsWith("new_qq_android_native_art_filter_"))
+    aoxp.a(this.a, paramInt);
+    paramAdapterView = this.a.jdField_a_of_type_Aoyw;
+    if (aoxp.a(this.a) == aoxp.b(this.a)) {}
+    for (boolean bool = true;; bool = false)
     {
-      SoLoader.a(BaseApplicationImpl.getContext());
-      ((CaptureComboManager)QIMManager.a().c(5)).f();
+      paramAdapterView.d(bool);
+      this.a.a(paramInt);
+      if (this.a.jdField_a_of_type_Aotd != null) {
+        this.a.jdField_a_of_type_Aotd.a(paramInt);
+      }
+      paramAdapterView = (aovl)aoxp.a(this.a).get(paramInt);
+      if (paramAdapterView != null) {
+        break;
+      }
+      apcb.b(BaseApplicationImpl.getContext().getString(2131626869));
+      return;
     }
-  }
-  
-  public void a(String paramString, long paramLong1, long paramLong2)
-  {
-    int i = (int)((float)paramLong1 * 100.0F / (float)paramLong2);
-    VideoEnvironment.a(this.a, "name=" + paramString + ",totalLen=" + paramLong2 + ",curOffset=" + paramLong1 + ",localProgress=" + i, null);
+    this.a.jdField_a_of_type_Aovk.a().a(paramAdapterView);
+    this.a.jdField_a_of_type_Aovk.a(paramInt, paramAdapterView);
+    this.a.jdField_a_of_type_Aoyw.c(aoxp.a(this.a, aoxp.a(this.a)));
+    this.a.jdField_a_of_type_Aoyw.c();
+    if (this.a.jdField_a_of_type_Aotc != null) {
+      this.a.jdField_a_of_type_Aotc.e();
+    }
+    if (this.a.jdField_a_of_type_Boolean)
+    {
+      this.a.jdField_a_of_type_Aotd.a(true);
+      this.a.jdField_a_of_type_Aoyw.a(false);
+      aoxp.a(this.a, true);
+    }
+    this.a.jdField_a_of_type_Boolean = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aoxs
  * JD-Core Version:    0.7.0.1
  */

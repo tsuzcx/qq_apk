@@ -1,23 +1,30 @@
-import com.tencent.mobileqq.activity.AboutActivity;
-import com.tencent.mobileqq.app.ConfigObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.upgrade.UpgradeDetailWrapper;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.view.View;
+import com.tencent.qphone.base.util.QLog;
 
-public class rkl
-  extends ConfigObserver
+class rkl
+  extends AnimatorListenerAdapter
 {
-  public rkl(AboutActivity paramAboutActivity) {}
+  rkl(rkg paramrkg) {}
   
-  protected void a(boolean paramBoolean, UpgradeDetailWrapper paramUpgradeDetailWrapper)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    AboutActivity.a(this.a, paramUpgradeDetailWrapper);
-    paramUpgradeDetailWrapper = this.a.app.a();
-    AboutActivity.a(this.a, paramUpgradeDetailWrapper);
+    super.onAnimationEnd(paramAnimator);
+    rkg.a(this.a).setLayerType(0, null);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.readinjoy.videoanimation", 2, "alpha animation end");
+    }
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    super.onAnimationStart(paramAnimator);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     rkl
  * JD-Core Version:    0.7.0.1
  */

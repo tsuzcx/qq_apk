@@ -1,22 +1,43 @@
-import android.view.animation.Interpolator;
-import com.tencent.mobileqq.activity.VisitorsActivity;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetUserGuide;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetUserGuide;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 
 public class ump
-  implements Interpolator
+  extends slz<umq>
 {
-  public ump(VisitorsActivity paramVisitorsActivity) {}
+  public static final String a = skt.a("StorySvc.get_user_guide");
   
-  public float getInterpolation(float paramFloat)
+  public String a()
   {
-    if (paramFloat <= 0.3333333F) {
-      return 0.0F;
+    return a;
+  }
+  
+  public umq a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspGetUserGuide localRspGetUserGuide = new qqstory_service.RspGetUserGuide();
+    try
+    {
+      localRspGetUserGuide.mergeFrom(paramArrayOfByte);
+      return new umq(localRspGetUserGuide);
     }
-    return (paramFloat - 0.3333333F) * 1.5F;
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      for (;;)
+      {
+        paramArrayOfByte.printStackTrace();
+        urk.c("Q.qqstory.home.GetUserGuideInfoStep", "decodeResponse error=%s", paramArrayOfByte);
+      }
+    }
+  }
+  
+  protected byte[] a()
+  {
+    return new qqstory_service.ReqGetUserGuide().toByteArray();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     ump
  * JD-Core Version:    0.7.0.1
  */

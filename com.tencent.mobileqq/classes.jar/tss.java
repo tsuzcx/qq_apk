@@ -1,18 +1,10 @@
-import com.tencent.mobileqq.activity.QzoneTiantaiTranslucentBrowserActivity;
-
-public class tss
-  implements Runnable
+public abstract interface tss
 {
-  public tss(QzoneTiantaiTranslucentBrowserActivity paramQzoneTiantaiTranslucentBrowserActivity) {}
-  
-  public void run()
-  {
-    QzoneTiantaiTranslucentBrowserActivity.a(this.a);
-  }
+  public abstract boolean a_(tso paramtso, int paramInt1, int paramInt2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tss
  * JD-Core Version:    0.7.0.1
  */

@@ -2,52 +2,55 @@ package cooperation.qqindividuality.ipc;
 
 import android.content.Intent;
 import android.content.ServiceConnection;
+import bfcz;
+import bfdi;
+import bfke;
+import bfkl;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.pluginsdk.PluginProxyService;
 import com.tencent.mobileqq.pluginsdk.ipc.PluginCommunicationHandler;
-import cooperation.plugin.IPluginManager;
-import cooperation.plugin.IPluginManager.PluginParams;
+import cooperation.plugin.PluginInfo;
 import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
 
 public class QQIndividualityPluginProxyService
   extends PluginProxyService
 {
-  private static IndividualityRemoteCommand jdField_a_of_type_CooperationQqindividualityIpcIndividualityRemoteCommand;
-  private static QQIndividualityRemoteProxy jdField_a_of_type_CooperationQqindividualityIpcQQIndividualityRemoteProxy;
+  private static bfke jdField_a_of_type_Bfke;
+  private static bfkl jdField_a_of_type_Bfkl;
   
-  public static IndividualityRemoteCommand a()
+  public static bfke a()
   {
-    if (jdField_a_of_type_CooperationQqindividualityIpcIndividualityRemoteCommand == null) {}
+    if (jdField_a_of_type_Bfke == null) {}
     try
     {
-      if (jdField_a_of_type_CooperationQqindividualityIpcIndividualityRemoteCommand == null) {
-        jdField_a_of_type_CooperationQqindividualityIpcIndividualityRemoteCommand = new IndividualityRemoteCommand(BaseApplicationImpl.getApplication().getRuntime());
+      if (jdField_a_of_type_Bfke == null) {
+        jdField_a_of_type_Bfke = new bfke(BaseApplicationImpl.getApplication().getRuntime());
       }
-      return jdField_a_of_type_CooperationQqindividualityIpcIndividualityRemoteCommand;
+      return jdField_a_of_type_Bfke;
     }
     finally {}
   }
   
-  public static QQIndividualityRemoteProxy a()
+  public static bfkl a()
   {
-    if (jdField_a_of_type_CooperationQqindividualityIpcQQIndividualityRemoteProxy == null) {}
+    if (jdField_a_of_type_Bfkl == null) {}
     try
     {
-      if (jdField_a_of_type_CooperationQqindividualityIpcQQIndividualityRemoteProxy == null) {
-        jdField_a_of_type_CooperationQqindividualityIpcQQIndividualityRemoteProxy = new QQIndividualityRemoteProxy(BaseApplicationImpl.getApplication().getRuntime());
+      if (jdField_a_of_type_Bfkl == null) {
+        jdField_a_of_type_Bfkl = new bfkl(BaseApplicationImpl.getApplication().getRuntime());
       }
-      return jdField_a_of_type_CooperationQqindividualityIpcQQIndividualityRemoteProxy;
+      return jdField_a_of_type_Bfkl;
     }
     finally {}
   }
   
   public static void a()
   {
-    if (jdField_a_of_type_CooperationQqindividualityIpcQQIndividualityRemoteProxy != null)
+    if (jdField_a_of_type_Bfkl != null)
     {
-      jdField_a_of_type_CooperationQqindividualityIpcQQIndividualityRemoteProxy.b("qqindividuality_signature");
-      jdField_a_of_type_CooperationQqindividualityIpcQQIndividualityRemoteProxy = null;
+      jdField_a_of_type_Bfkl.b("qqindividuality_signature");
+      jdField_a_of_type_Bfkl = null;
     }
   }
   
@@ -60,22 +63,22 @@ public class QQIndividualityPluginProxyService
   {
     Intent localIntent = new Intent(paramAppRuntime.getApplication(), QQIndividualityPluginProxyService.class);
     localIntent.putExtra("useSkinEngine", 1);
-    IPluginManager.PluginParams localPluginParams = new IPluginManager.PluginParams(0);
-    localPluginParams.b = "qqindividuality_plugin.apk";
-    localPluginParams.d = "个性化内容";
-    localPluginParams.jdField_a_of_type_JavaLangString = paramAppRuntime.getAccount();
-    localPluginParams.e = paramString;
-    localPluginParams.jdField_a_of_type_AndroidContentIntent = localIntent;
-    localPluginParams.jdField_a_of_type_AndroidContentServiceConnection = paramServiceConnection;
-    IPluginManager.b(paramAppRuntime.getApplication(), localPluginParams);
+    bfdi localbfdi = new bfdi(0);
+    localbfdi.b = "qqindividuality_plugin.apk";
+    localbfdi.d = PluginInfo.m;
+    localbfdi.jdField_a_of_type_JavaLangString = paramAppRuntime.getAccount();
+    localbfdi.e = paramString;
+    localbfdi.jdField_a_of_type_AndroidContentIntent = localIntent;
+    localbfdi.jdField_a_of_type_AndroidContentServiceConnection = paramServiceConnection;
+    bfcz.c(paramAppRuntime.getApplication(), localbfdi);
   }
   
   public static boolean a()
   {
-    IndividualityRemoteCommand localIndividualityRemoteCommand = a();
-    if (!PluginCommunicationHandler.getInstance().containsCmd(localIndividualityRemoteCommand.getCmd()))
+    bfke localbfke = a();
+    if (!PluginCommunicationHandler.getInstance().containsCmd(localbfke.getCmd()))
     {
-      PluginCommunicationHandler.getInstance().register(localIndividualityRemoteCommand);
+      PluginCommunicationHandler.getInstance().register(localbfke);
       return true;
     }
     return false;

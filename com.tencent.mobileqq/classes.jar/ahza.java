@@ -1,17 +1,7 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.search.model.GroupSearchModelFooter;
-import com.tencent.mobileqq.search.presenter.SearchResultGroupFooterViewPresenter;
-
 public class ahza
-  implements View.OnClickListener
 {
-  public ahza(SearchResultGroupFooterViewPresenter paramSearchResultGroupFooterViewPresenter, GroupSearchModelFooter paramGroupSearchModelFooter) {}
-  
-  public void onClick(View paramView)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqSearchModelGroupSearchModelFooter.b(paramView);
-  }
+  private Runnable jdField_a_of_type_JavaLangRunnable;
+  private boolean jdField_a_of_type_Boolean;
 }
 
 

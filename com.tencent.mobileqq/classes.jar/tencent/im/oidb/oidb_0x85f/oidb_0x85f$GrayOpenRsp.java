@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class oidb_0x85f$GrayOpenRsp
-  extends MessageMicro
+  extends MessageMicro<GrayOpenRsp>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_info_card_entry_guest_url = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -32,7 +32,7 @@ public final class oidb_0x85f$GrayOpenRsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     tencent.im.oidb.oidb_0x85f.oidb_0x85f.GrayOpenRsp
  * JD-Core Version:    0.7.0.1
  */

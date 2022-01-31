@@ -1,19 +1,13 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.qqstory.takevideo.EditLocalVideoSource;
+import tencent.im.oidb.cmd0x80a.oidb_cmd0x80a.AttributeList;
 
-public final class ohr
-  implements Parcelable.Creator
+public class ohr
 {
-  public EditLocalVideoSource a(Parcel paramParcel)
-  {
-    return new EditLocalVideoSource(paramParcel);
-  }
+  public oidb_cmd0x80a.AttributeList a;
+  public oidb_cmd0x80a.AttributeList b;
+  public oidb_cmd0x80a.AttributeList c;
+  public oidb_cmd0x80a.AttributeList d;
   
-  public EditLocalVideoSource[] a(int paramInt)
-  {
-    return new EditLocalVideoSource[paramInt];
-  }
+  public ohr(ohp paramohp) {}
 }
 
 

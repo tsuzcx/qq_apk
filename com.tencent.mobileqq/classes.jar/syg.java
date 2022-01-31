@@ -1,19 +1,16 @@
-import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
-import com.tencent.mobileqq.data.Card;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspForbidVideo;
 
-class syg
-  implements Runnable
+public class syg
+  extends slu
 {
-  syg(syf paramsyf, Card paramCard) {}
-  
-  public void run()
+  public syg(sye paramsye, qqstory_service.RspForbidVideo paramRspForbidVideo)
   {
-    FriendProfileMoreInfoActivity.a(this.jdField_a_of_type_Syf.a, this.jdField_a_of_type_ComTencentMobileqqDataCard, false);
+    super(paramRspForbidVideo.result);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     syg
  * JD-Core Version:    0.7.0.1
  */

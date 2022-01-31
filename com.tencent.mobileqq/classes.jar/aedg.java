@@ -1,18 +1,28 @@
-import com.tencent.mobileqq.intervideo.now.NowLoadingActivity;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class aedg
-  implements Runnable
+class aedg
+  implements View.OnClickListener
 {
-  public aedg(NowLoadingActivity paramNowLoadingActivity) {}
+  aedg(aede paramaede, String paramString) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.a.finish();
+    if ((aede.a(this.jdField_a_of_type_Aede) != null) && (aede.a(this.jdField_a_of_type_Aede).isShowing())) {
+      aede.a(this.jdField_a_of_type_Aede).dismiss();
+    }
+    if ((this.jdField_a_of_type_Aede.a != null) && (this.jdField_a_of_type_Aede.a.isShowing()))
+    {
+      this.jdField_a_of_type_Aede.a.dismiss();
+      this.jdField_a_of_type_Aede.a = null;
+    }
+    aede.a(this.jdField_a_of_type_Aede, this.jdField_a_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aedg
  * JD-Core Version:    0.7.0.1
  */

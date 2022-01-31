@@ -1,29 +1,23 @@
-import com.tencent.biz.qqstory.playvideo.player.TrimTextureVideoView;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.takevideo.view.widget.frameSelectBar.ScrollFrameSelectBar;
-import com.tencent.widget.HorizontalListView.OnScrollStateChangedListener;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 
-public class oqu
-  implements HorizontalListView.OnScrollStateChangedListener
+class oqu
+  extends Handler
 {
-  public oqu(ScrollFrameSelectBar paramScrollFrameSelectBar) {}
-  
-  public void a(int paramInt)
+  oqu(oqs paramoqs, Looper paramLooper)
   {
-    SLog.a("Q.qqstory.frameWidget.ScrollFrameSelectBar", "onScrollStateChanged:%s", Integer.valueOf(paramInt));
-    switch (paramInt)
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
     {
     default: 
-    case 4098: 
-    case 4099: 
-      do
-      {
-        return;
-      } while (!ScrollFrameSelectBar.a(this.a).isPlaying());
-      ScrollFrameSelectBar.a(this.a).b();
       return;
     }
-    this.a.b();
+    this.a.f();
   }
 }
 

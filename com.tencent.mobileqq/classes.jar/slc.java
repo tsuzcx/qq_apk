@@ -1,19 +1,15 @@
-import com.tencent.biz.pubaccount.PublicAccountManager;
-import com.tencent.mobileqq.activity.Conversation;
+import android.app.Activity;
+import android.os.Bundle;
 
-public class slc
-  implements Runnable
+public abstract interface slc<T extends Activity>
 {
-  public slc(Conversation paramConversation) {}
+  public abstract void a(T paramT);
   
-  public void run()
-  {
-    PublicAccountManager.a().a(this.a.a);
-  }
+  public abstract void a(T paramT, Bundle paramBundle);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     slc
  * JD-Core Version:    0.7.0.1
  */

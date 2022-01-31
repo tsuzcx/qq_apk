@@ -1,0 +1,24 @@
+package com.tencent.mobileqq.minigame.ui;
+
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+class GameActivity$3
+  implements DialogInterface.OnClickListener
+{
+  GameActivity$3(GameActivity paramGameActivity, DialogInterface.OnClickListener paramOnClickListener) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+    if (this.val$onIKnowOnClickListener != null) {
+      this.val$onIKnowOnClickListener.onClick(paramDialogInterface, paramInt);
+    }
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+ * Qualified Name:     com.tencent.mobileqq.minigame.ui.GameActivity.3
+ * JD-Core Version:    0.7.0.1
+ */

@@ -1,24 +1,26 @@
-import com.tencent.biz.qqstory.playvideo.player.TrimTextureVideoView;
-import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer;
-import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer.OnErrorListener;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 
-public class nty
-  implements IMediaPlayer.OnErrorListener
+class nty
+  implements ViewBase.OnClickListener
 {
-  public nty(TrimTextureVideoView paramTrimTextureVideoView) {}
+  nty(ntu paramntu) {}
   
-  public boolean a(IMediaPlayer paramIMediaPlayer, int paramInt1, int paramInt2)
+  public void onClick(ViewBase paramViewBase)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e(this.a.a, 2, "TrimTextureVideoView MediaPlayer onError==>what:" + paramInt1 + "|extra:" + paramInt2);
+    if (this.a.jdField_a_of_type_Nwx.a != null)
+    {
+      obz.a(this.a.jdField_a_of_type_Nwk.a().getContext(), paramViewBase.getEventAttachedData());
+      if (this.a.jdField_a_of_type_Nwk.a() != null) {
+        this.a.jdField_a_of_type_Nwk.a().e(this.a.jdField_a_of_type_Nwx);
+      }
     }
-    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     nty
  * JD-Core Version:    0.7.0.1
  */

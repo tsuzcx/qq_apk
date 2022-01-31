@@ -1,29 +1,22 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.QQSettingMe;
+import android.annotation.TargetApi;
+import android.os.Handler;
+import com.tencent.biz.qqstory.playvideo.player.TextureVideoView;
+import com.tencent.biz.qqstory.playvideo.player.TextureVideoView.1.1;
 
-class tqz
-  implements Animator.AnimatorListener
+public class tqz
+  implements tsw
 {
-  tqz(tqy paramtqy) {}
+  public tqz(TextureVideoView paramTextureVideoView) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  @TargetApi(15)
+  public void a(tso paramtso, int paramInt1, int paramInt2)
   {
-    if (QQSettingMe.a(this.a.a) != null) {
-      QQSettingMe.a(this.a.a).setVisibility(4);
-    }
+    this.a.getHandler().post(new TextureVideoView.1.1(this, paramtso));
   }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tqz
  * JD-Core Version:    0.7.0.1
  */

@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBStringField;
 
 public final class MathHWNetWorkPB$YoutuPicInfo
-  extends MessageMicro
+  extends MessageMicro<YoutuPicInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField new_data = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -23,7 +23,7 @@ public final class MathHWNetWorkPB$YoutuPicInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.arithmetic.pb.MathHWNetWorkPB.YoutuPicInfo
  * JD-Core Version:    0.7.0.1
  */

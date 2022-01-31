@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBStringField;
 
 public final class group_mgr$GroupHomeworkInfo
-  extends MessageMicro
+  extends MessageMicro<GroupHomeworkInfo>
 {
   public static final int CITY_CODE_FIELD_NUMBER = 1;
   public static final int CL_CLASS_FIELD_NUMBER = 6;
@@ -24,7 +24,7 @@ public final class group_mgr$GroupHomeworkInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     tencent.im.hw.group_mgr.GroupHomeworkInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:id="@id/mf0" android:padding="4.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:clipChildren="false" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <com.tencent.image.URLImageView android:gravity="center_vertical" android:id="@id/lkv" android:layout_width="18.0dip" android:layout_height="18.0dip" />
+        <ImageView android:id="@id/lku" android:visibility="gone" android:layout_width="10.0dip" android:layout_height="10.0dip" android:layout_marginLeft="-9.0dip" android:layout_marginTop="-9.0dip" android:src="@drawable/hr7" android:scaleType="centerCrop" android:layout_toRightOf="@id/lkv" android:layout_below="@id/lkv" />
+    </RelativeLayout>
+    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:id="@id/lqo" android:layout_width="wrap_content" android:layout_height="fill_parent">
+        <TextView android:textSize="13.0sp" android:textColor="#d9ffffff" android:ellipsize="end" android:id="@id/lky" android:paddingLeft="4.0dip" android:paddingRight="4.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxWidth="140.0dip" android:text="宝马全新3系免费运动型宝马全新3系免费运动型宝马全新3系免费运动型" android:maxLines="1" android:includeFontPadding="false" />
+        <TextView android:textSize="11.0sp" android:textColor="#8cffffff" android:ellipsize="end" android:id="@id/lkx" android:paddingLeft="4.0dip" android:paddingRight="4.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="1.0dip" android:maxWidth="140.0dip" android:text="@string/pyq" android:includeFontPadding="false" />
+    </LinearLayout>
+    <Space android:layout_width="0.0dip" android:layout_height="0.0dip" android:layout_weight="1.0" />
+    <ImageView android:layout_gravity="center_vertical" android:id="@id/lkw" android:visibility="gone" android:layout_width="12.0dip" android:layout_height="12.0dip" android:layout_marginLeft="0.0dip" android:src="@drawable/heu" />
+    <com.tencent.biz.pubaccount.readinjoy.ad.view.ReadInjoyHeaderAdDownloadView android:layout_gravity="center_vertical" android:id="@id/lkt" android:visibility="gone" android:layout_width="21.0dip" android:layout_height="21.0dip" android:layout_marginLeft="0.0dip" android:layout_marginRight="6.0dip" />
+</LinearLayout>

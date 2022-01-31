@@ -1,0 +1,38 @@
+package com.tencent.mobileqq.filemanager.activity.localfile;
+
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Set;
+
+class QfileLocalFileAppTabView$2$1
+  implements Runnable
+{
+  QfileLocalFileAppTabView$2$1(QfileLocalFileAppTabView.2 param2) {}
+  
+  public void run()
+  {
+    if (this.a.this$0.a != null)
+    {
+      Iterator localIterator = this.a.this$0.a.keySet().iterator();
+      while (localIterator.hasNext())
+      {
+        String str = (String)localIterator.next();
+        if (((List)this.a.this$0.a.get(str)).size() == 0) {
+          localIterator.remove();
+        }
+      }
+    }
+    this.a.this$0.c.putAll(this.a.this$0.a);
+    this.a.this$0.i();
+    this.a.this$0.setSelect(0);
+    this.a.this$0.a.clear();
+    this.a.this$0.b(true);
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+ * Qualified Name:     com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileAppTabView.2.1
+ * JD-Core Version:    0.7.0.1
+ */

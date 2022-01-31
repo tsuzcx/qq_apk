@@ -1,22 +1,19 @@
-import com.tencent.mobileqq.filemanager.core.FileUploader;
-import com.tencent.mobileqq.filemanager.core.FileUploader.IFileUploaderSink;
+import android.content.Context;
+import com.tencent.mobileqq.data.MessageForFile;
 
-public class addy
-  implements Runnable
+class addy
+  implements bbrx
 {
-  public addy(FileUploader paramFileUploader) {}
+  addy(addx paramaddx, MessageForFile paramMessageForFile, Context paramContext) {}
   
-  public void run()
+  public void a(int paramInt)
   {
-    if ((FileUploader.a(this.a) != null) && (FileUploader.a(this.a) != null)) {
-      this.a.a();
-    }
-    FileUploader.a(this.a).a(true, FileUploader.a(this.a), 9303, "readfilefail", null);
+    apck.a(this.jdField_a_of_type_Addx.a, this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile, this.jdField_a_of_type_AndroidContentContext);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     addy
  * JD-Core Version:    0.7.0.1
  */

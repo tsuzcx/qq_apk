@@ -6,11 +6,11 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 
 public final class group_effect$EffectConfig
-  extends MessageMicro
+  extends MessageMicro<EffectConfig>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18 }, new String[] { "rpt_banner", "rpt_category" }, new Object[] { null, null }, EffectConfig.class);
-  public final PBRepeatMessageField rpt_banner = PBField.initRepeatMessage(group_effect.Banner.class);
-  public final PBRepeatMessageField rpt_category = PBField.initRepeatMessage(group_effect.Category.class);
+  public final PBRepeatMessageField<group_effect.Banner> rpt_banner = PBField.initRepeatMessage(group_effect.Banner.class);
+  public final PBRepeatMessageField<group_effect.Category> rpt_category = PBField.initRepeatMessage(group_effect.Category.class);
 }
 
 

@@ -1,188 +1,176 @@
-import android.os.Handler;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.UniteSearchObserver;
-import com.tencent.mobileqq.search.SearchUtil;
-import com.tencent.mobileqq.search.adapter.BaseMvpAdapter;
-import com.tencent.mobileqq.search.fragment.PublicAcntSearchFragment;
-import com.tencent.mobileqq.search.model.GroupBaseNetSearchModel;
-import com.tencent.mobileqq.search.model.GroupSearchModeTitle;
-import com.tencent.mobileqq.search.model.IModel;
-import com.tencent.mobileqq.search.model.ISearchResultGroupModel;
-import com.tencent.mobileqq.search.model.ISearchResultModel;
-import com.tencent.mobileqq.search.model.NetSearchTemplateBaseItem;
-import com.tencent.mobileqq.search.model.PublicAccountSearchResultModel;
-import com.tencent.mobileqq.search.util.SearchUtils;
-import com.tencent.mobileqq.search.util.SearchViewUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
-import mqq.os.MqqHandler;
+import java.io.File;
+import mqq.app.AppActivity;
+import mqq.manager.Manager;
+import mqq.observer.BusinessObserver;
 
 public class ahye
-  extends UniteSearchObserver
+  implements Manager, BusinessObserver
 {
-  public ahye(PublicAcntSearchFragment paramPublicAcntSearchFragment) {}
+  public static String a;
+  private ahyf jdField_a_of_type_Ahyf;
+  private SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private boolean jdField_a_of_type_Boolean;
   
-  public void a(String paramString1, boolean paramBoolean, String paramString2, int paramInt, String paramString3, long[] paramArrayOfLong)
+  public ahye(QQAppInterface paramQQAppInterface)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("PublicAcntSearchFragment", 2, "handleTabSearchError!!!");
-    }
-    this.a.e = false;
-    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(3);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    paramQQAppInterface = BaseApplicationImpl.getContext();
+    jdField_a_of_type_JavaLangString = paramQQAppInterface.getFilesDir().getAbsoluteFile() + File.separator + "WeatherResource";
+    this.jdField_a_of_type_AndroidContentSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("weather_resources", 0);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.registObserver(this);
   }
   
-  public void a(String paramString1, boolean paramBoolean1, String paramString2, byte[] paramArrayOfByte, boolean paramBoolean2, List paramList1, long[] paramArrayOfLong, String paramString3, List paramList2, boolean paramBoolean3)
+  public long a()
+  {
+    long l = this.jdField_a_of_type_AndroidContentSharedPreferences.getLong("key_weather_res_version", 0L);
+    if (QLog.isColorLevel()) {
+      QLog.d("weatherManager", 2, "getConfigVersion version=" + l);
+    }
+    return l;
+  }
+  
+  public void a(long paramLong)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("PublicAcntSearchFragment", 2, "handleTabSearchResult， keyword=" + this.a.jdField_b_of_type_JavaLangString + ", isFirstReq=" + paramBoolean1 + " ,cookie = " + paramArrayOfByte + ",result=" + paramList1.size());
+      QLog.d("weatherManager", 2, "updateResourceVersion version=" + paramLong);
     }
-    ThreadManager.getUIHandler().post(new ahyf(this, paramBoolean2));
-    if (!TextUtils.equals(paramString2, this.a.jdField_a_of_type_JavaLangString))
-    {
-      QLog.d("PublicAcntSearchFragment", 2, "handleTabSearchResult. reqKeyword=" + paramString1 + " keyword=" + this.a.jdField_b_of_type_JavaLangString + " reqTime=" + paramString2 + " lastReqTime=" + this.a.jdField_a_of_type_JavaLangString + " isEnd1=" + paramBoolean2);
-      return;
-    }
-    if (!TextUtils.equals(paramString1, this.a.jdField_b_of_type_JavaLangString))
-    {
-      QLog.d("PublicAcntSearchFragment", 2, "handleTabSearchResult. masks=" + paramArrayOfLong[0] + " reqKeyword=" + paramString1 + " keyword=" + this.a.jdField_b_of_type_JavaLangString + " isEnd1=" + paramBoolean2);
-      return;
-    }
-    if (paramList1 == null)
+    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putLong("key_weather_res_version", paramLong).commit();
+  }
+  
+  public void a(ahyf paramahyf)
+  {
+    this.jdField_a_of_type_Ahyf = paramahyf;
+  }
+  
+  public void a(AppActivity paramAppActivity)
+  {
+    if ((ajlo.c()) && (!this.jdField_a_of_type_Boolean))
     {
       if (QLog.isColorLevel()) {
-        QLog.i("PublicAcntSearchFragment", 2, "handleTabSearchResult result is null");
+        QLog.d("weatherManager", 2, "updateWeatherInfo  from  LocaleManager.isLocaleUpdatedByUser()");
       }
-      a(paramString1, paramBoolean1, paramString2, -1, "result = null", paramArrayOfLong);
+      this.jdField_a_of_type_Boolean = true;
+      ahyg.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramAppActivity);
+    }
+    Long localLong;
+    do
+    {
       return;
-    }
-    paramString1 = paramList1.iterator();
-    int i = 0;
-    long l2 = -1L;
-    long l1 = -1L;
-    label307:
-    int j;
-    if (paramString1.hasNext())
+      localLong = Long.valueOf(BaseApplicationImpl.getContext().getSharedPreferences("public_account_weather", 0).getLong("drawer_last_success_time", 0L));
+      if (QLog.isColorLevel()) {
+        QLog.d("weatherManager", 2, "updateWeatherInfo successTime:" + localLong + ",currentTime:" + System.currentTimeMillis());
+      }
+    } while (Math.abs(System.currentTimeMillis() - localLong.longValue()) <= 3600000L);
+    ahyg.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramAppActivity);
+  }
+  
+  public boolean a(long paramLong, String paramString)
+  {
+    boolean bool = true;
+    try
     {
-      paramString2 = (ISearchResultGroupModel)paramString1.next();
-      if (paramString2.a() == null) {
-        break label1056;
-      }
-      long l3 = l1;
-      if ((paramString2 instanceof GroupBaseNetSearchModel))
+      bace.a(jdField_a_of_type_JavaLangString, false);
+      bace.a(paramString, jdField_a_of_type_JavaLangString, false);
+      if (bool)
       {
-        paramString3 = (GroupBaseNetSearchModel)paramString2;
-        l3 = l1;
-        if (l1 == -1L) {
-          l3 = paramString3.a;
-        }
-        l2 = paramString3.a;
+        a(paramLong);
+        return bool;
       }
-      j = paramString2.a().size();
-      l1 = l3;
-      i += j;
     }
-    label1049:
-    label1056:
-    for (;;)
+    catch (Exception paramString)
     {
-      break label307;
-      if (!paramBoolean1) {
-        SearchUtils.a("sub_result", "load_result", new String[] { this.a.jdField_b_of_type_JavaLangString, SearchUtils.a(paramArrayOfLong), "", SearchUtils.a("dynamic_tab_search.1", paramArrayOfLong) });
-      }
-      if (i == 0)
+      do
       {
-        SearchUtils.a("sub_result", "no_result", new String[] { this.a.jdField_b_of_type_JavaLangString, SearchUtils.a(paramArrayOfLong), "", SearchUtils.a("dynamic_tab_search.1", paramArrayOfLong) });
-        this.a.f = paramBoolean2;
-        this.a.e = false;
-        this.a.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-        if ((this.a.jdField_b_of_type_JavaUtilList == null) || (this.a.jdField_b_of_type_JavaUtilList.isEmpty())) {
-          break label949;
-        }
-        paramString1 = SearchUtil.a(paramList1, paramBoolean1);
-        if ((paramBoolean1) || (l1 != PublicAcntSearchFragment.a(this.a)) || (paramString1 == null) || (paramString1.size() <= 0) || (paramBoolean3)) {
-          break label865;
-        }
-        paramString2 = (IModel)this.a.jdField_b_of_type_JavaUtilList.get(this.a.jdField_b_of_type_JavaUtilList.size() - 1);
-        if ((!(this.a.jdField_b_of_type_JavaUtilList.get(this.a.jdField_b_of_type_JavaUtilList.size() - 1) instanceof PublicAccountSearchResultModel)) || (!(paramString1.get(0) instanceof GroupSearchModeTitle))) {
-          paramString1.remove(0);
-        }
-        j = 0;
-        i = 0;
-        label685:
-        if (i >= paramString1.size()) {
-          break label1049;
-        }
-        if (!((IModel)paramString1.get(i) instanceof GroupSearchModeTitle)) {
-          break label852;
-        }
-      }
-      for (;;)
-      {
-        if ((paramString2 instanceof ISearchResultModel))
-        {
-          paramString2 = (ISearchResultModel)paramString2;
-          j = paramString2.c();
-          SearchViewUtils.a(paramString2, j + i, j - 1);
-        }
         for (;;)
         {
-          int k = 0;
-          for (;;)
-          {
-            if (k < i)
-            {
-              paramString2 = (IModel)paramString1.get(k);
-              if ((paramString2 instanceof ISearchResultModel)) {
-                SearchViewUtils.a((ISearchResultModel)paramString2, j + i, j + k);
-              }
-              k += 1;
-              continue;
-              if (!paramBoolean1) {
-                break;
-              }
-              SearchUtils.a("sub_result", "exp_result", new String[] { this.a.jdField_b_of_type_JavaLangString, SearchUtils.a(paramArrayOfLong), "", SearchUtils.a("dynamic_tab_search.1", paramArrayOfLong) });
-              break;
-              label852:
-              j = i;
-              i += 1;
-              break label685;
-            }
+          paramString.printStackTrace();
+          if (QLog.isColorLevel()) {
+            QLog.e("weatherManager", 2, "pareseRulesFromZip : delete and uncompress Exception=>", paramString);
           }
-          label865:
-          this.a.jdField_b_of_type_JavaUtilList.addAll(paramString1);
-          for (;;)
-          {
-            i = 0;
-            while (i < this.a.jdField_b_of_type_JavaUtilList.size())
-            {
-              if ((this.a.jdField_b_of_type_JavaUtilList.get(i) instanceof NetSearchTemplateBaseItem)) {
-                ((NetSearchTemplateBaseItem)this.a.jdField_b_of_type_JavaUtilList.get(i)).c = 0;
-              }
-              i += 1;
-            }
-            label949:
-            paramString1 = SearchUtil.a(paramList1, paramBoolean1);
-            this.a.jdField_b_of_type_JavaUtilList = paramString1;
-          }
-          this.a.jdField_a_of_type_ComTencentMobileqqSearchAdapterBaseMvpAdapter.a(this.a.jdField_b_of_type_JavaUtilList);
-          PublicAcntSearchFragment.a(this.a, l2);
-          if ((this.a.jdField_b_of_type_JavaUtilList.size() != 0) || (TextUtils.isEmpty(this.a.jdField_b_of_type_JavaLangString)) || (!paramBoolean2)) {
-            break;
-          }
-          ThreadManager.getUIHandler().post(new ahyg(this));
-          return;
-          j = 0;
+          bool = false;
         }
-        i = j;
+      } while (!QLog.isColorLevel());
+      QLog.d("weatherManager", 2, "pareseRulesFromZip : delete and uncompressZip failure, parse from Res");
+    }
+    return bool;
+  }
+  
+  public void onDestroy()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.unRegistObserver(this);
+  }
+  
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  {
+    if (paramBundle == null) {}
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("weatherManager", 2, new Object[] { "WeatherManager onReceive type:" + paramInt, ",bundle:", paramBundle });
+      }
+    } while ((paramInt != 6666) && (paramInt != 8888));
+    int j;
+    SharedPreferences.Editor localEditor;
+    if (paramBoolean)
+    {
+      String str1 = paramBundle.getString("KEY_TEMPER");
+      String str2 = paramBundle.getString("area_info");
+      int i = paramBundle.getInt("adcode");
+      String str3 = paramBundle.getString("o_wea_code");
+      j = paramBundle.getInt("show_flag");
+      if (QLog.isColorLevel()) {
+        QLog.d("WeatherSetting", 2, "onReceive show_flag:" + j + ",temp:" + str1 + ",area_name" + str2 + "adcode" + i + ",o_wea_code" + str3);
+      }
+      localEditor = BaseApplicationImpl.getContext().getSharedPreferences("public_account_weather", 0).edit();
+      if (j != 1) {
+        break label421;
+      }
+      if ((str1 != null) && (!str1.equals("")) && (!TextUtils.isEmpty(str2)))
+      {
+        Long localLong = Long.valueOf(System.currentTimeMillis());
+        localEditor.putLong("pa_send_time", localLong.longValue());
+        localEditor.putString("cur_temp", str1);
+        localEditor.putString("cur_code", str3);
+        localEditor.putString("cur_city", str2);
+        localEditor.putInt("cur_adcode", i);
+        localEditor.putBoolean("show_flag", true);
+        localEditor.putLong("drawer_last_success_time", localLong.longValue());
+        localEditor.putString("drawer_cur_city", str2);
+        localEditor.putString("drawer_cur_temp", str1);
+        localEditor.putInt("drawer_cur_adcode", i);
+        localEditor.putString("drawer_cur_code", str3);
+        localEditor.putBoolean("drawer_show_flag", true);
+      }
+    }
+    for (;;)
+    {
+      localEditor.commit();
+      if (this.jdField_a_of_type_Ahyf == null) {
+        break;
+      }
+      this.jdField_a_of_type_Ahyf.a(paramInt, paramBoolean, paramBundle);
+      return;
+      label421:
+      if (j == 0) {
+        localEditor.putBoolean("show_flag", false);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ahye
  * JD-Core Version:    0.7.0.1
  */

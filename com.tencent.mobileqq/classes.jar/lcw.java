@@ -1,25 +1,29 @@
-import com.tencent.biz.pubaccount.readinjoy.KanDianViewController;
-import com.tencent.biz.pubaccount.readinjoy.skin.CommonSkinRes;
-import java.io.File;
+import com.tencent.av.gaudio.AVNotifyCenter;
+import java.util.Vector;
 
 public class lcw
-  implements Runnable
 {
-  public lcw(KanDianViewController paramKanDianViewController) {}
+  public long a;
+  public Vector<lcz> a;
   
-  public void run()
+  public lcw(AVNotifyCenter paramAVNotifyCenter)
   {
-    String str = CommonSkinRes.e();
-    if ((str != null) && (new File(str).exists()))
-    {
-      KanDianViewController.a(this.a).removeMessages(2);
-      KanDianViewController.a(this.a).sendEmptyMessage(3);
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_a_of_type_JavaUtilVector = null;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder().append("roomNum[").append(this.jdField_a_of_type_Long).append("], list[");
+    if (this.jdField_a_of_type_JavaUtilVector == null) {}
+    for (Object localObject = "null";; localObject = Integer.valueOf(this.jdField_a_of_type_JavaUtilVector.size())) {
+      return localObject + "]";
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     lcw
  * JD-Core Version:    0.7.0.1
  */

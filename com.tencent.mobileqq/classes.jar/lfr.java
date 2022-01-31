@@ -1,23 +1,30 @@
-import com.tencent.biz.common.offline.AsyncBack;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import java.lang.ref.WeakReference;
 
 class lfr
-  implements AsyncBack
+  extends Handler
 {
-  lfr(lfq paramlfq) {}
+  WeakReference<lfq> a;
   
-  public void loaded(String paramString, int paramInt)
+  lfr(Looper paramLooper, lfq paramlfq)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyNewFeedsActivity", 2, "load 2378 html web resource finish");
-    }
+    super(paramLooper);
+    this.a = new WeakReference(paramlfq);
   }
   
-  public void progress(int paramInt) {}
+  public void handleMessage(Message paramMessage)
+  {
+    lfq locallfq = (lfq)this.a.get();
+    if (locallfq != null) {
+      locallfq.a(paramMessage);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lfr
  * JD-Core Version:    0.7.0.1
  */

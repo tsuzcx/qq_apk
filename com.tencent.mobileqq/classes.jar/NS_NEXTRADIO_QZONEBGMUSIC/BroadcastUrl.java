@@ -9,8 +9,8 @@ import java.util.Map;
 public final class BroadcastUrl
   extends JceStruct
 {
-  static Map cache_mapBroadcastUrl = new HashMap();
-  public Map mapBroadcastUrl;
+  static Map<Byte, String> cache_mapBroadcastUrl = new HashMap();
+  public Map<Byte, String> mapBroadcastUrl;
   
   static
   {
@@ -19,7 +19,7 @@ public final class BroadcastUrl
   
   public BroadcastUrl() {}
   
-  public BroadcastUrl(Map paramMap)
+  public BroadcastUrl(Map<Byte, String> paramMap)
   {
     this.mapBroadcastUrl = paramMap;
   }

@@ -1,21 +1,26 @@
-import com.tencent.mobileqq.lyric.common.TimerTaskManager.TimerTaskRunnable;
-import com.tencent.mobileqq.lyric.widget.LyricViewController;
-
-public class aelh
-  extends TimerTaskManager.TimerTaskRunnable
+public abstract interface aelh
 {
-  public aelh(LyricViewController paramLyricViewController) {}
+  public abstract int a();
   
-  public void a()
-  {
-    if (!a()) {
-      LyricViewController.a(this.a);
-    }
-  }
+  public abstract int a(float paramFloat1, float paramFloat2);
+  
+  public abstract void a(float paramFloat1, float paramFloat2);
+  
+  public abstract void a(float paramFloat1, float paramFloat2, int paramInt1, int paramInt2);
+  
+  public abstract void a(int paramInt1, int paramInt2);
+  
+  public abstract boolean a(float paramFloat1, float paramFloat2);
+  
+  public abstract void c();
+  
+  public abstract void d();
+  
+  public abstract void e();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aelh
  * JD-Core Version:    0.7.0.1
  */

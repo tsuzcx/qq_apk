@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class qqstory_lbs$LbsData
-  extends MessageMicro
+  extends MessageMicro<LbsData>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 9, 17, 25, 37, 42, 48, 56, 66, 74, 82, 90 }, new String[] { "lat", "lng", "alt", "accuracy", "bussinessTag", "plat_type", "oper_time", "nation", "province", "city", "district" }, new Object[] { Double.valueOf(0.0D), Double.valueOf(0.0D), Double.valueOf(0.0D), Float.valueOf(0.0F), "", Integer.valueOf(0), Integer.valueOf(0), "", "", "", "" }, LbsData.class);
   public final PBFloatField accuracy = PBField.initFloat(0.0F);
@@ -26,7 +26,7 @@ public final class qqstory_lbs$LbsData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_lbs.LbsData
  * JD-Core Version:    0.7.0.1
  */

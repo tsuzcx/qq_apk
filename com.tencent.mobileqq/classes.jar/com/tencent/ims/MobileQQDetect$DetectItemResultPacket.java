@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class MobileQQDetect$DetectItemResultPacket
-  extends MessageMicro
+  extends MessageMicro<DetectItemResultPacket>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18 }, new String[] { "u32_type", "str_result" }, new Object[] { Integer.valueOf(0), "" }, DetectItemResultPacket.class);
   public final PBStringField str_result = PBField.initString("");

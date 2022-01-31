@@ -1,26 +1,16 @@
-import com.tencent.mobileqq.app.PhoneUnityBannerData;
-import com.tencent.mobileqq.app.PhoneUnityManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.SecSvcHandler;
-import com.tencent.qphone.base.util.QLog;
-
 public class zqi
-  implements Runnable
+  extends zqf
 {
-  public zqi(PhoneUnityManager paramPhoneUnityManager) {}
-  
-  public void run()
+  public void a()
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.i("MobileUnityManager", 4, "load phone local data");
-    }
-    PhoneUnityBannerData localPhoneUnityBannerData = this.a.a();
-    ((SecSvcHandler)this.a.a.a(34)).a(9, true, localPhoneUnityBannerData);
+    a(1, 9223372036854775807L);
+    a(4, 9223372036854775807L);
+    a(2, 9223372036854775807L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     zqi
  * JD-Core Version:    0.7.0.1
  */

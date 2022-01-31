@@ -15,12 +15,11 @@ public abstract class AbsSessionInputBuffer
   protected int bufferlen;
   protected int bufferpos;
   protected String charset = "US-ASCII";
-  protected ByteArrayBuffer linebuffer;
+  protected ByteArrayBuffer linebuffer = null;
   protected int maxLineLen = -1;
   protected HttpTransportMetricsImpl metrics;
   
   private int lineFromLineBuffer(CharArrayBuffer paramCharArrayBuffer)
-    throws IOException
   {
     int j = this.linebuffer.length();
     if (j > 0)
@@ -46,7 +45,6 @@ public abstract class AbsSessionInputBuffer
   }
   
   private int lineFromReadBuffer(CharArrayBuffer paramCharArrayBuffer, int paramInt)
-    throws IOException
   {
     int j = this.bufferpos;
     this.bufferpos = (paramInt + 1);
@@ -81,8 +79,7 @@ public abstract class AbsSessionInputBuffer
     return -1;
   }
   
-  protected abstract int fillBuffer()
-    throws IOException;
+  protected abstract int fillBuffer();
   
   public byte[] getBuffer()
   {
@@ -110,7 +107,6 @@ public abstract class AbsSessionInputBuffer
   }
   
   public int read()
-    throws IOException
   {
     while (!hasBufferedData()) {
       if (fillBuffer() == -1) {
@@ -124,7 +120,6 @@ public abstract class AbsSessionInputBuffer
   }
   
   public int read(byte[] paramArrayOfByte)
-    throws IOException
   {
     if (paramArrayOfByte == null) {
       return 0;
@@ -133,7 +128,6 @@ public abstract class AbsSessionInputBuffer
   }
   
   public int read(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
-    throws IOException
   {
     if (paramArrayOfByte == null) {
       return 0;
@@ -155,7 +149,6 @@ public abstract class AbsSessionInputBuffer
   }
   
   public int readLine(CharArrayBuffer paramCharArrayBuffer)
-    throws IOException
   {
     if (paramCharArrayBuffer == null) {
       throw new IllegalArgumentException("Char array buffer may not be null");
@@ -215,7 +208,6 @@ public abstract class AbsSessionInputBuffer
   }
   
   public String readLine()
-    throws IOException
   {
     CharArrayBuffer localCharArrayBuffer = new CharArrayBuffer(64);
     if (readLine(localCharArrayBuffer) != -1) {

@@ -1,40 +1,19 @@
-import com.tencent.mobileqq.filemanager.fileviewer.model.DatalineFileModel;
-import com.tencent.mobileqq.filemanager.fileviewer.model.FileBrowserModelBase.OnTransEventListener;
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.ArrayList;
 
 class adky
-  implements FMDialogUtil.FMDialogInterface
+  implements axvr
 {
-  adky(adkx paramadkx) {}
+  adky(adkt paramadkt) {}
   
-  public void a()
+  public void a(ArrayList<MessageRecord> paramArrayList)
   {
-    int i = this.a.a.g();
-    if (this.a.a.f() == 6000) {
-      if (i == 0) {
-        DatalineFileModel.a(this.a.a);
-      }
-    }
-    for (;;)
-    {
-      if (this.a.a.a != null) {
-        this.a.a.a.d();
-      }
-      return;
-      DatalineFileModel.c(this.a.a);
-      continue;
-      if (QLog.isColorLevel()) {
-        QLog.i("DatalineFileModel<FileAssistant>", 2, "DatalineFileModel doStartDownload : error, this file is not from dataline");
-      }
-    }
+    this.a.b();
   }
-  
-  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     adky
  * JD-Core Version:    0.7.0.1
  */

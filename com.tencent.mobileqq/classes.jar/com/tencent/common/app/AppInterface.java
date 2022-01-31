@@ -1,21 +1,24 @@
 package com.tencent.common.app;
 
+import ajfe;
+import ajlo;
+import alzw;
+import amfs;
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningAppProcessInfo;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.Looper;
-import com.tencent.mobileqq.app.BusinessObserver;
+import atmq;
+import atox;
+import axos;
+import axrr;
+import bakx;
 import com.tencent.mobileqq.highway.HwEngine;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
-import com.tencent.mobileqq.pic.BaseStrategy;
 import com.tencent.mobileqq.pluginsdk.PluginRuntime;
-import com.tencent.mobileqq.transfile.BaseTransFileController;
-import com.tencent.mobileqq.transfile.INetEngine;
 import com.tencent.mobileqq.transfile.ProtoReqManager;
 import com.tencent.mobileqq.troop.filemanager.TroopFileProtoReqMgr;
 import com.tencent.mobileqq.utils.httputils.HttpCommunicator;
-import com.tencent.mobileqq.utils.httputils.IHttpCommunicatorFlowCount;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -28,12 +31,12 @@ import mqq.os.MqqHandler;
 
 public abstract class AppInterface
   extends AppRuntime
-  implements IHttpCommunicatorFlowCount
+  implements bakx
 {
   public BaseApplicationImpl app;
   protected HttpCommunicator comunicator;
   private MqqHandler defaultHanlder = new MqqHandler(Looper.getMainLooper());
-  protected final ConcurrentHashMap handlerMap = new ConcurrentHashMap();
+  protected final ConcurrentHashMap<Class, MqqHandler> handlerMap = new ConcurrentHashMap();
   public HwEngine mHwEngine;
   private ProtoReqManager mProtoManager;
   private TroopFileProtoReqMgr mTroopFileProtoReqMgr;
@@ -45,7 +48,7 @@ public abstract class AppInterface
     this.procName = paramString;
   }
   
-  private static void doFileIncrease(boolean paramBoolean, int paramInt1, int paramInt2, ArrayList paramArrayList)
+  private static void doFileIncrease(boolean paramBoolean, int paramInt1, int paramInt2, ArrayList<String> paramArrayList)
   {
     if (paramInt1 == 1)
     {
@@ -55,7 +58,7 @@ public abstract class AppInterface
     paramArrayList.add("param_XGFileFlow");
   }
   
-  private static void doPicIncrease(boolean paramBoolean, int paramInt1, int paramInt2, ArrayList paramArrayList)
+  private static void doPicIncrease(boolean paramBoolean, int paramInt1, int paramInt2, ArrayList<String> paramArrayList)
   {
     if (paramInt1 == 1)
     {
@@ -127,7 +130,7 @@ public abstract class AppInterface
     paramArrayList.add("param_XGNearbyPicDownloadFlow");
   }
   
-  private static void doPttIncrease(boolean paramBoolean, int paramInt1, int paramInt2, ArrayList paramArrayList)
+  private static void doPttIncrease(boolean paramBoolean, int paramInt1, int paramInt2, ArrayList<String> paramArrayList)
   {
     if (paramInt1 == 1)
     {
@@ -197,14 +200,33 @@ public abstract class AppInterface
     }
   }
   
+  public static boolean isAppOnForeground(Context paramContext)
+  {
+    Object localObject = (ActivityManager)paramContext.getApplicationContext().getSystemService("activity");
+    paramContext = paramContext.getApplicationContext().getPackageName();
+    localObject = ((ActivityManager)localObject).getRunningAppProcesses();
+    if (localObject == null) {
+      return false;
+    }
+    localObject = ((List)localObject).iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo = (ActivityManager.RunningAppProcessInfo)((Iterator)localObject).next();
+      if ((localRunningAppProcessInfo.processName.equals(paramContext)) && (localRunningAppProcessInfo.importance == 100)) {
+        return true;
+      }
+    }
+    return false;
+  }
+  
   public static void sendAppDataIncerment(PluginRuntime paramPluginRuntime, String paramString, boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, long paramLong)
   {
     paramPluginRuntime.sendAppDataIncerment(paramString, getAppDataIncermentTags(paramString, paramBoolean, paramInt1, paramInt2, paramInt3, paramLong), paramLong);
   }
   
-  public void addObserver(BusinessObserver paramBusinessObserver) {}
+  public void addObserver(ajfe paramajfe) {}
   
-  public void addObserver(BusinessObserver paramBusinessObserver, boolean paramBoolean) {}
+  public void addObserver(ajfe paramajfe, boolean paramBoolean) {}
   
   public void countFlow(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, long paramLong)
   {
@@ -220,7 +242,7 @@ public abstract class AppInterface
     return null;
   }
   
-  public List getBusinessObserver(int paramInt)
+  public List<ajfe> getBusinessObserver(int paramInt)
   {
     return null;
   }
@@ -237,12 +259,12 @@ public abstract class AppInterface
     return null;
   }
   
-  public EntityManagerFactory getEntityManagerFactory()
+  public atmq getEntityManagerFactory()
   {
     return getEntityManagerFactory(getAccount());
   }
   
-  public abstract EntityManagerFactory getEntityManagerFactory(String paramString);
+  public abstract atmq getEntityManagerFactory(String paramString);
   
   public MqqHandler getHandler(Class paramClass)
   {
@@ -267,13 +289,15 @@ public abstract class AppInterface
   
   public HwEngine getHwEngine()
   {
-    if (this.mHwEngine == null) {
-      this.mHwEngine = new HwEngine(getApplication(), getCurrentAccountUin(), getAppid(), this);
+    if (this.mHwEngine == null)
+    {
+      amfs localamfs = (amfs)alzw.a().a(538);
+      this.mHwEngine = new HwEngine(getApplication(), getCurrentAccountUin(), getAppid(), this, ajlo.a(), localamfs.a, localamfs.b);
     }
     return this.mHwEngine;
   }
   
-  public INetEngine getNetEngine(int paramInt)
+  public axrr getNetEngine(int paramInt)
   {
     return null;
   }
@@ -291,7 +315,7 @@ public abstract class AppInterface
     finally {}
   }
   
-  public BaseTransFileController getTransFileController()
+  public axos getTransFileController()
   {
     return null;
   }
@@ -313,25 +337,6 @@ public abstract class AppInterface
   {
     this.comunicator = new HttpCommunicator(this, 128);
     this.comunicator.a();
-  }
-  
-  public boolean isAppOnForeground(Context paramContext)
-  {
-    Object localObject = (ActivityManager)paramContext.getApplicationContext().getSystemService("activity");
-    paramContext = paramContext.getApplicationContext().getPackageName();
-    localObject = ((ActivityManager)localObject).getRunningAppProcesses();
-    if (localObject == null) {
-      return false;
-    }
-    localObject = ((List)localObject).iterator();
-    while (((Iterator)localObject).hasNext())
-    {
-      ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo = (ActivityManager.RunningAppProcessInfo)((Iterator)localObject).next();
-      if ((localRunningAppProcessInfo.processName.equals(paramContext)) && (localRunningAppProcessInfo.importance == 100)) {
-        return true;
-      }
-    }
-    return false;
   }
   
   public boolean isAppOnForeground(Context paramContext, String paramString)
@@ -368,7 +373,7 @@ public abstract class AppInterface
     this.handlerMap.remove(paramClass);
   }
   
-  public void removeObserver(BusinessObserver paramBusinessObserver) {}
+  public void removeObserver(ajfe paramajfe) {}
   
   public void reportClickEvent(String paramString1, String paramString2)
   {
@@ -397,7 +402,7 @@ public abstract class AppInterface
     }
     for (;;)
     {
-      BaseStrategy.a(paramLong, paramBoolean, bool);
+      atox.a(paramLong, paramBoolean, bool);
       return;
       label156:
       paramBoolean = false;

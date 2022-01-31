@@ -1,6 +1,5 @@
 package com.tencent.widget;
 
-import amlb;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.content.res.Resources;
@@ -21,6 +20,9 @@ import android.view.VelocityTracker;
 import android.view.ViewConfiguration;
 import android.view.ViewParent;
 import android.widget.CompoundButton;
+import beho;
+import benw;
+import beok;
 import com.tencent.mobileqq.R.styleable;
 
 public class Switch
@@ -35,7 +37,7 @@ public class Switch
   private Layout jdField_a_of_type_AndroidTextLayout;
   private TextPaint jdField_a_of_type_AndroidTextTextPaint = new TextPaint(1);
   private VelocityTracker jdField_a_of_type_AndroidViewVelocityTracker = VelocityTracker.obtain();
-  private TransformationMethod2 jdField_a_of_type_ComTencentWidgetTransformationMethod2;
+  private beok jdField_a_of_type_Beok;
   private CharSequence jdField_a_of_type_JavaLangCharSequence;
   private float jdField_b_of_type_Float;
   private int jdField_b_of_type_Int;
@@ -62,7 +64,7 @@ public class Switch
   
   public Switch(Context paramContext, AttributeSet paramAttributeSet)
   {
-    this(paramContext, paramAttributeSet, 2130772309);
+    this(paramContext, paramAttributeSet, 2130969317);
   }
   
   public Switch(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
@@ -70,15 +72,21 @@ public class Switch
     super(paramContext, paramAttributeSet, paramInt);
     Resources localResources = getResources();
     this.jdField_a_of_type_AndroidTextTextPaint.density = localResources.getDisplayMetrics().density;
-    paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.Switch, paramInt, 2131624400);
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramAttributeSet.getDrawable(0);
-    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = paramAttributeSet.getDrawable(1);
-    this.jdField_a_of_type_JavaLangCharSequence = paramAttributeSet.getText(2);
+    paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.Switch, paramInt, 2131690311);
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramAttributeSet.getDrawable(5);
+    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = paramAttributeSet.getDrawable(7);
+    this.jdField_a_of_type_JavaLangCharSequence = paramAttributeSet.getText(4);
+    if (this.jdField_a_of_type_JavaLangCharSequence == null) {
+      this.jdField_a_of_type_JavaLangCharSequence = "";
+    }
     this.jdField_b_of_type_JavaLangCharSequence = paramAttributeSet.getText(3);
-    this.jdField_a_of_type_Int = paramAttributeSet.getDimensionPixelSize(4, 0);
-    this.jdField_b_of_type_Int = paramAttributeSet.getDimensionPixelSize(6, 0);
-    this.jdField_c_of_type_Int = paramAttributeSet.getDimensionPixelSize(7, 0);
-    paramInt = paramAttributeSet.getResourceId(5, 0);
+    if (this.jdField_b_of_type_JavaLangCharSequence == null) {
+      this.jdField_b_of_type_JavaLangCharSequence = "";
+    }
+    this.jdField_a_of_type_Int = paramAttributeSet.getDimensionPixelSize(6, 0);
+    this.jdField_b_of_type_Int = paramAttributeSet.getDimensionPixelSize(0, 0);
+    this.jdField_c_of_type_Int = paramAttributeSet.getDimensionPixelSize(1, 0);
+    paramInt = paramAttributeSet.getResourceId(2, 0);
     if (paramInt != 0) {
       setSwitchTextAppearance(paramContext, paramInt);
     }
@@ -88,7 +96,7 @@ public class Switch
     this.f = paramContext.getScaledMinimumFlingVelocity();
     refreshDrawableState();
     setChecked(isChecked());
-    setOnClickListener(new amlb(this));
+    setOnClickListener(new benw(this));
   }
   
   private int a()
@@ -102,8 +110,8 @@ public class Switch
   
   private Layout a(CharSequence paramCharSequence)
   {
-    if (this.jdField_a_of_type_ComTencentWidgetTransformationMethod2 != null) {
-      paramCharSequence = this.jdField_a_of_type_ComTencentWidgetTransformationMethod2.getTransformation(paramCharSequence, this);
+    if (this.jdField_a_of_type_Beok != null) {
+      paramCharSequence = this.jdField_a_of_type_Beok.getTransformation(paramCharSequence, this);
     }
     for (;;)
     {
@@ -410,22 +418,22 @@ public class Switch
   public void setSwitchTextAppearance(Context paramContext, int paramInt)
   {
     paramContext = paramContext.obtainStyledAttributes(paramInt, R.styleable.TextAppearanceSwitch);
-    ColorStateList localColorStateList = paramContext.getColorStateList(0);
+    ColorStateList localColorStateList = paramContext.getColorStateList(2);
     if (localColorStateList != null)
     {
       this.jdField_a_of_type_AndroidContentResColorStateList = localColorStateList;
-      paramInt = paramContext.getDimensionPixelSize(1, 0);
+      paramInt = paramContext.getDimensionPixelSize(6, 0);
       if ((paramInt != 0) && (paramInt != this.jdField_a_of_type_AndroidTextTextPaint.getTextSize()))
       {
         this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(paramInt);
         requestLayout();
       }
-      a(paramContext.getInt(3, -1), paramContext.getInt(2, -1));
-      if (!paramContext.getBoolean(8, false)) {
-        break label128;
+      a(paramContext.getInt(8, -1), paramContext.getInt(7, -1));
+      if (!paramContext.getBoolean(1, false)) {
+        break label130;
       }
-      this.jdField_a_of_type_ComTencentWidgetTransformationMethod2 = new AllCapsTransformationMethod(getContext());
-      this.jdField_a_of_type_ComTencentWidgetTransformationMethod2.a(true);
+      this.jdField_a_of_type_Beok = new beho(getContext());
+      this.jdField_a_of_type_Beok.a(true);
     }
     for (;;)
     {
@@ -433,8 +441,8 @@ public class Switch
       return;
       this.jdField_a_of_type_AndroidContentResColorStateList = getTextColors();
       break;
-      label128:
-      this.jdField_a_of_type_ComTencentWidgetTransformationMethod2 = null;
+      label130:
+      this.jdField_a_of_type_Beok = null;
     }
   }
   

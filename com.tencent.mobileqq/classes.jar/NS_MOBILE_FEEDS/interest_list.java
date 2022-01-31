@@ -8,11 +8,11 @@ import java.util.ArrayList;
 public final class interest_list
   extends JceStruct
 {
-  static ArrayList cache_uinlist = new ArrayList();
-  static ArrayList cache_users;
+  static ArrayList<Long> cache_uinlist = new ArrayList();
+  static ArrayList<s_user> cache_users;
   public int allcount;
-  public ArrayList uinlist;
-  public ArrayList users;
+  public ArrayList<Long> uinlist;
+  public ArrayList<s_user> users;
   
   static
   {
@@ -24,11 +24,11 @@ public final class interest_list
   
   public interest_list() {}
   
-  public interest_list(ArrayList paramArrayList1, int paramInt, ArrayList paramArrayList2)
+  public interest_list(ArrayList<Long> paramArrayList, int paramInt, ArrayList<s_user> paramArrayList1)
   {
-    this.uinlist = paramArrayList1;
+    this.uinlist = paramArrayList;
     this.allcount = paramInt;
-    this.users = paramArrayList2;
+    this.users = paramArrayList1;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -51,7 +51,7 @@ public final class interest_list
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     NS_MOBILE_FEEDS.interest_list
  * JD-Core Version:    0.7.0.1
  */

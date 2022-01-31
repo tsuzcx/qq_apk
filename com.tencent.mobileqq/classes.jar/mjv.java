@@ -1,18 +1,10 @@
-import com.tencent.biz.pubaccount.readinjoy.video.VideoVolumeControl;
-
-class mjv
-  implements Runnable
+public abstract interface mjv
 {
-  mjv(mju parammju) {}
-  
-  public void run()
-  {
-    VideoVolumeControl.d(this.a.a, false);
-  }
+  public abstract void a(int paramInt, String paramString1, String paramString2, String paramString3);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     mjv
  * JD-Core Version:    0.7.0.1
  */

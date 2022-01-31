@@ -1,33 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.shareGroup.infocard.view.ShareGroupsListAdapter;
-import com.tencent.biz.qqstory.shareGroup.infocard.view.ShareGroupsListAdapter.ChangeVideoSortEvent;
-import com.tencent.biz.qqstory.shareGroup.infocard.view.ShareGroupsListAdapter.YearCollectionViewHolder;
-import com.tribe.async.dispatch.Dispatcher;
-import com.tribe.async.dispatch.Dispatchers;
-
-public class nxf
-  implements View.OnClickListener
+class nxf
+  extends nyf
 {
-  public nxf(ShareGroupsListAdapter.YearCollectionViewHolder paramYearCollectionViewHolder) {}
-  
-  public void onClick(View paramView)
+  nxf(nxd paramnxd)
   {
-    paramView = new ShareGroupsListAdapter.ChangeVideoSortEvent();
-    if (this.a.a.a) {
-      this.a.a.a = false;
-    }
-    for (paramView.a = 0;; paramView.a = 1)
-    {
-      Dispatchers.get().dispatch(paramView);
-      return;
-      this.a.a.a = true;
-    }
+    super(paramnxd, null);
+  }
+  
+  void a(nyi paramnyi)
+  {
+    paramnyi.onCommentStateError(1001);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     nxf
  * JD-Core Version:    0.7.0.1
  */

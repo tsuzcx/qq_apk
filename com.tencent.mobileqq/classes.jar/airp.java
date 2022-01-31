@@ -1,28 +1,19 @@
-import com.tencent.biz.widgets.ElasticHorScrView;
-import com.tencent.mobileqq.teamwork.TeamWorkShareActionSheetBuilder;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class airp
-  implements Runnable
+class airp
+  implements DialogInterface.OnClickListener
 {
-  public airp(TeamWorkShareActionSheetBuilder paramTeamWorkShareActionSheetBuilder) {}
+  airp(airm paramairm) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.a.getWidth() < TeamWorkShareActionSheetBuilder.a(this.a)) {
-      this.a.a.setMove(true);
-    }
-    while (this.a.b.getWidth() < TeamWorkShareActionSheetBuilder.b(this.a))
-    {
-      this.a.b.setMove(true);
-      return;
-      this.a.a.setMove(false);
-    }
-    this.a.b.setMove(false);
+    airm.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     airp
  * JD-Core Version:    0.7.0.1
  */

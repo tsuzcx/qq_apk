@@ -1,27 +1,23 @@
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.gdtad.views.canvas.GdtCanvasData;
-import com.tencent.gdtad.views.canvas.components.form.GdtCanvasFormComponentData;
-import com.tencent.gdtad.views.canvas.components.form.GdtCanvasFormError;
-import java.lang.ref.WeakReference;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyFastWebBottomSocialView;
 
-final class qpz
-  implements Runnable
+public class qpz
+  extends ohe
 {
-  qpz(GdtCanvasData paramGdtCanvasData, GdtCanvasFormComponentData paramGdtCanvasFormComponentData, WeakReference paramWeakReference) {}
+  public qpz(ReadInJoyFastWebBottomSocialView paramReadInJoyFastWebBottomSocialView) {}
   
-  public void run()
+  public void a(boolean paramBoolean, int paramInt, String paramString)
   {
-    GdtCanvasFormError localGdtCanvasFormError = qpy.a(this.jdField_a_of_type_ComTencentGdtadViewsCanvasGdtCanvasData, this.jdField_a_of_type_ComTencentGdtadViewsCanvasComponentsFormGdtCanvasFormComponentData);
-    if ((this.jdField_a_of_type_JavaLangRefWeakReference == null) || (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null)) {
-      return;
-    }
-    new Handler(Looper.getMainLooper()).post(new qqa(this, localGdtCanvasFormError));
+    ReadInJoyFastWebBottomSocialView.a(this.a, paramBoolean, paramInt, paramString);
+  }
+  
+  public void a(boolean paramBoolean, long paramLong, int paramInt, String paramString)
+  {
+    ReadInJoyFastWebBottomSocialView.a(this.a, paramBoolean, paramLong, paramInt, paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     qpz
  * JD-Core Version:    0.7.0.1
  */

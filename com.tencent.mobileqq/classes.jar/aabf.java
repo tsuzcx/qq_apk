@@ -1,38 +1,43 @@
-import com.tencent.mobileqq.app.msgnotify.MsgNotifyPushDialog;
-import com.tencent.mobileqq.vip.DownloadListener;
-import com.tencent.mobileqq.vip.DownloadTask;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import QQService.SvcDevLoginInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.AuthDevActivity;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import java.util.ArrayList;
+import java.util.Arrays;
 
-public final class aabf
-  extends DownloadListener
+public class aabf
+  implements View.OnClickListener
 {
-  public aabf(String paramString) {}
+  public aabf(AuthDevActivity paramAuthDevActivity, RelativeLayout paramRelativeLayout, int paramInt) {}
   
-  public void onCancel(DownloadTask paramDownloadTask)
+  public void onClick(View paramView)
   {
-    MsgNotifyPushDialog.jdField_a_of_type_ComTencentMobileqqVipDownloadTask = null;
-    QLog.d(MsgNotifyPushDialog.jdField_a_of_type_JavaLangString, 1, "downloadZipFile cancel");
-  }
-  
-  public void onDone(DownloadTask paramDownloadTask)
-  {
-    MsgNotifyPushDialog.jdField_a_of_type_ComTencentMobileqqVipDownloadTask = null;
-    if (paramDownloadTask.a() == 3)
+    boolean bool2 = true;
+    paramView = (SvcDevLoginInfo)this.jdField_a_of_type_AndroidWidgetRelativeLayout.getTag();
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(paramView.stDeviceItemDes);
+    if (Arrays.equals(NetConnInfoCenter.GUID, paramView.vecGuid)) {}
+    for (boolean bool1 = true;; bool1 = false)
     {
-      QLog.d(MsgNotifyPushDialog.jdField_a_of_type_JavaLangString, 1, "download finished " + MsgNotifyPushDialog.f);
-      paramDownloadTask = new File(this.jdField_a_of_type_JavaLangString);
-      if ((paramDownloadTask.exists()) && (MsgNotifyPushDialog.a(paramDownloadTask))) {
-        QLog.d(MsgNotifyPushDialog.jdField_a_of_type_JavaLangString, 1, "downloadZipFile suc and zip succ");
+      AuthDevActivity localAuthDevActivity = this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity;
+      String str1 = paramView.strDeviceName;
+      String str2 = AuthDevActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity);
+      int i = this.jdField_a_of_type_Int;
+      if (paramView.iLoginPlatform == 3L) {}
+      for (;;)
+      {
+        AuthDevActivity.a(localAuthDevActivity, str1, localArrayList, str2, i, bool2, bool1, paramView.iAppId);
+        return;
+        bool2 = false;
       }
-      return;
     }
-    QLog.d(MsgNotifyPushDialog.jdField_a_of_type_JavaLangString, 1, new Object[] { "downloadZipFile failed: ", paramDownloadTask.b, " code=", Integer.valueOf(paramDownloadTask.a) });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aabf
  * JD-Core Version:    0.7.0.1
  */

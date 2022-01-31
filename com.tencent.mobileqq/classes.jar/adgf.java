@@ -1,21 +1,27 @@
-import com.tencent.mobileqq.filemanager.core.OnlineFileSessionWorker;
+import android.os.Bundle;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 
-public class adgf
-  extends adgb
+class adgf
+  implements apcz
 {
-  public adgf(OnlineFileSessionWorker paramOnlineFileSessionWorker)
-  {
-    super(paramOnlineFileSessionWorker);
-  }
+  adgf(adfw paramadfw) {}
   
-  protected String a()
+  public void onClick(View paramView)
   {
-    return "StateGotoOffFileProcess";
+    paramView = new Bundle();
+    paramView.putString(baoz.e, "QQ会员");
+    paramView.putString(baoz.f, "LTMCLUB");
+    paramView.putString(baoz.d, "1450000515");
+    paramView.putInt(baoz.b, 3);
+    paramView.putString(baoz.a, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+    paramView.putString(baoz.i, batf.a().c(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface));
+    baoz.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     adgf
  * JD-Core Version:    0.7.0.1
  */

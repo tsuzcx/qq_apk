@@ -4,7 +4,7 @@ import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.MessageMicro.FieldMap;
 
 public final class im_imagent$ImAgentPackage
-  extends MessageMicro
+  extends MessageMicro<ImAgentPackage>
 {
   public static final int HEAD_FIELD_NUMBER = 1;
   public static final int MSG_SEND_REQ_FIELD_NUMBER = 11;

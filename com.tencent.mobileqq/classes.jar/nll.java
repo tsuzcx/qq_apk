@@ -1,19 +1,13 @@
-import com.tencent.biz.qqstory.newshare.job.EncryptUrlJob;
-import com.tencent.biz.qqstory.newshare.mode.base.ShareModeBase;
-import com.tencent.biz.qqstory.newshare.model.ShareQQData;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
 
 public class nll
-  extends EncryptUrlJob
+  implements begy
 {
-  public nll(ShareModeBase paramShareModeBase, String paramString1, String paramString2, boolean paramBoolean, ShareQQData paramShareQQData)
-  {
-    super(paramString1, paramString2, paramBoolean);
-  }
+  public nll(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
   
-  public boolean b()
+  public void onDismiss()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareQQData.h = ((String)a("EncryptUrlJob_encryptedUrl"));
-    return true;
+    ReadInJoySettingActivity.b(this.a).cancel();
   }
 }
 

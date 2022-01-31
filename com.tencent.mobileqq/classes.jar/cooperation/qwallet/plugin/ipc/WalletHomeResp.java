@@ -7,7 +7,7 @@ public class WalletHomeResp
   extends BaseResp
 {
   public boolean isAppLoadFinished;
-  public ArrayList resp;
+  public ArrayList<QWalletRedTouchInfo> resp;
   public int type;
   
   public void fromBundle(Bundle paramBundle)
@@ -28,7 +28,7 @@ public class WalletHomeResp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     cooperation.qwallet.plugin.ipc.WalletHomeResp
  * JD-Core Version:    0.7.0.1
  */

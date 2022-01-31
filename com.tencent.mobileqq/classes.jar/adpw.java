@@ -1,21 +1,30 @@
-import com.dataline.core.DirectForwarder;
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.animation.ValueAnimator;
+import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
 
-class adpw
-  implements FMDialogUtil.FMDialogInterface
+public class adpw
+  implements Animator.AnimatorListener
 {
-  adpw(adpv paramadpv) {}
+  public adpw(SixCombolEffectView paramSixCombolEffectView, adpz paramadpz) {}
   
-  public void a()
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    DirectForwarder.b(this.a.a, 0);
+    if (!SixCombolEffectView.a) {
+      return;
+    }
+    this.jdField_a_of_type_Adpz.b.start();
   }
   
-  public void b() {}
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     adpw
  * JD-Core Version:    0.7.0.1
  */

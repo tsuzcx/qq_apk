@@ -1,50 +1,40 @@
-import android.os.Handler;
-import com.tencent.mobileqq.ar.ArConfigService;
-import com.tencent.mobileqq.ar.arengine.ARPreSoResourceDownload.ARResourceDownloadCallback;
-import com.tencent.mobileqq.ar.arengine.ARPreSoResourceDownload.DownloadInfo;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import java.util.ArrayList;
+import java.util.List;
 
-public class aaiy
-  implements ARPreSoResourceDownload.ARResourceDownloadCallback
+class aaiy
+  implements apca
 {
-  public aaiy(ArConfigService paramArConfigService) {}
+  aaiy(aaiw paramaaiw, FileManagerEntity paramFileManagerEntity) {}
   
-  public void a() {}
-  
-  public void a(long paramLong1, long paramLong2)
+  public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArConfig_ArConfigService", 2, String.format("onARResourceDownloadUpdateProgress curOffset=%s totalLen=%s", new Object[] { Long.valueOf(paramLong1), Long.valueOf(paramLong2) }));
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType() == 0) {
+      this.jdField_a_of_type_Aaiw.a.a.a().b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
     }
-    ArConfigService.c(this.a, (int)(100L * paramLong1 / paramLong2));
-    int i = (ArConfigService.a(this.a) + ArConfigService.b(this.a) + ArConfigService.c(this.a)) / 3;
-    if (!ArConfigService.d(this.a)) {
-      ArConfigService.a(this.a).post(new aaiz(this, i));
-    }
-  }
-  
-  public void a(boolean paramBoolean, ARPreSoResourceDownload.DownloadInfo paramDownloadInfo)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArConfig_ArConfigService", 2, String.format("onARResourceDownloadComplete result=%s", new Object[] { Boolean.valueOf(paramBoolean) }));
-    }
-    if (paramBoolean)
+    ajgm localajgm;
+    ArrayList localArrayList;
+    do
     {
-      ArConfigService.d(this.a, true);
-      if ((ArConfigService.e(this.a)) && (ArConfigService.f(this.a)) && (ArConfigService.g(this.a))) {
-        ArConfigService.a(this.a).post(new aaja(this));
-      }
-    }
-    while (ArConfigService.d(this.a)) {
       return;
-    }
-    ArConfigService.a(this.a).post(new aajb(this));
-    ArConfigService.a(this.a, true);
+      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType() != 6) {
+        break;
+      }
+      localajgm = (ajgm)this.jdField_a_of_type_Aaiw.a.a.a(8);
+      localArrayList = new ArrayList();
+      localArrayList.add(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.uniseq));
+    } while (localajgm.a(localArrayList));
+    apcb.a(2131627027);
+    return;
+    this.jdField_a_of_type_Aaiw.a.a.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
   }
+  
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aaiy
  * JD-Core Version:    0.7.0.1
  */

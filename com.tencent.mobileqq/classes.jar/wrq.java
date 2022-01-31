@@ -1,27 +1,25 @@
-import com.tencent.mobileqq.activity.contacts.adapter.ContactsTroopAdapter;
-import com.tencent.mobileqq.app.DiscussionManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.app.proxy.RecentUserProxy;
-import java.util.ArrayList;
-import mqq.os.MqqHandler;
+import android.support.annotation.NonNull;
 
 public class wrq
-  implements Runnable
 {
-  public wrq(ContactsTroopAdapter paramContactsTroopAdapter, TroopManager paramTroopManager, RecentUserProxy paramRecentUserProxy) {}
+  public int a;
+  public int b;
+  public int c;
+  public int d;
   
-  public void run()
+  public wrq() {}
+  
+  public wrq(@NonNull wrq paramwrq)
   {
-    ArrayList localArrayList1 = this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.a();
-    ArrayList localArrayList2 = ((DiscussionManager)this.jdField_a_of_type_ComTencentMobileqqActivityContactsAdapterContactsTroopAdapter.a.getManager(52)).a();
-    ThreadManager.getUIHandler().post(new wrr(this, localArrayList1, localArrayList2));
+    this.a = paramwrq.a;
+    this.b = paramwrq.b;
+    this.c = paramwrq.c;
+    this.d = paramwrq.d;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wrq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,27 @@
-import android.graphics.Bitmap;
-import android.os.Handler;
-import android.os.Looper;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.app.IphoneTitleBarActivity;
+import android.view.View;
+import com.dataline.activities.LiteActivity;
+import com.tencent.widget.ListView;
 
-public final class bq
-  implements bt
+public class bq
+  implements belq
 {
-  public bq(IphoneTitleBarActivity paramIphoneTitleBarActivity, String paramString, ViewGroup paramViewGroup) {}
+  public bq(LiteActivity paramLiteActivity) {}
   
-  public void a(Bitmap paramBitmap, boolean paramBoolean)
+  public void a(int paramInt, View paramView, ListView paramListView) {}
+  
+  public boolean a(int paramInt, View paramView, ListView paramListView)
   {
-    if ((paramBitmap != null) || (paramBoolean)) {
-      new Handler(Looper.getMainLooper()).post(new br(this, paramBoolean, paramBitmap));
-    }
+    this.a.c();
+    return true;
   }
+  
+  public void b(int paramInt, View paramView, ListView paramListView) {}
+  
+  public void c(int paramInt, View paramView, ListView paramListView) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     bq
  * JD-Core Version:    0.7.0.1
  */

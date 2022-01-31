@@ -1,43 +1,54 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.storyHome.detail.model.CommentListPageLoader;
-import com.tencent.biz.qqstory.storyHome.detail.model.CommentListPageLoader.CommentListener;
-import com.tencent.biz.qqstory.storyHome.detail.model.CommentListPageLoader.GetFeedCommentEvent;
-import com.tencent.biz.qqstory.storyHome.model.FeedCommentSync;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tribe.async.async.JobContext;
-import java.util.List;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.aladdin.config.utils.Log;
+import com.tencent.common.app.BaseApplicationImpl;
+import mqq.app.AppRuntime;
 
-class ocz
-  implements CommentListPageLoader.CommentListener
+public class ocz
 {
-  ocz(ocy paramocy, JobContext paramJobContext, FeedCommentSync paramFeedCommentSync) {}
-  
-  public void a(CommentListPageLoader.GetFeedCommentEvent paramGetFeedCommentEvent)
+  public static int a(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTribeAsyncAsyncJobContext.isJobCancelled())
+    SharedPreferences localSharedPreferences = a(obz.a());
+    if (localSharedPreferences == null)
     {
-      SLog.d("Q.qqstory.home.data.FeedCommentBackgroundSyncer", "comment is cancel, feedId:%d", new Object[] { this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedCommentSync });
+      Log.e("AladdinPrefUtils", "getConfigVersionById: return 0 for sp is null");
+      return 0;
+    }
+    return localSharedPreferences.getInt("config_version_" + paramInt, 0);
+  }
+  
+  private static SharedPreferences a(AppRuntime paramAppRuntime)
+  {
+    if (paramAppRuntime == null)
+    {
+      Log.e("AladdinPrefUtils", "getSharedPreferences: null for runtime is null");
+      return null;
+    }
+    paramAppRuntime = "readinjoy_sp_aladdin_" + paramAppRuntime.getAccount();
+    return BaseApplicationImpl.getApplication().getSharedPreferences(paramAppRuntime, 0);
+  }
+  
+  public static void a()
+  {
+    Log.d("AladdinPrefUtils", "clearAladdinCommonConfigs");
+    SharedPreferences localSharedPreferences = a(obz.a());
+    if (localSharedPreferences == null)
+    {
+      Log.d("AladdinPrefUtils", "clearAladdinCommonConfigs: sp is null");
       return;
     }
-    ocy.a(this.jdField_a_of_type_Ocy);
-    SLog.a("Q.qqstory.home.data.FeedCommentBackgroundSyncer", "on comment back loop count:%d, event:%s", Integer.valueOf(ocy.b(this.jdField_a_of_type_Ocy)), paramGetFeedCommentEvent);
-    if (paramGetFeedCommentEvent.errorInfo.isSuccess())
+    localSharedPreferences.edit().clear().commit();
+  }
+  
+  public static void a(int paramInt1, int paramInt2)
+  {
+    SharedPreferences localSharedPreferences = a(obz.a());
+    if (localSharedPreferences == null)
     {
-      ocy.a(this.jdField_a_of_type_Ocy).addAll(paramGetFeedCommentEvent.jdField_a_of_type_JavaUtilList);
-      if ((!paramGetFeedCommentEvent.jdField_a_of_type_Boolean) && (ocy.b(this.jdField_a_of_type_Ocy) < 10))
-      {
-        SLog.a("Q.qqstory.home.data.FeedCommentBackgroundSyncer", "pull next page, loop count:%d", Integer.valueOf(ocy.b(this.jdField_a_of_type_Ocy)));
-        ocy.a(this.jdField_a_of_type_Ocy).c();
-        return;
-      }
-      paramGetFeedCommentEvent.jdField_a_of_type_JavaUtilList = ocy.a(this.jdField_a_of_type_Ocy);
-      SLog.b("Q.qqstory.home.data.FeedCommentBackgroundSyncer", "pull comment end, comment count:%d", Integer.valueOf(ocy.a(this.jdField_a_of_type_Ocy).size()));
-      ocy.a(this.jdField_a_of_type_Ocy, paramGetFeedCommentEvent);
+      Log.e("AladdinPrefUtils", "setConfigVersionById: sp is null");
       return;
     }
-    paramGetFeedCommentEvent.jdField_a_of_type_JavaUtilList = ocy.a(this.jdField_a_of_type_Ocy);
-    SLog.b("Q.qqstory.home.data.FeedCommentBackgroundSyncer", "pull comment error, comment count:%d", Integer.valueOf(ocy.a(this.jdField_a_of_type_Ocy).size()));
-    ocy.b(this.jdField_a_of_type_Ocy, paramGetFeedCommentEvent);
+    localSharedPreferences.edit().putInt("config_version_" + paramInt1, paramInt2).apply();
   }
 }
 

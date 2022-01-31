@@ -34,6 +34,7 @@ class FloatKeyframeSet
   
   public float getFloatValue(float paramFloat)
   {
+    int i = 1;
     float f1;
     if (this.mNumKeyframes == 2)
     {
@@ -73,7 +74,7 @@ class FloatKeyframeSet
       }
       paramFloat = (f1 - f4) / (f5 - f4);
       if (this.mEvaluator == null) {
-        return (f3 - f2) * paramFloat + f2;
+        return paramFloat * (f3 - f2) + f2;
       }
       return ((Number)this.mEvaluator.evaluate(paramFloat, Float.valueOf(f2), Float.valueOf(f3))).floatValue();
     }
@@ -92,13 +93,11 @@ class FloatKeyframeSet
       }
       paramFloat = (f1 - f4) / (f5 - f4);
       if (this.mEvaluator == null) {
-        return (f3 - f2) * paramFloat + f2;
+        return paramFloat * (f3 - f2) + f2;
       }
       return ((Number)this.mEvaluator.evaluate(paramFloat, Float.valueOf(f2), Float.valueOf(f3))).floatValue();
     }
-    Object localObject = (Keyframe.FloatKeyframe)this.mKeyframes.get(0);
-    int i = 1;
-    for (;;)
+    for (Object localObject = (Keyframe.FloatKeyframe)this.mKeyframes.get(0);; localObject = localFloatKeyframe)
     {
       if (i >= this.mNumKeyframes) {
         return ((Number)((Keyframe)this.mKeyframes.get(this.mNumKeyframes - 1)).getValue()).floatValue();
@@ -119,7 +118,6 @@ class FloatKeyframeSet
         }
         return ((Number)this.mEvaluator.evaluate(paramFloat, Float.valueOf(f1), Float.valueOf(f2))).floatValue();
       }
-      localObject = localFloatKeyframe;
       i += 1;
     }
   }

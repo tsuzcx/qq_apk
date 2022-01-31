@@ -1,20 +1,24 @@
-import com.tencent.mobileqq.activity.NotificationActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.remote.SimpleAccount;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnPreDrawListener;
+import com.tencent.biz.qqstory.playvideo.StoryPlayerFragment;
 
 public class thw
-  implements Runnable
+  implements ViewTreeObserver.OnPreDrawListener
 {
-  public thw(NotificationActivity paramNotificationActivity, SimpleAccount paramSimpleAccount) {}
+  public thw(StoryPlayerFragment paramStoryPlayerFragment, View paramView) {}
   
-  public void run()
+  public boolean onPreDraw()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity.app.login(this.jdField_a_of_type_ComTencentQphoneBaseRemoteSimpleAccount);
+    tmf.b((ViewGroup)this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoStoryPlayerFragment.a(), this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoStoryPlayerFragment.a, new thx(this));
+    this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().removeOnPreDrawListener(this);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     thw
  * JD-Core Version:    0.7.0.1
  */

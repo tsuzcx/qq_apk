@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBEnumField;
 import com.tencent.mobileqq.pb.PBField;
 
 public final class oidb_0x4d4$WorkflowSource
-  extends MessageMicro
+  extends MessageMicro<WorkflowSource>
 {
   public static final int NEED_APPROVE = 2;
   public static final int NEED_OBSERVE = 1;
@@ -17,7 +17,7 @@ public final class oidb_0x4d4$WorkflowSource
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     tencent.im.oidb.cmd0x4d4.oidb_0x4d4.WorkflowSource
  * JD-Core Version:    0.7.0.1
  */

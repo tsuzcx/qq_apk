@@ -1,19 +1,26 @@
-import com.tencent.mobileqq.doutu.DoutuManager;
+import com.tencent.mobileqq.activity.activateFriend.ActivateFriendActivity;
+import java.util.Comparator;
 
 public class acgn
+  implements Comparator<acia>
 {
-  public long a;
-  long b;
+  public acgn(ActivateFriendActivity paramActivateFriendActivity) {}
   
-  public acgn(DoutuManager paramDoutuManager, long paramLong1, long paramLong2)
+  public int a(acia paramacia1, acia paramacia2)
   {
-    this.jdField_a_of_type_Long = paramLong1;
-    this.b = paramLong2;
+    long l = paramacia2.a - paramacia1.a;
+    if (l > 0L) {
+      return 1;
+    }
+    if (l < 0L) {
+      return -1;
+    }
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     acgn
  * JD-Core Version:    0.7.0.1
  */

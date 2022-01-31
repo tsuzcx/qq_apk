@@ -1,23 +1,24 @@
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsPlayManager;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsPlayManager.VideoStatusListener;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.AccountDetail.activity.EqqAccountDetailActivity;
+import com.tencent.mobileqq.activity.ChatHistory;
 
-class msr
-  implements Runnable
+public class msr
+  implements View.OnClickListener
 {
-  msr(msq parammsq) {}
+  public msr(EqqAccountDetailActivity paramEqqAccountDetailActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (FastWebVideoFeedsPlayManager.a(this.a.a) != null)
+    if (this.a.a != null)
     {
-      Iterator localIterator = FastWebVideoFeedsPlayManager.a(this.a.a).iterator();
-      while (localIterator.hasNext()) {
-        ((FastWebVideoFeedsPlayManager.VideoStatusListener)localIterator.next()).a(FastWebVideoFeedsPlayManager.a(this.a.a));
-      }
+      paramView = new Intent(this.a, ChatHistory.class);
+      paramView.putExtra("uin", EqqAccountDetailActivity.i(this.a));
+      paramView.putExtra("uintype", 1024);
+      this.a.startActivity(paramView);
+      ndn.a(EqqAccountDetailActivity.i(this.a), "P_CliOper", "Pb_account_lifeservice", EqqAccountDetailActivity.j(this.a), "0X8005A29", "0X8005A29", 0, 0, "", "", "", "", false);
     }
-    this.a.a.a(0);
   }
 }
 

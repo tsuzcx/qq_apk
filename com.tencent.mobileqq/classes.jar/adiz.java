@@ -1,23 +1,56 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.filemanager.data.OfflineFileInfo;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.ChatFragment;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.data.MessageForLongMsg;
+import com.tencent.mobileqq.data.MessageForReplyText;
+import com.tencent.mobileqq.data.MessageForReplyText.SourceMsgInfo;
+import com.tencent.qphone.base.util.QLog;
 
-public final class adiz
-  implements Parcelable.Creator
+class adiz
+  implements View.OnClickListener
 {
-  public OfflineFileInfo a(Parcel paramParcel)
-  {
-    return new OfflineFileInfo(paramParcel);
-  }
+  adiz(adiu paramadiu) {}
   
-  public OfflineFileInfo[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new OfflineFileInfo[paramInt];
+    if (this.a.a()) {}
+    BaseChatPie localBaseChatPie;
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+          paramView = aciy.a(paramView);
+          if ((paramView instanceof MessageForLongMsg)) {
+            break;
+          }
+        } while (!QLog.isColorLevel());
+        QLog.w("ChatItemBuilder", 2, "TextItemBuilder onClickListener: AIOUtils.getMessage(v) is not MessageForLongMsg");
+        return;
+        paramView = (MessageForLongMsg)paramView;
+      } while ((paramView.mSourceMsgInfo == null) || (!(this.a.jdField_a_of_type_AndroidContentContext instanceof FragmentActivity)));
+      if (QLog.isColorLevel()) {
+        QLog.w("ChatItemBuilder", 2, "TextItemBuilder onClickListener: isReplyMsg = true");
+      }
+      localBaseChatPie = ((FragmentActivity)this.a.jdField_a_of_type_AndroidContentContext).getChatFragment().a();
+      if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a == 0) && ((localBaseChatPie instanceof aedo)))
+      {
+        ((aedo)localBaseChatPie).a(22, paramView.mSourceMsgInfo.origUid, paramView.mSourceMsgInfo.mSourceMsgTime, null);
+        return;
+      }
+    } while (!localBaseChatPie.j());
+    localBaseChatPie.a(22, paramView.mSourceMsgInfo.mSourceMsgSeq, (int)(paramView.shmsgseq - paramView.mSourceMsgInfo.mSourceMsgSeq), paramView);
+    MessageForReplyText.reportReplyMsg(null, "replyMsg_bubble", "clk_original", paramView.frienduin, paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     adiz
  * JD-Core Version:    0.7.0.1
  */

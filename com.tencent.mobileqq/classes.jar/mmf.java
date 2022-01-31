@@ -1,30 +1,35 @@
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
+import android.widget.EditText;
+import android.widget.ImageButton;
+import com.tencent.biz.PoiMapActivity;
+import com.tencent.widget.XListView;
+import java.util.List;
 
-class mmf
-  implements Runnable
+public class mmf
+  implements TextWatcher
 {
-  mmf(mme parammme) {}
+  public mmf(PoiMapActivity paramPoiMapActivity) {}
   
-  public void run()
+  public void afterTextChanged(Editable paramEditable)
   {
-    try
+    paramEditable = this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString().trim();
+    if (TextUtils.isEmpty(paramEditable))
     {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("channel_id", this.a.a.a);
-      localJSONObject.put("click_source", "b2t_float_btn");
-      PublicAccountReportUtils.a(null, "", "0X8009329", "0X8009329", 0, 0, "", "", "", localJSONObject.toString(), false);
-      QLog.d("ReadInJoyListViewGroup", 2, "back_to_top: { channelID : " + this.a.a.a + " , click_source : b2t_float_btn }");
+      this.a.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(8);
+      this.a.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(8);
+      this.a.jdField_a_of_type_JavaUtilList.clear();
+      this.a.jdField_a_of_type_Mme.notifyDataSetChanged();
       return;
     }
-    catch (JSONException localJSONException)
-    {
-      localJSONException.printStackTrace();
-    }
+    this.a.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(0);
+    this.a.a(paramEditable);
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

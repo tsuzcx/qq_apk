@@ -1,32 +1,29 @@
-import com.tencent.open.wadl.WLog;
-import com.tencent.open.wadl.WadlJsBridgeCallBack;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.WebView;
+import android.content.res.Resources;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.campuscircle.CampusCircleReplyActivity;
 
 public class alrk
-  implements Runnable
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public alrk(WadlJsBridgeCallBack paramWadlJsBridgeCallBack, WebView paramWebView, String paramString) {}
+  public alrk(CampusCircleReplyActivity paramCampusCircleReplyActivity) {}
   
-  public void run()
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    try
+    paramCompoundButton = this.a.getResources();
+    TextView localTextView = CampusCircleReplyActivity.a(this.a);
+    if (paramBoolean) {}
+    for (paramCompoundButton = paramCompoundButton.getColorStateList(2131100617);; paramCompoundButton = paramCompoundButton.getColorStateList(2131100619))
     {
-      this.jdField_a_of_type_ComTencentSmttSdkWebView.loadUrl(this.jdField_a_of_type_JavaLangString);
-      if (QLog.isColorLevel()) {
-        WLog.b(WadlJsBridgeCallBack.jdField_a_of_type_JavaLangString, "doJsCallback call:" + this.jdField_a_of_type_JavaLangString);
-      }
+      localTextView.setTextColor(paramCompoundButton);
       return;
-    }
-    catch (Exception localException)
-    {
-      WLog.a(WadlJsBridgeCallBack.jdField_a_of_type_JavaLangString, "doJsCallback exception ", localException);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     alrk
  * JD-Core Version:    0.7.0.1
  */

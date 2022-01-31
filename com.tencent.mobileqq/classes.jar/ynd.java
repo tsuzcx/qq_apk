@@ -1,31 +1,43 @@
-import android.util.SparseArray;
-import android.util.SparseIntArray;
-import com.tencent.mobileqq.adapter.BuddyListAdapter;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import mqq.os.MqqHandler;
+import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
+import com.tencent.gdtad.aditem.GdtAd;
+import org.json.JSONObject;
+import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
 
 public class ynd
-  implements Runnable
+  implements ynl
 {
-  public ynd(BuddyListAdapter paramBuddyListAdapter) {}
-  
-  public void run()
+  public boolean a(ymw paramymw, String paramString, String... paramVarArgs)
   {
-    ArrayList localArrayList = new ArrayList();
-    SparseArray localSparseArray = new SparseArray();
-    SparseIntArray localSparseIntArray = new SparseIntArray();
-    BuddyListAdapter.a(this.a, localArrayList, localSparseArray, localSparseIntArray);
-    if (QLog.isColorLevel()) {
-      QLog.d("BuddyListAdapter", 2, "notifyDataSetChanged in ThreadManager");
+    Object localObject = null;
+    try
+    {
+      paramString = new JSONObject(paramVarArgs[0]);
+      yny.a("GdtC2SJsCallHandler", paramString.toString());
+      int i = paramString.optInt("operationType");
+      int j = paramString.optInt("businessType");
+      qq_ad_get.QQAdGetRsp.AdInfo localAdInfo = (qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(ynv.a(new qq_ad_get.QQAdGetRsp.AdInfo(), paramString.getJSONObject("adInfo")));
+      yof.a(i, j, localAdInfo);
+      if (paramymw != null) {}
+      for (paramString = paramymw.a();; paramString = null)
+      {
+        paramVarArgs = localObject;
+        if (paramymw != null) {
+          paramVarArgs = paramymw.a();
+        }
+        AdReporterForAnalysis.reportForJSBridgeInvoked(paramString, false, "c2sReport", paramVarArgs, new GdtAd(localAdInfo));
+        return true;
+      }
+      return true;
     }
-    ThreadManager.getUIHandler().post(new yne(this, localArrayList, localSparseArray, localSparseIntArray));
+    catch (Exception paramymw)
+    {
+      yny.d("GdtC2SJsCallHandler", "handleJsCallRequest", paramymw);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ynd
  * JD-Core Version:    0.7.0.1
  */

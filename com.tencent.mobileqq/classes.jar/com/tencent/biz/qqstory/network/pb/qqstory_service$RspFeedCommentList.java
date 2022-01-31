@@ -4,7 +4,7 @@ import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.MessageMicro.FieldMap;
 
 public final class qqstory_service$RspFeedCommentList
-  extends MessageMicro
+  extends MessageMicro<RspFeedCommentList>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18 }, new String[] { "result", "feed_comment_info" }, new Object[] { null, null }, RspFeedCommentList.class);
   public qqstory_struct.FeedCommentInfo feed_comment_info = new qqstory_struct.FeedCommentInfo();
@@ -12,7 +12,7 @@ public final class qqstory_service$RspFeedCommentList
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_service.RspFeedCommentList
  * JD-Core Version:    0.7.0.1
  */

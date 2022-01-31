@@ -8,12 +8,12 @@ import java.util.ArrayList;
 public final class GetConfigRequest
   extends JceStruct
 {
-  static ArrayList<Integer> a = new ArrayList();
+  static ArrayList<Integer> cache_typeList = new ArrayList();
   public ArrayList<Integer> typeList = null;
   
   static
   {
-    a.add(Integer.valueOf(0));
+    cache_typeList.add(Integer.valueOf(0));
   }
   
   public GetConfigRequest() {}
@@ -25,7 +25,7 @@ public final class GetConfigRequest
   
   public void readFrom(JceInputStream paramJceInputStream)
   {
-    this.typeList = ((ArrayList)paramJceInputStream.read(a, 0, true));
+    this.typeList = ((ArrayList)paramJceInputStream.read(cache_typeList, 0, true));
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -35,7 +35,7 @@ public final class GetConfigRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.tmassistant.common.jce.GetConfigRequest
  * JD-Core Version:    0.7.0.1
  */

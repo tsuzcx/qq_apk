@@ -1,18 +1,34 @@
-import com.tencent.mobileqq.activity.aio.doodle.MyParcel;
-import com.tencent.mobileqq.activity.aio.doodle.MyParcelable.Creator;
-import com.tencent.mobileqq.activity.aio.doodle.PathDrawer;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
 
-public final class uxw
-  implements MyParcelable.Creator
+class uxw
+  implements Animator.AnimatorListener
 {
-  public PathDrawer a(MyParcel paramMyParcel)
+  uxw(uxu paramuxu) {}
+  
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    return new PathDrawer(paramMyParcel);
+    this.a.a = false;
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    this.a.a = false;
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator)
+  {
+    this.a.a = true;
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    this.a.a = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     uxw
  * JD-Core Version:    0.7.0.1
  */

@@ -1,32 +1,22 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.ChatActivityFacade;
-import com.tencent.mobileqq.activity.aio.item.ApolloGameItemBuilder;
-import com.tencent.mobileqq.activity.aio.item.ArkAppItemBubbleBuilder.Holder;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
+import java.util.List;
 
 public class uyp
-  implements ActionSheet.OnButtonClickListener
+  implements uyq
 {
-  public uyp(ApolloGameItemBuilder paramApolloGameItemBuilder, ArkAppItemBubbleBuilder.Holder paramHolder, ActionSheet paramActionSheet) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public void a(List<uyn> paramList, DoodleView paramDoodleView)
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.cancel();
-      return;
-      ChatActivityFacade.c(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemApolloGameItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemApolloGameItemBuilder.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemApolloGameItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppItemBubbleBuilder$Holder.a.uniseq);
-    }
+    uxt localuxt = new uxt(paramDoodleView);
+    uyd localuyd = new uyd(paramDoodleView);
+    paramDoodleView = new uyh(paramDoodleView);
+    paramList.add(localuxt);
+    paramList.add(localuyd);
+    paramList.add(paramDoodleView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     uyp
  * JD-Core Version:    0.7.0.1
  */

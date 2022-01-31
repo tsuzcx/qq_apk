@@ -14,8 +14,9 @@ import android.view.View;
 import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
+import bjgg;
+import bjlo;
 import com.tencent.mobileqq.R.styleable;
-import dov.com.tencent.mobileqq.shortvideo.util.ScreenUtil;
 import java.util.ArrayList;
 
 public class QQSlidingTabView
@@ -26,8 +27,8 @@ public class QQSlidingTabView
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
   private LinearLayout.LayoutParams jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams;
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private QQSlidingTabView.IOnTabCheckListener jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewQQSlidingTabView$IOnTabCheckListener;
-  private ArrayList jdField_a_of_type_JavaUtilArrayList = new ArrayList(5);
+  private bjgg jdField_a_of_type_Bjgg;
+  private ArrayList<View> jdField_a_of_type_JavaUtilArrayList = new ArrayList(5);
   private boolean jdField_a_of_type_Boolean;
   private int b = -16777216;
   private int c = 14;
@@ -96,15 +97,15 @@ public class QQSlidingTabView
     this.f = ((int)TypedValue.applyDimension(1, this.f, localDisplayMetrics));
     paramContext.obtainStyledAttributes(paramAttributeSet, jdField_a_of_type_ArrayOfInt).recycle();
     paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.QIMSlidingTabViewStyle);
-    this.d = paramContext.getDimensionPixelSize(0, this.d);
-    this.e = paramContext.getDimensionPixelSize(1, this.e);
-    this.j = paramContext.getColor(3, this.j);
-    this.i = paramContext.getDimensionPixelSize(4, this.i);
-    this.jdField_a_of_type_Int = paramContext.getColor(7, this.jdField_a_of_type_Int);
-    this.b = paramContext.getColor(8, this.b);
-    this.l = paramContext.getColor(5, this.l);
-    this.k = paramContext.getDimensionPixelSize(6, this.k);
-    this.c = paramContext.getDimensionPixelSize(9, this.c);
+    this.d = paramContext.getDimensionPixelSize(4, this.d);
+    this.e = paramContext.getDimensionPixelSize(3, this.e);
+    this.j = paramContext.getColor(0, this.j);
+    this.i = paramContext.getDimensionPixelSize(1, this.i);
+    this.jdField_a_of_type_Int = paramContext.getColor(6, this.jdField_a_of_type_Int);
+    this.b = paramContext.getColor(5, this.b);
+    this.l = paramContext.getColor(8, this.l);
+    this.k = paramContext.getDimensionPixelSize(9, this.k);
+    this.c = paramContext.getDimensionPixelSize(7, this.c);
     this.f = paramContext.getDimensionPixelSize(2, this.f);
     paramContext.recycle();
     this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
@@ -114,7 +115,7 @@ public class QQSlidingTabView
     setFillViewport(true);
     setWillNotDraw(false);
     setHorizontalScrollBarEnabled(false);
-    this.o = ScreenUtil.a(this.n);
+    this.o = bjlo.a(this.n);
   }
   
   protected void onDraw(Canvas paramCanvas)
@@ -147,9 +148,9 @@ public class QQSlidingTabView
     invalidate();
   }
   
-  public void setTabCheckListener(QQSlidingTabView.IOnTabCheckListener paramIOnTabCheckListener)
+  public void setTabCheckListener(bjgg parambjgg)
   {
-    this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewQQSlidingTabView$IOnTabCheckListener = paramIOnTabCheckListener;
+    this.jdField_a_of_type_Bjgg = parambjgg;
   }
 }
 

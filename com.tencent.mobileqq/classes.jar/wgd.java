@@ -1,28 +1,10 @@
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
-import com.tencent.mobileqq.widget.QQToast;
-
-class wgd
-  implements Runnable
+public abstract interface wgd
 {
-  wgd(wgc paramwgc, MessageRecord paramMessageRecord) {}
-  
-  public void run()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.sendFailCode == 41)
-    {
-      QQToast.a(this.jdField_a_of_type_Wgc.a.a.getApp(), 2131436104, 0).a();
-      return;
-    }
-    QQToast.a(this.jdField_a_of_type_Wgc.a.a.getApp(), 2131438870, 0).a();
-    VasWebviewUtil.reportCommercialDrainage(this.jdField_a_of_type_Wgc.a.a.c(), "Stick", "Send", "2", 0, 6, 0, "", "", "", "", "", "", "", 0, 0, 0, 0);
-  }
+  public abstract void a(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wgd
  * JD-Core Version:    0.7.0.1
  */

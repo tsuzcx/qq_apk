@@ -1,20 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.aio.rebuild.GameRoomChatPie;
+import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetFeedDetailRsp;
 
-public class vzg
-  implements DialogInterface.OnDismissListener
+class vzg
+  implements wxx<CertifiedAccountRead.StGetFeedDetailRsp>
 {
-  public vzg(GameRoomChatPie paramGameRoomChatPie) {}
+  vzg(vzf paramvzf) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void a(boolean paramBoolean, long paramLong, String paramString, CertifiedAccountRead.StGetFeedDetailRsp paramStGetFeedDetailRsp)
   {
-    this.a.b(1);
+    vzf.a(this.a, paramBoolean, paramLong, paramString, paramStGetFeedDetailRsp);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     vzg
  * JD-Core Version:    0.7.0.1
  */

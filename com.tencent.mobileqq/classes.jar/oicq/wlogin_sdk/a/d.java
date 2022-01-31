@@ -20,7 +20,7 @@ public class d
     this.b = 6;
   }
   
-  public byte[] a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, byte[] paramArrayOfByte4, int paramInt1, byte[] paramArrayOfByte5, byte[] paramArrayOfByte6, boolean paramBoolean, byte[] paramArrayOfByte7, long paramLong, byte[] paramArrayOfByte8, int paramInt2, Map<Integer, RegTLV> paramMap)
+  public byte[] a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, byte[] paramArrayOfByte4, int paramInt1, byte[] paramArrayOfByte5, byte[] paramArrayOfByte6, boolean paramBoolean, byte[] paramArrayOfByte7, long paramLong, byte[] paramArrayOfByte8, byte[] paramArrayOfByte9, int paramInt2, Map<Integer, RegTLV> paramMap)
   {
     byte[] arrayOfByte1 = paramArrayOfByte6;
     if (paramArrayOfByte6 == null) {
@@ -38,7 +38,7 @@ public class d
     int n;
     if (paramBoolean)
     {
-      paramArrayOfByte7 = new int[11];
+      paramArrayOfByte7 = new int[12];
       byte[] tmp55_53 = paramArrayOfByte7;
       tmp55_53[0] = 1;
       byte[] tmp59_55 = tmp55_53;
@@ -61,15 +61,17 @@ public class d
       tmp101_95[9] = 13;
       byte[] tmp107_101 = tmp101_95;
       tmp107_101[10] = 14;
-      tmp107_101;
+      byte[] tmp113_107 = tmp107_101;
+      tmp113_107[11] = 18;
+      tmp113_107;
       localArrayList = new ArrayList();
       int i1 = paramArrayOfByte7.length;
       j = 0;
       i = 0;
       n = 0;
-      label137:
+      label143:
       if (n >= i1) {
-        break label686;
+        break label739;
       }
       paramArrayOfByte4 = new byte[0];
       switch (paramArrayOfByte7[n])
@@ -89,27 +91,29 @@ public class d
       n += 1;
       j = m;
       i = k;
-      break label137;
-      paramArrayOfByte7 = new int[9];
-      byte[] tmp314_312 = paramArrayOfByte7;
-      tmp314_312[0] = 1;
-      byte[] tmp318_314 = tmp314_312;
-      tmp318_314[1] = 5;
-      byte[] tmp322_318 = tmp318_314;
-      tmp322_318[2] = 6;
-      byte[] tmp327_322 = tmp322_318;
-      tmp327_322[3] = 8;
-      byte[] tmp332_327 = tmp327_322;
-      tmp332_327[4] = 15;
-      byte[] tmp337_332 = tmp332_327;
-      tmp337_332[5] = 37;
-      byte[] tmp342_337 = tmp337_332;
-      tmp342_337[6] = 10;
-      byte[] tmp348_342 = tmp342_337;
-      tmp348_342[7] = 13;
-      byte[] tmp354_348 = tmp348_342;
-      tmp354_348[8] = 14;
-      tmp354_348;
+      break label143;
+      paramArrayOfByte7 = new int[10];
+      byte[] tmp330_328 = paramArrayOfByte7;
+      tmp330_328[0] = 1;
+      byte[] tmp334_330 = tmp330_328;
+      tmp334_330[1] = 5;
+      byte[] tmp338_334 = tmp334_330;
+      tmp338_334[2] = 6;
+      byte[] tmp343_338 = tmp338_334;
+      tmp343_338[3] = 8;
+      byte[] tmp348_343 = tmp343_338;
+      tmp348_343[4] = 15;
+      byte[] tmp353_348 = tmp348_343;
+      tmp353_348[5] = 37;
+      byte[] tmp358_353 = tmp353_348;
+      tmp358_353[6] = 10;
+      byte[] tmp364_358 = tmp358_353;
+      tmp364_358[7] = 13;
+      byte[] tmp370_364 = tmp364_358;
+      tmp370_364[8] = 14;
+      byte[] tmp376_370 = tmp370_364;
+      tmp376_370[9] = 18;
+      tmp376_370;
       break;
       paramArrayOfByte4 = new RegTLV(1);
       paramArrayOfByte4.setData(paramArrayOfByte5, paramArrayOfByte5.length);
@@ -132,7 +136,7 @@ public class d
       paramArrayOfByte4 = paramArrayOfByte4.getBuf();
       continue;
       paramArrayOfByte4 = new RegTLV(37);
-      paramArrayOfByte4.setShort(t.au);
+      paramArrayOfByte4.setShort(t.ax);
       paramArrayOfByte4 = paramArrayOfByte4.getBuf();
       continue;
       paramArrayOfByte4 = new RegTLV(9);
@@ -154,8 +158,12 @@ public class d
       paramArrayOfByte4 = new RegTLV(14);
       paramArrayOfByte4.setData(paramArrayOfByte8, paramArrayOfByte8.length);
       paramArrayOfByte4 = paramArrayOfByte4.getBuf();
+      continue;
+      paramArrayOfByte4 = new RegTLV(18);
+      paramArrayOfByte4.setData(paramArrayOfByte9, paramArrayOfByte9.length);
+      paramArrayOfByte4 = paramArrayOfByte4.getBuf();
     }
-    label686:
+    label739:
     paramArrayOfByte4 = paramMap.keySet().iterator();
     while (paramArrayOfByte4.hasNext())
     {

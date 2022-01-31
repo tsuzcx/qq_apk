@@ -9,8 +9,8 @@ import java.util.Map;
 public final class stMetaReportDataItem
   extends JceStruct
 {
-  static Map cache_strData = new HashMap();
-  public Map strData;
+  static Map<String, String> cache_strData = new HashMap();
+  public Map<String, String> strData;
   
   static
   {
@@ -19,7 +19,7 @@ public final class stMetaReportDataItem
   
   public stMetaReportDataItem() {}
   
-  public stMetaReportDataItem(Map paramMap)
+  public stMetaReportDataItem(Map<String, String> paramMap)
   {
     this.strData = paramMap;
   }

@@ -1,80 +1,78 @@
-import android.app.Activity;
-import android.graphics.Bitmap;
-import com.tencent.biz.pubaccount.readinjoy.common.WxShareHelperFromReadInjoy;
-import com.tencent.biz.troop.TroopMemberApiClient;
-import com.tencent.mobileqq.jsp.QQApiPlugin;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
-import com.tencent.mobileqq.widget.QQProgressDialog;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
-import java.util.Map;
+import android.graphics.drawable.Drawable;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.nearby.gameroom.GameQuickWordsPanel;
+import com.tencent.widget.PatchedButton;
+import com.tencent.widget.XEditTextEx;
+import com.tencent.widget.XPanelContainer;
+import java.util.HashMap;
 
-public class aeez
-  implements Runnable
+class aeez
+  implements View.OnClickListener
 {
-  public aeez(QQApiPlugin paramQQApiPlugin, String paramString1, String paramString2, int paramInt, Map paramMap, String paramString3, String paramString4, String paramString5, String paramString6) {}
+  aeez(aeeh paramaeeh) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    int j = 0;
-    int i = 0;
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin.mRuntime.a();
-    if ((localObject == null) || (((Activity)localObject).isFinishing())) {
-      return;
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog == null) {
-      this.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin.a((Activity)localObject);
-    }
-    if ((this.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())) {
-      this.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin.jdField_a_of_type_ComTencentMobileqqWxapiWXShareHelper$WXShareListener == null)
+    if (this.a.jdField_a_of_type_Bbfs == null) {}
+    HashMap localHashMap;
+    label229:
+    do
     {
-      this.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin.jdField_a_of_type_ComTencentMobileqqWxapiWXShareHelper$WXShareListener = new aefa(this);
-      WXShareHelper.a().a(this.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin.jdField_a_of_type_ComTencentMobileqqWxapiWXShareHelper$WXShareListener);
-    }
-    if ((this.jdField_a_of_type_Int == 1) && (this.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommonWxShareHelperFromReadInjoy$WXShareHelperFromReadInjoyListener == null))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommonWxShareHelperFromReadInjoy$WXShareHelperFromReadInjoyListener = new aefb(this);
-      WxShareHelperFromReadInjoy.a().a(this.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommonWxShareHelperFromReadInjoy$WXShareHelperFromReadInjoyListener);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin.c = String.valueOf(System.currentTimeMillis());
-    localObject = (Bitmap)this.jdField_a_of_type_JavaUtilMap.remove("image");
-    if ("audio".equals(this.c))
-    {
-      localWXShareHelper = WXShareHelper.a();
-      str1 = this.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin.c;
-      str2 = this.d;
-      str3 = this.e;
-      str4 = this.b;
-      if ("2".equals(this.jdField_a_of_type_JavaLangString)) {}
-      for (;;)
+      Object localObject;
+      do
       {
-        localWXShareHelper.a(str1, str2, (Bitmap)localObject, str3, str4, i, this.f);
-        return;
-        i = 1;
+        do
+        {
+          return;
+          localObject = this.a.jdField_a_of_type_Bbfs.a();
+        } while (localObject == null);
+        localHashMap = ((bbfr)localObject).b();
+        localObject = ((bbfr)localObject).a();
+        if (paramView != this.a.p) {
+          break label229;
+        }
+        if (this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getVisibility() == 0) {
+          break;
+        }
+        if (localHashMap != null) {
+          this.a.p.setImageDrawable((Drawable)localHashMap.get("audioIcon"));
+        }
+        this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.setVisibility(0);
+        this.a.jdField_a_of_type_ComTencentWidgetPatchedButton.setVisibility(0);
+        this.a.l.setVisibility(4);
+        aeeh.a(this.a).a(25);
+      } while ((this.a.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameQuickWordsPanel == null) || (localObject == null));
+      this.a.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameQuickWordsPanel.setBackgroundColor(((Integer)((HashMap)localObject).get("quickWordBgColor")).intValue());
+      return;
+      if (localHashMap != null) {
+        this.a.p.setImageDrawable((Drawable)localHashMap.get("textIcon"));
       }
-    }
-    if (this.jdField_a_of_type_Int == 1)
+      this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.setVisibility(4);
+      this.a.jdField_a_of_type_ComTencentWidgetPatchedButton.setVisibility(4);
+      this.a.l.setVisibility(0);
+      this.a.aI();
+      return;
+    } while (paramView != this.a.q);
+    if (aeeh.b(this.a).a() != 3)
     {
-      this.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.d(new aefc(this, (Bitmap)localObject));
+      this.a.a(Integer.valueOf(3));
+      if (localHashMap != null) {
+        this.a.p.setImageDrawable((Drawable)localHashMap.get("audioIcon"));
+      }
+      this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.setVisibility(0);
+      this.a.jdField_a_of_type_ComTencentWidgetPatchedButton.setVisibility(0);
+      this.a.l.setVisibility(4);
       return;
     }
-    WXShareHelper localWXShareHelper = WXShareHelper.a();
-    String str1 = this.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin.c;
-    String str2 = this.d;
-    String str3 = this.e;
-    String str4 = this.b;
-    if ("2".equals(this.jdField_a_of_type_JavaLangString)) {}
-    for (i = j;; i = 1)
-    {
-      localWXShareHelper.b(str1, str2, (Bitmap)localObject, str3, str4, i);
-      return;
-    }
+    this.a.aI();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aeez
  * JD-Core Version:    0.7.0.1
  */

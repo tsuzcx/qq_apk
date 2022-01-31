@@ -1,16 +1,22 @@
-import com.tencent.biz.qqstory.videoplayer.StoryVideoPlayer;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import java.util.ArrayList;
 
 class ouh
-  implements Runnable
+  implements pjv
 {
-  ouh(oug paramoug) {}
+  ouh(ouc paramouc, opw paramopw, Container paramContainer, int paramInt) {}
   
-  public void run()
+  public void a(int paramInt)
   {
-    this.a.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.b = false;
-    if (!this.a.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.c) {
-      StoryVideoPlayer.a(this.a.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer, this.a.jdField_a_of_type_AndroidOsBundle);
+    Object localObject = this.jdField_a_of_type_Opw.a().mSocialFeedInfo.a;
+    ArrayList localArrayList = ((pqz)localObject).a;
+    if ((localArrayList == null) || (localArrayList.size() == 0)) {
+      return;
     }
+    localObject = (pra)((pqz)localObject).a.get(paramInt);
+    ouc.a(this.jdField_a_of_type_Ouc, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), this.jdField_a_of_type_Opw.a(), (int)((pra)localObject).a, this.jdField_a_of_type_Opw.a().innerUniqueID, this.jdField_a_of_type_Int, paramInt, this.jdField_a_of_type_Opw.a());
   }
 }
 

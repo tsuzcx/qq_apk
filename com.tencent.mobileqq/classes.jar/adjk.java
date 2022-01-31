@@ -1,30 +1,28 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.mobileqq.filemanager.fileviewer.FileBrowserActivity;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItemViewHolder;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Emoticon;
+import com.tencent.mobileqq.data.EmoticonPackage;
 
-public class adjk
-  implements AdapterView.OnItemClickListener
+class adjk
+  implements arok<EmoticonPackage>
 {
-  public adjk(FileBrowserActivity paramFileBrowserActivity) {}
+  adjk(adje paramadje, adjt paramadjt, bbms parambbms) {}
   
-  public void onItemClick(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void a(EmoticonPackage paramEmoticonPackage)
   {
-    paramAdapterView = paramView.getTag();
-    if (paramAdapterView == null) {
+    awqx.b(this.jdField_a_of_type_Adje.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", this.jdField_a_of_type_Adje.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "ep_mall", "Clk_button_follow", 0, 0, "", "", this.jdField_a_of_type_Adjt.a.a.eId, "");
+    if (paramEmoticonPackage == null)
+    {
+      this.jdField_a_of_type_Adje.jdField_a_of_type_Adjs.a(107, this.jdField_a_of_type_Adje.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Adje.b, this.jdField_a_of_type_Adjt.a, this.jdField_a_of_type_Adje.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, adje.a(this.jdField_a_of_type_Adje));
+      anfi.a().a(this.jdField_a_of_type_Adje.jdField_a_of_type_Adjs);
+      this.jdField_a_of_type_Adje.jdField_a_of_type_Anfj.a(this.jdField_a_of_type_Adjt.a.a.epId, anfj.c);
       return;
     }
-    FileBrowserActivity.a(this.a).b();
-    ((ShareActionSheetBuilder.ActionSheetItemViewHolder)paramAdapterView).a.a.onClick(paramView);
+    adje.a(107, this.jdField_a_of_type_Adje.b, this.jdField_a_of_type_Adje.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramEmoticonPackage, this.jdField_a_of_type_Adjt.a, this.jdField_a_of_type_Adje.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_Bbms);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     adjk
  * JD-Core Version:    0.7.0.1
  */

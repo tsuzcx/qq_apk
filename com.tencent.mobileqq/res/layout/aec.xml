@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/dwv" android:paddingLeft="@dimen/b8y" android:paddingTop="@dimen/b8z" android:paddingRight="@dimen/b8y" android:paddingBottom="@dimen/b8z" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="140.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.etrump.mixlayout.ETTextView android:textSize="@dimen/b8x" android:textColor="@color/cb" android:textColorHint="@color/cs" android:gravity="center|left" android:id="@id/e9z" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="16.0dip" android:hint="@string/fru" android:singleLine="false" android:layout_weight="1.0" android:lineSpacingExtra="6.0dip" />
+    <RelativeLayout android:id="@id/do0" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginRight="16.0dip" android:layout_marginBottom="16.0dip" android:layout_weight="0.0">
+        <LinearLayout android:orientation="vertical" android:id="@id/bm3" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginRight="@dimen/b90">
+            <View android:id="@id/bmt" android:background="@color/d9" android:layout_width="@dimen/ne" android:layout_height="1.0px" android:layout_marginBottom="7.0dip" android:alpha="0.15" />
+            <com.tencent.widget.SingleLineTextView android:textSize="12.0dip" android:textColor="@color/d9" android:id="@id/kbp" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+            <com.tencent.widget.SingleLineTextView android:textSize="12.0dip" android:textColor="@color/d9" android:id="@id/e8c" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        </LinearLayout>
+        <ImageView android:id="@id/dup" android:layout_width="16.0dip" android:layout_height="16.0dip" android:src="@drawable/bzj" android:layout_alignBottom="@id/bm3" android:layout_alignParentRight="true" android:contentDescription="@string/fda" />
+        <ImageView android:id="@id/dyw" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginRight="16.0dip" android:src="@drawable/b5j" android:layout_toLeftOf="@id/dup" android:layout_alignBottom="@id/bm3" android:contentDescription="@string/ifc" />
+        <LinearLayout android:orientation="vertical" android:id="@id/bky" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" android:layout_below="@id/bm3" />
+    </RelativeLayout>
+</LinearLayout>

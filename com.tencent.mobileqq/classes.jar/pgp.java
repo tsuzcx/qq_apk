@@ -1,24 +1,19 @@
-import com.tencent.biz.webviewplugin.OfflinePlugin;
-import java.util.Iterator;
-import java.util.concurrent.CopyOnWriteArrayList;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.RelativeLayout;
 
-public class pgp
-  implements Runnable
+class pgp
+  implements View.OnTouchListener
 {
-  public pgp(OfflinePlugin paramOfflinePlugin) {}
+  pgp(pgn parampgn, RelativeLayout paramRelativeLayout) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if ((this.a.a == null) || (this.a.a.size() == 0)) {
-      return;
+    if (paramMotionEvent.getAction() == 0) {
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setDuplicateParentStateEnabled(false);
     }
-    Iterator localIterator = this.a.a.iterator();
-    while (localIterator.hasNext())
-    {
-      String str = (String)localIterator.next();
-      this.a.b(str);
-    }
-    this.a.a.clear();
+    return false;
   }
 }
 

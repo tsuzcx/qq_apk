@@ -8,11 +8,11 @@ import java.util.ArrayList;
 public final class RequestUpdateAddressBookNotBind
   extends JceStruct
 {
-  static ArrayList cache_AddressBookAddList;
-  static ArrayList cache_AddressBookDelList;
+  static ArrayList<AddressBookItem> cache_AddressBookAddList;
+  static ArrayList<AddressBookItem> cache_AddressBookDelList;
   static byte[] cache_sessionSid = (byte[])new byte[1];
-  public ArrayList AddressBookAddList;
-  public ArrayList AddressBookDelList;
+  public ArrayList<AddressBookItem> AddressBookAddList;
+  public ArrayList<AddressBookItem> AddressBookDelList;
   public String MobileUniqueNo = "";
   public long nextFlag;
   public byte[] sessionSid;
@@ -30,7 +30,7 @@ public final class RequestUpdateAddressBookNotBind
   
   public RequestUpdateAddressBookNotBind() {}
   
-  public RequestUpdateAddressBookNotBind(long paramLong, String paramString, byte[] paramArrayOfByte, ArrayList paramArrayList1, ArrayList paramArrayList2)
+  public RequestUpdateAddressBookNotBind(long paramLong, String paramString, byte[] paramArrayOfByte, ArrayList<AddressBookItem> paramArrayList1, ArrayList<AddressBookItem> paramArrayList2)
   {
     this.nextFlag = paramLong;
     this.MobileUniqueNo = paramString;

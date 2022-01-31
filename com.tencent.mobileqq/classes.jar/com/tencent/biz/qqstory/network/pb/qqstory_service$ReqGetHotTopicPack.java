@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBField;
 
 public final class qqstory_service$ReqGetHotTopicPack
-  extends MessageMicro
+  extends MessageMicro<ReqGetHotTopicPack>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public qqstory_struct.GpsMsg gps = new qqstory_struct.GpsMsg();
@@ -21,7 +21,7 @@ public final class qqstory_service$ReqGetHotTopicPack
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetHotTopicPack
  * JD-Core Version:    0.7.0.1
  */

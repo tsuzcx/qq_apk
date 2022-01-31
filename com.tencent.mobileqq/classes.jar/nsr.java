@@ -1,22 +1,23 @@
-import android.os.Handler;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnPreDrawListener;
-import android.widget.RelativeLayout;
-import com.tencent.biz.qqstory.playvideo.StoryPlayVideoActivity;
-import com.tencent.biz.qqstory.widget.circularreveal.CircularRevealCompatLayout;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.biu.ReadInjoyFriendsBiuComponentFragment;
+import com.tencent.widget.AdapterView;
 
 public class nsr
-  implements ViewTreeObserver.OnPreDrawListener
+  implements behi
 {
-  public nsr(StoryPlayVideoActivity paramStoryPlayVideoActivity) {}
+  public nsr(ReadInjoyFriendsBiuComponentFragment paramReadInjoyFriendsBiuComponentFragment) {}
   
-  public boolean onPreDraw()
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundColor(0);
-    this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(new nss(this), 100L);
-    this.a.h();
-    this.a.jdField_a_of_type_ComTencentBizQqstoryWidgetCircularrevealCircularRevealCompatLayout.getViewTreeObserver().removeOnPreDrawListener(this);
-    return false;
+    this.a.a.doOnBackPressed();
+    paramAdapterView = paramView.getTag();
+    if ((paramAdapterView instanceof nst))
+    {
+      paramAdapterView = (nst)paramAdapterView;
+      ReadInjoyFriendsBiuComponentFragment.a(this.a, paramAdapterView.jdField_a_of_type_JavaLangString);
+      ReadInjoyFriendsBiuComponentFragment.a(this.a, paramAdapterView.jdField_a_of_type_Long, paramAdapterView.b, "0X800953C", paramAdapterView.jdField_a_of_type_Int);
+    }
   }
 }
 

@@ -1,20 +1,54 @@
+import android.graphics.drawable.Drawable;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AddRequestActivity;
+import android.widget.ImageView;
+import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity;
+import com.tencent.image.URLDrawable;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AbsListView;
 
 public class rpc
-  implements View.OnClickListener
+  implements begh
 {
-  public rpc(AddRequestActivity paramAddRequestActivity) {}
+  public rpc(SubscriptFeedsActivity paramSubscriptFeedsActivity) {}
   
-  public void onClick(View paramView)
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    this.a.c();
+    switch (paramInt)
+    {
+    default: 
+      zqk.a().a("list_subscript");
+    }
+    for (;;)
+    {
+      return;
+      zqk.a().a("list_subscript", false);
+      paramInt = 0;
+      while (paramInt <= paramAbsListView.getChildCount())
+      {
+        Object localObject = paramAbsListView.getChildAt(paramInt);
+        if ((localObject != null) && ((((View)localObject).getTag() instanceof rph)))
+        {
+          localObject = (rph)((View)localObject).getTag();
+          Drawable localDrawable = ((rph)localObject).b.getDrawable();
+          if ((localDrawable != null) && ((localDrawable instanceof URLDrawable)) && (!((URLDrawable)localDrawable).isDownloadStarted()))
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("SubscriptFeedsActivity", 2, "list child view start download pic!  uin : " + ((rph)localObject).a);
+            }
+            ((URLDrawable)localDrawable).startDownload();
+            ((URLDrawable)localDrawable).setAutoDownload(true);
+          }
+        }
+        paramInt += 1;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     rpc
  * JD-Core Version:    0.7.0.1
  */

@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBInt32Field;
 
 public final class ShortVideo$UploadReq
-  extends MessageMicro
+  extends MessageMicro<UploadReq>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8 }, new String[] { "ver" }, new Object[] { Integer.valueOf(0) }, UploadReq.class);
   public final PBInt32Field ver = PBField.initInt32(0);

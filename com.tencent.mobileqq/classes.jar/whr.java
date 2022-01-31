@@ -1,30 +1,39 @@
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.StateListDrawable;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.aio.panel.PanelIconLinearLayout;
-import com.tencent.widget.PatchedButton;
-import com.tencent.widget.XEditTextEx;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import com.tencent.biz.subscribe.event.FollowUpdateEvent;
+import com.tencent.biz.subscribe.widget.textview.FollowTextView;
+import com.tencent.mobileqq.pb.PBStringField;
 
-class whr
-  implements Runnable
+public class whr
+  extends ajpe
 {
-  whr(whq paramwhq, Drawable paramDrawable1, Drawable paramDrawable2, Drawable paramDrawable3, StateListDrawable paramStateListDrawable) {}
+  public whr(FollowTextView paramFollowTextView) {}
   
-  public void run()
+  public void b(boolean paramBoolean, String paramString)
   {
-    this.jdField_a_of_type_Whq.jdField_a_of_type_AndroidWidgetLinearLayout.setBackgroundDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-    if (this.jdField_a_of_type_Whq.jdField_a_of_type_ComTencentWidgetXEditTextEx != null)
+    super.b(paramBoolean, paramString);
+    FollowTextView.a(this.a, true);
+    if (paramBoolean)
     {
-      this.jdField_a_of_type_Whq.jdField_a_of_type_ComTencentWidgetXEditTextEx.setBackgroundDrawable(this.b);
-      this.jdField_a_of_type_Whq.jdField_a_of_type_ComTencentWidgetXEditTextEx.setTextColor(-16777216);
+      if (!FollowTextView.a(this.a)) {
+        FollowTextView.a(this.a, false, FollowTextView.a(this.a));
+      }
+      this.a.a(0);
+      if (FollowTextView.a(this.a) != null)
+      {
+        if (FollowTextView.a(this.a) != null) {
+          FollowTextView.a(this.a).a(false, FollowTextView.a(this.a));
+        }
+        wcj.a().a(new FollowUpdateEvent(0, FollowTextView.a(this.a).poster.id.get()));
+      }
+      return;
     }
-    this.jdField_a_of_type_Whq.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout.setBackgroundDrawable(this.c);
-    this.jdField_a_of_type_Whq.jdField_a_of_type_ComTencentWidgetPatchedButton.setBackgroundDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableStateListDrawable);
+    bbmy.a(this.a.getContext(), 2131625101, 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     whr
  * JD-Core Version:    0.7.0.1
  */

@@ -1,39 +1,78 @@
-import android.view.KeyEvent;
-import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
-import com.tencent.biz.qqstory.comment.FeedCommentLego;
-import com.tencent.biz.qqstory.comment.StoryInputBarView;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.FeedSegment.InputViewHideListener;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.PopupWindow;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.ChatFragment;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForArkApp;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.XEditTextEx;
+import org.json.JSONObject;
 
-public class ngb
-  implements TextView.OnEditorActionListener
+class ngb
+  implements View.OnClickListener
 {
-  public ngb(StoryInputBarView paramStoryInputBarView) {}
+  ngb(nga paramnga, int paramInt, JSONObject paramJSONObject, Context paramContext, MessageRecord paramMessageRecord) {}
   
-  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
+  public void onClick(View paramView)
   {
-    if (paramInt == 4)
+    switch (this.jdField_a_of_type_Int)
     {
-      paramTextView = paramTextView.getText().toString();
-      if (paramTextView.length() <= 0) {
-        break label122;
+    }
+    for (;;)
+    {
+      if ((nga.a(this.jdField_a_of_type_Nga) != null) && (nga.a(this.jdField_a_of_type_Nga).isShowing())) {
+        nga.a(this.jdField_a_of_type_Nga).dismiss();
       }
-      this.a.setKeyBoardState(false);
-      this.a.jdField_a_of_type_ComTencentBizQqstoryCommentFeedCommentLego.a(paramTextView, this.a.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry);
-      this.a.c();
-      this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.setText("");
-      if (StoryInputBarView.a(this.a) != null) {
-        StoryInputBarView.a(this.a).f();
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.qqstory:StoryInputBarView", 2, "onEditorAction vaule=" + paramTextView);
+      return;
+      paramView = this.jdField_a_of_type_OrgJsonJSONObject.optString("action_url", "");
+      if (!baip.a(paramView))
+      {
+        Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+        localIntent.putExtra("url", paramView);
+        localIntent.putExtra("big_brother_source_key", "biz_src_gzh_qqgw");
+        ((Activity)this.jdField_a_of_type_AndroidContentContext).startActivity(localIntent);
+        continue;
+        ((FragmentActivity)this.jdField_a_of_type_AndroidContentContext).getChatFragment().a().a((ChatMessage)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+        if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord instanceof MessageForArkApp))
+        {
+          paramView = (MessageForArkApp)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+          if (paramView.arkContainer != null)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.i("EcshopAdHelper", 2, "doOnEvent ARKAPP_TYPE_DESTROY");
+            }
+            paramView.arkContainer.doOnEvent(2);
+          }
+        }
+        ((nfw)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a(139)).a(8, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+        bbmy.a(BaseApplicationImpl.getContext(), BaseApplicationImpl.getContext().getResources().getString(2131626779), 1).a();
+        continue;
+        ((FragmentActivity)this.jdField_a_of_type_AndroidContentContext).getChatFragment().a().a((ChatMessage)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+        if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord instanceof MessageForArkApp))
+        {
+          paramView = (MessageForArkApp)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+          if (paramView.arkContainer != null)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.i("EcshopAdHelper", 2, "doOnEvent ARKAPP_TYPE_DESTROY");
+            }
+            paramView.arkContainer.doOnEvent(2);
+          }
+        }
+        ((nfw)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a(139)).a(7, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+        bbmy.a(BaseApplicationImpl.getContext(), BaseApplicationImpl.getContext().getResources().getString(2131626779), 1).a();
       }
     }
-    return false;
-    label122:
-    return true;
   }
 }
 

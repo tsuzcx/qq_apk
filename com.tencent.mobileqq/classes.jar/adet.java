@@ -1,57 +1,40 @@
-import com.tencent.common.app.BaseApplicationImpl;
+import android.os.Handler;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.item.FileVideoItemBuilder.5.1;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.core.FileManagerDataCenter;
-import com.tencent.mobileqq.filemanager.core.FileManagerNotifyCenter;
-import com.tencent.mobileqq.filemanager.core.FileVideoManager.FileVideoManagerCallback;
-import com.tencent.mobileqq.filemanager.core.FileVideoManager.VideoControl;
+import com.tencent.mobileqq.data.MessageForFile;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.util.FMToastUtil;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
 
 public class adet
-  implements FileVideoManager.FileVideoManagerCallback
+  implements begw
 {
-  public adet(FileVideoManager.VideoControl paramVideoControl, FileManagerEntity paramFileManagerEntity, boolean paramBoolean) {}
+  adet(adeq paramadeq, MessageForFile paramMessageForFile, begr parambegr) {}
   
-  public void a(int paramInt, String paramString)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.i("FileVideoManager<FileAssistant>", 1, "[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "]on Error[" + paramInt + "]msg[" + paramString + "]");
+    if (this.jdField_a_of_type_Adeq.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile.uniseq, this.jdField_a_of_type_Adeq.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Adeq.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, -1L) != -1) {
+      this.jdField_a_of_type_Adeq.b.post(new FileVideoItemBuilder.5.1(this));
     }
-    Object localObject;
-    if ((paramInt == -25081) || (paramInt == -6101) || (paramInt == -7003))
+    for (;;)
     {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoManager$VideoControl.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status = 16;
-      localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      ((QQAppInterface)localObject).a().c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoManager$VideoControl.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
-      FMToastUtil.a(2131428190);
-      ((QQAppInterface)localObject).a().a(true, 3, null);
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoManager$VideoControl.jdField_a_of_type_JavaLangRefWeakReference != null)
-    {
-      localObject = (FileVideoManager.FileVideoManagerCallback)this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoManager$VideoControl.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localObject != null) {
-        ((FileVideoManager.FileVideoManagerCallback)localObject).a(paramInt, paramString);
+      this.jdField_a_of_type_Begr.cancel();
+      return;
+      paramView = apck.a(this.jdField_a_of_type_Adeq.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile);
+      if (paramView.status == 16)
+      {
+        apcb.a(2131627218);
+        this.jdField_a_of_type_Begr.cancel();
+        return;
       }
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile.status = 1002;
+      apck.a(this.jdField_a_of_type_Adeq.jdField_a_of_type_AndroidContentContext, paramView, this.jdField_a_of_type_Adeq.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, true);
     }
   }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.i("FileVideoManager<FileAssistant>", 1, "[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "]onGetUrlCookies");
-    }
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoManager$VideoControl.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoManager$VideoControl.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity, this.jdField_a_of_type_Boolean);
-  }
-  
-  public void ag_() {}
-  
-  public void ah_() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     adet
  * JD-Core Version:    0.7.0.1
  */

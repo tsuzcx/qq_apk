@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBStringField;
 
 public final class nearfield_discuss$BusiRespHead
-  extends MessageMicro
+  extends MessageMicro<BusiRespHead>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34 }, new String[] { "int32_version", "int32_seq", "int32_reply_code", "str_result" }, new Object[] { Integer.valueOf(1), Integer.valueOf(0), Integer.valueOf(0), "" }, BusiRespHead.class);
   public final PBInt32Field int32_reply_code = PBField.initInt32(0);
@@ -17,7 +17,7 @@ public final class nearfield_discuss$BusiRespHead
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     tencent.im.nearfield_discuss.nearfield_discuss.BusiRespHead
  * JD-Core Version:    0.7.0.1
  */

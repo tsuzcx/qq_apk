@@ -1,5 +1,6 @@
 package cooperation.qzone.report.lp;
 
+import ajjy;
 import android.os.Build;
 import android.os.SystemClock;
 import android.text.TextUtils;
@@ -16,10 +17,10 @@ import mqq.app.AppRuntime;
 
 public class LpReportUtils
 {
-  public static final String ALL_REPORT = "全量上报";
-  public static final String CLICK_MESSAGE = "点击统计上报信息: ";
-  public static final String NOT_HIT = ",没命中,今天命中的QQ尾号是：";
-  public static final String SAMPLE_REPORT = "抽样上报";
+  public static final String ALL_REPORT = ajjy.a(2131640612);
+  public static final String CLICK_MESSAGE = ajjy.a(2131640614);
+  public static final String NOT_HIT = ajjy.a(2131640611);
+  public static final String SAMPLE_REPORT = ajjy.a(2131640613);
   private static final String TAG = "LpReport.LpReportUtils";
   private static boolean isSampled;
   private static long sampleValidEndTime;
@@ -71,13 +72,21 @@ public class LpReportUtils
   
   public static boolean meetCondition(LpReportInfos paramLpReportInfos, long paramLong)
   {
-    long l = SystemClock.uptimeMillis();
-    int i = QzoneConfig.getInstance().getConfig("ClientReport", "TraceReportInterval", 600);
-    int j = QzoneConfig.getInstance().getConfig("ClientReport", "TraceReportCount", 50);
-    return (paramLpReportInfos.size() >= j) || ((l - paramLong >= i * 1000) && (paramLpReportInfos.size() > 0));
+    if ((BaseApplicationImpl.sProcessId == 1) && (BaseApplicationImpl.getApplication() != null) && (BaseApplicationImpl.getApplication().getRuntime() != null) && (BaseApplicationImpl.getApplication().getRuntime().isBackground_Pause)) {}
+    long l;
+    int i;
+    int j;
+    do
+    {
+      return true;
+      l = SystemClock.uptimeMillis();
+      i = QzoneConfig.getInstance().getConfig("ClientReport", "TraceReportInterval", 600);
+      j = QzoneConfig.getInstance().getConfig("ClientReport", "TraceReportCount", 50);
+    } while ((paramLpReportInfos.size() >= j) || ((l - paramLong >= i * 1000) && (paramLpReportInfos.size() > 0)));
+    return false;
   }
   
-  public static void safePut(Map paramMap, String paramString, int paramInt)
+  public static void safePut(Map<String, String> paramMap, String paramString, int paramInt)
   {
     if (paramMap == null) {}
     while (TextUtils.isEmpty(paramString)) {
@@ -86,7 +95,7 @@ public class LpReportUtils
     paramMap.put(paramString, String.valueOf(paramInt));
   }
   
-  public static void safePut(Map paramMap, String paramString1, String paramString2)
+  public static void safePut(Map<String, String> paramMap, String paramString1, String paramString2)
   {
     if (paramMap == null) {}
     while ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
@@ -131,11 +140,24 @@ public class LpReportUtils
   
   private static void userSample()
   {
+    boolean bool = true;
     int i = QzoneConfig.getInstance().getConfig("ClientReport", "TraceReportSamples", 100);
-    long l1 = getDaysSince1970();
-    long l2 = BaseApplicationImpl.getApplication().getRuntime().getLongAccountUin();
-    if (l2 == 0L) {
-      return;
+    long l2 = getDaysSince1970();
+    long l1;
+    try
+    {
+      l1 = BaseApplicationImpl.getApplication().getRuntime().getLongAccountUin();
+      if (l1 == 0L) {
+        return;
+      }
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        QLog.e("LpReport.LpReportUtils", 1, localException, new Object[0]);
+        l1 = 0L;
+      }
     }
     if (i == 0)
     {
@@ -144,9 +166,9 @@ public class LpReportUtils
       sampleValidEndTime = getBeijingTimeInMillis(24, 0, 0);
       return;
     }
-    int j = (int)(l1 % i);
-    if (j == l2 % i) {}
-    for (boolean bool = true;; bool = false)
+    int j = (int)(l2 % i);
+    if (j == l1 % i) {}
+    for (;;)
     {
       isSampled = bool;
       if (!QLog.isDevelopLevel()) {
@@ -154,6 +176,7 @@ public class LpReportUtils
       }
       QLog.d("LpReport.LpReportUtils", 4, "抽中的尾数： " + j);
       break;
+      bool = false;
     }
   }
 }

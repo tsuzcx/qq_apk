@@ -1,39 +1,61 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.app.FriendsManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
-import com.tencent.util.WeakReferenceHandler;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.MsgTabNodeInfo;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspMsgTabNodeList;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-class str
-  implements Runnable
+public class str
+  extends slu
 {
-  str(stq paramstq) {}
+  public String a;
+  public ArrayList<ssm> a;
+  public boolean a;
+  public boolean b;
+  public String c;
   
-  public void run()
+  public str(qqstory_service.RspMsgTabNodeList paramRspMsgTabNodeList)
   {
-    if ((this.a.a.app == null) || (this.a.a.b == null)) {}
-    do
+    super(paramRspMsgTabNodeList.result);
+    this.jdField_a_of_type_JavaLangString = paramRspMsgTabNodeList.list_seq.get().toStringUtf8();
+    this.c = paramRspMsgTabNodeList.next_cookie.get().toStringUtf8();
+    if (paramRspMsgTabNodeList.is_animate.get() > 0) {}
+    for (boolean bool1 = true;; bool1 = false)
     {
-      return;
-      localObject = (FriendsManager)this.a.a.app.getManager(50);
-    } while (localObject == null);
-    Card localCard = ((FriendsManager)localObject).a(this.a.a.a.a.a);
-    Message localMessage = Message.obtain();
-    localMessage.what = 3;
-    Object localObject = localCard;
-    if (localCard == null) {
-      localObject = this.a.a.a.a.a;
+      this.jdField_a_of_type_Boolean = bool1;
+      if (paramRspMsgTabNodeList.is_end.has())
+      {
+        bool1 = bool2;
+        if (paramRspMsgTabNodeList.is_end.get() != 1) {}
+      }
+      else
+      {
+        bool1 = true;
+      }
+      this.b = bool1;
+      this.jdField_a_of_type_JavaUtilArrayList = new ArrayList(paramRspMsgTabNodeList.node_list.size());
+      paramRspMsgTabNodeList = paramRspMsgTabNodeList.node_list.get().iterator();
+      while (paramRspMsgTabNodeList.hasNext())
+      {
+        qqstory_service.MsgTabNodeInfo localMsgTabNodeInfo = (qqstory_service.MsgTabNodeInfo)paramRspMsgTabNodeList.next();
+        ssm localssm = new ssm();
+        localssm.a(localMsgTabNodeInfo);
+        this.jdField_a_of_type_JavaUtilArrayList.add(localssm);
+      }
     }
-    localMessage.obj = localObject;
-    this.a.a.b.sendMessage(localMessage);
+  }
+  
+  public String toString()
+  {
+    return "MsgTabNodeListResponse{shouldAnimate=" + this.jdField_a_of_type_Boolean + ", seq='" + this.jdField_a_of_type_JavaLangString + '\'' + ", cookie='" + this.c + '\'' + ", isEnd=" + this.b + ", nodeList=" + this.jdField_a_of_type_JavaUtilArrayList + "} " + super.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     str
  * JD-Core Version:    0.7.0.1
  */

@@ -10,7 +10,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class cmd0x383$ApplyFileSearchReqBody
-  extends MessageMicro
+  extends MessageMicro<ApplyFileSearchReqBody>
 {
   public static final int AUDIO = 3;
   public static final int DOCUMENT = 1;
@@ -25,8 +25,8 @@ public final class cmd0x383$ApplyFileSearchReqBody
   public final PBUInt32Field uint32_count = PBField.initUInt32(0);
   public final PBUInt32Field uint32_file_type = PBField.initUInt32(0);
   public final PBUInt32Field uint32_search_type = PBField.initUInt32(0);
-  public final PBRepeatField uint64_group_code_list = PBField.initRepeat(PBUInt64Field.__repeatHelper__);
-  public final PBRepeatField uint64_uin_list = PBField.initRepeat(PBUInt64Field.__repeatHelper__);
+  public final PBRepeatField<Long> uint64_group_code_list = PBField.initRepeat(PBUInt64Field.__repeatHelper__);
+  public final PBRepeatField<Long> uint64_uin_list = PBField.initRepeat(PBUInt64Field.__repeatHelper__);
   
   static
   {
@@ -37,7 +37,7 @@ public final class cmd0x383$ApplyFileSearchReqBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     tencent.im.cs.cmd0x383.cmd0x383.ApplyFileSearchReqBody
  * JD-Core Version:    0.7.0.1
  */

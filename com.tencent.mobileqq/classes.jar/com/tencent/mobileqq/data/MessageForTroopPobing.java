@@ -1,17 +1,20 @@
 package com.tencent.mobileqq.data;
 
+import ajjy;
 import android.text.TextUtils;
 import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
 
 public class MessageForTroopPobing
   extends MessageForStructing
 {
+  public static final int DEFAULT_TEMPLATE = 2000;
   public static final String TAG = "MessageForTroopPobing";
   public String mBrief;
+  public int mTemplateId;
   
   public static String buildCompatibleText()
   {
-    return "大家好，我是新人请多关照";
+    return ajjy.a(2131640826);
   }
   
   public void doParse()
@@ -19,15 +22,17 @@ public class MessageForTroopPobing
     super.doParse();
     if (this.structingMsg != null)
     {
-      this.mBrief = ((StructMsgForGeneralShare)this.structingMsg).mMsgBrief;
+      StructMsgForGeneralShare localStructMsgForGeneralShare = (StructMsgForGeneralShare)this.structingMsg;
+      this.mBrief = localStructMsgForGeneralShare.mMsgBrief;
       this.msg = this.mBrief;
+      this.mTemplateId = localStructMsgForGeneralShare.pobingTemplateId;
     }
   }
   
   public String getSummaryMsg()
   {
     if (TextUtils.isEmpty(this.msg)) {
-      return "新人入群";
+      return ajjy.a(2131640785);
     }
     return this.msg;
   }

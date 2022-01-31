@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.nearby.now.model;
 
-import afbc;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
+import asli;
 import java.io.Serializable;
 
 public class LocationInfo
   implements Parcelable, Serializable, Cloneable
 {
-  public static final Parcelable.Creator CREATOR = new afbc();
+  public static final Parcelable.Creator<LocationInfo> CREATOR = new asli();
   public String address = "";
   public String city = "";
   boolean isForeign = false;

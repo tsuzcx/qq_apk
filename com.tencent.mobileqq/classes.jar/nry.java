@@ -1,17 +1,18 @@
-import android.view.GestureDetector;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.biz.qqstory.playvideo.MyVideoVisibleTroopPageView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class nry
-  implements View.OnTouchListener
+class nry
+  implements DialogInterface.OnClickListener
 {
-  public nry(MyVideoVisibleTroopPageView paramMyVideoVisibleTroopPageView) {}
+  nry(nrw paramnrw, boolean paramBoolean) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return this.a.a.onTouchEvent(paramMotionEvent);
+    if (nrw.a(this.jdField_a_of_type_Nrw)) {}
+    while ((!yox.a()) || (this.jdField_a_of_type_Boolean)) {
+      return;
+    }
+    this.jdField_a_of_type_Nrw.g();
   }
 }
 

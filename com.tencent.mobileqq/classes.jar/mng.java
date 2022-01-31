@@ -1,14 +1,35 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInjoySelfInnerListViewAdapter;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.io.UnsupportedEncodingException;
 
 public class mng
 {
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private TextView b;
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
   
-  private mng(ReadInjoySelfInnerListViewAdapter paramReadInjoySelfInnerListViewAdapter) {}
+  public byte[] a()
+  {
+    if (TextUtils.isEmpty(this.a)) {}
+    do
+    {
+      return null;
+      try
+      {
+        byte[] arrayOfByte = this.a.getBytes("ISO-8859-1");
+        return arrayOfByte;
+      }
+      catch (UnsupportedEncodingException localUnsupportedEncodingException)
+      {
+        localUnsupportedEncodingException.printStackTrace();
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("AnonymousChatHelper", 2, "getByteAnId UnsupportedEncodingException");
+    return null;
+  }
 }
 
 

@@ -1,25 +1,38 @@
-import com.tencent.mobileqq.activity.qwallet.PasswdRedBagDBManager;
-import com.tencent.mobileqq.activity.qwallet.PasswdRedBagManager;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.biz.widgets.TabLayout;
 
-class xfh
-  implements Runnable
+public class xfh
+  implements Animator.AnimatorListener
 {
-  xfh(xfg paramxfg, int paramInt) {}
+  public xfh(TabLayout paramTabLayout, Animator.AnimatorListener paramAnimatorListener) {}
   
-  public void run()
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    if (this.jdField_a_of_type_Int == 1) {
-      PasswdRedBagManager.a(this.jdField_a_of_type_Xfg.a).a(this.jdField_a_of_type_Xfg.a.b);
-    }
-    while (this.jdField_a_of_type_Int != 0) {
-      return;
-    }
-    PasswdRedBagManager.a(this.jdField_a_of_type_Xfg.a).a(this.jdField_a_of_type_Xfg.a.a);
+    this.jdField_a_of_type_AndroidAnimationAnimator$AnimatorListener.onAnimationCancel(paramAnimator);
+    TabLayout.a(this.jdField_a_of_type_ComTencentBizWidgetsTabLayout, false);
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    this.jdField_a_of_type_AndroidAnimationAnimator$AnimatorListener.onAnimationEnd(paramAnimator);
+    TabLayout.a(this.jdField_a_of_type_ComTencentBizWidgetsTabLayout, false);
+    this.jdField_a_of_type_ComTencentBizWidgetsTabLayout.a();
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator)
+  {
+    this.jdField_a_of_type_AndroidAnimationAnimator$AnimatorListener.onAnimationRepeat(paramAnimator);
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    this.jdField_a_of_type_AndroidAnimationAnimator$AnimatorListener.onAnimationStart(paramAnimator);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     xfh
  * JD-Core Version:    0.7.0.1
  */

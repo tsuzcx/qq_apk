@@ -9,12 +9,12 @@ import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class MultiMsg$ReqBody
-  extends MessageMicro
+  extends MessageMicro<ReqBody>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_build_ver = PBField.initBytes(ByteStringMicro.EMPTY);
-  public final PBRepeatMessageField rpt_multimsg_applydown_req = PBField.initRepeatMessage(MultiMsg.MultiMsgApplyDownReq.class);
-  public final PBRepeatMessageField rpt_multimsg_applyup_req = PBField.initRepeatMessage(MultiMsg.MultiMsgApplyUpReq.class);
+  public final PBRepeatMessageField<MultiMsg.MultiMsgApplyDownReq> rpt_multimsg_applydown_req = PBField.initRepeatMessage(MultiMsg.MultiMsgApplyDownReq.class);
+  public final PBRepeatMessageField<MultiMsg.MultiMsgApplyUpReq> rpt_multimsg_applyup_req = PBField.initRepeatMessage(MultiMsg.MultiMsgApplyUpReq.class);
   public final PBUInt32Field uint32_bu_type = PBField.initUInt32(0);
   public final PBUInt32Field uint32_net_type = PBField.initUInt32(0);
   public final PBUInt32Field uint32_platform_type = PBField.initUInt32(0);
@@ -30,7 +30,7 @@ public final class MultiMsg$ReqBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     tencent.im.longconn.multimsg.MultiMsg.ReqBody
  * JD-Core Version:    0.7.0.1
  */

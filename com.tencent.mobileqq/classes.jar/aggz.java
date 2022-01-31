@@ -1,33 +1,34 @@
-import android.view.SurfaceHolder;
-import android.view.SurfaceHolder.Callback;
-import com.tencent.mobileqq.ocr.OcrCamera;
-import com.tencent.mobileqq.ocr.activity.ScanOcrActivity;
-import com.tencent.mobileqq.ocr.view.MaskView;
+import android.content.Context;
+import android.content.res.Resources;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.CheckBox;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
+import mqq.util.WeakReference;
 
-public class aggz
-  implements SurfaceHolder.Callback
+class aggz
+  implements View.OnClickListener
 {
-  public aggz(ScanOcrActivity paramScanOcrActivity) {}
+  aggz(aggx paramaggx, Resources paramResources) {}
   
-  public void surfaceChanged(SurfaceHolder paramSurfaceHolder, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void surfaceCreated(SurfaceHolder paramSurfaceHolder)
+  public void onClick(View paramView)
   {
-    ScanOcrActivity.a(this.a, paramSurfaceHolder);
-    if (ScanOcrActivity.a(this.a) == null)
+    if (!((NewPhotoPreviewActivity)this.jdField_a_of_type_Aggx.jdField_a_of_type_MqqUtilWeakReference.get()).b.isChecked())
     {
-      ScanOcrActivity.a(this.a, new OcrCamera(this.a, this.a.jdField_a_of_type_ComTencentMobileqqOcrOcrCamera$CameraCallback, ScanOcrActivity.a(this.a)));
-      ScanOcrActivity.a(this.a).a(this.a.jdField_a_of_type_Int);
-      ScanOcrActivity.a(this.a).a(this.a.jdField_a_of_type_ComTencentMobileqqOcrViewMaskView.a());
-      ScanOcrActivity.a(this.a).a();
+      if (baaf.a(this.jdField_a_of_type_Aggx.jdField_a_of_type_Aggf.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_Aggx.jdField_a_of_type_Aggf.jdField_b_of_type_Int, this.jdField_a_of_type_Aggx.jdField_a_of_type_Aggf.jdField_b_of_type_JavaUtilHashMap, true, this.jdField_a_of_type_Aggx.jdField_a_of_type_Aggf.jdField_a_of_type_JavaUtilHashMap) > 0)
+      {
+        bbmy.a((Context)this.jdField_a_of_type_Aggx.jdField_a_of_type_MqqUtilWeakReference.get(), this.jdField_a_of_type_AndroidContentResResources.getString(2131629431), 0).b(((NewPhotoPreviewActivity)this.jdField_a_of_type_Aggx.jdField_a_of_type_MqqUtilWeakReference.get()).getResources().getDimensionPixelSize(2131167766));
+        return;
+      }
+      ((NewPhotoPreviewActivity)this.jdField_a_of_type_Aggx.jdField_a_of_type_MqqUtilWeakReference.get()).b.setChecked(true);
+      return;
     }
+    ((NewPhotoPreviewActivity)this.jdField_a_of_type_Aggx.jdField_a_of_type_MqqUtilWeakReference.get()).b.setChecked(false);
   }
-  
-  public void surfaceDestroyed(SurfaceHolder paramSurfaceHolder) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aggz
  * JD-Core Version:    0.7.0.1
  */

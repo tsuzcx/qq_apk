@@ -1,44 +1,51 @@
 package com.tencent.mobileqq.activity.chathistory;
 
+import aeru;
+import aerv;
+import aerw;
+import aerx;
+import aerz;
+import aesa;
+import ajjy;
+import akbm;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Handler.Callback;
 import android.support.v4.app.FragmentActivity;
+import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import atmp;
+import atmq;
+import awqx;
+import awuw;
+import axjq;
+import axkd;
+import babh;
+import bami;
+import beez;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.message.MsgProxyUtils;
+import com.tencent.mobileqq.data.MarkFaceMessage;
+import com.tencent.mobileqq.data.MessageForMarketFace;
 import com.tencent.mobileqq.data.MessageForMixedMsg;
+import com.tencent.mobileqq.data.MessageForPic;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.fragment.IphoneTitleBarFragment;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
-import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.structmsg.AbsStructMsg;
-import com.tencent.mobileqq.structmsg.StructMsgFactory;
-import com.tencent.mobileqq.text.QQText;
-import com.tencent.mobileqq.utils.ContactUtils;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.MqqWeakReferenceHandler;
 import com.tencent.widget.XListView;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import mqq.os.MqqHandler;
-import wmb;
-import wmc;
-import wmd;
-import wme;
-import wmg;
-import wmh;
-import wmi;
 
 public class TroopMemberHistoryFragment
   extends IphoneTitleBarFragment
@@ -46,15 +53,16 @@ public class TroopMemberHistoryFragment
 {
   public static final String a;
   private long jdField_a_of_type_Long = 9223372036854775807L;
-  Handler.Callback jdField_a_of_type_AndroidOsHandler$Callback = new wme(this);
+  public aesa a;
+  Handler.Callback jdField_a_of_type_AndroidOsHandler$Callback = new aerw(this);
+  public View.OnClickListener a;
   public View a;
   public TextView a;
+  TroopMemberHistoryFragment.LoadMsgThread jdField_a_of_type_ComTencentMobileqqActivityChathistoryTroopMemberHistoryFragment$LoadMsgThread = new TroopMemberHistoryFragment.LoadMsgThread(this, null);
   public QQAppInterface a;
   XListView jdField_a_of_type_ComTencentWidgetXListView;
-  ArrayList jdField_a_of_type_JavaUtilArrayList;
-  public MqqHandler a;
-  wmg jdField_a_of_type_Wmg = new wmg(this, null);
-  public wmi a;
+  ArrayList<String> jdField_a_of_type_JavaUtilArrayList;
+  MqqHandler jdField_a_of_type_MqqOsMqqHandler = new beez(this.jdField_a_of_type_AndroidOsHandler$Callback);
   public boolean a;
   public String b;
   boolean b;
@@ -71,7 +79,7 @@ public class TroopMemberHistoryFragment
   {
     this.jdField_a_of_type_Boolean = false;
     this.jdField_c_of_type_Boolean = false;
-    this.jdField_a_of_type_MqqOsMqqHandler = new MqqWeakReferenceHandler(this.jdField_a_of_type_AndroidOsHandler$Callback);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new aerx(this);
   }
   
   private void a(Bundle paramBundle)
@@ -104,7 +112,7 @@ public class TroopMemberHistoryFragment
     b();
   }
   
-  public List a()
+  public List<aerz> a()
   {
     boolean bool = false;
     if (this.jdField_c_of_type_Boolean) {
@@ -112,7 +120,7 @@ public class TroopMemberHistoryFragment
     }
     Object localObject3 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
     Object localObject4 = MessageRecord.getTableName(this.jdField_b_of_type_JavaLangString, 1);
-    Object localObject1 = MsgProxyUtils.b();
+    Object localObject1 = akbm.b();
     if ((this.jdField_c_of_type_JavaLangString.equals("0")) && (this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0))
     {
       localObject2 = new StringBuilder();
@@ -130,8 +138,8 @@ public class TroopMemberHistoryFragment
     }
     for (;;)
     {
-      localObject1 = ((EntityManager)localObject3).a(MessageRecord.class, (String)localObject4, false, (String)localObject1, (String[])localObject2, null, null, "shmsgseq DESC", String.valueOf(50));
-      ((EntityManager)localObject3).a();
+      localObject1 = ((atmp)localObject3).a(MessageRecord.class, (String)localObject4, false, (String)localObject1, (String[])localObject2, null, null, "shmsgseq DESC", String.valueOf(50));
+      ((atmp)localObject3).a();
       if ((localObject1 != null) && (!((List)localObject1).isEmpty())) {
         break label264;
       }
@@ -157,7 +165,7 @@ public class TroopMemberHistoryFragment
       switch (((MessageRecord)localObject4).msgtype)
       {
       default: 
-        localObject1 = "[其他消息]";
+        localObject1 = ajjy.a(2131649824);
       }
     }
     for (;;)
@@ -165,66 +173,83 @@ public class TroopMemberHistoryFragment
       if (this.jdField_a_of_type_Long > ((MessageRecord)localObject4).shmsgseq) {
         this.jdField_a_of_type_Long = ((MessageRecord)localObject4).shmsgseq;
       }
-      ((List)localObject2).add(new wmh(this, ((MessageRecord)localObject4).senderuin, ((MessageRecord)localObject4).time, (CharSequence)localObject1, ((MessageRecord)localObject4).shmsgseq, (MessageRecord)localObject4));
+      ((List)localObject2).add(new aerz(this, ((MessageRecord)localObject4).senderuin, ((MessageRecord)localObject4).time, (CharSequence)localObject1, ((MessageRecord)localObject4).shmsgseq, (MessageRecord)localObject4));
       break;
-      localObject1 = new QQText(((MessageRecord)localObject4).msg, 13, 32, 1);
+      localObject1 = bami.a(((MessageRecord)localObject4).msg, (MessageRecord)localObject4, 32, 13);
       continue;
-      localObject1 = BaseApplicationImpl.getApplication().getString(2131433035);
-      continue;
-      localObject1 = BaseApplicationImpl.getApplication().getString(2131435586);
-      continue;
-      localObject1 = BaseApplicationImpl.getApplication().getString(2131435589);
-      continue;
-      localObject1 = new MessageForMixedMsg();
-      ((MessageForMixedMsg)localObject1).msgData = ((MessageRecord)localObject4).msgData;
-      ((MessageForMixedMsg)localObject1).parse();
-      if (((MessageForMixedMsg)localObject1).msg == null) {}
-      for (localObject1 = "[其他消息]";; localObject1 = new QQText(((MessageForMixedMsg)localObject1).msg, 13, 32, 1)) {
-        break;
-      }
-      localObject1 = BaseApplicationImpl.getApplication().getString(2131436296);
-      continue;
-      localObject1 = BaseApplicationImpl.getApplication().getString(2131435097);
-      continue;
-      try
+      if ((localObject4 instanceof MessageForPic))
       {
-        localObject1 = StructMsgFactory.a(((MessageRecord)localObject4).msgData);
-        if (localObject1 == null) {
-          localObject1 = "[结构化消息]";
-        } else {
-          localObject1 = ((AbsStructMsg)localObject1).mMsgBrief;
+        localObject1 = ((MessageForPic)localObject4).getSummaryMsg();
+      }
+      else
+      {
+        localObject1 = BaseApplicationImpl.getApplication().getString(2131627729);
+        continue;
+        localObject1 = BaseApplicationImpl.getApplication().getString(2131625722);
+        continue;
+        localObject1 = BaseApplicationImpl.getApplication().getString(2131625724);
+        continue;
+        localObject1 = new MessageForMixedMsg();
+        ((MessageForMixedMsg)localObject1).msgData = ((MessageRecord)localObject4).msgData;
+        ((MessageForMixedMsg)localObject1).parse();
+        if (((MessageForMixedMsg)localObject1).msg == null) {}
+        for (localObject1 = ajjy.a(2131649795);; localObject1 = new axkd(((MessageForMixedMsg)localObject1).msg, 13, 32, 1)) {
+          break;
         }
+        if ((localObject4 instanceof MessageForMarketFace))
+        {
+          localObject1 = ((MessageForMarketFace)localObject4).mMarkFaceMessage;
+          if ((localObject1 != null) && (!TextUtils.isEmpty(((MarkFaceMessage)localObject1).faceName))) {}
+          for (localObject1 = "[" + ((MarkFaceMessage)localObject1).faceName + "]";; localObject1 = BaseApplicationImpl.getApplication().getResources().getString(2131626457)) {
+            break;
+          }
+        }
+        localObject1 = BaseApplicationImpl.getApplication().getResources().getString(2131626457);
+        continue;
+        localObject1 = BaseApplicationImpl.getApplication().getString(2131626795);
+        continue;
+        try
+        {
+          localObject1 = awuw.a(((MessageRecord)localObject4).msgData);
+          if (localObject1 == null) {
+            localObject1 = ajjy.a(2131649766);
+          } else {
+            localObject1 = ((AbsStructMsg)localObject1).mMsgBrief;
+          }
+        }
+        catch (Exception localException)
+        {
+          String str = ajjy.a(2131649758);
+        }
+        continue;
+        return localObject2;
       }
-      catch (Exception localException)
-      {
-        String str = "[结构化消息]";
-      }
-      continue;
-      return localObject2;
     }
   }
   
   protected void a()
   {
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)this.mContentView.findViewById(2131368321));
-    this.jdField_a_of_type_AndroidViewView = this.mContentView.findViewById(2131368322);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.mContentView.findViewById(2131365558));
-    this.jdField_a_of_type_AndroidViewView.findViewById(2131364216).setVisibility(8);
-    this.jdField_a_of_type_Wmi = new wmi(this, getActivity());
-    this.d = ContactUtils.g(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Wmi);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setOnTouchListener(new wmb(this));
-    this.jdField_a_of_type_ComTencentWidgetXListView.setOnItemClickListener(new wmc(this));
-    this.jdField_a_of_type_ComTencentWidgetXListView.setOnScrollListener(new wmd(this));
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)this.mContentView.findViewById(2131304074));
+    this.jdField_a_of_type_AndroidViewView = this.mContentView.findViewById(2131300053);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.mContentView.findViewById(2131311233));
+    this.jdField_a_of_type_AndroidViewView.findViewById(2131311432).setVisibility(8);
+    this.jdField_a_of_type_Aesa = new aesa(this, getActivity());
+    this.d = babh.h(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Aesa);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setOnTouchListener(new aeru(this));
+    this.jdField_a_of_type_ComTencentWidgetXListView.setOnScrollListener(new aerv(this));
     if ((this.jdField_c_of_type_JavaLangString.equals("0")) && (this.jdField_a_of_type_JavaUtilArrayList != null)) {
-      setTitle("所有老师和管理员的发言");
+      setTitle(ajjy.a(2131649776));
     }
     for (;;)
     {
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_chatRecord", "", "chatRecor_mber", "res_exp", 0, 0, this.jdField_b_of_type_JavaLangString, "", "", "");
+      awqx.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_chatRecord", "", "chatRecor_mber", "res_exp", 0, 0, this.jdField_b_of_type_JavaLangString, "", "", "");
       return;
-      if (this.d != null) {
-        setTitle(this.d + "的发言");
+      if (this.d != null)
+      {
+        SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
+        localSpannableStringBuilder.append(new axjq(this.d, 32).a()).append("的发言");
+        setTitle(localSpannableStringBuilder);
       }
     }
   }
@@ -240,11 +265,11 @@ public class TroopMemberHistoryFragment
     }
     do
     {
-      this.jdField_a_of_type_Wmg.a(paramInt);
-      ThreadManager.post(this.jdField_a_of_type_Wmg, 8, null, true);
+      this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryTroopMemberHistoryFragment$LoadMsgThread.a(paramInt);
+      ThreadManager.post(this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryTroopMemberHistoryFragment$LoadMsgThread, 8, null, true);
       return;
     } while (!this.jdField_b_of_type_Boolean);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131430216);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131632112);
     this.jdField_a_of_type_AndroidViewView.setVisibility(0);
   }
   
@@ -270,9 +295,9 @@ public class TroopMemberHistoryFragment
     a(20);
   }
   
-  protected int getContentLayoutId()
+  public int getContentLayoutId()
   {
-    return 2130969880;
+    return 2131494738;
   }
   
   public void onClick(View paramView) {}

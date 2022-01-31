@@ -1,176 +1,171 @@
 package oicq.wlogin_sdk.request;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Set;
-import oicq.wlogin_sdk.tlv_type.tlv_t;
-import oicq.wlogin_sdk.tlv_type.tlv_t100;
-import oicq.wlogin_sdk.tlv_type.tlv_t108;
-import oicq.wlogin_sdk.tlv_type.tlv_t109;
-import oicq.wlogin_sdk.tlv_type.tlv_t112;
-import oicq.wlogin_sdk.tlv_type.tlv_t116;
-import oicq.wlogin_sdk.tlv_type.tlv_t142;
-import oicq.wlogin_sdk.tlv_type.tlv_t145;
-import oicq.wlogin_sdk.tlv_type.tlv_t154;
-import oicq.wlogin_sdk.tlv_type.tlv_t8;
+import android.os.Build.VERSION;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import oicq.wlogin_sdk.report.Reporter;
+import oicq.wlogin_sdk.report.report_t;
+import oicq.wlogin_sdk.tlv_type.tlv_t150;
+import oicq.wlogin_sdk.tools.cryptor;
 import oicq.wlogin_sdk.tools.util;
+import org.json.JSONObject;
 
 public class v
-  extends oicq_request
+  extends j
 {
+  public final int b = 1737040709;
+  public final int c = 33;
+  public final String d = "x'Z8mSi,V(Wu~.v:";
+  
   public v(t paramt)
   {
-    this.t = 2064;
-    this.u = 17;
-    this.v = "wtlogin.login";
-    this.x = paramt;
-    this.x.m = 0;
+    this.a = paramt;
   }
   
-  public int a(long paramLong1, long paramLong2, int paramInt1, byte[] paramArrayOfByte, String paramString, int paramInt2, int paramInt3, long[] paramArrayOfLong, WUserSigInfo paramWUserSigInfo)
+  public int a(long paramLong1, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, long paramLong2, int paramInt)
   {
-    int j = t.w;
     int i = 0;
-    for (;;)
-    {
-      byte[] arrayOfByte = a(paramLong1, paramLong2, paramInt1, j, paramArrayOfByte, paramString.getBytes(), paramInt2, paramInt3, paramArrayOfLong, paramWUserSigInfo);
-      a(this.i, this.t, this.j, this.x.f, this.m, this.n, j, this.p, arrayOfByte);
-      int k = a(String.valueOf(this.x.f), false, paramWUserSigInfo);
-      if (k != 0) {
-        return k;
-      }
-      k = b();
-      util.LOGI("retry num:" + i + " ret:" + k, "" + this.x.f);
-      if (k != 180) {
-        return k;
-      }
-      if (i >= 1) {
-        return k;
-      }
-      i += 1;
+    if (paramInt == 0) {
+      i = b(paramLong1, paramArrayOfByte1, paramArrayOfByte2, paramArrayOfByte3, paramLong2);
     }
+    while (paramInt != 1) {
+      return i;
+    }
+    return c(paramLong1, paramArrayOfByte1, paramArrayOfByte2, paramArrayOfByte3, paramLong2);
   }
   
-  public byte[] a(long paramLong1, long paramLong2, int paramInt1, int paramInt2, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt3, int paramInt4, long[] paramArrayOfLong, WUserSigInfo paramWUserSigInfo)
+  public byte[] a(long paramLong1, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, long paramLong2)
   {
-    int i = 0;
-    int[] arrayOfInt = new int[10];
-    int[] tmp11_9 = arrayOfInt;
-    tmp11_9[0] = 256;
-    int[] tmp17_11 = tmp11_9;
-    tmp17_11[1] = 264;
-    int[] tmp23_17 = tmp17_11;
-    tmp23_17[2] = 265;
-    int[] tmp29_23 = tmp23_17;
-    tmp29_23[3] = 8;
-    int[] tmp34_29 = tmp29_23;
-    tmp34_29[4] = 322;
-    int[] tmp40_34 = tmp34_29;
-    tmp40_34[5] = 325;
-    int[] tmp46_40 = tmp40_34;
-    tmp46_40[6] = 340;
-    int[] tmp53_46 = tmp46_40;
-    tmp53_46[7] = 274;
-    int[] tmp60_53 = tmp53_46;
-    tmp60_53[8] = 278;
-    int[] tmp67_60 = tmp60_53;
-    tmp67_60[9] = 1313;
-    tmp67_60;
-    ArrayList localArrayList = new ArrayList();
-    int m = tmp11_9.length;
-    int j = 0;
-    int k = 0;
-    Object localObject2;
-    Object localObject1;
-    int n;
-    if (k < m)
+    if ((paramArrayOfByte2 != null) && (paramArrayOfByte2.length != 0))
     {
-      localObject2 = new byte[0];
-      switch (tmp11_9[k])
-      {
-      default: 
-        localObject1 = localObject2;
-        if (localObject1.length > 4)
-        {
-          i += 1;
-          n = localObject1.length;
-          localArrayList.add(localObject1);
-          j = n + j;
-        }
-        break;
+      paramArrayOfByte1 = cryptor.encrypt(paramArrayOfByte1, 0, paramArrayOfByte1.length, paramArrayOfByte3);
+      paramArrayOfByte3 = new byte[paramArrayOfByte2.length + 10 + paramArrayOfByte1.length];
+      util.int32_to_buf(paramArrayOfByte3, 0, (int)paramLong1);
+      util.int32_to_buf(paramArrayOfByte3, 4, (int)paramLong2);
+      util.int16_to_buf(paramArrayOfByte3, 8, paramArrayOfByte2.length);
+      System.arraycopy(paramArrayOfByte2, 0, paramArrayOfByte3, 10, paramArrayOfByte2.length);
+      i = paramArrayOfByte2.length + 10;
+      System.arraycopy(paramArrayOfByte1, 0, paramArrayOfByte3, i, paramArrayOfByte1.length);
+      i = paramArrayOfByte1.length;
+      return paramArrayOfByte3;
+    }
+    paramArrayOfByte1 = cryptor.encrypt(paramArrayOfByte1, 0, paramArrayOfByte1.length, "x'Z8mSi,V(Wu~.v:".getBytes());
+    paramArrayOfByte2 = new byte[paramArrayOfByte1.length + 10];
+    util.int32_to_buf(paramArrayOfByte2, 0, (int)paramLong1);
+    util.int32_to_buf(paramArrayOfByte2, 4, (int)paramLong2);
+    util.int16_to_buf(paramArrayOfByte2, 8, 0);
+    System.arraycopy(paramArrayOfByte1, 0, paramArrayOfByte2, 10, paramArrayOfByte1.length);
+    int i = paramArrayOfByte1.length;
+    return paramArrayOfByte2;
+  }
+  
+  public byte[] a(byte[] paramArrayOfByte, long paramLong1, long paramLong2, long paramLong3, int paramInt)
+  {
+    byte[] arrayOfByte = new byte[paramArrayOfByte.length + 33];
+    util.int32_to_buf(arrayOfByte, 0, 1737040709);
+    util.int32_to_buf(arrayOfByte, 4, 0);
+    util.int32_to_buf(arrayOfByte, 8, arrayOfByte.length);
+    util.int64_to_buf32(arrayOfByte, 12, paramLong1);
+    util.int64_to_buf32(arrayOfByte, 16, paramLong2);
+    util.int64_to_buf32(arrayOfByte, 20, paramLong3 / 1000L);
+    util.int8_to_buf(arrayOfByte, 24, paramInt);
+    System.arraycopy(paramArrayOfByte, 0, arrayOfByte, 33, paramArrayOfByte.length);
+    paramInt = paramArrayOfByte.length;
+    return arrayOfByte;
+  }
+  
+  public int b(long paramLong1, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, long paramLong2)
+  {
+    long l = System.currentTimeMillis();
+    t.aq.commit(Build.VERSION.RELEASE, new String(t.G), "", util.buf_to_string(util.get_ksid(t.t)), new String(t.E), new String(t.Q), new String(t.I), new String(t.H), util.get_release_time(), "6.0.0.2425");
+    try
+    {
+      paramArrayOfByte1 = t.aq.toJasonObj().toString().getBytes();
+      if ((paramArrayOfByte1 == null) || (paramArrayOfByte1.length == 0)) {
+        return 0;
       }
     }
-    for (;;)
+    catch (Throwable paramArrayOfByte1)
     {
-      localObject1 = paramWUserSigInfo.extraLoginTLVMap.keySet().iterator();
       for (;;)
       {
-        if (((Iterator)localObject1).hasNext())
+        paramArrayOfByte1 = new byte[0];
+      }
+      paramArrayOfByte1 = util.compress(paramArrayOfByte1);
+      if ((paramArrayOfByte1 == null) || (paramArrayOfByte1.length == 0)) {
+        return 0;
+      }
+      byte[] arrayOfByte = new byte[paramArrayOfByte1.length + 4];
+      util.int8_to_buf(arrayOfByte, 0, 0);
+      util.int8_to_buf(arrayOfByte, 1, 1);
+      util.int16_to_buf(arrayOfByte, 2, paramArrayOfByte1.length);
+      System.arraycopy(paramArrayOfByte1, 0, arrayOfByte, 4, paramArrayOfByte1.length);
+      paramArrayOfByte1 = a(arrayOfByte, paramLong1, paramLong2, l, 0);
+      report_t.delete_file(t.t);
+      int i = b(a(a(paramLong1, paramArrayOfByte1, paramArrayOfByte2, paramArrayOfByte3, paramLong2)));
+      util.LOGI("request_report_error(0) rsp: ret=" + i);
+      if (i != 0)
+      {
+        report_t.write_tofile(t.aq, t.t);
+        return i;
+      }
+      t.aq.clear_t2();
+      return i;
+    }
+  }
+  
+  public int c(long paramLong1, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, long paramLong2)
+  {
+    long l1;
+    String str;
+    long l2;
+    if ((this.a.d != null) && (!t.e.booleanValue()))
+    {
+      t.e = Boolean.valueOf(true);
+      long l3 = System.currentTimeMillis();
+      SimpleDateFormat localSimpleDateFormat = new SimpleDateFormat("yyyyMMdd");
+      Calendar localCalendar = Calendar.getInstance();
+      int j = this.a.d.get_bitmap();
+      int k = this.a.d.get_network();
+      util.LOGI("bitmap:" + j + " network:" + k + " local network:" + util.get_network_type(t.t));
+      int i = 0;
+      if (i < 32)
+      {
+        if ((1 << i & j) == 0) {}
+        while ((k != 0) && ((k != 1) || (util.get_network_type(t.t) != 2)))
         {
-          localObject2 = (Integer)((Iterator)localObject1).next();
-          byte[] arrayOfByte = ((tlv_t)paramWUserSigInfo.extraLoginTLVMap.get(localObject2)).get_buf();
-          localArrayList.add(arrayOfByte);
-          n = arrayOfByte.length;
-          util.LOGI("Extra Tlv from user：0x" + localObject2);
-          j = n + j;
-          continue;
-          localObject1 = new tlv_t100().get_tlv_100(paramLong1, paramLong2, paramInt2, paramInt1);
-          break;
-          localObject1 = localObject2;
-          if (paramArrayOfByte1 == null) {
-            break;
-          }
-          localObject1 = localObject2;
-          if (paramArrayOfByte1.length <= 0) {
-            break;
-          }
-          localObject1 = new tlv_t108().get_tlv_108(paramArrayOfByte1);
-          break;
-          localObject1 = localObject2;
-          if (t.M == null) {
-            break;
-          }
-          localObject1 = localObject2;
-          if (t.M.length <= 0) {
-            break;
-          }
-          localObject1 = new tlv_t109().get_tlv_109(t.M);
-          break;
-          localObject1 = new tlv_t8().get_tlv_8(0, t.u, 0);
-          break;
-          localObject1 = new tlv_t142().get_tlv_142(t.E);
-          break;
-          localObject1 = new tlv_t145().get_tlv_145(t.A);
-          break;
-          localObject1 = new tlv_t154().get_tlv_154(this.x.i);
-          break;
-          localObject1 = new tlv_t112().get_tlv_112(paramArrayOfByte2);
-          break;
-          localObject1 = new tlv_t116().get_tlv_116(paramInt3, paramInt4, paramArrayOfLong);
-          break;
-          localObject1 = new tlv_t(1313);
-          localObject2 = new byte[6];
-          util.int32_to_buf((byte[])localObject2, 0, t.au);
-          util.int16_to_buf((byte[])localObject2, 4, 0);
-          ((tlv_t)localObject1).set_data((byte[])localObject2, 6);
-          localObject1 = ((tlv_t)localObject1).get_buf();
+          i += 1;
           break;
         }
+        l1 = l3 - 86400000 * i;
+        localCalendar.setTimeInMillis(l1);
+        str = localSimpleDateFormat.format(localCalendar.getTime());
+        l2 = util.getLogModifyTime(t.t, str);
+        if (l2 != 0L) {
+          break label339;
+        }
       }
-      k += 1;
-      break;
-      paramArrayOfByte1 = new byte[j];
-      paramInt2 = 0;
-      paramInt1 = 0;
-      while (paramInt1 < i)
+    }
+    for (;;)
+    {
+      paramArrayOfByte1 = util.readLog(t.t, str);
+      if (paramArrayOfByte1 == null) {}
+      for (paramArrayOfByte1 = new byte[0];; paramArrayOfByte1 = a(paramArrayOfByte1, paramLong1, paramLong2, l1, 1))
       {
-        paramArrayOfByte2 = (byte[])localArrayList.get(paramInt1);
-        System.arraycopy(paramArrayOfByte2, 0, paramArrayOfByte1, paramInt2, paramArrayOfByte2.length);
-        paramInt2 += paramArrayOfByte2.length;
-        paramInt1 += 1;
+        if ((paramArrayOfByte1 == null) || (paramArrayOfByte1.length <= 0)) {
+          break label320;
+        }
+        int m = b(a(a(paramLong1, paramArrayOfByte1, paramArrayOfByte2, paramArrayOfByte3, paramLong2)));
+        util.LOGI("request_report_error(1) rsp: ret=" + m + "(" + str + ")");
+        break;
       }
-      return b(paramArrayOfByte1, this.u, i);
+      label320:
+      break;
+      this.a.d = null;
+      t.e = Boolean.valueOf(false);
+      return 0;
+      label339:
+      l1 = l2;
     }
   }
 }

@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBStringField;
 
 public final class appoint_define$AddressInfo
-  extends MessageMicro
+  extends MessageMicro<AddressInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34, 42, 50 }, new String[] { "str_company_zone", "str_company_name", "str_company_addr", "str_company_pic_url", "str_company_url", "msg_company_id" }, new Object[] { "", "", "", "", "", null }, AddressInfo.class);
   public appoint_define.ShopID msg_company_id = new appoint_define.ShopID();

@@ -1,63 +1,38 @@
 package c.t.m.g;
 
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public final class du
-  extends BroadcastReceiver
 {
-  final de a;
-  boolean b;
+  public static final Pattern a;
+  public static final Pattern b;
   
-  public du(de paramde)
+  static
   {
-    this.a = paramde;
+    Pattern localPattern = Pattern.compile("[0-9a-zA-Z+-]*");
+    a = localPattern;
+    b = localPattern;
+    Pattern.compile("[A-Z0-9]{12}");
   }
   
-  public final void a()
+  public static String a(String paramString, Pattern paramPattern)
   {
-    if (!this.b) {
-      return;
+    String str;
+    if (paramString == null) {
+      str = "";
     }
-    this.b = false;
-    try
+    do
     {
-      this.a.a.unregisterReceiver(this);
-      return;
-    }
-    catch (Exception localException) {}
-  }
-  
-  public final void onReceive(Context paramContext, Intent paramIntent)
-  {
-    if (paramIntent == null) {
-      return;
-    }
-    try
-    {
-      if (paramIntent.getBooleanExtra("noConnectivity", false))
-      {
-        this.a.b(Integer.valueOf(-1));
-        return;
-      }
-    }
-    catch (Exception paramContext)
-    {
-      ev.a("TxNetworkStateMonitor", "listenNetworkState: Exception", paramContext);
-      return;
-    }
-    if (ev.b(paramContext))
-    {
-      this.a.b(Integer.valueOf(1));
-      return;
-    }
-    this.a.b(Integer.valueOf(0));
+      return str;
+      str = paramString;
+    } while (paramPattern.matcher(paramString).matches());
+    return "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     c.t.m.g.du
  * JD-Core Version:    0.7.0.1
  */

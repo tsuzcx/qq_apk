@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/chat_item_content_layout" android:focusable="false" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_toRightOf="@id/icon"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include android:id="@id/b5k" android:visibility="gone" android:clickable="false" android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/fd" />
+    <RelativeLayout android:id="@id/fsd" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
+        <com.tencent.mobileqq.filemanager.widget.AsyncImageView android:gravity="center" android:id="@id/c_v" android:layout_width="wrap_content" android:layout_height="wrap_content" android:scaleType="centerCrop" android:layout_centerInParent="true" />
+        <ProgressBar android:layout_gravity="center" android:id="@id/g1o" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="1.0dip" android:layout_marginBottom="6.0dip" android:indeterminateDrawable="@drawable/common_loading2_0" android:layout_centerInParent="true" style="@style/qZonePublishProgressStyleTemp" />
+        <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/dhs" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
+            <ImageView android:id="@id/j24" android:layout_width="50.0dip" android:layout_height="50.0dip" android:src="@drawable/e61" />
+            <TextView android:textSize="12.0dip" android:textColor="#ff838891" android:id="@id/j2e" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="3.0dip" />
+        </LinearLayout>
+        <com.tencent.mobileqq.customviews.MessageProgressTextView android:textSize="15.0sp" android:textColor="@color/al3" android:gravity="center" android:id="@id/g2c" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" />
+        <com.tencent.mobileqq.widget.ProgressCircle android:id="@id/kiw" android:visibility="gone" android:layout_width="50.0dip" android:layout_height="50.0dip" android:scaleType="center" android:layout_centerInParent="true" android:layout_centerVertical="true" />
+        <include android:layout_alignParentBottom="true" layout="@layout/ai2" />
+    </RelativeLayout>
+</RelativeLayout>

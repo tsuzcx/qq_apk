@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBInt64Field;
 import com.tencent.mobileqq.pb.PBStringField;
 
 public final class MessageContent$MsgContent
-  extends MessageMicro
+  extends MessageMicro<MsgContent>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 32, 42, 50, 58, 66, 72, 82, 90 }, new String[] { "appid", "via", "pkgname", "versioncode", "appname", "appurl", "iconurl", "appsize", "filetype", "source", "srciconurl" }, new Object[] { Long.valueOf(0L), "", "", Integer.valueOf(0), "", "", "", "", Integer.valueOf(0), "", "" }, MsgContent.class);
   public final PBInt64Field appid = PBField.initInt64(0L);
@@ -25,7 +25,7 @@ public final class MessageContent$MsgContent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.pcpush.MessageContent.MsgContent
  * JD-Core Version:    0.7.0.1
  */

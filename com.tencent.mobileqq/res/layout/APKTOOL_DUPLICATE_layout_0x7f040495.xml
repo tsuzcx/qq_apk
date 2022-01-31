@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<merge android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a175c" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="金  额" android:singleLine="true" android:includeFontPadding="false" android:layout_alignParentLeft="true" android:layout_alignParentStart="true" />
-    <TextView android:gravity="right" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a175d" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:text="7.00元" android:includeFontPadding="false" android:layout_alignParentRight="true" android:layout_alignParentEnd="true" />
-</merge>

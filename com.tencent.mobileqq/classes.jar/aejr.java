@@ -1,39 +1,23 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.view.View;
-import com.tencent.mobileqq.leba.view.LebaFeedsDislikeMaskView;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie.29.1;
+import mqq.os.MqqHandler;
 
 public class aejr
-  implements Animator.AnimatorListener
+  implements mnj
 {
-  public aejr(LebaFeedsDislikeMaskView paramLebaFeedsDislikeMaskView) {}
+  aejr(aejb paramaejb) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void a(String paramString1, String paramString2)
   {
-    LebaFeedsDislikeMaskView.a(this.a).setAlpha(1.0F);
-    LebaFeedsDislikeMaskView.a(this.a).setScaleX(1.0F);
-    LebaFeedsDislikeMaskView.a(this.a).setScaleY(1.0F);
-    LebaFeedsDislikeMaskView.a(this.a, LebaFeedsDislikeMaskView.a(this.a));
-    this.a.invalidate();
-    LebaFeedsDislikeMaskView.a(this.a, false);
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    LebaFeedsDislikeMaskView.a(this.a).setAlpha(0.0F);
-    LebaFeedsDislikeMaskView.a(this.a).setScaleX(0.0F);
-    LebaFeedsDislikeMaskView.a(this.a).setScaleY(0.0F);
-    LebaFeedsDislikeMaskView.a(this.a, 0);
-    this.a.invalidate();
+    if ((!TextUtils.isEmpty(paramString1)) && (paramString1.equals(this.a.a.a))) {
+      aejb.m(this.a).post(new TroopChatPie.29.1(this, paramString2));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aejr
  * JD-Core Version:    0.7.0.1
  */

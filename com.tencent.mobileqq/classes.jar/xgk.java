@@ -1,21 +1,24 @@
-import com.tencent.mobileqq.activity.qwallet.QWalletPushManager;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.animation.Animation;
 
-public final class xgk
-  implements Runnable
+class xgk
+  extends beem
 {
-  public xgk(QQAppInterface paramQQAppInterface) {}
+  xgk(xgi paramxgi) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (QWalletPushManager.a(this.a)) {
-      QWalletPushManager.a(this.a);
-    }
+    this.a.a.a().b();
+    this.a.a.a().a();
+  }
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    this.a.a.a().c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     xgk
  * JD-Core Version:    0.7.0.1
  */

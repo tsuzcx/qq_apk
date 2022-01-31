@@ -1,21 +1,20 @@
-import com.tencent.mobileqq.richmedia.capture.view.EffectsCameraCaptureView;
-import com.tencent.mobileqq.shortvideo.filter.QQFilterRenderManager;
+import com.tencent.mobileqq.activity.selectmember.FriendTeamListInnerFrame;
 
 public class ahqx
-  implements Runnable
+  extends ajjh
 {
-  public ahqx(EffectsCameraCaptureView paramEffectsCameraCaptureView) {}
+  public ahqx(FriendTeamListInnerFrame paramFriendTeamListInnerFrame) {}
   
-  public void run()
+  protected void onUpdateFriendList(boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (this.a.a != null) {
-      this.a.a.a();
+    if (paramBoolean1) {
+      FriendTeamListInnerFrame.a(this.a).notifyDataSetChanged();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ahqx
  * JD-Core Version:    0.7.0.1
  */

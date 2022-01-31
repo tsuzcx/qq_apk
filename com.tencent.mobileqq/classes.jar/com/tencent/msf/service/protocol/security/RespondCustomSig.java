@@ -10,10 +10,10 @@ public final class RespondCustomSig
 {
   static ArrayList cache_SigList;
   static byte[] cache_reserved;
-  public ArrayList SigList;
-  public byte[] reserved;
-  public long ulCustumFlag;
-  public long ulSType;
+  public ArrayList SigList = null;
+  public byte[] reserved = null;
+  public long ulCustumFlag = 0L;
+  public long ulSType = 0L;
   
   public RespondCustomSig() {}
   

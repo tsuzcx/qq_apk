@@ -1,20 +1,19 @@
-import android.content.res.Resources;
-import com.tencent.mobileqq.activity.bless.BlessSelectMemberActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
 class wkv
-  implements Runnable
+  implements DialogInterface.OnDismissListener
 {
   wkv(wku paramwku) {}
   
-  public void run()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    QQToast.a(this.a.a, "对不起，视频处理异常...", 0).b(this.a.a.getResources().getDimensionPixelSize(2131558448));
+    this.a.a.deleteObserver(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wkv
  * JD-Core Version:    0.7.0.1
  */

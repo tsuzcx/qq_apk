@@ -1,19 +1,21 @@
-import dov.com.qq.im.capture.text.DynamicTextConfigManager;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoButton;
+import android.app.Activity;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
-public class aobh
-  implements Runnable
+final class aobh
+  implements apca
 {
-  public aobh(EditVideoButton paramEditVideoButton, DynamicTextConfigManager paramDynamicTextConfigManager) {}
+  aobh(Activity paramActivity, FileManagerEntity paramFileManagerEntity) {}
   
-  public void run()
+  public void a()
   {
-    this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager.c();
+    apck.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getFilePath());
   }
+  
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aobh
  * JD-Core Version:    0.7.0.1
  */

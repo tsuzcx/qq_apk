@@ -10,9 +10,9 @@ import java.util.ArrayList;
 public final class CommentReplyInfo
   extends JceStruct
 {
-  static ArrayList cache_all_commont_list = new ArrayList();
+  static ArrayList<SimpleComment> cache_all_commont_list = new ArrayList();
   static s_commment cache_cur_comment_reply = new s_commment();
-  public ArrayList all_commont_list;
+  public ArrayList<SimpleComment> all_commont_list;
   public s_commment cur_comment_reply;
   public int real_num;
   public int total_num;
@@ -25,7 +25,7 @@ public final class CommentReplyInfo
   
   public CommentReplyInfo() {}
   
-  public CommentReplyInfo(ArrayList paramArrayList, s_commment params_commment, int paramInt1, int paramInt2)
+  public CommentReplyInfo(ArrayList<SimpleComment> paramArrayList, s_commment params_commment, int paramInt1, int paramInt2)
   {
     this.all_commont_list = paramArrayList;
     this.cur_comment_reply = params_commment;

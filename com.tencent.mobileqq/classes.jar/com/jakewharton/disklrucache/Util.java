@@ -28,7 +28,6 @@ public final class Util
   }
   
   static void deleteContents(File paramFile)
-    throws IOException
   {
     File[] arrayOfFile = paramFile.listFiles();
     if (arrayOfFile == null) {
@@ -50,7 +49,6 @@ public final class Util
   }
   
   static String readFully(Reader paramReader)
-    throws IOException
   {
     try
     {

@@ -11,9 +11,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.ImageView;
-import com.tencent.mobileqq.util.OrientationUtil;
+import azyi;
 import java.lang.ref.WeakReference;
-import wuz;
 
 public class FlingTrackerHandler
   extends FlingHandler
@@ -25,7 +24,7 @@ public class FlingTrackerHandler
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private ContentWrapView jdField_a_of_type_ComTencentMobileqqActivityFlingContentWrapView;
   private TopLayout jdField_a_of_type_ComTencentMobileqqActivityFlingTopLayout;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new wuz(this);
+  private Runnable jdField_a_of_type_JavaLangRunnable = new FlingTrackerHandler.1(this);
   
   public FlingTrackerHandler(Activity paramActivity)
   {
@@ -152,7 +151,7 @@ public class FlingTrackerHandler
     }
   }
   
-  public boolean a()
+  protected boolean a()
   {
     return (this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopLayout != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopLayout.getParent() != null);
   }
@@ -192,7 +191,7 @@ public class FlingTrackerHandler
   
   public void cancelDrag()
   {
-    OrientationUtil.b((Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get());
+    azyi.b((Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get());
   }
   
   public Bitmap decodeSampledBitmapFromFile(String paramString, int paramInt1, int paramInt2)
@@ -216,9 +215,9 @@ public class FlingTrackerHandler
     Activity localActivity = (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
     if (localActivity != null)
     {
-      OrientationUtil.b(localActivity);
+      azyi.b(localActivity);
       localActivity.onBackPressed();
-      localActivity.overridePendingTransition(2131034170, 2131034170);
+      localActivity.overridePendingTransition(2130772042, 2130772042);
     }
   }
   
@@ -232,7 +231,7 @@ public class FlingTrackerHandler
   
   public void startDrag()
   {
-    OrientationUtil.a((Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get());
+    azyi.a((Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get());
   }
 }
 

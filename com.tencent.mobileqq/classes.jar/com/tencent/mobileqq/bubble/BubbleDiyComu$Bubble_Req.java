@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class BubbleDiyComu$Bubble_Req
-  extends MessageMicro
+  extends MessageMicro<Bubble_Req>
 {
   public static final int CMD_FIELD_NUMBER = 1;
   public static final int COMM_FIELD_NUMBER = 3;
@@ -21,7 +21,7 @@ public final class BubbleDiyComu$Bubble_Req
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.mobileqq.bubble.BubbleDiyComu.Bubble_Req
  * JD-Core Version:    0.7.0.1
  */

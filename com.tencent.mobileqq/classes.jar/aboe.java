@@ -1,25 +1,26 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.armap.map.ARMapPOIStarDialog;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
+import com.tencent.mobileqq.activity.RegisterActivity;
 
 public class aboe
-  implements View.OnClickListener
+  implements DialogInterface.OnKeyListener
 {
-  public aboe(ARMapPOIStarDialog paramARMapPOIStarDialog) {}
+  public aboe(RegisterActivity paramRegisterActivity) {}
   
-  public void onClick(View paramView)
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    ReportController.b(null, "dc01440", "", "", "0X80079CC", "0X80079CC", 0, 0, "", "", "", "");
-    if (!this.a.c) {
-      ReportController.b(null, "dc01440", "", "", "0X80079CC", "0X80079CC", 0, 0, "", "", "", "");
+    if ((paramInt == 4) && (paramKeyEvent.getAction() == 1) && (!paramKeyEvent.isCanceled()))
+    {
+      RegisterActivity.b(this.a);
+      return true;
     }
-    this.a.a();
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aboe
  * JD-Core Version:    0.7.0.1
  */

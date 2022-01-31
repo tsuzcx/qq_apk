@@ -1,84 +1,48 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.recent.RecentUtil;
-import com.tencent.mobileqq.app.AppConstants;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.VisitorsActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.ConversationFacade;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MsgBoxInterFollowManager;
-import com.tencent.mobileqq.dating.MsgBoxListActivity;
-import com.tencent.mobileqq.dating.MsgBoxProtocol.LastFeedObserver;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.data.CardProfile;
 
 public class acfl
-  extends MsgBoxProtocol.LastFeedObserver
+  implements View.OnClickListener
 {
-  public acfl(MsgBoxListActivity paramMsgBoxListActivity) {}
+  public acfl(VisitorsActivity paramVisitorsActivity, CardProfile paramCardProfile, atyv paramatyv, int paramInt) {}
   
-  protected void a(boolean paramBoolean1, String paramString, int paramInt, long paramLong, boolean paramBoolean2, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    if (!paramBoolean1) {
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.msg_box", 2, "onGetInteractLastFeed = false");
+    int i = 1;
+    int j;
+    int k;
+    if (this.jdField_a_of_type_ComTencentMobileqqDataCardProfile.type == 3)
+    {
+      j = 1;
+      k = this.jdField_a_of_type_ComTencentMobileqqDataCardProfile.bIsLastVoteCharged;
+      if (this.jdField_a_of_type_ComTencentMobileqqDataCardProfile.type != 3) {
+        break label136;
+      }
+      if (!((ased)this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.app.getManager(207)).c(this.jdField_a_of_type_ComTencentMobileqqDataCardProfile.lEctID)) {
+        break label131;
       }
     }
     for (;;)
     {
+      this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.a(this.jdField_a_of_type_Atyv, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqDataCardProfile.bVoteCnt, i);
+      awqx.b(this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.app, "CliOper", "", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataCardProfile.lEctID), "like_mall", "like_list_view", j, 0, "", "", "", "");
       return;
-      if (paramBoolean2) {
-        this.a.app.a().addMessage(paramString, 0, paramInt, paramLong, 1);
-      }
-      while (!this.a.isFinishing())
-      {
-        this.a.a();
-        return;
-        if (this.a.app.a().isInMsgBoxRecentList(AppConstants.ag, this.a.jdField_a_of_type_Int))
-        {
-          paramInt = this.a.app.a().a(AppConstants.ag, this.a.jdField_a_of_type_Int);
-          this.a.app.a().a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Int, AppConstants.ag, this.a.app.getCurrentAccountUin());
-          if (paramInt > 0)
-          {
-            RecentUtil.b(this.a.app, AppConstants.ag, this.a.jdField_a_of_type_Int);
-            this.a.app.a().a(AppConstants.ag, this.a.jdField_a_of_type_Int, true, true);
-          }
-        }
-      }
-    }
-  }
-  
-  protected void b(boolean paramBoolean1, String paramString, int paramInt, long paramLong, boolean paramBoolean2, Bundle paramBundle)
-  {
-    if (!paramBoolean1) {
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.msg_box", 2, "onGetInteractLastFeed = false");
-      }
-    }
-    for (;;)
-    {
-      return;
-      if (paramBoolean2) {
-        this.a.app.a().addMessage(paramString, 0, paramInt, paramLong, 2);
-      }
-      while (!this.a.isFinishing())
-      {
-        this.a.a();
-        return;
-        if (this.a.app.a().isInMsgBoxRecentList(AppConstants.ah, this.a.jdField_a_of_type_Int))
-        {
-          paramInt = this.a.app.a().a(AppConstants.ah, this.a.jdField_a_of_type_Int);
-          this.a.app.a().a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Int, AppConstants.ah, this.a.app.getCurrentAccountUin());
-          if (paramInt > 0)
-          {
-            RecentUtil.b(this.a.app, AppConstants.ah, this.a.jdField_a_of_type_Int);
-            this.a.app.a().a(AppConstants.ah, this.a.jdField_a_of_type_Int, true, true);
-          }
-        }
-      }
+      j = 0;
+      break;
+      label131:
+      i = 0;
+      continue;
+      label136:
+      i = k;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     acfl
  * JD-Core Version:    0.7.0.1
  */

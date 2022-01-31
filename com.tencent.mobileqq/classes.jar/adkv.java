@@ -1,26 +1,25 @@
-import com.tencent.mobileqq.filemanager.fileviewer.IFileViewerAdapter;
-import com.tencent.mobileqq.filemanager.fileviewer.controller.IUploadController;
-import com.tencent.mobileqq.filemanager.fileviewer.model.DatalineFileModel;
-import com.tencent.mobileqq.filemanager.recreate.FileModel;
+import android.view.View;
+import com.tencent.mobileqq.app.BaseActivity;
+import mqq.app.QQPermissionCallback;
 
-public class adkv
-  implements IUploadController
+class adkv
+  implements QQPermissionCallback
 {
-  public adkv(DatalineFileModel paramDatalineFileModel) {}
+  adkv(adkt paramadkt, View paramView, BaseActivity paramBaseActivity) {}
   
-  public void a()
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    this.a.a(true, FileModel.a(this.a.a.a()), this.a.b(), new adkw(this));
+    babr.b(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
   }
   
-  public void b()
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    DatalineFileModel.b(this.a);
+    this.jdField_a_of_type_Adkt.d(this.jdField_a_of_type_AndroidViewView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     adkv
  * JD-Core Version:    0.7.0.1
  */

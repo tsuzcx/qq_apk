@@ -1,23 +1,23 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.armap.config.ShopScanCheckHandler.Info;
+import android.view.View;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.mobileqq.activity.QQSettingMe;
 
-public final class abms
-  implements Parcelable.Creator
+public class abms
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public ShopScanCheckHandler.Info a(Parcel paramParcel)
-  {
-    return new ShopScanCheckHandler.Info(paramParcel);
-  }
+  public abms(QQSettingMe paramQQSettingMe) {}
   
-  public ShopScanCheckHandler.Info[] a(int paramInt)
+  public void onGlobalLayout()
   {
-    return new ShopScanCheckHandler.Info[paramInt];
+    if (QQSettingMe.a(this.a)) {
+      QQSettingMe.a(this.a).getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abms
  * JD-Core Version:    0.7.0.1
  */

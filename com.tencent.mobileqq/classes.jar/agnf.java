@@ -1,22 +1,24 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.binhai.BinHaiHandler;
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import com.tencent.mobileqq.activity.qwallet.fragment.LingHbFragment;
 
 public class agnf
-  implements Runnable
+  implements agrf
 {
-  public agnf(ScanTorchActivity paramScanTorchActivity) {}
+  public agnf(LingHbFragment paramLingHbFragment) {}
   
-  public void run()
+  public void a(int paramInt)
   {
-    ((BinHaiHandler)this.a.b.getBusinessHandler(3)).b(ScanTorchActivity.c(this.a), ScanTorchActivity.c(this.a));
-    QLog.d("ScanTorchActivity", 1, "binhai sendOpenReqTime=" + System.currentTimeMillis());
+    if (paramInt == 0)
+    {
+      this.a.a.findViewById(2131302444).setVisibility(8);
+      return;
+    }
+    this.a.a.findViewById(2131302444).setVisibility(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     agnf
  * JD-Core Version:    0.7.0.1
  */

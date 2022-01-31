@@ -1,26 +1,23 @@
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
-import com.tencent.biz.pubaccount.util.PublicTracker;
-import com.tencent.mobileqq.widget.BounceScrollView.DrawFinishedListener;
+import com.tencent.av.ui.AVActivity;
+import java.util.Comparator;
 
 public class lqk
-  implements BounceScrollView.DrawFinishedListener
+  implements Comparator<leb>
 {
-  public lqk(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
+  public lqk(AVActivity paramAVActivity) {}
   
-  public void a()
+  public int a(leb paramleb1, leb paramleb2)
   {
-    if (ReadInJoySelfFragment.a(this.a))
-    {
-      ReadInJoySelfFragment.a(this.a, false);
-      PublicTracker.a("self_tab_cost", null);
-      PublicTracker.a = 4;
-      PublicTracker.a("KANDIAN_FEEDS_COST", null);
+    if (paramleb1.a) {}
+    while (paramleb2.a) {
+      return 1;
     }
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lqk
  * JD-Core Version:    0.7.0.1
  */

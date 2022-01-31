@@ -10,7 +10,7 @@ public class MessageForActivateFriends
   private static final String TAG = "ActivateFriends.Message";
   public SubMsgType0x76.MsgBody msgBody;
   
-  protected void doParse()
+  public void doParse()
   {
     try
     {
@@ -33,9 +33,9 @@ public class MessageForActivateFriends
     return this.msgBody;
   }
   
-  protected void postwrite() {}
+  public void postwrite() {}
   
-  protected void prewrite() {}
+  public void prewrite() {}
 }
 
 

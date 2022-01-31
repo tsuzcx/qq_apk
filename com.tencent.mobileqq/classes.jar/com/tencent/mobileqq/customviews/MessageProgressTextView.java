@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.customviews;
 
-import acbd;
+import aczk;
+import amow;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.item.AIOSendMask;
-import com.tencent.mobileqq.transfile.BaseTransProcessor;
+import axou;
 import com.tencent.qphone.base.util.QLog;
 
 public class MessageProgressTextView
   extends TextView
 {
-  public acbd a;
-  private MessageProgressTextView.ProgressListener jdField_a_of_type_ComTencentMobileqqCustomviewsMessageProgressTextView$ProgressListener;
-  private BaseTransProcessor jdField_a_of_type_ComTencentMobileqqTransfileBaseTransProcessor;
+  private amow jdField_a_of_type_Amow;
+  private axou jdField_a_of_type_Axou;
+  MessageProgressTextView.RefreshProgressRunnable jdField_a_of_type_ComTencentMobileqqCustomviewsMessageProgressTextView$RefreshProgressRunnable;
   private boolean jdField_a_of_type_Boolean = true;
   public boolean b;
   int c;
@@ -42,7 +42,7 @@ public class MessageProgressTextView
   
   private void a(int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqTransfileBaseTransProcessor == null) {}
+    if (this.jdField_a_of_type_Axou == null) {}
     label222:
     do
     {
@@ -50,39 +50,39 @@ public class MessageProgressTextView
       do
       {
         return;
-        if ((this.jdField_a_of_type_ComTencentMobileqqTransfileBaseTransProcessor.e() < 100) && (paramInt1 >= 100)) {
+        if ((this.jdField_a_of_type_Axou.e() < 100) && (paramInt1 >= 100)) {
           i = 100;
         }
         do
         {
-          this.jdField_a_of_type_ComTencentMobileqqTransfileBaseTransProcessor.a(i);
-          paramInt1 = Math.max(this.jdField_a_of_type_ComTencentMobileqqTransfileBaseTransProcessor.g(), 0);
+          this.jdField_a_of_type_Axou.a(i);
+          paramInt1 = Math.max(this.jdField_a_of_type_Axou.g(), 0);
           long l = 25L;
-          if (this.jdField_a_of_type_ComTencentMobileqqTransfileBaseTransProcessor.g() < 0) {
+          if (this.jdField_a_of_type_Axou.g() < 0) {
             l = 1000L;
           }
-          if (this.jdField_a_of_type_ComTencentMobileqqTransfileBaseTransProcessor.e() > paramInt1) {
+          if (this.jdField_a_of_type_Axou.e() > paramInt1) {
             break label222;
           }
           if (QLog.isColorLevel()) {
-            QLog.d("ProgressTextView", 2, "currentProgress " + i + " receiveProgress " + paramInt1 + "addProgress" + paramInt2 + " processor.getKey() " + this.jdField_a_of_type_ComTencentMobileqqTransfileBaseTransProcessor.a() + " processor " + this.jdField_a_of_type_ComTencentMobileqqTransfileBaseTransProcessor);
+            QLog.d("ProgressTextView", 2, "currentProgress " + i + " receiveProgress " + paramInt1 + "addProgress" + paramInt2 + " processor.getKey() " + this.jdField_a_of_type_Axou.a() + " processor " + this.jdField_a_of_type_Axou);
           }
           setProgress(i);
-          if (this.jdField_a_of_type_Acbd != null) {
+          if (this.jdField_a_of_type_ComTencentMobileqqCustomviewsMessageProgressTextView$RefreshProgressRunnable != null) {
             break;
           }
-          this.jdField_a_of_type_Acbd = new acbd(this, i, paramInt2);
-          postDelayed(this.jdField_a_of_type_Acbd, l);
+          this.jdField_a_of_type_ComTencentMobileqqCustomviewsMessageProgressTextView$RefreshProgressRunnable = new MessageProgressTextView.RefreshProgressRunnable(this, i, paramInt2);
+          postDelayed(this.jdField_a_of_type_ComTencentMobileqqCustomviewsMessageProgressTextView$RefreshProgressRunnable, l);
           return;
           i = paramInt1;
         } while (paramInt1 < 100);
-        this.jdField_a_of_type_ComTencentMobileqqTransfileBaseTransProcessor = null;
+        this.jdField_a_of_type_Axou = null;
         return;
       } while (paramInt2 == 1);
-      this.jdField_a_of_type_Acbd.a(paramInt2);
+      this.jdField_a_of_type_ComTencentMobileqqCustomviewsMessageProgressTextView$RefreshProgressRunnable.a(paramInt2);
       return;
       if (QLog.isColorLevel()) {
-        QLog.d("ProgressTextView", 2, "doUpdateCurrentProgress ,currentProgress:" + i + " receiveProgress " + paramInt1 + "addProgress" + paramInt2 + " processor.getKey() " + this.jdField_a_of_type_ComTencentMobileqqTransfileBaseTransProcessor.a() + " processor " + this.jdField_a_of_type_ComTencentMobileqqTransfileBaseTransProcessor);
+        QLog.d("ProgressTextView", 2, "doUpdateCurrentProgress ,currentProgress:" + i + " receiveProgress " + paramInt1 + "addProgress" + paramInt2 + " processor.getKey() " + this.jdField_a_of_type_Axou.a() + " processor " + this.jdField_a_of_type_Axou);
       }
     } while (paramInt1 < this.e);
     setProgress(paramInt1);
@@ -91,10 +91,10 @@ public class MessageProgressTextView
   public void a()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("ProgressTextView", 2, "updateProgress processor:" + this.jdField_a_of_type_ComTencentMobileqqTransfileBaseTransProcessor);
+      QLog.d("ProgressTextView", 2, "updateProgress processor:" + this.jdField_a_of_type_Axou);
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqTransfileBaseTransProcessor != null) {
-      a(this.jdField_a_of_type_ComTencentMobileqqTransfileBaseTransProcessor.e(), 1);
+    if (this.jdField_a_of_type_Axou != null) {
+      a(this.jdField_a_of_type_Axou.e(), 1);
     }
   }
   
@@ -105,24 +105,24 @@ public class MessageProgressTextView
     this.d = paramInt2;
   }
   
-  public void setProcessor(BaseTransProcessor paramBaseTransProcessor)
+  public void setProcessor(axou paramaxou)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqTransfileBaseTransProcessor == paramBaseTransProcessor) {
+    if (this.jdField_a_of_type_Axou == paramaxou) {
       return;
     }
-    if (this.jdField_a_of_type_Acbd != null)
+    if (this.jdField_a_of_type_ComTencentMobileqqCustomviewsMessageProgressTextView$RefreshProgressRunnable != null)
     {
-      removeCallbacks(this.jdField_a_of_type_Acbd);
-      this.jdField_a_of_type_Acbd = null;
+      removeCallbacks(this.jdField_a_of_type_ComTencentMobileqqCustomviewsMessageProgressTextView$RefreshProgressRunnable);
+      this.jdField_a_of_type_ComTencentMobileqqCustomviewsMessageProgressTextView$RefreshProgressRunnable = null;
     }
-    this.jdField_a_of_type_ComTencentMobileqqTransfileBaseTransProcessor = paramBaseTransProcessor;
+    this.jdField_a_of_type_Axou = paramaxou;
   }
   
   public void setProgress(int paramInt)
   {
     this.e = paramInt;
-    if (this.jdField_a_of_type_ComTencentMobileqqCustomviewsMessageProgressTextView$ProgressListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqCustomviewsMessageProgressTextView$ProgressListener.a(paramInt);
+    if (this.jdField_a_of_type_Amow != null) {
+      this.jdField_a_of_type_Amow.a(paramInt);
     }
     if ((this.jdField_a_of_type_Boolean) && (this.jdField_c_of_type_Boolean)) {
       setText(paramInt + "%");
@@ -133,8 +133,8 @@ public class MessageProgressTextView
       if (localDrawable != null)
       {
         localDrawable.setLevel((100 - paramInt) * 100);
-        if (((localDrawable instanceof AIOSendMask)) && (!this.jdField_c_of_type_Boolean)) {
-          ((AIOSendMask)localDrawable).a(this.jdField_c_of_type_Int, this.d);
+        if (((localDrawable instanceof aczk)) && (!this.jdField_c_of_type_Boolean)) {
+          ((aczk)localDrawable).a(this.jdField_c_of_type_Int, this.d);
         }
       }
       return;
@@ -142,9 +142,9 @@ public class MessageProgressTextView
     }
   }
   
-  public void setProgressListener(MessageProgressTextView.ProgressListener paramProgressListener, boolean paramBoolean)
+  public void setProgressListener(amow paramamow, boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqCustomviewsMessageProgressTextView$ProgressListener = paramProgressListener;
+    this.jdField_a_of_type_Amow = paramamow;
     this.jdField_a_of_type_Boolean = paramBoolean;
   }
 }

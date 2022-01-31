@@ -2,14 +2,18 @@ package com.tencent.mobileqq.dinifly;
 
 import android.support.annotation.RestrictTo;
 import android.support.v4.os.TraceCompat;
+import android.util.Log;
+import java.util.HashSet;
+import java.util.Set;
 
 @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY})
 public class L
 {
-  public static final boolean DBG = false;
+  public static boolean DBG = false;
   private static final int MAX_DEPTH = 20;
   public static final String TAG = "LOTTIE";
   private static int depthPastMaxDepth = 0;
+  private static final Set<String> loggedMessages = new HashSet();
   private static String[] sections;
   private static long[] startTimeNs;
   private static int traceDepth;
@@ -34,6 +38,13 @@ public class L
     startTimeNs[traceDepth] = System.nanoTime();
     TraceCompat.beginSection(paramString);
     traceDepth += 1;
+  }
+  
+  public static void debug(String paramString)
+  {
+    if (DBG) {
+      Log.d("LOTTIE", paramString);
+    }
   }
   
   public static float endSection(String paramString)
@@ -66,10 +77,19 @@ public class L
     sections = new String[20];
     startTimeNs = new long[20];
   }
+  
+  public static void warn(String paramString)
+  {
+    if (loggedMessages.contains(paramString)) {
+      return;
+    }
+    Log.w("LOTTIE", paramString);
+    loggedMessages.add(paramString);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.L
  * JD-Core Version:    0.7.0.1
  */

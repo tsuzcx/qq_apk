@@ -1,44 +1,59 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopObserver;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.loginwelcome.LoginWelcomeManager;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import com.tencent.commonsdk.cache.Sizeable;
 
 public class aekt
-  extends TroopObserver
+  implements Sizeable
 {
-  public aekt(LoginWelcomeManager paramLoginWelcomeManager) {}
+  private int jdField_a_of_type_Int;
+  private String jdField_a_of_type_JavaLangString;
+  private BitmapDrawable[] jdField_a_of_type_ArrayOfAndroidGraphicsDrawableBitmapDrawable;
+  private int b;
   
-  protected void a(boolean paramBoolean, long paramLong, int paramInt1, TroopInfo paramTroopInfo, int paramInt2, String paramString)
+  public aekt(String paramString, BitmapDrawable[] paramArrayOfBitmapDrawable, int paramInt)
   {
-    if (paramBoolean)
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableBitmapDrawable = paramArrayOfBitmapDrawable;
+    this.jdField_a_of_type_Int = paramInt;
+    a();
+  }
+  
+  private void a()
+  {
+    int i = 0;
+    this.b = 0;
+    BitmapDrawable[] arrayOfBitmapDrawable = this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableBitmapDrawable;
+    int j = arrayOfBitmapDrawable.length;
+    while (i < j)
     {
-      paramString = LoginWelcomeManager.a(this.a).getBundle("request");
-      paramString.putString("uin", String.valueOf(paramLong));
-      paramString.putShort("option", paramTroopInfo.cGroupOption);
-      paramString.putString("name", paramTroopInfo.troopname);
-      if ((paramTroopInfo.cGroupOption != 4) && (paramTroopInfo.cGroupOption != 5)) {
-        break label114;
+      BitmapDrawable localBitmapDrawable = arrayOfBitmapDrawable[i];
+      if ((localBitmapDrawable != null) && (localBitmapDrawable.getBitmap() != null))
+      {
+        int k = this.b;
+        this.b = (localBitmapDrawable.getBitmap().getByteCount() + k);
       }
-      paramString.putString("answer", paramTroopInfo.joinTroopAnswer);
-      paramString.putString("question", paramTroopInfo.joinTroopQuestion);
+      i += 1;
     }
-    for (;;)
-    {
-      this.a.b();
-      LoginWelcomeManager.a(this.a).removeObserver(this);
-      return;
-      label114:
-      if (QLog.isColorLevel()) {
-        QLog.d("LoginWelcomeManager", 2, "onOIDB0X88D_1_Ret err");
-      }
-    }
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public BitmapDrawable[] a()
+  {
+    return this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableBitmapDrawable;
+  }
+  
+  public int getByteSize()
+  {
+    return this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aekt
  * JD-Core Version:    0.7.0.1
  */

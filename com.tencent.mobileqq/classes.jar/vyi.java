@@ -1,37 +1,16 @@
-import android.os.SystemClock;
-import com.tencent.mobileqq.activity.aio.ChatContext;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.FriendChatPie;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.MsgProxy;
-import com.tencent.mobileqq.app.message.MsgProxyUtils;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.app.message.QQMessageFacade.RefreshMessageContext;
-
-public class vyi
-  implements Runnable
+class vyi
+  implements web
 {
-  public vyi(FriendChatPie paramFriendChatPie) {}
+  vyi(vyh paramvyh) {}
   
-  public void run()
+  public void a(boolean paramBoolean)
   {
-    if (!MsgProxyUtils.c(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int).e(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int))) {}
-    do
-    {
-      return;
-      FriendChatPie.a(this.a, SystemClock.uptimeMillis());
-      ((ChatContext)FriendChatPie.a(this.a).a).a(FriendChatPie.b(this.a));
-      FriendChatPie.b(this.a).e = false;
-      FriendChatPie.c(this.a).f = true;
-    } while (FriendChatPie.d(this.a).c != 0);
-    QQMessageFacade.RefreshMessageContext localRefreshMessageContext = FriendChatPie.e(this.a);
-    localRefreshMessageContext.c += 1;
-    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, 15, FriendChatPie.f(this.a));
+    this.a.jdField_a_of_type_Vyf.a.a(this.a.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     vyi
  * JD-Core Version:    0.7.0.1
  */

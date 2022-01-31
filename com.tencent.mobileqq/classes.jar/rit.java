@@ -1,20 +1,18 @@
-import com.tencent.mobileqq.Doraemon.APICallback;
-import com.tencent.mobileqq.Doraemon.APIParam;
-import com.tencent.mobileqq.Doraemon.DoraemonAPIManager;
-
 public class rit
-  implements Runnable
 {
-  public rit(DoraemonAPIManager paramDoraemonAPIManager, String paramString, APIParam paramAPIParam, APICallback paramAPICallback) {}
-  
-  public void run()
+  public static String a()
   {
-    DoraemonAPIManager.a(this.jdField_a_of_type_ComTencentMobileqqDoraemonDoraemonAPIManager, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqDoraemonAPIParam, this.jdField_a_of_type_ComTencentMobileqqDoraemonAPICallback);
+    return "0123456789";
+  }
+  
+  public static String b()
+  {
+    return "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     rit
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,21 @@
-import com.tencent.mobileqq.ark.ArkAppManagerPanel;
-import java.util.ArrayList;
+import com.tencent.mobileqq.activity.Leba.5;
+import com.tencent.mobileqq.activity.Leba.5.1;
 
 public class abbb
-  implements Runnable
+  implements baxq
 {
-  public abbb(ArkAppManagerPanel paramArkAppManagerPanel, ArrayList paramArrayList) {}
+  public abbb(Leba.5.1 param1) {}
   
-  public void run()
+  public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqArkArkAppManagerPanel.a(this.jdField_a_of_type_JavaUtilArrayList);
+    if (paramBoolean) {
+      abai.b(this.a.a.this$0).a();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abbb
  * JD-Core Version:    0.7.0.1
  */

@@ -1,29 +1,18 @@
-import android.view.ViewGroup;
-import com.tencent.mobileqq.search.adapter.BaseMvpFaceAdapter;
-import com.tencent.mobileqq.search.ftsentity.FTSEntitySearchFragment;
-import com.tencent.mobileqq.search.presenter.FTSMessageSearchResultPresenter;
-import com.tencent.mobileqq.search.presenter.IPresenter;
-import com.tencent.mobileqq.search.view.FTSMessageSearchResultView;
-import com.tencent.mobileqq.search.view.IView;
-import com.tencent.mobileqq.util.FaceDecoder;
-import com.tencent.widget.ListView;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.applets.data.AppletItem;
+import java.util.List;
 
-public class ahyk
-  extends BaseMvpFaceAdapter
+class ahyk
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public ahyk(FTSEntitySearchFragment paramFTSEntitySearchFragment, ListView paramListView, FaceDecoder paramFaceDecoder)
-  {
-    super(paramListView, paramFaceDecoder);
-  }
+  ahyk(ahyj paramahyj) {}
   
-  protected IPresenter a(int paramInt)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    return new FTSMessageSearchResultPresenter(FTSEntitySearchFragment.a(this.a));
-  }
-  
-  protected IView a(int paramInt, ViewGroup paramViewGroup)
-  {
-    return new FTSMessageSearchResultView(paramViewGroup, 2130971566);
+    int i = ((Integer)paramCompoundButton.getTag()).intValue();
+    AppletItem localAppletItem = (AppletItem)this.a.a.get(i);
+    ahyj.a(this.a).a(paramCompoundButton, paramBoolean, localAppletItem);
   }
 }
 

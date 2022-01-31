@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class ServiceFreeActionResponse
   extends JceStruct
 {
-  static byte[] a;
+  static byte[] cache_revertField;
   public byte[] revertField = null;
   
   public ServiceFreeActionResponse() {}
@@ -19,12 +19,12 @@ public final class ServiceFreeActionResponse
   
   public void readFrom(JceInputStream paramJceInputStream)
   {
-    if (a == null)
+    if (cache_revertField == null)
     {
-      a = (byte[])new byte[1];
-      ((byte[])a)[0] = 0;
+      cache_revertField = (byte[])new byte[1];
+      ((byte[])cache_revertField)[0] = 0;
     }
-    this.revertField = ((byte[])paramJceInputStream.read(a, 0, false));
+    this.revertField = ((byte[])paramJceInputStream.read(cache_revertField, 0, false));
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -36,7 +36,7 @@ public final class ServiceFreeActionResponse
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.tmassistantsdk.internal.openSDK.param.jce.ServiceFreeActionResponse
  * JD-Core Version:    0.7.0.1
  */

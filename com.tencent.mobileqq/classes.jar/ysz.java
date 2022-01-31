@@ -1,90 +1,93 @@
-import android.opengl.GLSurfaceView.EGLContextFactory;
-import com.tencent.mobileqq.apollo.ApolloEngine;
-import com.tencent.mobileqq.apollo.ApolloRender;
-import com.tencent.mobileqq.apollo.ApolloRenderDriver;
-import com.tencent.mobileqq.apollo.ApolloSurfaceView;
-import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
-import com.tencent.mobileqq.apollo.process.CmGameUtil;
-import com.tencent.mobileqq.apollo.process.data.CmGameAppInterface;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicBoolean;
-import javax.microedition.khronos.egl.EGL10;
-import javax.microedition.khronos.egl.EGLConfig;
-import javax.microedition.khronos.egl.EGLContext;
-import javax.microedition.khronos.egl.EGLDisplay;
+import java.util.ArrayList;
+import java.util.Iterator;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class ysz
-  implements GLSurfaceView.EGLContextFactory
+  extends ysw
 {
-  private ysz(ApolloSurfaceView paramApolloSurfaceView) {}
+  private ArrayList<String> a;
   
-  public EGLContext createContext(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig)
+  public ysz(JSONObject paramJSONObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloSurfaceView", 2, "[createContext], id:" + Thread.currentThread().getId());
-    }
-    paramEGL10 = paramEGL10.eglCreateContext(paramEGLDisplay, paramEGLConfig, EGL10.EGL_NO_CONTEXT, new int[] { 12440, 2, 12344 });
-    this.a.mIsDestroy.set(false);
-    return paramEGL10;
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    a(paramJSONObject);
   }
   
-  public void destroyContext(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLContext paramEGLContext)
+  public String a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloSurfaceView", 2, "[destroyContext], id:" + Thread.currentThread().getId());
-    }
-    Object localObject;
-    if (ApolloSurfaceView.access$700(this.a))
+    String str1 = super.a();
+    try
     {
-      localObject = CmGameUtil.a();
-      if (localObject != null)
+      JSONObject localJSONObject = new JSONObject(str1);
+      localJSONObject.put("patchName", this.jdField_a_of_type_JavaLangString);
+      localJSONObject.put("patchUrl", this.b);
+      localJSONObject.put("patchSize", this.jdField_a_of_type_Int);
+      StringBuilder localStringBuilder = new StringBuilder("");
+      if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0))
       {
-        if (!(localObject instanceof QQAppInterface)) {
-          break label167;
+        Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+        while (localIterator.hasNext())
+        {
+          String str3 = (String)localIterator.next();
+          if (!TextUtils.isEmpty(str3)) {
+            localStringBuilder.append(str3).append(";");
+          }
         }
-        localObject = ApolloCmdChannel.getChannel((QQAppInterface)localObject);
       }
+      localJSONException.put("classIdList", localStringBuilder.toString());
     }
-    for (;;)
+    catch (JSONException localJSONException)
     {
-      if (localObject != null)
-      {
-        ((ApolloCmdChannel)localObject).callbackDirect(this.a.isJsRuntime(), this.a.getLuaState(), 0, "sc.force_stop_game.local", "{}");
-        ((ApolloCmdChannel)localObject).destroyMusic();
-        if (QLog.isColorLevel()) {
-          QLog.d("ApolloSurfaceView", 2, "destroyContext, closeGame)");
-        }
-      }
-      for (;;)
-      {
-        this.a.mIsDestroy.set(true);
-        if (this.a.mRender != null) {
-          this.a.mRender.onDestroy();
-        }
-        if (paramEGL10 != null) {
-          paramEGL10.eglDestroyContext(paramEGLDisplay, paramEGLContext);
-        }
-        return;
-        label167:
-        if (!(localObject instanceof CmGameAppInterface)) {
-          break label232;
-        }
-        QLog.i("cmgame_process.", 1, "[destroyContext] in game.");
-        localObject = CmGameUtil.a();
-        break;
-        if ((this.a.mApolloWorker != null) && (this.a.mApolloWorker.a != null)) {
-          this.a.mApolloWorker.a.a("if(\"undefined\" != typeof clearSprite && clearSprite){clearSprite();}");
-        }
-      }
-      label232:
-      localObject = null;
+      QLog.d("PatchLogTag", 1, "DexPatchItemConfigDalvik writeToJsonString", localJSONException);
+      return str1;
     }
+    String str2 = localJSONException.toString();
+    return str2;
+  }
+  
+  public ArrayList<String> a()
+  {
+    return this.jdField_a_of_type_JavaUtilArrayList;
+  }
+  
+  protected void a(JSONObject paramJSONObject)
+  {
+    int i = 0;
+    super.a(paramJSONObject);
+    this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("patchName", null);
+    this.b = paramJSONObject.optString("patchUrl", null);
+    this.jdField_a_of_type_Int = paramJSONObject.optInt("patchSize", 0);
+    paramJSONObject = paramJSONObject.optString("classIdList", "").split(";");
+    if ((paramJSONObject != null) && (paramJSONObject.length > 0))
+    {
+      int j = paramJSONObject.length;
+      while (i < j)
+      {
+        CharSequence localCharSequence = paramJSONObject[i];
+        if (!TextUtils.isEmpty(localCharSequence)) {
+          this.jdField_a_of_type_JavaUtilArrayList.add(localCharSequence);
+        }
+        i += 1;
+      }
+    }
+  }
+  
+  public boolean a(boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_JavaUtilArrayList.size() <= 0)
+    {
+      QLog.d("PatchLogTag", 1, "DexPatchItemConfigDalvik isValidConfig classIdList is empty");
+      return false;
+    }
+    return super.a(paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ysz
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,173 @@
+{
+  "ReadInJoyDailyDynamicFestivalHeader": {
+    "view_type": "UIView",
+    "view_id": "id_daily_dynamic_header",
+    "layout_type": "layout_relative",
+    "default_visible": "YES",
+    "padding_right": "14",
+    "height": {
+      "type": "relative",
+      "value": "204"
+    },
+    "width": {
+      "type": "relative",
+      "value": "375"
+    },
+    "subviews": [
+        {
+            "view_type": "container",
+            "layout_type": "layout_linear",
+            "align_parent_bottom": "YES",
+            "margin_bottom": "14",
+            "margin_left": "14",
+            "height": {
+                "type": "wrap_content"
+            },
+            "width": {
+                "type": "relative",
+                "value": "375"
+            },
+            "subviews": [
+                {
+                    "view_type": "UIView",
+                    "view_id": "id_temperature_container",
+                    "layout_type": "layout_linear",
+                    "default_visible": "YES",
+                    "direction": "horizontal",
+                    "margin_top": "92",
+                    "height": {
+                        "type": "wrap_content"
+                    },
+                    "width": {
+                        "type": "wrap_content"
+                    },
+                    "event_type": "cmd_daily_festival_title_click",
+                    "attributes": {
+                        "setAttatchInfo:":"$weather_jump_url"
+                    },
+                    "subviews": [
+                        {
+                            "view_type": "ProteusTickerView",
+                            "view_id": "id_temperature",
+                            "height": {
+                                "type": "wrap_content"
+                            },
+                            "width": {
+                                "type": "wrap_content"
+                            },
+                            "attributes": {
+                                "setText:": "$temperature",
+                                "setTextColorString:": "#FFFFFF",
+                                "setBoldFontSizeString:": "18"
+                            }
+                        },
+                        {
+                            "view_type": "UILabel",
+                            "view_id": "id_weather_summary",
+                            "margin_left": "6",
+                            "height": {
+                                "type": "match_parent"
+                            },
+                            "width": {
+                                "type": "wrap_content"
+                            },
+                            "attributes": {
+                                "setText:": "$weather_summary",
+                                "setTextColorString:": "#FFFFFF",
+                                "setFontSizeString:": "15"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "view_type": "UIView",
+                    "view_id": "id_festival_container",
+                    "layout_type": "layout_linear",
+                    "default_visible": "YES",
+                    "direction": "vertical",
+                    "height": {
+                        "type": "wrap_content"
+                    },
+                    "width": {
+                        "type": "wrap_content"
+                    },
+                    "event_type": "cmd_daily_festival_title_click",
+                    "attributes": {
+                        "setAttatchInfo:":"$jump_url"
+                    },
+                    "subviews": [
+                        {
+                            "view_type": "UIView",
+                            "view_id": "id_festival_text_container",
+                            "layout_type": "layout_relative",
+                            "default_visible": "YES",
+                            "margin_top": "8",
+                            "direction": "horizontal",
+                            "height": {
+                                "type": "wrap_content"
+                            },
+                            "width": {
+                                "type": "wrap_content"
+                            },
+                            "subviews": [
+                                {
+                                    "view_type": "UILabel",
+                                    "view_id": "id_festival_text",
+                                    "height": {
+                                        "type": "wrap_content"
+                                    },
+                                    "width": {
+                                        "type": "wrap_content"
+                                    },
+                                    "attributes": {
+                                        "setText:": "$festival_name",
+                                        "setTextColorString:": "#FFFFFF",
+                                        "setFontSizeString:": "22"
+                                    }
+                                },
+                                {
+                                    "view_type": "UIImageView",
+                                    "view_id": "id_arrow",
+                                    "margin_left": "7.3",
+                                    "align_parent_center_vertical": "YES",
+                                    "right_of_view": "id_festival_text",
+                                    "height": {
+                                        "type": "relative",
+                                        "value": "11.5"
+                                    },
+                                    "width": {
+                                        "type": "relative",
+                                        "value": "6.9"
+                                    },
+                                    "attributes": {
+                                        "setAttatchInfo:":"$jump_url",
+                                        "loadImageWithPath:": "right_arrow_white"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "view_type": "UILabel",
+                            "view_id": "id_festival_summary",
+                            "margin_top": "8",
+                            "height": {
+                                "type": "wrap_content"
+                            },
+                            "width": {
+                                "type": "relative",
+                                "value": "347"
+                            },
+                            "attributes": {
+                                "setText:": "$festival_summary",
+                                "setTextColorString:": "#D9FFFFFF",
+                                "setFontSizeString:": "12",
+                                "setNumberOfLinesString:": "2"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+  }
+}

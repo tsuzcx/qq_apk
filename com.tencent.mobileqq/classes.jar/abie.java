@@ -1,32 +1,73 @@
-import com.nineoldandroids.animation.ValueAnimator;
-import com.nineoldandroids.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.armap.ARMapActivity;
-import com.tencent.mobileqq.armap.wealthgod.ARMapSplashView;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.ProfileActivity.CardContactInfo;
+import java.util.ArrayList;
 
-public class abie
-  implements ValueAnimator.AnimatorUpdateListener
+public final class abie
+  implements Parcelable.Creator<ProfileActivity.AllInOne>
 {
-  public abie(ARMapActivity paramARMapActivity) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public ProfileActivity.AllInOne a(Parcel paramParcel)
   {
-    paramValueAnimator = (Integer)paramValueAnimator.getAnimatedValue();
-    if (ARMapActivity.b(this.a) != paramValueAnimator.intValue())
+    boolean bool = true;
+    ProfileActivity.AllInOne localAllInOne = new ProfileActivity.AllInOne(null);
+    localAllInOne.jdField_a_of_type_JavaLangString = paramParcel.readString();
+    localAllInOne.jdField_a_of_type_Int = paramParcel.readInt();
+    localAllInOne.jdField_b_of_type_Int = paramParcel.readInt();
+    localAllInOne.jdField_a_of_type_Byte = paramParcel.readByte();
+    localAllInOne.jdField_a_of_type_Short = ((short)paramParcel.readInt());
+    localAllInOne.jdField_b_of_type_Byte = paramParcel.readByte();
+    localAllInOne.jdField_c_of_type_Int = paramParcel.readInt();
+    localAllInOne.jdField_c_of_type_Byte = paramParcel.readByte();
+    localAllInOne.jdField_a_of_type_ArrayOfByte = paramParcel.createByteArray();
+    localAllInOne.jdField_b_of_type_JavaLangString = paramParcel.readString();
+    localAllInOne.jdField_c_of_type_JavaLangString = paramParcel.readString();
+    localAllInOne.jdField_d_of_type_JavaLangString = paramParcel.readString();
+    localAllInOne.jdField_e_of_type_JavaLangString = paramParcel.readString();
+    localAllInOne.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    paramParcel.readTypedList(localAllInOne.jdField_a_of_type_JavaUtilArrayList, ProfileActivity.CardContactInfo.CREATOR);
+    localAllInOne.jdField_d_of_type_Int = paramParcel.readInt();
+    if (paramParcel.readByte() == 1) {}
+    for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ARMapActivity", 2, String.format("updateProgress mCurProgress=%s", new Object[] { Integer.valueOf(ARMapActivity.b(this.a)) }));
-      }
-      ARMapActivity.b(this.a, paramValueAnimator.intValue());
-      if (ARMapActivity.a(this.a) != null) {
-        ARMapActivity.a(this.a).setProgress(ARMapActivity.b(this.a));
-      }
+      localAllInOne.jdField_a_of_type_Boolean = bool;
+      localAllInOne.jdField_f_of_type_JavaLangString = paramParcel.readString();
+      localAllInOne.jdField_e_of_type_Int = paramParcel.readInt();
+      localAllInOne.jdField_h_of_type_JavaLangString = paramParcel.readString();
+      localAllInOne.jdField_i_of_type_JavaLangString = paramParcel.readString();
+      localAllInOne.jdField_j_of_type_JavaLangString = paramParcel.readString();
+      localAllInOne.jdField_k_of_type_JavaLangString = paramParcel.readString();
+      localAllInOne.jdField_l_of_type_JavaLangString = paramParcel.readString();
+      localAllInOne.m = paramParcel.readString();
+      localAllInOne.n = paramParcel.readString();
+      localAllInOne.g = paramParcel.readInt();
+      localAllInOne.jdField_h_of_type_Int = paramParcel.readInt();
+      localAllInOne.jdField_i_of_type_Int = paramParcel.readInt();
+      localAllInOne.jdField_b_of_type_ArrayOfByte = paramParcel.createByteArray();
+      localAllInOne.jdField_j_of_type_Int = paramParcel.readInt();
+      localAllInOne.jdField_k_of_type_Int = paramParcel.readInt();
+      localAllInOne.o = paramParcel.readString();
+      localAllInOne.p = paramParcel.readString();
+      localAllInOne.jdField_a_of_type_Long = paramParcel.readLong();
+      localAllInOne.jdField_l_of_type_Int = paramParcel.readInt();
+      localAllInOne.q = paramParcel.readString();
+      localAllInOne.jdField_b_of_type_AndroidOsBundle = ((Bundle)paramParcel.readParcelable(Bundle.class.getClassLoader()));
+      localAllInOne.jdField_f_of_type_Int = paramParcel.readInt();
+      localAllInOne.jdField_a_of_type_AndroidOsBundle = ((Bundle)paramParcel.readParcelable(Bundle.class.getClassLoader()));
+      return localAllInOne;
+      bool = false;
     }
+  }
+  
+  public ProfileActivity.AllInOne[] a(int paramInt)
+  {
+    return new ProfileActivity.AllInOne[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abie
  * JD-Core Version:    0.7.0.1
  */

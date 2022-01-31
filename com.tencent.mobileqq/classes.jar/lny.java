@@ -1,25 +1,66 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
-import cooperation.readinjoy.ReadInJoyHelper;
+import android.content.Context;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import java.lang.ref.WeakReference;
 
-public class lny
-  implements Runnable
+final class lny
+  implements lof
 {
-  public lny(KandianMergeManager paramKandianMergeManager) {}
+  lny(String paramString1, QQAppInterface paramQQAppInterface, String paramString2, int paramInt, long paramLong, WeakReference paramWeakReference) {}
   
-  public void run()
+  public Bitmap a(long paramLong)
   {
-    SharedPreferences.Editor localEditor = ReadInJoyHelper.a(KandianMergeManager.a(this.a), 1).edit();
-    localEditor.remove("kandian_push_msg_xml").remove("kandian_push_msg_time");
-    ReadInJoyHelper.a(localEditor, true);
-    ReadInJoyUtils.a("kandian_lock_screen_push_info", true);
+    return this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(this.b, (byte)3, false, false);
+  }
+  
+  public TroopInfoData a()
+  {
+    TroopInfoData localTroopInfoData = new TroopInfoData();
+    localTroopInfoData.troopUin = this.b;
+    localTroopInfoData.updateForTroopInfo(((TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52)).c(this.b), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+    return localTroopInfoData;
+  }
+  
+  public String a()
+  {
+    return lnv.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.b);
+  }
+  
+  public String a(int paramInt)
+  {
+    return "0X800A3E4";
+  }
+  
+  public String a(long paramLong, int paramInt)
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3)
+  {
+    if (paramInt3 == 2) {
+      mgc.a(paramInt1, paramInt2, this.jdField_a_of_type_Int, this.b);
+    }
+    lnv.a(this.jdField_a_of_type_Long, (Context)this.jdField_a_of_type_JavaLangRefWeakReference.get());
+  }
+  
+  public String b()
+  {
+    return lnv.a(this.b);
+  }
+  
+  public void b(int paramInt1, int paramInt2, int paramInt3)
+  {
+    if (paramInt3 == 2) {
+      mgc.a(paramInt1, paramInt2, this.jdField_a_of_type_Int, this.b);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lny
  * JD-Core Version:    0.7.0.1
  */

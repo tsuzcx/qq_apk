@@ -10,7 +10,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class DynamicSearch$ResultItem
-  extends MessageMicro
+  extends MessageMicro<ResultItem>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField extension = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -23,10 +23,10 @@ public final class DynamicSearch$ResultItem
   public final PBBytesField report_ext_data = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField result_id = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBUInt64Field result_item_type = PBField.initUInt64(0L);
-  public final PBRepeatMessageField rpt_meaning = PBField.initRepeatMessage(DynamicSearch.Meaning.class);
+  public final PBRepeatMessageField<DynamicSearch.Meaning> rpt_meaning = PBField.initRepeatMessage(DynamicSearch.Meaning.class);
   public final PBUInt32Field seporator_type = PBField.initUInt32(0);
-  public final PBRepeatMessageField sub_item_list = PBField.initRepeatMessage(DynamicSearch.SubItem.class);
-  public final PBRepeatMessageField sub_result_items = PBField.initRepeatMessage(ResultItem.class);
+  public final PBRepeatMessageField<DynamicSearch.SubItem> sub_item_list = PBField.initRepeatMessage(DynamicSearch.SubItem.class);
+  public final PBRepeatMessageField<ResultItem> sub_result_items = PBField.initRepeatMessage(ResultItem.class);
   public final PBBytesField word = PBField.initBytes(ByteStringMicro.EMPTY);
   
   static

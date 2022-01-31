@@ -5,71 +5,69 @@ import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafCon
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.layout.LinearLayout;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.layout.LinearLayout.Params;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.LogUtils;
 
 public class NativeLinearLayout
   extends LinearLayout
 {
-  private NativeLayoutImpl a;
+  private static final String TAG = "NativeLinearLayout";
+  protected NativeLayoutImpl mNative;
   
   public NativeLinearLayout(VafContext paramVafContext)
   {
     super(paramVafContext);
-    this.a = new NativeLayoutImpl(paramVafContext.a());
-    this.a.setVirtualView(this);
+    this.mNative = new NativeLayoutImpl(paramVafContext.getContext());
+    this.mNative.setVirtualView(this);
   }
   
-  public View a()
+  public void addView(ViewBase paramViewBase)
   {
-    return this.a;
+    if (LogUtils.shouldLog()) {
+      LogUtils.d("NativeLinearLayout", "[addView] for " + this.mName);
+    }
+    super.addView(paramViewBase);
+    this.mNative.attachViews(paramViewBase);
+    if (LogUtils.shouldLog()) {
+      LogUtils.d("NativeLinearLayout", "[addView] native child count: " + this.mNative.getChildCount());
+    }
   }
   
-  public LinearLayout.Params a()
+  public LinearLayout.Params generateParams()
   {
     return new LinearLayout.Params();
   }
   
-  public void a()
+  public View getNativeView()
   {
-    this.a.setBorderColor(this.f);
-    this.a.setBorderWidth(this.e);
-    this.a.setBorderTopLeftRadius(this.h);
-    this.a.setBorderTopRightRadius(this.i);
-    this.a.setBorderBottomLeftRadius(this.j);
-    this.a.setBorderBottomRightRadius(this.k);
-    this.a.setBackgroundColor(this.d);
+    return this.mNative;
   }
   
-  public void a(int paramInt1, int paramInt2)
+  public void onComLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    super.a(paramInt1, paramInt2);
-    this.a.b(this.t, this.u);
+    super.onComLayout(paramBoolean, 0, 0, paramInt3 - paramInt1, paramInt4 - paramInt2);
+    this.mNative.comLayout(paramInt1, paramInt2, paramInt3, paramInt4);
   }
   
-  public void a(ViewBase paramViewBase)
+  public void onComMeasure(int paramInt1, int paramInt2)
   {
-    super.a(paramViewBase);
-    this.a.a(paramViewBase);
+    super.onComMeasure(paramInt1, paramInt2);
+    this.mNative.measureComponent(this.mMeasuredWidth, this.mMeasuredHeight);
   }
   
-  public void a(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onParseValueFinished()
   {
-    super.a(paramBoolean, 0, 0, paramInt3 - paramInt1, paramInt4 - paramInt2);
-    this.a.a(paramInt1, paramInt2, paramInt3, paramInt4);
-  }
-  
-  public boolean a(int paramInt1, int paramInt2)
-  {
-    return super.a(paramInt1 - d(), paramInt2 - e());
-  }
-  
-  public boolean a(int paramInt1, int paramInt2, boolean paramBoolean)
-  {
-    return super.a(paramInt1 - d(), paramInt2 - e(), paramBoolean);
+    this.mNative.setBorderColor(this.mBorderColor);
+    this.mNative.setBorderWidth(this.mBorderWidth);
+    this.mNative.setBorderTopLeftRadius(this.mBorderTopLeftRadius);
+    this.mNative.setBorderTopRightRadius(this.mBorderTopRightRadius);
+    this.mNative.setBorderBottomLeftRadius(this.mBorderBottomLeftRadius);
+    this.mNative.setBorderBottomRightRadius(this.mBorderBottomRightRadius);
+    this.mNative.setBackgroundColor(this.mBackground);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.layout.helper.nativelayout.NativeLinearLayout
  * JD-Core Version:    0.7.0.1
  */

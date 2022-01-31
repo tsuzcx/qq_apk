@@ -6,14 +6,14 @@ import java.util.Map;
 public class ReadInJoyChannelActivity$SerializableMap
   implements Serializable
 {
-  private Map map;
+  private Map<String, Object> map;
   
-  public Map getMap()
+  public Map<String, Object> getMap()
   {
     return this.map;
   }
   
-  public void setMap(Map paramMap)
+  public void setMap(Map<String, Object> paramMap)
   {
     this.map = paramMap;
   }

@@ -1,27 +1,16 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.PoiMapActivity;
 
-public class mmg
-  extends AnimatorListenerAdapter
+public abstract class mmg
 {
-  public mmg(ReadInJoyListViewGroup paramReadInJoyListViewGroup) {}
+  public int a;
+  public int b;
+  public int c;
+  public String e;
+  public String f;
+  public String g;
+  public String h;
   
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    super.onAnimationEnd(paramAnimator);
-    ReadInJoyListViewGroup.a(this.a).setLayerType(0, null);
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.readinjoy.videoanimation", 2, "alpha animation end");
-    }
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    super.onAnimationStart(paramAnimator);
-  }
+  public mmg(PoiMapActivity paramPoiMapActivity) {}
 }
 
 

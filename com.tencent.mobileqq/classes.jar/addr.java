@@ -1,14 +1,16 @@
-import com.tencent.mobileqq.filemanager.core.FileManagerRSWorker;
-import com.tencent.mobileqq.filemanager.core.FileManagerRSWorker.ChangeNewPath;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class addr
-  implements FileManagerRSWorker.ChangeNewPath
+class addr
+  implements DialogInterface.OnClickListener
 {
-  public addr(FileManagerRSWorker paramFileManagerRSWorker) {}
+  addr(addp paramaddp) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     addr
  * JD-Core Version:    0.7.0.1
  */

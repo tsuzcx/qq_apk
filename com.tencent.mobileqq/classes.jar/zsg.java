@@ -1,52 +1,24 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.HashMap;
-import org.xml.sax.Attributes;
-import org.xml.sax.helpers.DefaultHandler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-public class zsg
-  extends DefaultHandler
+class zsg
+  implements View.OnClickListener
 {
-  private String jdField_a_of_type_JavaLangString;
-  private HashMap jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  zsg(zsd paramzsd, zsc paramzsc, zru paramzru, JSONObject paramJSONObject, zrt paramzrt) {}
   
-  public zsg(QQAppInterface paramQQAppInterface) {}
-  
-  public HashMap a()
+  public void onClick(View paramView)
   {
-    return this.jdField_a_of_type_JavaUtilHashMap;
-  }
-  
-  public void characters(char[] paramArrayOfChar, int paramInt1, int paramInt2)
-  {
-    paramArrayOfChar = new String(paramArrayOfChar, paramInt1, paramInt2);
-    if (this.jdField_a_of_type_JavaLangString != null) {
-      this.jdField_a_of_type_JavaUtilHashMap.put(this.jdField_a_of_type_JavaLangString, paramArrayOfChar);
-    }
-  }
-  
-  public void endDocument()
-  {
-    super.endDocument();
-  }
-  
-  public void endElement(String paramString1, String paramString2, String paramString3)
-  {
-    this.jdField_a_of_type_JavaLangString = null;
-  }
-  
-  public void startDocument()
-  {
-    super.startDocument();
-  }
-  
-  public void startElement(String paramString1, String paramString2, String paramString3, Attributes paramAttributes)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_Zsd.d();
+    QLog.i("DoraemonOpenAPI.apiMgr", 1, "reject " + this.jdField_a_of_type_Zsc.a);
+    zsd.a(this.jdField_a_of_type_Zsd, this.jdField_a_of_type_Zsc, 1);
+    zsd.b(this.jdField_a_of_type_Zsd, 4, this.jdField_a_of_type_Zru, this.jdField_a_of_type_OrgJsonJSONObject, this.jdField_a_of_type_Zrt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     zsg
  * JD-Core Version:    0.7.0.1
  */

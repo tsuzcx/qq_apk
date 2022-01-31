@@ -1,26 +1,15 @@
-import com.tencent.mobileqq.app.PrinterHandler;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Timer;
-import java.util.TimerTask;
+import mqq.util.AbstractUnifiedMonitor.ThreadMonitorCallback;
 
-public class zqm
-  extends TimerTask
+class zqm
+  implements AbstractUnifiedMonitor.ThreadMonitorCallback
 {
-  public zqm(PrinterHandler paramPrinterHandler, long paramLong, Timer paramTimer) {}
+  zqm(zqk paramzqk) {}
   
-  public void run()
+  public void onThreadMonitorEnd(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppPrinterHandler.jdField_a_of_type_JavaUtilHashMap.containsKey(Long.valueOf(this.jdField_a_of_type_Long)))
-    {
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppPrinterHandler.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8004021", "0X8004021", (int)this.jdField_a_of_type_Long, -1, "", "", "", "");
-      this.jdField_a_of_type_ComTencentMobileqqAppPrinterHandler.a(Long.valueOf(this.jdField_a_of_type_Long), false);
-      if (QLog.isDevelopLevel()) {
-        QLog.d("dataline.Printer", 4, "printID=" + this.jdField_a_of_type_Long + ", 超时到了");
-      }
+    if (paramInt == 10) {
+      zqk.a(this.a);
     }
-    this.jdField_a_of_type_JavaUtilTimer.cancel();
   }
 }
 

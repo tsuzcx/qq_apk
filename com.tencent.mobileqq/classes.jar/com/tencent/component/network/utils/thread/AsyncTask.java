@@ -9,76 +9,86 @@ import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
-import pqc;
-import pqd;
-import pqe;
-import pqg;
-import pqh;
-import pqi;
-import pqj;
-import pql;
 
-public abstract class AsyncTask
+public abstract class AsyncTask<Params, Progress, Result>
 {
-  private static final BlockingQueue jdField_a_of_type_JavaUtilConcurrentBlockingQueue;
-  public static final Executor a;
-  private static final ThreadFactory jdField_a_of_type_JavaUtilConcurrentThreadFactory = new pqc();
-  public static final Executor b;
-  private static volatile Executor c = jdField_b_of_type_JavaUtilConcurrentExecutor;
-  private volatile AsyncTask.Status jdField_a_of_type_ComTencentComponentNetworkUtilsThreadAsyncTask$Status = AsyncTask.Status.PENDING;
-  private final FutureTask jdField_a_of_type_JavaUtilConcurrentFutureTask = new pqe(this, this.jdField_a_of_type_Pql);
-  private final AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean();
-  private final pql jdField_a_of_type_Pql = new pqd(this);
-  private final AtomicBoolean b;
+  private static final int CORE_POOL_SIZE = 1;
+  private static final int KEEP_ALIVE = 1;
+  private static final String LOG_TAG = "AsyncTask";
+  private static final int MAXIMUM_POOL_SIZE = 128;
+  private static final int MESSAGE_POST_PROGRESS = 2;
+  private static final int MESSAGE_POST_RESULT = 1;
+  public static final Executor SERIAL_EXECUTOR = new AsyncTask.SerialExecutor(null);
+  public static final Executor THREAD_POOL_EXECUTOR;
+  private static volatile Executor sDefaultExecutor = SERIAL_EXECUTOR;
+  private static final BlockingQueue<Runnable> sPoolWorkQueue;
+  private static final ThreadFactory sThreadFactory = new AsyncTask.1();
+  private final AtomicBoolean mCancelled = new AtomicBoolean();
+  private final FutureTask<Result> mFuture = new AsyncTask.3(this, this.mWorker);
+  private volatile AsyncTask.Status mStatus = AsyncTask.Status.PENDING;
+  private final AtomicBoolean mTaskInvoked = new AtomicBoolean();
+  private final AsyncTask.WorkerRunnable<Params, Result> mWorker = new AsyncTask.2(this);
   
   static
   {
-    jdField_a_of_type_JavaUtilConcurrentBlockingQueue = new LinkedBlockingQueue(10);
-    jdField_a_of_type_JavaUtilConcurrentExecutor = new ThreadPoolExecutor(1, 128, 1L, TimeUnit.SECONDS, jdField_a_of_type_JavaUtilConcurrentBlockingQueue, jdField_a_of_type_JavaUtilConcurrentThreadFactory);
-    jdField_b_of_type_JavaUtilConcurrentExecutor = new pqj(null);
+    sPoolWorkQueue = new LinkedBlockingQueue(10);
+    THREAD_POOL_EXECUTOR = new ThreadPoolExecutor(1, 128, 1L, TimeUnit.SECONDS, sPoolWorkQueue, sThreadFactory);
   }
   
-  public AsyncTask()
+  public static void execute(Runnable paramRunnable)
   {
-    this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean();
+    sDefaultExecutor.execute(paramRunnable);
   }
   
-  private Object a(Object paramObject)
+  private void finish(Result paramResult)
   {
-    pqh.a.obtainMessage(1, new pqg(this, new Object[] { paramObject })).sendToTarget();
-    return paramObject;
-  }
-  
-  private void c(Object paramObject)
-  {
-    if (!this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
-      a(paramObject);
-    }
-  }
-  
-  private void d(Object paramObject)
-  {
-    if (a()) {
-      b(paramObject);
+    if (isCancelled()) {
+      onCancelled(paramResult);
     }
     for (;;)
     {
-      this.jdField_a_of_type_ComTencentComponentNetworkUtilsThreadAsyncTask$Status = AsyncTask.Status.FINISHED;
+      this.mStatus = AsyncTask.Status.FINISHED;
       return;
-      a(paramObject);
+      onPostExecute(paramResult);
     }
   }
   
-  public final AsyncTask a(Executor paramExecutor, Object... paramVarArgs)
+  private Result postResult(Result paramResult)
   {
-    if (this.jdField_a_of_type_ComTencentComponentNetworkUtilsThreadAsyncTask$Status != AsyncTask.Status.PENDING) {}
-    switch (pqf.a[this.jdField_a_of_type_ComTencentComponentNetworkUtilsThreadAsyncTask$Status.ordinal()])
+    AsyncTask.HandlerHolder.Handler.obtainMessage(1, new AsyncTask.AsyncTaskResult(this, new Object[] { paramResult })).sendToTarget();
+    return paramResult;
+  }
+  
+  private void postResultIfNotInvoked(Result paramResult)
+  {
+    if (!this.mTaskInvoked.get()) {
+      postResult(paramResult);
+    }
+  }
+  
+  public final boolean cancel(boolean paramBoolean)
+  {
+    this.mCancelled.set(true);
+    return this.mFuture.cancel(paramBoolean);
+  }
+  
+  protected abstract Result doInBackground(Params... paramVarArgs);
+  
+  public final AsyncTask<Params, Progress, Result> execute(Params... paramVarArgs)
+  {
+    return executeOnExecutor(sDefaultExecutor, paramVarArgs);
+  }
+  
+  public final AsyncTask<Params, Progress, Result> executeOnExecutor(Executor paramExecutor, Params... paramVarArgs)
+  {
+    if (this.mStatus != AsyncTask.Status.PENDING) {}
+    switch (AsyncTask.4.$SwitchMap$com$tencent$component$network$utils$thread$AsyncTask$Status[this.mStatus.ordinal()])
     {
     default: 
-      this.jdField_a_of_type_ComTencentComponentNetworkUtilsThreadAsyncTask$Status = AsyncTask.Status.RUNNING;
-      a();
-      this.jdField_a_of_type_Pql.a = paramVarArgs;
-      paramExecutor.execute(this.jdField_a_of_type_JavaUtilConcurrentFutureTask);
+      this.mStatus = AsyncTask.Status.RUNNING;
+      onPreExecute();
+      this.mWorker.mParams = paramVarArgs;
+      paramExecutor.execute(this.mFuture);
       return this;
     case 1: 
       throw new IllegalStateException("Cannot execute task: the task is already running.");
@@ -86,29 +96,44 @@ public abstract class AsyncTask
     throw new IllegalStateException("Cannot execute task: the task has already been executed (a task can be executed only once)");
   }
   
-  public final AsyncTask a(Object... paramVarArgs)
+  public final Result get()
   {
-    return a(c, paramVarArgs);
+    return this.mFuture.get();
   }
   
-  public abstract Object a(Object... paramVarArgs);
-  
-  protected void a() {}
-  
-  public void a(Object paramObject) {}
-  
-  public void a(Object... paramVarArgs) {}
-  
-  public final boolean a()
+  public final Result get(long paramLong, TimeUnit paramTimeUnit)
   {
-    return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
+    return this.mFuture.get(paramLong, paramTimeUnit);
   }
   
-  protected void b() {}
-  
-  protected void b(Object paramObject)
+  public final AsyncTask.Status getStatus()
   {
-    b();
+    return this.mStatus;
+  }
+  
+  public final boolean isCancelled()
+  {
+    return this.mCancelled.get();
+  }
+  
+  protected void onCancelled() {}
+  
+  protected void onCancelled(Result paramResult)
+  {
+    onCancelled();
+  }
+  
+  protected void onPostExecute(Result paramResult) {}
+  
+  protected void onPreExecute() {}
+  
+  protected void onProgressUpdate(Progress... paramVarArgs) {}
+  
+  protected final void publishProgress(Progress... paramVarArgs)
+  {
+    if (!isCancelled()) {
+      AsyncTask.HandlerHolder.Handler.obtainMessage(2, new AsyncTask.AsyncTaskResult(this, paramVarArgs)).sendToTarget();
+    }
   }
 }
 

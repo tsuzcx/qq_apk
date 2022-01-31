@@ -1,21 +1,75 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyChannelActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.imageloader.ReadInJoyGlobalReporter;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.common.app.BaseApplicationImpl;
 
 public class let
-  implements Runnable
 {
-  public let(ReadInJoyChannelActivity paramReadInJoyChannelActivity) {}
+  private static let a;
   
-  public void run()
+  public static let a()
   {
-    ReadInJoyGlobalReporter.a().a(true);
-    ReadInJoyGlobalReporter.a().a(this.a.app, NetConnInfoCenter.getServerTimeMillis(), -1, -1);
+    if (a != null) {
+      return a;
+    }
+    try
+    {
+      a = new let();
+      let locallet = a;
+      return locallet;
+    }
+    catch (Exception localException) {}
+    return null;
+  }
+  
+  public float a()
+  {
+    try
+    {
+      float f1 = Float.parseFloat(kvz.a(BaseApplicationImpl.getContext()).a("sharp/lowlight_denoise/videodenoiseratio", "15.0"));
+      float f2;
+      if (f1 <= 0.0D) {
+        f2 = 0.0F;
+      }
+      do
+      {
+        return f2;
+        f2 = f1;
+      } while (f1 < 30.0D);
+      return 30.0F;
+    }
+    catch (Exception localException) {}
+    return 15.0F;
+  }
+  
+  public boolean a()
+  {
+    return kvz.a(BaseApplicationImpl.getContext()).a("sharp/lowlight_denoise/lowlightflag", 0) == 1;
+  }
+  
+  public boolean b()
+  {
+    boolean bool = false;
+    if (kvz.a(BaseApplicationImpl.getContext()).a("sharp/lowlight_denoise/lowlightflag", 0) == -1) {
+      bool = true;
+    }
+    return bool;
+  }
+  
+  public boolean c()
+  {
+    return kvz.a(BaseApplicationImpl.getContext()).a("sharp/lowlight_denoise/videodenoiseflag", 0) == 1;
+  }
+  
+  public boolean d()
+  {
+    boolean bool = false;
+    if (kvz.a(BaseApplicationImpl.getContext()).a("sharp/lowlight_denoise/videodenoiseflag", 0) == -1) {
+      bool = true;
+    }
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     let
  * JD-Core Version:    0.7.0.1
  */

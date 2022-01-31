@@ -1,26 +1,18 @@
-import com.tencent.mobileqq.Doraemon.monitor.APIQuotaEntity;
-import com.tencent.mobileqq.Doraemon.monitor.DoraemonAPIReporterMain;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
-import java.util.List;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import javax.annotation.Nullable;
 
-public class rjt
-  implements Runnable
+public abstract interface rjt
 {
-  public rjt(DoraemonAPIReporterMain paramDoraemonAPIReporterMain, QQAppInterface paramQQAppInterface, int paramInt, String paramString1, String paramString2) {}
+  public abstract InputStream a(@Nullable InputStream paramInputStream);
   
-  public void run()
-  {
-    List localList = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager().a(APIQuotaEntity.class, false, "type=? and appid=?", new String[] { String.valueOf(this.jdField_a_of_type_Int), this.jdField_a_of_type_JavaLangString }, null, null, null, null);
-    if ((localList != null) && (localList.size() > 0)) {
-      DoraemonAPIReporterMain.a(this.jdField_a_of_type_ComTencentMobileqqDoraemonMonitorDoraemonAPIReporterMain, this.b, localList);
-    }
-  }
+  public abstract void a();
+  
+  public abstract void a(HttpURLConnection paramHttpURLConnection, @Nullable String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     rjt
  * JD-Core Version:    0.7.0.1
  */

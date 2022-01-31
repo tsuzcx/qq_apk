@@ -1,21 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import cooperation.qlink.QlinkBridgeActivity;
+import com.tencent.mobileqq.datareportviewer.DataReportSettingFragment;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 
 public class amux
-  implements DialogInterface.OnClickListener
 {
-  public amux(QlinkBridgeActivity paramQlinkBridgeActivity) {}
+  amuu jdField_a_of_type_Amuu;
+  FormSwitchItem jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-    this.a.finish();
-  }
+  protected amux(DataReportSettingFragment paramDataReportSettingFragment) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amux
  * JD-Core Version:    0.7.0.1
  */

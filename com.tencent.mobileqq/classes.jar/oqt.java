@@ -1,8 +1,12 @@
-import android.widget.ImageView;
-
-public class oqt
+class oqt
+  extends ajpe
 {
-  public ImageView a;
+  oqt(oqs paramoqs) {}
+  
+  public void b(boolean paramBoolean, String paramString)
+  {
+    this.a.f();
+  }
 }
 
 

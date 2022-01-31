@@ -9,16 +9,16 @@ import java.util.Map;
 public final class DiscussMemberInfo
   extends JceStruct
 {
-  static Map cache_Attr;
+  static Map<Integer, MemberAttrInfo> cache_Attr;
   static InteRemarkInfo cache_StInteRemark;
-  public Map Attr;
+  public Map<Integer, MemberAttrInfo> Attr;
   public byte Flag;
   public InteRemarkInfo StInteRemark;
   public long Uin;
   
   public DiscussMemberInfo() {}
   
-  public DiscussMemberInfo(long paramLong, byte paramByte, Map paramMap, InteRemarkInfo paramInteRemarkInfo)
+  public DiscussMemberInfo(long paramLong, byte paramByte, Map<Integer, MemberAttrInfo> paramMap, InteRemarkInfo paramInteRemarkInfo)
   {
     this.Uin = paramLong;
     this.Flag = paramByte;

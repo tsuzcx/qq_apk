@@ -1,18 +1,69 @@
-import com.tencent.mobileqq.transfile.C2CPicUploadProcessor;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-class aitz
-  implements Runnable
+final class aitz
+  extends batl
 {
-  aitz(aity paramaity, long paramLong1, long paramLong2, long paramLong3, long paramLong4) {}
+  aitz(File paramFile) {}
   
-  public void run()
+  public void onDone(batm parambatm)
   {
-    this.jdField_a_of_type_Aity.a.a(this.jdField_a_of_type_Long, this.b, this.c, this.d, 1);
+    super.onDone(parambatm);
+    if ((3 == parambatm.a()) && (this.a.exists())) {}
+    try
+    {
+      mpx.a(this.a, this.a.getParent() + File.separator);
+      label166:
+      return;
+    }
+    catch (Exception parambatm)
+    {
+      parambatm = parambatm;
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloResDownloader", 2, "unZipFile file error  error->" + parambatm.getMessage());
+      }
+      try
+      {
+        this.a.delete();
+        return;
+      }
+      catch (Exception parambatm)
+      {
+        return;
+      }
+    }
+    catch (OutOfMemoryError parambatm)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloResDownloader", 2, "unZipFile file error resType->" + parambatm.getMessage());
+      }
+      try
+      {
+        this.a.delete();
+        return;
+      }
+      catch (Exception parambatm)
+      {
+        return;
+      }
+    }
+    finally
+    {
+      try
+      {
+        this.a.delete();
+        throw parambatm;
+      }
+      catch (Exception localException)
+      {
+        break label166;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aitz
  * JD-Core Version:    0.7.0.1
  */

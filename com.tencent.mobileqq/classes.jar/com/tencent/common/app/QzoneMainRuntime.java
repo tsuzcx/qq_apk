@@ -1,9 +1,9 @@
 package com.tencent.common.app;
 
 import android.os.Bundle;
+import bfpr;
+import bglx;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.QZoneHelper;
-import cooperation.qzone.widgetai.QzoneWidgetAIHelper;
 import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
 
@@ -26,23 +26,23 @@ public class QzoneMainRuntime
     getAppRuntime("qzone_plugin.apk");
   }
   
-  protected AppRuntime onGetSubRuntime(String paramString)
+  public AppRuntime onGetSubRuntime(String paramString)
   {
     AppRuntime localAppRuntime = null;
     if (QLog.isColorLevel()) {
       QLog.i(TAG, 2, "QzoneMainRuntime.onGetSubRuntime() moduleId " + paramString);
     }
     if (paramString.equals("qzone_plugin.apk")) {
-      localAppRuntime = QZoneHelper.a(BaseApplicationImpl.getApplication(), MobileQQ.processName);
+      localAppRuntime = bfpr.a(BaseApplicationImpl.getApplication(), MobileQQ.processName);
     }
     do
     {
       return localAppRuntime;
       if (paramString.equals("qzone_widgetai.apk")) {
-        return QzoneWidgetAIHelper.a(BaseApplicationImpl.getApplication(), MobileQQ.processName);
+        return bglx.a(BaseApplicationImpl.getApplication(), MobileQQ.processName);
       }
     } while (!paramString.equals("qzone_vertical_video_plugin.apk"));
-    return QZoneHelper.c(BaseApplicationImpl.getApplication());
+    return bfpr.c(BaseApplicationImpl.getApplication());
   }
 }
 

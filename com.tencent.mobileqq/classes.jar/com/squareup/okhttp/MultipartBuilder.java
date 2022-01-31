@@ -1,12 +1,8 @@
 package com.squareup.okhttp;
 
-import com.squareup.okhttp.internal.Util;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
-import okio.Buffer;
-import okio.BufferedSink;
 import okio.ByteString;
 
 public final class MultipartBuilder
@@ -116,7 +112,7 @@ public final class MultipartBuilder
     if (this.partHeaders.isEmpty()) {
       throw new IllegalStateException("Multipart body must have at least one part.");
     }
-    return new MultipartRequestBody(this.type, this.boundary, this.partHeaders, this.partBodies);
+    return new MultipartBuilder.MultipartRequestBody(this.type, this.boundary, this.partHeaders, this.partBodies);
   }
   
   public MultipartBuilder type(MediaType paramMediaType)
@@ -129,121 +125,6 @@ public final class MultipartBuilder
     }
     this.type = paramMediaType;
     return this;
-  }
-  
-  private static final class MultipartRequestBody
-    extends RequestBody
-  {
-    private final ByteString boundary;
-    private long contentLength = -1L;
-    private final MediaType contentType;
-    private final List<RequestBody> partBodies;
-    private final List<Headers> partHeaders;
-    
-    public MultipartRequestBody(MediaType paramMediaType, ByteString paramByteString, List<Headers> paramList, List<RequestBody> paramList1)
-    {
-      if (paramMediaType == null) {
-        throw new NullPointerException("type == null");
-      }
-      this.boundary = paramByteString;
-      this.contentType = MediaType.parse(paramMediaType + "; boundary=" + paramByteString.utf8());
-      this.partHeaders = Util.immutableList(paramList);
-      this.partBodies = Util.immutableList(paramList1);
-    }
-    
-    private long writeOrCountBytes(BufferedSink paramBufferedSink, boolean paramBoolean)
-      throws IOException
-    {
-      long l1 = 0L;
-      Buffer localBuffer = null;
-      if (paramBoolean)
-      {
-        localBuffer = new Buffer();
-        paramBufferedSink = localBuffer;
-      }
-      int i = 0;
-      int k = this.partHeaders.size();
-      if (i < k)
-      {
-        Object localObject = (Headers)this.partHeaders.get(i);
-        RequestBody localRequestBody = (RequestBody)this.partBodies.get(i);
-        paramBufferedSink.write(MultipartBuilder.DASHDASH);
-        paramBufferedSink.write(this.boundary);
-        paramBufferedSink.write(MultipartBuilder.CRLF);
-        if (localObject != null)
-        {
-          int j = 0;
-          int m = ((Headers)localObject).size();
-          while (j < m)
-          {
-            paramBufferedSink.writeUtf8(((Headers)localObject).name(j)).write(MultipartBuilder.COLONSPACE).writeUtf8(((Headers)localObject).value(j)).write(MultipartBuilder.CRLF);
-            j += 1;
-          }
-        }
-        localObject = localRequestBody.contentType();
-        if (localObject != null) {
-          paramBufferedSink.writeUtf8("Content-Type: ").writeUtf8(((MediaType)localObject).toString()).write(MultipartBuilder.CRLF);
-        }
-        l2 = localRequestBody.contentLength();
-        if (l2 != -1L)
-        {
-          paramBufferedSink.writeUtf8("Content-Length: ").writeDecimalLong(l2).write(MultipartBuilder.CRLF);
-          label254:
-          paramBufferedSink.write(MultipartBuilder.CRLF);
-          if (!paramBoolean) {
-            break label305;
-          }
-          l1 += l2;
-        }
-        for (;;)
-        {
-          paramBufferedSink.write(MultipartBuilder.CRLF);
-          i += 1;
-          break;
-          if (!paramBoolean) {
-            break label254;
-          }
-          localBuffer.clear();
-          return -1L;
-          label305:
-          ((RequestBody)this.partBodies.get(i)).writeTo(paramBufferedSink);
-        }
-      }
-      paramBufferedSink.write(MultipartBuilder.DASHDASH);
-      paramBufferedSink.write(this.boundary);
-      paramBufferedSink.write(MultipartBuilder.DASHDASH);
-      paramBufferedSink.write(MultipartBuilder.CRLF);
-      long l2 = l1;
-      if (paramBoolean)
-      {
-        l2 = l1 + localBuffer.size();
-        localBuffer.clear();
-      }
-      return l2;
-    }
-    
-    public long contentLength()
-      throws IOException
-    {
-      long l = this.contentLength;
-      if (l != -1L) {
-        return l;
-      }
-      l = writeOrCountBytes(null, true);
-      this.contentLength = l;
-      return l;
-    }
-    
-    public MediaType contentType()
-    {
-      return this.contentType;
-    }
-    
-    public void writeTo(BufferedSink paramBufferedSink)
-      throws IOException
-    {
-      writeOrCountBytes(paramBufferedSink, false);
-    }
   }
 }
 

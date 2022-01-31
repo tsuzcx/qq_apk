@@ -1,18 +1,23 @@
-import com.tencent.mobileqq.activity.aio.audiopanel.CommonRecordSoundPanel;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.qqstory.takevideo.EditVideoParams;
 
-public class uuq
-  implements Runnable
+public final class uuq
+  implements Parcelable.Creator<EditVideoParams>
 {
-  public uuq(CommonRecordSoundPanel paramCommonRecordSoundPanel) {}
-  
-  public void run()
+  public EditVideoParams a(Parcel paramParcel)
   {
-    this.a.f();
+    return new EditVideoParams(paramParcel);
+  }
+  
+  public EditVideoParams[] a(int paramInt)
+  {
+    return new EditVideoParams[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     uuq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,25 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyVideoSearchTagFragment;
-
-public class mcl
-  implements View.OnClickListener
+class mcl
 {
-  public mcl(ReadInJoyVideoSearchTagFragment paramReadInJoyVideoSearchTagFragment) {}
+  public String a;
+  public byte[] a;
   
-  public void onClick(View paramView)
+  public mcl(String paramString, byte[] paramArrayOfByte)
   {
-    this.a.getActivity().finish();
+    byte[] arrayOfByte = paramArrayOfByte;
+    if (paramArrayOfByte == null) {
+      arrayOfByte = new byte[0];
+    }
+    this.jdField_a_of_type_ArrayOfByte = arrayOfByte;
+    paramArrayOfByte = paramString;
+    if (paramString == null) {
+      paramArrayOfByte = "";
+    }
+    this.jdField_a_of_type_JavaLangString = paramArrayOfByte;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     mcl
  * JD-Core Version:    0.7.0.1
  */

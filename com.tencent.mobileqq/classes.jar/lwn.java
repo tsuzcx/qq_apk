@@ -1,22 +1,21 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.model.IReadInJoyModel;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.FeedItemCell;
-import com.tencent.widget.KandianPopupWindow.OnUninterestConfirmListener;
-import java.util.ArrayList;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.ui.QavBeautyMenuPanel;
 
 public class lwn
-  implements KandianPopupWindow.OnUninterestConfirmListener
+  implements DialogInterface.OnClickListener
 {
-  public lwn(FeedItemCell paramFeedItemCell) {}
+  public lwn(QavBeautyMenuPanel paramQavBeautyMenuPanel) {}
   
-  public void a(View paramView, int paramInt, ArrayList paramArrayList, Object paramObject)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    FeedItemCell.a(this.a, (IReadInJoyModel)this.a.a, paramInt, paramArrayList, paramObject);
+    this.a.onClick(this.a.a);
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lwn
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,5 @@
 package okio;
 
-import java.io.IOException;
 import java.io.OutputStream;
 import java.nio.charset.Charset;
 
@@ -9,70 +8,49 @@ public abstract interface BufferedSink
 {
   public abstract Buffer buffer();
   
-  public abstract BufferedSink emit()
-    throws IOException;
+  public abstract BufferedSink emit();
   
-  public abstract BufferedSink emitCompleteSegments()
-    throws IOException;
+  public abstract BufferedSink emitCompleteSegments();
   
   public abstract OutputStream outputStream();
   
-  public abstract BufferedSink write(ByteString paramByteString)
-    throws IOException;
+  public abstract BufferedSink write(ByteString paramByteString);
   
-  public abstract BufferedSink write(Source paramSource, long paramLong)
-    throws IOException;
+  public abstract BufferedSink write(Source paramSource, long paramLong);
   
-  public abstract BufferedSink write(byte[] paramArrayOfByte)
-    throws IOException;
+  public abstract BufferedSink write(byte[] paramArrayOfByte);
   
-  public abstract BufferedSink write(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
-    throws IOException;
+  public abstract BufferedSink write(byte[] paramArrayOfByte, int paramInt1, int paramInt2);
   
-  public abstract long writeAll(Source paramSource)
-    throws IOException;
+  public abstract long writeAll(Source paramSource);
   
-  public abstract BufferedSink writeByte(int paramInt)
-    throws IOException;
+  public abstract BufferedSink writeByte(int paramInt);
   
-  public abstract BufferedSink writeDecimalLong(long paramLong)
-    throws IOException;
+  public abstract BufferedSink writeDecimalLong(long paramLong);
   
-  public abstract BufferedSink writeHexadecimalUnsignedLong(long paramLong)
-    throws IOException;
+  public abstract BufferedSink writeHexadecimalUnsignedLong(long paramLong);
   
-  public abstract BufferedSink writeInt(int paramInt)
-    throws IOException;
+  public abstract BufferedSink writeInt(int paramInt);
   
-  public abstract BufferedSink writeIntLe(int paramInt)
-    throws IOException;
+  public abstract BufferedSink writeIntLe(int paramInt);
   
-  public abstract BufferedSink writeLong(long paramLong)
-    throws IOException;
+  public abstract BufferedSink writeLong(long paramLong);
   
-  public abstract BufferedSink writeLongLe(long paramLong)
-    throws IOException;
+  public abstract BufferedSink writeLongLe(long paramLong);
   
-  public abstract BufferedSink writeShort(int paramInt)
-    throws IOException;
+  public abstract BufferedSink writeShort(int paramInt);
   
-  public abstract BufferedSink writeShortLe(int paramInt)
-    throws IOException;
+  public abstract BufferedSink writeShortLe(int paramInt);
   
-  public abstract BufferedSink writeString(String paramString, int paramInt1, int paramInt2, Charset paramCharset)
-    throws IOException;
+  public abstract BufferedSink writeString(String paramString, int paramInt1, int paramInt2, Charset paramCharset);
   
-  public abstract BufferedSink writeString(String paramString, Charset paramCharset)
-    throws IOException;
+  public abstract BufferedSink writeString(String paramString, Charset paramCharset);
   
-  public abstract BufferedSink writeUtf8(String paramString)
-    throws IOException;
+  public abstract BufferedSink writeUtf8(String paramString);
   
-  public abstract BufferedSink writeUtf8(String paramString, int paramInt1, int paramInt2)
-    throws IOException;
+  public abstract BufferedSink writeUtf8(String paramString, int paramInt1, int paramInt2);
   
-  public abstract BufferedSink writeUtf8CodePoint(int paramInt)
-    throws IOException;
+  public abstract BufferedSink writeUtf8CodePoint(int paramInt);
 }
 
 

@@ -1,39 +1,30 @@
-import android.text.Editable;
-import android.text.Selection;
-import android.text.TextWatcher;
-import android.widget.EditText;
-import com.tencent.mobileqq.nearby.now.utils.CommentsUtil;
-import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
+import android.view.View;
+import com.tencent.mobileqq.activity.contact.troop.TroopSuspiciousFragment;
+import mqq.os.MqqHandler;
 
 public class afcq
-  implements TextWatcher
+  implements begw
 {
-  public afcq(ShortVideoCommentsView paramShortVideoCommentsView) {}
+  public afcq(TroopSuspiciousFragment paramTroopSuspiciousFragment, begr parambegr) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (ShortVideoCommentsView.a(this.a) == null) {}
-    while (CommentsUtil.a(paramEditable.toString()) <= 140) {
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Begr.dismiss();
       return;
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopTroopSuspiciousFragment.a != null) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopTroopSuspiciousFragment.a.sendEmptyMessage(1014);
+      }
     }
-    int j = Selection.getSelectionEnd(paramEditable);
-    paramEditable = CommentsUtil.a(paramEditable.toString(), 0, 140).toString();
-    ShortVideoCommentsView.a(this.a).setText(paramEditable);
-    paramEditable = ShortVideoCommentsView.a(this.a).getText();
-    int i = j;
-    if (j > paramEditable.length()) {
-      i = paramEditable.length();
-    }
-    Selection.setSelection(paramEditable, i);
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     afcq
  * JD-Core Version:    0.7.0.1
  */

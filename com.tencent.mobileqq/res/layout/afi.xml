@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/fio" android:paddingTop="20.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include layout="@layout/afg" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:id="@id/fiq" android:background="@drawable/dwa" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="50.0dip" android:layout_marginLeft="20.0dip" android:layout_marginTop="20.0dip" android:layout_marginRight="20.0dip">
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <com.tenpay.sdk.view.SixPasswdDialogEditText android:id="@id/iwz" android:visibility="visible" android:layout_height="34.0dip" android:imeOptions="actionDone" android:imeActionLabel="@string/e5o" style="@style/t2" />
+            <include android:visibility="gone" layout="@layout/afc" />
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/jnc" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:layout_marginBottom="18.0dip">
+        <TextView android:textSize="14.0sp" android:textColor="@color/u2" android:layout_gravity="center_horizontal" android:id="@id/clz" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/e6s" android:includeFontPadding="false" />
+        <View android:id="@id/cjb" android:background="@color/wb" android:layout_width="1.0dip" android:layout_height="fill_parent" android:layout_marginLeft="15.0dip" android:layout_marginRight="15.0dip" />
+        <TextView android:textSize="14.0sp" android:textColor="@color/u2" android:layout_gravity="center_horizontal" android:id="@id/cja" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/eal" android:includeFontPadding="false" />
+    </LinearLayout>
+    <TextView android:textSize="14.0sp" android:textColor="@color/u6" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/fjf" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="20.0dip" android:layout_marginRight="15.0dip" android:layout_marginBottom="18.0dip" android:text="@string/eal" android:includeFontPadding="false" />
+    <com.tenpay.api.MyKeyboardWindow android:id="@id/je9" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+</LinearLayout>

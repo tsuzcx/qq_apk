@@ -74,24 +74,10 @@ public class MicRecordController
       this.jdField_a_of_type_Boolean = false;
     }
   }
-  
-  public void d()
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      this.b = true;
-    }
-  }
-  
-  public void e()
-  {
-    if ((this.jdField_a_of_type_Boolean) && (this.b)) {
-      this.b = false;
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARRecord.MicRecordController
  * JD-Core Version:    0.7.0.1
  */

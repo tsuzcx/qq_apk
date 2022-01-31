@@ -9,7 +9,7 @@ import tencent.im.apollo_game_status.STCMGameMessage;
 import tencent.im.apollo_push_msgInfo.STPushMsgElem;
 
 public final class oidb_0x858$NotifyMsgBody
-  extends MessageMicro
+  extends MessageMicro<NotifyMsgBody>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 42, 50, 58, 66, 74, 82 }, new String[] { "opt_enum_type", "opt_uint64_msg_time", "opt_uint64_msg_expires", "opt_uint64_conf_uin", "opt_msg_redtips", "opt_msg_recall_reminder", "opt_msg_obj_update", "opt_stcm_game_state", "apllo_msg_push", "opt_msg_goldtips" }, new Object[] { Integer.valueOf(5), Long.valueOf(0L), Long.valueOf(0L), Long.valueOf(0L), null, null, null, null, null, null }, NotifyMsgBody.class);
   public apollo_push_msgInfo.STPushMsgElem apllo_msg_push = new apollo_push_msgInfo.STPushMsgElem();
@@ -25,7 +25,7 @@ public final class oidb_0x858$NotifyMsgBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     tencent.im.oidb.cmd0x858.oidb_0x858.NotifyMsgBody
  * JD-Core Version:    0.7.0.1
  */

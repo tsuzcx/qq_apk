@@ -1,24 +1,23 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.armap.wealthgod.ARMapSplashBgView;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.activity.RiskInfoItem;
 
-public class abpn
-  implements ValueAnimator.AnimatorUpdateListener
+public final class abpn
+  implements Parcelable.Creator<RiskInfoItem>
 {
-  public abpn(ARMapSplashBgView paramARMapSplashBgView) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public RiskInfoItem a(Parcel paramParcel)
   {
-    paramValueAnimator = (Float)paramValueAnimator.getAnimatedValue();
-    if (ARMapSplashBgView.a(this.a) != null) {
-      ARMapSplashBgView.a(this.a).setTranslationY(paramValueAnimator.floatValue() * ARMapSplashBgView.a(this.a));
-    }
+    return new RiskInfoItem(paramParcel, null);
+  }
+  
+  public RiskInfoItem[] a(int paramInt)
+  {
+    return new RiskInfoItem[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abpn
  * JD-Core Version:    0.7.0.1
  */

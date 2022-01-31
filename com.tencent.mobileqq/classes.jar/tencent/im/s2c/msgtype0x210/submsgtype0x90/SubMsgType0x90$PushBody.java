@@ -4,7 +4,7 @@ import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.MessageMicro.FieldMap;
 
 public final class SubMsgType0x90$PushBody
-  extends MessageMicro
+  extends MessageMicro<PushBody>
 {
   public static final int MSG_DP_NOTIFY_BODY_FIELD_NUMBER = 1;
   public static final int MSG_OCCUPY_MICROPHONE_BODY_FIELD_NUMBER = 2;

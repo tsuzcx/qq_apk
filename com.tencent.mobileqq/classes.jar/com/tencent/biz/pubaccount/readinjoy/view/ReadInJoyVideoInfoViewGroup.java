@@ -9,16 +9,17 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.BaseAdapter;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
-import com.tencent.biz.pubaccount.VideoReporter;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
+import azvv;
 import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.util.DisplayUtil;
 import java.util.List;
 import java.util.Set;
+import ndn;
+import new;
+import obz;
 import org.json.JSONObject;
-import tencent.im.oidb.cmd0x68b.oidb_cmd0x68b.ChannelInfo;
+import qoe;
+import tencent.im.oidb.articlesummary.articlesummary.ChannelInfo;
 
 public class ReadInJoyVideoInfoViewGroup
   extends LinearLayout
@@ -27,7 +28,7 @@ public class ReadInJoyVideoInfoViewGroup
   private Context jdField_a_of_type_AndroidContentContext;
   private BaseAdapter jdField_a_of_type_AndroidWidgetBaseAdapter;
   private BaseArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo;
-  private Set jdField_a_of_type_JavaUtilSet;
+  private Set<Long> jdField_a_of_type_JavaUtilSet;
   private boolean jdField_a_of_type_Boolean;
   private int b;
   private final int c = 10;
@@ -55,7 +56,7 @@ public class ReadInJoyVideoInfoViewGroup
   {
     int j;
     int i;
-    oidb_cmd0x68b.ChannelInfo localChannelInfo;
+    articlesummary.ChannelInfo localChannelInfo;
     int k;
     if ((getMeasuredWidth() != 0) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo != null) && (!this.jdField_a_of_type_Boolean))
     {
@@ -66,7 +67,7 @@ public class ReadInJoyVideoInfoViewGroup
         i = 0;
         if (i < this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mLabelListObj.size())
         {
-          localChannelInfo = (oidb_cmd0x68b.ChannelInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mLabelListObj.get(i);
+          localChannelInfo = (articlesummary.ChannelInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mLabelListObj.get(i);
           if (this.b == localChannelInfo.uint32_channel_id.get()) {
             k = j;
           }
@@ -78,7 +79,7 @@ public class ReadInJoyVideoInfoViewGroup
       i += 1;
       j = k;
       break;
-      Object localObject2 = ReadInJoyUtils.a(localChannelInfo);
+      Object localObject2 = obz.a(localChannelInfo);
       k = j;
       if (TextUtils.isEmpty((CharSequence)localObject2)) {
         continue;
@@ -88,19 +89,19 @@ public class ReadInJoyVideoInfoViewGroup
       int m = ((ReadInJoyVideoTopicTextView)localObject1).a();
       k = m;
       if (i != 0) {
-        k = m + DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 10.0F);
+        k = m + azvv.a(this.jdField_a_of_type_AndroidContentContext, 10.0F);
       }
       JSONObject localJSONObject;
-      if (j > DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 1.0F) + k)
+      if (j > azvv.a(this.jdField_a_of_type_AndroidContentContext, 1.0F) + k)
       {
         localObject2 = new LinearLayout.LayoutParams(-2, -2);
         if (i != 0) {
-          ((LinearLayout.LayoutParams)localObject2).setMargins(DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 10.0F), 0, 0, 0);
+          ((LinearLayout.LayoutParams)localObject2).setMargins(azvv.a(this.jdField_a_of_type_AndroidContentContext, 10.0F), 0, 0, 0);
         }
-        ((ReadInJoyVideoTopicTextView)localObject1).setId(2131362202);
+        ((ReadInJoyVideoTopicTextView)localObject1).setId(2131309032);
         ((ReadInJoyVideoTopicTextView)localObject1).setTag(localChannelInfo);
-        if ((this.jdField_a_of_type_AndroidWidgetBaseAdapter instanceof ReadInJoyBaseAdapter)) {
-          ((ReadInJoyVideoTopicTextView)localObject1).setOnClickListener((ReadInJoyBaseAdapter)this.jdField_a_of_type_AndroidWidgetBaseAdapter);
+        if ((this.jdField_a_of_type_AndroidWidgetBaseAdapter instanceof qoe)) {
+          ((ReadInJoyVideoTopicTextView)localObject1).setOnClickListener((qoe)this.jdField_a_of_type_AndroidWidgetBaseAdapter);
         }
         ((ReadInJoyVideoTopicTextView)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
         addView((View)localObject1);
@@ -123,7 +124,7 @@ public class ReadInJoyVideoInfoViewGroup
         label408:
         for (localObject2 = "0X80088BA";; localObject2 = "0X8007BE5")
         {
-          PublicAccountReportUtils.a(null, "", (String)localObject1, (String)localObject2, 0, 0, "2", "", localChannelInfo.uint32_channel_id.get() + "", VideoReporter.a("", "", "", "", localJSONObject), false);
+          ndn.a(null, "", (String)localObject1, (String)localObject2, 0, 0, "2", "", localChannelInfo.uint32_channel_id.get() + "", new.a("", "", "", "", localJSONObject), false);
           k = j - k;
           break;
           localObject1 = "0X8007BE5";
@@ -152,7 +153,7 @@ public class ReadInJoyVideoInfoViewGroup
     a();
   }
   
-  public void setArticleInfo(BaseArticleInfo paramBaseArticleInfo, BaseAdapter paramBaseAdapter, int paramInt, Set paramSet)
+  public void setArticleInfo(BaseArticleInfo paramBaseArticleInfo, BaseAdapter paramBaseAdapter, int paramInt, Set<Long> paramSet)
   {
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo = paramBaseArticleInfo;
     this.jdField_a_of_type_AndroidWidgetBaseAdapter = paramBaseAdapter;

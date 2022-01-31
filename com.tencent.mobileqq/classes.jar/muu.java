@@ -1,16 +1,28 @@
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
 import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text.NativeText;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQMapActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import java.lang.ref.WeakReference;
 
-public class muu
-  implements View.OnLongClickListener
+class muu
+  implements View.OnClickListener
 {
-  public muu(NativeText paramNativeText) {}
+  muu(mut parammut, nbu paramnbu, String paramString) {}
   
-  public boolean onLongClick(View paramView)
+  public void onClick(View paramView)
   {
-    this.a.a(0, 0, true);
-    return false;
+    paramView = new Intent((Context)this.jdField_a_of_type_Mut.jdField_a_of_type_JavaLangRefWeakReference.get(), QQMapActivity.class);
+    paramView.putExtra("lat", this.jdField_a_of_type_Nbu.g);
+    paramView.putExtra("lon", this.jdField_a_of_type_Nbu.f);
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+      paramView.putExtra("loc", this.jdField_a_of_type_JavaLangString);
+    }
+    ((BaseActivity)this.jdField_a_of_type_Mut.jdField_a_of_type_JavaLangRefWeakReference.get()).startActivity(paramView);
+    awqx.b(this.jdField_a_of_type_Mut.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Biz_card", "Biz_card_map", 0, 0, this.jdField_a_of_type_Mut.jdField_a_of_type_JavaLangString, "", "", "");
+    mut.a(this.jdField_a_of_type_Mut, this.jdField_a_of_type_Nbu.jdField_a_of_type_JavaLangString);
   }
 }
 

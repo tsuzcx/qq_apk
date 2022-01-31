@@ -1,46 +1,60 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.CheckBox;
-import com.tencent.mobileqq.activity.photo.PhotoCropForPortraitActivity;
-import com.tencent.mobileqq.utils.SharedPreUtils;
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 
 public class xcm
-  implements View.OnClickListener
+  extends WebViewPlugin
 {
-  public xcm(PhotoCropForPortraitActivity paramPhotoCropForPortraitActivity) {}
-  
-  public void onClick(View paramView)
+  public xcm()
   {
-    int i = 1;
-    paramView = this.a.a;
-    boolean bool;
-    String str;
-    if (!this.a.a.isChecked())
+    this.mPluginNameSpace = "openToAppDetail";
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    a(paramString1, paramString2, null);
+  }
+  
+  public void a(String paramString1, String paramString2, String paramString3)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putString("uin", this.mRuntime.a().getCurrentAccountUin());
+    localBundle.putString("sid", this.mRuntime.a().getIntent().getStringExtra("vkey"));
+    localBundle.putString("via", "ANDROIDQQ.STORE.APPDETAIL.SHARE2QQ");
+    if ((paramString2 != null) && (paramString2.equals("true"))) {
+      localBundle.putBoolean("autoDownload", true);
+    }
+    if (paramString3 != null) {
+      localBundle.putString("packageName", paramString3);
+    }
+    bcau.a(this.mRuntime.a(), paramString1, 2470, localBundle);
+  }
+  
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    if (!"openToAppDetail".equals(paramString2)) {}
+    do
     {
-      bool = true;
-      paramView.setChecked(bool);
-      this.a.c = this.a.a.isChecked();
-      this.a.h = 2;
-      paramView = this.a;
-      str = this.a.getCurrentAccountUin();
-      if (!this.a.c) {
-        break label92;
+      do
+      {
+        return false;
+      } while (!"openAppDetailPage".equals(paramString3));
+      if (paramVarArgs.length == 2)
+      {
+        a(paramVarArgs[0], paramVarArgs[1]);
+        return true;
       }
-    }
-    for (;;)
-    {
-      SharedPreUtils.O(paramView, str, i);
-      return;
-      bool = false;
-      break;
-      label92:
-      i = 0;
-    }
+    } while (paramVarArgs.length != 3);
+    a(paramVarArgs[0], paramVarArgs[1], paramVarArgs[2]);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     xcm
  * JD-Core Version:    0.7.0.1
  */

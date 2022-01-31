@@ -1,23 +1,52 @@
-import android.content.res.Resources;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.emosm.web.MessengerService;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothClass;
+import android.bluetooth.BluetoothDevice;
+import android.bluetooth.BluetoothHeadset;
+import android.bluetooth.BluetoothProfile;
+import android.bluetooth.BluetoothProfile.ServiceListener;
+import com.tencent.mobileqq.activity.aio.AudioPlayer;
+import java.util.List;
 
-class acjf
-  implements Runnable
+public class acjf
+  implements BluetoothProfile.ServiceListener
 {
-  acjf(acje paramacje) {}
+  public acjf(AudioPlayer paramAudioPlayer, String paramString, int paramInt, BluetoothAdapter paramBluetoothAdapter) {}
   
-  public void run()
+  public void onServiceConnected(int paramInt, BluetoothProfile paramBluetoothProfile)
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)MessengerService.i(this.a.a);
-    QQToast.a(localQQAppInterface.getApplication(), "哦哦~~~获取个签同步说说设置失败，检查一下网络哦！", 0).b(localQQAppInterface.getApp().getResources().getDimensionPixelSize(2131558448));
+    Object localObject;
+    if (paramInt == 1)
+    {
+      paramBluetoothProfile = (BluetoothHeadset)paramBluetoothProfile;
+      localObject = paramBluetoothProfile.getConnectedDevices();
+      if ((localObject == null) || (((List)localObject).size() <= 0)) {
+        break label87;
+      }
+      localObject = (BluetoothDevice)((List)localObject).get(0);
+      if (localObject != null) {
+        break label76;
+      }
+      paramInt = 0;
+      AudioPlayer.a(paramInt);
+    }
+    for (;;)
+    {
+      AudioPlayer.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_AndroidBluetoothBluetoothAdapter.closeProfileProxy(1, paramBluetoothProfile);
+      return;
+      label76:
+      paramInt = ((BluetoothDevice)localObject).getBluetoothClass().getDeviceClass();
+      break;
+      label87:
+      AudioPlayer.a(0);
+    }
   }
+  
+  public void onServiceDisconnected(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     acjf
  * JD-Core Version:    0.7.0.1
  */

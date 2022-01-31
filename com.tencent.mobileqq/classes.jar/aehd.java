@@ -1,34 +1,28 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.leba.LebaFeedsVideoPlayController;
-import com.tencent.mobileqq.leba.LebaFeedsVideoPlayController.VideoPlayParam;
-import com.tencent.mobileqq.leba.LebaFeedsVideoPlayer;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie.13.1;
 
 public class aehd
-  implements Runnable
+  implements Animation.AnimationListener
 {
-  public aehd(LebaFeedsVideoPlayController paramLebaFeedsVideoPlayController, long paramLong) {}
+  aehd(aegy paramaegy) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("LebaFeedsVideoPlayController", 2, "playVideo in subThread, param=" + LebaFeedsVideoPlayController.a(this.jdField_a_of_type_ComTencentMobileqqLebaLebaFeedsVideoPlayController) + ", startPos=" + this.jdField_a_of_type_Long);
-    }
-    if (LebaFeedsVideoPlayController.a(this.jdField_a_of_type_ComTencentMobileqqLebaLebaFeedsVideoPlayController) != null)
-    {
-      if (!TextUtils.isEmpty(LebaFeedsVideoPlayController.a(this.jdField_a_of_type_ComTencentMobileqqLebaLebaFeedsVideoPlayController).jdField_b_of_type_JavaLangString)) {
-        LebaFeedsVideoPlayController.a(this.jdField_a_of_type_ComTencentMobileqqLebaLebaFeedsVideoPlayController).a(LebaFeedsVideoPlayController.a(this.jdField_a_of_type_ComTencentMobileqqLebaLebaFeedsVideoPlayController).jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Long, LebaFeedsVideoPlayController.a(this.jdField_a_of_type_ComTencentMobileqqLebaLebaFeedsVideoPlayController).jdField_c_of_type_Long, LebaFeedsVideoPlayController.a(this.jdField_a_of_type_ComTencentMobileqqLebaLebaFeedsVideoPlayController).jdField_b_of_type_Long);
-      }
-    }
-    else {
-      return;
-    }
-    LebaFeedsVideoPlayController.a(this.jdField_a_of_type_ComTencentMobileqqLebaLebaFeedsVideoPlayController).b(LebaFeedsVideoPlayController.a(this.jdField_a_of_type_ComTencentMobileqqLebaLebaFeedsVideoPlayController).jdField_c_of_type_JavaLangString, this.jdField_a_of_type_Long, LebaFeedsVideoPlayController.a(this.jdField_a_of_type_ComTencentMobileqqLebaLebaFeedsVideoPlayController).jdField_c_of_type_Long, LebaFeedsVideoPlayController.a(this.jdField_a_of_type_ComTencentMobileqqLebaLebaFeedsVideoPlayController).jdField_b_of_type_Long);
+    this.a.t = 5;
+    aegy.c(this.a).post(new PublicAccountChatPie.13.1(this));
+    this.a.a.sendEmptyMessage(1);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aehd
  * JD-Core Version:    0.7.0.1
  */

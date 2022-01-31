@@ -1,31 +1,21 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ProfileActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.app.FriendsManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
+import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment;
 
 public class abuj
   implements View.OnClickListener
 {
-  public abuj(BusinessCardEditActivity paramBusinessCardEditActivity) {}
+  public abuj(TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment paramTeamWorkDocEditBrowserFragment) {}
   
   public void onClick(View paramView)
   {
-    paramView = (abuo)paramView.getTag();
-    if (!((FriendsManager)this.a.app.getManager(50)).b(paramView.a)) {}
-    for (int i = 35;; i = 1)
-    {
-      paramView = new ProfileActivity.AllInOne(paramView.a, i);
-      ProfileActivity.a(this.a, paramView, 1016);
-      return;
-    }
+    this.a.b(this.a.e());
+    paramView.setEnabled(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abuj
  * JD-Core Version:    0.7.0.1
  */

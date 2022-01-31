@@ -1,18 +1,12 @@
-import android.graphics.PointF;
-
-public final class akob
-  implements akoc
+public abstract interface akob
 {
-  public PointF a(float paramFloat, PointF paramPointF1, PointF paramPointF2)
-  {
-    float f1 = paramPointF1.x;
-    float f2 = paramPointF1.y;
-    return new PointF(f1 + (paramPointF2.x - f1) * paramFloat, f2 + (paramPointF2.y - f2) * paramFloat);
-  }
+  public abstract void a(int paramInt1, int paramInt2);
+  
+  public abstract void a(int paramInt, boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     akob
  * JD-Core Version:    0.7.0.1
  */

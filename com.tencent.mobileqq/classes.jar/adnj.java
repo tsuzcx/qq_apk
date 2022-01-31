@@ -1,23 +1,30 @@
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.mobileqq.filemanager.fileviewer.presenter.VideoFilePresenter;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnInfoListener;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewParent;
 
-public class adnj
-  implements TVK_IMediaPlayer.OnInfoListener
+class adnj
+  implements acmv
 {
-  public adnj(VideoFilePresenter paramVideoFilePresenter) {}
+  adnj(adni paramadni) {}
   
-  public boolean onInfo(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt, Object paramObject)
+  public boolean onLongClick(View paramView)
   {
-    new Handler(Looper.getMainLooper()).post(new adnk(this, paramInt));
+    paramView = (adnr)((View)paramView.getParent().getParent().getParent()).getTag();
+    if (paramView != null) {
+      paramView.a.performLongClick();
+    }
+    return true;
+  }
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     adnj
  * JD-Core Version:    0.7.0.1
  */

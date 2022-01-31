@@ -1,49 +1,20 @@
-import android.annotation.TargetApi;
-import android.graphics.SurfaceTexture;
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
 
 class aaih
-  implements Runnable
+  implements aryj
 {
-  aaih(aaif paramaaif) {}
+  aaih(aaig paramaaig) {}
   
-  @TargetApi(11)
-  public void run()
+  public void a()
   {
-    try
-    {
-      aaif.a(this.a).updateTexImage();
-      aaif.a(this.a).getTransformMatrix(aaif.a(this.a));
-      if (ScanTorchActivity.i)
-      {
-        aaif localaaif = this.a;
-        localaaif.b += 1L;
-        if (this.a.b >= 30L)
-        {
-          this.a.b = 0L;
-          long l = System.currentTimeMillis();
-          float f = 30000.0F / (float)(l - this.a.a);
-          this.a.a = l;
-          QLog.d("render", 2, "video fetch=" + f);
-        }
-      }
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          localThrowable.printStackTrace();
-        }
-      }
-    }
+    this.a.jdField_a_of_type_Aryq.a(this.a.jdField_a_of_type_JavaUtilList, 2, 5);
+    this.a.jdField_a_of_type_Aryq.a();
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aaih
  * JD-Core Version:    0.7.0.1
  */

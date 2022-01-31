@@ -1,48 +1,36 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
-import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
-import com.tencent.mobileqq.mp.mobileqq_mp.SendMenuEventResponse;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import android.view.View;
+import android.view.Window;
 
 public class wed
-  implements BusinessObserver
 {
-  public wed(PublicAccountChatPie paramPublicAccountChatPie) {}
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public static void a(Window paramWindow)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.aio.BaseChatPie", 2, "requestQidiKefu ... onReceive = " + paramBoolean);
+    if (paramWindow == null) {
+      return;
     }
-    if (paramBoolean) {
-      try
-      {
-        paramBundle = paramBundle.getByteArray("data");
-        mobileqq_mp.SendMenuEventResponse localSendMenuEventResponse = new mobileqq_mp.SendMenuEventResponse();
-        localSendMenuEventResponse.mergeFrom(paramBundle);
-        paramInt = localSendMenuEventResponse.ret_info.ret_code.get();
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.aio.BaseChatPie", 2, "requestQidiKefu ... onReceive: retCode = " + paramInt);
-        }
-        if (paramInt == 0)
-        {
-          this.a.ak = true;
-          this.a.bn();
-          this.a.aY();
-          return;
-        }
-      }
-      catch (Exception paramBundle) {}
+    paramWindow.getDecorView().setSystemUiVisibility(2);
+    paramWindow.getDecorView().setOnSystemUiVisibilityChangeListener(new wee(paramWindow));
+  }
+  
+  public static void b(Window paramWindow)
+  {
+    if (paramWindow == null) {
+      return;
     }
-    this.a.w(2131430035);
-    this.a.aY();
+    paramWindow.setFlags(8, 8);
+  }
+  
+  public static void c(Window paramWindow)
+  {
+    if (paramWindow == null) {
+      return;
+    }
+    paramWindow.clearFlags(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wed
  * JD-Core Version:    0.7.0.1
  */

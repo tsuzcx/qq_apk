@@ -1,22 +1,22 @@
-import android.animation.AnimatorSet;
-import com.tencent.mobileqq.bubble.BubbleInterActiveAnim;
-import com.tencent.mobileqq.bubble.BubbleInterActiveAnim.AnimHolder;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class abse
-  implements Runnable
+class abse
+  implements View.OnClickListener
 {
-  public abse(BubbleInterActiveAnim paramBubbleInterActiveAnim, BubbleInterActiveAnim.AnimHolder paramAnimHolder) {}
+  abse(absb paramabsb, int paramInt) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleInterActiveAnim$AnimHolder.a != null) {
-      this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleInterActiveAnim$AnimHolder.a.start();
+    paramView = awnp.b[this.jdField_a_of_type_Absb.a(this.jdField_a_of_type_Int).jdField_a_of_type_Int];
+    if (!axkz.a(abry.a(this.jdField_a_of_type_Absb.a), paramView, new absf(this))) {
+      absb.a(this.jdField_a_of_type_Absb, this.jdField_a_of_type_Int);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abse
  * JD-Core Version:    0.7.0.1
  */

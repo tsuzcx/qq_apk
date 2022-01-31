@@ -1,28 +1,16 @@
-import android.widget.TextView;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.BaseActivity;
-
-public class rvg
-  implements Runnable
+final class rvg
+  implements ohx
 {
-  public rvg(BaseChatPie paramBaseChatPie) {}
+  public void l() {}
   
-  public void run()
+  public void m()
   {
-    this.a.d.setText(this.a.a.d);
-    if (AppSetting.b)
-    {
-      String str = this.a.d.getText().toString();
-      this.a.d.setContentDescription(str);
-      this.a.a().setTitle(this.a.d.getText());
-    }
+    rvf.a(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     rvg
  * JD-Core Version:    0.7.0.1
  */

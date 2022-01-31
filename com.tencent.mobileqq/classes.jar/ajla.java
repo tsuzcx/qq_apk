@@ -1,31 +1,34 @@
-import com.tencent.mobileqq.app.proxy.ProxyListener;
-import com.tencent.mobileqq.troop.filemanager.TroopFileDataBaseProxy;
-import com.tencent.mobileqq.troop.filemanager.TroopFileTransferUtil.Log;
-import java.util.UUID;
+import java.io.File;
+import java.util.Comparator;
 
-public class ajla
-  implements ProxyListener
+class ajla
+  implements Comparator<File>
 {
-  public ajla(TroopFileDataBaseProxy paramTroopFileDataBaseProxy, UUID paramUUID) {}
+  ajla(ajkz paramajkz) {}
   
-  public void a(String paramString)
+  public int a(File paramFile1, File paramFile2)
   {
-    TroopFileTransferUtil.Log.d("TroopFileDataBaseProxy", TroopFileTransferUtil.Log.c, "[" + this.jdField_a_of_type_JavaUtilUUID.toString() + "] deleteItem finish[add]. table:" + paramString);
-  }
-  
-  public void a(String paramString, int paramInt)
-  {
-    TroopFileTransferUtil.Log.d("TroopFileDataBaseProxy", TroopFileTransferUtil.Log.c, "[" + this.jdField_a_of_type_JavaUtilUUID.toString() + "] deleteItem finish[up]. table:" + paramString);
-  }
-  
-  public void b(String paramString, int paramInt)
-  {
-    TroopFileTransferUtil.Log.d("TroopFileDataBaseProxy", TroopFileTransferUtil.Log.c, "[" + this.jdField_a_of_type_JavaUtilUUID.toString() + "] deleteItem finish. table:" + paramString);
+    long l2 = 0L;
+    if (paramFile1 != null) {}
+    for (long l1 = paramFile1.lastModified();; l1 = 0L)
+    {
+      if (paramFile2 != null) {
+        l2 = paramFile2.lastModified();
+      }
+      if (l2 >= l1) {
+        break;
+      }
+      return -1;
+    }
+    if (l2 > l1) {
+      return 1;
+    }
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajla
  * JD-Core Version:    0.7.0.1
  */

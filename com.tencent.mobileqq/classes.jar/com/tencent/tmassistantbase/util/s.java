@@ -1,16 +1,19 @@
 package com.tencent.tmassistantbase.util;
 
-final class s
-  extends ThreadLocal<char[]>
+public class s<T, V>
 {
-  protected char[] a()
+  public final T a;
+  public final V b;
+  
+  public s(T paramT, V paramV)
   {
-    return new char[1024];
+    this.a = paramT;
+    this.b = paramV;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.tmassistantbase.util.s
  * JD-Core Version:    0.7.0.1
  */

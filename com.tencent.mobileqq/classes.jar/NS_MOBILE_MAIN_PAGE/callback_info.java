@@ -9,12 +9,12 @@ import java.util.Map;
 public final class callback_info
   extends JceStruct
 {
-  static Map cache_trans_info = new HashMap();
+  static Map<String, String> cache_trans_info = new HashMap();
   public String content = "";
   public String h5hb_url = "";
   public boolean has_grabed = true;
   public short hb_type;
-  public Map trans_info;
+  public Map<String, String> trans_info;
   
   static
   {
@@ -23,7 +23,7 @@ public final class callback_info
   
   public callback_info() {}
   
-  public callback_info(short paramShort, boolean paramBoolean, String paramString1, Map paramMap, String paramString2)
+  public callback_info(short paramShort, boolean paramBoolean, String paramString1, Map<String, String> paramMap, String paramString2)
   {
     this.hb_type = paramShort;
     this.has_grabed = paramBoolean;

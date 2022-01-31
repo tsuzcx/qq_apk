@@ -1,24 +1,19 @@
 import android.view.View;
-import android.view.View.AccessibilityDelegate;
-import com.tencent.mobileqq.activity.contacts.fragment.ContactsBaseFragment;
+import android.view.View.OnClickListener;
 
-public class wsk
-  extends View.AccessibilityDelegate
+class wsk
+  implements View.OnClickListener
 {
-  public wsk(ContactsBaseFragment paramContactsBaseFragment) {}
+  wsk(wsj paramwsj) {}
   
-  public void sendAccessibilityEvent(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    int i = paramInt;
-    if (paramInt == 8) {
-      i = 32768;
-    }
-    super.sendAccessibilityEvent(paramView, i);
+    this.a.a.a(655364, new Object[] { "趣动视频", "qudong_wenzi" });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wsk
  * JD-Core Version:    0.7.0.1
  */

@@ -7,25 +7,25 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import bbcj;
 import com.tencent.biz.ui.RefreshView;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.mobileqq.webview.swift.WebBrowserViewContainer;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserUIStyleHandler;
 
 public class QQTranslucentBrowserActivity$QQTranslucentBrowserFragment
   extends WebViewFragment
 {
   @TargetApi(11)
-  public int c(Bundle paramBundle)
+  public int d(Bundle paramBundle)
   {
-    int i = super.c(paramBundle);
-    super.getActivity().getWindow().setBackgroundDrawableResource(2131492924);
-    if ((this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.a instanceof RefreshView)) {
-      ((RefreshView)this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.a).a(false);
+    int i = super.d(paramBundle);
+    super.getActivity().getWindow().setBackgroundDrawableResource(2131101491);
+    if ((this.jdField_a_of_type_Bbcj.c instanceof RefreshView)) {
+      ((RefreshView)this.jdField_a_of_type_Bbcj.c).a(false);
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.b != null) {
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.b.setVisibility(8);
+    if (this.jdField_a_of_type_Bbcj.b != null) {
+      this.jdField_a_of_type_Bbcj.b.setVisibility(8);
     }
     if (this.jdField_a_of_type_ComTencentBizUiTouchWebView.getX5WebViewExtension() != null) {}
     for (;;)

@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.activity;
 
+import aayd;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
-import syu;
 
 public class GesturePWDGuideActivity
   extends IphoneTitleBarActivity
@@ -13,12 +13,12 @@ public class GesturePWDGuideActivity
   
   private void a()
   {
-    setTitle(2131436052);
-    this.a = ((Button)findViewById(2131364733));
-    this.a.setOnClickListener(new syu(this));
+    setTitle(2131627363);
+    this.a = ((Button)findViewById(2131301399));
+    this.a.setOnClickListener(new aayd(this));
   }
   
-  protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     if ((paramInt2 == -1) && (paramInt1 == 999))
     {
@@ -28,10 +28,10 @@ public class GesturePWDGuideActivity
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
   }
   
-  protected void onCreate(Bundle paramBundle)
+  public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    super.setContentView(2130969012);
+    super.setContentView(2131493548);
     a();
   }
 }

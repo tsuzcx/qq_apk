@@ -1,20 +1,23 @@
-import android.graphics.Bitmap;
-import com.tencent.open.agent.AuthorityActivity;
-import com.tencent.open.agent.CardContainer;
+import com.tencent.ark.open.delegate.IArkDelegateNetCallback;
+import com.tencent.qphone.base.util.QLog;
 
 class alhp
-  implements Runnable
+  extends batl
 {
-  alhp(alho paramalho, Bitmap paramBitmap) {}
+  alhp(alhl paramalhl, String paramString, IArkDelegateNetCallback paramIArkDelegateNetCallback) {}
   
-  public void run()
+  public void onDone(batm parambatm)
   {
-    this.jdField_a_of_type_Alho.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity.jdField_a_of_type_ComTencentOpenAgentCardContainer.a(this.jdField_a_of_type_Alho.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Alho.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidGraphicsBitmap, false);
+    super.onDone(parambatm);
+    QLog.d("ArkApp.ArkMultiProcUtil", 1, String.format("download finish, url=%s, err=%d", new Object[] { this.jdField_a_of_type_JavaLangString, Integer.valueOf(parambatm.a) }));
+    if (this.jdField_a_of_type_ComTencentArkOpenDelegateIArkDelegateNetCallback != null) {
+      this.jdField_a_of_type_ComTencentArkOpenDelegateIArkDelegateNetCallback.onDownload(parambatm.a);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     alhp
  * JD-Core Version:    0.7.0.1
  */

@@ -13,8 +13,9 @@ public class TrimPathContent
   implements Content, BaseKeyframeAnimation.AnimationListener
 {
   private final BaseKeyframeAnimation<?, Float> endAnimation;
+  private final boolean hidden;
   private final List<BaseKeyframeAnimation.AnimationListener> listeners = new ArrayList();
-  private String name;
+  private final String name;
   private final BaseKeyframeAnimation<?, Float> offsetAnimation;
   private final BaseKeyframeAnimation<?, Float> startAnimation;
   private final ShapeTrimPath.Type type;
@@ -22,6 +23,7 @@ public class TrimPathContent
   public TrimPathContent(BaseLayer paramBaseLayer, ShapeTrimPath paramShapeTrimPath)
   {
     this.name = paramShapeTrimPath.getName();
+    this.hidden = paramShapeTrimPath.isHidden();
     this.type = paramShapeTrimPath.getType();
     this.startAnimation = paramShapeTrimPath.getStart().createAnimation();
     this.endAnimation = paramShapeTrimPath.getEnd().createAnimation();
@@ -64,6 +66,11 @@ public class TrimPathContent
     return this.type;
   }
   
+  public boolean isHidden()
+  {
+    return this.hidden;
+  }
+  
   public void onValueChanged()
   {
     int i = 0;
@@ -78,7 +85,7 @@ public class TrimPathContent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.animation.content.TrimPathContent
  * JD-Core Version:    0.7.0.1
  */

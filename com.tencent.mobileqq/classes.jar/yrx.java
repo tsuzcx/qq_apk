@@ -1,21 +1,22 @@
 import android.view.View;
-import com.tencent.mobileqq.apollo.ApolloSurfaceView;
-import javax.net.ssl.HandshakeCompletedEvent;
-import javax.net.ssl.HandshakeCompletedListener;
+import android.view.View.OnClickListener;
+import com.tencent.gdtad.views.videoceiling.GdtVideoCeilingTitleBar;
 
-public final class yrx
-  implements HandshakeCompletedListener
+public class yrx
+  implements View.OnClickListener
 {
-  public yrx(View paramView, long paramLong) {}
+  public yrx(GdtVideoCeilingTitleBar paramGdtVideoCeilingTitleBar) {}
   
-  public void handshakeCompleted(HandshakeCompletedEvent paramHandshakeCompletedEvent)
+  public void onClick(View paramView)
   {
-    ((ApolloSurfaceView)this.jdField_a_of_type_AndroidViewView).queueEvent(new yry(this));
+    if (GdtVideoCeilingTitleBar.a(this.a) != null) {
+      GdtVideoCeilingTitleBar.a(this.a).a(paramView);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     yrx
  * JD-Core Version:    0.7.0.1
  */

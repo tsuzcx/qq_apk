@@ -1,154 +1,149 @@
-import android.app.Dialog;
 import android.content.Context;
-import android.graphics.drawable.ColorDrawable;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.view.MotionEvent;
+import android.content.SharedPreferences;
+import android.text.TextUtils;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.View.OnTouchListener;
-import android.view.Window;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageButton;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.phone.NewStyleCountryActivity;
-import com.tencent.widget.ListView;
+import com.tencent.biz.viewplugin.ViewPluginManager.1;
+import com.tencent.biz.viewplugin.ViewPluginManager.3;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Method;
+import java.util.HashMap;
 
 public class xam
-  extends Dialog
-  implements TextWatcher, View.OnClickListener, View.OnTouchListener
 {
-  private View jdField_a_of_type_AndroidViewView;
-  EditText jdField_a_of_type_AndroidWidgetEditText;
-  ImageButton jdField_a_of_type_AndroidWidgetImageButton;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private ListView jdField_a_of_type_ComTencentWidgetListView;
-  private xal jdField_a_of_type_Xal;
+  SharedPreferences a;
+  public BaseActivity a;
+  public ClassLoader a;
+  public String a;
+  public HashMap<String, Class> a;
+  public xah a;
+  public String b;
+  String c = null;
+  public String d;
   
-  public xam(NewStyleCountryActivity paramNewStyleCountryActivity, Context paramContext)
+  public xam(BaseActivity paramBaseActivity, String paramString1, String paramString2, String paramString3)
   {
-    super(paramContext);
-    requestWindowFeature(1);
-    getWindow().setSoftInputMode(36);
-    getWindow().addFlags(1024);
-    getWindow().setBackgroundDrawable(new ColorDrawable());
-    setContentView(2130970933);
-    paramContext = getWindow().getAttributes();
-    paramContext.x = 0;
-    paramContext.y = 0;
-    paramContext.width = -1;
-    paramContext.windowAnimations = 16973824;
-    paramContext.gravity = 51;
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131368324));
-    this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(this);
-    this.jdField_a_of_type_AndroidWidgetEditText.setSelection(0);
-    this.jdField_a_of_type_AndroidWidgetEditText.requestFocus();
-    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)findViewById(2131368325));
-    this.jdField_a_of_type_AndroidWidgetImageButton.setOnClickListener(this);
-    paramContext = (Button)findViewById(2131368323);
-    paramContext.setVisibility(0);
-    paramContext.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131363948);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363950));
-    this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, null, null);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131433826);
-    findViewById(2131363951).setVisibility(8);
-    this.jdField_a_of_type_ComTencentWidgetListView = ((ListView)findViewById(2131363949));
-    this.jdField_a_of_type_Xal = new xal(paramNewStyleCountryActivity, null);
-    this.jdField_a_of_type_ComTencentWidgetListView.setAdapter(this.jdField_a_of_type_Xal);
-    this.jdField_a_of_type_ComTencentWidgetListView.setOnTouchListener(this);
+    this.b = paramString1;
+    this.jdField_a_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseActivity;
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    this.c = (this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getFilesDir() + paramString3);
+    this.jdField_a_of_type_AndroidContentSharedPreferences = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getPreferences(0);
   }
   
-  void a(String paramString)
+  public static boolean a(View paramView, String paramString)
   {
-    if ((paramString.equals("")) || (paramString.trim().length() == 0))
+    if ((paramView == null) || (TextUtils.isEmpty(paramString))) {
+      return false;
+    }
+    try
     {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-      return;
+      Method localMethod = paramView.getClass().getMethod("setData", new Class[] { String.class });
+      localMethod.setAccessible(true);
+      localMethod.invoke(paramView, new Object[] { paramString });
+      return true;
     }
-    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    this.jdField_a_of_type_Xal.a(paramString);
-    if (this.jdField_a_of_type_Xal.getCount() == 0) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+    catch (Exception paramView)
+    {
+      ThreadManager.post(new ViewPluginManager.1(paramView), 2, null, true);
     }
+    return false;
+  }
+  
+  public View a(String paramString)
+  {
+    if (this.jdField_a_of_type_JavaLangClassLoader != null) {}
     for (;;)
     {
-      this.jdField_a_of_type_Xal.notifyDataSetChanged();
-      return;
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+      try
+      {
+        Class localClass = this.jdField_a_of_type_JavaLangClassLoader.loadClass(paramString);
+        if (localClass == null)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("ViewPluginManager", 2, "plugin:" + this.b + " not find view:" + paramString);
+          }
+          return null;
+        }
+      }
+      catch (ClassNotFoundException localClassNotFoundException)
+      {
+        localObject = null;
+        continue;
+        if (this.jdField_a_of_type_Xah == null)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("ViewPluginManager", 2, "plugin:" + this.b + " plugin context is null");
+          }
+          return null;
+        }
+        try
+        {
+          paramString = (View)localObject.getConstructor(new Class[] { Context.class }).newInstance(new Object[] { this.jdField_a_of_type_Xah });
+          return paramString;
+        }
+        catch (Exception paramString)
+        {
+          return null;
+        }
+      }
+      Object localObject = null;
     }
   }
   
-  public void afterTextChanged(Editable paramEditable)
+  public String a(String paramString)
   {
-    paramEditable = this.jdField_a_of_type_AndroidWidgetEditText.getText().toString().trim();
-    a(paramEditable);
-    if (paramEditable.equals(""))
+    return "sp_key_plugin_view_version_" + paramString;
+  }
+  
+  public void a()
+  {
+    ThreadManager.post(new ViewPluginManager.3(this), 8, null, true);
+  }
+  
+  public void a(String paramString)
+  {
+    paramString = a(paramString);
+    if (paramString == null) {
+      return;
+    }
+    try
     {
-      this.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(8);
+      Method localMethod = paramString.getClass().getMethod("destory", new Class[0]);
+      localMethod.setAccessible(true);
+      localMethod.invoke(paramString, new Object[0]);
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(0);
+    catch (Exception paramString) {}
   }
   
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  /* Error */
-  public void dismiss()
+  public void a(mod parammod, boolean paramBoolean)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: invokespecial 201	android/app/Dialog:dismiss	()V
-    //   4: aload_0
-    //   5: invokestatic 206	com/tencent/mfsdk/LeakInspector/ActivityLeakSolution:a	(Landroid/app/Dialog;)V
-    //   8: return
-    //   9: astore_1
-    //   10: aload_0
-    //   11: invokestatic 206	com/tencent/mfsdk/LeakInspector/ActivityLeakSolution:a	(Landroid/app/Dialog;)V
-    //   14: return
-    //   15: astore_1
-    //   16: aload_0
-    //   17: invokestatic 206	com/tencent/mfsdk/LeakInspector/ActivityLeakSolution:a	(Landroid/app/Dialog;)V
-    //   20: aload_1
-    //   21: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	22	0	this	xam
-    //   9	1	1	localException	java.lang.Exception
-    //   15	6	1	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   0	4	9	java/lang/Exception
-    //   0	4	15	finally
-  }
-  
-  public void onClick(View paramView)
-  {
-    switch (paramView.getId())
+    String str = "http://" + this.b + "?_bid=" + this.jdField_a_of_type_JavaLangString;
+    if (QLog.isColorLevel()) {
+      QLog.d("ViewPluginManager", 2, "loadPlugin:" + this.b + "mBid:" + this.jdField_a_of_type_JavaLangString);
+    }
+    mof.a();
+    if ((this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app != null) && (this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app.getLongAccountUin() % 10L == 6L)) {}
+    for (boolean bool = true;; bool = false)
     {
-    case 2131368324: 
-    default: 
-      return;
-    case 2131368323: 
-      dismiss();
+      mof.a = bool;
+      a();
+      Context localContext = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getApplicationContext();
+      long l = System.currentTimeMillis();
+      if ((!mof.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getApplicationContext(), str, new xan(this, l, localContext, paramBoolean, parammod))) && (QLog.isColorLevel())) {
+        QLog.i("ViewPluginManager", 2, "plugin:" + this.b + " transToLocalUrl: return false");
+      }
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetEditText.setText("");
-  }
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    ((InputMethodManager)this.jdField_a_of_type_ComTencentMobileqqActivityPhoneNewStyleCountryActivity.getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
-    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     xam
  * JD-Core Version:    0.7.0.1
  */

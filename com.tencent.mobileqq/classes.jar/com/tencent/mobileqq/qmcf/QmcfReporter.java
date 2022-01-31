@@ -10,20 +10,31 @@ import java.util.HashMap;
 
 public class QmcfReporter
 {
-  public float a;
-  public int a;
-  public float b;
-  public int b;
+  public static final String SVAF_EVENT_INIT_BLOCK = "svaf_init_block";
+  public static final String SVAF_EVENT_INIT_COST3S = "svaf_init_cost3s";
+  public static final String SVAF_EVENT_INIT_ERROR = "svaf_init_error";
+  public static final String SVAF_EVENT_NOSUPPORT_OCL = "svaf_nosupport_ocl";
+  public static final String SVAF_EVENT_RECORD_INFO = "svaf_record_info";
+  public static final String SVAF_PARAM_BUSI_TYPE = "svaf_busiType";
+  public static final String SVAF_PARAM_CAMERA_TYPE = "svaf_cameraType";
+  public static final String SVAF_PARAM_COST = "svaf_cost";
+  public static final String SVAF_PARAM_ENTRANCE_STATE = "qmcf_entrState";
+  public static final String SVAF_PARAM_FRAMETYPE = "qmcf_frameType";
+  public static final String SVAF_PARAM_FRAME_COST = "svaf_frameCost";
+  public static final String SVAF_PARAM_GPUINFO = "svaf_gpuinfo";
+  public static final String SVAF_PARAM_HAS_ENTRANCE = "qmcf_hasEntrance";
+  public static final String SVAF_PARAM_PROCESS_COST = "qmcf_processCost";
+  public static final String SVAF_PARAM_QMCF_MODE = "svaf_qmcf_mode";
+  public static final String SVAF_PARAM_RESULT = "svaf_result";
+  public static final String SVAF_PARAM_TEMPLATE_ID = "svaf_templateID";
+  public static final String SVAF_PARAM_WHICH_COMPONENT = "svaf_which_component";
+  private static final String TAG = "GMCF_REPORTER";
+  public float avgFrameConsume = -1.0F;
+  public float avgProcessConsume = -1.0F;
+  public int processCount = 0;
+  public int updateCount = 0;
   
-  public QmcfReporter()
-  {
-    this.jdField_a_of_type_Float = -1.0F;
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Float = -1.0F;
-    this.jdField_b_of_type_Int = 0;
-  }
-  
-  public static void a(String paramString, HashMap paramHashMap, int paramInt, boolean paramBoolean)
+  public static void report(String paramString, HashMap paramHashMap, boolean paramBoolean)
   {
     if ((paramBoolean) && (paramHashMap != null))
     {
@@ -31,10 +42,10 @@ public class QmcfReporter
       paramHashMap.put("model", Build.MODEL);
       paramHashMap.put("sdk", String.valueOf(Build.VERSION.SDK_INT));
     }
-    SdkContext.a().a().a(paramString, true, paramInt, 0L, paramHashMap);
+    SdkContext.getInstance().getReporter().reportToBeacon(paramString, true, 0L, 0L, paramHashMap);
   }
   
-  public static void a(String paramString, HashMap paramHashMap, boolean paramBoolean)
+  public static void reportTime(String paramString, HashMap paramHashMap, int paramInt, boolean paramBoolean)
   {
     if ((paramBoolean) && (paramHashMap != null))
     {
@@ -42,25 +53,25 @@ public class QmcfReporter
       paramHashMap.put("model", Build.MODEL);
       paramHashMap.put("sdk", String.valueOf(Build.VERSION.SDK_INT));
     }
-    SdkContext.a().a().a(paramString, true, 0L, 0L, paramHashMap);
+    SdkContext.getInstance().getReporter().reportToBeacon(paramString, true, paramInt, 0L, paramHashMap);
   }
   
-  public void a()
+  public void clearReporter()
   {
-    this.jdField_a_of_type_Float = -1.0F;
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Float = -1.0F;
-    this.jdField_b_of_type_Int = 0;
+    this.avgFrameConsume = -1.0F;
+    this.updateCount = 0;
+    this.avgProcessConsume = -1.0F;
+    this.processCount = 0;
   }
   
-  public void a(int paramInt1, int paramInt2, String paramString, int paramInt3, int paramInt4)
+  public void reportMtaFrameCost(int paramInt1, int paramInt2, String paramString, int paramInt3, int paramInt4)
   {
     HashMap localHashMap;
-    if ((QmcfManager.a().a()) && (this.jdField_a_of_type_Float != -1.0F))
+    if ((QmcfManager.getInstance().isQmcfWork()) && (this.avgFrameConsume != -1.0F))
     {
       localHashMap = new HashMap();
-      localHashMap.put("svaf_frameCost", String.valueOf(this.jdField_a_of_type_Float));
-      localHashMap.put("qmcf_processCost", String.valueOf(this.jdField_b_of_type_Float));
+      localHashMap.put("svaf_frameCost", String.valueOf(this.avgFrameConsume));
+      localHashMap.put("qmcf_processCost", String.valueOf(this.avgProcessConsume));
       localHashMap.put("svaf_cameraType", String.valueOf(paramInt1));
       localHashMap.put("svaf_busiType", String.valueOf(paramInt2));
       localHashMap.put("svaf_which_component", "qmcf");
@@ -73,32 +84,32 @@ public class QmcfReporter
     }
     for (;;)
     {
-      a("svaf_record_info", localHashMap, (int)this.jdField_a_of_type_Float, true);
-      if (SLog.a()) {
-        SLog.d("GMCF_REPORTER", String.format("reportMtaQmcf, frameCost[%s], proCost[%s], cameraType[%s], busiType[%s], templateId[%s], qmcfmode[%s], frameTpye[%s]", new Object[] { Float.valueOf(this.jdField_a_of_type_Float), Float.valueOf(this.jdField_b_of_type_Float), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString, Integer.valueOf(paramInt3), Integer.valueOf(paramInt4) }));
+      reportTime("svaf_record_info", localHashMap, (int)this.avgFrameConsume, true);
+      if (SLog.isEnable()) {
+        SLog.d("GMCF_REPORTER", String.format("reportMtaQmcf, frameCost[%s], proCost[%s], cameraType[%s], busiType[%s], templateId[%s], qmcfmode[%s], frameTpye[%s]", new Object[] { Float.valueOf(this.avgFrameConsume), Float.valueOf(this.avgProcessConsume), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString, Integer.valueOf(paramInt3), Integer.valueOf(paramInt4) }));
       }
-      a();
+      clearReporter();
       return;
       label231:
       paramString = "non";
     }
   }
   
-  public void a(long paramLong)
+  public void updateFrameConsume(long paramLong)
   {
     if (paramLong > 0L)
     {
-      this.jdField_a_of_type_Float = ((this.jdField_a_of_type_Float * this.jdField_a_of_type_Int + (float)paramLong) / (this.jdField_a_of_type_Int + 1));
-      this.jdField_a_of_type_Int += 1;
+      this.avgFrameConsume = ((this.avgFrameConsume * this.updateCount + (float)paramLong) / (this.updateCount + 1));
+      this.updateCount += 1;
     }
   }
   
-  public void b(long paramLong)
+  public void updateProcessConsume(long paramLong)
   {
     if (paramLong > 0L)
     {
-      this.jdField_b_of_type_Float = ((this.jdField_b_of_type_Float * this.jdField_b_of_type_Int + (float)paramLong) / (this.jdField_b_of_type_Int + 1));
-      this.jdField_b_of_type_Int += 1;
+      this.avgProcessConsume = ((this.avgProcessConsume * this.processCount + (float)paramLong) / (this.processCount + 1));
+      this.processCount += 1;
     }
   }
 }

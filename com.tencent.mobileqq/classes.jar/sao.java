@@ -1,28 +1,28 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.biz.pubaccount.weishi_new.view.RoundImageView;
 
-public final class sao
-  implements DialogInterface.OnClickListener
+final class sao
+  implements rcu
 {
-  public sao(QQAppInterface paramQQAppInterface, int paramInt) {}
+  sao(RoundImageView paramRoundImageView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(rcw paramrcw, int paramInt) {}
+  
+  public void a(rcw paramrcw, Throwable paramThrowable) {}
+  
+  public void a(rcw paramrcw, rcs paramrcs)
   {
-    paramDialogInterface.dismiss();
-    paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    if (this.jdField_a_of_type_Int == 6) {}
-    for (paramInt = 1;; paramInt = 4)
+    if (paramrcs != null)
     {
-      ReportController.b(paramDialogInterface, "CliOper", "", "", "0X80063FA", "0X80063FA", paramInt, 0, "", "", "", "");
-      return;
+      paramrcw = paramrcs.a();
+      if (paramrcw != null) {
+        this.a.setImageBitmap(paramrcw);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     sao
  * JD-Core Version:    0.7.0.1
  */

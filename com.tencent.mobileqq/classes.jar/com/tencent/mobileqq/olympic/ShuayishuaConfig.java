@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.olympic;
 
-import agiu;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import athh;
 import java.io.Serializable;
 import java.util.ArrayList;
 
 public class ShuayishuaConfig
   implements Parcelable, Serializable
 {
-  public static final Parcelable.Creator CREATOR = new agiu();
+  public static final Parcelable.Creator<ShuayishuaConfig> CREATOR = new athh();
   public String LUIconImg;
   public String LUIconImgMd5;
   public String actTime;
@@ -18,7 +18,7 @@ public class ShuayishuaConfig
   public String bgMd5;
   public String grabBeginWording1;
   public String grabBeginWording2;
-  public ArrayList grabWordingList = new ArrayList();
+  public ArrayList<String> grabWordingList = new ArrayList();
   public int id;
   public String noRPWording1;
   public String noRPWording2;
@@ -137,7 +137,7 @@ public class ShuayishuaConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.olympic.ShuayishuaConfig
  * JD-Core Version:    0.7.0.1
  */

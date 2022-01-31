@@ -1,67 +1,77 @@
-import android.os.Message;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.transfile.FileMsg;
-import com.tencent.mobileqq.transfile.TransProcessorHandler;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import com.tencent.biz.qqstory.database.CommentEntry;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
 
 public class snv
-  extends TransProcessorHandler
 {
-  final WeakReference a;
+  private static HashMap<String, Integer> jdField_a_of_type_JavaUtilHashMap;
+  private static HashSet<String> jdField_a_of_type_JavaUtilHashSet;
+  private static snv jdField_a_of_type_Snv;
   
-  public snv(Conversation paramConversation)
+  public static snv a()
   {
-    this.a = new WeakReference(paramConversation);
+    if (jdField_a_of_type_Snv == null)
+    {
+      jdField_a_of_type_Snv = new snv();
+      jdField_a_of_type_JavaUtilHashSet = new HashSet();
+      jdField_a_of_type_JavaUtilHashMap = new HashMap();
+      Iterator localIterator = ((spd)sqg.a(17)).a().iterator();
+      while (localIterator.hasNext())
+      {
+        CommentEntry localCommentEntry = (CommentEntry)localIterator.next();
+        if (!jdField_a_of_type_JavaUtilHashSet.contains(localCommentEntry.feedId))
+        {
+          jdField_a_of_type_JavaUtilHashSet.add(localCommentEntry.feedId);
+          jdField_a_of_type_JavaUtilHashMap.put(localCommentEntry.feedId, Integer.valueOf(localCommentEntry.commentId));
+        }
+      }
+    }
+    return jdField_a_of_type_Snv;
+  }
+  
+  public int a(String paramString)
+  {
+    paramString = (Integer)jdField_a_of_type_JavaUtilHashMap.get(paramString);
+    if (paramString == null) {
+      return -1;
+    }
+    return paramString.intValue();
   }
   
   public void a()
   {
-    this.a.clear();
+    jdField_a_of_type_JavaUtilHashSet.clear();
+    jdField_a_of_type_JavaUtilHashMap.clear();
+    Iterator localIterator = ((spd)sqg.a(17)).a().iterator();
+    while (localIterator.hasNext())
+    {
+      CommentEntry localCommentEntry = (CommentEntry)localIterator.next();
+      if (!jdField_a_of_type_JavaUtilHashSet.contains(localCommentEntry.feedId))
+      {
+        jdField_a_of_type_JavaUtilHashSet.add(localCommentEntry.feedId);
+        jdField_a_of_type_JavaUtilHashMap.put(localCommentEntry.feedId, Integer.valueOf(localCommentEntry.commentId));
+      }
+    }
+    urk.d("StoryFailCommentCacher", "update failed comments. size = %d.", new Object[] { Integer.valueOf(jdField_a_of_type_JavaUtilHashSet.size()) });
   }
   
-  public void handleMessage(Message paramMessage)
+  public boolean a(String paramString)
   {
-    int j = 0;
-    Conversation localConversation = (Conversation)this.a.get();
-    if (localConversation == null) {}
-    do
-    {
-      FileMsg localFileMsg;
-      int k;
-      int i;
-      do
-      {
-        do
-        {
-          return;
-          localFileMsg = (FileMsg)paramMessage.obj;
-        } while ((localConversation.a == null) || (localFileMsg == null) || (TextUtils.isEmpty(localFileMsg.p)));
-        k = paramMessage.what;
-        if (localFileMsg.b != 1)
-        {
-          i = j;
-          if (localFileMsg.b != 2) {}
-        }
-        else if ((k != 1001) && (k != 1002) && (k != 1000) && (k != 1005))
-        {
-          i = j;
-          if (k != 1003) {}
-        }
-        else
-        {
-          i = 1;
-        }
-      } while ((i == 0) && (((k != 1003) && (k != 2003)) || ((localFileMsg.b != 2) && (!localConversation.i))));
-      localConversation.a(8, localFileMsg.p, -2147483648);
-    } while (!QLog.isColorLevel());
-    QLog.i("Q.recent", 2, "refresh recent, from_transferListener2");
+    return jdField_a_of_type_JavaUtilHashMap.containsKey(paramString);
+  }
+  
+  public void b()
+  {
+    jdField_a_of_type_JavaUtilHashSet.clear();
+    jdField_a_of_type_JavaUtilHashMap.clear();
+    jdField_a_of_type_Snv = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     snv
  * JD-Core Version:    0.7.0.1
  */

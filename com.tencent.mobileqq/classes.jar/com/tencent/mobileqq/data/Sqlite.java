@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.data;
 
-import com.tencent.mobileqq.persistence.Entity;
+import atmo;
 
 public class Sqlite
-  extends Entity
+  extends atmo
 {
   public String tbl_name;
   

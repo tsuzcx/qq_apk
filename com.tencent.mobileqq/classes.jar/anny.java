@@ -1,101 +1,269 @@
+import SecurityAccountServer.RespondQueryQQBindingStat;
 import android.app.Activity;
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.os.Handler;
-import android.text.TextUtils;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
+import android.content.Intent;
+import android.os.Build;
+import android.os.Build.VERSION;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.troop_homework.TroopHomeworkHelper;
-import cooperation.troop_homework.jsp.TroopHWJsPlugin;
-import cooperation.troop_homework.jsp.TroopHWJsPlugin.UploadMediaEntry;
-import java.io.File;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map.Entry;
-import java.util.Set;
+import java.net.URLEncoder;
 
 public class anny
-  implements Runnable
 {
-  private annz jdField_a_of_type_Annz;
-  private HashMap jdField_a_of_type_JavaUtilHashMap;
+  public static int a = 1;
+  public static int b = 2;
+  public static int c = 3;
+  public static int d = 4;
   
-  public anny(TroopHWJsPlugin paramTroopHWJsPlugin, annz paramannz, HashMap paramHashMap)
+  private static Intent a(Activity paramActivity, AppInterface paramAppInterface, int paramInt)
   {
-    this.jdField_a_of_type_JavaUtilHashMap = paramHashMap;
-    this.jdField_a_of_type_Annz = paramannz;
+    if (paramActivity == null) {
+      if (QLog.isDevelopLevel()) {
+        QLog.d("EquipLockWebEntrance", 4, "getEntranceIntent actCaller is null");
+      }
+    }
+    do
+    {
+      return null;
+      if (paramAppInterface != null) {
+        break;
+      }
+    } while (!QLog.isDevelopLevel());
+    QLog.d("EquipLockWebEntrance", 4, "getEntranceIntent app is null");
+    return null;
+    String str = paramAppInterface.getCurrentAccountUin();
+    paramAppInterface = a(a(paramInt), paramAppInterface);
+    if (QLog.isColorLevel()) {
+      QLog.d("EquipLockWebEntrance", 2, "AuthDevUgAct url=" + paramAppInterface);
+    }
+    paramActivity = new Intent(paramActivity, QQBrowserActivity.class);
+    paramActivity.putExtra("portraitOnly", true);
+    paramActivity.putExtra("url", paramAppInterface);
+    paramActivity.putExtra("uin", str);
+    paramActivity.putExtra("hide_operation_bar", true);
+    paramActivity.putExtra("hide_more_button", true);
+    return paramActivity;
   }
   
-  public void run()
+  private static String a(int paramInt)
   {
-    Context localContext = this.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin.mRuntime.a().getApplicationContext();
-    File localFile = new File(TroopHWJsPlugin.a);
-    if (!localFile.exists()) {
-      localFile.mkdirs();
+    Object localObject = anoc.a().a();
+    if ((localObject != null) && (((String)localObject).length() > 0)) {
+      if (!((String)localObject).startsWith("http")) {}
     }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
-    while (localIterator.hasNext())
+    for (;;)
     {
-      Object localObject = (Map.Entry)localIterator.next();
-      int i = ((Integer)((Map.Entry)localObject).getKey()).intValue();
-      localObject = (String)((Map.Entry)localObject).getValue();
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopHWJsPlugin", 2, "compressVideo, path = " + (String)localObject);
-      }
-      if (!TextUtils.isEmpty((CharSequence)localObject))
-      {
-        Bitmap localBitmap;
-        String str;
-        int j;
-        try
-        {
-          localBitmap = TroopHWJsPlugin.a(this.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin, i, (String)localObject);
-          str = localFile.getAbsolutePath() + new File((String)localObject).getName();
-          this.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin.a(i, 0.05F);
-          j = TroopHomeworkHelper.a(localContext, (String)localObject, str);
-          this.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin.a(i, 0.1F);
-          if (j != 1) {
-            break label298;
-          }
-          localObject = this.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin.a(this.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin, i, (String)localObject, localBitmap, this.jdField_a_of_type_Annz, 2);
-          this.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin.b.put(Integer.valueOf(i), localObject);
-          ((TroopHWJsPlugin.UploadMediaEntry)localObject).a();
-        }
-        catch (Exception localException)
-        {
-          QLog.e("TroopHWJsPlugin", 2, "compressVideo, Exception happened!", localException);
-          TroopHWJsPlugin.a(this.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin).sendEmptyMessage(0);
-        }
-        continue;
-        label298:
-        TroopHWJsPlugin.UploadMediaEntry localUploadMediaEntry;
-        if ((j == 0) && (new File(str).exists()))
-        {
-          localUploadMediaEntry = this.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin.a(this.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin, i, str, localBitmap, this.jdField_a_of_type_Annz, 2);
-          this.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin.b.put(Integer.valueOf(i), localUploadMediaEntry);
-          localUploadMediaEntry.a();
-        }
-        else
-        {
-          if (QLog.isColorLevel()) {
-            QLog.w("TroopHWJsPlugin", 2, "CompressVideoJob failed:" + j);
-          }
-          localUploadMediaEntry = this.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin.a(this.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin, i, localUploadMediaEntry, localBitmap, this.jdField_a_of_type_Annz, 2);
-          this.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin.b.put(Integer.valueOf(i), localUploadMediaEntry);
-          localUploadMediaEntry.a();
-        }
-      }
-      else
-      {
-        TroopHWJsPlugin.a(this.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin).sendEmptyMessage(4);
-        QLog.e("TroopHWJsPlugin", 2, "compressVideo,video empty!");
+      localObject = new StringBuilder((String)localObject);
+      ((StringBuilder)localObject).append("?");
+      ((StringBuilder)localObject).append("type=" + Integer.toString(paramInt));
+      ((StringBuilder)localObject).append("&plat=1");
+      ((StringBuilder)localObject).append("&app=1");
+      ((StringBuilder)localObject).append("&version=8.2.6.4370");
+      ((StringBuilder)localObject).append("&device=" + URLEncoder.encode(Build.DEVICE));
+      ((StringBuilder)localObject).append("&system=" + Build.VERSION.RELEASE);
+      ((StringBuilder)localObject).append("&systemInt=" + Integer.toString(Build.VERSION.SDK_INT));
+      return ((StringBuilder)localObject).toString();
+      localObject = "http://" + (String)localObject;
+      continue;
+      localObject = "http://aq.qq.com/cn2/manage/mobile_h5/mobile_index";
+    }
+  }
+  
+  private static String a(String paramString, AppInterface paramAppInterface)
+  {
+    Object localObject = null;
+    String str = null;
+    if (paramString == null) {
+      if (QLog.isDevelopLevel()) {
+        QLog.d("EquipLockWebEntrance", 4, "handlePhoneContact url is null");
       }
     }
+    for (;;)
+    {
+      return paramString;
+      if (paramAppInterface != null)
+      {
+        paramAppInterface = (aroh)paramAppInterface.getManager(11);
+        if (paramAppInterface != null)
+        {
+          paramAppInterface = paramAppInterface.a();
+          if (paramAppInterface == null)
+          {
+            if (!QLog.isColorLevel()) {
+              break label250;
+            }
+            QLog.d("EquipLockWebEntrance", 2, "mgr can't find stat");
+            paramAppInterface = null;
+          }
+        }
+      }
+      while ((str != null) && (str.length() > 0) && (paramAppInterface != null) && (paramAppInterface.length() > 0))
+      {
+        paramString = new StringBuilder(paramString);
+        paramString.append("&area=" + str);
+        paramString.append("&mob=" + paramAppInterface);
+        return paramString.toString();
+        if (QLog.isColorLevel()) {
+          QLog.d("EquipLockWebEntrance", 2, "mgr find stat, nationCode=" + paramAppInterface.nationCode + " no.=" + paramAppInterface.mobileNo);
+        }
+        str = paramAppInterface.nationCode;
+        paramAppInterface = paramAppInterface.mobileNo;
+        continue;
+        if (QLog.isColorLevel()) {
+          QLog.d("EquipLockWebEntrance", 2, "mgr is null");
+        }
+        for (;;)
+        {
+          str = null;
+          paramAppInterface = localObject;
+          break;
+          if (QLog.isColorLevel()) {
+            QLog.d("EquipLockWebEntrance", 2, "getEntranceIntent:app is null");
+          }
+        }
+        label250:
+        paramAppInterface = null;
+      }
+    }
+  }
+  
+  public static void a(Activity paramActivity, AppInterface paramAppInterface, int paramInt)
+  {
+    if (paramActivity == null)
+    {
+      if (QLog.isDevelopLevel()) {
+        QLog.d("EquipLockWebEntrance", 4, "enter actCaller is null");
+      }
+      return;
+    }
+    paramAppInterface = a(paramActivity, paramAppInterface, paramInt);
+    try
+    {
+      VasWebviewUtil.openQQBrowserActivity(paramActivity, "", 16384L, paramAppInterface, false, -1);
+      return;
+    }
+    catch (SecurityException paramActivity) {}
+  }
+  
+  public static void a(Activity paramActivity, AppInterface paramAppInterface, int paramInt1, int paramInt2, String paramString)
+  {
+    if (paramActivity == null) {
+      if (QLog.isDevelopLevel()) {
+        QLog.d("EquipLockWebEntrance", 4, "enterForResult actCaller is null");
+      }
+    }
+    do
+    {
+      return;
+      if (paramAppInterface != null) {
+        break;
+      }
+    } while (!QLog.isDevelopLevel());
+    QLog.d("EquipLockWebEntrance", 4, "enterForResult app is null");
+    return;
+    paramAppInterface = a(paramActivity, paramAppInterface, paramInt1);
+    if (paramString != null) {
+      paramAppInterface.putExtra("tag", paramString);
+    }
+    paramAppInterface.putExtra("needResult", true);
+    try
+    {
+      VasWebviewUtil.openQQBrowserActivity(paramActivity, "", 16384L, paramAppInterface, true, paramInt2);
+      return;
+    }
+    catch (SecurityException paramActivity) {}
+  }
+  
+  public static void a(Activity paramActivity, String paramString1, String paramString2, int paramInt)
+  {
+    boolean bool = true;
+    if (paramActivity == null)
+    {
+      if (QLog.isDevelopLevel()) {
+        QLog.d("EquipLockWebEntrance", 4, "subaccountEnter actCaller is null");
+      }
+      return;
+    }
+    String str = a(paramInt);
+    if (QLog.isColorLevel()) {
+      QLog.d("EquipLockWebEntrance", 2, "AuthDevUgAct url=" + str);
+    }
+    Intent localIntent = new Intent(paramActivity, QQBrowserActivity.class);
+    localIntent.putExtra("portraitOnly", true);
+    localIntent.putExtra("url", str);
+    localIntent.putExtra("subAccountUin", paramString2);
+    localIntent.putExtra("hide_operation_bar", true);
+    localIntent.putExtra("hide_more_button", true);
+    if ((paramString1 != null) && (!paramString1.equals(paramString2))) {}
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("EquipLockWebEntrance", 2, "globalEnter currentUin=" + paramString1 + " reqUin=" + paramString2 + " isSubaccount=" + bool);
+      }
+      localIntent.putExtra("isSubaccount", bool);
+      localIntent.putExtra("avoidLoginWeb", bool);
+      try
+      {
+        VasWebviewUtil.openQQBrowserActivity(paramActivity, "", 16384L, localIntent, false, -1);
+        return;
+      }
+      catch (SecurityException paramActivity)
+      {
+        return;
+      }
+      bool = false;
+    }
+  }
+  
+  public static void a(Activity paramActivity, String paramString1, String paramString2, int paramInt1, int paramInt2, String paramString3)
+  {
+    if (paramActivity == null)
+    {
+      if (QLog.isDevelopLevel()) {
+        QLog.d("EquipLockWebEntrance", 4, "subaccountEnter actCaller is null");
+      }
+      return;
+    }
+    String str = a(paramInt1);
+    if (QLog.isColorLevel()) {
+      QLog.d("EquipLockWebEntrance", 2, "AuthDevUgAct url=" + str);
+    }
+    Intent localIntent = new Intent(paramActivity, QQBrowserActivity.class);
+    localIntent.putExtra("portraitOnly", true);
+    localIntent.putExtra("url", str);
+    localIntent.putExtra("subAccountUin", paramString2);
+    localIntent.putExtra("hide_operation_bar", true);
+    localIntent.putExtra("hide_more_button", true);
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramString1 != null)
+    {
+      bool1 = bool2;
+      if (!paramString1.equals(paramString2)) {
+        bool1 = true;
+      }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("EquipLockWebEntrance", 2, "globalEnter currentUin=" + paramString1 + " reqUin=" + paramString2 + " isSubaccount=" + bool1);
+    }
+    localIntent.putExtra("isSubaccount", bool1);
+    localIntent.putExtra("avoidLoginWeb", bool1);
+    if (paramString3 != null) {
+      localIntent.putExtra("tag", paramString3);
+    }
+    localIntent.putExtra("needResult", true);
+    try
+    {
+      VasWebviewUtil.openQQBrowserActivity(paramActivity, "", 16384L, localIntent, true, paramInt2);
+      return;
+    }
+    catch (SecurityException paramActivity) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     anny
  * JD-Core Version:    0.7.0.1
  */

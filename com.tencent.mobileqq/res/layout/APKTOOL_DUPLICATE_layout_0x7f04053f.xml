@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c0069" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <android.support.v4.view.ViewPager android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a19fe" android:layout_width="fill_parent" android:layout_height="260.0dip" />
-    <view android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a19ff" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="40.0dip" android:layout_marginBottom="25.0dip" class="com.tencent.mobileqq.troop.homework.arithmetic.ui.DotStyleNavBar" />
-    <TextView android:textSize="16.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c006b" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1a00" android:layout_width="200.0dip" android:layout_height="40.0dip" android:layout_marginTop="40.0dip" android:text="去完成作业" />
-</LinearLayout>

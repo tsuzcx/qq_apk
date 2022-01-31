@@ -1,52 +1,70 @@
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.transfile.predownload.PreDownloadController;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.activity.HotChatAnnounceActivity;
+import com.tencent.mobileqq.app.HotChatManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-class aazi
-  implements Runnable
+public class aazi
+  extends ajkn
 {
-  aazi(aazh paramaazh, byte[] paramArrayOfByte, boolean paramBoolean) {}
+  public aazi(HotChatAnnounceActivity paramHotChatAnnounceActivity) {}
   
-  public void run()
+  public void a(boolean paramBoolean, String paramString1, int paramInt, String paramString2)
   {
-    if (this.jdField_a_of_type_Aazh.a.jdField_a_of_type_Aazm.jdField_a_of_type_JavaLangRefWeakReference == null)
-    {
-      ArkAppCenter.b("ArkApp.Dict.Update", "downloadDictFile, weakPreDownloadCtrl is null, return");
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.i("HotChatAnnounceActivity", 2, "onSetUserCreateHotChatAnnounce.isSuccess=" + paramBoolean + ",result=" + paramInt + ", strErr=" + paramString2);
     }
-    PreDownloadController localPreDownloadController = (PreDownloadController)this.jdField_a_of_type_Aazh.a.jdField_a_of_type_Aazm.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localPreDownloadController == null)
+    HotChatAnnounceActivity.a(this.a);
+    if ((paramBoolean) && (paramInt == 0))
     {
-      ArkAppCenter.b("ArkApp.Dict.Update", "downloadDictFile, preDownloadController is null, return");
-      return;
-    }
-    byte[] arrayOfByte = this.jdField_a_of_type_ArrayOfByte;
-    long l;
-    if (this.jdField_a_of_type_Aazh.a.jdField_a_of_type_Aazm.jdField_a_of_type_Boolean) {
-      if (this.jdField_a_of_type_Boolean)
+      paramString1 = ((HotChatManager)this.a.app.getManager(60)).a(this.a.a);
+      if (paramString1 != null)
       {
-        String str = this.jdField_a_of_type_Aazh.a.jdField_a_of_type_JavaLangString;
-        if (arrayOfByte == null)
-        {
-          l = 0L;
-          localPreDownloadController.a(str, l);
-        }
+        paramString1.memo = this.a.d;
+        paramString1.memoUrl = this.a.e;
+        paramString1.memoShowed = false;
       }
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Aazh.a.jdField_a_of_type_Aazk.a(arrayOfByte);
+      bbmy.a(this.a, 2, ajjy.a(2131639740), 0).b(this.a.getTitleBarHeight());
+      this.a.setResult(-1);
+      this.a.finish();
       return;
-      l = arrayOfByte.length;
-      break;
-      localPreDownloadController.a(this.jdField_a_of_type_Aazh.a.jdField_a_of_type_JavaLangString, -1L);
-      arrayOfByte = null;
     }
+    paramString1 = ajjy.a(2131639743);
+    if (paramInt == 1282) {
+      paramString1 = ajjy.a(2131639748);
+    }
+    bbmy.a(this.a, 1, paramString1, 0).b(this.a.getTitleBarHeight());
+  }
+  
+  public void a(boolean paramBoolean, byte[] paramArrayOfByte, int paramInt, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("HotChatAnnounceActivity", 2, "onSetHotChatAnnounce.isSuccess=" + paramBoolean + ",result=" + paramInt + ", strErr=" + paramString);
+    }
+    HotChatAnnounceActivity.a(this.a);
+    if ((paramBoolean) && (paramInt == 0))
+    {
+      paramArrayOfByte = ((HotChatManager)this.a.app.getManager(60)).a(this.a.a);
+      if (paramArrayOfByte != null)
+      {
+        paramArrayOfByte.memo = this.a.d;
+        paramArrayOfByte.memoUrl = this.a.e;
+        paramArrayOfByte.memoShowed = false;
+      }
+      bbmy.a(this.a, 2, ajjy.a(2131639747), 0).b(this.a.getTitleBarHeight());
+      this.a.setResult(-1);
+      this.a.finish();
+      return;
+    }
+    paramArrayOfByte = ajjy.a(2131639741);
+    if (paramInt == 1288) {
+      paramArrayOfByte = ajjy.a(2131639745);
+    }
+    bbmy.a(this.a, 1, paramArrayOfByte, 0).b(this.a.getTitleBarHeight());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aazi
  * JD-Core Version:    0.7.0.1
  */

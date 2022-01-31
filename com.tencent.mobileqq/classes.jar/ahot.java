@@ -1,21 +1,36 @@
-import com.tencent.mobileqq.activity.richmedia.subtitles.SubtitleLayout;
-import com.tencent.mobileqq.richmedia.capture.fragment.EffectsCameraCaptureFragment;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import com.tencent.mobileqq.activity.richmedia.view.SensorFrameImageView;
 
 public class ahot
-  implements Runnable
+  implements SensorEventListener
 {
-  public ahot(EffectsCameraCaptureFragment paramEffectsCameraCaptureFragment) {}
+  public ahot(SensorFrameImageView paramSensorFrameImageView) {}
   
-  public void run()
+  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
+  
+  public void onSensorChanged(SensorEvent paramSensorEvent)
   {
-    if ((EffectsCameraCaptureFragment.a(this.a) != null) && (EffectsCameraCaptureFragment.a(this.a).a())) {
-      EffectsCameraCaptureFragment.a(this.a).a(true);
+    switch (paramSensorEvent.sensor.getType())
+    {
+    }
+    for (;;)
+    {
+      SensorFrameImageView.a(this.a);
+      SensorFrameImageView.b(this.a);
+      return;
+      SensorFrameImageView.a(this.a, paramSensorEvent.values);
+      continue;
+      SensorFrameImageView.b(this.a, paramSensorEvent.values);
+      continue;
+      SensorFrameImageView.c(this.a, paramSensorEvent.values);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ahot
  * JD-Core Version:    0.7.0.1
  */

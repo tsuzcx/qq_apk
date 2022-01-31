@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="#00000000" style="@style/ra"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+        <ScrollView android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <LinearLayout style="@style/midas_linear.tipframe">
+                <LinearLayout style="@style/midas_linear">
+                    <LinearLayout style="@style/midas_tips_header">
+                        <LinearLayout android:layout_weight="100.0" style="@style/midas_tips_title">
+                            <TextView android:id="@id/erg" android:text="QQ会员" style="@style/midas_tx" />
+                        </LinearLayout>
+                        <ImageButton android:id="@id/er9" style="@style/midas_ic_tipsclose" />
+                    </LinearLayout>
+                </LinearLayout>
+                <LinearLayout style="@style/midas_edit_group_c">
+                    <LinearLayout android:orientation="vertical" android:id="@id/erh" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                        <LinearLayout style="@style/midas_edit_wrap">
+                            <EditText android:id="@id/erk" android:layout_width="0.0dip" android:hint="请输入QQ号码" android:layout_weight="100.0" android:inputType="number" style="@style/midas_edit.noborder" />
+                            <ImageButton android:id="@id/eri" android:visibility="gone" android:layout_marginRight="0.0dip" style="@style/midas_input_cell_button_clear" />
+                            <ImageButton android:id="@id/erj" android:background="@drawable/f0q" android:layout_width="30.0dip" android:layout_height="30.0dip" android:layout_marginLeft="15.0dip" />
+                        </LinearLayout>
+                        <View style="@style/qc" />
+                    </LinearLayout>
+                    <LinearLayout style="@style/midas_edit_wrap">
+                        <EditText android:id="@id/erc" android:layout_width="0.0dip" android:text="" android:layout_weight="100.0" android:inputType="number" style="@style/midas_edit.noborder" />
+                        <ImageButton android:id="@id/er_" android:layout_marginRight="0.0dip" style="@style/midas_input_cell_button_clear" />
+                        <TextView android:id="@id/erd" android:visibility="gone" android:layout_marginRight="10.0dip" android:text="@string/o4f" style="@style/midas_tx" />
+                        <ImageButton android:id="@id/era" android:layout_marginLeft="10.0dip" style="@style/midas_ic_reduce" />
+                        <ImageButton android:id="@id/erb" style="@style/midas_ic_add" />
+                    </LinearLayout>
+                </LinearLayout>
+                <CheckBox android:id="@id/er8" android:text="@string/midas_agreecheck" style="@style/midas_agreecheck" />
+                <TextView android:textColor="@color/nc" android:id="@id/erf" android:layout_marginLeft="15.0dip" android:layout_marginTop="10.0dip" android:text="赠送10书币" style="@style/r7" />
+                <LinearLayout android:layout_marginLeft="15.0dip" android:layout_marginTop="10.0dip" style="@style/midas_wrap">
+                    <TextView android:text="@string/o5a" style="@style/midas_tx" />
+                    <TextView android:id="@id/er6" android:layout_marginLeft="10.0dip" android:text="0.00" style="@style/midas_tx.price" />
+                    <TextView android:text="@string/o5o" style="@style/midas_tx.price" />
+                    <TextView android:id="@id/er7" style="@style/midas_tx" />
+                </LinearLayout>
+                <Button android:id="@id/erl" android:layout_marginTop="13.0dip" android:text="@string/o51" style="@style/midas_btn_main.tips" />
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+    <com.tenpay.api.MyKeyboardWindow android:id="@id/ere" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+</LinearLayout>

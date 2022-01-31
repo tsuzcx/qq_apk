@@ -1,131 +1,223 @@
-import android.media.AudioRecord;
-import android.os.Process;
-import com.tencent.mobileqq.shortvideo.mediadevice.AudioCapture;
-import com.tencent.mobileqq.shortvideo.mediadevice.Lock;
+import android.text.TextUtils;
+import com.tencent.mobileqq.apollo.ApolloRender;
+import com.tencent.mobileqq.apollo.ApolloRenderDriver;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class aigt
-  extends Thread
 {
-  public aigt(AudioCapture paramAudioCapture) {}
+  public static String a;
+  private ApolloRender jdField_a_of_type_ComTencentMobileqqApolloApolloRender;
+  private ApolloRenderDriver jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver;
   
-  public void run()
+  static
   {
-    this.a.b();
+    jdField_a_of_type_JavaLangString = "ApolloRenderInterfaceImpl";
+  }
+  
+  public aigt(ApolloRenderDriver paramApolloRenderDriver, ApolloRender paramApolloRender)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver = paramApolloRenderDriver;
+    this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender = paramApolloRender;
+  }
+  
+  public int a(int paramInt1, int paramInt2, String[] paramArrayOfString1, String[] paramArrayOfString2)
+  {
     int i = 0;
-    int j;
-    label86:
-    int m;
-    if (this.a.jdField_a_of_type_Boolean)
-    {
-      for (;;)
-      {
-        synchronized (this.a.jdField_a_of_type_JavaLangObject)
-        {
-          try
-          {
-            this.a.jdField_a_of_type_JavaLangObject.wait();
-            if (!this.a.jdField_a_of_type_Boolean) {
-              break;
-            }
-            this.a.jdField_a_of_type_Long = System.currentTimeMillis();
-            this.a.jdField_b_of_type_Long = System.currentTimeMillis();
-            Process.setThreadPriority(-19);
-            k = 1;
-            j = i;
-            i = k;
-            if (!Lock.jdField_a_of_type_Boolean) {
-              break label542;
-            }
-            if ((this.a.jdField_a_of_type_AndroidMediaAudioRecord == null) || (this.a.jdField_a_of_type_ArrayOfByte == null) || (this.a.jdField_b_of_type_ArrayOfByte == null)) {
-              continue;
-            }
-            this.a.jdField_b_of_type_Long = System.currentTimeMillis();
-            if (this.a.e < this.a.f) {
-              break label273;
-            }
-            m = 0;
-            k = m;
-            if (this.a.jdField_a_of_type_AndroidMediaAudioRecord != null)
-            {
-              k = m;
-              if (this.a.jdField_a_of_type_ArrayOfByte != null) {
-                k = this.a.jdField_a_of_type_AndroidMediaAudioRecord.read(this.a.jdField_a_of_type_ArrayOfByte, 0, this.a.f);
-              }
-            }
-            this.a.b(k);
-            if (i != 0)
-            {
-              i = 0;
-              continue;
-            }
-          }
-          catch (InterruptedException localInterruptedException)
-          {
-            localInterruptedException.printStackTrace();
-          }
-        }
-        this.a.c(this.a.jdField_a_of_type_ArrayOfByte, k, System.currentTimeMillis() - this.a.jdField_a_of_type_Long, true, 4);
-      }
-      label273:
-      if ((this.a.jdField_a_of_type_AndroidMediaAudioRecord == null) || (this.a.jdField_a_of_type_ArrayOfByte == null)) {
-        break label662;
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "[onSetActions], actionId:" + paramInt1);
     }
-    label662:
-    for (int k = this.a.jdField_a_of_type_AndroidMediaAudioRecord.read(this.a.jdField_a_of_type_ArrayOfByte, 0, this.a.e);; k = 0)
+    if ((paramArrayOfString1 == null) || (paramArrayOfString1.length != 2) || (this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver == null)) {
+      i = 1;
+    }
+    do
     {
-      this.a.b(k);
-      if (k <= 0) {
-        break label86;
-      }
-      if (i != 0)
+      return i;
+      File localFile = new File(ApolloRender.getRscStaticPath(paramArrayOfString1[0], "json"));
+      if (!localFile.exists())
       {
-        i = 0;
-        break label86;
-      }
-      if (j + k > this.a.f)
-      {
-        System.arraycopy(this.a.jdField_a_of_type_ArrayOfByte, 0, this.a.jdField_b_of_type_ArrayOfByte, j, this.a.f - j);
-        m = AudioCapture.a(this.a, this.a.jdField_b_of_type_ArrayOfByte, this.a.f);
-        int n = this.a.f - m;
-        this.a.c(this.a.jdField_b_of_type_ArrayOfByte, n, System.currentTimeMillis() - this.a.jdField_a_of_type_Long, true, 4);
-        if (m > 0) {
-          System.arraycopy(this.a.jdField_b_of_type_ArrayOfByte, n, this.a.jdField_b_of_type_ArrayOfByte, 0, m);
+        if (QLog.isColorLevel()) {
+          QLog.d(jdField_a_of_type_JavaLangString, 2, "errInfo->rsc NOT exist. rscFile:" + localFile);
         }
-        j = this.a.f - j;
-        k -= j;
-        System.arraycopy(this.a.jdField_a_of_type_ArrayOfByte, j, this.a.jdField_b_of_type_ArrayOfByte, m, k);
-        j = m + k;
+        return 2;
       }
-      for (;;)
+      if ((paramArrayOfString2 != null) && (paramArrayOfString2.length == 2))
       {
-        break;
-        System.arraycopy(this.a.jdField_a_of_type_ArrayOfByte, 0, this.a.jdField_b_of_type_ArrayOfByte, j, k);
-        j += k;
+        localFile = new File(ApolloRender.getRscStaticPath(paramArrayOfString2[0], "json"));
+        if (!localFile.exists())
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d(jdField_a_of_type_JavaLangString, 2, "errInfo->rsc NOT exist. rscFile:" + localFile);
+          }
+          return 2;
+        }
       }
-      label542:
-      i = AudioCapture.a(this.a, this.a.jdField_b_of_type_ArrayOfByte, j);
-      j -= i;
-      this.a.c(this.a.jdField_b_of_type_ArrayOfByte, j, System.currentTimeMillis() - this.a.jdField_a_of_type_Long, false, 9);
-      if (i > 0)
-      {
-        System.arraycopy(this.a.jdField_b_of_type_ArrayOfByte, j, this.a.jdField_b_of_type_ArrayOfByte, 0, i);
-        break;
-      }
+    } while (this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver == null);
+    return this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver.a(paramInt1, paramInt2, paramArrayOfString1, paramArrayOfString2);
+  }
+  
+  public int a(int paramInt1, String paramString, int paramInt2, float paramFloat1, float paramFloat2, float paramFloat3)
+  {
+    int i = 0;
+    if (QLog.isColorLevel()) {
+      QLog.d(jdField_a_of_type_JavaLangString, 2, new Object[] { "[onLoadRole] roleType=", Integer.valueOf(paramInt1), ", apolloId=", paramString, ", roleId=", Integer.valueOf(paramInt2), ", roleScale=", Float.valueOf(paramFloat1), ", xPos=", Float.valueOf(paramFloat2), ", yPos=", Float.valueOf(paramFloat3) });
+    }
+    if (!ApolloUtil.c(paramInt2))
+    {
       if (QLog.isColorLevel()) {
-        QLog.d("AudioCapture", 2, "AudioNoiseSuppression[QQ]: leftLen=" + i);
+        QLog.d(jdField_a_of_type_JavaLangString, 2, "errInfo->role rsc NOT exist.");
       }
+      i = 2;
+    }
+    while (this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver == null) {
+      return i;
+    }
+    paramInt1 = this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver.a(paramInt1, paramString, paramInt2, paramFloat1, paramFloat2, paramFloat3);
+    this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver.a();
+    return paramInt1;
+  }
+  
+  public int a(int paramInt1, String paramString1, int paramInt2, int paramInt3, String paramString2, String paramString3)
+  {
+    int i = 0;
+    if (QLog.isColorLevel()) {
+      QLog.d(jdField_a_of_type_JavaLangString, 2, new Object[] { "[onExecAction] apolloId=", paramString1, ", actionId=", Integer.valueOf(paramInt2), ", roleType=", Integer.valueOf(paramInt1), ", actionId=", Integer.valueOf(paramInt2), ", taskId=", Integer.valueOf(paramInt3), ", actionRscName=", paramString2, ", animName=", paramString3 });
+    }
+    if ((TextUtils.isEmpty(paramString2)) || (TextUtils.isEmpty(paramString3)) || (this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver == null))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d(jdField_a_of_type_JavaLangString, 2, "errInfo->null param.");
+      }
+      i = 1;
+    }
+    do
+    {
+      do
+      {
+        do
+        {
+          return i;
+          File localFile = new File(ApolloRender.getRscStaticPath(paramString2, "json"));
+          if (!localFile.exists())
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d(jdField_a_of_type_JavaLangString, 2, "errInfo->rsc NOT exist. rscFile:" + localFile);
+            }
+            return 2;
+          }
+        } while (this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver == null);
+        if (this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender != null) {
+          this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender.mIsFrameMode = false;
+        }
+        this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver.a();
+        paramInt1 = this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver.a(paramInt1, paramString1, paramInt2, paramInt3, paramString2, paramString3);
+        i = paramInt1;
+      } while (paramInt1 != 0);
+      i = paramInt1;
+    } while (paramInt3 >= 1000000);
+    this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver.a.set(8);
+    return paramInt1;
+  }
+  
+  public int a(int paramInt, String paramString, int[] paramArrayOfInt, aiwq paramaiwq)
+  {
+    int j = 0;
+    if (QLog.isColorLevel()) {
+      QLog.d(jdField_a_of_type_JavaLangString, 2, new Object[] { "[onChangeDress] apolloId=", paramString, ", roleType=", Integer.valueOf(paramInt), ", dressId=", paramArrayOfInt, ", callback=", paramaiwq });
+    }
+    int i;
+    if (paramArrayOfInt == null) {
+      i = 1;
+    }
+    do
+    {
+      return i;
       i = 0;
-      break;
-      this.a.b();
-      return;
+      while (i < paramArrayOfInt.length)
+      {
+        if (!ApolloUtil.b(paramArrayOfInt[i]))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d(jdField_a_of_type_JavaLangString, 2, "errInfo->dress rsc NOT exist, id:" + paramArrayOfInt[i]);
+          }
+          return 2;
+        }
+        i += 1;
+      }
+      i = j;
+    } while (this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver == null);
+    paramInt = this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver.a(paramInt, paramString, paramArrayOfInt, paramaiwq);
+    this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver.a();
+    return paramInt;
+  }
+  
+  public ApolloRender a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver != null) {
+      this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver.d();
+    }
+  }
+  
+  public void a(int paramInt, String paramString1, String paramString2)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver != null) {
+      this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver.a(paramInt, paramString1, paramString2);
+    }
+  }
+  
+  public void a(long paramLong)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver != null) {
+      this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver.a(paramLong);
+    }
+  }
+  
+  public void a(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(jdField_a_of_type_JavaLangString, 2, new Object[] { "[onExecDispose] apolloId=", paramString });
+    }
+    if ((this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver != null) && (!TextUtils.isEmpty(paramString))) {
+      this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver.a(paramString);
+    }
+  }
+  
+  public int b(int paramInt1, String paramString1, int paramInt2, int paramInt3, String paramString2, String paramString3)
+  {
+    int i = 1;
+    if (this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver != null) {
+      i = this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver.b(paramInt1, paramString1, paramInt2, paramInt3, paramString2, paramString3);
+    }
+    return i;
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver != null) {
+      this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver.a();
+    }
+  }
+  
+  public void c()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "[onDestroy]");
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver != null) {
+      this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver.c();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aigt
  * JD-Core Version:    0.7.0.1
  */

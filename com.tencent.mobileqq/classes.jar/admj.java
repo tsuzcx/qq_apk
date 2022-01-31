@@ -1,23 +1,38 @@
+import android.view.GestureDetector;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.fileviewer.model.FileBrowserModelBase;
-import com.tencent.mobileqq.filemanager.fileviewer.presenter.FileBrowserPresenterBase;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
+import android.view.View.OnTouchListener;
 
-public class admj
-  implements View.OnClickListener
+class admj
+  implements View.OnTouchListener
 {
-  public admj(FileBrowserPresenterBase paramFileBrowserPresenterBase) {}
+  final acmv jdField_a_of_type_Acmv;
+  GestureDetector jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(new admk(this));
+  View jdField_a_of_type_AndroidViewView = null;
   
-  public void onClick(View paramView)
+  public admj(admh paramadmh, acmv paramacmv)
   {
-    FileManagerUtil.b(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.b());
-    this.a.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_Acmv = paramacmv;
+  }
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    if (this.jdField_a_of_type_Acmv != null) {
+      this.jdField_a_of_type_Acmv.onTouch(paramView, paramMotionEvent);
+    }
+    if (this.jdField_a_of_type_AndroidViewGestureDetector != null)
+    {
+      this.jdField_a_of_type_AndroidViewView = paramView;
+      this.jdField_a_of_type_AndroidViewGestureDetector.onTouchEvent(paramMotionEvent);
+      return true;
+    }
+    this.jdField_a_of_type_AndroidViewView = null;
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     admj
  * JD-Core Version:    0.7.0.1
  */

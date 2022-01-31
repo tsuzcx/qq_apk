@@ -1,19 +1,15 @@
-import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import java.util.List;
 
-class tka
-  implements Runnable
+public abstract interface tka
 {
-  tka(tjy paramtjy) {}
+  public abstract void a(ErrorMessage paramErrorMessage, List<tjs> paramList);
   
-  public void run()
-  {
-    this.a.a.b(this.a.a.app.o());
-  }
+  public abstract void a(List<tjt> paramList, boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tka
  * JD-Core Version:    0.7.0.1
  */

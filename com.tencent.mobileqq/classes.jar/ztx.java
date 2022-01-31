@@ -1,27 +1,17 @@
-import com.tencent.mobileqq.app.SignatureManager;
-import com.tencent.mobileqq.vas.SignatureTemplateConfig;
-import com.tencent.mobileqq.vas.SignatureTemplateInfo;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.atomic.AtomicInteger;
-
-public class ztx
-  implements Runnable
+class ztx
+  implements zss
 {
-  public ztx(SignatureManager paramSignatureManager, int paramInt) {}
+  ztx(ztw paramztw) {}
   
-  public void run()
+  public void a(armr paramarmr, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppSignatureManager.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(this.jdField_a_of_type_Int);
-    SignatureTemplateInfo localSignatureTemplateInfo = SignatureTemplateConfig.a(this.jdField_a_of_type_ComTencentMobileqqAppSignatureManager.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Int);
-    if (localSignatureTemplateInfo != null) {
-      SignatureManager.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(this.jdField_a_of_type_Int), localSignatureTemplateInfo);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqAppSignatureManager.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(-1);
+    ztw.a(this.a, paramarmr);
+    ztw.a(this.a, paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ztx
  * JD-Core Version:    0.7.0.1
  */

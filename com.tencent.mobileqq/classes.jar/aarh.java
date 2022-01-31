@@ -1,45 +1,35 @@
-import android.content.res.Resources;
-import com.tencent.common.app.AppInterface;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.activity.EmosmActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.ar.config.WorldCup;
-import com.tencent.mobileqq.ar.config.WorldCupConfigInfo;
-import com.tencent.mobileqq.utils.AudioHelper;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import java.util.ArrayList;
 
 public class aarh
-  extends aark
+  implements andk
 {
-  WorldCupConfigInfo jdField_a_of_type_ComTencentMobileqqArConfigWorldCupConfigInfo;
-  final String jdField_a_of_type_JavaLangString;
-  WeakReference jdField_a_of_type_JavaLangRefWeakReference;
-  public boolean a;
+  public aarh(EmosmActivity paramEmosmActivity) {}
   
-  public aarh(String paramString1, String paramString2, QQAppInterface paramQQAppInterface)
+  public void a(int paramInt)
   {
-    super(paramString1);
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
-  }
-  
-  void a()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqArConfigWorldCupConfigInfo = null;
-  }
-  
-  boolean a(Resources paramResources)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqArConfigWorldCupConfigInfo = WorldCupConfigInfo.a(this.jdField_a_of_type_JavaLangString, null);
-    WorldCup.b();
-    if (AudioHelper.e()) {
-      AudioHelper.a((AppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get());
+    Object localObject = (EmoticonPackage)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    if (!badq.d(this.a))
+    {
+      localObject = new bbmy(this.a);
+      ((bbmy)localObject).a(2130839253);
+      ((bbmy)localObject).d(1500);
+      ((bbmy)localObject).a(ajjy.a(2131638247));
+      ((bbmy)localObject).b(0);
+      return;
     }
-    return true;
+    this.a.jdField_a_of_type_Bbms.a(this.a.getString(2131626463));
+    this.a.jdField_a_of_type_Bbms.show();
+    ((ajhm)this.a.app.a(12)).a(Integer.parseInt(((EmoticonPackage)localObject).epId));
+    URLDrawable.clearMemoryCache();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aarh
  * JD-Core Version:    0.7.0.1
  */

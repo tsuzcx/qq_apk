@@ -1,29 +1,27 @@
-import com.tencent.biz.pubaccount.readinjoy.model.ArticleInfoModule;
-import com.tencent.biz.pubaccount.readinjoy.struct.ChannelTopCookie;
-import java.util.Iterator;
-import java.util.List;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnPreDrawListener;
+import android.widget.TextView;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-public class lsm
-  implements Runnable
+class lsm
+  implements ViewTreeObserver.OnPreDrawListener
 {
-  public lsm(ArticleInfoModule paramArticleInfoModule, List paramList) {}
+  lsm(lsl paramlsl, TextView paramTextView) {}
   
-  public void run()
+  public boolean onPreDraw()
   {
-    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > 0))
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext())
-      {
-        ChannelTopCookie localChannelTopCookie = (ChannelTopCookie)localIterator.next();
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelArticleInfoModule.a(localChannelTopCookie);
-      }
-    }
+    this.jdField_a_of_type_AndroidWidgetTextView.getViewTreeObserver().removeOnPreDrawListener(this);
+    this.jdField_a_of_type_Lsl.a.a().a().at = true;
+    mjg.a(this.jdField_a_of_type_Lsl.a);
+    QLog.d("qav_face_guide", 1, "onPreDraw");
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lsm
  * JD-Core Version:    0.7.0.1
  */

@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBInt32Field;
 
 public final class C2CType0x211_SubC2CType0x8$UserAbility
-  extends MessageMicro
+  extends MessageMicro<UserAbility>
 {
   public static final int INT32_ABS_NET_REACHABLECHECK_FIELD_NUMBER = 20;
   public static final int INT32_ABS_NET_SPEED_TEST_FIELD_NUMBER = 21;

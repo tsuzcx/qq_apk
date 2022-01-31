@@ -1,35 +1,27 @@
-import com.tencent.mobileqq.imaxad.ImaxAdUtil;
-import com.tencent.mobileqq.imaxad.ImaxAdVideoPreloadManager;
-import com.tencent.qqlive.mediaplayer.api.TVK_ICacheMgr.IPreloadCompleteCallback;
-import java.io.File;
+import java.util.List;
 
-public class aebo
-  implements TVK_ICacheMgr.IPreloadCompleteCallback
+class aebo
+  extends ajhp
 {
-  private aebo(ImaxAdVideoPreloadManager paramImaxAdVideoPreloadManager) {}
+  aebo(aebk paramaebk) {}
   
-  public void onComplete(String paramString1, String paramString2)
+  protected void a(boolean paramBoolean, Object paramObject)
   {
-    synchronized (ImaxAdVideoPreloadManager.a(this.a))
+    if (paramBoolean)
     {
-      String str = ImaxAdVideoPreloadManager.a(paramString1);
-      ImaxAdUtil.b("onComplete path:" + str);
-      ImaxAdUtil.b("onComplete vid:" + paramString1 + ", detail:" + paramString2);
-      ImaxAdVideoPreloadManager.a(this.a, paramString1);
-      paramString2 = new File(ImaxAdVideoPreloadManager.b(paramString1));
-      if (paramString2.exists()) {
-        paramString2.renameTo(new File(str));
+      this.a.b = annt.a(this.a.a).a(this.a.a, this.a.a());
+      this.a.b(this.a.b);
+      if ((this.a.b != null) && (!this.a.b.isEmpty())) {
+        this.a.t(false);
       }
-      ImaxAdVideoPreloadManager.b(this.a, paramString1);
-      ImaxAdVideoPreloadManager.b(this.a, ImaxAdVideoPreloadManager.a(this.a));
-      ImaxAdVideoPreloadManager.b(this.a);
-      return;
     }
   }
+  
+  protected void b(boolean paramBoolean, Object paramObject) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aebo
  * JD-Core Version:    0.7.0.1
  */

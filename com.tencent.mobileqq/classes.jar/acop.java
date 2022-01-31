@@ -1,73 +1,79 @@
-import android.content.Context;
-import android.os.Message;
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.emoticon.EmojiManager;
-import com.tencent.mobileqq.emoticonview.PicEmoticonInfo;
-import com.tencent.mobileqq.model.QueryCallback;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.vaswebviewplugin.EmojiHomeUiPlugin;
+import android.os.AsyncTask;
+import android.os.Handler;
+import android.os.SystemClock;
+import com.tencent.mobileqq.activity.aio.anim.FriendProfileCardBgDrawable;
 import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
 
-public final class acop
-  implements QueryCallback
+public class acop
+  extends AsyncTask<Long, Void, Void>
 {
-  public acop(Context paramContext, QQAppInterface paramQQAppInterface, Emoticon paramEmoticon, EmojiManager paramEmojiManager, SessionInfo paramSessionInfo) {}
+  private Object jdField_a_of_type_JavaLangObject;
   
-  public void a(EmoticonPackage paramEmoticonPackage)
+  public acop(FriendProfileCardBgDrawable paramFriendProfileCardBgDrawable, Object paramObject)
   {
-    boolean bool;
-    if ((paramEmoticonPackage != null) && ((2 != paramEmoticonPackage.status) || (!paramEmoticonPackage.valid))) {
-      if (paramEmoticonPackage.jobType == 4)
-      {
-        bool = true;
-        EmojiHomeUiPlugin.openEmojiDetailPage(((BaseActivity)this.jdField_a_of_type_AndroidContentContext).getActivity(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), 8, this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId, false, bool);
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "ep_mall", "0X8005C13", 0, 0, "", "", "", "");
-      }
-    }
-    label194:
-    do
+    this.jdField_a_of_type_JavaLangObject = paramObject;
+  }
+  
+  protected Void a(Long... paramVarArgs)
+  {
+    for (;;)
     {
-      do
+      try
       {
-        return;
-        bool = false;
-        break;
-        if (!this.jdField_a_of_type_ComTencentMobileqqEmoticonEmojiManager.c()) {
-          break label237;
-        }
-        if (!this.jdField_a_of_type_ComTencentMobileqqEmoticonEmojiManager.b(this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId, true, true)) {
-          break label194;
-        }
-        if (this.jdField_a_of_type_ComTencentMobileqqEmoticonEmojiManager.b())
+        l1 = paramVarArgs[0].longValue();
+        long l2 = paramVarArgs[1].longValue();
+        paramVarArgs = this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable.a(this.jdField_a_of_type_JavaLangObject, (int)l2);
+        if (!this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable.d)
         {
-          PicEmoticonInfo.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqDataEmoticon);
-          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "MbFasong", "MbZidongBofang", 0, 0, "", "", "", "");
-          return;
+          paramVarArgs = this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable.jdField_a_of_type_AndroidOsHandler;
+          FriendProfileCardBgDrawable localFriendProfileCardBgDrawable = this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable;
+          if (FriendProfileCardBgDrawable.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable) != null) {
+            break label203;
+          }
+          l1 = 1000L;
+          paramVarArgs.postDelayed(localFriendProfileCardBgDrawable, l1);
+          return null;
         }
-      } while (!QLog.isColorLevel());
-      QLog.d("PicEmoticonInfo", 2, "not support h5magic ");
-      return;
-      ChatActivityUtils.a(this.jdField_a_of_type_AndroidContentContext, 2131436327, 0);
-      paramEmoticonPackage = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(ChatActivity.class);
-    } while (paramEmoticonPackage == null);
-    paramEmoticonPackage.obtainMessage(10).sendToTarget();
-    paramEmoticonPackage.obtainMessage(21).sendToTarget();
-    return;
-    label237:
-    ChatActivityUtils.a(this.jdField_a_of_type_AndroidContentContext, 2131436326);
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "ep_mall", "0X8005C16", 0, 0, "", "", "", "");
+        if ((paramVarArgs != null) && (!isCancelled()))
+        {
+          this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable.b = paramVarArgs;
+          l2 = SystemClock.uptimeMillis();
+          if (l2 < l1)
+          {
+            this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable, l1 - l2);
+            return null;
+          }
+        }
+      }
+      catch (OutOfMemoryError paramVarArgs)
+      {
+        QLog.e("FriendProfileCardBgDrawable", 4, "", paramVarArgs);
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable.b = null;
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable.jdField_a_of_type_Boolean = true;
+        return null;
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable.jdField_a_of_type_AndroidOsHandler.post(this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable);
+        return null;
+      }
+      catch (Throwable paramVarArgs)
+      {
+        QLog.e("FriendProfileCardBgDrawable", 1, "", paramVarArgs);
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable.b = null;
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable.jdField_a_of_type_Boolean = true;
+      }
+      return null;
+      label203:
+      long l1 = 0L;
+    }
+  }
+  
+  protected void a(Void paramVoid)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable.jdField_a_of_type_Acop = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     acop
  * JD-Core Version:    0.7.0.1
  */

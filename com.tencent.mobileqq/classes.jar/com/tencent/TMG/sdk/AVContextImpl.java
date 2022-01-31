@@ -34,21 +34,7 @@ class AVContextImpl
   private int mNativeEntity = 0;
   private AVVideoCtrl mVideoCtrl = null;
   private AVRoomMulti room = null;
-  private Runnable tipsUpdate = new Runnable()
-  {
-    public void run()
-    {
-      if ((AVContextImpl.this.isUpdateTips) && (AVContextImpl.this.getRoom() != null))
-      {
-        Log.d("tips", AVContextImpl.this.getRoom().getQualityTips());
-        AVContextImpl.this.handler.postDelayed(this, 30000L);
-      }
-      while (AVContextImpl.this.getRoom() != null) {
-        return;
-      }
-      AVContextImpl.this.stopTipsTimer();
-    }
-  };
+  private Runnable tipsUpdate = new AVContextImpl.2(this);
   
   private static void configUpdate()
   {
@@ -147,25 +133,25 @@ class AVContextImpl
       int i = AndroidCodec.checkSupportMediaCodecFeature();
       Log.i("SdkJni", "[Rson] check hardware feature: " + i);
       if (i <= 0) {
-        break label910;
+        break label905;
       }
       if ((i & 0x1) != 1) {
-        break label817;
+        break label812;
       }
       paramContext = (String)localObject2 + "HW_AVC_DEC=1;";
       label686:
       if ((i & 0x2) != 2) {
-        break label841;
+        break label836;
       }
       paramContext = paramContext + "HW_AVC_ENC=1;";
       label713:
       if ((i & 0x4) != 4) {
-        break label864;
+        break label859;
       }
       paramContext = paramContext + "HW_HEVC_DEC=1;";
       label740:
       if ((i & 0x8) != 8) {
-        break label887;
+        break label882;
       }
       paramContext = paramContext + "HW_HEVC_ENC=1;";
     }
@@ -173,21 +159,21 @@ class AVContextImpl
     {
       nativeSetAndroidAppPath(paramContext);
       return;
-      localObject1 = (String)localObject2 + "LIBDIR=" + ((ApplicationInfo)localObject1).dataDir + "/lib" + ";";
+      localObject1 = (String)localObject2 + "LIBDIR=" + ((ApplicationInfo)localObject1).dataDir + "/lib;";
       break;
-      label817:
+      label812:
       paramContext = (String)localObject2 + "HW_AVC_DEC=0;";
       break label686;
-      label841:
+      label836:
       paramContext = paramContext + "HW_AVC_ENC=0;";
       break label713;
-      label864:
+      label859:
       paramContext = paramContext + "HW_HEVC_DEC=0;";
       break label740;
-      label887:
+      label882:
       paramContext = paramContext + "HW_HEVC_ENC=0;";
       continue;
-      label910:
+      label905:
       paramContext = (String)localObject2 + "HW_AVC_ENC=0;";
       paramContext = paramContext + "HW_AVC_DEC=0;";
       paramContext = paramContext + "HW_HEVC_DEC=0;";
@@ -343,22 +329,14 @@ class AVContextImpl
     this.mAppContext = null;
   }
   
-  public void enterRoom(final AVRoomMulti.EventListener paramEventListener, AVRoomMulti.EnterParam paramEnterParam)
+  public void enterRoom(AVRoomMulti.EventListener paramEventListener, AVRoomMulti.EnterParam paramEnterParam)
   {
     if (this.mAppContext != null) {
       nativeInitNetType(this.mNativeEntity, PhoneStatusTools.getNetWorkType(this.mAppContext));
     }
     Log.d("SdkJni", "enterRoom");
     if (paramEnterParam == null) {
-      MainThreadHelp.postRunnable(new Runnable()
-      {
-        public void run()
-        {
-          if (paramEventListener != null) {
-            paramEventListener.onEnterRoomComplete(1004, "enter param is null");
-          }
-        }
-      });
+      MainThreadHelp.postRunnable(new AVContextImpl.1(this, paramEventListener));
     }
     if ((paramEnterParam instanceof InternalEnterParam))
     {
@@ -503,7 +481,7 @@ class AVContextImpl
       initDeviceInfos(this.mAppContext);
       nativeSetTwoSecondReportPath(AVLoggerClient.getLogDir());
       nativeSetLocalConfigDirectory(this.mAppContext.getFilesDir().getAbsolutePath() + "/");
-      paramAVCallback = new AVStartCallback(paramStartParam, paramAVCallback);
+      paramAVCallback = new AVContextImpl.AVStartCallback(this, paramStartParam, paramAVCallback);
       nativeStart(this.mNativeEntity, paramStartParam, paramAVCallback);
       return;
       if (i == 0) {
@@ -528,7 +506,7 @@ class AVContextImpl
       initDeviceInfos(this.mAppContext);
       nativeSetTwoSecondReportPath(AVLoggerClient.getLogDir());
       nativeSetLocalConfigDirectory(this.mAppContext.getFilesDir().getAbsolutePath() + "/");
-      paramAVSDKLogSetting = new AVStartCallback(paramStartParam, paramAVCallback);
+      paramAVSDKLogSetting = new AVContextImpl.AVStartCallback(this, paramStartParam, paramAVCallback);
       nativeStart(this.mNativeEntity, paramStartParam, paramAVSDKLogSetting);
       return;
       if (i == 0) {
@@ -566,41 +544,10 @@ class AVContextImpl
   {
     nativeTestThreadKey();
   }
-  
-  class AVStartCallback
-    implements AVCallback
-  {
-    final AVCallback mCallback;
-    final AVContext.StartParam mStartParam;
-    
-    AVStartCallback(AVContext.StartParam paramStartParam, AVCallback paramAVCallback)
-    {
-      this.mStartParam = paramStartParam;
-      this.mCallback = paramAVCallback;
-      Log.e("SdkJni", "mStartParam.useSurfaceTexture = " + this.mStartParam.useSurfaceTexture);
-    }
-    
-    public void onComplete(int paramInt, String paramString)
-    {
-      Log.e("SdkJni", "mStartParam.useSurfaceTexture = " + this.mStartParam.useSurfaceTexture + paramInt + paramString);
-      if (paramInt == 0)
-      {
-        AVContextImpl.this.getAudioCtrl();
-        AVContextImpl.this.getVideoCtrl();
-        if (AVContextImpl.this.mVideoCtrl != null) {
-          AVContextImpl.this.mVideoCtrl.setUseSurfaceTexture(this.mStartParam.useSurfaceTexture);
-        }
-        AVContextImpl.this.setRenderMgr(GraphicRendererMgr.getInstance());
-      }
-      if (this.mCallback != null) {
-        this.mCallback.onComplete(paramInt, paramString);
-      }
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.TMG.sdk.AVContextImpl
  * JD-Core Version:    0.7.0.1
  */

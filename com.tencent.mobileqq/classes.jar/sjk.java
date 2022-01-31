@@ -1,45 +1,26 @@
-import android.os.Handler;
-import com.tencent.biz.common.util.OpenIdObserver;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.data.OpenID;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.qqstory.database.PublishVideoEntry;
 
-public class sjk
-  extends OpenIdObserver
+class sjk
+  implements wyh
 {
-  public sjk(ChatSettingForTroop paramChatSettingForTroop) {}
+  sjk(sjj paramsjj, wyi paramwyi, PublishVideoEntry paramPublishVideoEntry) {}
   
-  protected void a(boolean paramBoolean, OpenID paramOpenID)
+  public void a(wyi paramwyi)
   {
-    if ((this.a.isFinishing()) || (this.a.n)) {}
-    do
-    {
-      do
-      {
-        return;
-        this.a.s();
-        if (this.a.b != null) {
-          this.a.b.removeCallbacksAndMessages(null);
-        }
-        if ((!paramBoolean) || (paramOpenID == null) || (paramOpenID.openID == null)) {
-          break;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.chatopttroop", 2, "openIdObserver success");
-        }
-      } while (paramOpenID.openID.equals(this.a.d));
-      if (QLog.isColorLevel()) {
-        QLog.w("Q.chatopttroop", 2, "-->onGetOpenId--openid doesn't equal current openid");
-      }
-      this.a.C();
-      return;
-    } while (!QLog.isColorLevel());
-    QLog.d("Q.chatopttroop", 2, "openIdObserver fail");
+    this.jdField_a_of_type_Wyi.a(0);
+    this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.videoRangeEnd = 60000;
+    sjj.a(this.jdField_a_of_type_Sjj, "convertImageToVideo ");
+  }
+  
+  public void b(wyi paramwyi)
+  {
+    this.jdField_a_of_type_Wyi.a(paramwyi.a());
+    sjj.a(this.jdField_a_of_type_Sjj, "convertImageToVideo ");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     sjk
  * JD-Core Version:    0.7.0.1
  */

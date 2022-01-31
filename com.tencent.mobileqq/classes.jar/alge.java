@@ -1,22 +1,23 @@
-import com.tencent.mobileqq.worldcup.WorldCupShareFragment;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 class alge
-  implements Runnable
+  implements View.OnClickListener
 {
-  alge(algd paramalgd, String paramString) {}
+  alge(algb paramalgb) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    algf localalgf = new algf(this);
-    WXShareHelper.a().a(localalgf);
-    WorldCupShareFragment.b(this.jdField_a_of_type_Algd.a, String.valueOf(System.currentTimeMillis()));
-    WXShareHelper.a().a(this.jdField_a_of_type_JavaLangString, WorldCupShareFragment.a(this.jdField_a_of_type_Algd.a), 0, true, WorldCupShareFragment.c(this.jdField_a_of_type_Algd.a));
+    zva.a(algb.a(this.a), -3, "user canceled");
+    algb.a(this.a).a();
+    algb.a(this.a).dismiss();
+    algb.a(this.a, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     alge
  * JD-Core Version:    0.7.0.1
  */

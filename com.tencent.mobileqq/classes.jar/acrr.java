@@ -1,18 +1,22 @@
-public abstract interface acrr
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.aio.audiopanel.VoiceTextEditPanel;
+
+class acrr
+  implements View.OnTouchListener
 {
-  public abstract void a();
+  acrr(acrq paramacrq) {}
   
-  public abstract void b(int paramInt);
-  
-  public abstract void c(int paramInt);
-  
-  public abstract void d(int paramInt);
-  
-  public abstract void e(int paramInt);
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    acrq.a(this.a).a(paramMotionEvent);
+    return true;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     acrr
  * JD-Core Version:    0.7.0.1
  */

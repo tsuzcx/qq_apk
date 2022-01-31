@@ -1,39 +1,34 @@
-import android.graphics.Bitmap;
 import android.view.View;
-import android.widget.ImageView;
-import com.tencent.mobileqq.widget.SlideDetectListView;
-import com.tencent.open.agent.BindGroupActivity;
-import com.tencent.open.agent.BindGroupActivity.ViewHolder;
+import com.nineoldandroids.animation.Animator;
+import com.nineoldandroids.animation.Animator.AnimatorListener;
 
-public class alio
-  implements Runnable
+class alio
+  implements Animator.AnimatorListener
 {
-  public alio(BindGroupActivity paramBindGroupActivity, String paramString, Bitmap paramBitmap) {}
+  alio(alij paramalij, View paramView) {}
   
-  public void run()
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    int j = this.jdField_a_of_type_ComTencentOpenAgentBindGroupActivity.a.getChildCount();
-    int i = 0;
-    for (;;)
-    {
-      if (i < j)
-      {
-        BindGroupActivity.ViewHolder localViewHolder = (BindGroupActivity.ViewHolder)this.jdField_a_of_type_ComTencentOpenAgentBindGroupActivity.a.getChildAt(i).getTag();
-        if ((localViewHolder != null) && (this.jdField_a_of_type_JavaLangString.equals(localViewHolder.jdField_a_of_type_JavaLangString))) {
-          localViewHolder.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
-        }
-      }
-      else
-      {
-        return;
-      }
-      i += 1;
+    this.jdField_a_of_type_Alij.p();
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    this.jdField_a_of_type_Alij.p();
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    if (this.jdField_a_of_type_Alij.g) {
+      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     alio
  * JD-Core Version:    0.7.0.1
  */

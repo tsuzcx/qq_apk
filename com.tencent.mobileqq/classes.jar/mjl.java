@@ -1,38 +1,53 @@
-import android.widget.SeekBar;
-import android.widget.SeekBar.OnSeekBarChangeListener;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayManager;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayUtils;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoUIManager;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.net.wifi.WifiManager;
+import android.net.wifi.WifiManager.WifiLock;
 
 public class mjl
-  implements SeekBar.OnSeekBarChangeListener
 {
-  public mjl(VideoUIManager paramVideoUIManager) {}
+  int jdField_a_of_type_Int = 0;
+  Context jdField_a_of_type_AndroidContentContext = null;
+  WifiManager.WifiLock jdField_a_of_type_AndroidNetWifiWifiManager$WifiLock = null;
+  String jdField_a_of_type_JavaLangString = null;
   
-  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean) {}
-  
-  public void onStartTrackingTouch(SeekBar paramSeekBar) {}
-  
-  public void onStopTrackingTouch(SeekBar paramSeekBar)
+  public mjl(Context paramContext, int paramInt, String paramString)
   {
-    int i = paramSeekBar.getProgress();
-    int j = VideoUIManager.a(this.a).a();
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.readinjoy.video.VideoUIManager", 2, "onStopTrackingTouch(): progress=" + i + ", playState=" + VideoPlayUtils.a(j));
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public void a()
+  {
+    if (b())
+    {
+      this.jdField_a_of_type_AndroidNetWifiWifiManager$WifiLock.release();
+      this.jdField_a_of_type_AndroidNetWifiWifiManager$WifiLock = null;
     }
-    if (j == 3) {
-      VideoUIManager.a(this.a).a(i * 1000, VideoUIManager.a(this.a));
+  }
+  
+  public boolean a()
+  {
+    if (this.jdField_a_of_type_AndroidNetWifiWifiManager$WifiLock == null) {
+      this.jdField_a_of_type_AndroidNetWifiWifiManager$WifiLock = ((WifiManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("wifi")).createWifiLock(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
     }
-    while (j != 5) {
-      return;
+    if (this.jdField_a_of_type_AndroidNetWifiWifiManager$WifiLock != null)
+    {
+      if (!this.jdField_a_of_type_AndroidNetWifiWifiManager$WifiLock.isHeld()) {
+        this.jdField_a_of_type_AndroidNetWifiWifiManager$WifiLock.acquire();
+      }
+      return true;
     }
-    VideoUIManager.a(this.a).c(i * 1000);
+    return false;
+  }
+  
+  public boolean b()
+  {
+    return (this.jdField_a_of_type_AndroidNetWifiWifiManager$WifiLock != null) && (this.jdField_a_of_type_AndroidNetWifiWifiManager$WifiLock.isHeld());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     mjl
  * JD-Core Version:    0.7.0.1
  */

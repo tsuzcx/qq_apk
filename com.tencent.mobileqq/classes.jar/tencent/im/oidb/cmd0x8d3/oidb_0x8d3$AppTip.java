@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class oidb_0x8d3$AppTip
-  extends MessageMicro
+  extends MessageMicro<AppTip>
 {
   public static final int BYTES_ICON_FIELD_NUMBER = 2;
   public static final int BYTES_TOOLTIP_FIELD_NUMBER = 4;
@@ -33,7 +33,7 @@ public final class oidb_0x8d3$AppTip
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     tencent.im.oidb.cmd0x8d3.oidb_0x8d3.AppTip
  * JD-Core Version:    0.7.0.1
  */

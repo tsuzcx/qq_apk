@@ -5,20 +5,21 @@ import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
 import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoModule;
-import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoModule.RefreshUserInfoCallBack;
 import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
-import mms;
 import mqq.os.MqqHandler;
+import obz;
+import oqi;
+import qsa;
 
 public class ReadInJoyNickNameTextView
   extends TextView
-  implements ReadInJoyUserInfoModule.RefreshUserInfoCallBack
+  implements oqi
 {
   private long jdField_a_of_type_Long;
+  private qsa jdField_a_of_type_Qsa;
   private boolean jdField_a_of_type_Boolean;
   
   public ReadInJoyNickNameTextView(Context paramContext)
@@ -38,15 +39,20 @@ public class ReadInJoyNickNameTextView
   
   private void a(ReadInJoyUserInfo paramReadInJoyUserInfo, boolean paramBoolean)
   {
-    if (paramReadInJoyUserInfo == null) {
-      return;
-    }
-    if (this.jdField_a_of_type_Boolean)
+    if (paramReadInJoyUserInfo == null) {}
+    for (;;)
     {
-      setText(ReadInJoyUtils.e(paramReadInJoyUserInfo.nick));
       return;
+      if (this.jdField_a_of_type_Boolean) {
+        setText(obz.d(paramReadInJoyUserInfo.nick));
+      }
+      while (this.jdField_a_of_type_Qsa != null)
+      {
+        this.jdField_a_of_type_Qsa.a(paramReadInJoyUserInfo.nick);
+        return;
+        setText(paramReadInJoyUserInfo.nick);
+      }
     }
-    setText(paramReadInJoyUserInfo.nick);
   }
   
   public void a(String paramString, ReadInJoyUserInfo paramReadInJoyUserInfo)
@@ -54,7 +60,7 @@ public class ReadInJoyNickNameTextView
     if ((!TextUtils.equals(paramString, String.valueOf(this.jdField_a_of_type_Long))) || (paramReadInJoyUserInfo == null)) {
       return;
     }
-    ThreadManager.getUIHandler().post(new mms(this, paramReadInJoyUserInfo));
+    ThreadManager.getUIHandler().post(new ReadInJoyNickNameTextView.1(this, paramReadInJoyUserInfo));
   }
   
   public void a(String paramString1, String paramString2)
@@ -75,14 +81,15 @@ public class ReadInJoyNickNameTextView
     this.jdField_a_of_type_Long = paramLong;
     this.jdField_a_of_type_Boolean = paramBoolean;
     Object localObject = ReadInJoyUserInfoModule.a(this.jdField_a_of_type_Long, this);
+    String str = ReadInJoyUserInfoModule.a();
     if (localObject == null)
     {
-      if (this.jdField_a_of_type_Boolean) {}
-      for (localObject = ReadInJoyUtils.e(String.valueOf(paramLong));; localObject = String.valueOf(paramLong))
-      {
-        setText((CharSequence)localObject);
-        return;
+      localObject = str;
+      if (this.jdField_a_of_type_Boolean) {
+        localObject = obz.d(str);
       }
+      setText((CharSequence)localObject);
+      return;
     }
     a((ReadInJoyUserInfo)localObject, this.jdField_a_of_type_Boolean);
   }
@@ -113,6 +120,11 @@ public class ReadInJoyNickNameTextView
       }
     }
     setNickNameByUin(l1, paramBoolean);
+  }
+  
+  public void setOnSetNickNameListener(qsa paramqsa)
+  {
+    this.jdField_a_of_type_Qsa = paramqsa;
   }
 }
 

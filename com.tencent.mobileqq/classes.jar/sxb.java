@@ -1,17 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.FriendProfileImageActivity;
+import com.tencent.biz.qqstory.shareGroup.model.ShareGroupItem;
+import java.util.List;
 
 public class sxb
-  implements DialogInterface.OnClickListener
+  extends sfo
 {
-  public sxb(FriendProfileImageActivity paramFriendProfileImageActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public ShareGroupItem a;
+  public String a;
+  public List<ShareGroupItem> a;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     sxb
  * JD-Core Version:    0.7.0.1
  */

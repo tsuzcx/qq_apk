@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class appoint_define$InterestItem
-  extends MessageMicro
+  extends MessageMicro<InterestItem>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34, 42, 50, 58, 64, 72, 82, 90, 96 }, new String[] { "uint64_tag_id", "str_tag_name", "str_tag_icon_url", "str_tag_href", "str_tag_back_color", "str_tag_font_color", "str_tag_vid", "uint32_tag_type", "uint32_add_time", "str_tag_category", "str_tag_other_url", "uint32_bid" }, new Object[] { Long.valueOf(0L), "", "", "", "", "", "", Integer.valueOf(0), Integer.valueOf(0), "", "", Integer.valueOf(0) }, InterestItem.class);
   public final PBStringField str_tag_back_color = PBField.initString("");

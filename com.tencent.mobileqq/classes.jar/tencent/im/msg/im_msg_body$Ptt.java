@@ -11,7 +11,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class im_msg_body$Ptt
-  extends MessageMicro
+  extends MessageMicro<Ptt>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBoolField bool_valid = PBField.initBool(false);
@@ -26,7 +26,7 @@ public final class im_msg_body$Ptt
   public final PBBytesField bytes_reserve = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField bytes_shortcut = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField bytes_signature = PBField.initBytes(ByteStringMicro.EMPTY);
-  public final PBRepeatField rpt_bytes_ptt_urls = PBField.initRepeat(PBBytesField.__repeatHelper__);
+  public final PBRepeatField<ByteStringMicro> rpt_bytes_ptt_urls = PBField.initRepeat(PBBytesField.__repeatHelper__);
   public final PBUInt32Field uint32_download_flag = PBField.initUInt32(0);
   public final PBUInt32Field uint32_file_id = PBField.initUInt32(0);
   public final PBUInt32Field uint32_file_size = PBField.initUInt32(0);

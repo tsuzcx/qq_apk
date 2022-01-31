@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBStringField;
 
 public final class GetAppInfoProto$MsgIconsurl
-  extends MessageMicro
+  extends MessageMicro<MsgIconsurl>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18 }, new String[] { "size", "url" }, new Object[] { "", "" }, MsgIconsurl.class);
   public final PBStringField size = PBField.initString("");

@@ -1,39 +1,38 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.emosm.Client.onRemoteRespObserver;
-import com.tencent.mobileqq.emosm.DataFactory;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.redtouch.RedTouchWebviewHandler;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
-import java.util.ArrayList;
-import org.json.JSONObject;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.richmedia.VideoFilterViewPager;
+import com.tencent.qphone.base.util.QLog;
 
-class ahkm
-  implements Runnable
+public class ahkm
+  implements Animation.AnimationListener
 {
-  ahkm(ahkl paramahkl, String paramString1, JSONObject paramJSONObject, BusinessInfoCheckUpdate.AppInfo paramAppInfo, int paramInt1, int paramInt2, ArrayList paramArrayList, String paramString2, String paramString3) {}
+  private int jdField_a_of_type_Int;
+  private ahkn jdField_a_of_type_Ahkn;
   
-  public void run()
+  public ahkm(VideoFilterViewPager paramVideoFilterViewPager, ahkn paramahkn, int paramInt)
   {
-    this.jdField_a_of_type_Ahkl.a.callJs(this.jdField_a_of_type_JavaLangString, new String[] { this.jdField_a_of_type_OrgJsonJSONObject.toString() });
-    Object localObject = "";
-    if (this.jdField_a_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo != null) {
-      localObject = RedTouchWebviewHandler.access$100(this.jdField_a_of_type_Ahkl.a, this.jdField_a_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo.buffer.get());
-    }
-    Bundle localBundle = new Bundle();
-    localBundle.putString("ret", String.valueOf(this.jdField_a_of_type_Int));
-    localBundle.putString("buffer", (String)localObject);
-    localBundle.putString("red", String.valueOf(this.jdField_b_of_type_Int));
-    localBundle.putStringArrayList("missions", this.jdField_a_of_type_JavaUtilArrayList);
-    localBundle.putString("path", this.jdField_b_of_type_JavaLangString);
-    localBundle.putString("serial", this.c);
-    localBundle.putString("callback", this.jdField_a_of_type_JavaLangString);
-    localObject = DataFactory.a("redTouch_getAppInfo_report", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Ahkl.a.mOnRemoteResp.key, localBundle);
-    this.jdField_a_of_type_Ahkl.a.sendRemoteReq((Bundle)localObject, false, true);
+    this.jdField_a_of_type_Ahkn = paramahkn;
+    this.jdField_a_of_type_Int = paramInt;
   }
+  
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    if ((this.jdField_a_of_type_Ahkn != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaVideoFilterViewPager.getCurrentItem() == this.jdField_a_of_type_Int))
+    {
+      this.jdField_a_of_type_Ahkn.a(1);
+      if (QLog.isColorLevel()) {
+        QLog.d("VideoFilterViewPager", 2, "OnViewPagerItemVisiableChangeListener animation dismiss state: 1");
+      }
+    }
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ahkm
  * JD-Core Version:    0.7.0.1
  */

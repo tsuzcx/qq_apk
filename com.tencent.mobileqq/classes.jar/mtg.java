@@ -1,49 +1,56 @@
-import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayerWrapper;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsPlayManager;
+import android.view.View;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener.Adapter;
+import com.tencent.image.URLImageView;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.Timer;
 
-public class mtg
-  implements Runnable
+class mtg
+  extends URLDrawableDownListener.Adapter
 {
-  public mtg(FastWebVideoFeedsPlayManager paramFastWebVideoFeedsPlayManager) {}
+  mtg(mtc parammtc) {}
   
-  public void run()
+  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
   {
-    if (FastWebVideoFeedsPlayManager.a(this.a) == null) {
-      return;
+    super.onLoadCancelled(paramView, paramURLDrawable);
+    if (QLog.isColorLevel()) {
+      QLog.d("AccountDetailBaseAdapter", 2, "onLoadCancelled");
     }
-    if (FastWebVideoFeedsPlayManager.a(this.a) != null) {
-      FastWebVideoFeedsPlayManager.a(this.a).cancel();
+  }
+  
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
+  {
+    super.onLoadFailed(paramView, paramURLDrawable, paramThrowable);
+    if (!this.a.f) {
+      this.a.l();
     }
-    WeakReference localWeakReference1 = new WeakReference(FastWebVideoFeedsPlayManager.a(this.a));
-    WeakReference localWeakReference2 = new WeakReference(FastWebVideoFeedsPlayManager.a(this.a));
-    long l = FastWebVideoFeedsPlayManager.a(this.a).b();
-    int i;
-    if (l >= 30000L) {
-      i = 100;
+    if (QLog.isColorLevel()) {
+      QLog.d("AccountDetailBaseAdapter", 2, "onLoadFailed ,cause = " + paramThrowable);
     }
-    for (;;)
+  }
+  
+  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
+  {
+    super.onLoadInterrupted(paramView, paramURLDrawable, paramInterruptedException);
+    if (QLog.isColorLevel()) {
+      QLog.d("AccountDetailBaseAdapter", 2, "onLoadInterrupted");
+    }
+  }
+  
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  {
+    if (paramView == null) {}
+    do
     {
-      try
-      {
-        FastWebVideoFeedsPlayManager.a(this.a, new Timer());
-        FastWebVideoFeedsPlayManager.a(this.a).schedule(new mth(this, localWeakReference1, localWeakReference2), 0L, i);
-        return;
-      }
-      catch (Exception localException) {}
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.e("Q.pubaccount.video.feeds.FastWebVideoFeedsPlayManager", 2, "innerStartShowProgress() mProgressTimer.schedule ERROR = " + localException.getMessage());
       return;
-      if ((l >= 10000L) && (l <= 30000L)) {
-        i = 40;
-      } else {
-        i = 20;
+      this.a.k();
+      if ((paramView instanceof ImageView))
+      {
+        ((URLImageView)paramView).setImageDrawable(paramURLDrawable);
+        paramView.requestLayout();
       }
-    }
+    } while (!QLog.isColorLevel());
+    QLog.d("AccountDetailBaseAdapter", 2, "onLoadSuccessed");
   }
 }
 

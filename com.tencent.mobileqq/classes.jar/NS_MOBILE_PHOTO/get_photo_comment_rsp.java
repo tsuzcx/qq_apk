@@ -13,13 +13,13 @@ public final class get_photo_comment_rsp
   extends JceStruct
 {
   static cell_comment cache_comment = new cell_comment();
-  static Map cache_extend_info;
+  static Map<String, String> cache_extend_info;
   static cell_like cache_like = new cell_like();
   static cell_visitor cache_visitor = new cell_visitor();
   public String albumid = "";
   public String attach_info = "";
   public cell_comment comment;
-  public Map extend_info;
+  public Map<String, String> extend_info;
   public boolean hasmore = true;
   public cell_like like;
   public String photoid = "";
@@ -35,7 +35,7 @@ public final class get_photo_comment_rsp
   
   public get_photo_comment_rsp() {}
   
-  public get_photo_comment_rsp(boolean paramBoolean, String paramString1, cell_comment paramcell_comment, cell_like paramcell_like, cell_visitor paramcell_visitor, long paramLong, String paramString2, String paramString3, String paramString4, Map paramMap)
+  public get_photo_comment_rsp(boolean paramBoolean, String paramString1, cell_comment paramcell_comment, cell_like paramcell_like, cell_visitor paramcell_visitor, long paramLong, String paramString2, String paramString3, String paramString4, Map<String, String> paramMap)
   {
     this.hasmore = paramBoolean;
     this.attach_info = paramString1;

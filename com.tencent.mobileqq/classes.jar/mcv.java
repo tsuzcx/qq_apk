@@ -1,60 +1,28 @@
-import android.content.Context;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.widget.ArrayAdapter;
-import com.tencent.biz.pubaccount.readinjoy.struct.TagInfo;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.LinkedHashSet;
-import java.util.Set;
+import com.tencent.qphone.base.util.QLog;
 
-public class mcv
-  extends ArrayAdapter
+final class mcv
+  implements mcf
 {
-  final Set a = new LinkedHashSet();
-  
-  public mcv(@NonNull Context paramContext, int paramInt)
+  public void a(int paramInt)
   {
-    super(paramContext, paramInt);
+    QLog.i("QavRecordUtils", 1, "convertMp3ToPcm onError " + paramInt);
+    mct.a(false, paramInt);
   }
   
-  public void a(@Nullable TagInfo paramTagInfo)
+  public void a(String paramString)
   {
-    if (!this.a.contains(paramTagInfo))
-    {
-      this.a.add(paramTagInfo);
-      super.add(paramTagInfo);
-    }
+    QLog.i("QavRecordUtils", 1, "convertMp3ToPcm onStart " + paramString);
   }
   
-  public void a(TagInfo... paramVarArgs)
+  public void b(String paramString)
   {
-    addAll(Arrays.asList(paramVarArgs));
-  }
-  
-  public void addAll(@NonNull Collection paramCollection)
-  {
-    paramCollection = new LinkedHashSet(paramCollection);
-    paramCollection.removeAll(this.a);
-    this.a.addAll(paramCollection);
-    super.addAll(paramCollection);
-  }
-  
-  public void b(@Nullable TagInfo paramTagInfo)
-  {
-    this.a.remove(paramTagInfo);
-    super.remove(paramTagInfo);
-  }
-  
-  public void clear()
-  {
-    super.clear();
-    this.a.clear();
+    QLog.i("QavRecordUtils", 1, "convertMp3ToPcm onFinish " + paramString);
+    mct.a(true, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     mcv
  * JD-Core Version:    0.7.0.1
  */

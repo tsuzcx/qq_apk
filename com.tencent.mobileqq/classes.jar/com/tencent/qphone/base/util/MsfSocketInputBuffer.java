@@ -1,6 +1,6 @@
 package com.tencent.qphone.base.util;
 
-import com.tencent.mobileqq.msf.core.net.l;
+import com.tencent.mobileqq.msf.core.net.m;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InterruptedIOException;
@@ -13,12 +13,11 @@ public class MsfSocketInputBuffer
   extends AbsSessionInputBuffer
 {
   private static final Class SOCKET_TIMEOUT_CLASS = ;
-  private int inputBufferSize;
+  private int inputBufferSize = 0;
   public InputStream instream;
   private final Socket socket;
   
   public MsfSocketInputBuffer(Socket paramSocket, int paramInt1, String paramString, int paramInt2)
-    throws IOException
   {
     if (paramSocket == null) {
       throw new IllegalArgumentException("Socket may not be null");
@@ -35,8 +34,8 @@ public class MsfSocketInputBuffer
       for (;;)
       {
         paramSocket = paramSocket.getInputStream();
-        if (!l.n.contains(paramSocket.toString())) {
-          l.n.add(paramSocket.toString());
+        if (!m.q.contains(paramSocket.toString())) {
+          m.q.add(paramSocket.toString());
         }
         init(paramSocket, paramInt1, paramString, paramInt2);
         return;
@@ -64,7 +63,6 @@ public class MsfSocketInputBuffer
   }
   
   protected int fillBuffer()
-    throws IOException
   {
     if (this.bufferpos > 0)
     {
@@ -111,7 +109,6 @@ public class MsfSocketInputBuffer
   }
   
   public boolean isDataAvailable(int paramInt)
-    throws IOException
   {
     boolean bool1 = hasBufferedData();
     boolean bool2 = bool1;

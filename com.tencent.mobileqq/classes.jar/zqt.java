@@ -1,19 +1,30 @@
-import android.os.Process;
-import com.tencent.mobileqq.app.ProcessExitReceiver;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.MobileQQ;
+import java.util.HashMap;
+import java.util.Observable;
 
 public class zqt
-  implements Runnable
+  extends Observable
 {
-  public zqt(ProcessExitReceiver paramProcessExitReceiver) {}
+  private static zqt a;
+  public HashMap<String, String> a;
   
-  public void run()
+  public static zqt a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ProcessExitReceiver", 2, "Kill process " + MobileQQ.getMobileQQ().getProcessName());
+    if (jdField_a_of_type_Zqt == null) {}
+    try
+    {
+      if (jdField_a_of_type_Zqt == null) {
+        jdField_a_of_type_Zqt = new zqt();
+      }
+      return jdField_a_of_type_Zqt;
     }
-    Process.killProcess(Process.myPid());
+    finally {}
+  }
+  
+  public void a(HashMap<String, String> paramHashMap)
+  {
+    this.jdField_a_of_type_JavaUtilHashMap = paramHashMap;
+    setChanged();
+    notifyObservers();
   }
 }
 

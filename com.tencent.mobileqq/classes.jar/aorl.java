@@ -1,42 +1,20 @@
-import android.content.Intent;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.shortvideo.ShortVideoBusiManager;
-import dov.com.tencent.mobileqq.shortvideo.ShortVideoReq;
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-class aorl
-  implements Runnable
+final class aorl
+  implements View.OnClickListener
 {
-  aorl(aork paramaork) {}
+  aorl(Activity paramActivity, String paramString) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (this.a.jdField_a_of_type_AndroidContentIntent != null)
-    {
-      int i = this.a.jdField_a_of_type_AndroidContentIntent.getIntExtra("file_send_business_type", 2);
-      if (QLog.isColorLevel()) {
-        QLog.d("SendVideoActivity", 2, "#SendTask# run(), busiType = " + i + ",VideoFileDir = " + this.a.jdField_a_of_type_AndroidContentIntent.getStringExtra("file_video_source_dir"));
-      }
-      int j = this.a.jdField_a_of_type_AndroidContentIntent.getIntExtra("uintype", -1);
-      if (j == 9501) {
-        i = 4;
-      }
-      ShortVideoReq localShortVideoReq = ShortVideoBusiManager.a(0, i);
-      localShortVideoReq.a(ShortVideoBusiManager.a(this.a.jdField_a_of_type_AndroidContentIntent, localShortVideoReq));
-      if ((j != 9501) || (QLog.isColorLevel())) {
-        QLog.d("SendVideoActivity", 2, "#SendTask# run(): success");
-      }
-    }
-    if (!this.a.jdField_a_of_type_Boolean)
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.setResult(-1, this.a.jdField_a_of_type_AndroidContentIntent);
-      this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.finish();
-    }
+    apck.b(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aorl
  * JD-Core Version:    0.7.0.1
  */

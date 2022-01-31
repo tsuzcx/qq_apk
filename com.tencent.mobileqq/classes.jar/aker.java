@@ -1,26 +1,21 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.mobileqq.trooppiceffects.view.PhantomPicView;
+import android.content.ContentValues;
 
-class aker
-  implements Animator.AnimatorListener
+public class aker
+  extends akek
 {
-  aker(akeq paramakeq) {}
-  
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public aker(String paramString1, int paramInt1, String paramString2, ContentValues paramContentValues, String paramString3, String[] paramArrayOfString, int paramInt2, akes paramakes)
   {
-    this.a.a.c();
+    super(paramString1, paramInt1, paramString2, paramContentValues, paramString3, paramArrayOfString, paramInt2, paramakes);
   }
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
+  public aker(String paramString1, int paramInt1, String paramString2, atmo paramatmo, int paramInt2, akes paramakes)
+  {
+    super(paramString1, paramInt1, paramString2, paramatmo, paramInt2, paramakes);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aker
  * JD-Core Version:    0.7.0.1
  */

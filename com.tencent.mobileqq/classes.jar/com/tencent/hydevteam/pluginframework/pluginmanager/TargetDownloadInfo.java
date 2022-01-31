@@ -6,6 +6,8 @@ import com.tencent.hydevteam.common.annotation.API;
 public class TargetDownloadInfo
 {
   @API
+  public boolean forceUpdate;
+  @API
   public final String hash;
   @API
   public final long size;
@@ -17,6 +19,14 @@ public class TargetDownloadInfo
     this.url = paramString1;
     this.hash = paramString2;
     this.size = paramLong;
+  }
+  
+  public TargetDownloadInfo(String paramString1, String paramString2, long paramLong, boolean paramBoolean)
+  {
+    this.url = paramString1;
+    this.hash = paramString2;
+    this.size = paramLong;
+    this.forceUpdate = paramBoolean;
   }
 }
 

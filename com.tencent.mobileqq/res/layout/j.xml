@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:clipChildren="false" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <HorizontalScrollView android:id="@id/l47" android:focusable="false" android:focusableInTouchMode="false" android:scrollbars="none" android:fadingEdge="none" android:clipChildren="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:overScrollMode="never">
+        <LinearLayout android:layout_gravity="center_vertical" android:orientation="horizontal" android:id="@id/l3z" android:paddingLeft="15.0dip" android:paddingRight="15.0dip" android:clipChildren="false" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <com.tencent.widget.GridView android:layout_gravity="center" android:id="@id/l3y" android:focusable="false" android:focusableInTouchMode="false" android:scrollbars="none" android:fadingEdge="none" android:clipChildren="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="20.0dip" android:listSelector="@color/ajr" android:cacheColorHint="@null" android:horizontalSpacing="10.0dip" android:verticalSpacing="0.0dip" android:stretchMode="none" />
+        </LinearLayout>
+    </HorizontalScrollView>
+</LinearLayout>

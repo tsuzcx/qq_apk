@@ -1,17 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import dov.com.qq.im.QIMCameraCaptureUnit;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.widget.RelativeLayout;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendGroupFragment;
 
 public class anqu
-  implements DialogInterface.OnClickListener
+  extends RecyclerView.ViewHolder
 {
-  public anqu(QIMCameraCaptureUnit paramQIMCameraCaptureUnit) {}
+  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
+  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public anqu(ExtendFriendGroupFragment paramExtendFriendGroupFragment, View paramView)
+  {
+    super(paramView);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView);
+    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131302061));
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     anqu
  * JD-Core Version:    0.7.0.1
  */

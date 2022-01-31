@@ -1,22 +1,22 @@
-import com.tencent.mobileqq.app.automator.Automator;
-import com.tencent.mobileqq.app.automator.step.QQComicStep;
-import cooperation.comic.VipComicNavConfigHelper;
-import cooperation.comic.VipComicSoHelper;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
 
-class zxt
-  implements Runnable
+public class zxt
+  implements DialogInterface.OnClickListener
 {
-  zxt(zxs paramzxs) {}
+  public zxt(AddFriendVerifyActivity paramAddFriendVerifyActivity, String paramString, int paramInt) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    VipComicNavConfigHelper.a(QQComicStep.b(this.a.a).b);
-    VipComicSoHelper.a(QQComicStep.c(this.a.a).b);
+    baoz.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity, "mvip.n.a.gnew_apply", this.jdField_a_of_type_JavaLangString, 3, false, false, "", "", true, true);
+    awqx.b(null, "dc00898", "", "", "qq_vip", "0X800A4FB", this.jdField_a_of_type_Int, 0, "", "", "", "");
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     zxt
  * JD-Core Version:    0.7.0.1
  */

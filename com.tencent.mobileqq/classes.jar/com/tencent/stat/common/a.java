@@ -8,7 +8,6 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 public class a
@@ -48,7 +47,6 @@ public class a
   }
   
   public static void a(Context paramContext, Map<String, String> paramMap)
-    throws JSONException
   {
     if (paramMap == null) {}
     for (;;)
@@ -64,7 +62,6 @@ public class a
   }
   
   public void a(JSONObject paramJSONObject, Thread paramThread)
-    throws JSONException
   {
     JSONObject localJSONObject = new JSONObject();
     try

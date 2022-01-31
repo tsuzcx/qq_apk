@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class submsgtype0x98$MsgBody
-  extends MessageMicro
+  extends MessageMicro<MsgBody>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26 }, new String[] { "uint64_uin", "uint32_sub_cmd", "msg_mod_block" }, new Object[] { Long.valueOf(0L), Integer.valueOf(0), null }, MsgBody.class);
   public submsgtype0x98.ModBlock msg_mod_block = new submsgtype0x98.ModBlock();

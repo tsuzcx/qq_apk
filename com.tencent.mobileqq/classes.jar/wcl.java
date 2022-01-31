@@ -1,31 +1,15 @@
-import android.os.Bundle;
-import android.os.Handler;
-import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
-import mqq.observer.BusinessObserver;
+import com.tencent.biz.subscribe.event.SimpleBaseEvent;
+import java.util.ArrayList;
 
-public class wcl
-  implements BusinessObserver
+public abstract interface wcl<T extends SimpleBaseEvent>
 {
-  public wcl(PublicAccountChatPie paramPublicAccountChatPie) {}
+  public abstract ArrayList<Class<T>> a();
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
-  {
-    if (paramBundle != null)
-    {
-      paramInt = paramBundle.getInt("update_type");
-      if (paramInt != 2) {}
-    }
-    else
-    {
-      return;
-    }
-    if (paramInt == 1) {}
-    this.a.a.sendEmptyMessage(2);
-  }
+  public abstract void a(SimpleBaseEvent paramSimpleBaseEvent);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wcl
  * JD-Core Version:    0.7.0.1
  */

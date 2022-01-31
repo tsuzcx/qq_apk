@@ -1,138 +1,117 @@
-import com.tencent.biz.pubaccount.util.ShareStructLongMessageManager;
-import com.tencent.mobileqq.app.MessageObserver;
+import android.content.Context;
+import android.text.TextUtils;
+import android.view.LayoutInflater;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.view.ResizeURLImageView;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pic.UpCallBack;
-import com.tencent.mobileqq.pic.UpCallBack.SendResult;
-import com.tencent.mobileqq.service.message.MessageProtoCodec;
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
-import tencent.im.msg.im_msg_body.Elem;
-import tencent.im.msg.im_msg_body.RichMsg;
-import tencent.im.msg.im_msg_body.RichText;
-import tencent.im.msg.im_msg_body.Text;
+import java.net.URL;
+import org.json.JSONObject;
 
 public class nap
-  implements UpCallBack
+  extends nak
 {
-  public nap(ShareStructLongMessageManager paramShareStructLongMessageManager, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface, MessageObserver paramMessageObserver, boolean paramBoolean) {}
+  private sch a;
+  public int d;
+  public String d;
+  public int e;
   
-  public MessageRecord a(im_msg_body.RichText paramRichText)
+  public static nap a(JSONObject paramJSONObject)
   {
+    if (paramJSONObject == null) {}
+    for (;;)
+    {
+      return null;
+      try
+      {
+        nap localnap = new nap();
+        localnap.jdField_d_of_type_JavaLangString = paramJSONObject.optString("imageUrl");
+        localnap.jdField_d_of_type_Int = paramJSONObject.optInt("imageWidth");
+        localnap.e = paramJSONObject.optInt("imageHeight");
+        boolean bool = TextUtils.isEmpty(localnap.jdField_d_of_type_JavaLangString);
+        if (!bool) {
+          return localnap;
+        }
+      }
+      catch (Exception paramJSONObject)
+      {
+        paramJSONObject.printStackTrace();
+      }
+    }
     return null;
   }
   
-  public void a(UpCallBack.SendResult paramSendResult) {}
-  
-  public void b(UpCallBack.SendResult paramSendResult)
+  public View a(Context paramContext, String paramString1, String paramString2, String paramString3, int paramInt, nac paramnac, boolean paramBoolean)
   {
-    MessageForStructing localMessageForStructing;
-    Object localObject1;
-    Object localObject2;
-    Object localObject3;
-    for (;;)
+    super.a(paramContext, paramString1, paramString2, paramString3, paramInt, paramnac, paramBoolean);
+    paramString1 = LayoutInflater.from(paramContext).inflate(2131494403, null);
+    paramString2 = (ResizeURLImageView)paramString1.findViewById(2131305935);
+    if (!TextUtils.isEmpty(this.jdField_d_of_type_JavaLangString)) {}
+    try
     {
-      try
-      {
-        if (paramSendResult.jdField_a_of_type_Int != 0) {
-          break label541;
-        }
-        if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord instanceof MessageForStructing))
-        {
-          localMessageForStructing = (MessageForStructing)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-          if (localMessageForStructing.richText != null) {
-            break label306;
-          }
-          localObject1 = MessageProtoCodec.a(localMessageForStructing);
-          if (localObject1 == null) {
-            break label283;
-          }
-          localObject2 = ((im_msg_body.RichText)localObject1).elems.get();
-          if (QLog.isColorLevel()) {
-            QLog.d("ShareStructLongMessageManager", 2, "current uid is" + paramSendResult.c);
-          }
-          localObject2 = ((List)localObject2).iterator();
-          if (!((Iterator)localObject2).hasNext()) {
-            break;
-          }
-          localObject3 = (im_msg_body.Elem)((Iterator)localObject2).next();
-          if (((im_msg_body.Elem)localObject3).rich_msg.has())
-          {
-            ((im_msg_body.Elem)localObject3).rich_msg.bytes_msg_resid.set(ByteStringMicro.copyFrom(paramSendResult.c.getBytes()));
-            ((im_msg_body.Elem)localObject3).rich_msg.bytes_template_1.set(ByteStringMicro.EMPTY);
-            continue;
-          }
-        }
-        else
-        {
-          return;
-        }
+      paramString3 = new URL(this.jdField_d_of_type_JavaLangString);
+      paramString2.a(paramString3);
+      if (rcv.a().a(paramString3)) {
+        this.jdField_a_of_type_Int = 2;
       }
-      catch (Exception paramSendResult)
+      for (;;)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("ShareStructLongMessageManager", 2, "upload  msg pack failed, catch exception", paramSendResult);
-        }
-        this.jdField_a_of_type_ComTencentBizPubaccountUtilShareStructLongMessageManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
-      }
-      if ((((im_msg_body.Elem)localObject3).text.has()) && (((im_msg_body.Elem)localObject3).text.str.has()))
-      {
-        String str = ((im_msg_body.Elem)localObject3).text.str.get().toStringUtf8();
-        if (str.length() > 500)
-        {
-          str = str.substring(0, 500);
-          ((im_msg_body.Elem)localObject3).text.str.set(ByteStringMicro.copyFromUtf8(str));
-        }
+        a(paramContext, paramString1);
+        return paramString1;
+        this.jdField_a_of_type_Int = 1;
+        this.jdField_a_of_type_Sch = new naq(this, paramString1, paramString2);
+        paramString2.setPublicAccountImageDownListener(this.jdField_a_of_type_Sch);
+        paramString1.findViewById(2131303815).setVisibility(0);
       }
     }
-    localMessageForStructing.richText = ((im_msg_body.RichText)localObject1);
-    for (;;)
+    catch (Exception paramString2)
     {
-      label283:
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver, this.jdField_a_of_type_Boolean);
+      for (;;)
+      {
+        paramString2.printStackTrace();
+      }
+    }
+  }
+  
+  public void a()
+  {
+    super.a();
+    if (this.jdField_a_of_type_Int == 3) {
+      d();
+    }
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
+    {
+      nau localnau = (nau)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(248);
+      if (localnau != null) {
+        localnau.a(this.jdField_d_of_type_JavaLangString);
+      }
+    }
+  }
+  
+  public void c()
+  {
+    super.c();
+    this.jdField_a_of_type_Sch = null;
+  }
+  
+  public void d()
+  {
+    this.jdField_a_of_type_Int = 1;
+    this.jdField_a_of_type_AndroidViewView.findViewById(2131303815).setVisibility(0);
+    this.jdField_a_of_type_AndroidViewView.findViewById(2131300292).setVisibility(8);
+    try
+    {
+      URL localURL = new URL(this.jdField_d_of_type_JavaLangString);
+      ((ResizeURLImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131305935)).a(localURL);
       return;
-      label306:
-      localObject1 = localMessageForStructing.richText.elems.get();
-      if (QLog.isColorLevel()) {
-        QLog.d("ShareStructLongMessageManager", 2, "current uid is" + paramSendResult.c);
-      }
-      if ((localObject1 != null) && (ShareStructLongMessageManager.b(localMessageForStructing.structingMsg)))
-      {
-        localObject1 = ((List)localObject1).iterator();
-        while (((Iterator)localObject1).hasNext())
-        {
-          localObject2 = (im_msg_body.Elem)((Iterator)localObject1).next();
-          if (((im_msg_body.Elem)localObject2).rich_msg.has())
-          {
-            ((im_msg_body.Elem)localObject2).rich_msg.bytes_msg_resid.set(ByteStringMicro.copyFrom(paramSendResult.c.getBytes()));
-            ((im_msg_body.Elem)localObject2).rich_msg.bytes_template_1.set(ByteStringMicro.EMPTY);
-            ((im_msg_body.Elem)localObject2).rich_msg.uint32_service_id.set(localMessageForStructing.structingMsg.mMsgServiceID);
-          }
-          else if ((((im_msg_body.Elem)localObject2).text.has()) && (((im_msg_body.Elem)localObject2).text.str.has()))
-          {
-            localObject3 = ((im_msg_body.Elem)localObject2).text.str.get().toStringUtf8();
-            if (((String)localObject3).length() > 500)
-            {
-              localObject3 = ((String)localObject3).substring(0, 500);
-              ((im_msg_body.Elem)localObject2).text.str.set(ByteStringMicro.copyFromUtf8((String)localObject3));
-            }
-          }
-        }
-      }
     }
-    label541:
-    if (QLog.isColorLevel()) {
-      QLog.d("ShareStructLongMessageManager", 2, "upload  msg pack failed, result.errStr=" + paramSendResult.b + ",result.errStr=" + paramSendResult.jdField_a_of_type_JavaLangString);
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
     }
-    this.jdField_a_of_type_ComTencentBizPubaccountUtilShareStructLongMessageManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
   }
 }
 

@@ -5,7 +5,7 @@ import com.tencent.mobileqq.app.ThreadManager;
 public class ManageThread
   extends Step
 {
-  protected boolean a()
+  protected boolean doStep()
   {
     ThreadManager.init();
     return true;

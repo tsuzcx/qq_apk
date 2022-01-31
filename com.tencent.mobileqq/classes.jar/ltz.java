@@ -1,51 +1,30 @@
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngineEventDispatcher;
-import com.tencent.biz.pubaccount.readinjoy.model.ChannelInfoModule;
-import com.tencent.biz.pubaccount.readinjoy.model.SpecialChannelFilter;
-import java.util.List;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.ui.MultiIncomingCallsActivity;
+import com.tencent.mobileqq.utils.AudioHelper;
 
 public class ltz
-  implements Runnable
+  extends BroadcastReceiver
 {
-  public ltz(ChannelInfoModule paramChannelInfoModule, boolean paramBoolean1, boolean paramBoolean2, List paramList1, List paramList2) {}
+  public ltz(MultiIncomingCallsActivity paramMultiIncomingCallsActivity) {}
   
-  public void run()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (!this.jdField_a_of_type_Boolean)
+    if (paramIntent.getAction().equals("tencent.av.EXIT_QZONE_LIVE_RSP_ACTION"))
     {
-      ReadInJoyLogicEngineEventDispatcher.a().c(false, null);
-      return;
+      long l = AudioHelper.b();
+      paramContext = ksn.a().a();
+      this.a.a(l, "BroadcastReceiver_qzone", this.a.getIntent(), paramContext);
+      this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(67), Long.valueOf(this.a.jdField_a_of_type_Long), Integer.valueOf(3) });
+      this.a.b("BroadcastReceiver_qzone");
     }
-    if (this.jdField_b_of_type_Boolean)
-    {
-      ReadInJoyLogicEngineEventDispatcher.a().c(true, this.jdField_a_of_type_JavaUtilList);
-      return;
-    }
-    ChannelInfoModule.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelChannelInfoModule, true);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelChannelInfoModule.a(this.jdField_a_of_type_JavaUtilList, true);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelChannelInfoModule.c(this.jdField_b_of_type_JavaUtilList);
-    if (!ReadInJoyUtils.a())
-    {
-      List localList = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelChannelInfoModule.a(this.jdField_a_of_type_JavaUtilList);
-      SpecialChannelFilter.a().a(this.jdField_b_of_type_JavaUtilList);
-      SpecialChannelFilter.a().b(localList);
-      localList = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelChannelInfoModule.c();
-      if (!this.jdField_b_of_type_JavaUtilList.equals(localList)) {
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelChannelInfoModule.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelChannelInfoModule.c());
-      }
-    }
-    ReadInJoyLogicEngineEventDispatcher.a().b(true, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelChannelInfoModule.a());
-    if (!ReadInJoyUtils.a())
-    {
-      ReadInJoyLogicEngineEventDispatcher.a().c(true, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelChannelInfoModule.b());
-      return;
-    }
-    ReadInJoyLogicEngineEventDispatcher.a().c(true, this.jdField_a_of_type_JavaUtilList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     ltz
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,41 @@
-import com.tencent.biz.qqstory.takevideo.EditVideoTag;
-import com.tencent.biz.qqstory.takevideo.EditVideoTag.EditBehavior;
-import com.tencent.biz.qqstory.takevideo.tag.EditVideoTagPresenter;
-import com.tencent.biz.qqstory.view.widget.QQStoryPullToRefreshListView.PullToRefreshListener;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Message;
+import java.util.Iterator;
+import java.util.List;
 
-public class olk
-  implements QQStoryPullToRefreshListView.PullToRefreshListener
+final class olk
+  implements Handler.Callback
 {
-  public olk(EditVideoTag paramEditVideoTag) {}
-  
-  public void a()
+  public boolean handleMessage(Message paramMessage)
   {
-    EditVideoTag.EditBehavior localEditBehavior = EditVideoTag.a(this.a);
-    EditVideoTag.a(this.a, EditVideoTag.a(this.a)).a(localEditBehavior);
+    switch (paramMessage.what)
+    {
+    default: 
+    case 0: 
+    case 1: 
+      do
+      {
+        do
+        {
+          return true;
+          olj.a(false);
+          olj.a().removeMessages(0);
+        } while ((olj.a() == null) || (olj.a().size() <= 0));
+        paramMessage = olj.a().iterator();
+        while (paramMessage.hasNext()) {
+          ((oll)paramMessage.next()).a(true);
+        }
+        olj.a(false);
+        olj.a().removeMessages(1);
+      } while ((olj.a() == null) || (olj.a().size() <= 0));
+      paramMessage = olj.a().iterator();
+      while (paramMessage.hasNext()) {
+        ((oll)paramMessage.next()).a(false);
+      }
+    }
+    olj.a(true);
+    return true;
   }
 }
 

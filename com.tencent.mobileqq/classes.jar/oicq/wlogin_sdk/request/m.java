@@ -26,6 +26,8 @@ import oicq.wlogin_sdk.tlv_type.tlv_t194;
 import oicq.wlogin_sdk.tlv_type.tlv_t201;
 import oicq.wlogin_sdk.tlv_type.tlv_t202;
 import oicq.wlogin_sdk.tlv_type.tlv_t511;
+import oicq.wlogin_sdk.tlv_type.tlv_t52d;
+import oicq.wlogin_sdk.tlv_type.tlv_t544;
 import oicq.wlogin_sdk.tlv_type.tlv_t8;
 import oicq.wlogin_sdk.tools.util;
 
@@ -39,6 +41,7 @@ public class m
     this.v = "wtlogin.exchange_emp";
     this.x = paramt;
     this.x.m = 0;
+    this.a = this.x.h();
   }
   
   public int a(long paramLong1, long paramLong2, long paramLong3, int paramInt1, int paramInt2, byte[] paramArrayOfByte1, int paramInt3, int paramInt4, long[] paramArrayOfLong, byte[] paramArrayOfByte2, WUserSigInfo paramWUserSigInfo)
@@ -50,7 +53,7 @@ public class m
     paramInt1 = 0;
     for (;;)
     {
-      a(this.i, this.t, this.j, paramLong1, this.m, this.n, i, this.p, a(paramLong1, paramLong2, paramLong3, i, j, paramArrayOfByte1, paramInt3, paramInt4, paramArrayOfLong, t.aa, paramArrayOfByte2, paramWUserSigInfo._domains));
+      a(this.i, this.t, this.j, paramLong1, this.m, this.n, i, this.p, a(paramLong1, paramLong2, paramLong3, i, j, paramArrayOfByte1, paramInt3, paramInt4, paramArrayOfLong, t.ac, paramArrayOfByte2, paramWUserSigInfo._domains));
       paramInt2 = a(String.valueOf(this.x.f), false, paramWUserSigInfo);
       if (paramInt2 != 0) {
         paramInt1 = paramInt2;
@@ -83,63 +86,65 @@ public class m
     Object localObject6 = new tlv_t100();
     Object localObject7 = new tlv_t10a();
     Object localObject8 = new tlv_t116();
-    Object localObject22 = new tlv_t108();
-    Object localObject16 = new tlv_t109();
-    Object localObject9 = new tlv_t124();
+    Object localObject24 = new tlv_t108();
+    Object localObject20 = new tlv_t109();
+    Object localObject18 = new tlv_t52d();
+    Object localObject11 = new tlv_t124();
     tlv_t128 localtlv_t128 = new tlv_t128();
     Object localObject5 = new tlv_t143();
     tlv_t112 localtlv_t112 = new tlv_t112();
     tlv_t144 localtlv_t144 = new tlv_t144();
-    Object localObject11 = new tlv_t145();
+    Object localObject12 = new tlv_t145();
     Object localObject17 = new tlv_t147();
     Object localObject10 = new tlv_t142();
-    Object localObject12 = new tlv_t154();
-    Object localObject13 = new tlv_t18();
-    Object localObject14 = new tlv_t141();
-    Object localObject15 = new tlv_t8();
-    Object localObject21 = new tlv_t511();
+    Object localObject13 = new tlv_t154();
+    Object localObject14 = new tlv_t18();
+    Object localObject15 = new tlv_t141();
+    Object localObject16 = new tlv_t8();
+    Object localObject23 = new tlv_t511();
     tlv_t16e localtlv_t16e = new tlv_t16e();
-    Object localObject20 = new tlv_t172();
-    Object localObject18 = new tlv_t177();
-    Object localObject19 = new tlv_t187();
+    Object localObject22 = new tlv_t172();
+    Object localObject19 = new tlv_t177();
+    Object localObject21 = new tlv_t187();
     Object localObject1 = new tlv_t188();
     Object localObject2 = new tlv_t194();
     Object localObject3 = new tlv_t201();
     Object localObject4 = new tlv_t202();
+    Object localObject9 = new tlv_t544();
     localObject6 = ((tlv_t100)localObject6).get_tlv_100(paramLong2, paramLong3, paramInt1, paramInt2);
     localObject7 = ((tlv_t10a)localObject7).get_tlv_10a(paramArrayOfByte1);
     localObject8 = ((tlv_t116)localObject8).get_tlv_116(paramInt3, paramInt4, paramArrayOfLong);
-    localObject11 = ((tlv_t145)localObject11).get_tlv_145(t.A);
+    localObject12 = ((tlv_t145)localObject12).get_tlv_145(t.A);
     localObject10 = ((tlv_t142)localObject10).get_tlv_142(t.E);
-    localObject12 = ((tlv_t154)localObject12).get_tlv_154(this.x.i);
-    localObject13 = ((tlv_t18)localObject13).get_tlv_18(paramLong2, paramInt1, paramLong1, 0);
-    localObject14 = ((tlv_t141)localObject14).get_tlv_141(t.C, t.D, t.F);
-    localObject15 = ((tlv_t8)localObject15).get_tlv_8(0, t.u, 0);
+    localObject13 = ((tlv_t154)localObject13).get_tlv_154(this.x.i);
+    localObject14 = ((tlv_t18)localObject14).get_tlv_18(paramLong2, paramInt1, paramLong1, 0);
+    localObject15 = ((tlv_t141)localObject15).get_tlv_141(t.C, t.D, t.F);
+    localObject16 = ((tlv_t8)localObject16).get_tlv_8(0, t.u, 0);
     localObject17 = ((tlv_t147)localObject17).get_tlv_147(paramLong2, t.G, t.H);
-    localObject18 = ((tlv_t177)localObject18).get_tlv_177(1523965574L, "6.0.0.2282");
+    localObject19 = ((tlv_t177)localObject19).get_tlv_177(1577331209L, "6.0.0.2425");
     byte[] arrayOfByte = new byte[0];
     if ((paramArrayOfByte2 != null) && (paramArrayOfByte2.length > 0)) {
-      paramArrayOfByte1 = ((tlv_t108)localObject22).get_tlv_108(paramArrayOfByte2);
+      paramArrayOfByte1 = ((tlv_t108)localObject24).get_tlv_108(paramArrayOfByte2);
     }
     for (paramInt1 = 11;; paramInt1 = 10)
     {
       if ((paramList != null) && (paramList.size() > 0))
       {
-        paramArrayOfLong = ((tlv_t511)localObject21).get_tlv_511(paramList);
+        paramArrayOfLong = ((tlv_t511)localObject23).get_tlv_511(paramList);
         paramInt1 += 1;
       }
       for (;;)
       {
         if ((this.x.r != null) && (this.x.r.length > 0))
         {
-          paramArrayOfByte2 = ((tlv_t172)localObject20).get_tlv_172(this.x.r);
+          paramArrayOfByte2 = ((tlv_t172)localObject22).get_tlv_172(this.x.r);
           paramInt1 += 1;
         }
         for (;;)
         {
           if ((t.N != null) && (t.N.length > 0))
           {
-            paramList = ((tlv_t187)localObject19).get_tlv_187(t.N);
+            paramList = ((tlv_t187)localObject21).get_tlv_187(t.N);
             paramInt1 += 1;
           }
           for (;;)
@@ -158,9 +163,9 @@ public class m
               }
               for (;;)
               {
-                if ((k.J != null) && (k.J.length > 0))
+                if ((k.L != null) && (k.L.length > 0))
                 {
-                  localObject3 = ((tlv_t201)localObject3).get_tlv_201(k.J, k.K, "qq".getBytes(), k.L);
+                  localObject3 = ((tlv_t201)localObject3).get_tlv_201(k.L, k.M, "qq".getBytes(), k.N);
                   paramInt1 += 1;
                 }
                 for (;;)
@@ -172,119 +177,162 @@ public class m
                   }
                   for (;;)
                   {
-                    localObject16 = ((tlv_t109)localObject16).get_tlv_109(t.M);
-                    localObject19 = util.get_os_type();
-                    localObject20 = util.get_os_version();
+                    localObject20 = ((tlv_t109)localObject20).get_tlv_109(t.O);
+                    localObject18 = ((tlv_t52d)localObject18).get_tlv_52d(this.a);
+                    localObject21 = util.get_os_type();
+                    localObject22 = util.get_os_version();
                     paramInt2 = t.D;
-                    localObject21 = t.C;
-                    localObject22 = t.F;
-                    localObject9 = localtlv_t144.get_tlv_144((byte[])localObject16, ((tlv_t124)localObject9).get_tlv_124((byte[])localObject19, (byte[])localObject20, paramInt2, (byte[])localObject21, new byte[0], (byte[])localObject22), localtlv_t128.get_tlv_128(t.T, t.U, t.V, t.Y, t.I, t.A, t.P), localtlv_t16e.get_tlv_16e(t.I), this.x.b);
+                    localObject23 = t.C;
+                    localObject24 = t.F;
+                    localObject11 = localtlv_t144.get_tlv_144((byte[])localObject20, (byte[])localObject18, ((tlv_t124)localObject11).get_tlv_124((byte[])localObject21, (byte[])localObject22, paramInt2, (byte[])localObject23, new byte[0], (byte[])localObject24), localtlv_t128.get_tlv_128(t.U, t.V, t.W, t.Z, t.I, t.A, t.P), localtlv_t16e.get_tlv_16e(t.I), this.x.b);
+                    localObject9 = ((tlv_t544)localObject9).get_tlv_544(this.a, paramLong1, t.A.length, t.A, "6.0.0.2425".length(), "6.0.0.2425", this.u);
                     if ((paramArrayOfByte3 != null) && (paramArrayOfByte3.length > 0))
                     {
                       localObject5 = ((tlv_t143)localObject5).get_tlv_143(paramArrayOfByte3);
-                      paramInt1 = paramInt1 + 1 + 1;
-                      paramInt2 = 11;
-                      paramArrayOfByte3 = new byte[localObject6.length + localObject7.length + localObject8.length + paramArrayOfByte1.length + localObject9.length + localObject5.length + localObject10.length + localObject12.length + localObject13.length + localObject14.length + localObject15.length + paramArrayOfLong.length + localObject17.length + paramArrayOfByte2.length + localObject18.length + paramList.length + localObject1.length + localObject2.length + localObject3.length + localObject4.length];
+                      paramInt3 = paramInt1 + 1 + 1;
+                      paramInt4 = localObject6.length + localObject7.length + localObject8.length + paramArrayOfByte1.length + localObject11.length + localObject5.length + localObject10.length + localObject13.length + localObject14.length + localObject15.length + localObject16.length + paramArrayOfLong.length + localObject17.length + paramArrayOfByte2.length + localObject19.length + paramList.length + localObject1.length + localObject2.length + localObject3.length + localObject4.length;
+                      paramInt2 = paramInt4;
+                      paramInt1 = paramInt3;
+                      if (localObject9 != null)
+                      {
+                        paramInt2 = paramInt4 + localObject9.length;
+                        paramInt1 = paramInt3 + 1;
+                      }
+                      paramArrayOfByte3 = new byte[paramInt2];
                       System.arraycopy(localObject6, 0, paramArrayOfByte3, 0, localObject6.length);
-                      paramInt3 = 0 + localObject6.length;
-                      System.arraycopy(localObject7, 0, paramArrayOfByte3, paramInt3, localObject7.length);
-                      paramInt3 += localObject7.length;
-                      System.arraycopy(localObject8, 0, paramArrayOfByte3, paramInt3, localObject8.length);
-                      paramInt3 += localObject8.length;
-                      System.arraycopy(paramArrayOfByte1, 0, paramArrayOfByte3, paramInt3, paramArrayOfByte1.length);
-                      paramInt3 += paramArrayOfByte1.length;
-                      System.arraycopy(localObject9, 0, paramArrayOfByte3, paramInt3, localObject9.length);
-                      paramInt3 = localObject9.length + paramInt3;
-                      System.arraycopy(localObject5, 0, paramArrayOfByte3, paramInt3, localObject5.length);
-                      paramInt3 += localObject5.length;
-                      System.arraycopy(localObject10, 0, paramArrayOfByte3, paramInt3, localObject10.length);
-                      paramInt3 += localObject10.length;
-                      System.arraycopy(localObject12, 0, paramArrayOfByte3, paramInt3, localObject12.length);
-                      paramInt3 += localObject12.length;
-                      System.arraycopy(localObject13, 0, paramArrayOfByte3, paramInt3, localObject13.length);
-                      paramInt3 += localObject13.length;
-                      System.arraycopy(localObject14, 0, paramArrayOfByte3, paramInt3, localObject14.length);
-                      paramInt3 += localObject14.length;
-                      System.arraycopy(localObject15, 0, paramArrayOfByte3, paramInt3, localObject15.length);
-                      paramInt3 += localObject15.length;
-                      System.arraycopy(paramArrayOfLong, 0, paramArrayOfByte3, paramInt3, paramArrayOfLong.length);
-                      paramInt3 += paramArrayOfLong.length;
-                      System.arraycopy(localObject17, 0, paramArrayOfByte3, paramInt3, localObject17.length);
-                      paramInt3 += localObject17.length;
-                      System.arraycopy(paramArrayOfByte2, 0, paramArrayOfByte3, paramInt3, paramArrayOfByte2.length);
-                      paramInt3 += paramArrayOfByte2.length;
-                      System.arraycopy(localObject18, 0, paramArrayOfByte3, paramInt3, localObject18.length);
-                      paramInt3 += localObject18.length;
-                      System.arraycopy(paramList, 0, paramArrayOfByte3, paramInt3, paramList.length);
-                      paramInt3 += paramList.length;
-                      System.arraycopy(localObject1, 0, paramArrayOfByte3, paramInt3, localObject1.length);
-                      paramInt3 += localObject1.length;
-                      System.arraycopy(localObject2, 0, paramArrayOfByte3, paramInt3, localObject2.length);
-                      paramInt3 += localObject2.length;
-                      System.arraycopy(localObject3, 0, paramArrayOfByte3, paramInt3, localObject3.length);
-                      paramInt3 += localObject3.length;
-                      System.arraycopy(localObject4, 0, paramArrayOfByte3, paramInt3, localObject4.length);
-                      paramInt3 = localObject4.length;
+                      paramInt2 = 0 + localObject6.length;
+                      System.arraycopy(localObject7, 0, paramArrayOfByte3, paramInt2, localObject7.length);
+                      paramInt2 += localObject7.length;
+                      System.arraycopy(localObject8, 0, paramArrayOfByte3, paramInt2, localObject8.length);
+                      paramInt2 += localObject8.length;
+                      System.arraycopy(paramArrayOfByte1, 0, paramArrayOfByte3, paramInt2, paramArrayOfByte1.length);
+                      paramInt2 += paramArrayOfByte1.length;
+                      System.arraycopy(localObject11, 0, paramArrayOfByte3, paramInt2, localObject11.length);
+                      paramInt2 += localObject11.length;
+                      System.arraycopy(localObject5, 0, paramArrayOfByte3, paramInt2, localObject5.length);
+                      paramInt2 += localObject5.length;
+                      System.arraycopy(localObject10, 0, paramArrayOfByte3, paramInt2, localObject10.length);
+                      paramInt2 += localObject10.length;
+                      System.arraycopy(localObject13, 0, paramArrayOfByte3, paramInt2, localObject13.length);
+                      paramInt2 += localObject13.length;
+                      System.arraycopy(localObject14, 0, paramArrayOfByte3, paramInt2, localObject14.length);
+                      paramInt2 += localObject14.length;
+                      System.arraycopy(localObject15, 0, paramArrayOfByte3, paramInt2, localObject15.length);
+                      paramInt2 += localObject15.length;
+                      System.arraycopy(localObject16, 0, paramArrayOfByte3, paramInt2, localObject16.length);
+                      paramInt2 += localObject16.length;
+                      System.arraycopy(paramArrayOfLong, 0, paramArrayOfByte3, paramInt2, paramArrayOfLong.length);
+                      paramInt2 += paramArrayOfLong.length;
+                      System.arraycopy(localObject17, 0, paramArrayOfByte3, paramInt2, localObject17.length);
+                      paramInt2 += localObject17.length;
+                      System.arraycopy(paramArrayOfByte2, 0, paramArrayOfByte3, paramInt2, paramArrayOfByte2.length);
+                      paramInt2 += paramArrayOfByte2.length;
+                      System.arraycopy(localObject19, 0, paramArrayOfByte3, paramInt2, localObject19.length);
+                      paramInt2 += localObject19.length;
+                      System.arraycopy(paramList, 0, paramArrayOfByte3, paramInt2, paramList.length);
+                      paramInt2 += paramList.length;
+                      System.arraycopy(localObject1, 0, paramArrayOfByte3, paramInt2, localObject1.length);
+                      paramInt2 += localObject1.length;
+                      System.arraycopy(localObject2, 0, paramArrayOfByte3, paramInt2, localObject2.length);
+                      paramInt2 += localObject2.length;
+                      System.arraycopy(localObject3, 0, paramArrayOfByte3, paramInt2, localObject3.length);
+                      paramInt2 += localObject3.length;
+                      System.arraycopy(localObject4, 0, paramArrayOfByte3, paramInt2, localObject4.length);
+                      paramInt2 += localObject4.length;
+                      if (localObject9 == null) {
+                        break label2106;
+                      }
+                      System.arraycopy(localObject9, 0, paramArrayOfByte3, paramInt2, localObject9.length);
+                      paramInt2 = localObject9.length;
+                      paramInt3 = 11;
+                      paramInt2 = paramInt1;
+                      paramInt1 = paramInt3;
                       paramArrayOfByte1 = paramArrayOfByte3;
-                      return b(paramArrayOfByte1, paramInt2, paramInt1);
-                    }
-                    paramInt1 += 2;
-                    if ((this.x.g != null) && (!util.check_uin_account(this.x.g).booleanValue()))
-                    {
-                      paramArrayOfByte3 = localtlv_t112.get_tlv_112(this.x.g.getBytes());
-                      paramInt1 += 1;
                     }
                     for (;;)
                     {
-                      localObject5 = new byte[localObject6.length + localObject7.length + localObject8.length + paramArrayOfByte1.length + localObject9.length + arrayOfByte.length + paramArrayOfByte3.length + localObject11.length + localObject10.length + localObject12.length + localObject13.length + localObject14.length + localObject15.length + paramArrayOfLong.length + localObject17.length + paramArrayOfByte2.length + localObject18.length + paramList.length + localObject1.length + localObject2.length + localObject3.length + localObject4.length];
-                      System.arraycopy(localObject6, 0, localObject5, 0, localObject6.length);
-                      paramInt2 = 0 + localObject6.length;
-                      System.arraycopy(localObject7, 0, localObject5, paramInt2, localObject7.length);
-                      paramInt2 += localObject7.length;
-                      System.arraycopy(localObject8, 0, localObject5, paramInt2, localObject8.length);
-                      paramInt2 += localObject8.length;
-                      System.arraycopy(paramArrayOfByte1, 0, localObject5, paramInt2, paramArrayOfByte1.length);
-                      paramInt2 += paramArrayOfByte1.length;
-                      System.arraycopy(localObject9, 0, localObject5, paramInt2, localObject9.length);
-                      paramInt2 = localObject9.length + paramInt2;
-                      System.arraycopy(arrayOfByte, 0, localObject5, paramInt2, arrayOfByte.length);
-                      paramInt2 += arrayOfByte.length;
-                      System.arraycopy(paramArrayOfByte3, 0, localObject5, paramInt2, paramArrayOfByte3.length);
-                      paramInt2 = paramArrayOfByte3.length + paramInt2;
-                      System.arraycopy(localObject11, 0, localObject5, paramInt2, localObject11.length);
-                      paramInt2 += localObject11.length;
-                      System.arraycopy(localObject10, 0, localObject5, paramInt2, localObject10.length);
-                      paramInt2 += localObject10.length;
-                      System.arraycopy(localObject12, 0, localObject5, paramInt2, localObject12.length);
-                      paramInt2 += localObject12.length;
-                      System.arraycopy(localObject13, 0, localObject5, paramInt2, localObject13.length);
-                      paramInt2 += localObject13.length;
-                      System.arraycopy(localObject14, 0, localObject5, paramInt2, localObject14.length);
-                      paramInt2 += localObject14.length;
-                      System.arraycopy(localObject15, 0, localObject5, paramInt2, localObject15.length);
-                      paramInt2 += localObject15.length;
-                      System.arraycopy(paramArrayOfLong, 0, localObject5, paramInt2, paramArrayOfLong.length);
-                      paramInt2 += paramArrayOfLong.length;
-                      System.arraycopy(localObject17, 0, localObject5, paramInt2, localObject17.length);
-                      paramInt2 += localObject17.length;
-                      System.arraycopy(paramArrayOfByte2, 0, localObject5, paramInt2, paramArrayOfByte2.length);
-                      paramInt2 += paramArrayOfByte2.length;
-                      System.arraycopy(localObject18, 0, localObject5, paramInt2, localObject18.length);
-                      paramInt2 += localObject18.length;
-                      System.arraycopy(paramList, 0, localObject5, paramInt2, paramList.length);
-                      paramInt2 += paramList.length;
-                      System.arraycopy(localObject1, 0, localObject5, paramInt2, localObject1.length);
-                      paramInt2 += localObject1.length;
-                      System.arraycopy(localObject2, 0, localObject5, paramInt2, localObject2.length);
-                      paramInt2 += localObject2.length;
-                      System.arraycopy(localObject3, 0, localObject5, paramInt2, localObject3.length);
-                      paramInt2 += localObject3.length;
-                      System.arraycopy(localObject4, 0, localObject5, paramInt2, localObject4.length);
-                      paramInt2 = localObject4.length;
-                      paramArrayOfByte1 = (byte[])localObject5;
-                      paramInt2 = i;
-                      break;
-                      paramArrayOfByte3 = new byte[0];
+                      return b(paramArrayOfByte1, paramInt1, paramInt2);
+                      paramInt1 += 2;
+                      if ((this.x.g != null) && (!util.check_uin_account(this.x.g).booleanValue()))
+                      {
+                        paramArrayOfByte3 = localtlv_t112.get_tlv_112(this.x.g.getBytes());
+                        paramInt1 += 1;
+                      }
+                      for (;;)
+                      {
+                        paramInt3 = localObject6.length + localObject7.length + localObject8.length + paramArrayOfByte1.length + localObject11.length + arrayOfByte.length + paramArrayOfByte3.length + localObject12.length + localObject10.length + localObject13.length + localObject14.length + localObject15.length + localObject16.length + paramArrayOfLong.length + localObject17.length + paramArrayOfByte2.length + localObject19.length + paramList.length + localObject1.length + localObject2.length + localObject3.length + localObject4.length;
+                        if (localObject9 != null)
+                        {
+                          paramInt4 = localObject9.length;
+                          paramInt2 = paramInt1 + 1;
+                          paramInt3 += paramInt4;
+                        }
+                        for (;;)
+                        {
+                          localObject5 = new byte[paramInt3];
+                          System.arraycopy(localObject6, 0, localObject5, 0, localObject6.length);
+                          paramInt1 = 0 + localObject6.length;
+                          System.arraycopy(localObject7, 0, localObject5, paramInt1, localObject7.length);
+                          paramInt1 += localObject7.length;
+                          System.arraycopy(localObject8, 0, localObject5, paramInt1, localObject8.length);
+                          paramInt1 += localObject8.length;
+                          System.arraycopy(paramArrayOfByte1, 0, localObject5, paramInt1, paramArrayOfByte1.length);
+                          paramInt1 += paramArrayOfByte1.length;
+                          System.arraycopy(localObject11, 0, localObject5, paramInt1, localObject11.length);
+                          paramInt1 += localObject11.length;
+                          System.arraycopy(arrayOfByte, 0, localObject5, paramInt1, arrayOfByte.length);
+                          paramInt1 += arrayOfByte.length;
+                          System.arraycopy(paramArrayOfByte3, 0, localObject5, paramInt1, paramArrayOfByte3.length);
+                          paramInt1 = paramArrayOfByte3.length + paramInt1;
+                          System.arraycopy(localObject12, 0, localObject5, paramInt1, localObject12.length);
+                          paramInt1 += localObject12.length;
+                          System.arraycopy(localObject10, 0, localObject5, paramInt1, localObject10.length);
+                          paramInt1 += localObject10.length;
+                          System.arraycopy(localObject13, 0, localObject5, paramInt1, localObject13.length);
+                          paramInt1 += localObject13.length;
+                          System.arraycopy(localObject14, 0, localObject5, paramInt1, localObject14.length);
+                          paramInt1 += localObject14.length;
+                          System.arraycopy(localObject15, 0, localObject5, paramInt1, localObject15.length);
+                          paramInt1 += localObject15.length;
+                          System.arraycopy(localObject16, 0, localObject5, paramInt1, localObject16.length);
+                          paramInt1 += localObject16.length;
+                          System.arraycopy(paramArrayOfLong, 0, localObject5, paramInt1, paramArrayOfLong.length);
+                          paramInt1 += paramArrayOfLong.length;
+                          System.arraycopy(localObject17, 0, localObject5, paramInt1, localObject17.length);
+                          paramInt1 += localObject17.length;
+                          System.arraycopy(paramArrayOfByte2, 0, localObject5, paramInt1, paramArrayOfByte2.length);
+                          paramInt1 += paramArrayOfByte2.length;
+                          System.arraycopy(localObject19, 0, localObject5, paramInt1, localObject19.length);
+                          paramInt1 += localObject19.length;
+                          System.arraycopy(paramList, 0, localObject5, paramInt1, paramList.length);
+                          paramInt1 += paramList.length;
+                          System.arraycopy(localObject1, 0, localObject5, paramInt1, localObject1.length);
+                          paramInt1 += localObject1.length;
+                          System.arraycopy(localObject2, 0, localObject5, paramInt1, localObject2.length);
+                          paramInt1 += localObject2.length;
+                          System.arraycopy(localObject3, 0, localObject5, paramInt1, localObject3.length);
+                          paramInt1 += localObject3.length;
+                          System.arraycopy(localObject4, 0, localObject5, paramInt1, localObject4.length);
+                          paramInt1 += localObject4.length;
+                          if (localObject9 != null)
+                          {
+                            System.arraycopy(localObject9, 0, localObject5, paramInt1, localObject9.length);
+                            paramInt1 = localObject9.length;
+                            paramArrayOfByte1 = (byte[])localObject5;
+                            paramInt1 = i;
+                            break;
+                          }
+                          paramArrayOfByte1 = (byte[])localObject5;
+                          paramInt1 = i;
+                          break;
+                          paramInt2 = paramInt1;
+                        }
+                        paramArrayOfByte3 = new byte[0];
+                      }
+                      label2106:
+                      paramInt2 = paramInt1;
+                      paramInt1 = 11;
+                      paramArrayOfByte1 = paramArrayOfByte3;
                     }
                     localObject4 = new byte[0];
                   }

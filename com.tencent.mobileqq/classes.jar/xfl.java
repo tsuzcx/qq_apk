@@ -1,28 +1,12 @@
-import com.tencent.mobileqq.activity.qwallet.PasswdRedBagDBManager;
-import com.tencent.mobileqq.activity.qwallet.PasswdRedBagInfo;
-import com.tencent.mobileqq.activity.qwallet.PasswdRedBagManager;
-import java.util.Iterator;
-import java.util.List;
-
-public class xfl
-  implements Runnable
+public abstract interface xfl
 {
-  public xfl(PasswdRedBagManager paramPasswdRedBagManager) {}
+  public abstract void a(int paramInt);
   
-  public void run()
-  {
-    Iterator localIterator = PasswdRedBagManager.a(this.a).a().iterator();
-    while (localIterator.hasNext())
-    {
-      PasswdRedBagInfo localPasswdRedBagInfo = (PasswdRedBagInfo)localIterator.next();
-      PasswdRedBagManager.a(this.a, localPasswdRedBagInfo);
-      this.a.a(false, localPasswdRedBagInfo.a, localPasswdRedBagInfo.b);
-    }
-  }
+  public abstract void a(byte[] paramArrayOfByte);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     xfl
  * JD-Core Version:    0.7.0.1
  */

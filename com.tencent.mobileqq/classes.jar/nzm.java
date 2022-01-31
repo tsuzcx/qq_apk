@@ -1,27 +1,21 @@
-import android.os.Handler;
-import android.view.View;
-import android.view.View.OnFocusChangeListener;
-import com.tencent.biz.qqstory.storyHome.detail.model.cmment.DetailCommentHelper;
+import android.widget.PopupWindow.OnDismissListener;
 
-public class nzm
-  implements View.OnFocusChangeListener
+class nzm
+  implements PopupWindow.OnDismissListener
 {
-  public nzm(DetailCommentHelper paramDetailCommentHelper) {}
+  nzm(nzl paramnzl) {}
   
-  public void onFocusChange(View paramView, boolean paramBoolean)
+  public void onDismiss()
   {
-    if (!paramBoolean) {
-      this.a.b();
+    nzl.a(this.a);
+    if (nzl.a(this.a) != null) {
+      nzl.a(this.a).c();
     }
-    while (DetailCommentHelper.a(this.a)) {
-      return;
-    }
-    new Handler().postDelayed(new nzn(this), 200L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     nzm
  * JD-Core Version:    0.7.0.1
  */

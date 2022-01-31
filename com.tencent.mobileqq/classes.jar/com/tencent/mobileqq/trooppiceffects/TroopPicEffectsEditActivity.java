@@ -1,8 +1,6 @@
 package com.tencent.mobileqq.trooppiceffects;
 
-import akek;
-import akel;
-import akeo;
+import ajjy;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -22,8 +20,26 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.TextView;
-import com.tencent.biz.ProtoUtils;
-import com.tencent.biz.ProtoUtils.TroopProtocolObserver;
+import atpl;
+import atpv;
+import atqd;
+import atqe;
+import azfo;
+import azga;
+import azjp;
+import azjq;
+import azkc;
+import azkd;
+import azrz;
+import azsc;
+import azsd;
+import azsg;
+import azsh;
+import azsl;
+import azvv;
+import baaf;
+import bace;
+import bacm;
 import com.tencent.common.config.AppSetting;
 import com.tencent.image.JpegExifReader;
 import com.tencent.mobileqq.activity.photo.PhotoListActivity;
@@ -37,25 +53,10 @@ import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.pic.PicBusiManager;
-import com.tencent.mobileqq.pic.PicReq;
-import com.tencent.mobileqq.pic.PicUploadInfo;
-import com.tencent.mobileqq.pic.PicUploadInfo.Builder;
-import com.tencent.mobileqq.troop.utils.AIOAnimationControlManager;
-import com.tencent.mobileqq.troop.utils.AIOAnimationControlManager.DownloadGftData;
-import com.tencent.mobileqq.troop.utils.TroopGiftCallback;
-import com.tencent.mobileqq.troop.utils.TroopGiftManager;
-import com.tencent.mobileqq.troop.utils.TroopGiftManager.ShowPicPrice;
-import com.tencent.mobileqq.troop.utils.TroopGiftUtil;
-import com.tencent.mobileqq.trooppiceffects.view.IPicView;
 import com.tencent.mobileqq.trooppiceffects.view.NormalPicView;
 import com.tencent.mobileqq.trooppiceffects.view.PhantomPicView;
 import com.tencent.mobileqq.trooppiceffects.view.ShakePicView;
 import com.tencent.mobileqq.trooppiceffects.view.VideoPicView;
-import com.tencent.mobileqq.util.DisplayUtil;
-import com.tencent.mobileqq.utils.AlbumUtil;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.mobileqq.utils.ImageUtil;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.HorizontalListView;
 import java.io.BufferedInputStream;
@@ -66,6 +67,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Observable;
 import java.util.Observer;
+import mmj;
+import mmn;
 import mqq.manager.TicketManager;
 import tencent.im.msg.im_msg_body.CustomFace;
 import tencent.im.oidb.cmd0x991.oidb_cmd0x991.Goods;
@@ -79,15 +82,15 @@ public class TroopPicEffectsEditActivity
 {
   public int a;
   protected ProgressDialog a;
-  public SparseArray a;
+  public SparseArray<azkc> a;
   public Button a;
   protected FrameLayout a;
-  protected TroopPicEffectsEditActivity.ItemData a;
-  protected TroopPicEffectsEditActivity.ItemListAdapter a;
-  protected IPicView a;
+  public azsg a;
+  protected azsh a;
+  protected azsl a;
   protected HorizontalListView a;
   public String a;
-  protected TroopPicEffectsEditActivity.ItemData[] a;
+  public azsg[] a;
   public String b;
   protected String c;
   
@@ -110,8 +113,8 @@ public class TroopPicEffectsEditActivity
     localIntent.putExtra("friendUin", paramString1);
     localIntent.putExtra("troopUin", paramString2);
     paramActivity.startActivity(localIntent);
-    AlbumUtil.a(paramActivity, false, true);
-    TroopPicEffectsController.a("pic_select", "page_exp");
+    baaf.a(paramActivity, false, true);
+    azrz.a("pic_select", "page_exp");
   }
   
   public String a(String paramString)
@@ -119,10 +122,10 @@ public class TroopPicEffectsEditActivity
     if ((paramString == null) || (this.app == null)) {
       return paramString;
     }
-    Object localObject = (TroopManager)this.app.getManager(51);
+    Object localObject = (TroopManager)this.app.getManager(52);
     if (localObject != null)
     {
-      localObject = ((TroopManager)localObject).b(this.b);
+      localObject = ((TroopManager)localObject).c(this.b);
       if (localObject != null) {
         if (((TroopInfo)localObject).isTroopOwner(this.app.getCurrentAccountUin())) {
           localObject = "0";
@@ -131,7 +134,7 @@ public class TroopPicEffectsEditActivity
     }
     for (;;)
     {
-      return paramString.replace("$GCODE$", this.b).replace("$CLIENTVER$", "android7.6.8").replace("$UIN$", this.app.getCurrentAccountUin()).replace("$LANG$", "zh_CN").replace("$ROLE$", (CharSequence)localObject);
+      return paramString.replace("$GCODE$", this.b).replace("$CLIENTVER$", "android8.2.6").replace("$UIN$", this.app.getCurrentAccountUin()).replace("$LANG$", "zh_CN").replace("$ROLE$", (CharSequence)localObject);
       if (((TroopInfo)localObject).isAdmin())
       {
         localObject = "1";
@@ -147,30 +150,30 @@ public class TroopPicEffectsEditActivity
   
   protected void a()
   {
-    this.jdField_a_of_type_ArrayOfComTencentMobileqqTrooppiceffectsTroopPicEffectsEditActivity$ItemData = new TroopPicEffectsEditActivity.ItemData[] { new TroopPicEffectsEditActivity.ItemData(40000, "秀图", Color.parseColor("#F2575757"), true), new TroopPicEffectsEditActivity.ItemData(40002, "抖动", Color.parseColor("#F23FCCDF"), false), new TroopPicEffectsEditActivity.ItemData(40001, "幻影", Color.parseColor("#F2EF7AEE"), false), new TroopPicEffectsEditActivity.ItemData(40003, "生日", Color.parseColor("#F2FFA02D"), false), new TroopPicEffectsEditActivity.ItemData(40004, "爱你", Color.parseColor("#F21CD28C"), false), new TroopPicEffectsEditActivity.ItemData(40005, "征友", Color.parseColor("#F2FF6EA2"), false) };
-    this.jdField_a_of_type_ComTencentMobileqqTrooppiceffectsTroopPicEffectsEditActivity$ItemData = this.jdField_a_of_type_ArrayOfComTencentMobileqqTrooppiceffectsTroopPicEffectsEditActivity$ItemData[0];
-    this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqTrooppiceffectsTroopPicEffectsEditActivity$ItemListAdapter);
+    this.jdField_a_of_type_ArrayOfAzsg = new azsg[] { new azsg(40000, ajjy.a(2131649904), Color.parseColor("#F2575757"), true), new azsg(40002, ajjy.a(2131649907), Color.parseColor("#F23FCCDF"), false), new azsg(40001, ajjy.a(2131649920), Color.parseColor("#F2EF7AEE"), false), new azsg(40003, ajjy.a(2131649914), Color.parseColor("#F2FFA02D"), false), new azsg(40004, ajjy.a(2131649906), Color.parseColor("#F21CD28C"), false), new azsg(40005, ajjy.a(2131649913), Color.parseColor("#F2FF6EA2"), false) };
+    this.jdField_a_of_type_Azsg = this.jdField_a_of_type_ArrayOfAzsg[0];
+    this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setAdapter(this.jdField_a_of_type_Azsh);
     this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setOnItemClickListener(this);
-    a(new akek(this));
+    a(new azsc(this));
   }
   
   public void a(int paramInt, String paramString)
   {
     int i = 0;
-    if (this.jdField_a_of_type_ComTencentMobileqqTrooppiceffectsViewIPicView != null)
+    if (this.jdField_a_of_type_Azsl != null)
     {
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.removeView(this.jdField_a_of_type_ComTencentMobileqqTrooppiceffectsViewIPicView.a());
-      this.jdField_a_of_type_ComTencentMobileqqTrooppiceffectsViewIPicView.b();
+      this.jdField_a_of_type_AndroidWidgetFrameLayout.removeView(this.jdField_a_of_type_Azsl.a());
+      this.jdField_a_of_type_Azsl.b();
     }
-    boolean bool = TroopGiftUtil.a(paramInt);
+    boolean bool = azkd.a(paramInt);
     switch (paramInt)
     {
     default: 
-      this.jdField_a_of_type_ComTencentMobileqqTrooppiceffectsViewIPicView = new NormalPicView(this);
+      this.jdField_a_of_type_Azsl = new NormalPicView(this);
     }
     for (;;)
     {
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(this.jdField_a_of_type_ComTencentMobileqqTrooppiceffectsViewIPicView.a(), -1, -1);
+      this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(this.jdField_a_of_type_Azsl.a(), -1, -1);
       paramInt = i;
       label154:
       Object localObject1;
@@ -188,29 +191,29 @@ public class TroopPicEffectsEditActivity
       try
       {
         localObject2 = new BufferedInputStream(new FileInputStream((File)localObject2), 2048);
-        ((BitmapFactory.Options)localObject1).inSampleSize = ((int)ImageUtil.a((InputStream)localObject2, 720, 1080));
+        ((BitmapFactory.Options)localObject1).inSampleSize = ((int)bacm.a((InputStream)localObject2, 720, 1080));
         ((BufferedInputStream)localObject2).close();
-        paramString = ImageUtil.a(paramString, (BitmapFactory.Options)localObject1);
+        paramString = bacm.a(paramString, (BitmapFactory.Options)localObject1);
         localObject1 = new Matrix();
         ((Matrix)localObject1).reset();
         ((Matrix)localObject1).setRotate(paramInt);
-        this.jdField_a_of_type_ComTencentMobileqqTrooppiceffectsViewIPicView.setBitmap(Bitmap.createBitmap(paramString, 0, 0, paramString.getWidth(), paramString.getHeight(), (Matrix)localObject1, true));
+        this.jdField_a_of_type_Azsl.setBitmap(Bitmap.createBitmap(paramString, 0, 0, paramString.getWidth(), paramString.getHeight(), (Matrix)localObject1, true));
         if (bool) {
-          this.jdField_a_of_type_ComTencentMobileqqTrooppiceffectsViewIPicView.a();
+          this.jdField_a_of_type_Azsl.a();
         }
         return;
-        this.jdField_a_of_type_ComTencentMobileqqTrooppiceffectsViewIPicView = new PhantomPicView(this);
+        this.jdField_a_of_type_Azsl = new PhantomPicView(this);
         continue;
-        this.jdField_a_of_type_ComTencentMobileqqTrooppiceffectsViewIPicView = new ShakePicView(this);
+        this.jdField_a_of_type_Azsl = new ShakePicView(this);
         continue;
         int j = this.jdField_a_of_type_AndroidWidgetFrameLayout.getWidth();
-        this.jdField_a_of_type_ComTencentMobileqqTrooppiceffectsViewIPicView = new VideoPicView(this, paramInt, j, j * 1024 / 750);
+        this.jdField_a_of_type_Azsl = new VideoPicView(this, paramInt, j, j * 1024 / 750);
         if (bool) {
           continue;
         }
-        localObject1 = (AIOAnimationControlManager)this.app.getManager(222);
-        ((AIOAnimationControlManager)localObject1).a(this);
-        ((AIOAnimationControlManager)localObject1).a(paramInt, this.b, null);
+        localObject1 = (azfo)this.app.getManager(223);
+        ((azfo)localObject1).a(this);
+        ((azfo)localObject1).a(paramInt, this.b, null);
         continue;
         paramInt = 90;
         break label154;
@@ -242,17 +245,17 @@ public class TroopPicEffectsEditActivity
     }
   }
   
-  protected void a(PicReq paramPicReq)
+  protected void a(atpv paramatpv)
   {
-    ThreadManager.post(new akeo(this, paramPicReq.a), 8, null, true);
+    ThreadManager.post(new TroopPicEffectsEditActivity.3(this, paramatpv.a), 8, null, true);
   }
   
-  protected void a(TroopGiftCallback paramTroopGiftCallback)
+  protected void a(azjp paramazjp)
   {
-    ((TroopGiftManager)this.app.getManager(112)).a("OidbSvc.0x6c3", 1731, 1, this.b, 1, 7, true, true, paramTroopGiftCallback);
+    ((azjq)this.app.getManager(113)).a("OidbSvc.0x6c3", 1731, 1, this.b, 1, 7, true, true, paramazjp);
   }
   
-  protected void a(TroopPicEffectsEditActivity.ItemData paramItemData, im_msg_body.CustomFace paramCustomFace, ProtoUtils.TroopProtocolObserver paramTroopProtocolObserver)
+  public void a(azsg paramazsg, im_msg_body.CustomFace paramCustomFace, mmn parammmn)
   {
     oidb_cmd0x991.ReqBody localReqBody = new oidb_cmd0x991.ReqBody();
     oidb_cmd0x991.User localUser = new oidb_cmd0x991.User();
@@ -260,7 +263,7 @@ public class TroopPicEffectsEditActivity
     long l = Long.parseLong(this.b);
     localUser.uint64_group.set(l);
     localUser.uint32_client.set(1);
-    localUser.bytes_version.set(ByteStringMicro.copyFrom("V 7.6.8.3615".getBytes()), true);
+    localUser.bytes_version.set(ByteStringMicro.copyFrom(AppSetting.a().getBytes()), true);
     localUser.uint32_portal.set(600);
     oidb_cmd0x991.LoginSig localLoginSig = new oidb_cmd0x991.LoginSig();
     localLoginSig.uint32_type.set(1);
@@ -273,54 +276,54 @@ public class TroopPicEffectsEditActivity
         localLoginSig.bytes_sig.set(ByteStringMicro.copyFromUtf8((String)localObject));
       }
       localUser.msg_login_sig.set(localLoginSig);
-      localUser.uint32_instance_id.set(AppSetting.jdField_a_of_type_Int);
-      localGoods.int32_product_id.set(paramItemData.jdField_a_of_type_Int);
-      localGoods.bytes_goods_name.set(ByteStringMicro.copyFrom(paramItemData.jdField_a_of_type_JavaLangString.getBytes()));
+      localUser.uint32_instance_id.set(AppSetting.a());
+      localGoods.int32_product_id.set(paramazsg.jdField_a_of_type_Int);
+      localGoods.bytes_goods_name.set(ByteStringMicro.copyFrom(paramazsg.jdField_a_of_type_JavaLangString.getBytes()));
       localGoods.int32_goods_price.set(9);
       localGoods.bytes_animation_param.set(ByteStringMicro.copyFrom("{}".getBytes()));
       localGoods.msg_img.set(paramCustomFace);
       localReqBody.msg_user.set(localUser);
       localReqBody.msg_goods.set(localGoods);
-      ProtoUtils.a(this.app, paramTroopProtocolObserver, localReqBody.toByteArray(), "OidbSvc.0x991_" + 0, 2449, 0, new Bundle(), 5000L);
+      mmj.a(this.app, parammmn, localReqBody.toByteArray(), "OidbSvc.0x991_" + 0, 2449, 0, new Bundle(), 5000L);
       return;
     }
   }
   
   public void a(String paramString)
   {
-    if (!FileUtils.b(paramString))
+    if (!bace.b(paramString))
     {
       QLog.e("TroopPicEffectsEditActivity", 2, "sendPhotoTask. path invalid,path:" + paramString);
       return;
     }
-    PicReq localPicReq = PicBusiManager.a(2, 1007);
-    Object localObject = new PicUploadInfo.Builder();
-    ((PicUploadInfo.Builder)localObject).d(this.b);
-    ((PicUploadInfo.Builder)localObject).a(this.jdField_a_of_type_JavaLangString);
-    ((PicUploadInfo.Builder)localObject).e(1);
-    ((PicUploadInfo.Builder)localObject).e(this.c);
-    ((PicUploadInfo.Builder)localObject).d(1007);
-    ((PicUploadInfo.Builder)localObject).f(0);
-    ((PicUploadInfo.Builder)localObject).k(0);
-    localObject = ((PicUploadInfo.Builder)localObject).a();
-    if (!localPicReq.a((PicUploadInfo)localObject))
+    atpv localatpv = atpl.a(2, 1007);
+    Object localObject = new atqe();
+    ((atqe)localObject).d(this.b);
+    ((atqe)localObject).a(this.jdField_a_of_type_JavaLangString);
+    ((atqe)localObject).e(1);
+    ((atqe)localObject).e(this.c);
+    ((atqe)localObject).d(1007);
+    ((atqe)localObject).f(0);
+    ((atqe)localObject).k(0);
+    localObject = ((atqe)localObject).a();
+    if (!localatpv.a((atqd)localObject))
     {
       QLog.e("TroopPicEffectsEditActivity", 2, "sendPhotoTask. failed to bind the UpInfo to the sendReq");
       return;
     }
-    ((PicUploadInfo)localObject).g = paramString;
-    a(localPicReq);
+    ((atqd)localObject).g = paramString;
+    a(localatpv);
   }
   
   protected void b()
   {
     if (this.jdField_a_of_type_AndroidAppProgressDialog == null)
     {
-      this.jdField_a_of_type_AndroidAppProgressDialog = new ProgressDialog(this, 2131624516);
+      this.jdField_a_of_type_AndroidAppProgressDialog = new ProgressDialog(this, 2131690181);
       this.jdField_a_of_type_AndroidAppProgressDialog.setCancelable(true);
       this.jdField_a_of_type_AndroidAppProgressDialog.show();
-      this.jdField_a_of_type_AndroidAppProgressDialog.setContentView(2130969178);
-      ((TextView)this.jdField_a_of_type_AndroidAppProgressDialog.findViewById(2131363418)).setText("正在发送");
+      this.jdField_a_of_type_AndroidAppProgressDialog.setContentView(2131493818);
+      ((TextView)this.jdField_a_of_type_AndroidAppProgressDialog.findViewById(2131305861)).setText(ajjy.a(2131649912));
       return;
     }
     this.jdField_a_of_type_AndroidAppProgressDialog.show();
@@ -333,42 +336,42 @@ public class TroopPicEffectsEditActivity
     }
   }
   
-  protected boolean doOnCreate(Bundle paramBundle)
+  public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    setContentView(2130971716);
-    setTitle("秀图");
-    this.leftView.setText("相册");
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131375418));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131375420));
-    this.jdField_a_of_type_ComTencentWidgetHorizontalListView = ((HorizontalListView)findViewById(2131375419));
-    this.jdField_a_of_type_ComTencentMobileqqTrooppiceffectsTroopPicEffectsEditActivity$ItemListAdapter = new TroopPicEffectsEditActivity.ItemListAdapter(this);
+    setContentView(2131496968);
+    setTitle(ajjy.a(2131649911));
+    this.leftView.setText(ajjy.a(2131649916));
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131312055));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131312056));
+    this.jdField_a_of_type_ComTencentWidgetHorizontalListView = ((HorizontalListView)findViewById(2131312054));
+    this.jdField_a_of_type_Azsh = new azsh(this);
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setDividerWidth(DisplayUtil.a(this, 5.0F));
+    this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setDividerWidth(azvv.a(this, 5.0F));
     paramBundle = getIntent();
     this.b = paramBundle.getStringExtra("friendUin");
     this.c = paramBundle.getStringExtra("troopUin");
     this.jdField_a_of_type_JavaLangString = paramBundle.getStringExtra("PhotoConst.SINGLE_PHOTO_PATH");
     a(40000, this.jdField_a_of_type_JavaLangString);
     a();
-    TroopPicEffectsController.a("action_select", "page_exp");
+    azrz.a("action_select", "page_exp");
     return true;
   }
   
-  protected void doOnDestroy()
+  public void doOnDestroy()
   {
     c();
-    if (this.jdField_a_of_type_ComTencentMobileqqTrooppiceffectsViewIPicView != null) {
-      this.jdField_a_of_type_ComTencentMobileqqTrooppiceffectsViewIPicView.b();
+    if (this.jdField_a_of_type_Azsl != null) {
+      this.jdField_a_of_type_Azsl.b();
     }
-    this.jdField_a_of_type_ArrayOfComTencentMobileqqTrooppiceffectsTroopPicEffectsEditActivity$ItemData = new TroopPicEffectsEditActivity.ItemData[0];
-    ((AIOAnimationControlManager)this.app.getManager(222)).b(this);
+    this.jdField_a_of_type_ArrayOfAzsg = new azsg[0];
+    ((azfo)this.app.getManager(223)).b(this);
     super.doOnDestroy();
   }
   
-  protected boolean onBackEvent()
+  public boolean onBackEvent()
   {
-    TroopPicEffectsController.a("action_select", "clk_back");
+    azrz.a("action_select", "clk_back");
     return super.onBackEvent();
   }
   
@@ -376,22 +379,22 @@ public class TroopPicEffectsEditActivity
   {
     if (paramView == this.jdField_a_of_type_AndroidWidgetButton)
     {
-      a(new akel(this));
+      a(new azsd(this));
       b();
-      TroopPicEffectsController.a("send_pic", "clk_send");
+      azrz.a("send_pic", "clk_send");
     }
   }
   
-  public void onItemClick(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
     int j = 0;
-    a(this.jdField_a_of_type_ArrayOfComTencentMobileqqTrooppiceffectsTroopPicEffectsEditActivity$ItemData[paramInt].jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentMobileqqTrooppiceffectsTroopPicEffectsEditActivity$ItemData = this.jdField_a_of_type_ArrayOfComTencentMobileqqTrooppiceffectsTroopPicEffectsEditActivity$ItemData[paramInt];
-    this.jdField_a_of_type_Int = this.jdField_a_of_type_ArrayOfComTencentMobileqqTrooppiceffectsTroopPicEffectsEditActivity$ItemData[paramInt].jdField_a_of_type_Int;
+    a(this.jdField_a_of_type_ArrayOfAzsg[paramInt].jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Azsg = this.jdField_a_of_type_ArrayOfAzsg[paramInt];
+    this.jdField_a_of_type_Int = this.jdField_a_of_type_ArrayOfAzsg[paramInt].jdField_a_of_type_Int;
     int i = 0;
-    if (i < this.jdField_a_of_type_ArrayOfComTencentMobileqqTrooppiceffectsTroopPicEffectsEditActivity$ItemData.length)
+    if (i < this.jdField_a_of_type_ArrayOfAzsg.length)
     {
-      paramAdapterView = this.jdField_a_of_type_ArrayOfComTencentMobileqqTrooppiceffectsTroopPicEffectsEditActivity$ItemData[i];
+      paramAdapterView = this.jdField_a_of_type_ArrayOfAzsg[i];
       if (i == paramInt) {}
       for (boolean bool = true;; bool = false)
       {
@@ -400,8 +403,8 @@ public class TroopPicEffectsEditActivity
         break;
       }
     }
-    this.jdField_a_of_type_ComTencentMobileqqTrooppiceffectsTroopPicEffectsEditActivity$ItemListAdapter.notifyDataSetChanged();
-    paramView = (TroopGiftManager.ShowPicPrice)this.jdField_a_of_type_AndroidUtilSparseArray.get(this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_Azsh.notifyDataSetChanged();
+    paramView = (azkc)this.jdField_a_of_type_AndroidUtilSparseArray.get(this.jdField_a_of_type_Int);
     if (paramView != null)
     {
       paramAdapterView = paramView.jdField_a_of_type_JavaLangString;
@@ -420,7 +423,7 @@ public class TroopPicEffectsEditActivity
       paramAdapterView = new SpannableString(paramAdapterView);
       paramAdapterView.setSpan(new StrikethroughSpan(), paramInt, i, 18);
       this.jdField_a_of_type_AndroidWidgetButton.setText(paramAdapterView);
-      TroopPicEffectsController.a("action_select", "clk_switch");
+      azrz.a("action_select", "clk_switch");
       return;
       paramAdapterView = "30金豆秀一下";
       break;
@@ -434,15 +437,15 @@ public class TroopPicEffectsEditActivity
   
   public void update(Observable paramObservable, Object paramObject)
   {
-    paramObservable = (AIOAnimationControlManager.DownloadGftData)paramObject;
-    if ((paramObservable.jdField_a_of_type_Boolean) && (paramObservable.jdField_a_of_type_JavaLangString.equals("" + this.jdField_a_of_type_Int)) && ((this.jdField_a_of_type_ComTencentMobileqqTrooppiceffectsViewIPicView instanceof VideoPicView))) {
-      ((VideoPicView)this.jdField_a_of_type_ComTencentMobileqqTrooppiceffectsViewIPicView).a();
+    paramObservable = (azga)paramObject;
+    if ((paramObservable.jdField_a_of_type_Boolean) && (paramObservable.jdField_a_of_type_JavaLangString.equals("" + this.jdField_a_of_type_Int)) && ((this.jdField_a_of_type_Azsl instanceof VideoPicView))) {
+      ((VideoPicView)this.jdField_a_of_type_Azsl).a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.mobileqq.trooppiceffects.TroopPicEffectsEditActivity
  * JD-Core Version:    0.7.0.1
  */

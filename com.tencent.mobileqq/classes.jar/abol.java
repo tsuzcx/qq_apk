@@ -1,21 +1,25 @@
-import com.tencent.mobileqq.armap.ItemInfo;
-import com.tencent.mobileqq.armap.POIInfo;
-import com.tencent.mobileqq.armap.map.ARMapEngine;
-import com.tencent.mobileqq.armap.map.ARMapPOIStarDialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.RegisterChooseLoginActivity;
 
 public class abol
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public abol(ARMapPOIStarDialog paramARMapPOIStarDialog, ItemInfo paramItemInfo) {}
+  public abol(RegisterChooseLoginActivity paramRegisterChooseLoginActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ARMapEngine.removePOITask(this.jdField_a_of_type_ComTencentMobileqqArmapItemInfo.a.a);
+    paramDialogInterface.dismiss();
+    RegisterChooseLoginActivity.a(this.a, true);
+    RegisterChooseLoginActivity.a(this.a, true);
+    awqx.a(this.a.app, "dc00898", "", "", "0X8007CC9", "0X8007CC9", 0, 0, "", "", "", "");
+    awqx.a(this.a.app, "dc00898", "", "", "0X8007CC9", "0X8007CC9", 1, 0, "", "", "", "");
+    awqx.a(this.a.app, "new_reg", "next_ask", "new_clk", "", 1, "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abol
  * JD-Core Version:    0.7.0.1
  */

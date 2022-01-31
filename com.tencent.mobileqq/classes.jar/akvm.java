@@ -1,96 +1,38 @@
-import android.annotation.SuppressLint;
-import android.view.View;
-import com.tencent.biz.pubaccount.CustomWebChromeClient;
-import com.tencent.mobileqq.webview.swift.WebViewCallback;
-import com.tencent.mobileqq.webview.swift.WebViewWrapper;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.export.external.interfaces.GeolocationPermissionsCallback;
-import com.tencent.smtt.export.external.interfaces.IX5WebChromeClient.CustomViewCallback;
-import com.tencent.smtt.export.external.interfaces.JsResult;
-import com.tencent.smtt.sdk.ValueCallback;
-import com.tencent.smtt.sdk.WebSettings;
-import com.tencent.smtt.sdk.WebView;
+import android.opengl.GLES20;
 
 public class akvm
-  extends CustomWebChromeClient
+  extends akvs
 {
-  public akvm(WebViewWrapper paramWebViewWrapper) {}
+  public int a;
+  public int b;
   
-  @SuppressLint({"InflateParams"})
-  public View getVideoLoadingProgressView()
+  public akvm(int paramInt)
   {
-    if (this.a.a != null) {
-      return this.a.a.b();
-    }
-    return null;
+    super(paramInt);
+    this.e = "uniform float uA;\nuniform float uD;\n";
+    this.j = "    if(abs(gl_FragColor[0]-u_screenColor[0]) < uD && abs(gl_FragColor[1]-u_screenColor[1]) < uD  && abs(gl_FragColor[2]-u_screenColor[2]) < uD ){\n        gl_FragColor[3] = uA;\n        if(uA < 0.01){\n            gl_FragColor[0] = 0.0;\n            gl_FragColor[1] = 0.0;\n            gl_FragColor[2] = 0.0;\n        }\n    }\n";
   }
   
-  public void onGeolocationPermissionsShowPrompt(String paramString, GeolocationPermissionsCallback paramGeolocationPermissionsCallback)
+  protected void a()
   {
-    if (this.a.a != null) {
-      this.a.a.a(paramString, paramGeolocationPermissionsCallback);
-    }
+    this.a = GLES20.glGetUniformLocation(this.d, "uA");
+    akvw.a("glGetAttribLocation uA");
+    this.b = GLES20.glGetUniformLocation(this.d, "uD");
+    akvw.a("glGetAttribLocation uD");
   }
   
-  public void onHideCustomView()
+  protected void a(akvv paramakvv)
   {
-    if (this.a.a != null) {
-      this.a.a.q();
+    if (paramakvv == null) {
+      return;
     }
-  }
-  
-  public boolean onJsAlert(WebView paramWebView, String paramString1, String paramString2, JsResult paramJsResult)
-  {
-    if (this.a.a != null) {
-      this.a.a.a(paramWebView, paramString1, paramString2, paramJsResult);
-    }
-    return super.onJsAlert(paramWebView, paramString1, paramString2, paramJsResult);
-  }
-  
-  public void onProgressChanged(WebView paramWebView, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("WebLog_WebViewWrapper", 2, "onProgressChanged:" + paramInt);
-    }
-    if (this.a.a != null) {
-      this.a.a.a(paramWebView, paramInt);
-    }
-    if ((paramInt > 30) && (!paramWebView.getSettings().getLoadsImagesAutomatically())) {
-      paramWebView.getSettings().setLoadsImagesAutomatically(true);
-    }
-  }
-  
-  public void onReceivedTitle(WebView paramWebView, String paramString)
-  {
-    if (this.a.a != null) {
-      this.a.a.b(paramWebView, paramString);
-    }
-  }
-  
-  public void onShowCustomView(View paramView, int paramInt, IX5WebChromeClient.CustomViewCallback paramCustomViewCallback)
-  {
-    if (this.a.a != null) {
-      this.a.a.a(paramView, paramInt, paramCustomViewCallback);
-    }
-  }
-  
-  public void onShowCustomView(View paramView, IX5WebChromeClient.CustomViewCallback paramCustomViewCallback)
-  {
-    if (this.a.a != null) {
-      this.a.a.a(paramView, 10, paramCustomViewCallback);
-    }
-  }
-  
-  public void openFileChooser(ValueCallback paramValueCallback, String paramString1, String paramString2)
-  {
-    if (this.a.a != null) {
-      this.a.a.a(paramValueCallback, paramString1, paramString2);
-    }
+    GLES20.glUniform1f(this.a, paramakvv.d);
+    GLES20.glUniform1f(this.b, paramakvv.e);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     akvm
  * JD-Core Version:    0.7.0.1
  */

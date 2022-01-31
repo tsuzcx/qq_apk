@@ -6,17 +6,17 @@ import android.os.ResultReceiver;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import babr;
+import bafb;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import kiq;
-import kir;
-import kis;
+import mhn;
+import mho;
+import mhp;
 
 public class PopupDialogQQSide
   extends PublicBaseFragment
 {
-  public QQCustomDialog a = null;
+  public bafb a = null;
   
   void a()
   {
@@ -29,35 +29,43 @@ public class PopupDialogQQSide
   
   void b()
   {
-    Object localObject = (Bundle)getArguments().getParcelable("request");
-    int m = ((Bundle)localObject).getInt("type", 230);
-    String str1 = ((Bundle)localObject).getString("titleText");
-    String str2 = ((Bundle)localObject).getString("contentText");
-    int k = ((Bundle)localObject).getInt("leftBtnText", 0);
-    int j = ((Bundle)localObject).getInt("rightBtnText", 0);
-    localObject = (ResultReceiver)((Bundle)localObject).getParcelable("resultReceiver");
+    Object localObject1 = (Bundle)getArguments().getParcelable("request");
+    int k = ((Bundle)localObject1).getInt("type", 230);
+    String str1 = ((Bundle)localObject1).getString("titleText");
+    String str2 = ((Bundle)localObject1).getString("contentText");
+    int i = ((Bundle)localObject1).getInt("leftBtnText", 0);
+    int j = ((Bundle)localObject1).getInt("rightBtnText", 0);
+    Object localObject2 = (ResultReceiver)((Bundle)localObject1).getParcelable("resultReceiver");
+    boolean bool1 = ((Bundle)localObject1).getBoolean("leftBtnVisiable", true);
+    boolean bool2 = ((Bundle)localObject1).getBoolean("rightBtnVisiable", true);
     a();
-    localObject = new kiq(this, null);
-    kir localkir = new kir(this, null);
-    int i = k;
-    if (k == 0) {
-      i = 2131428674;
-    }
-    if (j == 0) {
-      j = 2131428674;
+    localObject1 = new mhn(this, (ResultReceiver)localObject2);
+    localObject2 = new mho(this, (ResultReceiver)localObject2);
+    if (i == 0) {
+      i = 2131654874;
     }
     for (;;)
     {
-      QQCustomDialog localQQCustomDialog = DialogUtil.a(getActivity(), m);
-      localQQCustomDialog.setMessage(str2);
-      localQQCustomDialog.setTitle(str1);
-      localQQCustomDialog.setNegativeButton(i, (DialogInterface.OnClickListener)localObject);
-      localQQCustomDialog.setPositiveButton(j, localkir);
-      localQQCustomDialog.setOnDismissListener(new kis(this));
-      localQQCustomDialog.setCancelable(true);
-      localQQCustomDialog.show();
-      this.a = localQQCustomDialog;
-      return;
+      if (j == 0) {
+        j = 2131654874;
+      }
+      for (;;)
+      {
+        bafb localbafb = babr.a(getActivity(), k);
+        localbafb.setMessage(str2);
+        localbafb.setTitle(str1);
+        if (bool1) {
+          localbafb.setNegativeButton(i, (DialogInterface.OnClickListener)localObject1);
+        }
+        if (bool2) {
+          localbafb.setPositiveButton(j, (DialogInterface.OnClickListener)localObject2);
+        }
+        localbafb.setOnDismissListener(new mhp(this));
+        localbafb.setCancelable(true);
+        localbafb.show();
+        this.a = localbafb;
+        return;
+      }
     }
   }
   
@@ -80,7 +88,7 @@ public class PopupDialogQQSide
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.av.utils.PopupDialogQQSide
  * JD-Core Version:    0.7.0.1
  */

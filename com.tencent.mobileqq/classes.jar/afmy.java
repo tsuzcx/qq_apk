@@ -1,19 +1,20 @@
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditTribePanel;
-import com.tencent.widget.ActionSheet.OnDismissListener;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopFileFragment;
 
-public class afmy
-  implements ActionSheet.OnDismissListener
+class afmy
+  implements apad
 {
-  public afmy(NearbyProfileEditTribePanel paramNearbyProfileEditTribePanel) {}
+  afmy(afmx paramafmx) {}
   
-  public void onDismiss()
+  public void a(int paramInt1, int paramInt2)
   {
-    NearbyProfileEditTribePanel.a(this.a, this.a.b, false);
+    if ((paramInt1 == 3) && (paramInt2 == 0)) {
+      awqx.b(this.a.a.a, "dc00898", "", "", "0X800A0BE", "0X800A0BE", 3, 0, "", "", "", "");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     afmy
  * JD-Core Version:    0.7.0.1
  */

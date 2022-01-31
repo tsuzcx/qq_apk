@@ -1,48 +1,96 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.GesturePWDCreateActivity;
-import com.tencent.mobileqq.activity.GesturePWDManualGuideActivity;
-import com.tencent.mobileqq.activity.GesturePWDSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.network.pb.qqstory_group.GroupVideo;
+import com.tencent.biz.qqstory.network.pb.qqstory_group.ReqAddGroupVideo;
+import com.tencent.biz.qqstory.network.pb.qqstory_group.RspAddGroupVideo;
+import com.tencent.biz.qqstory.network.pb.qqstory_group.VideoObject;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map.Entry;
+import java.util.Set;
 
 public class syw
-  implements View.OnClickListener
+  extends slz<tbb>
 {
-  public syw(GesturePWDSettingActivity paramGesturePWDSettingActivity) {}
+  private final HashMap<String, List<String>> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private final List<Long> jdField_a_of_type_JavaUtilList;
+  private final List<Integer> b;
+  private final int c;
   
-  public void onClick(View paramView)
+  public syw(String paramString, List<String> paramList, List<Long> paramList1, List<Integer> paramList2, int paramInt)
   {
-    switch (paramView.getId())
-    {
-    case 2131364737: 
-    case 2131364738: 
-    case 2131364741: 
-    case 2131364742: 
-    default: 
-      return;
-    case 2131364736: 
-      GesturePWDUtils.setGesturePWDMode(this.a, this.a.app.getCurrentAccountUin(), 20);
-      this.a.a();
-      return;
-    case 2131364740: 
-      GesturePWDUtils.setGesturePWDMode(this.a, this.a.app.getCurrentAccountUin(), 21);
-      this.a.a();
-      return;
-    case 2131364739: 
-      paramView = new Intent(this.a, GesturePWDManualGuideActivity.class);
-      this.a.startActivity(paramView);
-      return;
+    if (TextUtils.isEmpty(paramString)) {
+      throw new IllegalArgumentException("union_id should not be empty");
     }
-    paramView = new Intent(this.a, GesturePWDCreateActivity.class);
-    this.a.startActivityForResult(paramView, 11);
-    this.a.overridePendingTransition(2131034134, 2131034131);
+    if ((paramList == null) || (paramList.isEmpty())) {
+      throw new IllegalArgumentException("vidList is empty");
+    }
+    this.jdField_a_of_type_JavaUtilHashMap.put(paramString, Collections.unmodifiableList(paramList));
+    this.jdField_a_of_type_JavaUtilList = paramList1;
+    this.b = paramList2;
+    this.c = paramInt;
+  }
+  
+  public String a()
+  {
+    return skt.a("StoryGroupSvc.add_video");
+  }
+  
+  public slu a(byte[] paramArrayOfByte)
+  {
+    qqstory_group.RspAddGroupVideo localRspAddGroupVideo = new qqstory_group.RspAddGroupVideo();
+    try
+    {
+      localRspAddGroupVideo.mergeFrom(paramArrayOfByte);
+      return new tbb(localRspAddGroupVideo);
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      for (;;)
+      {
+        urk.b("AddGroupVideoRequest", "decodeResponse", paramArrayOfByte);
+      }
+    }
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_group.ReqAddGroupVideo localReqAddGroupVideo = new qqstory_group.ReqAddGroupVideo();
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
+    while (localIterator.hasNext())
+    {
+      Object localObject = (Map.Entry)localIterator.next();
+      qqstory_group.GroupVideo localGroupVideo = new qqstory_group.GroupVideo();
+      localGroupVideo.source.set(this.c);
+      localGroupVideo.union_id.set(ByteStringMicro.copyFromUtf8((String)((Map.Entry)localObject).getKey()));
+      int i = 0;
+      localObject = ((List)((Map.Entry)localObject).getValue()).iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        String str = (String)((Iterator)localObject).next();
+        qqstory_group.VideoObject localVideoObject = new qqstory_group.VideoObject();
+        localVideoObject.vid.set(ByteStringMicro.copyFromUtf8(str));
+        localVideoObject.ts.set(((Long)this.jdField_a_of_type_JavaUtilList.get(i)).longValue() / 1000L);
+        localVideoObject.time_zone.set(((Integer)this.b.get(i)).intValue());
+        localGroupVideo.video_obj_list.add(localVideoObject);
+        i += 1;
+      }
+      localReqAddGroupVideo.group_video_list.add(localGroupVideo);
+    }
+    return localReqAddGroupVideo.toByteArray();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     syw
  * JD-Core Version:    0.7.0.1
  */

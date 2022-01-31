@@ -1,19 +1,18 @@
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
-
 class acwu
-  implements Runnable
+  implements ajbw
 {
-  acwu(acwp paramacwp) {}
+  acwu(acwt paramacwt) {}
   
-  public void run()
+  public void a(boolean paramBoolean, aipq paramaipq)
   {
-    UniformDownloadActivity.b(this.a.a).setVisibility(4);
+    if ((paramBoolean) && (paramaipq != null)) {
+      paramaipq.f();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     acwu
  * JD-Core Version:    0.7.0.1
  */

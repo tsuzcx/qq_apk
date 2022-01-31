@@ -7,10 +7,10 @@ import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class DynamicBusinessHotWord$GroupID
-  extends MessageMicro
+  extends MessageMicro<GroupID>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8 }, new String[] { "rpt_group_mask" }, new Object[] { Long.valueOf(0L) }, GroupID.class);
-  public final PBRepeatField rpt_group_mask = PBField.initRepeat(PBUInt64Field.__repeatHelper__);
+  public final PBRepeatField<Long> rpt_group_mask = PBField.initRepeat(PBUInt64Field.__repeatHelper__);
 }
 
 

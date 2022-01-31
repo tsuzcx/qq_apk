@@ -1,15 +1,24 @@
 package com.tencent.biz.tribe;
 
+import abju;
+import ajjy;
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Point;
 import android.os.Message;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
+import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
@@ -17,18 +26,20 @@ import android.widget.ProgressBar;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
+import awqx;
+import badq;
+import bbac;
 import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsHelper;
 import com.tencent.biz.ui.RefreshView;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.activity.PublicFragmentActivityForTool;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewFragment;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
 import com.tencent.qqlive.mediaplayer.api.TVK_IProxyFactory;
@@ -39,29 +50,30 @@ import com.tencent.qqlive.mediaplayer.view.IVideoViewBase;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
 import java.util.Queue;
 import java.util.Set;
 import java.util.Timer;
 import org.json.JSONException;
 import org.json.JSONObject;
-import ozr;
-import ozs;
-import ozt;
-import ozu;
-import ozv;
-import ozw;
-import ozx;
-import ozy;
-import paa;
-import pab;
-import pac;
-import pad;
-import pae;
-import paf;
+import qcn;
+import wib;
+import wic;
+import wid;
+import wie;
+import wif;
+import wig;
+import wih;
+import wij;
+import wik;
+import wil;
+import wim;
 
 public class TribeVideoPlugin
   extends WebViewPlugin
 {
+  private float jdField_a_of_type_Float = -1.0F;
   private int jdField_a_of_type_Int;
   private Context jdField_a_of_type_AndroidContentContext;
   private Point jdField_a_of_type_AndroidGraphicsPoint = new Point();
@@ -70,19 +82,46 @@ public class TribeVideoPlugin
   private TouchWebView jdField_a_of_type_ComTencentBizUiTouchWebView;
   private TVK_IProxyFactory jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IProxyFactory;
   private String jdField_a_of_type_JavaLangString;
-  private HashMap jdField_a_of_type_JavaUtilHashMap;
-  private Queue jdField_a_of_type_JavaUtilQueue;
-  private pac jdField_a_of_type_Pac;
+  private HashMap<String, wim> jdField_a_of_type_JavaUtilHashMap;
+  private Queue<String> jdField_a_of_type_JavaUtilQueue;
+  private wij jdField_a_of_type_Wij;
   private boolean jdField_a_of_type_Boolean;
   private int jdField_b_of_type_Int = -1;
   private Point jdField_b_of_type_AndroidGraphicsPoint = new Point();
   private boolean jdField_b_of_type_Boolean = true;
   private int c;
   private int d;
+  private int e = -1;
+  private int f = -1;
   
   public TribeVideoPlugin()
   {
     this.mPluginNameSpace = "tribeVideoPlayer";
+  }
+  
+  private int a()
+  {
+    if ((this.mRuntime.a() instanceof FragmentActivity))
+    {
+      Object localObject = ((FragmentActivity)this.mRuntime.a()).getSupportFragmentManager();
+      if (localObject != null)
+      {
+        FragmentTransaction localFragmentTransaction = ((FragmentManager)localObject).beginTransaction();
+        localObject = ((FragmentManager)localObject).getFragments();
+        if ((localObject != null) && (((List)localObject).size() > 0))
+        {
+          localObject = ((List)localObject).iterator();
+          while (((Iterator)localObject).hasNext())
+          {
+            Fragment localFragment = (Fragment)((Iterator)localObject).next();
+            if (((localFragment instanceof WebViewFragment)) && (localFragment.isVisible())) {
+              localFragmentTransaction.hide(localFragment).commit();
+            }
+          }
+        }
+      }
+    }
+    return 0;
   }
   
   private int a(String paramString)
@@ -98,14 +137,14 @@ public class TribeVideoPlugin
       while (paramString.hasNext())
       {
         localObject = (String)paramString.next();
-        a(paf.a((paf)this.jdField_a_of_type_JavaUtilHashMap.get(localObject)));
-        FrameLayout localFrameLayout = paf.a((paf)this.jdField_a_of_type_JavaUtilHashMap.get(localObject));
+        a(wim.a((wim)this.jdField_a_of_type_JavaUtilHashMap.get(localObject)));
+        FrameLayout localFrameLayout = wim.a((wim)this.jdField_a_of_type_JavaUtilHashMap.get(localObject));
         ((ViewGroup)localFrameLayout.getParent()).removeView(localFrameLayout);
         a((String)localObject, 2);
-        paf.a((paf)this.jdField_a_of_type_JavaUtilHashMap.get(localObject)).stop();
-        paf.a((paf)this.jdField_a_of_type_JavaUtilHashMap.get(localObject)).release();
-        paf.a((paf)this.jdField_a_of_type_JavaUtilHashMap.get(localObject), null);
-        this.jdField_a_of_type_Pac.removeCallbacksAndMessages(null);
+        wim.a((wim)this.jdField_a_of_type_JavaUtilHashMap.get(localObject)).stop();
+        wim.a((wim)this.jdField_a_of_type_JavaUtilHashMap.get(localObject)).release();
+        wim.a((wim)this.jdField_a_of_type_JavaUtilHashMap.get(localObject), null);
+        this.jdField_a_of_type_Wij.removeCallbacksAndMessages(null);
       }
       this.jdField_a_of_type_JavaUtilHashMap.clear();
       i = 0;
@@ -121,63 +160,62 @@ public class TribeVideoPlugin
     } while (!QLog.isColorLevel());
     QLog.e("TribeVideoPlugin", 2, "realPluckVideo no such playID playerID = " + paramString);
     return -1;
-    a(paf.a((paf)this.jdField_a_of_type_JavaUtilHashMap.get(paramString)));
-    Object localObject = paf.a((paf)this.jdField_a_of_type_JavaUtilHashMap.get(paramString));
+    a(wim.a((wim)this.jdField_a_of_type_JavaUtilHashMap.get(paramString)));
+    Object localObject = wim.a((wim)this.jdField_a_of_type_JavaUtilHashMap.get(paramString));
     ((ViewGroup)((FrameLayout)localObject).getParent()).removeView((View)localObject);
     a(paramString, 2);
-    paf.a((paf)this.jdField_a_of_type_JavaUtilHashMap.get(paramString)).stop();
-    paf.a((paf)this.jdField_a_of_type_JavaUtilHashMap.get(paramString)).release();
-    paf.a((paf)this.jdField_a_of_type_JavaUtilHashMap.get(paramString), null);
+    wim.a((wim)this.jdField_a_of_type_JavaUtilHashMap.get(paramString)).stop();
+    wim.a((wim)this.jdField_a_of_type_JavaUtilHashMap.get(paramString)).release();
+    wim.a((wim)this.jdField_a_of_type_JavaUtilHashMap.get(paramString), null);
     this.jdField_a_of_type_JavaUtilHashMap.remove(paramString);
-    this.jdField_a_of_type_Pac.removeMessages(2, paramString);
-    this.jdField_a_of_type_Pac.removeMessages(1, paramString);
-    this.jdField_a_of_type_Pac.removeMessages(3, paramString);
-    this.jdField_a_of_type_Pac.removeMessages(4, paramString);
-    this.jdField_a_of_type_Pac.removeMessages(5, paramString);
-    this.jdField_a_of_type_Pac.removeMessages(6, paramString);
-    this.jdField_a_of_type_Pac.removeMessages(7, paramString);
-    this.jdField_a_of_type_Pac.removeMessages(8, paramString);
+    this.jdField_a_of_type_Wij.removeMessages(2, paramString);
+    this.jdField_a_of_type_Wij.removeMessages(1, paramString);
+    this.jdField_a_of_type_Wij.removeMessages(4, paramString);
+    this.jdField_a_of_type_Wij.removeMessages(5, paramString);
+    this.jdField_a_of_type_Wij.removeMessages(6, paramString);
+    this.jdField_a_of_type_Wij.removeMessages(7, paramString);
+    this.jdField_a_of_type_Wij.removeMessages(8, paramString);
     return 0;
   }
   
   private int a(JSONObject paramJSONObject)
   {
-    paf localpaf = a(paramJSONObject);
-    if (localpaf == null)
+    wim localwim = a(paramJSONObject);
+    if (localwim == null)
     {
       if (QLog.isColorLevel()) {
         QLog.e("TribeVideoPlugin", 1, "pin Video json 参数错误 jsonObject = " + paramJSONObject);
       }
       return -1;
     }
-    if (TextUtils.isEmpty(paf.a(localpaf)))
+    if (TextUtils.isEmpty(wim.a(localwim)))
     {
       if (QLog.isColorLevel()) {
         QLog.e("TribeVideoPlugin", 1, "pin Video mPlayerID = null");
       }
       return -1;
     }
-    if ((TextUtils.isEmpty(paf.b(localpaf))) && (TextUtils.isEmpty(paf.c(localpaf))))
+    if ((TextUtils.isEmpty(wim.b(localwim))) && (TextUtils.isEmpty(wim.c(localwim))))
     {
       if (QLog.isColorLevel()) {
         QLog.e("TribeVideoPlugin", 1, "pin Video mVid = null && mVideoPath = null");
       }
       return -1;
     }
-    if (!TextUtils.isEmpty(paf.c(localpaf))) {
-      paramJSONObject = paf.c(localpaf);
+    if (!TextUtils.isEmpty(wim.c(localwim))) {
+      paramJSONObject = wim.c(localwim);
     }
-    for (int i = 1; (paf.c(localpaf) == 0.0D) || (paf.d(localpaf) == 0.0D); i = 0)
+    for (int i = 1; (wim.c(localwim) == 0.0D) || (wim.d(localwim) == 0.0D); i = 0)
     {
       if (QLog.isColorLevel()) {
         QLog.e("TribeVideoPlugin", 1, "width or height error");
       }
       return -1;
-      paramJSONObject = paf.b(localpaf);
+      paramJSONObject = wim.b(localwim);
     }
-    if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(paf.a(localpaf)))
+    if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(wim.a(localwim)))
     {
-      if (!paf.c((paf)this.jdField_a_of_type_JavaUtilHashMap.get(paf.a(localpaf))))
+      if (!wim.c((wim)this.jdField_a_of_type_JavaUtilHashMap.get(wim.a(localwim))))
       {
         if (QLog.isColorLevel()) {
           QLog.e("TribeVideoPlugin", 1, "mVideoPlayerManager already contain playerID, the same player is preparing");
@@ -187,13 +225,13 @@ public class TribeVideoPlugin
       if (QLog.isColorLevel()) {
         QLog.d("TribeVideoPlugin", 1, "mVideoPlayerManager already contain playerID, the same player is prepared, so pluck it");
       }
-      a(paf.a(localpaf));
+      a(wim.a(localwim));
     }
     IVideoViewBase localIVideoViewBase = a();
     if (localIVideoViewBase == null) {}
     for (boolean bool = true;; bool = false)
     {
-      ThreadManager.post(new paa(this, bool), 5, null, true);
+      ThreadManager.post(new TribeVideoPlugin.TechReportRunnable(this, bool), 5, null, true);
       if (localIVideoViewBase != null) {
         break;
       }
@@ -210,29 +248,29 @@ public class TribeVideoPlugin
     TVK_IMediaPlayer localTVK_IMediaPlayer;
     if (this.jdField_b_of_type_Int == -1)
     {
-      this.jdField_b_of_type_Int = paf.a(localpaf);
-      if (paf.a(localpaf) == 1) {
+      this.jdField_b_of_type_Int = wim.a(localwim);
+      if (wim.a(localwim) == 1) {
         this.jdField_a_of_type_ComTencentBizUiTouchWebView.setBackgroundColor(0);
       }
       if (QLog.isColorLevel()) {
-        QLog.d("TribeVideoPlugin", 2, "efficient pinview playmode playMode = " + paf.a(localpaf) + " mPlayMode = " + this.jdField_b_of_type_Int);
+        QLog.d("TribeVideoPlugin", 2, "efficient pinview playmode playMode = " + wim.a(localwim) + " mPlayMode = " + this.jdField_b_of_type_Int);
       }
-      localTVK_IMediaPlayer = a(localIVideoViewBase, paramJSONObject, i, localpaf);
-      paf.a(localpaf, localTVK_IMediaPlayer);
-      if (paf.b(localpaf) != 2) {
-        break label602;
+      localTVK_IMediaPlayer = a(localIVideoViewBase, paramJSONObject, i, localwim);
+      wim.a(localwim, localTVK_IMediaPlayer);
+      if (wim.b(localwim) != 2) {
+        break label609;
       }
       paramJSONObject = null;
     }
     for (;;)
     {
-      label438:
-      a(paramJSONObject, localTVK_IMediaPlayer, localpaf);
-      a(localIVideoViewBase, paramJSONObject, localpaf);
-      if (paf.b(localpaf) == 2) {
-        this.mRuntime.a().setOnTouchListener(new pae(this, paf.a(localpaf)));
+      label444:
+      a(paramJSONObject, localTVK_IMediaPlayer, localwim);
+      a(localIVideoViewBase, paramJSONObject, localwim);
+      if (wim.b(localwim) == 2) {
+        this.mRuntime.a().setOnTouchListener(new wil(this, wim.a(localwim)));
       }
-      this.jdField_a_of_type_JavaUtilQueue.add(paf.a(localpaf));
+      this.jdField_a_of_type_JavaUtilQueue.add(wim.a(localwim));
       for (;;)
       {
         if (this.jdField_a_of_type_JavaUtilQueue.size() > 1)
@@ -245,31 +283,27 @@ public class TribeVideoPlugin
             if (!QLog.isColorLevel()) {
               break;
             }
-            QLog.d("TribeVideoPlugin", 2, "inefficient pinview playmode playMode = " + paf.a(localpaf) + " mPlayMode = " + this.jdField_b_of_type_Int);
+            QLog.d("TribeVideoPlugin", 2, "inefficient pinview playmode playMode = " + wim.a(localwim) + " mPlayMode = " + this.jdField_b_of_type_Int);
             break;
-            label602:
-            if (paf.b(localpaf) == 1)
+            label609:
+            if (wim.b(localwim) == 1)
             {
-              paramJSONObject = (FrameLayout)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130969699, null);
-              break label438;
+              paramJSONObject = (FrameLayout)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131494543, null);
+              break label444;
             }
-            if (paf.b(localpaf) != 0) {
-              break label726;
+            if (wim.b(localwim) != 0) {
+              break label699;
             }
-            paramJSONObject = (FrameLayout)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130969700, null);
-            break label438;
+            paramJSONObject = (FrameLayout)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131494544, null);
+            break label444;
           }
         }
       }
-      paf.a(localpaf, System.currentTimeMillis());
-      this.jdField_a_of_type_JavaUtilHashMap.put(paf.a(localpaf), localpaf);
+      wim.a(localwim, System.currentTimeMillis());
+      this.jdField_a_of_type_JavaUtilHashMap.put(wim.a(localwim), localwim);
       this.jdField_a_of_type_Boolean = false;
-      paramJSONObject = this.jdField_a_of_type_Pac.obtainMessage();
-      paramJSONObject.obj = paf.a(localpaf);
-      paramJSONObject.what = 3;
-      this.jdField_a_of_type_Pac.sendMessageDelayed(paramJSONObject, 10000L);
       return 0;
-      label726:
+      label699:
       paramJSONObject = null;
     }
   }
@@ -301,7 +335,7 @@ public class TribeVideoPlugin
         }
         return -1;
       }
-      paramJSONObject1 = paf.a((paf)this.jdField_a_of_type_JavaUtilHashMap.get(paramJSONObject1));
+      paramJSONObject1 = wim.a((wim)this.jdField_a_of_type_JavaUtilHashMap.get(paramJSONObject1));
     }
     for (;;)
     {
@@ -335,19 +369,19 @@ public class TribeVideoPlugin
     }
   }
   
-  private int a(paf parampaf, int paramInt1, int paramInt2)
+  private int a(wim paramwim, int paramInt1, int paramInt2)
   {
     int i = 0;
-    if ((paramInt1 == 1) && (paf.a(parampaf)))
+    if ((paramInt1 == 1) && (wim.a(paramwim)))
     {
-      int j = paf.a(parampaf).getTop();
+      int j = wim.a(paramwim).getTop();
       int k = this.jdField_a_of_type_AndroidWidgetFrameLayout.getScrollY();
-      int m = paf.a(parampaf).getBottom();
+      int m = wim.a(paramwim).getBottom();
       int n = this.jdField_a_of_type_AndroidWidgetFrameLayout.getScrollY();
-      if ((j - k < paf.a(parampaf)) || (m - n > paf.b(parampaf)))
+      if ((j - k < wim.a(paramwim)) || (m - n > wim.b(paramwim)))
       {
         if (QLog.isColorLevel()) {
-          QLog.e("TribeVideoPlugin", 2, "realHandlePlayControl returned due to started not in show area videoWrapper.mPlayerID = " + paf.a(parampaf));
+          QLog.e("TribeVideoPlugin", 2, "realHandlePlayControl returned due to started not in show area videoWrapper.mPlayerID = " + wim.a(paramwim));
         }
         paramInt2 = -1;
       }
@@ -355,17 +389,17 @@ public class TribeVideoPlugin
     do
     {
       return paramInt2;
-      FrameLayout localFrameLayout = paf.a(parampaf);
+      FrameLayout localFrameLayout = wim.a(paramwim);
       if (paramInt2 == 1) {
         localFrameLayout.setVisibility(0);
       }
       while (paramInt1 == 1)
       {
-        if (paf.a(parampaf).isPauseing()) {
-          a(paf.a(parampaf), 1);
+        if (wim.a(paramwim).isPauseing()) {
+          a(wim.a(paramwim), 1);
         }
-        paf.b(parampaf, false);
-        paf.a(parampaf).start();
+        wim.b(paramwim, false);
+        wim.a(paramwim).start();
         return 0;
         if (paramInt2 == 0) {
           localFrameLayout.setVisibility(4);
@@ -373,51 +407,76 @@ public class TribeVideoPlugin
       }
       paramInt2 = i;
     } while (paramInt1 != 0);
-    a(paf.a(parampaf), 3);
-    paf.b(parampaf, true);
-    paf.a(parampaf).pause();
-    this.jdField_a_of_type_Pac.removeMessages(3, paf.a(parampaf));
+    a(wim.a(paramwim), 3);
+    wim.b(paramwim, true);
+    wim.a(paramwim).pause();
     return 0;
   }
   
-  private VideoLayout a(IVideoViewBase paramIVideoViewBase, FrameLayout paramFrameLayout, paf parampaf)
+  private VideoLayout a(IVideoViewBase paramIVideoViewBase, FrameLayout paramFrameLayout, wim paramwim)
   {
     VideoLayout localVideoLayout = new VideoLayout(this.jdField_a_of_type_AndroidContentContext);
     localVideoLayout.addView((View)paramIVideoViewBase);
-    ((View)paramIVideoViewBase).setTag("VideoViewTAG");
     if (paramFrameLayout != null) {
       localVideoLayout.addView(paramFrameLayout);
     }
     localVideoLayout.setBackgroundColor(-16777216);
-    if (paf.f(parampaf) == 1) {
-      localVideoLayout.setOnTouchListener(new ozx(this));
+    if (wim.f(paramwim) == 1) {
+      localVideoLayout.setOnTouchListener(new wih(this));
     }
-    float f = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().density;
-    paramIVideoViewBase = new FrameLayout.LayoutParams((int)(paf.c(parampaf) * f), (int)(paf.d(parampaf) * f));
-    paramIVideoViewBase.topMargin = ((int)(paf.e(parampaf) * f));
-    paramIVideoViewBase.leftMargin = ((int)(paf.f(parampaf) * f));
-    paf.e(parampaf, paf.a(parampaf) * f);
-    paf.f(parampaf, this.c - paf.b(parampaf) * f);
-    if (paf.g(parampaf) > 0) {
-      localVideoLayout.setRoundCorner((int)(paf.g(parampaf) * f));
+    if ((this.f > 0) && (this.e > 0)) {}
+    for (float f1 = this.f / this.e;; f1 = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().density)
+    {
+      paramIVideoViewBase = new FrameLayout.LayoutParams((int)(wim.c(paramwim) * f1), (int)(wim.d(paramwim) * f1));
+      paramIVideoViewBase.topMargin = ((int)(wim.e(paramwim) * f1));
+      paramIVideoViewBase.leftMargin = ((int)(wim.f(paramwim) * f1));
+      wim.e(paramwim, wim.a(paramwim) * f1);
+      wim.f(paramwim, this.c - wim.b(paramwim) * f1);
+      if (wim.g(paramwim) > 0) {
+        localVideoLayout.setRoundCorner((int)(wim.g(paramwim) * f1));
+      }
+      this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(localVideoLayout, paramIVideoViewBase);
+      if (QLog.isColorLevel()) {
+        QLog.d("TribeVideoPlugin", 2, "sDensity:" + f1);
+      }
+      wim.a(paramwim, localVideoLayout);
+      return localVideoLayout;
     }
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(localVideoLayout, paramIVideoViewBase);
-    if (QLog.isColorLevel()) {
-      QLog.d("TribeVideoPlugin", 2, "sDensity:" + f);
-    }
-    paf.a(parampaf, localVideoLayout);
-    return localVideoLayout;
   }
   
-  private TVK_IMediaPlayer a(IVideoViewBase paramIVideoViewBase, String paramString, int paramInt, paf parampaf)
+  private TribeVideoListPlayerFragment a()
+  {
+    if ((this.mRuntime.a() instanceof FragmentActivity))
+    {
+      Object localObject = ((FragmentActivity)this.mRuntime.a()).getSupportFragmentManager();
+      if (localObject != null)
+      {
+        localObject = ((FragmentManager)localObject).getFragments();
+        if ((localObject != null) && (((List)localObject).size() > 0))
+        {
+          localObject = ((List)localObject).iterator();
+          while (((Iterator)localObject).hasNext())
+          {
+            Fragment localFragment = (Fragment)((Iterator)localObject).next();
+            if ((localFragment instanceof TribeVideoListPlayerFragment)) {
+              return (TribeVideoListPlayerFragment)localFragment;
+            }
+          }
+        }
+      }
+    }
+    return null;
+  }
+  
+  private TVK_IMediaPlayer a(IVideoViewBase paramIVideoViewBase, String paramString, int paramInt, wim paramwim)
   {
     paramIVideoViewBase = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IProxyFactory.createMediaPlayer(this.jdField_a_of_type_AndroidContentContext, paramIVideoViewBase);
     paramIVideoViewBase.setXYaxis(2);
-    if (paf.c(parampaf) == 0) {
+    if (wim.c(paramwim) == 0) {
       paramIVideoViewBase.setLoopback(true);
     }
-    a(paramIVideoViewBase, parampaf);
-    a(paf.d(parampaf), paramString, paramInt, paramIVideoViewBase, parampaf);
+    a(paramIVideoViewBase, paramwim);
+    a(wim.d(paramwim), paramString, paramInt, paramIVideoViewBase, paramwim);
     return paramIVideoViewBase;
   }
   
@@ -434,97 +493,253 @@ public class TribeVideoPlugin
       if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IProxyFactory != null) {
         break;
       }
-      localObject = Toast.makeText(this.mRuntime.a().getApplication(), "腾讯视频插件安装中,请稍等..", 1);
+      localObject = Toast.makeText(this.mRuntime.a().getApplication(), ajjy.a(2131649319), 1);
       ((Toast)localObject).setGravity(17, 0, 0);
       ((Toast)localObject).show();
       return null;
-      ThreadManager.post(new ozy(this), 5, null, true);
+      ThreadManager.post(new TribeVideoPlugin.TVKSDKInstallRunnable(this), 5, null, true);
     }
     Object localObject = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IProxyFactory.createVideoView_Scroll(this.jdField_a_of_type_AndroidContentContext);
-    ((IVideoViewBase)localObject).addViewCallBack(new ozw(this));
+    ((IVideoViewBase)localObject).addViewCallBack(new wig(this));
     return localObject;
   }
   
-  private pad a(FrameLayout paramFrameLayout, TVK_IMediaPlayer paramTVK_IMediaPlayer, paf parampaf)
+  private wik a(FrameLayout paramFrameLayout, TVK_IMediaPlayer paramTVK_IMediaPlayer, wim paramwim)
   {
-    if ((paf.b(parampaf) != 2) && (paf.b(parampaf) != 1) && (paf.b(parampaf) != 0)) {
+    if ((wim.b(paramwim) != 2) && (wim.b(paramwim) != 1) && (wim.b(paramwim) != 0)) {
       return null;
     }
-    pad localpad = new pad(null);
-    pad.a(localpad, paf.b(parampaf));
-    if (paf.b(parampaf) == 2)
+    wik localwik = new wik(null);
+    wik.a(localwik, wim.b(paramwim));
+    if (wim.b(paramwim) == 2)
     {
-      if (paf.e(parampaf) != 0) {
+      if (wim.e(paramwim) != 0) {
         break label162;
       }
       paramTVK_IMediaPlayer.setOutputMute(false);
     }
     for (;;)
     {
-      a(parampaf);
-      pad.a(localpad).setVisibility(8);
-      paf.a(parampaf, localpad);
-      return localpad;
-      if (paf.b(parampaf) == 1)
+      a(paramwim);
+      wik.a(localwik).setVisibility(8);
+      wim.a(paramwim, localwik);
+      return localwik;
+      if (wim.b(paramwim) == 1)
       {
-        pad.a(localpad, (ProgressBar)paramFrameLayout.findViewById(2131367542));
-        pad.b(localpad, (ProgressBar)paramFrameLayout.findViewById(2131367543));
+        wik.a(localwik, (ProgressBar)paramFrameLayout.findViewById(2131310290));
+        wik.b(localwik, (ProgressBar)paramFrameLayout.findViewById(2131310291));
         break;
       }
-      if (paf.b(parampaf) != 0) {
+      if (wim.b(paramwim) != 0) {
         break;
       }
-      pad.a(localpad, (ProgressBar)paramFrameLayout.findViewById(2131367544));
+      wik.a(localwik, (ProgressBar)paramFrameLayout.findViewById(2131305211));
       break;
       label162:
-      if (paf.e(parampaf) == 1) {
+      if (wim.e(paramwim) == 1) {
         paramTVK_IMediaPlayer.setOutputMute(true);
       }
     }
   }
   
-  private paf a(JSONObject paramJSONObject)
+  /* Error */
+  private wim a(JSONObject paramJSONObject)
   {
-    paf localpaf = new paf(null);
-    try
-    {
-      paf.a(localpaf, paramJSONObject.optString("vid"));
-      paf.b(localpaf, paramJSONObject.optString("videoPath"));
-      paf.c(localpaf, paramJSONObject.optString("playerID"));
-      paf.a(localpaf, paramJSONObject.optDouble("top", 0.0D));
-      paf.b(localpaf, paramJSONObject.optDouble("left", 0.0D));
-      paf.c(localpaf, paramJSONObject.optDouble("width", 0.0D));
-      paf.d(localpaf, paramJSONObject.optDouble("height", 0.0D));
-      paf.a(localpaf, paramJSONObject.optInt("time", 0));
-      paf.b(localpaf, paramJSONObject.optInt("needMute", 1));
-      paf.c(localpaf, paramJSONObject.optInt("playMode", 0));
-      paf.d(localpaf, paramJSONObject.optInt("showUIController", 0));
-      if (paf.b(localpaf) == 2) {
-        paf.d(localpaf, 0);
-      }
-      paf.e(localpaf, paramJSONObject.optInt("needCountdown", 1));
-      paf.f(localpaf, paramJSONObject.optInt("videoTouchIntercept", 0));
-      paf.g(localpaf, paramJSONObject.optInt("repeatType", 0));
-      int i = paramJSONObject.optInt("needCheckShowArea", 0);
-      if (i == 1) {
-        paf.c(localpaf, true);
-      }
-      for (;;)
-      {
-        paf.e(localpaf, paramJSONObject.optDouble("showAreaTop", 0.0D));
-        paf.f(localpaf, paramJSONObject.optDouble("showAreaBottom", 0.0D));
-        paf.h(localpaf, paramJSONObject.optInt("roundCorner", 0));
-        return localpaf;
-        if (i == 0) {
-          paf.c(localpaf, false);
-        }
-      }
-      return null;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("TribeVideoPlugin", 1, "AddView Err: json = " + paramJSONObject);
-    }
+    // Byte code:
+    //   0: new 141	wim
+    //   3: dup
+    //   4: aconst_null
+    //   5: invokespecial 650	wim:<init>	(Lwib;)V
+    //   8: astore 4
+    //   10: aload 4
+    //   12: aload_1
+    //   13: ldc_w 652
+    //   16: invokevirtual 655	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   19: invokestatic 658	wim:a	(Lwim;Ljava/lang/String;)Ljava/lang/String;
+    //   22: pop
+    //   23: aload 4
+    //   25: aload_1
+    //   26: ldc_w 660
+    //   29: invokevirtual 655	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   32: invokestatic 662	wim:b	(Lwim;Ljava/lang/String;)Ljava/lang/String;
+    //   35: pop
+    //   36: aload 4
+    //   38: aload_1
+    //   39: ldc_w 378
+    //   42: invokevirtual 655	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   45: invokestatic 664	wim:c	(Lwim;Ljava/lang/String;)Ljava/lang/String;
+    //   48: pop
+    //   49: aload 4
+    //   51: aload_1
+    //   52: ldc_w 666
+    //   55: dconst_0
+    //   56: invokevirtual 670	org/json/JSONObject:optDouble	(Ljava/lang/String;D)D
+    //   59: invokestatic 672	wim:a	(Lwim;D)D
+    //   62: pop2
+    //   63: aload 4
+    //   65: aload_1
+    //   66: ldc_w 674
+    //   69: dconst_0
+    //   70: invokevirtual 670	org/json/JSONObject:optDouble	(Ljava/lang/String;D)D
+    //   73: invokestatic 676	wim:b	(Lwim;D)D
+    //   76: pop2
+    //   77: aload 4
+    //   79: aload_1
+    //   80: ldc_w 678
+    //   83: dconst_0
+    //   84: invokevirtual 670	org/json/JSONObject:optDouble	(Ljava/lang/String;D)D
+    //   87: invokestatic 680	wim:c	(Lwim;D)D
+    //   90: pop2
+    //   91: aload 4
+    //   93: aload_1
+    //   94: ldc_w 682
+    //   97: dconst_0
+    //   98: invokevirtual 670	org/json/JSONObject:optDouble	(Ljava/lang/String;D)D
+    //   101: invokestatic 684	wim:d	(Lwim;D)D
+    //   104: pop2
+    //   105: aload 4
+    //   107: aload_1
+    //   108: ldc_w 686
+    //   111: iconst_0
+    //   112: invokevirtual 690	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
+    //   115: invokestatic 693	wim:a	(Lwim;I)I
+    //   118: pop
+    //   119: aload 4
+    //   121: aload_1
+    //   122: ldc_w 695
+    //   125: iconst_1
+    //   126: invokevirtual 690	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
+    //   129: invokestatic 697	wim:b	(Lwim;I)I
+    //   132: pop
+    //   133: aload 4
+    //   135: aload_1
+    //   136: ldc_w 699
+    //   139: iconst_0
+    //   140: invokevirtual 690	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
+    //   143: invokestatic 701	wim:c	(Lwim;I)I
+    //   146: pop
+    //   147: aload 4
+    //   149: aload_1
+    //   150: ldc_w 703
+    //   153: iconst_0
+    //   154: invokevirtual 690	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
+    //   157: invokestatic 705	wim:d	(Lwim;I)I
+    //   160: pop
+    //   161: aload 4
+    //   163: invokestatic 309	wim:b	(Lwim;)I
+    //   166: iconst_2
+    //   167: if_icmpne +10 -> 177
+    //   170: aload 4
+    //   172: iconst_0
+    //   173: invokestatic 705	wim:d	(Lwim;I)I
+    //   176: pop
+    //   177: aload 4
+    //   179: aload_1
+    //   180: ldc_w 707
+    //   183: iconst_1
+    //   184: invokevirtual 690	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
+    //   187: invokestatic 709	wim:e	(Lwim;I)I
+    //   190: pop
+    //   191: aload 4
+    //   193: aload_1
+    //   194: ldc_w 711
+    //   197: iconst_0
+    //   198: invokevirtual 690	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
+    //   201: invokestatic 713	wim:f	(Lwim;I)I
+    //   204: pop
+    //   205: aload 4
+    //   207: aload_1
+    //   208: ldc_w 715
+    //   211: iconst_0
+    //   212: invokevirtual 690	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
+    //   215: invokestatic 717	wim:g	(Lwim;I)I
+    //   218: pop
+    //   219: aload_1
+    //   220: ldc_w 719
+    //   223: iconst_0
+    //   224: invokevirtual 690	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
+    //   227: istore_2
+    //   228: iload_2
+    //   229: iconst_1
+    //   230: if_icmpne +77 -> 307
+    //   233: aload 4
+    //   235: iconst_1
+    //   236: invokestatic 721	wim:c	(Lwim;Z)Z
+    //   239: pop
+    //   240: aload 4
+    //   242: aload_1
+    //   243: ldc_w 723
+    //   246: dconst_0
+    //   247: invokevirtual 670	org/json/JSONObject:optDouble	(Ljava/lang/String;D)D
+    //   250: invokestatic 489	wim:e	(Lwim;D)D
+    //   253: pop2
+    //   254: aload 4
+    //   256: aload_1
+    //   257: ldc_w 725
+    //   260: dconst_0
+    //   261: invokevirtual 670	org/json/JSONObject:optDouble	(Ljava/lang/String;D)D
+    //   264: invokestatic 493	wim:f	(Lwim;D)D
+    //   267: pop2
+    //   268: aload 4
+    //   270: aload_1
+    //   271: ldc_w 727
+    //   274: iconst_0
+    //   275: invokevirtual 690	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
+    //   278: invokestatic 730	wim:h	(Lwim;I)I
+    //   281: pop
+    //   282: aload 4
+    //   284: astore_3
+    //   285: aload_0
+    //   286: getfield 42	com/tencent/biz/tribe/TribeVideoPlugin:e	I
+    //   289: ifgt +61 -> 350
+    //   292: aload_0
+    //   293: aload_1
+    //   294: ldc_w 732
+    //   297: iconst_m1
+    //   298: invokevirtual 690	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
+    //   301: putfield 42	com/tencent/biz/tribe/TribeVideoPlugin:e	I
+    //   304: aload 4
+    //   306: areturn
+    //   307: iload_2
+    //   308: ifne -68 -> 240
+    //   311: aload 4
+    //   313: iconst_0
+    //   314: invokestatic 721	wim:c	(Lwim;Z)Z
+    //   317: pop
+    //   318: goto -78 -> 240
+    //   321: astore_3
+    //   322: ldc 200
+    //   324: iconst_1
+    //   325: new 202	java/lang/StringBuilder
+    //   328: dup
+    //   329: invokespecial 203	java/lang/StringBuilder:<init>	()V
+    //   332: ldc_w 734
+    //   335: invokevirtual 209	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   338: aload_1
+    //   339: invokevirtual 232	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   342: invokevirtual 213	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   345: invokestatic 216	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   348: aconst_null
+    //   349: astore_3
+    //   350: aload_3
+    //   351: areturn
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	352	0	this	TribeVideoPlugin
+    //   0	352	1	paramJSONObject	JSONObject
+    //   227	81	2	i	int
+    //   284	1	3	localwim1	wim
+    //   321	1	3	localException	Exception
+    //   349	2	3	localwim2	wim
+    //   8	304	4	localwim3	wim
+    // Exception table:
+    //   from	to	target	type
+    //   10	177	321	java/lang/Exception
+    //   177	228	321	java/lang/Exception
+    //   233	240	321	java/lang/Exception
+    //   240	282	321	java/lang/Exception
+    //   285	304	321	java/lang/Exception
+    //   311	318	321	java/lang/Exception
   }
   
   private void a()
@@ -533,45 +748,45 @@ public class TribeVideoPlugin
     while (localIterator.hasNext())
     {
       Object localObject = (String)localIterator.next();
-      localObject = (paf)this.jdField_a_of_type_JavaUtilHashMap.get(localObject);
-      if (paf.a((paf)localObject))
+      localObject = (wim)this.jdField_a_of_type_JavaUtilHashMap.get(localObject);
+      if (wim.a((wim)localObject))
       {
-        int i = paf.a((paf)localObject).getTop() - this.jdField_a_of_type_AndroidWidgetFrameLayout.getScrollY();
-        int j = paf.a((paf)localObject).getBottom() - this.jdField_a_of_type_AndroidWidgetFrameLayout.getScrollY();
-        if ((i < paf.a((paf)localObject)) || (j > paf.b((paf)localObject)))
+        int i = wim.a((wim)localObject).getTop() - this.jdField_a_of_type_AndroidWidgetFrameLayout.getScrollY();
+        int j = wim.a((wim)localObject).getBottom() - this.jdField_a_of_type_AndroidWidgetFrameLayout.getScrollY();
+        if ((i < wim.a((wim)localObject)) || (j > wim.b((wim)localObject)))
         {
-          if (paf.a((paf)localObject).isPlaying())
+          if (wim.a((wim)localObject).isPlaying())
           {
-            paf.a((paf)localObject).pause();
-            paf.a((paf)localObject).setVisibility(8);
-            paf.a((paf)localObject, true);
-            a(paf.a((paf)localObject), 3);
+            wim.a((wim)localObject).pause();
+            wim.a((wim)localObject).setVisibility(8);
+            wim.a((wim)localObject, true);
+            a(wim.a((wim)localObject), 3);
             if (QLog.isColorLevel()) {
-              QLog.d("TribeVideoPlugin", 2, "handleCheckPlayerShowArea not in show area videoWrapper.mPlayerID = " + paf.a((paf)localObject) + " mVideoInnerLayout.getTop = " + paf.a((paf)localObject).getTop() + " getScrollY() = " + this.jdField_a_of_type_AndroidWidgetFrameLayout.getScrollY() + " top = " + i + " mVideoInnerLayout.getBottom = " + paf.a((paf)localObject).getBottom() + " getScrollY() = " + this.jdField_a_of_type_AndroidWidgetFrameLayout.getScrollY() + " bottom = " + j);
+              QLog.d("TribeVideoPlugin", 2, "handleCheckPlayerShowArea not in show area videoWrapper.mPlayerID = " + wim.a((wim)localObject) + " mVideoInnerLayout.getTop = " + wim.a((wim)localObject).getTop() + " getScrollY() = " + this.jdField_a_of_type_AndroidWidgetFrameLayout.getScrollY() + " top = " + i + " mVideoInnerLayout.getBottom = " + wim.a((wim)localObject).getBottom() + " getScrollY() = " + this.jdField_a_of_type_AndroidWidgetFrameLayout.getScrollY() + " bottom = " + j);
             }
           }
         }
-        else if (paf.b((paf)localObject))
+        else if (wim.b((wim)localObject))
         {
-          paf.b((paf)localObject, false);
-          paf.a((paf)localObject).start();
-          paf.a((paf)localObject).setVisibility(0);
-          paf.a((paf)localObject, false);
-          if ((paf.a((paf)localObject) == 0) && (!this.jdField_b_of_type_Boolean))
+          wim.b((wim)localObject, false);
+          wim.a((wim)localObject).start();
+          wim.a((wim)localObject).setVisibility(0);
+          wim.a((wim)localObject, false);
+          if ((wim.a((wim)localObject) == 0) && (!this.jdField_b_of_type_Boolean))
           {
-            Message localMessage = this.jdField_a_of_type_Pac.obtainMessage();
-            localMessage.obj = paf.a((paf)localObject);
+            Message localMessage = this.jdField_a_of_type_Wij.obtainMessage();
+            localMessage.obj = wim.a((wim)localObject);
             localMessage.what = 4;
-            this.jdField_a_of_type_Pac.sendMessageDelayed(localMessage, 200L);
+            this.jdField_a_of_type_Wij.sendMessageDelayed(localMessage, 200L);
             if (QLog.isColorLevel()) {
-              QLog.d("TribeVideoPlugin", 1, "handleCheckPlayerShowArea delay start playerID = " + paf.a((paf)localObject));
+              QLog.d("TribeVideoPlugin", 1, "handleCheckPlayerShowArea delay start playerID = " + wim.a((wim)localObject));
             }
           }
           else
           {
-            a(paf.a((paf)localObject), 1);
+            a(wim.a((wim)localObject), 1);
             if (QLog.isColorLevel()) {
-              QLog.d("TribeVideoPlugin", 1, "handleCheckPlayerShowArea start playerID = " + paf.a((paf)localObject));
+              QLog.d("TribeVideoPlugin", 1, "handleCheckPlayerShowArea start playerID = " + wim.a((wim)localObject));
             }
           }
         }
@@ -579,23 +794,26 @@ public class TribeVideoPlugin
     }
   }
   
-  private void a(int paramInt1, String paramString, int paramInt2, TVK_IMediaPlayer paramTVK_IMediaPlayer, paf parampaf)
+  private void a(int paramInt1, String paramString, int paramInt2, TVK_IMediaPlayer paramTVK_IMediaPlayer, wim paramwim)
   {
     TVK_UserInfo localTVK_UserInfo = new TVK_UserInfo();
     localTVK_UserInfo.setLoginCookie("");
     localTVK_UserInfo.setUin(this.mRuntime.a().getCurrentAccountUin());
     TVK_PlayerVideoInfo localTVK_PlayerVideoInfo = new TVK_PlayerVideoInfo();
-    if (!TextUtils.isEmpty(paf.b(parampaf)))
+    if (!TextUtils.isEmpty(wim.b(paramwim)))
     {
-      localTVK_PlayerVideoInfo.setVid(paf.b(parampaf));
+      localTVK_PlayerVideoInfo.setVid(wim.b(paramwim));
       localTVK_PlayerVideoInfo.setPlayMode("cache_video");
       localTVK_PlayerVideoInfo.setConfigMap("keep_last_frame", "true");
+      paramwim = new HashMap();
+      paramwim.put("shouq_bus_type", "bus_type_trib");
+      localTVK_PlayerVideoInfo.setReportInfoMap(paramwim);
       if (paramInt2 != 0) {
-        break label130;
+        break label160;
       }
       paramTVK_IMediaPlayer.openMediaPlayer(this.jdField_a_of_type_AndroidContentContext, localTVK_UserInfo, localTVK_PlayerVideoInfo, "hd", paramInt1, 0L);
     }
-    label130:
+    label160:
     while (paramInt2 != 1)
     {
       return;
@@ -609,20 +827,20 @@ public class TribeVideoPlugin
     paramTVK_IMediaPlayer.openMediaPlayerByUrl(this.jdField_a_of_type_AndroidContentContext, paramString, paramInt1, 0L, null, localTVK_PlayerVideoInfo);
   }
   
-  private void a(TVK_IMediaPlayer paramTVK_IMediaPlayer, paf parampaf)
+  private void a(TVK_IMediaPlayer paramTVK_IMediaPlayer, wim paramwim)
   {
-    paramTVK_IMediaPlayer.setOnVideoPreparedListener(new ozt(this, parampaf));
-    paramTVK_IMediaPlayer.setOnCompletionListener(new ozu(this, parampaf));
-    paramTVK_IMediaPlayer.setOnErrorListener(new ozv(this, parampaf));
+    paramTVK_IMediaPlayer.setOnVideoPreparedListener(new wid(this, paramwim));
+    paramTVK_IMediaPlayer.setOnCompletionListener(new wie(this, paramwim));
+    paramTVK_IMediaPlayer.setOnErrorListener(new wif(this, paramwim));
   }
   
   private void a(String paramString)
   {
     if ((!TextUtils.isEmpty(paramString)) && (this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString)))
     {
-      paramString = paf.a((paf)this.jdField_a_of_type_JavaUtilHashMap.get(paramString));
+      paramString = wim.a((wim)this.jdField_a_of_type_JavaUtilHashMap.get(paramString));
       if (paramString != null) {
-        pad.a(paramString).setVisibility(8);
+        wik.a(paramString).setVisibility(8);
       }
     }
   }
@@ -632,8 +850,8 @@ public class TribeVideoPlugin
     if (QLog.isColorLevel()) {
       QLog.d("TribeVideoPlugin", 1, "reportPlayerStatus playerID = " + paramString + " type = " + paramInt);
     }
-    paf localpaf = (paf)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-    if ((localpaf == null) || (this.jdField_a_of_type_JavaLangString == null)) {
+    wim localwim = (wim)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+    if ((localwim == null) || (this.jdField_a_of_type_JavaLangString == null)) {
       return;
     }
     JSONObject localJSONObject = new JSONObject();
@@ -643,8 +861,8 @@ public class TribeVideoPlugin
       localJSONObject.put("state", paramInt);
       if (paramInt != 5)
       {
-        localJSONObject.put("currentPosition", paf.a(localpaf).getCurrentPostion());
-        localJSONObject.put("duration", paf.a(localpaf).getDuration());
+        localJSONObject.put("currentPosition", wim.a(localwim).getCurrentPostion());
+        localJSONObject.put("duration", wim.a(localwim).getDuration());
       }
     }
     catch (JSONException paramString)
@@ -671,26 +889,26 @@ public class TribeVideoPlugin
       {
         return;
       } while (!this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString));
-      localObject = paf.a((paf)this.jdField_a_of_type_JavaUtilHashMap.get(paramString));
-      paramString = paf.a((paf)this.jdField_a_of_type_JavaUtilHashMap.get(paramString));
+      localObject = wim.a((wim)this.jdField_a_of_type_JavaUtilHashMap.get(paramString));
+      paramString = wim.a((wim)this.jdField_a_of_type_JavaUtilHashMap.get(paramString));
       if ((paramString != null) && (localObject != null)) {
         break;
       }
     } while (!QLog.isColorLevel());
     QLog.e("TribeVideoPlugin", 2, "setPlayerControllerStatus player = " + paramString + " videoInnerLayoutTemp = " + localObject);
     return;
-    SeekBar localSeekBar = (SeekBar)((FrameLayout)localObject).findViewById(2131364703);
-    TextView localTextView1 = (TextView)((FrameLayout)localObject).findViewById(2131362357);
-    TextView localTextView2 = (TextView)((FrameLayout)localObject).findViewById(2131362356);
-    ImageView localImageView1 = (ImageView)((FrameLayout)localObject).findViewById(2131362358);
-    ImageView localImageView2 = (ImageView)((FrameLayout)localObject).findViewById(2131362354);
-    TextView localTextView3 = (TextView)((FrameLayout)localObject).findViewById(2131362355);
-    Object localObject = (ImageView)((FrameLayout)localObject).findViewById(2131367510);
+    SeekBar localSeekBar = (SeekBar)((FrameLayout)localObject).findViewById(2131310010);
+    TextView localTextView1 = (TextView)((FrameLayout)localObject).findViewById(2131307411);
+    TextView localTextView2 = (TextView)((FrameLayout)localObject).findViewById(2131307410);
+    ImageView localImageView1 = (ImageView)((FrameLayout)localObject).findViewById(2131307409);
+    ImageView localImageView2 = (ImageView)((FrameLayout)localObject).findViewById(2131307408);
+    TextView localTextView3 = (TextView)((FrameLayout)localObject).findViewById(2131307407);
+    Object localObject = (ImageView)((FrameLayout)localObject).findViewById(2131307406);
     if (paramBoolean)
     {
       if (paramString.isPlaying())
       {
-        i = 2130845085;
+        i = 2130847449;
         localImageView1.setImageResource(i);
       }
     }
@@ -748,7 +966,7 @@ public class TribeVideoPlugin
       localTextView3.setVisibility(i);
       this.jdField_a_of_type_Boolean = paramBoolean;
       return;
-      i = 2130845367;
+      i = 2130847991;
       break;
       i = 4;
       break label258;
@@ -772,11 +990,11 @@ public class TribeVideoPlugin
     }
   }
   
-  private void a(paf parampaf)
+  private void a(wim paramwim)
   {
     Timer localTimer = new Timer();
-    localTimer.schedule(new pab(this, paf.a(parampaf)), 0L, 30L);
-    paf.a(parampaf, localTimer);
+    localTimer.schedule(new TribeVideoPlugin.TimeCountTask(this, wim.a(paramwim)), 0L, 30L);
+    wim.a(paramwim, localTimer);
   }
   
   private int b(JSONObject paramJSONObject)
@@ -806,8 +1024,8 @@ public class TribeVideoPlugin
   
   private void b(String paramString)
   {
-    paf localpaf = (paf)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-    if (localpaf == null) {
+    wim localwim = (wim)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+    if (localwim == null) {
       if (QLog.isColorLevel()) {
         QLog.d("TribeVideoPlugin", 2, "videoWrapper == null");
       }
@@ -819,8 +1037,8 @@ public class TribeVideoPlugin
       do
       {
         return;
-        localObject2 = paf.a((paf)this.jdField_a_of_type_JavaUtilHashMap.get(paramString));
-        localObject1 = paf.a((paf)this.jdField_a_of_type_JavaUtilHashMap.get(paramString));
+        localObject2 = wim.a((wim)this.jdField_a_of_type_JavaUtilHashMap.get(paramString));
+        localObject1 = wim.a((wim)this.jdField_a_of_type_JavaUtilHashMap.get(paramString));
         if ((localObject2 != null) && (localObject1 != null)) {
           break;
         }
@@ -866,83 +1084,83 @@ public class TribeVideoPlugin
           TextView localTextView2;
           QLog.e("TribeVideoPlugin", 1, "setProgressBar error");
           continue;
-          if (pad.a((pad)localObject1) == 1) {
-            pad.b((pad)localObject1).setProgress((int)((float)l1 * 100.0F / (float)l2 + 0.5D));
+          if (wik.a((wik)localObject1) == 1) {
+            wik.b((wik)localObject1).setProgress((int)((float)l1 * 100.0F / (float)l2 + 0.5D));
           }
         }
       }
-      if (pad.a((pad)localObject1) != 2) {
+      if (wik.a((wik)localObject1) != 2) {
         break;
       }
-      Object localObject2 = pad.a((pad)localObject1);
-      localTextView1 = pad.a((pad)localObject1);
-      localTextView2 = pad.b((pad)localObject1);
-      localObject1 = pad.c((pad)localObject1);
-      VideoFeedsHelper.a(localTextView1, l2 - l1);
-      VideoFeedsHelper.a(localTextView2, l1);
-      VideoFeedsHelper.a((TextView)localObject1, l2);
+      Object localObject2 = wik.a((wik)localObject1);
+      localTextView1 = wik.a((wik)localObject1);
+      localTextView2 = wik.b((wik)localObject1);
+      localObject1 = wik.c((wik)localObject1);
+      qcn.a(localTextView1, l2 - l1);
+      qcn.a(localTextView2, l1);
+      qcn.a((TextView)localObject1, l2);
       ((SeekBar)localObject2).setProgress((int)((float)l1 * 100.0F / (float)l2 + 0.5D));
-      if ((l1 <= 100L) && (!paf.e(localpaf)) && (bool1))
+      if ((l1 <= 100L) && (!wim.e(localwim)) && (bool1))
       {
         a(paramString, 1);
-        paf.e(localpaf, true);
+        wim.e(localwim, true);
       }
-    } while ((paf.b(localpaf) - l1 > 100L) || (!paf.e(localpaf)) || (!bool1));
+    } while ((wim.b(localwim) - l1 > 100L) || (!wim.e(localwim)) || (!bool1));
     a(paramString, 2);
-    paf.e(localpaf, false);
+    wim.e(localwim, false);
   }
   
-  private void b(paf parampaf)
+  private void b(wim paramwim)
   {
-    paf.d(parampaf, true);
+    wim.d(paramwim, true);
     if (QLog.isColorLevel()) {
-      QLog.d("TribeVideoPlugin", 2, "first onVideoPrepared mPlayerID=" + paf.a(parampaf) + " mIsPaused=" + paf.d(parampaf) + " isPlaying=" + paf.a(parampaf).isPlaying());
+      QLog.d("TribeVideoPlugin", 2, "first onVideoPrepared mPlayerID=" + wim.a(paramwim) + " mIsPaused=" + wim.d(paramwim) + " isPlaying=" + wim.a(paramwim).isPlaying());
     }
-    if (paf.d(parampaf)) {}
+    if (wim.d(paramwim)) {}
     for (;;)
     {
       return;
-      if (paf.a(parampaf).isPlaying()) {
+      if (wim.a(paramwim).isPlaying()) {
         continue;
       }
-      if (paf.a(parampaf))
+      if (wim.a(paramwim))
       {
-        int i = paf.a(parampaf).getTop() - this.jdField_a_of_type_AndroidWidgetFrameLayout.getScrollY();
-        int j = paf.a(parampaf).getBottom() - this.jdField_a_of_type_AndroidWidgetFrameLayout.getScrollY();
-        if ((i < paf.a(parampaf)) || (j > paf.b(parampaf)))
+        int i = wim.a(paramwim).getTop() - this.jdField_a_of_type_AndroidWidgetFrameLayout.getScrollY();
+        int j = wim.a(paramwim).getBottom() - this.jdField_a_of_type_AndroidWidgetFrameLayout.getScrollY();
+        if ((i < wim.a(paramwim)) || (j > wim.b(paramwim)))
         {
           if (QLog.isColorLevel()) {
-            QLog.d("TribeVideoPlugin", 2, "onVideoPrepared returned due to prepared not in show area videoWrapper.mPlayerID = " + paf.a(parampaf) + " mVideoInnerLayout.getTop = " + paf.a(parampaf).getTop() + " getScrollY() = " + this.jdField_a_of_type_AndroidWidgetFrameLayout.getScrollY() + " top = " + i + " mVideoInnerLayout.getBottom = " + paf.a(parampaf).getBottom() + " getScrollY() = " + this.jdField_a_of_type_AndroidWidgetFrameLayout.getScrollY() + " bottom = " + j);
+            QLog.d("TribeVideoPlugin", 2, "onVideoPrepared returned due to prepared not in show area videoWrapper.mPlayerID = " + wim.a(paramwim) + " mVideoInnerLayout.getTop = " + wim.a(paramwim).getTop() + " getScrollY() = " + this.jdField_a_of_type_AndroidWidgetFrameLayout.getScrollY() + " top = " + i + " mVideoInnerLayout.getBottom = " + wim.a(paramwim).getBottom() + " getScrollY() = " + this.jdField_a_of_type_AndroidWidgetFrameLayout.getScrollY() + " bottom = " + j);
           }
-          a(paf.a(parampaf), 3);
-          paf.a(parampaf, true);
+          a(wim.a(paramwim), 3);
+          wim.a(paramwim, true);
           return;
         }
       }
-      a(paf.a(parampaf));
+      a(wim.a(paramwim));
       try
       {
-        paf.a(parampaf).start();
-        paf.b(parampaf, paf.a(parampaf).getDuration());
-        paf.e(parampaf, true);
-        Message localMessage = this.jdField_a_of_type_Pac.obtainMessage();
-        localMessage.obj = paf.a(parampaf);
+        wim.a(paramwim).start();
+        wim.b(paramwim, wim.a(paramwim).getDuration());
+        wim.e(paramwim, true);
+        Message localMessage = this.jdField_a_of_type_Wij.obtainMessage();
+        localMessage.obj = wim.a(paramwim);
         localMessage.what = 4;
-        this.jdField_a_of_type_Pac.sendMessageDelayed(localMessage, 200L);
+        this.jdField_a_of_type_Wij.sendMessageDelayed(localMessage, 200L);
         if (!QLog.isColorLevel()) {
           continue;
         }
-        QLog.d("TribeVideoPlugin", 2, "onVideoPrepared really start videoWrapper.mPlayerID = " + paf.a(parampaf));
+        QLog.d("TribeVideoPlugin", 2, "onVideoPrepared really start videoWrapper.mPlayerID = " + wim.a(paramwim));
         return;
       }
       catch (Exception localException)
       {
         for (;;)
         {
-          a(paf.a(parampaf));
-          a(paf.a(parampaf), 5);
-          ReportController.b(null, "dc00899", "BizTechReport", ((BaseActivity)this.jdField_a_of_type_AndroidContentContext).getCurrentAccountUin(), "tribe_video", "play", 0, 0, Integer.toString(2), Integer.toString(NetworkUtil.b(this.jdField_a_of_type_AndroidContentContext)), "", "");
-          QLog.e("TribeVideoPlugin", 2, "onVideoPrepared start exception videoWrapper.mPlayerID = " + paf.a(parampaf));
+          a(wim.a(paramwim));
+          a(wim.a(paramwim), 5);
+          awqx.b(null, "dc00899", "BizTechReport", ((BaseActivity)this.jdField_a_of_type_AndroidContentContext).getCurrentAccountUin(), "tribe_video", "play", 0, 0, Integer.toString(2), Integer.toString(badq.b(this.jdField_a_of_type_AndroidContentContext)), "", "");
+          QLog.e("TribeVideoPlugin", 2, "onVideoPrepared start exception videoWrapper.mPlayerID = " + wim.a(paramwim));
         }
       }
     }
@@ -967,7 +1185,7 @@ public class TribeVideoPlugin
         paramJSONObject = (JSONObject)localObject;
         i = 0;
       }
-      localObject = paf.a((paf)this.jdField_a_of_type_JavaUtilHashMap.get(paramJSONObject));
+      localObject = wim.a((wim)this.jdField_a_of_type_JavaUtilHashMap.get(paramJSONObject));
       if ((this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramJSONObject)) && (localObject != null)) {
         break label147;
       }
@@ -1002,12 +1220,12 @@ public class TribeVideoPlugin
     }
   }
   
-  private void c(paf parampaf)
+  private void c(wim paramwim)
   {
-    if (paf.c(parampaf) == 1)
+    if (wim.c(paramwim) == 1)
     {
-      paf.a(parampaf).seekTo(0);
-      a(paf.a(parampaf), 2);
+      wim.a(paramwim).seekTo(0);
+      a(wim.a(paramwim), 2);
     }
     if (QLog.isColorLevel()) {
       QLog.d("TribeVideoPlugin", 2, "Completion video");
@@ -1068,7 +1286,7 @@ public class TribeVideoPlugin
         while (paramJSONObject.hasNext())
         {
           str = (String)paramJSONObject.next();
-          a((paf)this.jdField_a_of_type_JavaUtilHashMap.get(str), i, j);
+          a((wim)this.jdField_a_of_type_JavaUtilHashMap.get(str), i, j);
         }
         return 0;
       }
@@ -1078,12 +1296,12 @@ public class TribeVideoPlugin
     } while (!QLog.isColorLevel());
     QLog.d("TribeVideoPlugin", 2, "handlePlayControl no such playID playerID = " + str);
     return -1;
-    return a((paf)this.jdField_a_of_type_JavaUtilHashMap.get(str), i, j);
+    return a((wim)this.jdField_a_of_type_JavaUtilHashMap.get(str), i, j);
   }
   
-  private void d(paf parampaf)
+  private void d(wim paramwim)
   {
-    a(paf.a(parampaf), 5);
+    a(wim.a(paramwim), 5);
   }
   
   private int e(JSONObject paramJSONObject)
@@ -1115,7 +1333,7 @@ public class TribeVideoPlugin
       } while (!QLog.isColorLevel());
       QLog.e("TribeVideoPlugin", 2, "seekToPlay no such playID playerID = " + (String)localObject2);
       return -1;
-      paramJSONObject = paf.a((paf)this.jdField_a_of_type_JavaUtilHashMap.get(localObject2));
+      paramJSONObject = wim.a((wim)this.jdField_a_of_type_JavaUtilHashMap.get(localObject2));
       l2 = paramJSONObject.getDuration();
       if (l1 >= 0L) {
         break label182;
@@ -1142,68 +1360,173 @@ public class TribeVideoPlugin
     }
   }
   
-  protected boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  private int f(JSONObject paramJSONObject)
+  {
+    int i = paramJSONObject.optInt("error_code");
+    int j = paramJSONObject.optInt("like_count");
+    paramJSONObject = new Intent();
+    paramJSONObject.putExtra("error_code", i);
+    paramJSONObject.putExtra("like_count", j);
+    paramJSONObject = a();
+    if (paramJSONObject != null) {
+      paramJSONObject.a(1, j);
+    }
+    return 0;
+  }
+  
+  private int g(JSONObject paramJSONObject)
+  {
+    int i = paramJSONObject.optInt("error_code");
+    int j = paramJSONObject.optInt("comment_count");
+    paramJSONObject = new Intent();
+    paramJSONObject.putExtra("error_code", i);
+    paramJSONObject.putExtra("comment_count", j);
+    paramJSONObject = a();
+    if (paramJSONObject != null) {
+      paramJSONObject.a(0, j);
+    }
+    return 0;
+  }
+  
+  private int h(JSONObject paramJSONObject)
   {
     try
     {
-      paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
-      paramString1 = paramJsBridgeListener.optString("callback");
-      paramString2 = new JSONObject();
+      long l1 = System.currentTimeMillis();
+      String str1 = paramJSONObject.getString("request_cookie");
+      int i = paramJSONObject.optInt("type");
+      String str2 = paramJSONObject.optString("feeds");
+      Intent localIntent = new Intent();
+      localIntent.putExtra("feeds", str2);
+      localIntent.putExtra("type", i);
+      localIntent.putExtra("request_cookie", str1);
+      localIntent.putExtra("start", paramJSONObject.optInt("start"));
+      localIntent.putExtra("num", paramJSONObject.optInt("num"));
+      localIntent.putExtra("type", paramJSONObject.optInt("type"));
+      localIntent.putExtra("source_type", paramJSONObject.optInt("source_type"));
+      localIntent.putExtra("recommend_by_bid", paramJSONObject.optInt("recommend_by_bid"));
+      TribeVideoListPlayerFragment.a(this);
+      abju.a(this.jdField_a_of_type_AndroidContentContext, localIntent, PublicFragmentActivityForTool.class, TribeVideoListPlayerFragment.class);
+      ((Activity)this.jdField_a_of_type_AndroidContentContext).overridePendingTransition(2130772304, 2130772305);
+      long l2 = System.currentTimeMillis();
       if (QLog.isColorLevel()) {
-        QLog.d("TribeVideoPlugin", 1, "handleJsRequest method = " + paramString3 + " jsonObject = " + paramJsBridgeListener);
+        QLog.d("TribeVideoPlugin", 2, "openTribeVideo: time = " + (l2 - l1) + " jsonObject = " + paramJSONObject + " source_type" + paramJSONObject.optInt("source_type"));
       }
-      int i;
-      if ("pinVideo".equals(paramString3))
-      {
-        paramString3 = paramJsBridgeListener.optString("onStateChange");
-        if ((this.jdField_a_of_type_JavaLangString == null) && (paramString3 != null)) {
-          this.jdField_a_of_type_JavaLangString = paramString3;
-        }
-        i = a(paramJsBridgeListener);
-      }
+      return 0;
+    }
+    catch (JSONException paramJSONObject)
+    {
+      QLog.e("TribeVideoPlugin", 1, "openTribeVideo Err:" + paramJSONObject.toString());
+    }
+    return -1;
+  }
+  
+  public void a(long paramLong)
+  {
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("uin", paramLong);
+      localJSONObject.put("relation", 1);
+      callJs("javascript:mqq.dispatchEvent(\"follow_people\"," + localJSONObject.toString() + ")");
+      return;
+    }
+    catch (JSONException localJSONException)
+    {
       for (;;)
       {
-        paramString2.put("retCode", i);
-        callJs(paramString1, new String[] { paramString2.toString() });
-        return true;
-        if ("pluckVideo".equals(paramString3))
-        {
-          i = b(paramJsBridgeListener);
-        }
-        else if ("muteSound".equals(paramString3))
-        {
-          i = c(paramJsBridgeListener);
-        }
-        else if ("playControl".equals(paramString3))
-        {
-          i = d(paramJsBridgeListener);
-        }
-        else if ("getVideoPlayerInfo".equals(paramString3))
-        {
-          i = a(paramJsBridgeListener, paramString2);
-        }
-        else if ("seekTo".equals(paramString3))
-        {
-          i = e(paramJsBridgeListener);
-        }
-        else
-        {
-          i = -1;
-          QLog.e("TribeVideoPlugin", 1, "no such method = " + paramString3);
-        }
+        localJSONException.printStackTrace();
       }
-      return true;
-    }
-    catch (Exception paramJsBridgeListener)
-    {
-      QLog.e("TribeVideoPlugin", 1, "[handleJsRequest] error=", paramJsBridgeListener);
     }
   }
   
-  protected void onCreate()
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    for (;;)
+    {
+      try
+      {
+        if (paramVarArgs.length > 0)
+        {
+          paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
+          paramString1 = paramJsBridgeListener.optString("callback");
+          paramString2 = new JSONObject();
+          if (QLog.isColorLevel()) {
+            QLog.d("TribeVideoPlugin", 1, "handleJsRequest method = " + paramString3 + " jsonObject = " + paramJsBridgeListener);
+          }
+          if ("pinVideo".equals(paramString3))
+          {
+            paramString3 = paramJsBridgeListener.optString("onStateChange");
+            if ((this.jdField_a_of_type_JavaLangString == null) && (paramString3 != null)) {
+              this.jdField_a_of_type_JavaLangString = paramString3;
+            }
+            i = a(paramJsBridgeListener);
+            paramString2.put("retCode", i);
+            callJs(paramString1, new String[] { paramString2.toString() });
+            return true;
+          }
+        }
+        else
+        {
+          paramJsBridgeListener = new JSONObject();
+          continue;
+        }
+        if (!"pluckVideo".equals(paramString3)) {
+          break label195;
+        }
+      }
+      catch (Exception paramJsBridgeListener)
+      {
+        QLog.e("TribeVideoPlugin", 1, "[handleJsRequest] error=", paramJsBridgeListener);
+        return true;
+      }
+      int i = b(paramJsBridgeListener);
+      continue;
+      label195:
+      if ("muteSound".equals(paramString3))
+      {
+        i = c(paramJsBridgeListener);
+      }
+      else if ("playControl".equals(paramString3))
+      {
+        i = d(paramJsBridgeListener);
+      }
+      else if ("getVideoPlayerInfo".equals(paramString3))
+      {
+        i = a(paramJsBridgeListener, paramString2);
+      }
+      else if ("seekTo".equals(paramString3))
+      {
+        i = e(paramJsBridgeListener);
+      }
+      else if ("openTribeVideo".equals(paramString3))
+      {
+        i = h(paramJsBridgeListener);
+      }
+      else if ("moveWebToBack".equals(paramString3))
+      {
+        i = a();
+      }
+      else if ("giveGiftResult".equals(paramString3))
+      {
+        i = f(paramJsBridgeListener);
+      }
+      else if ("commentResult".equals(paramString3))
+      {
+        i = g(paramJsBridgeListener);
+      }
+      else
+      {
+        i = -1;
+        QLog.e("TribeVideoPlugin", 1, "no such method = " + paramString3);
+      }
+    }
+  }
+  
+  public void onCreate()
   {
     super.onCreate();
-    this.jdField_a_of_type_Pac = new pac(this);
+    this.jdField_a_of_type_Wij = new wij(this);
     this.jdField_a_of_type_AndroidContentContext = this.mRuntime.a();
     this.jdField_a_of_type_JavaUtilQueue = new LinkedList();
     this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
@@ -1211,50 +1534,58 @@ public class TribeVideoPlugin
     if (QLog.isColorLevel())
     {
       TVK_SDKMgr.setDebugEnable(true);
-      TVK_SDKMgr.setOnLogListener(new ozr(this));
+      TVK_SDKMgr.setOnLogListener(new wib(this));
     }
   }
   
-  protected void onDestroy()
+  public void onDestroy()
   {
     super.onDestroy();
     this.jdField_a_of_type_ComTencentBizUiRefreshView.removeView(this.jdField_a_of_type_AndroidWidgetFrameLayout);
-    this.jdField_a_of_type_Pac.removeCallbacksAndMessages(null);
+    this.jdField_a_of_type_Wij.removeCallbacksAndMessages(null);
     Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.keySet().iterator();
     while (localIterator.hasNext())
     {
       String str = (String)localIterator.next();
-      a(paf.a((paf)this.jdField_a_of_type_JavaUtilHashMap.get(str)));
-      paf.a((paf)this.jdField_a_of_type_JavaUtilHashMap.get(str)).stop();
-      paf.a((paf)this.jdField_a_of_type_JavaUtilHashMap.get(str)).release();
-      paf.a((paf)this.jdField_a_of_type_JavaUtilHashMap.get(str), null);
+      a(wim.a((wim)this.jdField_a_of_type_JavaUtilHashMap.get(str)));
+      wim.a((wim)this.jdField_a_of_type_JavaUtilHashMap.get(str)).stop();
+      wim.a((wim)this.jdField_a_of_type_JavaUtilHashMap.get(str)).release();
+      wim.a((wim)this.jdField_a_of_type_JavaUtilHashMap.get(str), null);
     }
     this.jdField_a_of_type_JavaUtilHashMap.clear();
     QLog.d("TribeVideoPlugin", 1, "onDestroy");
   }
   
-  protected void onWebViewCreated(CustomWebView paramCustomWebView)
+  public void onWebViewCreated(CustomWebView paramCustomWebView)
   {
     super.onWebViewCreated(paramCustomWebView);
     paramCustomWebView = new FrameLayout.LayoutParams(-1, -1);
     paramCustomWebView.topMargin = 0;
     paramCustomWebView.leftMargin = 0;
-    this.jdField_a_of_type_ComTencentBizUiRefreshView = ((RefreshView)((Activity)this.jdField_a_of_type_AndroidContentContext).findViewById(2131366767));
-    if (((Activity)this.jdField_a_of_type_AndroidContentContext).findViewById(2131368214) == null)
+    this.jdField_a_of_type_ComTencentBizUiRefreshView = ((RefreshView)((Activity)this.jdField_a_of_type_AndroidContentContext).findViewById(2131313572));
+    if (this.jdField_a_of_type_ComTencentBizUiRefreshView.findViewWithTag("tribeVideoTag") == null)
     {
       this.jdField_a_of_type_AndroidWidgetFrameLayout = new FrameLayout(this.mRuntime.a());
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.setId(2131368214);
+      this.jdField_a_of_type_AndroidWidgetFrameLayout.setTag("tribeVideoTag");
       this.jdField_a_of_type_ComTencentBizUiRefreshView.addView(this.jdField_a_of_type_AndroidWidgetFrameLayout, paramCustomWebView);
       this.c = this.jdField_a_of_type_ComTencentBizUiRefreshView.getHeight();
-      if ((this.jdField_a_of_type_AndroidContentContext instanceof BaseActivity)) {
+      if ((this.jdField_a_of_type_AndroidContentContext instanceof BaseActivity))
+      {
         this.d = ((BaseActivity)this.jdField_a_of_type_AndroidContentContext).getTitleBarHeight();
+        if (this.f <= 0)
+        {
+          paramCustomWebView = ((BaseActivity)this.jdField_a_of_type_AndroidContentContext).getWindowManager();
+          DisplayMetrics localDisplayMetrics = new DisplayMetrics();
+          paramCustomWebView.getDefaultDisplay().getMetrics(localDisplayMetrics);
+          this.f = localDisplayMetrics.widthPixels;
+        }
       }
       if (QLog.isColorLevel()) {
-        QLog.d("TribeVideoPlugin", 2, "onWebViewCreated mVideoLayoutHeight = " + this.c + " titleHeight = " + this.d);
+        QLog.d("TribeVideoPlugin", 2, "onWebViewCreated mVideoLayoutHeight = " + this.c + " titleHeight = " + this.d + " mScreenWidthFromLocal = " + this.f);
       }
       this.jdField_a_of_type_ComTencentBizUiTouchWebView = ((TouchWebView)this.mRuntime.a());
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.scrollBy(0, this.jdField_a_of_type_ComTencentBizUiTouchWebView.jdField_b_of_type_Int);
-      this.jdField_a_of_type_ComTencentBizUiTouchWebView.setOnScrollChangedListener(new ozs(this));
+      this.jdField_a_of_type_AndroidWidgetFrameLayout.scrollBy(0, this.jdField_a_of_type_ComTencentBizUiTouchWebView.mTotalYoffset);
+      this.jdField_a_of_type_ComTencentBizUiTouchWebView.setOnScrollChangedListenerForBiz(new wic(this));
     }
   }
 }

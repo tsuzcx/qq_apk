@@ -1,45 +1,42 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.aio.rebuild.BusinessCmrTmpChatPie;
-import com.tencent.mobileqq.app.PublicAccountObserver;
-import com.tencent.mobileqq.data.PublicAccountInfo;
-import com.tencent.qphone.base.util.QLog;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import com.tencent.biz.subscribe.account_folder.recommend_banner.RecommendBannerItemView;
+import com.tencent.mobileqq.pb.PBStringField;
 
-public class vwv
-  extends PublicAccountObserver
+class vwv
+  implements wea
 {
-  public vwv(BusinessCmrTmpChatPie paramBusinessCmrTmpChatPie) {}
+  vwv(vwt paramvwt) {}
   
-  public void a(int paramInt, PublicAccountInfo paramPublicAccountInfo)
+  public void a(boolean paramBoolean)
   {
-    if (paramInt == 0) {
-      this.a.c(this.a.a.getIntent());
+    String str2 = RecommendBannerItemView.a(this.a.a).id.get();
+    StringBuilder localStringBuilder = new StringBuilder().append("recom_");
+    if (paramBoolean)
+    {
+      str1 = "cancel";
+      wye.a(str2, "auth_page", str1, 0, 0, new String[] { "", RecommendBannerItemView.a(this.a.a) + "", RecommendBannerItemView.a(this.a.a).nick.get() });
+      if (RecommendBannerItemView.a(this.a.a))
+      {
+        str2 = RecommendBannerItemView.a(this.a.a).id.get();
+        localStringBuilder = new StringBuilder().append("reco_");
+        if (!paramBoolean) {
+          break label252;
+        }
+      }
     }
-  }
-  
-  public void a(int paramInt, boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      this.a.c(this.a.a.getIntent());
-    }
-  }
-  
-  public void b(int paramInt, PublicAccountInfo paramPublicAccountInfo)
-  {
-    if (paramInt == 0) {
-      this.a.c(this.a.a.getIntent());
-    }
-  }
-  
-  public void t_()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("BusinessChatPie", 2, "onDownPublicAccount");
+    label252:
+    for (String str1 = "cancel";; str1 = "dislike")
+    {
+      wye.a(str2, "auth_discover", str1, 0, 0, new String[] { "", String.valueOf(RecommendBannerItemView.a(this.a.a)), RecommendBannerItemView.a(this.a.a).nick.get(), RecommendBannerItemView.a(this.a.a).desc.get() });
+      return;
+      str1 = "dislike";
+      break;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     vwv
  * JD-Core Version:    0.7.0.1
  */

@@ -12,10 +12,10 @@ public final class SvcRequestPullGroupMsgSeq
   implements Cloneable
 {
   static int cache_filter;
-  static ArrayList cache_vGroupInfo;
+  static ArrayList<PullGroupSeqParam> cache_vGroupInfo;
   public byte cVerifyType;
   public int filter = MsgFilter.NO_FILTER.value();
-  public ArrayList vGroupInfo;
+  public ArrayList<PullGroupSeqParam> vGroupInfo;
   
   static
   {
@@ -29,7 +29,7 @@ public final class SvcRequestPullGroupMsgSeq
   
   public SvcRequestPullGroupMsgSeq() {}
   
-  public SvcRequestPullGroupMsgSeq(ArrayList paramArrayList, byte paramByte, int paramInt)
+  public SvcRequestPullGroupMsgSeq(ArrayList<PullGroupSeqParam> paramArrayList, byte paramByte, int paramInt)
   {
     this.vGroupInfo = paramArrayList;
     this.cVerifyType = paramByte;
@@ -99,7 +99,7 @@ public final class SvcRequestPullGroupMsgSeq
     return this.filter;
   }
   
-  public ArrayList getVGroupInfo()
+  public ArrayList<PullGroupSeqParam> getVGroupInfo()
   {
     return this.vGroupInfo;
   }
@@ -140,7 +140,7 @@ public final class SvcRequestPullGroupMsgSeq
     this.filter = paramInt;
   }
   
-  public void setVGroupInfo(ArrayList paramArrayList)
+  public void setVGroupInfo(ArrayList<PullGroupSeqParam> paramArrayList)
   {
     this.vGroupInfo = paramArrayList;
   }

@@ -1,41 +1,18 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.FMLocalFileActivity;
-import com.tencent.mobileqq.filemanager.data.FileCategoryAdapter.ItemHolder;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.MobileQQ;
+import com.tencent.mobileqq.activity.aio.doodle.control.ColorPicker;
 
 public class acuj
-  implements View.OnClickListener
+  implements acuo
 {
-  public acuj(FMLocalFileActivity paramFMLocalFileActivity) {}
+  public acuj(ColorPicker paramColorPicker, acum paramacum) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    if (!this.a.a()) {
-      if (QLog.isColorLevel()) {
-        QLog.i(FMLocalFileActivity.e, 2, "click too fast , wait a minute.");
-      }
-    }
-    do
-    {
-      return;
-      this.a.e();
-      paramView = (FileCategoryAdapter.ItemHolder)paramView.getTag();
-    } while (paramView.a == 0);
-    int i = paramView.a;
-    paramView = this.a.app.getApplication().getSharedPreferences("aio_last_select_file", 0).edit();
-    paramView.putBoolean("last_select_All", true);
-    paramView.commit();
-    FMLocalFileActivity.a(this.a, i);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleControlColorPicker.onClick(this.jdField_a_of_type_Acum.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     acuj
  * JD-Core Version:    0.7.0.1
  */

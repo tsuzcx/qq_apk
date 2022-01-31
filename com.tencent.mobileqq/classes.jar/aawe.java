@@ -1,30 +1,20 @@
-import com.tencent.ark.ark;
-import com.tencent.ark.ark.Container;
-import com.tencent.mobileqq.activity.aio.item.ArkAppContainer;
-import com.tencent.mobileqq.ark.API.ArkAppModuleReg.ModuleQQ;
-import com.tencent.mobileqq.ark.ArkTipsManager;
-import java.lang.ref.WeakReference;
+import android.view.View;
+import com.tencent.mobileqq.activity.FriendProfileImageActivity;
+import com.tencent.widget.AdapterView;
 
 public class aawe
-  implements Runnable
+  implements behi
 {
-  public aawe(ArkAppModuleReg.ModuleQQ paramModuleQQ, long paramLong) {}
+  public aawe(FriendProfileImageActivity paramFriendProfileImageActivity) {}
   
-  public void run()
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    Object localObject = ark.arkGetContainer(this.jdField_a_of_type_Long);
-    if (localObject == null) {}
-    do
-    {
-      return;
-      localObject = ArkAppContainer.a((ark.Container)localObject);
-    } while ((localObject == null) || ((ArkAppContainer)((WeakReference)localObject).get() == null));
-    ArkTipsManager.a().b();
+    this.a.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aawe
  * JD-Core Version:    0.7.0.1
  */

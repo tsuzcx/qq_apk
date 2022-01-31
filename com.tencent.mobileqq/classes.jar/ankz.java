@@ -1,21 +1,34 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import cooperation.qzone.webviewplugin.QzoneQunFeedJsPlugin;
+import android.view.View;
+import java.util.ArrayList;
 
 public class ankz
-  implements DialogInterface.OnClickListener
 {
-  public ankz(QzoneQunFeedJsPlugin paramQzoneQunFeedJsPlugin, String[] paramArrayOfString) {}
+  private ArrayList<View> a = new ArrayList();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public View a()
   {
-    paramDialogInterface.dismiss();
-    QzoneQunFeedJsPlugin.a(this.jdField_a_of_type_CooperationQzoneWebviewpluginQzoneQunFeedJsPlugin, this.jdField_a_of_type_ArrayOfJavaLangString[0]);
+    if (this.a.size() > 0) {
+      return (View)this.a.remove(0);
+    }
+    return null;
+  }
+  
+  public void a()
+  {
+    this.a.clear();
+  }
+  
+  public void a(View paramView)
+  {
+    if (this.a.size() >= 3) {
+      return;
+    }
+    this.a.add(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ankz
  * JD-Core Version:    0.7.0.1
  */

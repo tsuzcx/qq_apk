@@ -10,8 +10,8 @@ import java.util.Map;
 public final class REPORT_INFO
   extends JceStruct
 {
-  static ArrayList cache_info = new ArrayList();
-  public ArrayList info;
+  static ArrayList<Map<String, String>> cache_info = new ArrayList();
+  public ArrayList<Map<String, String>> info;
   public int subtable;
   
   static
@@ -23,7 +23,7 @@ public final class REPORT_INFO
   
   public REPORT_INFO() {}
   
-  public REPORT_INFO(int paramInt, ArrayList paramArrayList)
+  public REPORT_INFO(int paramInt, ArrayList<Map<String, String>> paramArrayList)
   {
     this.subtable = paramInt;
     this.info = paramArrayList;
@@ -45,7 +45,7 @@ public final class REPORT_INFO
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     NS_MOBILE_CLIENT_UPDATE.REPORT_INFO
  * JD-Core Version:    0.7.0.1
  */

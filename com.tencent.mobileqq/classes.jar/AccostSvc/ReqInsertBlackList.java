@@ -10,14 +10,14 @@ public final class ReqInsertBlackList
 {
   static int cache_eType;
   static ReqHeader cache_stHeader;
-  static ArrayList cache_vBlackList;
+  static ArrayList<Long> cache_vBlackList;
   public int eType = 0;
   public ReqHeader stHeader;
-  public ArrayList vBlackList;
+  public ArrayList<Long> vBlackList;
   
   public ReqInsertBlackList() {}
   
-  public ReqInsertBlackList(ReqHeader paramReqHeader, ArrayList paramArrayList, int paramInt)
+  public ReqInsertBlackList(ReqHeader paramReqHeader, ArrayList<Long> paramArrayList, int paramInt)
   {
     this.stHeader = paramReqHeader;
     this.vBlackList = paramArrayList;

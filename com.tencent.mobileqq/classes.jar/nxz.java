@@ -1,37 +1,29 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.storyHome.QQStoryBaseActivity;
-import com.tencent.biz.qqstory.utils.BitmapUtils.OutOfMemHandleCommand;
-import com.tribe.async.dispatch.Dispatcher.Dispatchable;
-import com.tribe.async.dispatch.Subscriber;
-import java.lang.ref.WeakReference;
-import java.util.List;
-
-public class nxz
-  implements Subscriber
+class nxz
+  extends nyf
 {
-  private WeakReference jdField_a_of_type_JavaLangRefWeakReference;
-  
-  public nxz(QQStoryBaseActivity paramQQStoryBaseActivity1, QQStoryBaseActivity paramQQStoryBaseActivity2)
+  nxz(nxd paramnxd, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQStoryBaseActivity2);
+    super(paramnxd, null);
   }
   
-  public void accept(@NonNull List paramList)
+  void a(nyi paramnyi)
   {
-    paramList.add(BitmapUtils.OutOfMemHandleCommand.class);
-  }
-  
-  public void handleDispatch(@NonNull Dispatcher.Dispatchable paramDispatchable)
-  {
-    paramDispatchable = (QQStoryBaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (paramDispatchable != null) {
-      paramDispatchable.g();
-    }
+    if (paramnyi == null) {}
+    do
+    {
+      return;
+      if (this.jdField_a_of_type_Int == 1)
+      {
+        paramnyi.onCommentListLoad(1, false, null, false, 3, 3);
+        return;
+      }
+    } while (this.jdField_a_of_type_Int != 2);
+    paramnyi.onCommentLoadMore(1, false, null, false, 3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     nxz
  * JD-Core Version:    0.7.0.1
  */

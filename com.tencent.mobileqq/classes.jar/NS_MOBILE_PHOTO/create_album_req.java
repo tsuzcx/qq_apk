@@ -11,10 +11,10 @@ public final class create_album_req
 {
   static int cache_action = 0;
   static Album cache_album = new Album();
-  static Map cache_busi_param = new HashMap();
+  static Map<Integer, String> cache_busi_param = new HashMap();
   public int action = 0;
   public Album album;
-  public Map busi_param;
+  public Map<Integer, String> busi_param;
   public String invite_key = "";
   public boolean is_from_public_url;
   public String itemid = "";
@@ -26,7 +26,7 @@ public final class create_album_req
   
   public create_album_req() {}
   
-  public create_album_req(Album paramAlbum, Map paramMap, String paramString1, int paramInt, String paramString2, boolean paramBoolean)
+  public create_album_req(Album paramAlbum, Map<Integer, String> paramMap, String paramString1, int paramInt, String paramString2, boolean paramBoolean)
   {
     this.album = paramAlbum;
     this.busi_param = paramMap;

@@ -8,6 +8,7 @@ public class HiBoomMessage
   private static final long serialVersionUID = 1L;
   public int id;
   public String text;
+  public int type;
 }
 
 

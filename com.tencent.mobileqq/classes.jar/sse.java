@@ -1,16 +1,13 @@
-import android.widget.ImageView;
+import com.tencent.mobileqq.troop.data.TroopBarPOI;
+import java.util.List;
 
-class sse
+public abstract interface sse
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  String jdField_a_of_type_JavaLangString;
-  ssc jdField_a_of_type_Ssc;
-  
-  sse(ssd paramssd) {}
+  public abstract void a(int paramInt, ssf paramssf, List<TroopBarPOI> paramList);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     sse
  * JD-Core Version:    0.7.0.1
  */

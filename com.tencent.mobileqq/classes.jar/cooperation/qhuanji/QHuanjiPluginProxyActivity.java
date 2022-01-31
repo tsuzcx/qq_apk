@@ -15,14 +15,14 @@ public class QHuanjiPluginProxyActivity
     return PluginStatic.getOrCreateClassLoader(paramContext, "qhuanji_plugin.apk");
   }
   
-  protected void onPause()
+  public void onPause()
   {
     super.onPause();
     Log.i("miles", "QHuanjiPluginProxyActivity >> onPause.");
     a = false;
   }
   
-  protected void onResume()
+  public void onResume()
   {
     super.onResume();
     Log.i("miles", "QHuanjiPluginProxyActivity >> onResume.");

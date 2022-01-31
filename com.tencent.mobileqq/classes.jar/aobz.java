@@ -1,29 +1,20 @@
-import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.FaceLayer.FaceItem;
-import java.util.Comparator;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFilePicTabView;
 
-public final class aobz
-  implements Comparator
+public class aobz
+  implements View.OnClickListener
 {
-  public int a(FaceLayer.FaceItem paramFaceItem1, FaceLayer.FaceItem paramFaceItem2)
-  {
-    long l = paramFaceItem1.a - paramFaceItem2.a;
-    if (l < 0L) {
-      return -1;
-    }
-    if (l == 0L) {
-      return 0;
-    }
-    return 1;
-  }
+  public aobz(QfileLocalFilePicTabView paramQfileLocalFilePicTabView) {}
   
-  public boolean equals(Object paramObject)
+  public void onClick(View paramView)
   {
-    return (paramObject != null) && ((paramObject instanceof aobz));
+    QfileLocalFilePicTabView.a(this.a, paramView, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aobz
  * JD-Core Version:    0.7.0.1
  */

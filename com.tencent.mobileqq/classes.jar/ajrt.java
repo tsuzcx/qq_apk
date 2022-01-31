@@ -1,100 +1,158 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.model.ImageInfo;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.model.ImageInfo.UploadMediaSegment;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.model.VideoInfo;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.troop_homework.TroopHomeworkHelper.UploadCallback;
-import mqq.os.MqqHandler;
+import java.util.ArrayList;
+import java.util.List;
+import mqq.manager.Manager;
+import org.json.JSONArray;
+import org.json.JSONException;
 
 public class ajrt
-  implements TroopHomeworkHelper.UploadCallback
+  implements Manager
 {
-  private float jdField_a_of_type_Float = 1.0F;
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
+  public static final String a;
+  public static boolean a;
+  private QQAppInterface a;
   
-  public ajrt(ImageInfo.UploadMediaSegment paramUploadMediaSegment)
+  static
   {
-    switch (ImageInfo.UploadMediaSegment.a(paramUploadMediaSegment))
-    {
-    default: 
-      this.jdField_a_of_type_Int = 0;
-      this.jdField_a_of_type_Float = 1.0F;
-      return;
-    case 1: 
-      this.jdField_a_of_type_Int = 10;
-      this.jdField_a_of_type_Float = 0.85F;
-      return;
+    jdField_a_of_type_JavaLangString = ajrt.class.getSimpleName();
+  }
+  
+  public ajrt() {}
+  
+  public ajrt(QQAppInterface paramQQAppInterface)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+  }
+  
+  private static String a()
+  {
+    return (String)bgmq.a("search_keyword_list", "");
+  }
+  
+  private static void b(String paramString)
+  {
+    jdField_a_of_type_Boolean = true;
+    bgmq.a("search_keyword_list", paramString);
+  }
+  
+  public ArrayList<String> a()
+  {
+    localArrayList = new ArrayList();
+    Object localObject = a();
+    if (localObject != null) {
+      try
+      {
+        localObject = new JSONArray((String)localObject);
+        int i = 0;
+        while (i < ((JSONArray)localObject).length())
+        {
+          localArrayList.add(((JSONArray)localObject).optString(i));
+          i += 1;
+        }
+        return localArrayList;
+      }
+      catch (JSONException localJSONException)
+      {
+        localJSONException.printStackTrace();
+      }
     }
-    this.jdField_a_of_type_Int = 95;
-    this.jdField_a_of_type_Float = 0.05F;
+  }
+  
+  public void a()
+  {
+    b("");
   }
   
   public void a(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelImageInfo$UploadMediaSegment.isCanceled())
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("UploadMediaSegment", 2, new Object[] { "MediaUploadCallback onProgress cancel. progress=", Integer.valueOf(paramInt) });
-      }
-      this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelImageInfo$UploadMediaSegment.onCancel();
+    ArrayList localArrayList = a();
+    if ((localArrayList != null) && (paramInt < localArrayList.size())) {
+      localArrayList.remove(paramInt);
     }
-    long l;
-    do
+    JSONArray localJSONArray = new JSONArray();
+    paramInt = 0;
+    while (paramInt < localArrayList.size())
     {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("UploadMediaSegment", 2, new Object[] { "MediaUploadCallback onProgress. mediaType=", Integer.valueOf(ImageInfo.UploadMediaSegment.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelImageInfo$UploadMediaSegment)), ", info hash=", Integer.valueOf(ImageInfo.UploadMediaSegment.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelImageInfo$UploadMediaSegment).hashCode()), ", info status=", Integer.valueOf(ImageInfo.UploadMediaSegment.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelImageInfo$UploadMediaSegment).g), ", progress=", Integer.valueOf(paramInt) });
-      }
-      l = System.currentTimeMillis();
-      paramInt = this.jdField_a_of_type_Int + (int)(this.jdField_a_of_type_Float * paramInt);
-    } while ((paramInt >= 100) || (l - this.jdField_a_of_type_Long <= 500L));
-    this.jdField_a_of_type_Long = l;
-    ThreadManager.getUIHandler().post(new ajrv(this, paramInt));
+      localJSONArray.put(localArrayList.get(paramInt));
+      paramInt += 1;
+    }
+    b(localJSONArray.toString());
   }
   
   public void a(String paramString)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelImageInfo$UploadMediaSegment.isCanceled())
+    int i = 0;
+    if (TextUtils.isEmpty(paramString))
     {
-      this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelImageInfo$UploadMediaSegment.onCancel();
+      if (QLog.isColorLevel()) {
+        QLog.i(jdField_a_of_type_JavaLangString, 2, "addSearchHistory key word is null");
+      }
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("UploadMediaSegment", 2, new Object[] { "MediaUploadCallback onComplete. mediaType=", Integer.valueOf(ImageInfo.UploadMediaSegment.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelImageInfo$UploadMediaSegment)), ", info hash=", Integer.valueOf(ImageInfo.UploadMediaSegment.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelImageInfo$UploadMediaSegment).hashCode()), ", info status=", Integer.valueOf(ImageInfo.UploadMediaSegment.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelImageInfo$UploadMediaSegment).g) });
+    ArrayList localArrayList = a();
+    if (localArrayList.size() >= 10) {
+      localArrayList.remove(localArrayList.size() - 1);
     }
-    switch (ImageInfo.UploadMediaSegment.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelImageInfo$UploadMediaSegment))
+    localArrayList.remove(paramString);
+    localArrayList.add(0, paramString);
+    paramString = new JSONArray();
+    while (i < localArrayList.size())
     {
+      paramString.put(localArrayList.get(i));
+      i += 1;
     }
-    while (!this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelImageInfo$UploadMediaSegment.isCanceled())
-    {
-      ImageInfo.UploadMediaSegment.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelImageInfo$UploadMediaSegment, ImageInfo.UploadMediaSegment.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelImageInfo$UploadMediaSegment));
-      return;
-      VideoInfo localVideoInfo = (VideoInfo)ImageInfo.UploadMediaSegment.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelImageInfo$UploadMediaSegment);
-      localVideoInfo.e = paramString;
-      ThreadManager.getUIHandler().post(new ajru(this, localVideoInfo));
-      continue;
-      ImageInfo.UploadMediaSegment.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelImageInfo$UploadMediaSegment).b = paramString;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelImageInfo$UploadMediaSegment.onCancel();
+    b(paramString.toString());
   }
   
-  public void b(int paramInt)
+  public void a(JSONArray paramJSONArray)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e(getClass().getSimpleName(), 2, new Object[] { "upload onError. errorCode=", Integer.valueOf(paramInt), ", info type=", Integer.valueOf(ImageInfo.UploadMediaSegment.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelImageInfo$UploadMediaSegment).b()), ", mediaType=", Integer.valueOf(ImageInfo.UploadMediaSegment.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelImageInfo$UploadMediaSegment)) });
-    }
-    if (ImageInfo.UploadMediaSegment.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelImageInfo$UploadMediaSegment) == 2)
+    int j = 0;
+    if (paramJSONArray == null)
     {
-      ImageInfo.UploadMediaSegment.b(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelImageInfo$UploadMediaSegment, ImageInfo.UploadMediaSegment.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelImageInfo$UploadMediaSegment));
+      if (QLog.isColorLevel()) {
+        QLog.i(jdField_a_of_type_JavaLangString, 2, "addAllSearchHistory key word is null");
+      }
       return;
     }
-    ImageInfo.UploadMediaSegment.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelImageInfo$UploadMediaSegment, new Error("-3"));
+    ArrayList localArrayList2 = a();
+    ArrayList localArrayList1 = localArrayList2;
+    if (localArrayList2 == null) {
+      localArrayList1 = new ArrayList();
+    }
+    localArrayList2 = new ArrayList();
+    int i = 0;
+    while (i < paramJSONArray.length())
+    {
+      String str = paramJSONArray.optString(i);
+      if (!TextUtils.isEmpty(str))
+      {
+        localArrayList2.add(str);
+        localArrayList1.remove(str);
+      }
+      i += 1;
+    }
+    localArrayList2.addAll(localArrayList1);
+    paramJSONArray = new JSONArray();
+    if (localArrayList2.size() > 10) {
+      i = 10;
+    }
+    while (j < i)
+    {
+      paramJSONArray.put(localArrayList2.get(j));
+      j += 1;
+      continue;
+      i = localArrayList2.size();
+    }
+    b(paramJSONArray.toString());
   }
+  
+  public void onDestroy() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajrt
  * JD-Core Version:    0.7.0.1
  */

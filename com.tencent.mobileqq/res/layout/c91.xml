@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:gravity="center_horizontal" android:layout_width="fill_parent" android:layout_height="53.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/lum" android:background="@drawable/skin_searchbar_input_theme_version2" android:layout_width="fill_parent" android:layout_height="36.0dip" android:layout_marginLeft="2.0dip" android:layout_marginRight="2.0dip" android:layout_marginBottom="5.0dip" android:layout_alignParentBottom="true">
+        <TextView android:textSize="16.0dip" android:textColor="@color/skin_hint_input_theme_version2" android:id="@id/lun" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/o70" android:drawableLeft="@drawable/skin_searchbar_icon_theme_version2" />
+    </LinearLayout>
+</RelativeLayout>

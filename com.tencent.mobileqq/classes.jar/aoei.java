@@ -1,66 +1,43 @@
-import android.app.Activity;
-import android.support.annotation.NonNull;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.reactive.SimpleObserver;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoPart;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoPlayerExport;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoUi;
-import dov.com.tencent.biz.qqstory.takevideo.EditWebVideoPartManager;
-import dov.com.tencent.biz.qqstory.takevideo.publish.GenerateContext;
-import java.util.Iterator;
-import java.util.List;
+import android.os.Bundle;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.filemanager.app.FileMultiMsgManager.BuddyUploadTaskExcuter.1;
+import java.util.concurrent.Executor;
 
 public class aoei
-  extends SimpleObserver
+  extends aoey
 {
-  public aoei(EditWebVideoPartManager paramEditWebVideoPartManager) {}
+  public long a;
+  private Bundle a;
+  public String a;
+  private long b;
+  public String b;
   
-  public void a(GenerateContext paramGenerateContext)
+  public aoei(aoea paramaoea, MessageRecord paramMessageRecord)
   {
-    super.onNext(paramGenerateContext);
-    this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoUi.f();
-    this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoUi.getActivity().overridePendingTransition(0, 0);
-    this.a.o();
-    this.a.jdField_b_of_type_Boolean = false;
-    Iterator localIterator = this.a.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext()) {
-      ((EditVideoPart)localIterator.next()).b(paramGenerateContext);
-    }
-    this.a.jdField_b_of_type_Boolean = false;
-    this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoUi.f();
-    paramGenerateContext = (EditVideoPlayerExport)this.a.a(EditVideoPlayerExport.class);
-    if (paramGenerateContext != null) {
-      paramGenerateContext.m();
-    }
-    if (this.a.jdField_b_of_type_JavaUtilList.isEmpty())
-    {
-      this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoUi.getActivity();
-      return;
-    }
-    QQToast.a(this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoUi.a(), "对不起，视频发送失败...", 0).a();
-    this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoUi.getActivity().finish();
+    super(paramaoea);
+    this.jdField_a_of_type_JavaLangString = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFileName");
+    this.jdField_a_of_type_Long = Long.parseLong(paramMessageRecord.getExtInfoFromExtStr("_m_ForwardSize"));
+    this.jdField_b_of_type_JavaLangString = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFilePath");
+    paramaoea = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgWidth");
+    paramMessageRecord = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgHeight");
+    this.jdField_a_of_type_AndroidOsBundle = new Bundle();
+    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardImgWidth", paramaoea);
+    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardImgHeight", paramMessageRecord);
   }
   
-  public void onCancel()
-  {
-    super.onCancel();
-  }
+  void a(String paramString, int paramInt) {}
   
-  public void onError(@NonNull Error paramError)
+  void a(String paramString, int paramInt, aoex paramaoex)
   {
-    super.onError(paramError);
-    this.a.jdField_b_of_type_JavaUtilList.add(paramError);
-    if (QLog.isColorLevel()) {
-      QLog.e("EditWebVideoActivity", 2, "publish error:", paramError);
-    }
-    QQToast.a(this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoUi.a(), "对不起，视频处理失败...", 0).a();
-    this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoUi.getActivity().finish();
+    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardFileType", "1");
+    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardReceiverUin", paramString);
+    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardFileName", this.jdField_a_of_type_JavaLangString);
+    apcw.a().execute(new FileMultiMsgManager.BuddyUploadTaskExcuter.1(this, paramString, paramaoex));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aoei
  * JD-Core Version:    0.7.0.1
  */

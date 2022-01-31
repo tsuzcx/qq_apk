@@ -1,20 +1,28 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.NotificationActivity;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.playvideo.StoryPlayerActivity;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class thv
-  implements View.OnClickListener
+  extends QQUIEventReceiver<StoryPlayerActivity, thu>
 {
-  public thv(NotificationActivity paramNotificationActivity) {}
-  
-  public void onClick(View paramView)
+  public thv(@NonNull StoryPlayerActivity paramStoryPlayerActivity)
   {
-    this.a.a();
+    super(paramStoryPlayerActivity);
+  }
+  
+  public void a(@NonNull StoryPlayerActivity paramStoryPlayerActivity, @NonNull thu paramthu)
+  {
+    paramStoryPlayerActivity.b = paramthu.a;
+  }
+  
+  public Class acceptEventClass()
+  {
+    return thu.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     thv
  * JD-Core Version:    0.7.0.1
  */

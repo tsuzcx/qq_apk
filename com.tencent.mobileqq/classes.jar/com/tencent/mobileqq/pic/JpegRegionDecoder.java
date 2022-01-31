@@ -69,7 +69,6 @@ public final class JpegRegionDecoder
   }
   
   protected void finalize()
-    throws Throwable
   {
     try
     {

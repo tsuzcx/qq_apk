@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.app.automator.step;
 
+import ajtg;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopHandler;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
 
 public class GetTroopConfig
   extends AsyncStep
 {
-  protected int a()
+  public int a()
   {
-    if (this.a.b != null) {
-      ((TroopHandler)this.a.b.a(20)).c();
+    if (this.a.app != null) {
+      ((ajtg)this.a.app.a(20)).c();
     }
     return 7;
   }

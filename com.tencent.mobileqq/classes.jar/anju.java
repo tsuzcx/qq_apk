@@ -1,18 +1,41 @@
-import cooperation.qzone.webviewplugin.QZoneSharePictureJsPlugin;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.EmoticonPackage;
 
-public class anju
-  implements Runnable
+public abstract class anju
+  extends angu
 {
-  public anju(QZoneSharePictureJsPlugin paramQZoneSharePictureJsPlugin, String[] paramArrayOfString) {}
+  anfw jdField_a_of_type_Anfw = new anjw(this);
+  anfz jdField_a_of_type_Anfz = new anjv(this);
+  protected int h = 2;
   
-  public void run()
+  public anju(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt1, int paramInt2, int paramInt3, anhs paramanhs)
   {
-    QZoneSharePictureJsPlugin.b(this.jdField_a_of_type_CooperationQzoneWebviewpluginQZoneSharePictureJsPlugin, this.jdField_a_of_type_ArrayOfJavaLangString[0]);
+    super(paramQQAppInterface, paramContext, paramInt1, paramInt2, paramInt3, paramanhs);
+    anfi.a().a(this.jdField_a_of_type_Anfw);
+    anga.a().a(this.jdField_a_of_type_Anfz);
   }
+  
+  public void a()
+  {
+    super.a();
+    anfi.a().b(this.jdField_a_of_type_Anfw);
+    anga.a().b(this.jdField_a_of_type_Anfz);
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(EmoticonPackage paramEmoticonPackage) {}
+  
+  public void a(EmoticonPackage paramEmoticonPackage, int paramInt) {}
+  
+  public void a(EmoticonPackage paramEmoticonPackage, int paramInt1, int paramInt2) {}
+  
+  public void b(EmoticonPackage paramEmoticonPackage) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     anju
  * JD-Core Version:    0.7.0.1
  */

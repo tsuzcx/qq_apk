@@ -1,18 +1,11 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.animation.AnimatorFactory.AnimatorListener;
+import java.util.ArrayList;
 
-public final class ont
-  implements ValueAnimator.AnimatorUpdateListener
+public abstract class ont
+  implements ons
 {
-  public ont(AnimatorFactory.AnimatorListener paramAnimatorListener) {}
+  public void a(boolean paramBoolean, String paramString1, int paramInt, String paramString2) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    if (this.a != null) {
-      this.a.a(paramValueAnimator);
-    }
-  }
+  public void a(boolean paramBoolean1, String paramString, boolean paramBoolean2, ArrayList<String> paramArrayList) {}
 }
 
 

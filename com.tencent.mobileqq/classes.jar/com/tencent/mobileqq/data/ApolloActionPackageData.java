@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.data;
 
-import com.tencent.mobileqq.persistence.Entity;
+import atmo;
 
 public class ApolloActionPackageData
-  extends Entity
+  extends atmo
 {
   public int acitonId;
   public int packageId;

@@ -1,59 +1,43 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.net.Uri;
-import android.os.Build.VERSION;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.webview.webso.HttpResponsePackage;
-import com.tencent.mobileqq.webview.webso.SHA1Util;
-import com.tencent.mobileqq.webview.webso.WebSoService;
-import com.tencent.mobileqq.webview.webso.WebSoService.WebSoState;
-import com.tencent.mobileqq.webview.webso.WebSoUtils;
-import mqq.app.AppRuntime;
+import com.tencent.ark.ark.VariantWrapper;
+import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
 
 public class akyw
-  implements Runnable
+  implements akyx
 {
-  public akyw(WebSoService paramWebSoService, HttpResponsePackage paramHttpResponsePackage, Uri paramUri, String paramString, WebSoService.WebSoState paramWebSoState) {}
+  private akyw(akyv paramakyv) {}
   
-  public void run()
+  public boolean a(String paramString, ark.VariantWrapper[] paramArrayOfVariantWrapper, ark.VariantWrapper paramVariantWrapper)
   {
-    long l = System.currentTimeMillis();
-    Object localObject2 = "";
-    Object localObject1 = localObject2;
-    if (this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoHttpResponsePackage != null)
-    {
-      localObject1 = localObject2;
-      if (this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoHttpResponsePackage.d != null)
-      {
-        WebSoUtils.a(this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoHttpResponsePackage.d.getBytes(), WebSoUtils.b(this.jdField_a_of_type_AndroidNetUri));
-        localObject1 = SHA1Util.a(this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoHttpResponsePackage.d);
-      }
+    if (!alan.a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Long, this.a.jdField_a_of_type_ComTencentArkArk$Application, "permission.CONNECTION_TYPE")) {
+      return false;
     }
-    if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_AndroidNetUri != null))
-    {
-      localObject2 = WebSoService.a().edit();
-      String str1 = String.valueOf(BaseApplicationImpl.getApplication().getRuntime().getLongAccountUin());
-      String str2 = WebSoUtils.a(this.jdField_a_of_type_AndroidNetUri);
-      ((SharedPreferences.Editor)localObject2).putString("eTag_" + str1 + str2, this.jdField_a_of_type_JavaLangString);
-      ((SharedPreferences.Editor)localObject2).putString("htmlSha1_" + str1 + str2, (String)localObject1);
-      if (Build.VERSION.SDK_INT >= 9) {
-        break label217;
-      }
-      ((SharedPreferences.Editor)localObject2).commit();
+    if (!AppNetConnInfo.isNetSupport()) {
+      paramVariantWrapper.SetString("none");
     }
     for (;;)
     {
-      this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState.a.d = ((int)(System.currentTimeMillis() - l));
-      return;
-      label217:
-      ((SharedPreferences.Editor)localObject2).apply();
+      return true;
+      if (AppNetConnInfo.isWifiConn())
+      {
+        paramVariantWrapper.SetString("wifi");
+      }
+      else if (AppNetConnInfo.isMobileConn())
+      {
+        int i = AppNetConnInfo.getMobileInfo();
+        if (i == 0) {
+          paramVariantWrapper.SetString("none");
+        } else if (-1 == i) {
+          paramVariantWrapper.SetString("other");
+        } else {
+          paramVariantWrapper.SetString("cellular");
+        }
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     akyw
  * JD-Core Version:    0.7.0.1
  */

@@ -159,13 +159,13 @@ public class MessageForSplitLineTips
     return this.msgData;
   }
   
-  protected void postRead()
+  public void postRead()
   {
     parse();
   }
   
   /* Error */
-  protected void prewrite()
+  public void prewrite()
   {
     // Byte code:
     //   0: new 107	java/io/ByteArrayOutputStream

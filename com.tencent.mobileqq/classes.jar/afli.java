@@ -1,25 +1,24 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import com.tencent.mobileqq.nearby.NearbyUtils;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditPanel;
+import android.view.View;
+import com.tencent.mobileqq.activity.history.ChatHistoryC2CFileFragment;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
 public class afli
-  implements TextWatcher
+  extends apfd
 {
-  public afli(NearbyProfileEditPanel paramNearbyProfileEditPanel) {}
+  public afli(ChatHistoryC2CFileFragment paramChatHistoryC2CFileFragment) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void a(View paramView)
   {
-    NearbyUtils.a(this.a.e, 40);
+    if ((paramView.getTag() instanceof String)) {
+      return;
+    }
+    paramView = (FileManagerEntity)((ahzk)paramView.getTag()).a;
+    this.a.a(paramView);
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     afli
  * JD-Core Version:    0.7.0.1
  */

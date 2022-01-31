@@ -1,27 +1,10 @@
-import com.tencent.mobileqq.activity.aio.item.CustomFrameAnimationDrawable;
-import com.tencent.mobileqq.activity.aio.item.CustomFrameAnimationDrawable.AnimationEndListener;
-import com.tencent.mobileqq.shortvideo.redbag.RedBagVideoManager;
-
-public class aihr
-  implements CustomFrameAnimationDrawable.AnimationEndListener
+public abstract interface aihr
 {
-  public aihr(RedBagVideoManager paramRedBagVideoManager, CustomFrameAnimationDrawable paramCustomFrameAnimationDrawable) {}
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqShortvideoRedbagRedBagVideoManager.c > 0) {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable.g();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable.a();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable.c();
-    RedBagVideoManager localRedBagVideoManager = this.jdField_a_of_type_ComTencentMobileqqShortvideoRedbagRedBagVideoManager;
-    localRedBagVideoManager.c += 1;
-  }
+  public abstract void a(boolean paramBoolean, aihq paramaihq);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aihr
  * JD-Core Version:    0.7.0.1
  */

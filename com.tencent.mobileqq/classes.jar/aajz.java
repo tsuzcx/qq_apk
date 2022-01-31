@@ -1,26 +1,17 @@
-import com.tencent.mobileqq.ar.ObjectBaseData;
-import com.tencent.mobileqq.ar.ObjectSurfaceView;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.CopyOnWriteArrayList;
+import android.app.Activity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class aajz
-  implements Runnable
+public abstract interface aajz
 {
-  public aajz(ObjectSurfaceView paramObjectSurfaceView, ObjectBaseData paramObjectBaseData) {}
+  public abstract void a(Activity paramActivity);
   
-  public void run()
-  {
-    if (ObjectSurfaceView.a(this.jdField_a_of_type_ComTencentMobileqqArObjectSurfaceView).size() > 0)
-    {
-      ObjectSurfaceView.a(this.jdField_a_of_type_ComTencentMobileqqArObjectSurfaceView, this.jdField_a_of_type_ComTencentMobileqqArObjectBaseData.c);
-      return;
-    }
-    QLog.d("ObjectSurfaceView", 1, "the dataList is null, cancel the jump action.");
-  }
+  public abstract void a(QQAppInterface paramQQAppInterface, int paramInt);
+  
+  public abstract void b(QQAppInterface paramQQAppInterface, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aajz
  * JD-Core Version:    0.7.0.1
  */

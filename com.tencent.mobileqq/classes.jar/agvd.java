@@ -1,24 +1,31 @@
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import android.view.animation.Transformation;
-import com.tencent.mobileqq.profile.view.BreatheEffectView;
-import com.tencent.mobileqq.utils.ValueAnimation;
-import com.tencent.mobileqq.utils.ValueAnimation.AnimationUpdateListener;
+import com.tencent.mobileqq.activity.qwallet.redpacket.springfestival.entry.ui.SpringHbVideoView;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnInfoListener;
 
 public class agvd
-  implements ValueAnimation.AnimationUpdateListener
+  implements TVK_IMediaPlayer.OnInfoListener
 {
-  public agvd(BreatheEffectView paramBreatheEffectView, Drawable paramDrawable) {}
+  public agvd(SpringHbVideoView paramSpringHbVideoView) {}
   
-  public void a(ValueAnimation paramValueAnimation, float paramFloat, Rect paramRect, Transformation paramTransformation)
+  public boolean onInfo(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt, Object paramObject)
   {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(paramRect);
-    this.jdField_a_of_type_ComTencentMobileqqProfileViewBreatheEffectView.invalidate(paramRect);
+    QLog.i("springHb_SpringHbVideoView", 1, "onInfo what=" + paramInt);
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      return false;
+      QLog.i("springHb_SpringHbVideoView", 1, "onInfo PLAYER_INFO_START_RENDERING");
+      SpringHbVideoView.a(this.a).removeMessages(100);
+      SpringHbVideoView.a(this.a).sendEmptyMessageDelayed(100, 150L);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     agvd
  * JD-Core Version:    0.7.0.1
  */

@@ -1,32 +1,31 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.worldcup.ARWorldCupGameLogicManager;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
+import com.tencent.mobileqq.activity.aio.item.ArkAppLoadLayout;
+import com.tencent.mobileqq.activity.aio.item.ArkAppRootLayout;
+import com.tencent.mobileqq.activity.aio.item.ArkAppView;
 
 public class alff
-  extends Handler
 {
-  public alff(ARWorldCupGameLogicManager paramARWorldCupGameLogicManager) {}
-  
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      return;
-    } while (this.a.jdField_a_of_type_Float < 0.0F);
-    QLog.i(ARWorldCupGameLogicManager.jdField_a_of_type_JavaLangString, 1, "OnLoopPlayTick handleMessage begin." + this.a.jdField_a_of_type_Float);
-    paramMessage = this.a;
-    paramMessage.jdField_a_of_type_Float += 0.1F;
-    ARWorldCupGameLogicManager.a(this.a, this.a.jdField_a_of_type_Float);
-    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1001, 100L);
-  }
+  public View a;
+  public Button a;
+  public ImageView a;
+  public LinearLayout a;
+  public RelativeLayout a;
+  public TextView a;
+  public BaseChatItemLayout a;
+  public ArkAppLoadLayout a;
+  public ArkAppRootLayout a;
+  public ArkAppView a;
+  public LinearLayout b;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     alff
  * JD-Core Version:    0.7.0.1
  */

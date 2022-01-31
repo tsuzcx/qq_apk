@@ -1,151 +1,474 @@
-import android.content.Intent;
-import android.content.res.Resources;
-import android.view.LayoutInflater;
+import android.app.ActivityManager;
+import android.app.admin.DevicePolicyManager;
+import android.content.ComponentName;
+import android.content.Context;
+import android.content.pm.ConfigurationInfo;
+import android.hardware.Camera;
+import android.hardware.Camera.Parameters;
+import android.opengl.GLES20;
+import android.os.Build.VERSION;
+import android.provider.MediaStore.MediaColumns;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.AccountDetailActivity;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadinjoySubscriptManagerActivity;
-import com.tencent.mobileqq.activity.recent.RecentFaceDecoder;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.AdapterView.OnItemClickListener;
-import java.util.List;
+import android.view.WindowManager.LayoutParams;
+import com.tencent.qphone.base.util.QLog;
 
 public class lie
-  extends BaseAdapter
-  implements AdapterView.OnItemClickListener
 {
-  private List jdField_a_of_type_JavaUtilList;
+  public static final boolean A;
+  public static final boolean B;
+  public static final boolean C;
+  public static final boolean D;
+  public static final boolean E;
+  public static final boolean F;
+  public static final boolean G;
+  public static final boolean H;
+  public static final boolean I;
+  public static final boolean J;
+  public static final boolean K;
+  public static final boolean L;
+  public static final boolean M;
+  public static final boolean N;
+  public static final boolean O;
+  public static final boolean P;
+  public static final boolean Q;
+  public static final boolean R;
+  public static final boolean S;
+  static int a;
+  public static final boolean a;
+  public static final boolean b;
+  public static final boolean c;
+  public static final boolean d;
+  public static final boolean e;
+  public static final boolean f;
+  public static final boolean g;
+  public static final boolean h;
+  public static final boolean i;
+  public static final boolean j;
+  public static final boolean k;
+  public static final boolean l;
+  public static final boolean m;
+  public static final boolean n;
+  public static final boolean o;
+  public static final boolean p;
+  public static final boolean q;
+  public static final boolean r;
+  public static final boolean s;
+  public static final boolean t;
+  public static final boolean u;
+  public static final boolean v;
+  public static final boolean w;
+  public static final boolean x;
+  public static final boolean y;
+  public static final boolean z;
   
-  private lie(ReadinjoySubscriptManagerActivity paramReadinjoySubscriptManagerActivity) {}
-  
-  private void a(lii paramlii, int paramInt, View paramView)
+  static
   {
-    lih locallih = (lih)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    lii.a(paramlii).setText(lih.b(locallih));
-    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)lii.a(paramlii).getLayoutParams();
-    Object localObject = localLayoutParams;
-    if (localLayoutParams == null) {
-      localObject = new RelativeLayout.LayoutParams(-2, -2);
-    }
-    lii.a(paramlii).setImageDrawable(ReadinjoySubscriptManagerActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadinjoySubscriptManagerActivity).a(1008, lih.c(locallih)));
-    int i;
-    if (ReadinjoySubscriptManagerActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadinjoySubscriptManagerActivity))
+    boolean bool2 = true;
+    if (Build.VERSION.SDK_INT >= 16)
     {
-      ((RelativeLayout.LayoutParams)localObject).leftMargin = 0;
-      localObject = lii.a(paramlii);
-      if (!ReadinjoySubscriptManagerActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadinjoySubscriptManagerActivity)) {
-        break label238;
+      bool1 = true;
+      jdField_a_of_type_Boolean = bool1;
+      if (Build.VERSION.SDK_INT < 16) {
+        break label703;
       }
-      i = 0;
-      label121:
-      ((View)localObject).setVisibility(i);
-      lii.a(paramlii).setOnClickListener(new lif(this, paramView));
-      if (paramInt != getCount() - 1) {
-        break label245;
+      bool1 = true;
+      label26:
+      b = bool1;
+      if (Build.VERSION.SDK_INT < 14) {
+        break label708;
       }
-      lii.b(paramlii).setVisibility(8);
-      label163:
-      lii.a(paramlii).setOnClickListener(new lig(this, locallih));
-      lii.a(paramlii, lih.c(locallih));
-      if (!ReadinjoySubscriptManagerActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadinjoySubscriptManagerActivity)) {
-        break label256;
+      bool1 = true;
+      label40:
+      c = bool1;
+      d = a(View.class, "SYSTEM_UI_FLAG_LAYOUT_STABLE");
+      e = a(View.class, "SYSTEM_UI_FLAG_HIDE_NAVIGATION");
+      f = a(MediaStore.MediaColumns.class, "WIDTH");
+      if (Build.VERSION.SDK_INT < 16) {
+        break label713;
       }
-      lii.c(paramlii).setBackgroundResource(2131493472);
+      bool1 = true;
+      label84:
+      g = bool1;
+      if (Build.VERSION.SDK_INT < 11) {
+        break label718;
+      }
+      bool1 = true;
+      label98:
+      h = bool1;
+      if (Build.VERSION.SDK_INT < 16) {
+        break label723;
+      }
+      bool1 = true;
+      label112:
+      i = bool1;
+      j = a("android.graphics.SurfaceTexture", "setDefaultBufferSize", new Class[] { Integer.TYPE, Integer.TYPE });
+      k = a("android.graphics.SurfaceTexture", "release", new Class[0]);
+      if (Build.VERSION.SDK_INT < 11) {
+        break label728;
+      }
+      bool1 = true;
+      label166:
+      l = bool1;
+      if (Build.VERSION.SDK_INT < 12) {
+        break label733;
+      }
+      bool1 = true;
+      label180:
+      m = bool1;
+      if (Build.VERSION.SDK_INT < 16) {
+        break label738;
+      }
+      bool1 = true;
+      label194:
+      n = bool1;
+      if (Build.VERSION.SDK_INT < 11) {
+        break label743;
+      }
+      bool1 = true;
+      label208:
+      o = bool1;
+      if (Build.VERSION.SDK_INT < 11) {
+        break label748;
+      }
+      bool1 = true;
+      label222:
+      p = bool1;
+      q = a(View.class, "setSystemUiVisibility", new Class[] { Integer.TYPE });
     }
     for (;;)
     {
-      lii.c(paramlii).setPressed(false);
+      try
+      {
+        if ((!a(Camera.class, "setFaceDetectionListener", new Class[] { Class.forName("android.hardware.Camera$FaceDetectionListener") })) || (!a(Camera.class, "startFaceDetection", new Class[0])) || (!a(Camera.class, "stopFaceDetection", new Class[0]))) {
+          continue;
+        }
+        bool1 = a(Camera.Parameters.class, "getMaxNumDetectedFaces", new Class[0]);
+        if (!bool1) {
+          continue;
+        }
+        bool1 = true;
+      }
+      catch (Throwable localThrowable)
+      {
+        label703:
+        label708:
+        label713:
+        label718:
+        label723:
+        label728:
+        label733:
+        label738:
+        label743:
+        label748:
+        bool1 = false;
+        continue;
+        bool1 = false;
+        continue;
+        bool1 = false;
+        continue;
+        bool1 = false;
+        continue;
+        bool1 = false;
+        continue;
+        bool1 = false;
+        continue;
+        bool1 = false;
+        continue;
+        bool1 = false;
+        continue;
+        bool1 = false;
+        continue;
+        bool1 = false;
+        continue;
+        bool1 = false;
+        continue;
+        bool1 = false;
+        continue;
+        bool1 = false;
+        continue;
+        bool1 = false;
+        continue;
+        bool1 = false;
+        continue;
+        bool1 = false;
+        continue;
+        bool1 = false;
+        continue;
+        bool1 = false;
+        continue;
+        bool1 = false;
+        continue;
+        bool1 = false;
+        continue;
+        bool1 = false;
+        continue;
+        bool1 = false;
+        continue;
+        bool1 = false;
+        continue;
+        bool1 = false;
+        continue;
+        bool1 = false;
+        continue;
+        bool1 = false;
+        continue;
+      }
+      r = bool1;
+      s = a(DevicePolicyManager.class, "getCameraDisabled", new Class[] { ComponentName.class });
+      if (Build.VERSION.SDK_INT < 16) {
+        continue;
+      }
+      bool1 = true;
+      t = bool1;
+      if (Build.VERSION.SDK_INT < 11) {
+        continue;
+      }
+      bool1 = true;
+      u = bool1;
+      if (Build.VERSION.SDK_INT < 14) {
+        continue;
+      }
+      bool1 = true;
+      v = bool1;
+      if (Build.VERSION.SDK_INT < 14) {
+        continue;
+      }
+      bool1 = true;
+      w = bool1;
+      if (Build.VERSION.SDK_INT < 14) {
+        continue;
+      }
+      bool1 = true;
+      x = bool1;
+      if (Build.VERSION.SDK_INT < 11) {
+        continue;
+      }
+      bool1 = true;
+      y = bool1;
+      if (Build.VERSION.SDK_INT < 17) {
+        continue;
+      }
+      bool1 = true;
+      z = bool1;
+      if (Build.VERSION.SDK_INT < 11) {
+        continue;
+      }
+      bool1 = true;
+      A = bool1;
+      if (Build.VERSION.SDK_INT < 11) {
+        continue;
+      }
+      bool1 = true;
+      B = bool1;
+      if (Build.VERSION.SDK_INT < 11) {
+        continue;
+      }
+      bool1 = true;
+      C = bool1;
+      if (Build.VERSION.SDK_INT < 16) {
+        continue;
+      }
+      bool1 = true;
+      D = bool1;
+      if (Build.VERSION.SDK_INT < 11) {
+        continue;
+      }
+      bool1 = true;
+      E = bool1;
+      if (Build.VERSION.SDK_INT < 11) {
+        continue;
+      }
+      bool1 = true;
+      F = bool1;
+      if (Build.VERSION.SDK_INT < 17) {
+        continue;
+      }
+      bool1 = true;
+      G = bool1;
+      if (Build.VERSION.SDK_INT < 11) {
+        continue;
+      }
+      bool1 = true;
+      H = bool1;
+      if (Build.VERSION.SDK_INT < 14) {
+        continue;
+      }
+      bool1 = true;
+      I = bool1;
+      if (Build.VERSION.SDK_INT < 12) {
+        continue;
+      }
+      bool1 = true;
+      J = bool1;
+      if (Build.VERSION.SDK_INT < 16) {
+        continue;
+      }
+      bool1 = true;
+      K = bool1;
+      if (Build.VERSION.SDK_INT < 16) {
+        continue;
+      }
+      bool1 = true;
+      L = bool1;
+      if (Build.VERSION.SDK_INT < 11) {
+        continue;
+      }
+      bool1 = true;
+      M = bool1;
+      if (Build.VERSION.SDK_INT < 11) {
+        continue;
+      }
+      bool1 = true;
+      N = bool1;
+      O = a(WindowManager.LayoutParams.class, "rotationAnimation");
+      if (Build.VERSION.SDK_INT < 18) {
+        continue;
+      }
+      bool1 = true;
+      P = bool1;
+      if (Build.VERSION.SDK_INT < 16) {
+        continue;
+      }
+      bool1 = true;
+      Q = bool1;
+      if (Build.VERSION.SDK_INT < 18) {
+        continue;
+      }
+      bool1 = true;
+      R = bool1;
+      if (Build.VERSION.SDK_INT < 17) {
+        continue;
+      }
+      bool1 = bool2;
+      S = bool1;
       return;
-      ((RelativeLayout.LayoutParams)localObject).leftMargin = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadinjoySubscriptManagerActivity.getResources().getDimensionPixelSize(2131560140);
+      bool1 = false;
       break;
-      label238:
-      i = 8;
-      break label121;
-      label245:
-      lii.b(paramlii).setVisibility(0);
-      break label163;
-      label256:
-      lii.c(paramlii).setBackgroundResource(2130839738);
+      bool1 = false;
+      break label26;
+      bool1 = false;
+      break label40;
+      bool1 = false;
+      break label84;
+      bool1 = false;
+      break label98;
+      bool1 = false;
+      break label112;
+      bool1 = false;
+      break label166;
+      bool1 = false;
+      break label180;
+      bool1 = false;
+      break label194;
+      bool1 = false;
+      break label208;
+      bool1 = false;
+      break label222;
+      bool1 = false;
     }
   }
   
-  public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public static int a()
   {
-    paramAdapterView = (lih)getItem((int)paramLong);
-    if ((paramAdapterView == null) || (ReadinjoySubscriptManagerActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadinjoySubscriptManagerActivity))) {
-      return;
-    }
-    paramView = new Intent(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadinjoySubscriptManagerActivity, AccountDetailActivity.class);
-    paramView.putExtra("uin", lih.c(paramAdapterView));
-    paramView.putExtra("report_src_param_type", "");
-    paramView.putExtra("report_src_param_name", "");
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadinjoySubscriptManagerActivity.startActivity(paramView);
-  }
-  
-  public void a(List paramList)
-  {
-    if (paramList == null) {
-      return;
-    }
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    notifyDataSetChanged();
-  }
-  
-  public int getCount()
-  {
-    if (this.jdField_a_of_type_JavaUtilList != null) {
-      return this.jdField_a_of_type_JavaUtilList.size();
-    }
-    return 0;
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    if ((this.jdField_a_of_type_JavaUtilList != null) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
-      return this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    }
-    return null;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    View localView;
-    if (paramView == null)
+    int i1 = GLES20.glGetError();
+    if (i1 != 0)
     {
-      paramView = new lii(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadinjoySubscriptManagerActivity, null);
-      localView = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadinjoySubscriptManagerActivity.getLayoutInflater().inflate(2130969651, paramViewGroup, false);
-      lii.a(paramView, localView.findViewById(2131362846));
-      lii.b(paramView, localView.findViewById(2131362745));
-      lii.a(paramView, (ImageView)localView.findViewById(2131367345));
-      lii.a(paramView, (TextView)localView.findViewById(2131367346));
-      lii.a(paramView, (Button)localView.findViewById(2131367347));
-      lii.c(paramView, localView.findViewById(2131363649));
-      localView.setTag(paramView);
-      localView.setTag(-3, Integer.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadinjoySubscriptManagerActivity.getResources().getDimensionPixelSize(2131560141)));
-      paramViewGroup = paramView;
+      if (QLog.isColorLevel()) {
+        QLog.d("Utils", 2, "checkError error = " + i1);
+      }
+      lor.a();
     }
+    return i1;
+  }
+  
+  public static int a(int paramInt1, int paramInt2, int paramInt3)
+  {
+    if (paramInt1 > paramInt3) {
+      return paramInt3;
+    }
+    if (paramInt1 < paramInt2) {
+      return paramInt2;
+    }
+    return paramInt1;
+  }
+  
+  public static int a(Context paramContext)
+  {
+    if (jdField_a_of_type_Int == 0) {}
     for (;;)
     {
-      a(paramViewGroup, paramInt, localView);
-      return localView;
-      paramViewGroup = (lii)paramView.getTag();
-      localView = paramView;
+      try
+      {
+        paramContext = ((ActivityManager)paramContext.getSystemService("activity")).getDeviceConfigurationInfo();
+        if (paramContext != null) {
+          continue;
+        }
+        jdField_a_of_type_Int = 1;
+      }
+      catch (Exception paramContext)
+      {
+        jdField_a_of_type_Int = 1;
+        continue;
+        int i1 = 1;
+        continue;
+      }
+      return jdField_a_of_type_Int;
+      if (paramContext.reqGlEsVersion < 131072) {
+        continue;
+      }
+      i1 = 2;
+      jdField_a_of_type_Int = i1;
     }
+  }
+  
+  private static boolean a(Class<?> paramClass, String paramString)
+  {
+    try
+    {
+      paramClass.getDeclaredField(paramString);
+      return true;
+    }
+    catch (NoSuchFieldException paramClass) {}
+    return false;
+  }
+  
+  private static boolean a(Class<?> paramClass, String paramString, Class<?>... paramVarArgs)
+  {
+    try
+    {
+      paramClass.getDeclaredMethod(paramString, paramVarArgs);
+      return true;
+    }
+    catch (NoSuchMethodException paramClass) {}
+    return false;
+  }
+  
+  public static boolean a(Object paramObject1, Object paramObject2)
+  {
+    if (paramObject1 != paramObject2)
+    {
+      if (paramObject1 == null) {}
+      while (!paramObject1.equals(paramObject2)) {
+        return false;
+      }
+    }
+    return true;
+  }
+  
+  private static boolean a(String paramString1, String paramString2, Class<?>... paramVarArgs)
+  {
+    try
+    {
+      Class.forName(paramString1).getDeclaredMethod(paramString2, paramVarArgs);
+      return true;
+    }
+    catch (Throwable paramString1) {}
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lie
  * JD-Core Version:    0.7.0.1
  */

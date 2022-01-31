@@ -1,45 +1,33 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.TextView;
-import com.dataline.activities.PrinterSubOptionActivity;
-import com.dataline.activities.PrinterSubOptionActivity.PrinterItemAdapter;
-import com.dataline.data.PrinterManager;
-import com.tencent.mobileqq.app.DataLineHandler;
-import java.util.List;
+import com.dataline.activities.PrinterOptionActivity;
 
 public class cq
-  implements View.OnClickListener
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public cq(PrinterSubOptionActivity.PrinterItemAdapter paramPrinterItemAdapter) {}
+  public cq(PrinterOptionActivity paramPrinterOptionActivity) {}
   
-  public void onClick(View paramView)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    paramView = (TextView)paramView.findViewById(2131365561);
-    cp localcp;
-    if (paramView != null)
+    if (paramBoolean)
     {
-      localcp = (cp)this.a.a.b.get(((Integer)paramView.getTag()).intValue());
-      if (localcp.jdField_a_of_type_Long == 0L) {
-        break label143;
-      }
-    }
-    label143:
-    for (paramView = this.a.a.a.a.a(localcp.jdField_a_of_type_Long);; paramView = this.a.a.a.a.b(localcp.jdField_a_of_type_JavaLangString))
-    {
-      this.a.a.a.a.a = paramView;
-      paramView = new Intent();
-      paramView.putExtra("sPrinterName", localcp.jdField_a_of_type_JavaLangString);
-      paramView.putExtra("sPrintDin", localcp.jdField_a_of_type_Long);
-      this.a.a.setResult(-1, paramView);
-      this.a.a.finish();
+      PrinterOptionActivity.a(this.a).setVisibility(0);
+      PrinterOptionActivity.a(this.a).setText(2131625800);
       return;
     }
+    if (PrinterOptionActivity.b(this.a))
+    {
+      PrinterOptionActivity.a(this.a).setVisibility(0);
+      PrinterOptionActivity.a(this.a).setText(2131625780);
+      return;
+    }
+    PrinterOptionActivity.a(this.a).setVisibility(4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     cq
  * JD-Core Version:    0.7.0.1
  */

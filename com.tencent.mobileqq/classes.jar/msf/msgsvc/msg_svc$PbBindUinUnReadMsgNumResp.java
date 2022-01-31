@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class msg_svc$PbBindUinUnReadMsgNumResp
-  extends MessageMicro
+  extends MessageMicro<PbBindUinUnReadMsgNumResp>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 32 }, new String[] { "result", "errmsg", "bind_uin", "msg_num" }, new Object[] { Integer.valueOf(0), "", Long.valueOf(0L), Integer.valueOf(0) }, PbBindUinUnReadMsgNumResp.class);
   public final PBUInt64Field bind_uin = PBField.initUInt64(0L);

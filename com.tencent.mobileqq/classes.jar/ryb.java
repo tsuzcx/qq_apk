@@ -1,33 +1,20 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.ShortVideoObserver;
-import com.tencent.mobileqq.shortvideo.redbag.RedBagVideoManager;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.qphone.base.util.QLog;
+import UserGrowth.stSimpleMetaFeed;
+import android.content.Context;
+import java.util.ArrayList;
 
-public class ryb
-  extends ShortVideoObserver
+abstract interface ryb
 {
-  public ryb(BaseChatPie paramBaseChatPie) {}
+  public abstract void a(Context paramContext, int paramInt, stSimpleMetaFeed paramstSimpleMetaFeed);
   
-  public void a(boolean paramBoolean, int paramInt)
-  {
-    if (((this.a.a() instanceof SplashActivity)) && (SplashActivity.a != 2)) {}
-    do
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.aio.BaseChatPie", 2, "VideoRedbag, onCheckRealNameRsp in aio");
-      }
-    } while ((!paramBoolean) || (paramInt != RedBagVideoManager.a));
-    DialogUtil.b(this.a.a(), 0, null, this.a.a().getString(2131439151), 2131439153, 2131439152, new ryc(this), new ryd(this)).show();
-  }
+  public abstract void a(Context paramContext, int paramInt, ArrayList<stSimpleMetaFeed> paramArrayList, stSimpleMetaFeed paramstSimpleMetaFeed);
+  
+  public abstract void a(Context paramContext, stSimpleMetaFeed paramstSimpleMetaFeed, int paramInt);
+  
+  public abstract boolean a(Context paramContext, int paramInt, ArrayList<stSimpleMetaFeed> paramArrayList, stSimpleMetaFeed paramstSimpleMetaFeed);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     ryb
  * JD-Core Version:    0.7.0.1
  */

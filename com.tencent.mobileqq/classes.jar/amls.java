@@ -1,24 +1,68 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnFocusChangeListener;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.XPanelContainer;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.common.app.BaseApplicationImpl;
+import mqq.app.AppRuntime;
 
 public class amls
-  implements View.OnFocusChangeListener
+  extends alzl<amlr>
 {
-  public amls(XPanelContainer paramXPanelContainer) {}
-  
-  public void onFocusChange(View paramView, boolean paramBoolean)
+  public static amlr a()
   {
-    if ((QLog.isColorLevel()) && ((this.a.getContext() instanceof Activity))) {
-      QLog.d("XPanelContainer", 2, new Object[] { "input focus changed, hasFocus=", Boolean.valueOf(paramBoolean), ", current focus=", ((Activity)this.a.getContext()).getCurrentFocus() });
+    return (amlr)alzw.a().a(483);
+  }
+  
+  public int a()
+  {
+    return 483;
+  }
+  
+  @NonNull
+  public amlr a(int paramInt)
+  {
+    return new amlr();
+  }
+  
+  @Nullable
+  public amlr a(alzs[] paramArrayOfalzs)
+  {
+    if ((paramArrayOfalzs != null) && (paramArrayOfalzs.length > 0)) {
+      return amlr.a(paramArrayOfalzs);
     }
+    return null;
+  }
+  
+  public Class<amlr> a()
+  {
+    return amlr.class;
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(amlr paramamlr)
+  {
+    BaseApplicationImpl.getApplication().getRuntime().getPreferences().edit().putInt("key_tencent_doc_history_tab_tips_count", 0).apply();
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amls
  * JD-Core Version:    0.7.0.1
  */

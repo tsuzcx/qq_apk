@@ -1,45 +1,21 @@
-import android.os.Bundle;
-import com.tencent.biz.troop.TroopMemberApiClient.Callback;
-import com.tencent.biz.webviewplugin.HotchatPlugin;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.LinearLayout;
 
-public class pfy
-  implements TroopMemberApiClient.Callback
+class pfy
+  implements View.OnTouchListener
 {
-  public pfy(HotchatPlugin paramHotchatPlugin, String paramString) {}
+  pfy(pfu parampfu, LinearLayout paramLinearLayout1, LinearLayout paramLinearLayout2) {}
   
-  public void a(Bundle paramBundle)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    Object localObject = null;
-    String str;
-    if (paramBundle != null)
+    if (paramMotionEvent.getAction() == 0)
     {
-      str = paramBundle.getString("content");
-      paramBundle = paramBundle.getString("url");
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setDuplicateParentStateEnabled(true);
+      this.b.setDuplicateParentStateEnabled(true);
     }
-    try
-    {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("content", str);
-      localJSONObject.put("url", paramBundle);
-      paramBundle = localJSONObject.toString();
-      this.jdField_a_of_type_ComTencentBizWebviewpluginHotchatPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramBundle });
-      return;
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        paramBundle = localObject;
-        if (QLog.isColorLevel())
-        {
-          QLog.i("HotchatPlugin", 2, localJSONException.getMessage());
-          paramBundle = localObject;
-        }
-      }
-    }
+    return false;
   }
 }
 

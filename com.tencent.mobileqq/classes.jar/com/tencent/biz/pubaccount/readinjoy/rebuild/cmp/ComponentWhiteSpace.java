@@ -4,6 +4,7 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.ViewGroup.LayoutParams;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.Utils;
+import pjg;
 
 public class ComponentWhiteSpace
   extends ComponentDivider
@@ -30,14 +31,14 @@ public class ComponentWhiteSpace
   
   public void a(Context paramContext)
   {
-    setBackgroundResource(2131493472);
+    setBackgroundResource(2131101149);
   }
   
   public void b()
   {
     Object localObject = this.a.a;
     localObject = new ViewGroup.LayoutParams(-1, -2);
-    ((ViewGroup.LayoutParams)localObject).height = Utils.b(10.0D);
+    ((ViewGroup.LayoutParams)localObject).height = Utils.dp2px(10.0D);
     setLayoutParams((ViewGroup.LayoutParams)localObject);
   }
 }

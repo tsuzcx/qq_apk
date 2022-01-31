@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="44.0dip">
+        <TextView android:textSize="16.0dip" android:textColor="@color/skin_black" android:id="@id/iju" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="11.0dip" android:text="@string/prs" android:layout_centerVertical="true" />
+        <RelativeLayout android:id="@id/bfs" android:clickable="true" android:layout_width="36.0dip" android:layout_height="25.0dip" android:layout_marginRight="2.5dip" android:layout_alignParentRight="true" android:layout_centerVertical="true">
+            <com.tencent.widget.ThemeImageView android:id="@id/bft" android:layout_width="15.0dip" android:layout_height="19.0dip" android:layout_marginRight="12.0dip" android:src="@drawable/dep" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+        </RelativeLayout>
+    </RelativeLayout>
+    <com.tencent.mobileqq.widget.MeasureListView android:id="@id/d63" android:layout_width="fill_parent" android:layout_height="wrap_content" android:listSelector="@color/ajr" android:scrollingCache="false" android:cacheColorHint="@android:color/transparent" />
+</LinearLayout>

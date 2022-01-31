@@ -1,57 +1,26 @@
-import android.graphics.SurfaceTexture;
-import android.opengl.GLES20;
-import com.tencent.mobileqq.ar.ARRenderModel.GreetingCardRender;
-import com.tencent.mobileqq.richmedia.mediacodec.renderer.RenderBuffer;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ChatHistory;
 
 public class aahp
-  implements Runnable
+  implements View.OnClickListener
 {
-  public aahp(GreetingCardRender paramGreetingCardRender) {}
+  public aahp(ChatHistory paramChatHistory) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (GreetingCardRender.a(this.a) != null) {}
-    try
+    long l = System.currentTimeMillis();
+    if (l - this.a.b > 1000L)
     {
-      GreetingCardRender.a(this.a).stop();
-      return;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("GreetingCardRender", 2, "playVideo fail.", localException);
-      return;
-    }
-    finally
-    {
-      if (GreetingCardRender.a(this.a) != null)
-      {
-        GreetingCardRender.a(this.a).setOnFrameAvailableListener(null);
-        GreetingCardRender.a(this.a).release();
-        GreetingCardRender.a(this.a, null);
-      }
-      if (GreetingCardRender.a(this.a) != -1)
-      {
-        GLES20.glDeleteTextures(1, new int[] { GreetingCardRender.a(this.a) }, 0);
-        GreetingCardRender.c(this.a, -1);
-      }
-      if (GreetingCardRender.a(this.a) != null)
-      {
-        GreetingCardRender.a(this.a).d();
-        GreetingCardRender.a(this.a, null);
-      }
-      if (GreetingCardRender.b(this.a) != null)
-      {
-        GreetingCardRender.b(this.a).d();
-        GreetingCardRender.b(this.a, null);
-      }
+      this.a.b = l;
+      this.a.b();
+      awqx.b(this.a.app, "CliOper", "", "", "0X800568D", "0X800568D", this.a.k, 0, "", "", "", "");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aahp
  * JD-Core Version:    0.7.0.1
  */

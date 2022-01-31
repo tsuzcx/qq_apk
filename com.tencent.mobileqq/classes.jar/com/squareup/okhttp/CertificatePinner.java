@@ -6,9 +6,7 @@ import java.security.PublicKey;
 import java.security.cert.Certificate;
 import java.security.cert.X509Certificate;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.Iterator;
-import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
@@ -18,12 +16,12 @@ import okio.ByteString;
 
 public final class CertificatePinner
 {
-  public static final CertificatePinner DEFAULT = new Builder().build();
+  public static final CertificatePinner DEFAULT = new CertificatePinner.Builder().build();
   private final Map<String, Set<ByteString>> hostnameToPins;
   
-  private CertificatePinner(Builder paramBuilder)
+  private CertificatePinner(CertificatePinner.Builder paramBuilder)
   {
-    this.hostnameToPins = Util.immutableMap(paramBuilder.hostnameToPins);
+    this.hostnameToPins = Util.immutableMap(CertificatePinner.Builder.access$000(paramBuilder));
   }
   
   public static String pin(Certificate paramCertificate)
@@ -40,29 +38,29 @@ public final class CertificatePinner
   }
   
   public void check(String paramString, List<Certificate> paramList)
-    throws SSLPeerUnverifiedException
   {
+    int j = 0;
     Set localSet = findMatchingPins(paramString);
     if (localSet == null) {
       return;
     }
+    int k = paramList.size();
     int i = 0;
-    int j = paramList.size();
     for (;;)
     {
-      if (i >= j) {
-        break label59;
+      if (i >= k) {
+        break label62;
       }
       if (localSet.contains(sha1((X509Certificate)paramList.get(i)))) {
         break;
       }
       i += 1;
     }
-    label59:
+    label62:
     StringBuilder localStringBuilder = new StringBuilder().append("Certificate pinning failure!").append("\n  Peer certificate chain:");
-    i = 0;
-    j = paramList.size();
-    while (i < j)
+    k = paramList.size();
+    i = j;
+    while (i < k)
     {
       X509Certificate localX509Certificate = (X509Certificate)paramList.get(i);
       localStringBuilder.append("\n    ").append(pin(localX509Certificate)).append(": ").append(localX509Certificate.getSubjectDN().getName());
@@ -79,70 +77,34 @@ public final class CertificatePinner
   }
   
   public void check(String paramString, Certificate... paramVarArgs)
-    throws SSLPeerUnverifiedException
   {
     check(paramString, Arrays.asList(paramVarArgs));
   }
   
   Set<ByteString> findMatchingPins(String paramString)
   {
-    Set localSet2 = (Set)this.hostnameToPins.get(paramString);
-    Set localSet1 = null;
+    Set localSet = (Set)this.hostnameToPins.get(paramString);
     int i = paramString.indexOf('.');
-    if (i != paramString.lastIndexOf('.')) {
-      localSet1 = (Set)this.hostnameToPins.get("*." + paramString.substring(i + 1));
-    }
-    if ((localSet2 == null) && (localSet1 == null)) {
-      return null;
-    }
-    if ((localSet2 != null) && (localSet1 != null))
+    if (i != paramString.lastIndexOf('.')) {}
+    for (paramString = (Set)this.hostnameToPins.get("*." + paramString.substring(i + 1));; paramString = null)
     {
-      paramString = new LinkedHashSet();
-      paramString.addAll(localSet2);
-      paramString.addAll(localSet1);
-      return paramString;
-    }
-    if (localSet2 != null) {
-      return localSet2;
-    }
-    return localSet1;
-  }
-  
-  public static final class Builder
-  {
-    private final Map<String, Set<ByteString>> hostnameToPins = new LinkedHashMap();
-    
-    public Builder add(String paramString, String... paramVarArgs)
-    {
-      if (paramString == null) {
-        throw new IllegalArgumentException("hostname == null");
+      Object localObject;
+      if ((localSet == null) && (paramString == null)) {
+        localObject = null;
       }
-      LinkedHashSet localLinkedHashSet = new LinkedHashSet();
-      paramString = (Set)this.hostnameToPins.put(paramString, Collections.unmodifiableSet(localLinkedHashSet));
-      if (paramString != null) {
-        localLinkedHashSet.addAll(paramString);
-      }
-      int j = paramVarArgs.length;
-      int i = 0;
-      while (i < j)
+      do
       {
-        paramString = paramVarArgs[i];
-        if (!paramString.startsWith("sha1/")) {
-          throw new IllegalArgumentException("pins must start with 'sha1/': " + paramString);
+        return localObject;
+        if ((localSet != null) && (paramString != null))
+        {
+          localObject = new LinkedHashSet();
+          ((Set)localObject).addAll(localSet);
+          ((Set)localObject).addAll(paramString);
+          return localObject;
         }
-        ByteString localByteString = ByteString.decodeBase64(paramString.substring("sha1/".length()));
-        if (localByteString == null) {
-          throw new IllegalArgumentException("pins must be base64: " + paramString);
-        }
-        localLinkedHashSet.add(localByteString);
-        i += 1;
-      }
-      return this;
-    }
-    
-    public CertificatePinner build()
-    {
-      return new CertificatePinner(this, null);
+        localObject = localSet;
+      } while (localSet != null);
+      return paramString;
     }
   }
 }

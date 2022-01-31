@@ -1,41 +1,29 @@
-import com.tencent.mobileqq.app.soso.SosoInterface;
-import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
-import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
-import com.tencent.mobileqq.ar.arengine.ARCloudControl;
-import com.tencent.mobileqq.ar.arengine.ARCloudControl.ARCloudControlCallback;
-import com.tencent.mobileqq.ar.arengine.ARCloudLBSLocationCheckResult;
-import com.tencent.mobileqq.ar.arengine.ARCloudRecogResult;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.ContactSyncJumpActivity;
+import com.tencent.mobileqq.activity.phone.PhoneFrameActivity;
+import com.tencent.mobileqq.app.PhoneContactManagerImp;
 
 public class aamc
-  implements Runnable
+  extends atog
 {
-  public aamc(ARCloudControl paramARCloudControl, SosoInterface.OnLocationListener paramOnLocationListener) {}
+  public aamc(ContactSyncJumpActivity paramContactSyncJumpActivity) {}
   
-  public void run()
+  protected void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    if ((ARCloudControl.a(this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudControl) != null) && (ARCloudControl.e(this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudControl)))
+    if (paramBoolean1)
     {
-      QLog.i("AREngine_ARCloudControl", 1, "requestToCheckLBSLocation timeout.");
-      SosoInterface.b(this.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$OnLocationListener);
-      if (!ARCloudControl.a(this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudControl)) {}
+      int i = ContactSyncJumpActivity.a(this.a).d();
+      if ((i == 1) || (i == 5))
+      {
+        this.a.startActivity(new Intent(this.a, PhoneFrameActivity.class));
+        this.a.finish();
+      }
     }
-    else
-    {
-      return;
-    }
-    ARCloudLBSLocationCheckResult localARCloudLBSLocationCheckResult = new ARCloudLBSLocationCheckResult();
-    localARCloudLBSLocationCheckResult.a = 2;
-    ARCloudRecogResult.a(this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudControl.a.recognitions, ARCloudControl.a(this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudControl), localARCloudLBSLocationCheckResult);
-    if (ARCloudControl.a(this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudControl) != null) {
-      ARCloudControl.a(this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudControl).a(0, ARCloudControl.a(this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudControl));
-    }
-    ARCloudControl.a(this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudControl, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aamc
  * JD-Core Version:    0.7.0.1
  */

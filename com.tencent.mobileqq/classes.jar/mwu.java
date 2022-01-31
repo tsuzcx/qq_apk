@@ -1,15 +1,18 @@
-import android.view.ViewGroup;
-import com.tencent.biz.pubaccount.subscript.SubscriptFeedsAdapter;
-import java.util.ArrayList;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
 
 public class mwu
+  implements View.OnClickListener
 {
-  public ViewGroup a;
-  public ArrayList a;
+  public mwu(AccountDetailActivity paramAccountDetailActivity, Dialog paramDialog) {}
   
-  private mwu(SubscriptFeedsAdapter paramSubscriptFeedsAdapter)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing()) && (this.jdField_a_of_type_AndroidAppDialog.getWindow() != null)) {
+      this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    }
   }
 }
 

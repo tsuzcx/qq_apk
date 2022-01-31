@@ -9,28 +9,29 @@ import android.view.View;
 import android.widget.ImageView.ScaleType;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyDisplayUtils;
-import com.tencent.biz.pubaccount.readinjoy.model.IReadInJoyModel;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.ComponentInheritView;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.FeedItemCell.CellListener;
+import bgmq;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.TopicRecommendFeedsInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.TopicRecommendFeedsInfo.TopicRecommendInfo;
 import com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView;
-import cooperation.readinjoy.ReadInJoyHelper;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
-import mag;
-import mah;
+import obj;
+import opw;
+import pex;
+import pfh;
+import pjg;
+import pms;
+import pmt;
+import prv;
+import prx;
 
 public class ComponentTopicItemSingle
   extends RelativeLayout
-  implements ComponentInheritView
+  implements pex
 {
   TextView jdField_a_of_type_AndroidWidgetTextView;
-  public CmpCtxt a;
   KandianUrlImageView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView;
+  public pjg a;
   TextView b;
   
   public ComponentTopicItemSingle(Context paramContext)
@@ -53,14 +54,14 @@ public class ComponentTopicItemSingle
   
   private void b(Context paramContext)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt = new CmpCtxt();
+    this.jdField_a_of_type_Pjg = new pjg();
     a(paramContext);
     a();
   }
   
   public View a(Context paramContext)
   {
-    return LayoutInflater.from(paramContext).inflate(2130969589, this, true);
+    return LayoutInflater.from(paramContext).inflate(2131494315, this, true);
   }
   
   public void a() {}
@@ -72,19 +73,17 @@ public class ComponentTopicItemSingle
   
   public void a(View paramView)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)findViewById(2131364504));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363397));
-    this.b = ((TextView)findViewById(2131363598));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)findViewById(2131299236));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131311534));
+    this.b = ((TextView)findViewById(2131299450));
   }
-  
-  public void a(FeedItemCell.CellListener paramCellListener) {}
   
   public void a(Object paramObject)
   {
-    if ((paramObject instanceof IReadInJoyModel))
+    if ((paramObject instanceof opw))
     {
-      paramObject = (IReadInJoyModel)paramObject;
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt.a(paramObject);
+      paramObject = (opw)paramObject;
+      this.jdField_a_of_type_Pjg.a(paramObject);
       b();
       paramObject = paramObject.a();
       if ((paramObject != null) && (paramObject.mTopicRecommendFeedsInfo != null) && (paramObject.mTopicRecommendFeedsInfo.a != null) && (paramObject.mTopicRecommendFeedsInfo.a.size() != 0)) {}
@@ -93,17 +92,17 @@ public class ComponentTopicItemSingle
     {
       return;
     }
-    paramObject = (TopicRecommendFeedsInfo.TopicRecommendInfo)paramObject.mTopicRecommendFeedsInfo.a.get(0);
+    paramObject = (prx)paramObject.mTopicRecommendFeedsInfo.a.get(0);
     try
     {
       Object localObject = new URL(paramObject.d);
-      ReadInJoyDisplayUtils.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView, (URL)localObject, getContext());
+      obj.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView, (URL)localObject, getContext());
       this.jdField_a_of_type_AndroidWidgetTextView.setText(paramObject.c + paramObject.a);
-      localObject = String.format(getResources().getString(2131438953), new Object[] { ReadInJoyHelper.a(paramObject.jdField_b_of_type_Int) });
+      localObject = String.format(getResources().getString(2131652755), new Object[] { bgmq.a(paramObject.jdField_b_of_type_Int) });
       this.b.setText((CharSequence)localObject);
       if (!TextUtils.isEmpty(paramObject.jdField_b_of_type_JavaLangString))
       {
-        setOnClickListener(new mag(this, paramObject));
+        setOnClickListener(new pms(this, paramObject));
         return;
       }
     }
@@ -111,12 +110,14 @@ public class ComponentTopicItemSingle
     {
       for (;;)
       {
-        ReadInJoyDisplayUtils.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView, null, getContext());
+        obj.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView, null, getContext());
         localMalformedURLException.printStackTrace();
       }
-      setOnClickListener(new mah(this));
+      setOnClickListener(new pmt(this));
     }
   }
+  
+  public void a(pfh parampfh) {}
   
   public void b()
   {

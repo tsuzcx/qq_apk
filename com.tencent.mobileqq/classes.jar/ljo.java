@@ -1,19 +1,10 @@
-import android.widget.Button;
-import com.tencent.biz.pubaccount.readinjoy.capture.ReadInJoyCameraCaptureActivity;
-
-public class ljo
-  implements Runnable
+public abstract interface ljo
 {
-  public ljo(ReadInJoyCameraCaptureActivity paramReadInJoyCameraCaptureActivity) {}
-  
-  public void run()
-  {
-    ReadInJoyCameraCaptureActivity.a(this.a).setVisibility(0);
-  }
+  public abstract void a(boolean paramBoolean, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     ljo
  * JD-Core Version:    0.7.0.1
  */

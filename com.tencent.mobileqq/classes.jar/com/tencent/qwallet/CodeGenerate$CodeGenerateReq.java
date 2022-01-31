@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBInt64Field;
 import com.tencent.mobileqq.pb.PBStringField;
 
 public final class CodeGenerate$CodeGenerateReq
-  extends MessageMicro
+  extends MessageMicro<CodeGenerateReq>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34, 42, 50, 58, 64, 74, 82, 90, 98, 106, 114, 122 }, new String[] { "uin", "cn", "guid", "device_id", "device_type", "device_name", "token_md5", "timestamp", "random", "sign", "h_location", "h_model", "h_edition", "h_qq_appid", "h_qq_guid" }, new Object[] { "", "", "", "", "", "", "", Long.valueOf(0L), "", "", "", "", "", "", "" }, CodeGenerateReq.class);
   public final PBStringField cn = PBField.initString("");

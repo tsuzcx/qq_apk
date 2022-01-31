@@ -1,19 +1,23 @@
-import com.tencent.mobileqq.activity.QQMapActivity;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
 
-class tom
-  implements Runnable
+public class tom
+  implements tgk
 {
-  tom(tol paramtol) {}
+  public tom(VideoViewVideoHolder paramVideoViewVideoHolder) {}
   
-  public void run()
+  public void a()
   {
-    this.a.a.m = true;
-    this.a.a.w();
+    urk.b(this.a.a, "coverImageViewLoadCallback, onImageViewLoaded");
+  }
+  
+  public void b()
+  {
+    urk.b(this.a.a, "coverImageViewLoadCallback, onImageViewLoadedFailed");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tom
  * JD-Core Version:    0.7.0.1
  */

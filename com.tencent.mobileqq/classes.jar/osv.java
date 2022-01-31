@@ -1,14 +1,34 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import org.json.JSONObject;
 
-class osv
-  implements DialogInterface.OnClickListener
+public class osv
 {
-  osv(osu paramosu) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public static JSONObject a(BaseArticleInfo paramBaseArticleInfo)
   {
-    paramDialogInterface.dismiss();
+    JSONObject localJSONObject1 = new JSONObject();
+    otl.a(paramBaseArticleInfo, localJSONObject1, true);
+    npj.b(paramBaseArticleInfo, localJSONObject1);
+    npj.a(paramBaseArticleInfo, localJSONObject1);
+    otl.m(paramBaseArticleInfo, localJSONObject1);
+    otl.e(paramBaseArticleInfo, localJSONObject1);
+    otl.g(paramBaseArticleInfo, localJSONObject1);
+    otl.Z(paramBaseArticleInfo, localJSONObject1);
+    localJSONObject1.put("style_ID", "ReadInjoy_ad_triple_img_interact_cell");
+    otl.a(localJSONObject1, paramBaseArticleInfo);
+    if (AdvertisementInfo.isAdvertisementInfo(paramBaseArticleInfo))
+    {
+      otl.d(paramBaseArticleInfo, localJSONObject1);
+      localJSONObject2 = new JSONObject();
+      localJSONObject2.put("article_model", paramBaseArticleInfo);
+      localJSONObject1.put("id_view_AdBanner", localJSONObject2);
+    }
+    JSONObject localJSONObject2 = new JSONObject();
+    localJSONObject2.put("article_model", paramBaseArticleInfo);
+    localJSONObject1.put("id_article_triple_image_interact", localJSONObject2);
+    localJSONObject1.put("id_info_operate_parent", new JSONObject());
+    localJSONObject1.put("id_ad_triple_container", new JSONObject());
+    return localJSONObject1;
   }
 }
 

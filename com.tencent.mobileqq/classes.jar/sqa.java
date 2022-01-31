@@ -1,26 +1,25 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.DiscussionMemberActivity;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
-public class sqa
-  implements TextWatcher
+class sqa
+  implements slx<szi, tbg>
 {
-  private sqa(DiscussionMemberActivity paramDiscussionMemberActivity) {}
+  sqa(spz paramspz, long paramLong) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void a(@NonNull szi paramszi, @Nullable tbg paramtbg, @NonNull ErrorMessage paramErrorMessage)
   {
-    paramEditable = this.a.a.getText().toString().trim();
-    this.a.a(paramEditable);
+    if (paramtbg != null)
+    {
+      this.jdField_a_of_type_Spz.b("qqstory_black_status", Integer.valueOf(paramtbg.b));
+      this.jdField_a_of_type_Spz.b("qqstory_black_status_update_interval", Integer.valueOf(paramtbg.c));
+      this.jdField_a_of_type_Spz.b("qqstory_black_status_last_update_time", Integer.valueOf((int)this.jdField_a_of_type_Long));
+    }
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     sqa
  * JD-Core Version:    0.7.0.1
  */

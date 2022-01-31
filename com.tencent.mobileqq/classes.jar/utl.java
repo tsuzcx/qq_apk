@@ -1,22 +1,28 @@
-import com.tencent.mobileqq.activity.aio.anim.friendship.FriendShipViewManager;
-import com.tencent.mobileqq.activity.aio.anim.friendship.FriendShipWaveView;
-import com.tencent.mobileqq.surfaceviewaction.gl.ImageButton.OnClickListener;
-import com.tencent.mobileqq.surfaceviewaction.gl.Sprite;
+import android.os.Handler;
+import com.tribe.async.dispatch.Dispatcher;
+import java.util.Collections;
+import java.util.List;
 
-public class utl
-  implements ImageButton.OnClickListener
+class utl
+  implements uzm
 {
-  public utl(FriendShipViewManager paramFriendShipViewManager) {}
+  utl(uth paramuth) {}
   
-  public void a(Sprite paramSprite)
+  public void a(int paramInt, List<srl> paramList)
   {
-    this.a.f();
-    this.a.a.postDelayed(new utm(this), 300L);
+    urk.b("Q.qqstory.publish.edit.StoryDoodle", "onPOIPostersRequestResult callback");
+    this.a.jdField_a_of_type_Boolean = true;
+    this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
+    Object localObject = paramList;
+    if (paramList == null) {
+      localObject = Collections.EMPTY_LIST;
+    }
+    sgi.a().dispatch(new uzk(paramInt, (List)localObject));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     utl
  * JD-Core Version:    0.7.0.1
  */

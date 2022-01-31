@@ -1,20 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.device.bind.DevicePluginDownloadActivity;
+import android.app.Activity;
+import android.view.View;
 
 public class qan
-  implements DialogInterface.OnClickListener
+  extends qaq
 {
-  public qan(DevicePluginDownloadActivity paramDevicePluginDownloadActivity) {}
+  View a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public qan(View paramView, Activity paramActivity)
   {
-    paramDialogInterface.dismiss();
+    super(paramView, 0, paramActivity);
+    this.a = paramView.findViewById(2131313116);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     qan
  * JD-Core Version:    0.7.0.1
  */

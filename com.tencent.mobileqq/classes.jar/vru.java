@@ -1,25 +1,19 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.photo.AIOFilePicData;
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryScene;
-import com.tencent.mobileqq.activity.aio.photo.IAIOImageProvider;
-import com.tencent.mobileqq.widget.QQToast;
+import android.util.SparseArray;
+import com.tencent.biz.qqstory.widget.RotateCircleImageView.BorderStyle;
 
-class vru
-  implements DialogInterface.OnClickListener
+public final class vru
+  extends SparseArray<RotateCircleImageView.BorderStyle>
 {
-  vru(vrt paramvrt) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public vru(int paramInt)
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene.a.b(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOFilePicData.g);
-    QQToast.a(AIOGalleryScene.ak(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene), AIOGalleryScene.al(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene).getString(2131428195), 0).a();
+    super(paramInt);
+    append(0, RotateCircleImageView.BorderStyle.STILL);
+    append(1, RotateCircleImageView.BorderStyle.ROTATE);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vru
  * JD-Core Version:    0.7.0.1
  */

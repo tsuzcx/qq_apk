@@ -1,6 +1,9 @@
 package com.tencent.mobileqq.data;
 
 import android.text.TextUtils;
+import axku;
+import com.tencent.mobileqq.flashchat.FlashChatManager;
+import com.tencent.qphone.base.util.QLog;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.ObjectInputStream;
@@ -19,7 +22,10 @@ public class ArkFlashChatMessage
   public int appResId;
   public String appView;
   public String config;
+  public int forwardID;
+  public boolean preview;
   public String promptText;
+  public long uniSeq;
   
   public ArkFlashChatMessage()
   {
@@ -68,15 +74,39 @@ public class ArkFlashChatMessage
     return false;
   }
   
+  public String getArkDisplay()
+  {
+    if (this.promptText != null) {
+      return axku.a(getSummery());
+    }
+    return getSummery();
+  }
+  
   public String getMeta(long paramLong, boolean paramBoolean)
   {
-    int i = 1;
-    String str = getSummery();
-    if (paramBoolean) {}
-    for (;;)
+    try
     {
-      return String.format("{\"content\":{\"id\":\"%d\",\"text\":\"%s\",\"runstate\":%d}}", new Object[] { Long.valueOf(paramLong), str, Integer.valueOf(i) });
-      i = 0;
+      String str = FlashChatManager.b(getArkDisplay());
+      JSONObject localJSONObject1 = new JSONObject();
+      JSONObject localJSONObject2 = new JSONObject();
+      localJSONObject2.put("id", String.valueOf(paramLong));
+      localJSONObject2.put("text", str);
+      if (paramBoolean) {}
+      for (int i = 1;; i = 0)
+      {
+        localJSONObject2.put("runstate", i);
+        if (this.preview) {
+          localJSONObject2.put("preview", 1);
+        }
+        localJSONObject1.put("content", localJSONObject2);
+        str = localJSONObject1.toString();
+        return str;
+      }
+      return "";
+    }
+    catch (Exception localException)
+    {
+      QLog.e("ArkApp.Message", 1, localException, new Object[0]);
     }
   }
   
@@ -85,7 +115,7 @@ public class ArkFlashChatMessage
     if (!TextUtils.isEmpty(this.promptText)) {
       return this.promptText;
     }
-    return MobileQQ.sMobileQQ.getString(2131438263);
+    return MobileQQ.sMobileQQ.getString(2131624686);
   }
   
   public void reset()

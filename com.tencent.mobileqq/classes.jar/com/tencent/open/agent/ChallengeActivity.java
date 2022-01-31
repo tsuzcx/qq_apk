@@ -10,20 +10,20 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ScrollView;
 import android.widget.TextView;
-import com.tencent.mobileqq.util.DisplayUtil;
-import com.tencent.open.agent.datamodel.ImageLoader;
-import com.tencent.open.agent.datamodel.ImageLoader.ImageLoadListener;
-import com.tencent.open.agent.datamodel.QZonePortraitData;
-import com.tencent.open.base.LengthInputFilter;
-import com.tencent.open.base.LogUtility;
-import com.tencent.open.business.base.StaticAnalyz;
-import com.tencent.open.widget.IKeyboardChanged;
+import azvv;
+import bbzz;
+import bcab;
+import bcac;
+import bcdr;
+import bcds;
+import bcfb;
+import bcku;
 import com.tencent.open.widget.KeyboardDetectorRelativeLayout;
 import com.tencent.widget.immersive.ImmersiveUtils;
 
 public class ChallengeActivity
   extends ChallengeBragBase
-  implements View.OnClickListener, ImageLoader.ImageLoadListener, IKeyboardChanged
+  implements View.OnClickListener, bcab, bcku
 {
   protected ImageView a;
   protected ScrollView a;
@@ -37,23 +37,23 @@ public class ChallengeActivity
   @TargetApi(14)
   protected void a()
   {
-    this.jdField_a_of_type_ComTencentOpenWidgetKeyboardDetectorRelativeLayout = ((KeyboardDetectorRelativeLayout)super.findViewById(2131365782));
+    this.jdField_a_of_type_ComTencentOpenWidgetKeyboardDetectorRelativeLayout = ((KeyboardDetectorRelativeLayout)super.findViewById(2131309654));
     if (ImmersiveUtils.isSupporImmersive() == 1)
     {
       this.jdField_a_of_type_ComTencentOpenWidgetKeyboardDetectorRelativeLayout.setFitsSystemWindows(true);
-      this.jdField_a_of_type_ComTencentOpenWidgetKeyboardDetectorRelativeLayout.setPadding(0, ImmersiveUtils.a(this), 0, 0);
+      this.jdField_a_of_type_ComTencentOpenWidgetKeyboardDetectorRelativeLayout.setPadding(0, ImmersiveUtils.getStatusBarHeight(this), 0, 0);
     }
-    this.jdField_b_of_type_AndroidWidgetScrollView = ((ScrollView)super.findViewById(2131365784));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131365785));
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)super.findViewById(2131365781));
-    this.jdField_a_of_type_AndroidWidgetScrollView = ((ScrollView)super.findViewById(2131365786));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131365794));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131365793));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131365788));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131365790));
+    this.jdField_b_of_type_AndroidWidgetScrollView = ((ScrollView)super.findViewById(2131310922));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131312454));
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)super.findViewById(2131300152));
+    this.jdField_a_of_type_AndroidWidgetScrollView = ((ScrollView)super.findViewById(2131310921));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131297882));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131297879));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131297429));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131297430));
     this.jdField_a_of_type_ComTencentOpenWidgetKeyboardDetectorRelativeLayout.a(this);
     this.jdField_b_of_type_AndroidWidgetScrollView.setVerticalFadingEdgeEnabled(false);
-    this.jdField_a_of_type_ArrayOfAndroidTextInputFilter = new InputFilter[] { new LengthInputFilter(this.jdField_a_of_type_AndroidWidgetEditText, 100) };
+    this.jdField_a_of_type_ArrayOfAndroidTextInputFilter = new InputFilter[] { new bcdr(this.jdField_a_of_type_AndroidWidgetEditText, 100) };
     this.jdField_a_of_type_AndroidWidgetEditText.setFilters(this.jdField_a_of_type_ArrayOfAndroidTextInputFilter);
     this.jdField_a_of_type_AndroidWidgetEditText.setText(this.i);
     if (this.jdField_a_of_type_AndroidWidgetScrollView != null) {
@@ -66,10 +66,10 @@ public class ChallengeActivity
       try
       {
         a(this.h);
-        this.jdField_a_of_type_JavaLangString = QZonePortraitData.a(this.jdField_c_of_type_JavaLangString, this.d);
-        this.jdField_b_of_type_JavaLangString = QZonePortraitData.a(this.jdField_c_of_type_JavaLangString, this.h);
-        Bitmap localBitmap1 = ImageLoader.a().a(this.jdField_a_of_type_JavaLangString);
-        Bitmap localBitmap2 = ImageLoader.a().a(this.jdField_b_of_type_JavaLangString);
+        this.jdField_a_of_type_JavaLangString = bcac.a(this.jdField_c_of_type_JavaLangString, this.d);
+        this.jdField_b_of_type_JavaLangString = bcac.a(this.jdField_c_of_type_JavaLangString, this.h);
+        Bitmap localBitmap1 = bbzz.a().a(this.jdField_a_of_type_JavaLangString);
+        Bitmap localBitmap2 = bbzz.a().a(this.jdField_b_of_type_JavaLangString);
         if (localBitmap1 != null)
         {
           this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(localBitmap1);
@@ -82,20 +82,20 @@ public class ChallengeActivity
       }
       catch (Exception localException)
       {
-        LogUtility.c("ChallengeActivity", "getNickName error. " + localException.getMessage(), localException);
+        bcds.c("ChallengeActivity", "getNickName error. " + localException.getMessage(), localException);
         c();
         return;
       }
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839147);
-      ImageLoader.a().a(this.jdField_a_of_type_JavaLangString, this);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839687);
+      bbzz.a().a(this.jdField_a_of_type_JavaLangString, this);
     }
-    this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130839147);
-    ImageLoader.a().a(this.jdField_b_of_type_JavaLangString, this);
+    this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130839687);
+    bbzz.a().a(this.jdField_b_of_type_JavaLangString, this);
   }
   
   public void a(int paramInt)
   {
-    int i = DisplayUtil.b(this, paramInt) - 10 - 10;
+    int i = azvv.b(this, paramInt) - 10 - 10;
     if ((this.jdField_a_of_type_AndroidWidgetScrollView != null) && (i < 255))
     {
       paramInt = i - 20 - 30 - 5 - 145;
@@ -103,9 +103,9 @@ public class ChallengeActivity
       if ((paramInt > 0) && (paramInt < 55))
       {
         this.jdField_a_of_type_AndroidWidgetScrollView.setVisibility(0);
-        this.jdField_a_of_type_AndroidWidgetScrollView.getLayoutParams().height = DisplayUtil.a(this, paramInt);
+        this.jdField_a_of_type_AndroidWidgetScrollView.getLayoutParams().height = azvv.a(this, paramInt);
         this.jdField_a_of_type_AndroidWidgetScrollView.setVerticalFadingEdgeEnabled(true);
-        this.jdField_b_of_type_AndroidWidgetScrollView.getLayoutParams().height = DisplayUtil.a(this, 30.0F);
+        this.jdField_b_of_type_AndroidWidgetScrollView.getLayoutParams().height = azvv.a(this, 30.0F);
         this.jdField_b_of_type_AndroidWidgetScrollView.setVerticalFadingEdgeEnabled(false);
         this.jdField_b_of_type_AndroidWidgetScrollView.setVisibility(0);
       }
@@ -118,7 +118,7 @@ public class ChallengeActivity
     {
       this.jdField_a_of_type_AndroidWidgetScrollView.getLayoutParams().height = 0;
       this.jdField_a_of_type_AndroidWidgetScrollView.setVisibility(8);
-      this.jdField_a_of_type_AndroidWidgetTextView.getLayoutParams().height = DisplayUtil.a(this, i);
+      this.jdField_a_of_type_AndroidWidgetTextView.getLayoutParams().height = azvv.a(this, i);
       this.jdField_b_of_type_AndroidWidgetScrollView.setVerticalFadingEdgeEnabled(true);
       return;
     }
@@ -143,28 +143,28 @@ public class ChallengeActivity
   {
     if (this.jdField_a_of_type_AndroidWidgetScrollView != null)
     {
-      this.jdField_a_of_type_AndroidWidgetScrollView.getLayoutParams().height = DisplayUtil.a(this, 55.0F);
+      this.jdField_a_of_type_AndroidWidgetScrollView.getLayoutParams().height = azvv.a(this, 55.0F);
       this.jdField_a_of_type_AndroidWidgetScrollView.setVerticalFadingEdgeEnabled(false);
       this.jdField_a_of_type_AndroidWidgetScrollView.setVisibility(0);
-      this.jdField_b_of_type_AndroidWidgetScrollView.getLayoutParams().height = DisplayUtil.a(this, 30.0F);
+      this.jdField_b_of_type_AndroidWidgetScrollView.getLayoutParams().height = azvv.a(this, 30.0F);
       this.jdField_b_of_type_AndroidWidgetScrollView.setVerticalFadingEdgeEnabled(false);
       this.jdField_b_of_type_AndroidWidgetScrollView.setVisibility(0);
     }
   }
   
-  protected void onCreate(Bundle paramBundle)
+  public void onCreate(Bundle paramBundle)
   {
     super.getWindow().requestFeature(1);
     super.onCreate(paramBundle);
-    super.setContentView(2130969255);
+    super.setContentView(2131493917);
     super.a();
     a();
-    StaticAnalyz.a("100", "ANDROIDQQ.PK.FS", this.jdField_c_of_type_JavaLangString);
+    bcfb.a("100", "ANDROIDQQ.PK.FS", this.jdField_c_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.agent.ChallengeActivity
  * JD-Core Version:    0.7.0.1
  */

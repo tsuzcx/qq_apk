@@ -1,18 +1,25 @@
-import com.tencent.mobileqq.troop.activity.AbsPublishActivity;
+import com.tencent.mobileqq.data.ApolloFavActionData;
+import java.util.Comparator;
 
 class aiyv
-  implements Runnable
+  implements Comparator<ApolloFavActionData>
 {
-  aiyv(aiyt paramaiyt) {}
+  aiyv(aiyu paramaiyu) {}
   
-  public void run()
+  public int a(ApolloFavActionData paramApolloFavActionData1, ApolloFavActionData paramApolloFavActionData2)
   {
-    this.a.a.g();
+    if (paramApolloFavActionData2.favId == paramApolloFavActionData1.favId) {
+      return 0;
+    }
+    if (paramApolloFavActionData2.favId > paramApolloFavActionData1.favId) {
+      return 1;
+    }
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aiyv
  * JD-Core Version:    0.7.0.1
  */

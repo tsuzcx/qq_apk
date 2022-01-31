@@ -1,9 +1,10 @@
 package com.tencent.mobileqq.ark;
 
+import alel;
 import java.util.HashMap;
 
 public class ArkAppCenterEvent$Observers
-  extends HashMap
+  extends HashMap<String, alel>
 {}
 
 

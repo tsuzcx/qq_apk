@@ -1,23 +1,10 @@
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentPicFileTabView;
-import com.tencent.mobileqq.filemanager.app.FMObserver;
-import com.tencent.mobileqq.filemanager.data.ThumbnailInfo;
-
-public class adbu
-  extends FMObserver
+public abstract interface adbu
 {
-  public adbu(QfileRecentPicFileTabView paramQfileRecentPicFileTabView) {}
-  
-  protected void a(ThumbnailInfo paramThumbnailInfo)
-  {
-    super.a(paramThumbnailInfo);
-    if ((paramThumbnailInfo.b != null) && (paramThumbnailInfo.b.length() > 0)) {
-      this.a.i();
-    }
-  }
+  public abstract boolean a(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     adbu
  * JD-Core Version:    0.7.0.1
  */

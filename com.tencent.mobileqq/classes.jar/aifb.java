@@ -1,24 +1,13 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.shortvideo.dancemachine.GLLittleBoyManager;
-
 public class aifb
-  implements Animation.AnimationListener
 {
-  public aifb(GLLittleBoyManager paramGLLittleBoyManager) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    GLLittleBoyManager.a(this.a, paramAnimation);
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public int a;
+  public String a;
+  public int b;
+  public String b;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aifb
  * JD-Core Version:    0.7.0.1
  */

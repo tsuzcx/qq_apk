@@ -1,67 +1,38 @@
-import android.os.Handler;
-import com.tencent.mobileqq.app.CardHandler.NowOnliveGallayCallback;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.NowShowVideoInfo;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.widget.PhotoWallView;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.List;
-import tencent.im.ilive.photo.NowLiveGallary.RspBody.PhotoInfo;
+import com.tencent.mobileqq.ark.ArkAppCenter;
 
-public class aldf
-  extends CardHandler.NowOnliveGallayCallback
+class aldf
+  implements aldj
 {
-  private WeakReference a;
+  aldf(alcy paramalcy, aldi paramaldi, String paramString, aldk paramaldk) {}
   
-  public aldf(PhotoWallView paramPhotoWallView)
+  public void a(byte[] paramArrayOfByte)
   {
-    this.a = new WeakReference(paramPhotoWallView);
-  }
-  
-  public void a(int paramInt, List paramList)
-  {
-    if (this.a != null) {}
-    for (PhotoWallView localPhotoWallView = (PhotoWallView)this.a.get();; localPhotoWallView = null)
-    {
-      if (localPhotoWallView == null) {
-        return;
-      }
-      if (paramInt != 0)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("PhotoWallView", 2, "onGetNowOnliveGallay errorCode:" + paramInt);
-        }
-        localPhotoWallView.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(4);
-        return;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("PhotoWallView", 2, "onGetNowOnliveGallay size:" + paramList.size());
-      }
-      localPhotoWallView.jdField_a_of_type_JavaUtilArrayList.clear();
-      paramInt = 0;
-      while (paramInt < paramList.size())
-      {
-        Object localObject = (NowLiveGallary.RspBody.PhotoInfo)paramList.get(paramInt);
-        localObject = new NowShowVideoInfo(((NowLiveGallary.RspBody.PhotoInfo)localObject).cover.get().toStringUtf8(), ((NowLiveGallary.RspBody.PhotoInfo)localObject).video.get().toStringUtf8(), ((NowLiveGallary.RspBody.PhotoInfo)localObject).timestamp.get());
-        localPhotoWallView.jdField_a_of_type_JavaUtilArrayList.add(localObject);
-        paramInt += 1;
-      }
-      if (localPhotoWallView.jdField_a_of_type_JavaUtilArrayList.size() > 0) {
-        ReportController.b((QQAppInterface)this.b.get(), "dc00899", "NOW", "", "qq_zlk", "replay_exp", 0, 0, localPhotoWallView.jdField_a_of_type_JavaLangString, "", "", "");
-      }
-      localPhotoWallView.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(4);
-      return;
+    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {
+      ArkAppCenter.c("ArkApp.Dict.Update", String.format("dictFullUpdate, download fail, name=%s, url=%s", new Object[] { this.jdField_a_of_type_Aldi.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aldi.b }));
     }
+    for (;;)
+    {
+      this.jdField_a_of_type_Aldk.a(false);
+      return;
+      if (!alcy.b(paramArrayOfByte, this.jdField_a_of_type_Aldi.d))
+      {
+        ArkAppCenter.c("ArkApp.Dict.Update", String.format("dictFullUpdate, check md5 fail, name=%s, url=%s, md5=%s", new Object[] { this.jdField_a_of_type_Aldi.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aldi.b, this.jdField_a_of_type_Aldi.d }));
+      }
+      else
+      {
+        String str = String.format("%s/%s", new Object[] { this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aldi.jdField_a_of_type_JavaLangString });
+        if (alcy.a(paramArrayOfByte, str)) {
+          break;
+        }
+        ArkAppCenter.c("ArkApp.Dict.Update", String.format("dictFullUpdate, write to file fail, name=%s, url=%s, path=%s", new Object[] { this.jdField_a_of_type_Aldi.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aldi.b, str }));
+      }
+    }
+    this.jdField_a_of_type_Aldk.a(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aldf
  * JD-Core Version:    0.7.0.1
  */

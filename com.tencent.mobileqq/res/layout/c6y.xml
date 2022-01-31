@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge android:orientation="vertical" android:background="#fff2f4f7" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:gravity="center_vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="15.5dip" android:layout_marginTop="16.0dip" android:layout_marginRight="16.0dip" android:layout_marginBottom="4.0dip">
+        <TextView android:textSize="16.0dip" android:textColor="#ff222222" android:id="@id/i38" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/kah" />
+        <ImageView android:id="@id/dum" android:layout_width="16.0dip" android:layout_height="16.0dip" android:src="@drawable/hln" android:scaleType="fitCenter" android:layout_alignParentRight="true" />
+    </RelativeLayout>
+    <android.support.v7.widget.RecyclerView android:id="@id/a5c" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/title" />
+</merge>

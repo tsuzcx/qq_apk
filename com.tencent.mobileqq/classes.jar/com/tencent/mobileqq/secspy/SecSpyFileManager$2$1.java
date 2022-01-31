@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.secspy;
 
-import aibq;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.ResultReceiver;
+import avyq;
 import com.tencent.mobileqq.app.QQAppInterface;
 
-public class SecSpyFileManager$2$1
+class SecSpyFileManager$2$1
   extends ResultReceiver
 {
-  public SecSpyFileManager$2$1(aibq paramaibq, Handler paramHandler, String paramString1, String paramString2)
+  SecSpyFileManager$2$1(SecSpyFileManager.2 param2, Handler paramHandler, String paramString1, String paramString2)
   {
     super(paramHandler);
   }
@@ -20,13 +20,13 @@ public class SecSpyFileManager$2$1
     switch (paramInt)
     {
     default: 
-      this.jdField_a_of_type_Aibq.a.a(l, -1, new Object[] { "x5 log upload failed, x5 upload result code = " + paramInt });
+      this.jdField_a_of_type_ComTencentMobileqqSecspySecSpyFileManager$2.this$0.a(l, -1, new Object[] { "x5 log upload failed, x5 upload result code = " + paramInt });
       return;
     case 0: 
-      this.jdField_a_of_type_Aibq.a.a(l, 0, new Object[0]);
+      this.jdField_a_of_type_ComTencentMobileqqSecspySecSpyFileManager$2.this$0.a(l, 0, new Object[0]);
       return;
     }
-    SecSpyFileManager.a(this.jdField_a_of_type_Aibq.a, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aibq.a.a.getCurrentAccountUin(), l, this.b);
+    avyq.a(this.jdField_a_of_type_ComTencentMobileqqSecspySecSpyFileManager$2.this$0, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqSecspySecSpyFileManager$2.this$0.a.getCurrentAccountUin(), l, this.b);
   }
 }
 

@@ -1,60 +1,64 @@
-import android.os.SystemClock;
-import com.tencent.mobileqq.activity.chathistory.ChatHistoryByDateFragment;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.troop.utils.TroopTechReportUtils;
-import com.tencent.mobileqq.widget.datepicker.CalendarDay;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import mqq.os.MqqHandler;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import tencent.im.cs.group_file_common.group_file_common.FileInfo;
+import tencent.im.oidb.cmd0x6d8.oidb_0x6d8.GetFileInfoRspBody;
+import tencent.im.oidb.cmd0x6d8.oidb_0x6d8.RspBody;
 
-public class wlv
-  implements Runnable
+public abstract class wlv
+  extends mmn
 {
-  public wlv(ChatHistoryByDateFragment paramChatHistoryByDateFragment, int paramInt1, int paramInt2) {}
-  
-  public void run()
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    long l = SystemClock.elapsedRealtime();
-    int i = 0;
-    int m = CalendarDay.getDaysInMonth(this.jdField_a_of_type_Int, this.b);
-    ArrayList localArrayList = new ArrayList();
-    int j = 0;
-    int k = 1;
-    MessageRecord localMessageRecord;
-    if (k <= m)
-    {
-      localMessageRecord = ChatHistoryByDateFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryByDateFragment, this.jdField_a_of_type_Int, this.b, k);
-      if (localMessageRecord == null) {
-        break label244;
-      }
-      i += 1;
-      localArrayList.add(localMessageRecord);
+    if (paramInt != 0) {
+      a(false, paramInt, null);
     }
-    label244:
-    for (;;)
+    label103:
+    do
     {
-      if (QLog.isColorLevel()) {
-        QLog.d(ChatHistoryByDateFragment.a(), 2, "getFirstMessageByDate: " + ChatHistoryByDateFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryByDateFragment, this.jdField_a_of_type_Int, this.b + 1, k) + " | result: " + localMessageRecord);
+      for (;;)
+      {
+        return;
+        paramBundle = new oidb_0x6d8.RspBody();
+        try
+        {
+          paramBundle.mergeFrom(paramArrayOfByte);
+          paramArrayOfByte = (oidb_0x6d8.GetFileInfoRspBody)paramBundle.file_info_rsp.get();
+          if (!paramArrayOfByte.int32_ret_code.has()) {
+            break label103;
+          }
+          if (paramArrayOfByte.int32_ret_code.get() == 0)
+          {
+            paramArrayOfByte = (group_file_common.FileInfo)paramArrayOfByte.file_info.get();
+            if (paramArrayOfByte == null) {
+              continue;
+            }
+            a(true, 0, paramArrayOfByte);
+          }
+        }
+        catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+        {
+          a(false, -1, null);
+          return;
+        }
       }
-      k += 1;
-      j += 1;
-      break;
-      if (localArrayList.size() > 0) {
-        ThreadManager.getUIHandler().post(new wlw(this, localArrayList));
-      }
-      l = SystemClock.elapsedRealtime() - l;
-      TroopTechReportUtils.a("chat_history", "query_month_cost", String.valueOf(l), String.valueOf(j), String.valueOf(i), "");
-      if (QLog.isColorLevel()) {
-        QLog.i(ChatHistoryByDateFragment.a(), 2, String.format("queryDB count: %d | message count: %d | cost time %d ", new Object[] { Integer.valueOf(j), Integer.valueOf(i), Long.valueOf(l) }));
-      }
+      a(false, paramArrayOfByte.int32_ret_code.get(), null);
       return;
-    }
+      if (!paramArrayOfByte.file_info.has()) {
+        break;
+      }
+      paramArrayOfByte = (group_file_common.FileInfo)paramArrayOfByte.file_info.get();
+    } while (paramArrayOfByte == null);
+    a(true, 0, paramArrayOfByte);
+    return;
+    a(false, -1, null);
   }
+  
+  protected abstract void a(boolean paramBoolean, int paramInt, group_file_common.FileInfo paramFileInfo);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wlv
  * JD-Core Version:    0.7.0.1
  */

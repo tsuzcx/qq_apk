@@ -4,13 +4,14 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.FrameLayout;
+import bbou;
 
 public class UpScrollHideView
   extends FrameLayout
 {
   private float jdField_a_of_type_Float;
   private int jdField_a_of_type_Int = -1;
-  private UpScrollHideView.onViewHideListener jdField_a_of_type_ComTencentMobileqqWidgetUpScrollHideView$onViewHideListener;
+  private bbou jdField_a_of_type_Bbou;
   private int b;
   
   public UpScrollHideView(Context paramContext)
@@ -55,8 +56,8 @@ public class UpScrollHideView
     if (this.b > getHeight())
     {
       setVisibility(8);
-      if (this.jdField_a_of_type_ComTencentMobileqqWidgetUpScrollHideView$onViewHideListener != null) {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetUpScrollHideView$onViewHideListener.a();
+      if (this.jdField_a_of_type_Bbou != null) {
+        this.jdField_a_of_type_Bbou.a();
       }
     }
     for (;;)
@@ -67,14 +68,14 @@ public class UpScrollHideView
     }
   }
   
-  public void setOnViewHideListener(UpScrollHideView.onViewHideListener paramonViewHideListener)
+  public void setOnViewHideListener(bbou parambbou)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetUpScrollHideView$onViewHideListener = paramonViewHideListener;
+    this.jdField_a_of_type_Bbou = parambbou;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.UpScrollHideView
  * JD-Core Version:    0.7.0.1
  */

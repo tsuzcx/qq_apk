@@ -1,39 +1,39 @@
 package com.tencent.chirp;
 
 import android.content.Context;
-import pjh;
+import xfl;
 
 public class PCMRecorder
 {
   private int jdField_a_of_type_Int = 44100;
   private Context jdField_a_of_type_AndroidContentContext;
-  private PCMRecorder.OnQQRecorderListener jdField_a_of_type_ComTencentChirpPCMRecorder$OnQQRecorderListener;
-  private volatile pjh jdField_a_of_type_Pjh;
+  private volatile PCMRecorder.RecordThread jdField_a_of_type_ComTencentChirpPCMRecorder$RecordThread;
+  private xfl jdField_a_of_type_Xfl;
   private int b;
   
-  public PCMRecorder(Context paramContext, int paramInt, PCMRecorder.OnQQRecorderListener paramOnQQRecorderListener)
+  public PCMRecorder(Context paramContext, int paramInt, xfl paramxfl)
   {
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_Int = paramInt;
     this.b = (paramInt / 50 * 2 * 2);
-    this.jdField_a_of_type_ComTencentChirpPCMRecorder$OnQQRecorderListener = paramOnQQRecorderListener;
+    this.jdField_a_of_type_Xfl = paramxfl;
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_Pjh != null)
+    if (this.jdField_a_of_type_ComTencentChirpPCMRecorder$RecordThread != null)
     {
-      this.jdField_a_of_type_Pjh.a = false;
-      this.jdField_a_of_type_Pjh = null;
+      this.jdField_a_of_type_ComTencentChirpPCMRecorder$RecordThread.a = false;
+      this.jdField_a_of_type_ComTencentChirpPCMRecorder$RecordThread = null;
     }
   }
   
   public boolean a()
   {
-    if (this.jdField_a_of_type_Pjh == null)
+    if (this.jdField_a_of_type_ComTencentChirpPCMRecorder$RecordThread == null)
     {
-      this.jdField_a_of_type_Pjh = new pjh(this);
-      this.jdField_a_of_type_Pjh.start();
+      this.jdField_a_of_type_ComTencentChirpPCMRecorder$RecordThread = new PCMRecorder.RecordThread(this);
+      this.jdField_a_of_type_ComTencentChirpPCMRecorder$RecordThread.start();
       return true;
     }
     return false;

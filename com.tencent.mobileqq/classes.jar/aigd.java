@@ -1,20 +1,10 @@
-import com.tencent.mobileqq.shortvideo.filter.QQPtvVideoFilter;
-import com.tencent.ttpic.gles.OnSegDataReadyListener;
-import com.tencent.ttpic.gles.SegmentDataPipe;
-
-public class aigd
-  implements OnSegDataReadyListener
+public abstract interface aigd
 {
-  public aigd(QQPtvVideoFilter paramQQPtvVideoFilter) {}
-  
-  public void onDataReady(SegmentDataPipe paramSegmentDataPipe)
-  {
-    QQPtvVideoFilter.a(this.a, paramSegmentDataPipe);
-  }
+  public abstract void a(int paramInt, Object paramObject);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aigd
  * JD-Core Version:    0.7.0.1
  */

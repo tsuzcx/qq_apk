@@ -2,9 +2,10 @@ package com.tencent.view;
 
 import android.graphics.Bitmap;
 import android.opengl.GLES20;
+import com.tencent.aekit.openrender.util.GlUtil;
 import com.tencent.filter.GLSLRender;
 import com.tencent.filter.QImage;
-import com.tencent.util.PhoneProperty;
+import com.tencent.ttpic.baseutils.device.DeviceAttrs;
 
 public class Photo
 {
@@ -33,7 +34,7 @@ public class Photo
     }
     this.texture = RendererUtils.createTexture();
     GLES20.glActiveTexture(33984);
-    GLES20.glBindTexture(3553, this.texture);
+    GlUtil.glBindTexture(3553, this.texture);
     GLES20.glTexParameteri(3553, 10240, 9729);
     GLES20.glTexParameteri(3553, 10241, 9729);
     GLES20.glTexParameteri(3553, 10242, 33071);
@@ -51,7 +52,9 @@ public class Photo
     }
     paramPhoto = paramPhoto.save();
     this.texture = RendererUtils.createTexture(paramPhoto);
-    paramPhoto.recycle();
+    if ((paramPhoto != null) && (!paramPhoto.isRecycled())) {
+      paramPhoto.recycle();
+    }
   }
   
   public static Photo create(int paramInt1, int paramInt2)
@@ -69,7 +72,9 @@ public class Photo
     if (paramBitmap != null)
     {
       Photo localPhoto = new Photo(RendererUtils.createTexture(paramBitmap), paramBitmap.getWidth(), paramBitmap.getHeight());
-      paramBitmap.recycle();
+      if (!paramBitmap.isRecycled()) {
+        paramBitmap.recycle();
+      }
       return localPhoto;
     }
     return null;
@@ -146,11 +151,11 @@ public class Photo
   public Bitmap save()
   {
     int i = this.texture;
-    if (PhoneProperty.instance().isGpuProcessNeedBackTexture())
+    if (DeviceAttrs.getInstance().gpuProcessNeedBackTexture)
     {
       i = RendererUtils.createTexture();
       GLES20.glActiveTexture(33984);
-      GLES20.glBindTexture(3553, i);
+      GlUtil.glBindTexture(3553, i);
       GLES20.glTexParameteri(3553, 10240, 9729);
       GLES20.glTexParameteri(3553, 10241, 9729);
       GLES20.glTexParameteri(3553, 10242, 33071);
@@ -178,7 +183,7 @@ public class Photo
         localOutOfMemoryError.printStackTrace();
       }
     }
-    if (PhoneProperty.instance().isGpuProcessNeedBackTexture()) {
+    if (DeviceAttrs.getInstance().gpuProcessNeedBackTexture) {
       RendererUtils.clearTexture(i);
     }
     return localObject;
@@ -186,11 +191,13 @@ public class Photo
   
   public QImage saveImage()
   {
-    if (PhoneProperty.instance().isGpuProcessNeedBackTexture())
+    if (DeviceAttrs.getInstance().gpuProcessNeedBackTexture)
     {
       Bitmap localBitmap = save();
       QImage localQImage = QImage.Bitmap2QImage(localBitmap);
-      localBitmap.recycle();
+      if ((localBitmap != null) && (!localBitmap.isRecycled())) {
+        localBitmap.recycle();
+      }
       return localQImage;
     }
     return RendererUtils.saveTexture2QImage(this.texture, this.width, this.height);
@@ -236,7 +243,7 @@ public class Photo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.view.Photo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,35 +1,31 @@
-import android.content.Context;
-import cooperation.qzone.plugin.IQZonePluginManager.OnPluginReadyListener;
-import cooperation.qzone.plugin.IQZonePluginManager.PluginParams;
-import cooperation.qzone.plugin.OnQZonePluginInstallListner.Stub;
+import android.os.Bundle;
+import com.tencent.mobileqq.emosm.web.MessengerService;
+import com.tencent.mobileqq.emosm.web.MessengerService.IncomingHandler.4;
 
-class anev
-  extends OnQZonePluginInstallListner.Stub
+public class anev
+  implements aimd
 {
-  anev(aneu paramaneu, IQZonePluginManager.OnPluginReadyListener paramOnPluginReadyListener, Context paramContext, IQZonePluginManager.PluginParams paramPluginParams) {}
+  public anev(MessengerService.IncomingHandler.4 param4) {}
   
-  public void a(String paramString) {}
-  
-  public void a(String paramString, float paramFloat, long paramLong) {}
-  
-  public void a(String paramString, int paramInt)
+  public void a()
   {
-    if (paramInt == 2)
-    {
-      this.jdField_a_of_type_CooperationQzonePluginIQZonePluginManager$OnPluginReadyListener.a(true, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_CooperationQzonePluginIQZonePluginManager$PluginParams);
-      return;
-    }
-    this.jdField_a_of_type_CooperationQzonePluginIQZonePluginManager$OnPluginReadyListener.a(false, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_CooperationQzonePluginIQZonePluginManager$PluginParams);
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("result", 0);
+    this.a.jdField_a_of_type_AndroidOsBundle.putBundle("response", localBundle);
+    this.a.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.a.jdField_a_of_type_AndroidOsBundle);
   }
   
-  public void b(String paramString)
+  public void a(int paramInt)
   {
-    this.jdField_a_of_type_CooperationQzonePluginIQZonePluginManager$OnPluginReadyListener.a(true, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_CooperationQzonePluginIQZonePluginManager$PluginParams);
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("result", paramInt);
+    this.a.jdField_a_of_type_AndroidOsBundle.putBundle("response", localBundle);
+    this.a.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.a.jdField_a_of_type_AndroidOsBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     anev
  * JD-Core Version:    0.7.0.1
  */

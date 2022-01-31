@@ -1,24 +1,21 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentPicFileTabView;
 
 public class aocz
-  extends SimpleJob
+  implements View.OnClickListener
 {
-  public aocz(EditVideoPartManager paramEditVideoPartManager, String paramString, int paramInt1, int paramInt2, String[] paramArrayOfString) {}
+  public aocz(QfileRecentPicFileTabView paramQfileRecentPicFileTabView) {}
   
-  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public void onClick(View paramView)
   {
-    StoryReportor.a("video_edit", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_ArrayOfJavaLangString);
-    return null;
+    QfileRecentPicFileTabView.a(this.a, paramView, true);
+    paramView.sendAccessibilityEvent(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aocz
  * JD-Core Version:    0.7.0.1
  */

@@ -1,33 +1,19 @@
-import android.content.res.Resources;
-import com.tencent.mobileqq.widget.FormSimpleItem;
-import java.lang.ref.WeakReference;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 
-public class tfb
-  implements Runnable
+class tfb
+  implements DialogInterface.OnCancelListener
 {
-  private int jdField_a_of_type_Int;
-  private WeakReference jdField_a_of_type_JavaLangRefWeakReference;
+  tfb(tey paramtey) {}
   
-  public tfb(int paramInt, WeakReference paramWeakReference)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangRefWeakReference = paramWeakReference;
-  }
-  
-  public void run()
-  {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
-    {
-      FormSimpleItem localFormSimpleItem = (FormSimpleItem)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localFormSimpleItem != null) {
-        localFormSimpleItem.setRightText(localFormSimpleItem.getResources().getString(this.jdField_a_of_type_Int));
-      }
-    }
+    this.a.f();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tfb
  * JD-Core Version:    0.7.0.1
  */

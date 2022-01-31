@@ -4,25 +4,25 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.widget.TextView;
-import com.tencent.biz.qrcode.util.QRUtils;
+import babh;
+import babr;
+import bafb;
+import bfqn;
+import bgnd;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.device.DeviceScanner;
-import com.tencent.device.utils.SmartDeviceReport;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.ContactUtils;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.QZoneShareManager;
-import cooperation.smartdevice.SmartDevicePluginLoader;
 import cooperation.smartdevice.SmartDevicePluginProxyActivity;
 import java.util.Observable;
 import java.util.Observer;
 import mqq.app.AppRuntime;
-import qan;
-import qao;
+import vvp;
+import xqc;
+import xqd;
+import yds;
 
 public class DevicePluginDownloadActivity
   extends IphoneTitleBarActivity
@@ -47,7 +47,7 @@ public class DevicePluginDownloadActivity
     }
     for (;;)
     {
-      SmartDevicePluginLoader.a().a(this, super.getAppRuntime(), super.getAppRuntime().getAccount(), this.jdField_a_of_type_AndroidContentIntent, str, 0, null, SmartDevicePluginProxyActivity.class);
+      bgnd.a().a(this, super.getAppRuntime(), super.getAppRuntime().getAccount(), this.jdField_a_of_type_AndroidContentIntent, str, 0, null, SmartDevicePluginProxyActivity.class);
       return;
       if (this.jdField_a_of_type_AndroidContentIntent.getIntExtra("public_device", 0) != 0)
       {
@@ -62,7 +62,7 @@ public class DevicePluginDownloadActivity
     }
   }
   
-  protected boolean doOnCreate(Bundle paramBundle)
+  public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
     this.jdField_a_of_type_AndroidContentIntent = super.getIntent();
@@ -72,14 +72,14 @@ public class DevicePluginDownloadActivity
       paramBundle = this.jdField_a_of_type_AndroidContentIntent.getStringExtra("qrurl");
       if (!TextUtils.isEmpty(paramBundle))
       {
-        super.setContentView(2130968915);
-        super.setTitle(2131427781);
-        super.setLeftViewName(2131427781);
-        SmartDeviceReport.a().a(1);
-        SmartDeviceReport.a().jdField_a_of_type_JavaLangString = "";
-        SmartDeviceReport.a().jdField_a_of_type_Int = 0;
+        super.setContentView(2131493409);
+        super.setTitle(2131626036);
+        super.setLeftViewName(2131626036);
+        yds.a().a(1);
+        yds.a().jdField_a_of_type_JavaLangString = "";
+        yds.a().jdField_a_of_type_Int = 0;
         int i = this.jdField_a_of_type_AndroidContentIntent.getIntExtra("entrance", 1);
-        SmartDeviceReport.a().a(BaseApplicationImpl.getApplication().getRuntime(), "Usr_Entrance", i);
+        yds.a().a(BaseApplicationImpl.getApplication().getRuntime(), "Usr_Entrance", i);
         DeviceScanner.openDeviceQCodeUrl(this, null, paramBundle);
         super.finish();
       }
@@ -97,14 +97,14 @@ public class DevicePluginDownloadActivity
       } while ((TextUtils.isEmpty(this.c)) || (!this.c.equals("share")));
       if (this.jdField_a_of_type_AndroidContentIntent.getIntExtra(jdField_a_of_type_JavaLangString, -1) == 0)
       {
-        if (!QZoneShareManager.a((AppInterface)super.getAppRuntime(), this, this.jdField_a_of_type_AndroidContentIntent.getBundleExtra("data"), null)) {
-          QRUtils.a(1, 2131435496);
+        if (!bfqn.a((AppInterface)super.getAppRuntime(), this, this.jdField_a_of_type_AndroidContentIntent.getBundleExtra("data"), null)) {
+          vvp.a(1, 2131623975);
         }
         super.finish();
         return true;
       }
-      this.jdField_a_of_type_AndroidContentIntent.putExtra("uinname", ContactUtils.k(this.app, this.jdField_a_of_type_AndroidContentIntent.getStringExtra("uin")));
-      if (SmartDevicePluginLoader.a().a((QQAppInterface)super.getAppRuntime()))
+      this.jdField_a_of_type_AndroidContentIntent.putExtra("uinname", babh.i(this.app, this.jdField_a_of_type_AndroidContentIntent.getStringExtra("uin")));
+      if (bgnd.a().a((QQAppInterface)super.getAppRuntime()))
       {
         if (QLog.isColorLevel()) {
           QLog.d(b, 2, "start SmartDevicePlugin to goshare");
@@ -116,22 +116,22 @@ public class DevicePluginDownloadActivity
       if (QLog.isColorLevel()) {
         QLog.d(b, 2, "download install SmartDevicePlugin");
       }
-      SmartDevicePluginLoader.a().addObserver(this);
-      SmartDevicePluginLoader.a().a();
+      bgnd.a().addObserver(this);
+      bgnd.a().a();
       return true;
-      super.setContentView(2130968916);
-      super.setTitle(2131427531);
-      SmartDevicePluginLoader.a().addObserver(this);
-      this.leftView.setText(2131432425);
-    } while (SmartDevicePluginLoader.a().a(this.app));
-    SmartDevicePluginLoader.a().a();
+      super.setContentView(2131493410);
+      super.setTitle(2131625801);
+      bgnd.a().addObserver(this);
+      this.leftView.setText(2131624770);
+    } while (bgnd.a().a(this.app));
+    bgnd.a().a();
     return true;
   }
   
-  protected void doOnDestroy()
+  public void doOnDestroy()
   {
     super.doOnDestroy();
-    SmartDevicePluginLoader.a().deleteObserver(this);
+    bgnd.a().deleteObserver(this);
   }
   
   public void update(Observable paramObservable, Object paramObject)
@@ -144,11 +144,11 @@ public class DevicePluginDownloadActivity
       }
       if (paramObservable.intValue() != 0)
       {
-        paramObservable = DialogUtil.a(this, 230);
-        paramObservable.setNegativeButton(2131433029, new qan(this));
-        paramObservable.setPositiveButton(2131427788, new qao(this));
-        paramObservable.setTitle(2131427791);
-        paramObservable.setMessage(2131427792);
+        paramObservable = babr.a(this, 230);
+        paramObservable.setNegativeButton(2131625035, new xqc(this));
+        paramObservable.setPositiveButton(2131626039, new xqd(this));
+        paramObservable.setTitle(2131626035);
+        paramObservable.setMessage(2131626034);
         paramObservable.show();
       }
     }
@@ -168,8 +168,8 @@ public class DevicePluginDownloadActivity
       paramObservable.putExtra("DevicePID", paramObject.getStringExtra("DevicePID"));
       paramObservable.putExtra("DeviceSN", paramObject.getStringExtra("DeviceSN"));
       paramObservable.putExtra("DeviceToken", paramObject.getStringExtra("DeviceToken"));
-      paramObservable.putExtra("DataReportSeq", SmartDeviceReport.a().jdField_a_of_type_Long);
-      SmartDevicePluginLoader.a().a(this, this.app, this.app.getAccount(), paramObservable, "com.tencent.device.activities.DeviceScanActivity", -1, null, SmartDevicePluginProxyActivity.class);
+      paramObservable.putExtra("DataReportSeq", yds.a().jdField_a_of_type_Long);
+      bgnd.a().a(this, this.app, this.app.getAccount(), paramObservable, "com.tencent.device.activities.DeviceScanActivity", -1, null, SmartDevicePluginProxyActivity.class);
     }
   }
 }

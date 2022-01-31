@@ -1,22 +1,21 @@
-import com.tencent.biz.qqstory.shareGroup.widget.StoryPickerFragment;
-import com.tencent.biz.qqstory.storyHome.memory.controller.MemoryDataPuller;
-import com.tencent.biz.qqstory.view.widget.QQStoryPullToRefreshListView.PullToRefreshListener;
+import java.util.List;
 
-public class nxi
-  implements QQStoryPullToRefreshListView.PullToRefreshListener
+class nxi
+  extends nyf
 {
-  public nxi(StoryPickerFragment paramStoryPickerFragment) {}
-  
-  public void a()
+  nxi(nxd paramnxd, boolean paramBoolean, List paramList)
   {
-    if (this.a.a != null) {
-      this.a.a.d();
-    }
+    super(paramnxd, null);
+  }
+  
+  void a(nyi paramnyi)
+  {
+    paramnyi.onCommentListLoad(1, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaUtilList, nxd.d(this.jdField_a_of_type_Nxd), 2, 2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     nxi
  * JD-Core Version:    0.7.0.1
  */

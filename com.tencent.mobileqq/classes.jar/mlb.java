@@ -1,14 +1,24 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
+import com.tencent.mobileqq.data.TroopInfo;
 
 class mlb
-  implements Runnable
+  extends ajuc
 {
-  mlb(mks parammks) {}
+  mlb(mkz parammkz) {}
   
-  public void run()
+  protected void a(boolean paramBoolean, long paramLong, int paramInt1, TroopInfo paramTroopInfo, int paramInt2, String paramString)
   {
-    this.a.a.notifyDataSetChanged();
-    ReadInJoyBaseAdapter.a(this.a.a, this.a.a.a, 0);
+    if (paramLong != this.a.jdField_a_of_type_Long) {
+      return;
+    }
+    this.a.jdField_a_of_type_Long = 0L;
+    mkz.a(this.a, false);
+    if (paramBoolean)
+    {
+      mkz.a(this.a, paramTroopInfo);
+      return;
+    }
+    mkz.a(this.a, 2131653422, 1);
+    this.a.jdField_a_of_type_Mlc.a();
   }
 }
 

@@ -1,28 +1,35 @@
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverVideoActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.webprocess.WebProcessManager;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.av.ui.funchat.filter.EffectFilterPanel;
+import java.lang.ref.WeakReference;
 
-class mby
-  implements Runnable
+public class mby
+  implements Animation.AnimationListener
 {
-  mby(mbx parammbx) {}
+  private WeakReference<View> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public void run()
+  public mby(EffectFilterPanel paramEffectFilterPanel, View paramView)
   {
-    WebProcessManager localWebProcessManager = (WebProcessManager)this.a.a.app.getManager(12);
-    if ((localWebProcessManager != null) && (localWebProcessManager.d()))
-    {
-      localWebProcessManager.a(-1, null);
-      if (QLog.isColorLevel()) {
-        QLog.d("allentest", 2, "sbbbb");
-      }
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramView);
+  }
+  
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    View localView = (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    krx.c("EffectFilterPanel", "MyTextAlphaAnimationListener onAnimationEnd :" + localView + "|" + paramAnimation);
+    if (localView != null) {
+      localView.setVisibility(8);
     }
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     mby
  * JD-Core Version:    0.7.0.1
  */

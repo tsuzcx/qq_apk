@@ -8,13 +8,13 @@ import java.util.ArrayList;
 public final class GetResourceReq
   extends JceStruct
 {
-  static ArrayList cache_vecResReqInfo;
+  static ArrayList<GetResourceReqInfo> cache_vecResReqInfo;
   public short sLanCodeType;
-  public ArrayList vecResReqInfo;
+  public ArrayList<GetResourceReqInfo> vecResReqInfo;
   
   public GetResourceReq() {}
   
-  public GetResourceReq(ArrayList paramArrayList, short paramShort)
+  public GetResourceReq(ArrayList<GetResourceReqInfo> paramArrayList, short paramShort)
   {
     this.vecResReqInfo = paramArrayList;
     this.sLanCodeType = paramShort;

@@ -1,22 +1,24 @@
 package com.tencent.mobileqq.ark.API;
 
+import akyv;
+import akyx;
 import java.util.HashMap;
 
 public class ArkAppDeviceModule$1
-  extends HashMap
+  extends HashMap<String, akyx>
 {
-  ArkAppDeviceModule$1(ArkAppDeviceModule paramArkAppDeviceModule)
+  public ArkAppDeviceModule$1(akyv paramakyv)
   {
-    put("GetModelName", ArkAppDeviceModule.a(this.this$0));
-    put("GetScreenWidth", ArkAppDeviceModule.a(this.this$0));
-    put("GetScreenHeight", ArkAppDeviceModule.a(this.this$0));
-    put("GetPixelRatio", ArkAppDeviceModule.a(this.this$0));
-    put("GetConnectionType", ArkAppDeviceModule.a(this.this$0));
-    put("AttachEvent", ArkAppDeviceModule.a(this.this$0));
-    put("DetachEvent", ArkAppDeviceModule.a(this.this$0));
-    put("ScanCode", ArkAppDeviceModule.a(this.this$0));
-    put("GetIdentifier", ArkAppDeviceModule.a(this.this$0));
-    put("GetCurrentPosition", ArkAppDeviceModule.a(this.this$0));
+    put("GetModelName", akyv.a(this.this$0));
+    put("GetScreenWidth", akyv.a(this.this$0));
+    put("GetScreenHeight", akyv.a(this.this$0));
+    put("GetPixelRatio", akyv.a(this.this$0));
+    put("GetConnectionType", akyv.a(this.this$0));
+    put("AttachEvent", akyv.a(this.this$0));
+    put("DetachEvent", akyv.a(this.this$0));
+    put("ScanCode", akyv.a(this.this$0));
+    put("GetIdentifier", akyv.a(this.this$0));
+    put("GetCurrentPosition", akyv.a(this.this$0));
   }
 }
 

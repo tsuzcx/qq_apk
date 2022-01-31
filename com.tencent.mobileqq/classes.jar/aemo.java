@@ -1,23 +1,15 @@
-import android.media.SoundPool;
-import com.tencent.mobileqq.magicface.service.SoundPoolUtil;
-import com.tencent.qphone.base.util.QLog;
-import java.util.TimerTask;
+import java.util.List;
 
 public class aemo
-  extends TimerTask
 {
-  public aemo(SoundPoolUtil paramSoundPoolUtil, int paramInt, String paramString) {}
-  
-  public void run()
-  {
-    if ((this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceSoundPoolUtil.a != null) && (this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceSoundPoolUtil.a.play(this.jdField_a_of_type_Int, 1.0F, 1.0F, 0, 0, 1.0F) == 0) && (QLog.isColorLevel())) {
-      QLog.d("SoundPoolUtil", 2, "play failure filepath=" + this.jdField_a_of_type_JavaLangString);
-    }
-  }
+  public String a;
+  public List<? extends aelm> a;
+  public String b;
+  public List<? extends aelm> b;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aemo
  * JD-Core Version:    0.7.0.1
  */

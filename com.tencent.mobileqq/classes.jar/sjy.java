@@ -1,36 +1,31 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ChatTextSizeSettingActivity;
-import com.tencent.mobileqq.statistics.ReportController;
-
 public class sjy
-  implements View.OnClickListener
 {
-  public sjy(ChatTextSizeSettingActivity paramChatTextSizeSettingActivity) {}
+  public int a;
+  String jdField_a_of_type_JavaLangString;
+  srp jdField_a_of_type_Srp;
+  srq jdField_a_of_type_Srq;
+  boolean jdField_a_of_type_Boolean;
+  public int b;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
   
-  public void onClick(View paramView)
+  public sjy(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    switch (paramView.getId())
-    {
-    default: 
-      this.a.a = 0;
-    }
-    for (;;)
-    {
-      this.a.a(this.a.a);
-      ReportController.b(this.a.app, "CliOper", "", "", "Trends_tab", "Font_size", 0, 0, Integer.toString(this.a.a), "", "", "");
-      return;
-      this.a.a = 1;
-      continue;
-      this.a.a = 2;
-      continue;
-      this.a.a = 3;
-    }
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.c = paramString3;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.d = (sfm.t + paramString1 + ".mp4");
+    this.e = tfy.a(paramString1, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     sjy
  * JD-Core Version:    0.7.0.1
  */

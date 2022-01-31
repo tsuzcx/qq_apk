@@ -1,23 +1,24 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.armap.POIInfo;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Handler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBroadcastActivity;
 
-public final class abka
-  implements Parcelable.Creator
+class abka
+  implements View.OnClickListener
 {
-  public POIInfo a(Parcel paramParcel)
-  {
-    return new POIInfo(paramParcel);
-  }
+  abka(abjx paramabjx, SharedPreferences paramSharedPreferences, String paramString) {}
   
-  public POIInfo[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new POIInfo[paramInt];
+    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean(this.jdField_a_of_type_JavaLangString, true).commit();
+    this.jdField_a_of_type_Abjx.a.a.sendEmptyMessageDelayed(1010, 1000L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abka
  * JD-Core Version:    0.7.0.1
  */

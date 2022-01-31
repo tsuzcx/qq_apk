@@ -8,10 +8,10 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class Submsgtype0x89$MsgBody
-  extends MessageMicro
+  extends MessageMicro<MsgBody>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26 }, new String[] { "uint64_uiUin", "uint32_push_red_ts", "rpt_msg_num_red" }, new Object[] { Long.valueOf(0L), Integer.valueOf(0), null }, MsgBody.class);
-  public final PBRepeatMessageField rpt_msg_num_red = PBField.initRepeatMessage(Submsgtype0x89.NumRedBusiInfo.class);
+  public final PBRepeatMessageField<Submsgtype0x89.NumRedBusiInfo> rpt_msg_num_red = PBField.initRepeatMessage(Submsgtype0x89.NumRedBusiInfo.class);
   public final PBUInt32Field uint32_push_red_ts = PBField.initUInt32(0);
   public final PBUInt64Field uint64_uiUin = PBField.initUInt64(0L);
 }

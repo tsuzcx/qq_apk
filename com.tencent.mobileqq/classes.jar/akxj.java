@@ -1,18 +1,27 @@
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserScreenShotHandler;
+import android.os.MessageQueue.IdleHandler;
+import com.tencent.mobileqq.ar.view.ARScanEntryView;
+import com.tencent.mobileqq.olympic.view.ScanIconAnimateView;
+import com.tencent.qphone.base.util.QLog;
 
 public class akxj
-  implements Runnable
+  implements MessageQueue.IdleHandler
 {
-  public akxj(SwiftBrowserScreenShotHandler paramSwiftBrowserScreenShotHandler) {}
+  public akxj(ARScanEntryView paramARScanEntryView) {}
   
-  public void run()
+  public boolean queueIdle()
   {
-    this.a.b = this.a.a(this.a.f);
+    if (QLog.isColorLevel()) {
+      QLog.d("AREngine_ARScanEntryView", 2, "queueIdle called ");
+    }
+    if ((ARScanEntryView.a(this.a) != null) && (this.a.m)) {
+      ARScanEntryView.a(this.a).c();
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     akxj
  * JD-Core Version:    0.7.0.1
  */

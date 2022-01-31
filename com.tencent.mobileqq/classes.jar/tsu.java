@@ -1,14 +1,10 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.RecentLoginDevActivity;
-
-public class tsu
-  extends Handler
+public abstract interface tsu
 {
-  public tsu(RecentLoginDevActivity paramRecentLoginDevActivity) {}
+  public abstract void a(tso paramtso);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tsu
  * JD-Core Version:    0.7.0.1
  */

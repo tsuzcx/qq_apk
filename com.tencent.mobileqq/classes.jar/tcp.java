@@ -1,23 +1,14 @@
-import com.tencent.biz.TroopRedpoint.TroopRedTouchManager;
-import com.tencent.mobileqq.activity.Leba;
-import com.tencent.mobileqq.app.QQAppInterface;
-import tencent.im.oidb.cmd0x791.oidb_0x791.RedDotInfo;
-
-public class tcp
-  implements Runnable
+public abstract interface tcp
 {
-  public tcp(Leba paramLeba) {}
+  public abstract void a(tet paramtet);
   
-  public void run()
-  {
-    TroopRedTouchManager localTroopRedTouchManager = (TroopRedTouchManager)this.a.a.getManager(69);
-    oidb_0x791.RedDotInfo localRedDotInfo = localTroopRedTouchManager.a(7);
-    this.a.a(new tcq(this, localRedDotInfo, localTroopRedTouchManager));
-  }
+  public abstract void b(tet paramtet);
+  
+  public abstract void c(tet paramtet);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tcp
  * JD-Core Version:    0.7.0.1
  */

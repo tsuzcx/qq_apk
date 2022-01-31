@@ -1,90 +1,51 @@
-import android.os.Handler;
-import com.tencent.mobileqq.filemanager.util.UniformDownloader;
-import com.tencent.mobileqq.filemanager.util.UniformDownloaderAppBabySdk;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.tmassistant.aidl.TMAssistantDownloadTaskInfo;
-import com.tencent.tmdownloader.ITMAssistantDownloadClientListener;
-import com.tencent.tmdownloader.TMAssistantDownloadClient;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForStructing;
 
 public class adqs
-  implements ITMAssistantDownloadClientListener
+  implements begw
 {
-  public adqs(UniformDownloaderAppBabySdk paramUniformDownloaderAppBabySdk) {}
+  public adqs(StructingMsgItemBuilder paramStructingMsgItemBuilder, boolean paramBoolean, ChatMessage paramChatMessage, begr parambegr) {}
   
-  public void onDownloadSDKTaskProgressChanged(TMAssistantDownloadClient paramTMAssistantDownloadClient, String paramString, long paramLong1, long paramLong2)
+  public void OnClick(View paramView, int paramInt)
   {
-    UniformDownloaderAppBabySdk.b(this.a);
-    if (!UniformDownloaderAppBabySdk.a(this.a).post(new adqt(this, paramString, paramLong1, paramLong2))) {
-      QLog.e(UniformDownloaderAppBabySdk.a, 1, "[UniformDL] OnDownloadSDKTaskProgressChanged. thread error!!");
-    }
-  }
-  
-  public void onDownloadSDKTaskStateChanged(TMAssistantDownloadClient paramTMAssistantDownloadClient, String paramString1, int paramInt1, int paramInt2, String paramString2)
-  {
-    int i = 0;
-    int j = 0;
-    Object localObject2 = null;
-    QLog.i(UniformDownloaderAppBabySdk.a, 1, "[UniformDL] inPDownloadSDKTaskStateChanged  state:[" + paramInt1 + "] errcode:[" + paramInt2 + "] errStr:[" + paramString2 + "] url:[" + paramString1 + "]");
-    String str = "";
-    Object localObject1;
-    if ((paramTMAssistantDownloadClient != null) && (4 == paramInt1))
-    {
-      try
-      {
-        localObject1 = paramTMAssistantDownloadClient.getDownloadTaskState(paramString1);
-        i = 0;
-        paramTMAssistantDownloadClient = str;
-      }
-      catch (Exception paramTMAssistantDownloadClient)
-      {
-        do
-        {
-          for (;;)
-          {
-            paramTMAssistantDownloadClient.printStackTrace();
-            paramTMAssistantDownloadClient = UniformDownloader.a(22);
-            localObject1 = null;
-            j = 22;
-            i = 1;
-            continue;
-            localObject1 = ((TMAssistantDownloadTaskInfo)localObject1).mSavePath;
-          }
-        } while ((UniformDownloaderAppBabySdk.a(this.a) == null) || (UniformDownloaderAppBabySdk.a(this.a).post(new adqv(this, paramString1, paramInt1, paramInt2, paramString2, (String)localObject1))));
-        QLog.e(UniformDownloaderAppBabySdk.a, 1, "[UniformDL] OnDownloadSDKTaskProgressChanged. thread error!!");
-        return;
-      }
-      if (localObject1 == null) {
-        localObject1 = localObject2;
+    if (this.jdField_a_of_type_Boolean) {
+      if ((this.jdField_a_of_type_ComTencentMobileqqDataChatMessage instanceof MessageForStructing)) {
+        new axfm(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a((MessageForStructing)this.jdField_a_of_type_ComTencentMobileqqDataChatMessage, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
       }
     }
     for (;;)
     {
-      UniformDownloaderAppBabySdk.b(this.a);
-      if (i != 0)
+      this.jdField_a_of_type_Begr.cancel();
+      return;
+      String str1;
+      String str2;
+      try
       {
-        if (!UniformDownloaderAppBabySdk.a(this.a).post(new adqu(this, paramString1, j, paramTMAssistantDownloadClient))) {
-          QLog.e(UniformDownloaderAppBabySdk.a, 1, "[UniformDL] OnDownloadSDKTaskProgressChanged. haveErr and thread error!!");
+        paramInt = Integer.parseInt(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.getExtInfoFromExtStr("peerType"));
+        paramView = this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.getExtInfoFromExtStr("filePath");
+        str1 = this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.getExtInfoFromExtStr("peerUin");
+        str2 = this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.getExtInfoFromExtStr("strSendUin");
+        if (1 != paramInt) {
+          break label133;
         }
-        return;
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramView, str1);
       }
-      localObject1 = null;
-      paramTMAssistantDownloadClient = "";
-      j = 0;
-    }
-  }
-  
-  public void onDwonloadSDKServiceInvalid(TMAssistantDownloadClient paramTMAssistantDownloadClient)
-  {
-    QLog.e(UniformDownloaderAppBabySdk.a, 1, "[UniformDL] ABSdkdownload service invalid ");
-    UniformDownloaderAppBabySdk.b(this.a);
-    if (!UniformDownloaderAppBabySdk.a(this.a).post(new adqw(this))) {
-      QLog.e(UniformDownloaderAppBabySdk.a, 1, "[UniformDL] OnDwonloadSDKServiceInvalid. thread error!!");
+      catch (Exception paramView)
+      {
+        paramView.printStackTrace();
+      }
+      continue;
+      label133:
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramView, str2, str1, paramInt, true);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     adqs
  * JD-Core Version:    0.7.0.1
  */

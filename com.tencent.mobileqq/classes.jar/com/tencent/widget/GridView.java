@@ -1,8 +1,5 @@
 package com.tencent.widget;
 
-import amha;
-import amhj;
-import amhk;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
@@ -22,7 +19,9 @@ import android.view.animation.GridLayoutAnimationController.AnimationParameters;
 import android.widget.Checkable;
 import android.widget.ListAdapter;
 import android.widget.PopupWindow;
-import com.tencent.util.VersionUtils;
+import befo;
+import begd;
+import begi;
 
 public class GridView
   extends AbsListView
@@ -33,10 +32,10 @@ public class GridView
   private int jdField_b_of_type_Int;
   private View jdField_b_of_type_AndroidViewView;
   private int c;
+  public boolean c;
   private int d;
   private int e = 2;
   private int f;
-  public boolean f;
   private int g;
   private int h;
   private int i = 3;
@@ -163,7 +162,7 @@ public class GridView
   
   private View a(int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    int i2 = this.jdField_f_of_type_Int;
+    int i2 = this.f;
     int i1 = this.jdField_b_of_type_Int;
     int k = this.mListPadding.left;
     int j;
@@ -423,7 +422,7 @@ public class GridView
           break label474;
         }
         paramInt4 = ViewGroup.getChildMeasureSpec(View.MeasureSpec.makeMeasureSpec(0, 0), 0, localLayoutParams.height);
-        paramView.measure(ViewGroup.getChildMeasureSpec(View.MeasureSpec.makeMeasureSpec(this.jdField_f_of_type_Int, 1073741824), 0, localLayoutParams.width), paramInt4);
+        paramView.measure(ViewGroup.getChildMeasureSpec(View.MeasureSpec.makeMeasureSpec(this.f, 1073741824), 0, localLayoutParams.width), paramInt4);
         k = paramView.getMeasuredWidth();
         m = paramView.getMeasuredHeight();
         if (!paramBoolean1) {
@@ -450,7 +449,7 @@ public class GridView
         if (this.mCachingStarted) {
           paramView.setDrawingCacheEnabled(true);
         }
-        if ((VersionUtils.e()) && (paramBoolean3) && (((AbsListView.LayoutParams)paramView.getLayoutParams()).jdField_b_of_type_Int != paramInt1)) {
+        if ((befo.e()) && (paramBoolean3) && (((AbsListView.LayoutParams)paramView.getLayoutParams()).jdField_b_of_type_Int != paramInt1)) {
           paramView.jumpDrawablesToCurrentState();
         }
         return;
@@ -480,9 +479,9 @@ public class GridView
         label482:
         paramInt4 = paramInt2 - m;
         break label283;
-        paramInt2 = paramInt3 + (this.jdField_f_of_type_Int - k) / 2;
+        paramInt2 = paramInt3 + (this.f - k) / 2;
         break label331;
-        paramInt2 = this.jdField_f_of_type_Int + paramInt3 - k;
+        paramInt2 = this.f + paramInt3 - k;
         break label331;
         paramView.offsetLeftAndRight(paramInt2 - paramView.getLeft());
         paramView.offsetTopAndBottom(paramInt4 - paramView.getTop());
@@ -492,7 +491,7 @@ public class GridView
   
   private boolean a(int paramInt)
   {
-    int j = this.c;
+    int j = this.jdField_c_of_type_Int;
     int k = this.e;
     int m = this.g;
     boolean bool = false;
@@ -524,13 +523,13 @@ public class GridView
         break;
       }
     }
-    this.jdField_f_of_type_Int = m;
+    this.f = m;
     this.jdField_b_of_type_Int = j;
     return false;
-    this.jdField_f_of_type_Int = (paramInt / this.jdField_a_of_type_Int + m);
+    this.f = (paramInt / this.jdField_a_of_type_Int + m);
     this.jdField_b_of_type_Int = j;
     return bool;
-    this.jdField_f_of_type_Int = m;
+    this.f = m;
     if (this.jdField_a_of_type_Int > 1)
     {
       this.jdField_b_of_type_Int = (paramInt / (this.jdField_a_of_type_Int - 1) + j);
@@ -538,7 +537,7 @@ public class GridView
     }
     this.jdField_b_of_type_Int = (j + paramInt);
     return bool;
-    this.jdField_f_of_type_Int = m;
+    this.f = m;
     if (this.jdField_a_of_type_Int > 1)
     {
       this.jdField_b_of_type_Int = (paramInt / (this.jdField_a_of_type_Int + 1) + j);
@@ -616,7 +615,7 @@ public class GridView
         break label804;
       }
       return true;
-      if ((!VersionUtils.e()) || (!paramKeyEvent.hasNoModifiers())) {
+      if ((!befo.e()) || (!paramKeyEvent.hasNoModifiers())) {
         break;
       }
       if ((resurrectSelectionIfNeeded()) || (d(17)))
@@ -627,7 +626,7 @@ public class GridView
       {
         k = 0;
         continue;
-        if ((!VersionUtils.e()) || (!paramKeyEvent.hasNoModifiers())) {
+        if ((!befo.e()) || (!paramKeyEvent.hasNoModifiers())) {
           break;
         }
         if ((resurrectSelectionIfNeeded()) || (d(66)))
@@ -638,7 +637,7 @@ public class GridView
         {
           k = 0;
           continue;
-          if ((VersionUtils.e()) && (paramKeyEvent.hasNoModifiers()))
+          if ((befo.e()) && (paramKeyEvent.hasNoModifiers()))
           {
             if ((resurrectSelectionIfNeeded()) || (d(33))) {
               k = 1;
@@ -648,7 +647,7 @@ public class GridView
           }
           else
           {
-            if ((!VersionUtils.e()) || (!paramKeyEvent.hasModifiers(2))) {
+            if ((!befo.e()) || (!paramKeyEvent.hasModifiers(2))) {
               break;
             }
             if ((resurrectSelectionIfNeeded()) || (c(33)))
@@ -659,7 +658,7 @@ public class GridView
             {
               k = 0;
               continue;
-              if ((VersionUtils.e()) && (paramKeyEvent.hasNoModifiers()))
+              if ((befo.e()) && (paramKeyEvent.hasNoModifiers()))
               {
                 if ((resurrectSelectionIfNeeded()) || (d(130))) {
                   k = 1;
@@ -669,7 +668,7 @@ public class GridView
               }
               else
               {
-                if ((!VersionUtils.e()) || (!paramKeyEvent.hasModifiers(2))) {
+                if ((!befo.e()) || (!paramKeyEvent.hasModifiers(2))) {
                   break;
                 }
                 if ((resurrectSelectionIfNeeded()) || (c(130)))
@@ -680,7 +679,7 @@ public class GridView
                 {
                   k = 0;
                   continue;
-                  if ((!VersionUtils.e()) || (!paramKeyEvent.hasNoModifiers())) {
+                  if ((!befo.e()) || (!paramKeyEvent.hasNoModifiers())) {
                     break;
                   }
                   boolean bool = resurrectSelectionIfNeeded();
@@ -699,7 +698,7 @@ public class GridView
                         if ((this.mPopup != null) && (this.mPopup.isShowing())) {
                           break;
                         }
-                        if ((VersionUtils.e()) && (paramKeyEvent.hasNoModifiers()))
+                        if ((befo.e()) && (paramKeyEvent.hasNoModifiers()))
                         {
                           if ((resurrectSelectionIfNeeded()) || (b(130))) {
                             k = 1;
@@ -709,7 +708,7 @@ public class GridView
                         }
                         else
                         {
-                          if ((!VersionUtils.e()) || (!paramKeyEvent.hasModifiers(1))) {
+                          if ((!befo.e()) || (!paramKeyEvent.hasModifiers(1))) {
                             break;
                           }
                           if ((resurrectSelectionIfNeeded()) || (b(33)))
@@ -720,7 +719,7 @@ public class GridView
                           {
                             k = 0;
                             continue;
-                            if ((VersionUtils.e()) && (paramKeyEvent.hasNoModifiers()))
+                            if ((befo.e()) && (paramKeyEvent.hasNoModifiers()))
                             {
                               if ((resurrectSelectionIfNeeded()) || (b(33))) {
                                 k = 1;
@@ -730,7 +729,7 @@ public class GridView
                             }
                             else
                             {
-                              if ((!VersionUtils.e()) || (!paramKeyEvent.hasModifiers(2))) {
+                              if ((!befo.e()) || (!paramKeyEvent.hasModifiers(2))) {
                                 break;
                               }
                               if ((resurrectSelectionIfNeeded()) || (c(33)))
@@ -741,7 +740,7 @@ public class GridView
                               {
                                 k = 0;
                                 continue;
-                                if ((VersionUtils.e()) && (paramKeyEvent.hasNoModifiers()))
+                                if ((befo.e()) && (paramKeyEvent.hasNoModifiers()))
                                 {
                                   if ((resurrectSelectionIfNeeded()) || (b(130))) {
                                     k = 1;
@@ -751,7 +750,7 @@ public class GridView
                                 }
                                 else
                                 {
-                                  if ((!VersionUtils.e()) || (!paramKeyEvent.hasModifiers(2))) {
+                                  if ((!befo.e()) || (!paramKeyEvent.hasModifiers(2))) {
                                     break;
                                   }
                                   if ((resurrectSelectionIfNeeded()) || (c(130)))
@@ -762,7 +761,7 @@ public class GridView
                                   {
                                     k = 0;
                                     continue;
-                                    if ((!VersionUtils.e()) || (!paramKeyEvent.hasNoModifiers())) {
+                                    if ((!befo.e()) || (!paramKeyEvent.hasNoModifiers())) {
                                       break;
                                     }
                                     if ((resurrectSelectionIfNeeded()) || (c(33)))
@@ -773,7 +772,7 @@ public class GridView
                                     {
                                       k = 0;
                                       continue;
-                                      if ((!VersionUtils.e()) || (!paramKeyEvent.hasNoModifiers())) {
+                                      if ((!befo.e()) || (!paramKeyEvent.hasNoModifiers())) {
                                         break;
                                       }
                                       if ((resurrectSelectionIfNeeded()) || (c(130))) {
@@ -1123,6 +1122,11 @@ public class GridView
     return localView1;
   }
   
+  public int a()
+  {
+    return this.jdField_b_of_type_Int;
+  }
+  
   public ListAdapter a()
   {
     return this.mAdapter;
@@ -1152,6 +1156,11 @@ public class GridView
     paramView.row = (paramView.rowsCount - 1 - paramInt1 / this.jdField_a_of_type_Int);
   }
   
+  public int b()
+  {
+    return this.d;
+  }
+  
   boolean b(int paramInt)
   {
     boolean bool = false;
@@ -1173,11 +1182,6 @@ public class GridView
         j = Math.min(this.mItemCount - 1, this.mSelectedPosition + getChildCount());
       }
     }
-  }
-  
-  public int b_()
-  {
-    return this.jdField_b_of_type_Int;
   }
   
   @ViewDebug.ExportedProperty
@@ -1214,12 +1218,7 @@ public class GridView
     }
   }
   
-  public int c_()
-  {
-    return this.d;
-  }
-  
-  public int computeVerticalScrollExtent()
+  protected int computeVerticalScrollExtent()
   {
     int m = getChildCount();
     if (m > 0)
@@ -1245,7 +1244,7 @@ public class GridView
     return 0;
   }
   
-  public int computeVerticalScrollOffset()
+  protected int computeVerticalScrollOffset()
   {
     int k = 0;
     int j = k;
@@ -1270,7 +1269,7 @@ public class GridView
     return j;
   }
   
-  public int computeVerticalScrollRange()
+  protected int computeVerticalScrollRange()
   {
     int j = this.jdField_a_of_type_Int;
     int m = (this.mItemCount + j - 1) / j;
@@ -1429,7 +1428,7 @@ public class GridView
   
   protected void layoutChildren()
   {
-    amhk localamhk = null;
+    begi localbegi = null;
     int n = -1;
     boolean bool1 = this.mBlockLayoutRequests;
     if (!bool1) {
@@ -1472,7 +1471,7 @@ public class GridView
           j = 0;
           localObject3 = localObject1;
           localObject1 = localObject4;
-          localObject4 = localamhk;
+          localObject4 = localbegi;
           bool2 = this.mDataChanged;
           if (bool2) {
             handleDataChanged();
@@ -1501,24 +1500,24 @@ public class GridView
           localObject1 = null;
           localObject3 = null;
           j -= m;
-          localObject4 = localamhk;
+          localObject4 = localbegi;
           continue;
           setSelectedPositionInt(this.mNextSelectedPosition);
           int i3 = this.mFirstPosition;
-          localamhk = this.mRecycler;
+          localbegi = this.mRecycler;
           if (bool2)
           {
             m = 0;
             if (m < i2)
             {
-              localamhk.a(getChildAt(m), i3 + m);
+              localbegi.a(getChildAt(m), i3 + m);
               m += 1;
               continue;
             }
           }
           else
           {
-            localamhk.a(i2, i3);
+            localbegi.a(i2, i3);
           }
           detachAllViewsFromParent();
           switch (this.mLayoutMode)
@@ -1542,7 +1541,7 @@ public class GridView
             label436:
             setSelectedPositionInt(j);
             localObject1 = a(k);
-            localamhk.c();
+            localbegi.c();
             if (localObject1 == null) {
               break label804;
             }
@@ -1649,13 +1648,13 @@ public class GridView
       localView = null;
       localObject3 = null;
       j = 0;
-      localObject4 = localamhk;
+      localObject4 = localbegi;
       break label180;
       break;
       localView = null;
       localObject3 = null;
       j = 0;
-      localObject4 = localamhk;
+      localObject4 = localbegi;
       break label180;
       break label404;
       label909:
@@ -1761,18 +1760,18 @@ public class GridView
     return a(paramInt, 1, paramKeyEvent);
   }
   
-  public void onMeasure(int paramInt1, int paramInt2)
+  protected void onMeasure(int paramInt1, int paramInt2)
   {
-    this.jdField_f_of_type_Boolean = true;
+    this.jdField_c_of_type_Boolean = true;
     super.onMeasure(paramInt1, paramInt2);
     int i2 = View.MeasureSpec.getMode(paramInt1);
     int n = View.MeasureSpec.getMode(paramInt2);
     int j = View.MeasureSpec.getSize(paramInt1);
     int k = View.MeasureSpec.getSize(paramInt2);
     if (i2 == 0) {
-      if (this.jdField_f_of_type_Int > 0)
+      if (this.f > 0)
       {
-        paramInt2 = this.jdField_f_of_type_Int + this.mListPadding.left + this.mListPadding.right;
+        paramInt2 = this.f + this.mListPadding.left + this.mListPadding.right;
         paramInt2 += getVerticalScrollbarWidth();
       }
     }
@@ -1800,7 +1799,7 @@ public class GridView
           localLayoutParams1.jdField_a_of_type_Int = this.mAdapter.getItemViewType(0);
           localLayoutParams1.jdField_b_of_type_Boolean = true;
           j = getChildMeasureSpec(View.MeasureSpec.makeMeasureSpec(0, 0), 0, localLayoutParams1.height);
-          localView.measure(getChildMeasureSpec(View.MeasureSpec.makeMeasureSpec(this.jdField_f_of_type_Int, 1073741824), 0, localLayoutParams1.width), j);
+          localView.measure(getChildMeasureSpec(View.MeasureSpec.makeMeasureSpec(this.f, 1073741824), 0, localLayoutParams1.width), j);
           j = localView.getMeasuredHeight();
           m = j;
           if (this.mRecycler.a(localLayoutParams1.jdField_a_of_type_Int))
@@ -1848,7 +1847,7 @@ public class GridView
           {
             j = paramInt2;
             if (this.h != -1) {
-              if (this.h * this.jdField_f_of_type_Int + (this.h - 1) * this.jdField_b_of_type_Int + this.mListPadding.left + this.mListPadding.right <= paramInt2)
+              if (this.h * this.f + (this.h - 1) * this.jdField_b_of_type_Int + this.mListPadding.left + this.mListPadding.right <= paramInt2)
               {
                 j = paramInt2;
                 if (!bool) {}
@@ -1861,7 +1860,7 @@ public class GridView
           }
           setMeasuredDimension(j, k);
           this.mWidthMeasureSpec = paramInt1;
-          this.jdField_f_of_type_Boolean = false;
+          this.jdField_c_of_type_Boolean = false;
           return;
           paramInt2 = this.mListPadding.left + this.mListPadding.right;
           break;
@@ -1893,7 +1892,7 @@ public class GridView
       this.mItemCount = this.mAdapter.getCount();
       this.mDataChanged = true;
       checkFocus();
-      this.mDataSetObserver = new amha(this);
+      this.mDataSetObserver = new begd(this);
       this.mAdapter.registerDataSetObserver(this.mDataSetObserver);
       this.mRecycler.a(this.mAdapter.getViewTypeCount());
       if (this.mStackFromBottom)
@@ -1935,9 +1934,9 @@ public class GridView
   
   public void setHorizontalSpacing(int paramInt)
   {
-    if (paramInt != this.c)
+    if (paramInt != this.jdField_c_of_type_Int)
     {
-      this.c = paramInt;
+      this.jdField_c_of_type_Int = paramInt;
       requestLayoutIfNecessary();
     }
   }
@@ -2020,7 +2019,7 @@ public class GridView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.widget.GridView
  * JD-Core Version:    0.7.0.1
  */

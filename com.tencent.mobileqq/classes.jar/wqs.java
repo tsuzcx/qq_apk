@@ -1,21 +1,28 @@
-import com.tencent.mobileqq.activity.contact.troop.BaseTroopView;
-import com.tencent.mobileqq.activity.contact.troop.TroopActivity;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.videostory.capture.widgets.AEBottomListScrollView;
 
-public class wqs
-  implements Runnable
+class wqs
+  implements Animation.AnimationListener
 {
-  public wqs(TroopActivity paramTroopActivity) {}
+  wqs(wqq paramwqq) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation) {}
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
   {
-    if (this.a.a != null) {
-      this.a.a.a();
+    if ((wqq.a(this.a) != null) && (!wqq.a(this.a)))
+    {
+      wqq.a(this.a).setAlpha(1.0F);
+      wqq.a(this.a).setVisibility(0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wqs
  * JD-Core Version:    0.7.0.1
  */

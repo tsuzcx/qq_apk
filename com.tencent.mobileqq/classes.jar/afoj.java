@@ -1,91 +1,62 @@
-import android.content.res.Resources;
-import android.graphics.drawable.ColorDrawable;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.TextView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.data.NearbyPeopleCard.HiWanItem;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileFragment;
-import java.util.ArrayList;
-import java.util.List;
+import android.app.Dialog;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment.40.1;
 
 public class afoj
-  extends BaseAdapter
+  extends ajhi
 {
-  private List jdField_a_of_type_JavaUtilList = new ArrayList();
+  public afoj(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
   
-  public afoj(NearbyProfileFragment paramNearbyProfileFragment) {}
-  
-  public void a(List paramList)
+  protected void a(boolean paramBoolean, Long paramLong)
   {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    NearbyPeopleCard.HiWanItem localHiWanItem = (NearbyPeopleCard.HiWanItem)getItem(paramInt);
-    View localView = paramView;
-    if (paramView == null)
-    {
-      localView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2130970480, paramViewGroup, false);
-      paramView = new afok(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileFragment);
-      paramView.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)localView.findViewById(2131366383));
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131363207));
-      paramView.b = ((TextView)localView.findViewById(2131370695));
-      paramView.jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard$HiWanItem = localHiWanItem;
-      localView.setTag(paramView);
+    if (this.a.c != null) {
+      this.a.c.dismiss();
     }
-    paramView = (afok)localView.getTag();
-    paramViewGroup = new ColorDrawable(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileFragment.a.getResources().getColor(2131493213));
-    try
+  }
+  
+  protected void a(boolean paramBoolean, Long paramLong1, Long paramLong2)
+  {
+    if (paramBoolean)
     {
-      URLDrawable localURLDrawable = URLDrawable.getDrawable(localHiWanItem.icon, URLDrawable.URLDrawableOptions.obtain());
-      if (localURLDrawable.getStatus() != 1) {
-        localURLDrawable.restartDownload();
+      awqx.b(this.a.b, "CliOper", "", "", "0X80040F5", "0X80040F5", 0, 0, "", "", "", "");
+      this.a.a(paramLong2 + "");
+      if (this.a.jdField_a_of_type_Afow != null) {
+        this.a.jdField_a_of_type_Afow.a();
       }
-      paramView.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(localURLDrawable);
-    }
-    catch (IllegalArgumentException localIllegalArgumentException)
-    {
-      for (;;)
+      if (this.a.k)
       {
-        paramView.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(paramViewGroup);
-        continue;
-        paramView.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+        this.a.d(paramLong2 + "");
+        if (this.a.jdField_a_of_type_Afoy != null) {
+          this.a.jdField_a_of_type_Afoy.notifyDataSetChanged();
+        }
       }
     }
-    if (localHiWanItem.status == 1)
+    for (;;)
     {
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      paramView.b.setText(localHiWanItem.title);
-      return localView;
+      if (this.a.c != null) {
+        this.a.c.dismiss();
+      }
+      return;
+      bbmy.a(this.a.getActivity(), 1, this.a.getString(2131628069), 0).b(this.a.getActivity().getTitleBarHeight());
+    }
+  }
+  
+  protected void a(boolean paramBoolean1, String paramString, boolean paramBoolean2, int paramInt1, int paramInt2, boolean paramBoolean3)
+  {
+    this.a.getActivity().runOnUiThread(new ChatHistoryTroopMemberFragment.40.1(this, paramBoolean1, paramString, paramBoolean2, paramInt1, paramInt2, paramBoolean3));
+  }
+  
+  protected void b(boolean paramBoolean, Long paramLong)
+  {
+    if (this.a.c != null) {
+      this.a.c.dismiss();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     afoj
  * JD-Core Version:    0.7.0.1
  */

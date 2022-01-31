@@ -1,19 +1,10 @@
-import com.tencent.mobileqq.surfaceviewaction.gl.FrameSprite.OnFrameEndListener;
-import com.tencent.mobileqq.troopgift.TroopGiftToPersonalSurfaceView;
-
-public class akde
-  implements FrameSprite.OnFrameEndListener
+public abstract interface akde
 {
-  public akde(TroopGiftToPersonalSurfaceView paramTroopGiftToPersonalSurfaceView, FrameSprite.OnFrameEndListener paramOnFrameEndListener) {}
-  
-  public void a()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftToPersonalSurfaceView.a(0, new akdf(this));
-  }
+  public abstract void a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akde
  * JD-Core Version:    0.7.0.1
  */

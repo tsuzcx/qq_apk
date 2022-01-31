@@ -1,21 +1,29 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.bless.BlessSelectMemberActivity;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qphone.base.util.QLog;
 
-public final class wlc
-  implements DialogInterface.OnClickListener
+class wlc
+  implements View.OnClickListener
 {
-  public wlc(Context paramContext) {}
+  wlc(wku paramwku, ayop paramayop) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    ((BlessSelectMemberActivity)this.a).Y_();
+    if (QLog.isColorLevel()) {
+      QLog.i("TroopTipsPopWindow", 2, "mTroopNotifyAdImage onClick--------");
+    }
+    paramView = new Intent(this.jdField_a_of_type_Wku.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, QQBrowserActivity.class);
+    paramView.putExtra("url", this.jdField_a_of_type_Ayop.b);
+    this.jdField_a_of_type_Wku.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.startActivity(paramView);
+    awqx.b(this.jdField_a_of_type_Wku.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_bulletin", "", "bulletin_popUp", "clk_ad", 0, 0, this.jdField_a_of_type_Wku.b, String.valueOf(this.jdField_a_of_type_Wku.jdField_a_of_type_Ayoo.a), "8020205751015455", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wlc
  * JD-Core Version:    0.7.0.1
  */

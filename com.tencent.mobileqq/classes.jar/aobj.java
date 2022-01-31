@@ -1,21 +1,50 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoButton;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
+import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
+import com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView;
+import com.tencent.mobileqq.filemanager.data.FileInfo;
+import com.tencent.qphone.base.util.QLog;
 
 public class aobj
   implements View.OnClickListener
 {
-  public aobj(EditVideoButton paramEditVideoButton) {}
+  public aobj(QfileBaseLocalFileTabView paramQfileBaseLocalFileTabView) {}
   
   public void onClick(View paramView)
   {
-    this.a.a.a(34);
+    if (paramView == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e(QfileBaseLocalFileTabView.jdField_a_of_type_JavaLangString, 2, "qfilebaserecenttabview del error, tag is null");
+      }
+      return;
+    }
+    FileInfo localFileInfo = (FileInfo)paramView.getTag();
+    if (localFileInfo != null)
+    {
+      if (this.a.jdField_a_of_type_Anzd != null) {
+        this.a.jdField_a_of_type_Anzd.a(null);
+      }
+      if (!apdh.c(localFileInfo.c())) {
+        break label99;
+      }
+      this.a.a(localFileInfo);
+    }
+    for (;;)
+    {
+      this.a.jdField_a_of_type_Anzd.a(Integer.valueOf(-1));
+      paramView.setVisibility(4);
+      this.a.f();
+      return;
+      label99:
+      String str = QfileBaseLocalFileTabView.a(this.a).getString(2131626811);
+      apcb.a(apck.d(localFileInfo.d()) + str);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aobj
  * JD-Core Version:    0.7.0.1
  */

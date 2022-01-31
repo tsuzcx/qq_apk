@@ -1,37 +1,58 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.data.NearbyPeopleCard;
-import com.tencent.mobileqq.nearby.NearbyVideoUtils;
-import com.tencent.mobileqq.nearby.picbrowser.PicInfo;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayTribePanel;
-import com.tencent.mobileqq.utils.SharedPreUtils;
+import android.os.AsyncTask;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.history.ChatHistoryC2CAllFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.data.MessageForApollo;
+import com.tencent.mobileqq.data.MessageRecord;
 
-public class afko
-  implements View.OnClickListener
+class afko
+  extends AsyncTask<MessageRecord, Object, Object>
 {
-  public afko(NearbyProfileDisplayTribePanel paramNearbyProfileDisplayTribePanel) {}
+  afko(afkn paramafkn) {}
   
-  public void onClick(View paramView)
+  protected Object a(MessageRecord... paramVarArgs)
   {
-    if (!NearbyVideoUtils.a(this.a.a, this.a.a.app))
+    int i;
+    if (paramVarArgs[0].time <= this.a.a.jdField_a_of_type_Ajmp.a())
     {
-      boolean bool = SharedPreUtils.a(this.a.a);
-      NearbyVideoUtils.a(this.a.a, NearbyProfileDisplayTribePanel.a(this.a), NearbyProfileDisplayTribePanel.a(this.a).videoInfo.d, NearbyProfileDisplayTribePanel.a(this.a).videoInfo.a, NearbyProfileDisplayTribePanel.a(this.a).uin, this.a.a.e, bool);
+      i = ((atob)this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(201)).a(paramVarArgs[0], true);
+      if (i > 0) {
+        this.a.a.f = true;
+      }
     }
-    paramView = NearbyProfileDisplayTribePanel.a(this.a).uin;
-    StringBuilder localStringBuilder = new StringBuilder().append("");
-    if (this.a.a.e == 2) {}
-    for (int i = 1;; i = 2)
+    for (;;)
     {
-      NearbyVideoUtils.a("clk_video_entry", new String[] { "1", paramView, i });
-      return;
+      if ((paramVarArgs[0] instanceof MessageForApollo)) {
+        aisc.a(this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "chat_history_c2c_del_all_msg");
+      }
+      return null;
+      if ((i == 0) && (paramVarArgs[0].time == this.a.a.jdField_a_of_type_Ajmp.a()))
+      {
+        this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramVarArgs[0], true);
+        continue;
+        this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramVarArgs[0], true);
+      }
+    }
+  }
+  
+  protected void onPostExecute(Object paramObject)
+  {
+    super.onPostExecute(paramObject);
+    this.a.a.b.removeMessages(1);
+    if ((this.a.a.jdField_a_of_type_Bbms != null) && (this.a.a.jdField_a_of_type_Bbms.isShowing())) {
+      this.a.a.jdField_a_of_type_Bbms.dismiss();
+    }
+    if ((this.a.a.f) && (this.a.a.e))
+    {
+      this.a.a.e = false;
+      this.a.a.jdField_a_of_type_Ajmp.d();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     afko
  * JD-Core Version:    0.7.0.1
  */

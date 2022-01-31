@@ -1,31 +1,28 @@
-import com.tencent.biz.pubaccount.readinjoy.video.TopicShareHelper;
-import com.tencent.image.RegionDrawable;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
+import android.content.Context;
+import android.os.Handler;
+import com.tencent.av.ui.guide.GuideHelper.LottieDrawableHelper.2;
+import com.tencent.mobileqq.dinifly.LottieComposition.Factory;
+import com.tencent.qphone.base.util.QLog;
 
 public class mdq
-  implements URLDrawable.URLDrawableListener
 {
-  public mdq(TopicShareHelper paramTopicShareHelper) {}
-  
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public void a(long paramLong, Context paramContext, String paramString, mdt parammdt)
   {
-    if ((TopicShareHelper.a(this.a) != null) && (TopicShareHelper.a(this.a).getStatus() == 1) && ((TopicShareHelper.a(this.a).getCurrDrawable() instanceof RegionDrawable)))
+    try
     {
-      paramURLDrawable = (RegionDrawable)TopicShareHelper.a(this.a).getCurrDrawable();
-      TopicShareHelper.a(this.a, paramURLDrawable.getBitmap());
+      LottieComposition.Factory.fromAssetFileName(paramContext, paramString, new mdr(this, paramContext, paramLong, parammdt));
+      return;
+    }
+    catch (Exception paramContext)
+    {
+      QLog.e("GuideHelper", 1, "fromAssetFileName fail, seq[" + paramLong + "]", paramContext);
+      bcod.a().post(new GuideHelper.LottieDrawableHelper.2(this, parammdt));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     mdq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,42 +1,34 @@
 import com.dataline.activities.LiteActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.app.FMObserver;
-import com.tencent.mobileqq.filemanager.core.FileManagerDataCenter;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.data.DataLineMsgRecord;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
-import com.tencent.qphone.base.util.QLog;
 
-public class ay
-  extends FMObserver
+class ay
+  implements apca
 {
-  public ay(LiteActivity paramLiteActivity) {}
+  ay(au paramau, DataLineMsgRecord paramDataLineMsgRecord, FileManagerEntity paramFileManagerEntity, String paramString) {}
   
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
+  public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(LiteActivity.a, 2, "OnFileTransferEnd : isSuccess[" + paramBoolean + "], uniseq[" + paramLong1 + "], nSessionId[" + paramLong2 + paramString1 + "], peerType[" + paramInt1 + "]");
-    }
-    paramString1 = this.a.app.a().a(paramLong2);
-    if (paramString1 == null) {
-      if (QLog.isColorLevel()) {
-        QLog.e(LiteActivity.a, 2, "OnFileTransferEnd faild, get entity is faild, sessionId[" + String.valueOf(paramLong2) + "]");
-      }
-    }
-    do
+    int i = DataLineMsgRecord.getDevTypeBySeId(this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.sessionid);
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
     {
+      apcb.b(apck.d(this.jdField_a_of_type_JavaLangString) + this.jdField_a_of_type_Au.jdField_a_of_type_ComDatalineActivitiesLiteActivity.getString(2131627189));
+      FileManagerEntity localFileManagerEntity = this.jdField_a_of_type_Au.jdField_a_of_type_ComDatalineActivitiesLiteActivity.app.a().a(this.jdField_a_of_type_Au.jdField_a_of_type_JavaLangString, null, this.jdField_a_of_type_Au.jdField_a_of_type_ComDatalineActivitiesLiteActivity.app.getAccount(), 0, false);
+      this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.nWeiyunSessionId = localFileManagerEntity.nSessionId;
+      this.jdField_a_of_type_Au.jdField_a_of_type_ComDatalineActivitiesLiteActivity.app.a().a(i).c(this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.msgId);
       return;
-      if (paramBoolean)
-      {
-        FileManagerUtil.a(paramLong2);
-        return;
-      }
-    } while ((paramString1.nOpType != 4) && (paramString1.nOpType != 6));
-    FileManagerUtil.a(paramLong2, paramInt2, paramString2);
+    }
+    apcb.b(apck.d(this.jdField_a_of_type_JavaLangString) + this.jdField_a_of_type_Au.jdField_a_of_type_ComDatalineActivitiesLiteActivity.getString(2131627189));
+    this.jdField_a_of_type_Au.jdField_a_of_type_ComDatalineActivitiesLiteActivity.app.a().a(this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.nWeiyunSessionId);
   }
+  
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ay
  * JD-Core Version:    0.7.0.1
  */

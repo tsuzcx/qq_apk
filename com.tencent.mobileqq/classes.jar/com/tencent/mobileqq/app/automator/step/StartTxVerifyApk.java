@@ -9,9 +9,9 @@ import com.tencent.qqprotect.sfcfg.QPTxVerifyApkTimerTask;
 public class StartTxVerifyApk
   extends AsyncStep
 {
-  protected int a()
+  public int a()
   {
-    new Handler(ThreadManager.getSubThreadLooper()).postDelayed(new QPTxVerifyApkTimerTask(this.a.b, false), 180000L);
+    new Handler(ThreadManager.getSubThreadLooper()).postDelayed(new QPTxVerifyApkTimerTask(this.a.app, false), 180000L);
     return 7;
   }
 }

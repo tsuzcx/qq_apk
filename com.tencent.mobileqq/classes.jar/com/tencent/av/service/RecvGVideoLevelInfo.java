@@ -6,18 +6,17 @@ import android.os.Parcelable.Creator;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.List;
-import jpt;
+import lng;
 
 public class RecvGVideoLevelInfo
-  implements Parcelable, Cloneable, Comparable
+  implements Parcelable, Cloneable, Comparable<RecvGVideoLevelInfo>
 {
-  public static final Parcelable.Creator CREATOR = new jpt();
+  public static final Parcelable.Creator<RecvGVideoLevelInfo> CREATOR = new lng();
   static String a;
   public int a;
   public long a;
-  public List a;
+  public List<RecvGVideoLevelInfo.Medal> a;
   public int b;
-  public long b;
   public String b;
   public int c;
   public int d;
@@ -31,7 +30,7 @@ public class RecvGVideoLevelInfo
     jdField_a_of_type_JavaLangString = "RecvGVideoLevelInfo";
   }
   
-  public RecvGVideoLevelInfo(long paramLong, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, String paramString, List paramList)
+  public RecvGVideoLevelInfo(long paramLong, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, String paramString, List<RecvGVideoLevelInfo.Medal> paramList)
   {
     this.jdField_a_of_type_Long = paramLong;
     this.jdField_a_of_type_Int = paramInt1;
@@ -138,7 +137,7 @@ public class RecvGVideoLevelInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.av.service.RecvGVideoLevelInfo
  * JD-Core Version:    0.7.0.1
  */

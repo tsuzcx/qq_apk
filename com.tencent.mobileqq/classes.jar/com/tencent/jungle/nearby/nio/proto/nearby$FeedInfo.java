@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class nearby$FeedInfo
-  extends MessageMicro
+  extends MessageMicro<FeedInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_pic = PBField.initBytes(ByteStringMicro.EMPTY);

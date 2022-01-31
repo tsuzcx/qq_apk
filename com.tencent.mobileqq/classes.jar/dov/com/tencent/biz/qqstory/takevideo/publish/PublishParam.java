@@ -4,12 +4,12 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import aome;
+import biuu;
 
 public class PublishParam
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new aome();
+  public static final Parcelable.Creator<PublishParam> CREATOR = new biuu();
   public static final String a;
   public final int a;
   public final long a;
@@ -39,6 +39,8 @@ public class PublishParam
   public final String m;
   public final int n;
   public final String n;
+  public final int o;
+  public int p;
   
   static
   {
@@ -75,13 +77,15 @@ public class PublishParam
     this.jdField_n_of_type_JavaLangString = paramParcel.readString();
     this.jdField_m_of_type_Int = paramParcel.readInt();
     this.jdField_n_of_type_Int = paramParcel.readInt();
+    this.o = paramParcel.readInt();
+    this.p = paramParcel.readInt();
     paramParcel = a();
     if (paramParcel != null) {
       throw new RuntimeException(paramParcel);
     }
   }
   
-  public PublishParam(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, int paramInt1, int paramInt2, long paramLong, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, String paramString7, String paramString8, int paramInt8, int paramInt9, int paramInt10, String paramString9, String paramString10, String paramString11, String paramString12, int paramInt11, boolean paramBoolean, String paramString13, int paramInt12, int paramInt13)
+  public PublishParam(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, int paramInt1, int paramInt2, long paramLong, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, String paramString7, String paramString8, int paramInt8, int paramInt9, int paramInt10, String paramString9, String paramString10, String paramString11, String paramString12, int paramInt11, boolean paramBoolean, String paramString13, int paramInt12, int paramInt13, int paramInt14, int paramInt15)
   {
     this.jdField_b_of_type_JavaLangString = paramString1;
     this.jdField_c_of_type_JavaLangString = paramString2;
@@ -114,6 +118,8 @@ public class PublishParam
       this.jdField_n_of_type_JavaLangString = paramString13;
       this.jdField_m_of_type_Int = paramInt12;
       this.jdField_n_of_type_Int = paramInt13;
+      this.o = paramInt14;
+      this.p = paramInt15;
       paramString1 = a();
       if (paramString1 == null) {
         break;
@@ -137,7 +143,7 @@ public class PublishParam
   
   public String toString()
   {
-    return "PublishParam{fakeVid='" + this.jdField_b_of_type_JavaLangString + '\'' + ", thumbPath='" + this.jdField_c_of_type_JavaLangString + '\'' + ", doodlePath='" + this.jdField_d_of_type_JavaLangString + '\'' + ", videoLabel='" + this.jdField_e_of_type_JavaLangString + '\'' + ", videoDoodleDescription='" + this.jdField_f_of_type_JavaLangString + '\'' + ", videoAddress='" + this.jdField_g_of_type_JavaLangString + '\'' + ", videoWidth=" + this.jdField_a_of_type_Int + ", videoHeight=" + this.jdField_b_of_type_Int + ", videoDuration=" + this.jdField_a_of_type_Long + ", videoMaxrate=" + this.jdField_c_of_type_Int + ", videoMinrate=" + this.jdField_d_of_type_Int + ", isEdited=" + this.jdField_e_of_type_Int + ", saveMode=" + this.jdField_f_of_type_Int + ", recordFrames=" + this.jdField_g_of_type_Int + ", atDoodlePath='" + this.jdField_h_of_type_JavaLangString + '\'' + ", atJsonData='" + this.jdField_i_of_type_JavaLangString + '\'' + ", needSyncToStory='" + this.jdField_i_of_type_Int + '\'' + ", hwEncodeRecordVideo='" + this.jdField_j_of_type_Int + '\'' + ", videoFilePath='" + this.jdField_j_of_type_JavaLangString + '\'' + ", audioFilePath='" + this.jdField_k_of_type_JavaLangString + '\'' + ", mosaicFilePath='" + this.jdField_m_of_type_JavaLangString + '\'' + ", videoCount=" + this.jdField_k_of_type_Int + "', videoLocateDescription='" + this.jdField_n_of_type_JavaLangString + '\'' + ", localVideoLongitude='" + this.jdField_m_of_type_Int + '\'' + ", localVideoLatitude=" + this.jdField_n_of_type_Int + "'" + '}';
+    return "PublishParam{fakeVid='" + this.jdField_b_of_type_JavaLangString + '\'' + ", thumbPath='" + this.jdField_c_of_type_JavaLangString + '\'' + ", doodlePath='" + this.jdField_d_of_type_JavaLangString + '\'' + ", videoLabel='" + this.jdField_e_of_type_JavaLangString + '\'' + ", videoDoodleDescription='" + this.jdField_f_of_type_JavaLangString + '\'' + ", videoAddress='" + this.jdField_g_of_type_JavaLangString + '\'' + ", videoWidth=" + this.jdField_a_of_type_Int + ", videoHeight=" + this.jdField_b_of_type_Int + ", videoDuration=" + this.jdField_a_of_type_Long + ", videoMaxrate=" + this.jdField_c_of_type_Int + ", videoMinrate=" + this.jdField_d_of_type_Int + ", isEdited=" + this.jdField_e_of_type_Int + ", saveMode=" + this.jdField_f_of_type_Int + ", recordFrames=" + this.jdField_g_of_type_Int + ", atDoodlePath='" + this.jdField_h_of_type_JavaLangString + '\'' + ", atJsonData='" + this.jdField_i_of_type_JavaLangString + '\'' + ", needSyncToStory='" + this.jdField_i_of_type_Int + '\'' + ", hwEncodeRecordVideo='" + this.jdField_j_of_type_Int + '\'' + ", videoFilePath='" + this.jdField_j_of_type_JavaLangString + '\'' + ", audioFilePath='" + this.jdField_k_of_type_JavaLangString + '\'' + ", mosaicFilePath='" + this.jdField_m_of_type_JavaLangString + '\'' + ", videoCount=" + this.jdField_k_of_type_Int + "', videoLocateDescription='" + this.jdField_n_of_type_JavaLangString + '\'' + ", localVideoLongitude='" + this.jdField_m_of_type_Int + '\'' + ", localVideoLatitude=" + this.jdField_n_of_type_Int + "', redBagType=" + this.o + "', specialVideoType=" + this.p + "'" + '}';
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -170,6 +176,8 @@ public class PublishParam
     paramParcel.writeString(this.jdField_n_of_type_JavaLangString);
     paramParcel.writeInt(this.jdField_m_of_type_Int);
     paramParcel.writeInt(this.jdField_n_of_type_Int);
+    paramParcel.writeInt(this.o);
+    paramParcel.writeInt(this.p);
   }
 }
 

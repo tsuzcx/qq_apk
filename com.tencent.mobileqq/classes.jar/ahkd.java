@@ -1,27 +1,10 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.redtouch.RedDisplayInfo;
-import com.tencent.mobileqq.redtouch.RedTypeInfo;
-
-public final class ahkd
-  implements Parcelable.Creator
+public abstract interface ahkd
 {
-  public RedDisplayInfo a(Parcel paramParcel)
-  {
-    RedDisplayInfo localRedDisplayInfo = new RedDisplayInfo();
-    localRedDisplayInfo.a = paramParcel.readArrayList(RedTypeInfo.class.getClassLoader());
-    RedDisplayInfo.a(localRedDisplayInfo, (RedTypeInfo)paramParcel.readSerializable());
-    return localRedDisplayInfo;
-  }
-  
-  public RedDisplayInfo[] a(int paramInt)
-  {
-    return new RedDisplayInfo[paramInt];
-  }
+  public abstract void a(String paramString, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ahkd
  * JD-Core Version:    0.7.0.1
  */

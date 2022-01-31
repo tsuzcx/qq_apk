@@ -59,30 +59,34 @@ class PathInterpolatorGingerbread
   
   public float getInterpolation(float paramFloat)
   {
+    float f = 1.0F;
     if (paramFloat <= 0.0F) {
-      return 0.0F;
+      f = 0.0F;
     }
-    if (paramFloat >= 1.0F) {
-      return 1.0F;
+    while (paramFloat >= 1.0F) {
+      return f;
     }
-    int i = 0;
-    int j = this.mX.length - 1;
-    while (j - i > 1)
+    int j = 0;
+    int i = this.mX.length - 1;
+    if (i - j > 1)
     {
-      int k = (i + j) / 2;
+      int k = (j + i) / 2;
       if (paramFloat < this.mX[k]) {
-        j = k;
-      } else {
         i = k;
       }
+      for (;;)
+      {
+        break;
+        j = k;
+      }
     }
-    float f = this.mX[j] - this.mX[i];
+    f = this.mX[i] - this.mX[j];
     if (f == 0.0F) {
-      return this.mY[i];
+      return this.mY[j];
     }
-    paramFloat = (paramFloat - this.mX[i]) / f;
-    f = this.mY[i];
-    return (this.mY[j] - f) * paramFloat + f;
+    paramFloat = (paramFloat - this.mX[j]) / f;
+    f = this.mY[j];
+    return paramFloat * (this.mY[i] - f) + f;
   }
 }
 

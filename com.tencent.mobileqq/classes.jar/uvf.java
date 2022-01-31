@@ -1,21 +1,34 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.audiopanel.PressToSpeakPanel;
-import com.tencent.mobileqq.utils.QQRecorder.RecorderParam;
+import android.graphics.Bitmap;
+import java.util.List;
 
-public class uvf
-  implements Runnable
+public abstract interface uvf
+  extends uus
 {
-  public uvf(PressToSpeakPanel paramPressToSpeakPanel, String paramString, QQRecorder.RecorderParam paramRecorderParam) {}
+  public abstract long a(int paramInt);
   
-  public void run()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelPressToSpeakPanel.b();
-    PressToSpeakPanel.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelPressToSpeakPanel).b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder$RecorderParam);
-  }
+  public abstract Bitmap a(int paramInt);
+  
+  public abstract List<? extends uwy> a();
+  
+  public abstract void a(int paramInt1, int paramInt2, float paramFloat);
+  
+  public abstract void a(int paramInt, byte[] paramArrayOfByte);
+  
+  public abstract void a(Bitmap paramBitmap);
+  
+  public abstract void a(Bitmap paramBitmap, boolean paramBoolean);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void b(int paramInt);
+  
+  public abstract void j();
+  
+  public abstract void k();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     uvf
  * JD-Core Version:    0.7.0.1
  */

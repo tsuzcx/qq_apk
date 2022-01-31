@@ -1,27 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mobileqq.campuscircle.CampusCirclePublishActivity;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Locale;
+import android.widget.Button;
+import android.widget.TextView;
 
-public class abws
-  implements DialogInterface.OnCancelListener
+class abws
+  extends aiac
 {
-  public abws(CampusCirclePublishActivity paramCampusCirclePublishActivity) {}
+  Button jdField_a_of_type_AndroidWidgetButton;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  TextView b;
   
-  public void onCancel(DialogInterface paramDialogInterface)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.i("CampusCircle", 4, String.format(Locale.getDefault(), "onCancle from dialog %b", new Object[] { Boolean.valueOf(this.a.a) }));
-    }
-    if (this.a.a) {
-      this.a.d();
-    }
-  }
+  private abws(abwr paramabwr) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abws
  * JD-Core Version:    0.7.0.1
  */

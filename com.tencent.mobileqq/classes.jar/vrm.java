@@ -1,17 +1,16 @@
-import android.os.Bundle;
-import com.tencent.biz.troop.TroopMemberApiClient.Callback;
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryAdapter;
+import android.view.MotionEvent;
 
-public class vrm
-  implements TroopMemberApiClient.Callback
+public abstract interface vrm
 {
-  public vrm(AIOGalleryAdapter paramAIOGalleryAdapter) {}
+  public abstract void a(vrm paramvrm);
   
-  public void a(Bundle paramBundle) {}
+  public abstract boolean a(MotionEvent paramMotionEvent);
+  
+  public abstract boolean b(MotionEvent paramMotionEvent);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vrm
  * JD-Core Version:    0.7.0.1
  */

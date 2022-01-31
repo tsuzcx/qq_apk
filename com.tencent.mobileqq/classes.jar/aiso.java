@@ -1,57 +1,14 @@
-import com.tencent.mobileqq.testassister.ShareAppLogHelper;
-import java.io.File;
-
-public class aiso
-  implements Runnable
+public abstract interface aiso
 {
-  public aiso(ShareAppLogHelper paramShareAppLogHelper) {}
+  public abstract void a();
   
-  public void run()
-  {
-    int i = ShareAppLogHelper.a(this.a);
-    if (i != 0)
-    {
-      ShareAppLogHelper.a(this.a, i);
-      ShareAppLogHelper.a(this.a);
-      return;
-    }
-    i = ShareAppLogHelper.b(this.a);
-    if (i == 1)
-    {
-      ShareAppLogHelper.b(this.a, i);
-      ShareAppLogHelper.b(this.a);
-      if (!ShareAppLogHelper.a(this.a)) {
-        ShareAppLogHelper.a(this.a, ShareAppLogHelper.a(this.a));
-      }
-    }
-    for (;;)
-    {
-      ShareAppLogHelper.a(this.a);
-      return;
-      try
-      {
-        File localFile = new File(ShareAppLogHelper.a(this.a));
-        if (!localFile.exists()) {
-          continue;
-        }
-        localFile.delete();
-      }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-      }
-      continue;
-      if (i == 0) {
-        ShareAppLogHelper.a(this.a, ShareAppLogHelper.a(this.a));
-      } else {
-        ShareAppLogHelper.a(this.a, i);
-      }
-    }
-  }
+  public abstract void a(int paramInt1, int paramInt2, String paramString);
+  
+  public abstract void b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aiso
  * JD-Core Version:    0.7.0.1
  */

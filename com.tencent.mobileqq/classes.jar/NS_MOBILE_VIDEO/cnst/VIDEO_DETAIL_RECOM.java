@@ -1,6 +1,9 @@
 package NS_MOBILE_VIDEO.cnst;
 
-public abstract interface VIDEO_DETAIL_RECOM {}
+public abstract interface VIDEO_DETAIL_RECOM
+{
+  public static final String value = "VIDEO_DETAIL_RECOM";
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar

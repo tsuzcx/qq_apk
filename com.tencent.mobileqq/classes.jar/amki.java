@@ -1,35 +1,89 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.widget.ExpandableListView;
-import com.tencent.widget.ExpandableListView.OnGroupClickListener;
-import com.tencent.widget.PinnedHeadAndFootExpandableListView;
-import com.tencent.widget.PinnedHeadAndFootExpandableListView.ExpandableListAdapter;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
 public class amki
-  implements View.OnTouchListener
+  extends alzl<amkg>
 {
-  public amki(PinnedHeadAndFootExpandableListView paramPinnedHeadAndFootExpandableListView) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public int a()
   {
-    if (paramMotionEvent.getAction() == 1)
+    return 432;
+  }
+  
+  @NonNull
+  public amkg a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("SearchRichConfProcessor", 2, "migrateOldOrDefaultContent ");
+    }
+    return new amkg();
+  }
+  
+  @Nullable
+  public amkg a(alzs[] paramArrayOfalzs)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SearchRichConfProcessor", 2, "onParsed start");
+    }
+    if ((paramArrayOfalzs != null) && (paramArrayOfalzs.length > 0))
     {
-      long l = this.a.a(this.a.getFirstVisiblePosition());
-      if ((ExpandableListView.b(l) == 0) || (ExpandableListView.b(l) == 1))
-      {
-        int i = ExpandableListView.c(l);
-        if ((this.a.jdField_a_of_type_ComTencentWidgetExpandableListView$OnGroupClickListener == null) || (!this.a.jdField_a_of_type_ComTencentWidgetExpandableListView$OnGroupClickListener.a(this.a, paramView, i, this.a.jdField_a_of_type_ComTencentWidgetPinnedHeadAndFootExpandableListView$ExpandableListAdapter.getGroupId(i)))) {
-          this.a.b(i);
-        }
+      if (QLog.isColorLevel()) {
+        QLog.d("SearchRichConfProcessor", 2, "onParsed " + paramArrayOfalzs.length);
+      }
+      return amkg.a(paramArrayOfalzs[0]);
+    }
+    return null;
+  }
+  
+  public Class<amkg> a()
+  {
+    return amkg.class;
+  }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("SearchRichConfProcessor", 2, "onReqFailed " + paramInt);
+    }
+  }
+  
+  public void a(amkg paramamkg)
+  {
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder().append("onUpdate ");
+      if (paramamkg == null) {
+        break label49;
       }
     }
+    label49:
+    for (paramamkg = paramamkg.toString();; paramamkg = " empty")
+    {
+      QLog.d("SearchRichConfProcessor", 2, paramamkg);
+      avtr.a().a();
+      return;
+    }
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amki
  * JD-Core Version:    0.7.0.1
  */

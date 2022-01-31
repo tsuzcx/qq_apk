@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@android:color/transparent" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.qzone.widget.QZonePullToRefreshListView android:scrollbarThumbVertical="@drawable/axv" android:scrollbarStyle="insideOverlay" android:id="@id/album_list" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/ajr" android:scrollingCache="false" android:cacheColorHint="@android:color/transparent" android:divider="@null" android:dividerHeight="0.0dip" />
+    <ViewStub android:layout_gravity="center" android:id="@id/flr" android:visibility="gone" android:layout="@layout/bhy" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ImageView android:id="@id/q_" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ViewStub android:id="@id/hig" android:layout="@layout/bl5" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" />
+    <ViewStub android:id="@id/abr" android:layout="@layout/bo3" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" />
+    <ViewStub android:id="@id/d2z" android:visibility="gone" android:layout="@layout/biy" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+</RelativeLayout>

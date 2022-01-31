@@ -1,62 +1,33 @@
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.MoveToGroupActivity;
-import com.tencent.mobileqq.data.Groups;
-import java.util.List;
+import android.os.Message;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.playvideo.FollowCaptureLauncher;
 
 public class tgr
-  extends BaseAdapter
+  implements sig
 {
-  private tgr(MoveToGroupActivity paramMoveToGroupActivity) {}
+  public tgr(FollowCaptureLauncher paramFollowCaptureLauncher) {}
   
-  public int getCount()
+  public void a(String paramString, int paramInt)
   {
-    if (this.a.jdField_a_of_type_JavaUtilList != null) {
-      return this.a.jdField_a_of_type_JavaUtilList.size();
-    }
-    return 0;
+    Message localMessage = Message.obtain();
+    localMessage.obj = paramString;
+    localMessage.what = 65543;
+    FollowCaptureLauncher.a(this.a).sendMessage(localMessage);
   }
   
-  public Object getItem(int paramInt)
+  public void a(String paramString, int paramInt, ErrorMessage paramErrorMessage)
   {
-    return null;
+    FollowCaptureLauncher.a(this.a).sendEmptyMessage(65544);
   }
   
-  public long getItemId(int paramInt)
+  public void b(String paramString, int paramInt)
   {
-    return 0L;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    paramViewGroup = paramView;
-    if (paramView == null) {
-      paramViewGroup = this.a.getLayoutInflater().inflate(2130969108, null);
-    }
-    int i = (byte)((Groups)this.a.jdField_a_of_type_JavaUtilList.get(paramInt)).group_id;
-    paramView = (ImageView)paramViewGroup.findViewById(2131365203);
-    if (i == this.a.jdField_a_of_type_Byte) {
-      paramView.setVisibility(0);
-    }
-    for (;;)
-    {
-      paramView = (TextView)paramViewGroup.findViewById(2131365202);
-      paramView.setText(((Groups)this.a.jdField_a_of_type_JavaUtilList.get(paramInt)).group_name);
-      paramViewGroup.setContentDescription(paramView.getText().toString());
-      paramViewGroup.setTag(Integer.valueOf(paramInt));
-      paramViewGroup.setOnClickListener(this.a);
-      return paramViewGroup;
-      paramView.setVisibility(8);
-    }
+    FollowCaptureLauncher.a(this.a).sendEmptyMessage(65544);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tgr
  * JD-Core Version:    0.7.0.1
  */

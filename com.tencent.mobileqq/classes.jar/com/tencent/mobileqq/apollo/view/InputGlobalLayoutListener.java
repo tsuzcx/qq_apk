@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.apollo.view;
 
+import aihg;
 import android.annotation.TargetApi;
 import android.view.View;
 import android.view.View.OnLayoutChangeListener;
 import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.apollo.ChatPieApolloViewController;
 import com.tencent.mobileqq.widget.navbar.NavBarAIO;
 import java.lang.ref.WeakReference;
 
@@ -13,7 +13,7 @@ public class InputGlobalLayoutListener
   implements View.OnLayoutChangeListener, Runnable
 {
   public int a;
-  private WeakReference a;
+  private WeakReference<BaseChatPie> a;
   
   public InputGlobalLayoutListener(BaseChatPie paramBaseChatPie)
   {
@@ -34,8 +34,8 @@ public class InputGlobalLayoutListener
       if (paramView.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarAIO != null) {
         paramInt1 = paramView.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarAIO.getHeight();
       }
-      if (paramView.jdField_a_of_type_ComTencentMobileqqApolloChatPieApolloViewController != null) {
-        paramView.jdField_a_of_type_ComTencentMobileqqApolloChatPieApolloViewController.a(paramInt1);
+      if (paramView.jdField_a_of_type_Aihg != null) {
+        paramView.jdField_a_of_type_Aihg.a(paramInt1);
       }
     }
   }
@@ -43,15 +43,15 @@ public class InputGlobalLayoutListener
   public void run()
   {
     BaseChatPie localBaseChatPie = (BaseChatPie)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if ((localBaseChatPie == null) || (localBaseChatPie.jdField_a_of_type_ComTencentMobileqqApolloChatPieApolloViewController == null)) {
+    if ((localBaseChatPie == null) || (localBaseChatPie.jdField_a_of_type_Aihg == null)) {
       return;
     }
-    localBaseChatPie.jdField_a_of_type_ComTencentMobileqqApolloChatPieApolloViewController.b(this.jdField_a_of_type_Int);
+    localBaseChatPie.jdField_a_of_type_Aihg.b(this.jdField_a_of_type_Int);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.view.InputGlobalLayoutListener
  * JD-Core Version:    0.7.0.1
  */

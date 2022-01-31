@@ -2,28 +2,26 @@ package com.tencent.mobileqq.app.automator.step;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import bahj;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
-import com.tencent.mobileqq.now.NowAppHelper;
-import com.tencent.mobileqq.utils.QQUtils;
 import com.tencent.qphone.base.util.BaseApplication;
 
 public class UpdateIcon
   extends AsyncStep
 {
-  protected int a()
+  public int a()
   {
-    NowAppHelper.a(this.a.b);
     if (!BaseApplication.getContext().getSharedPreferences("mobileQQ", 4).getBoolean("enableUpdateIconStep", false)) {}
     SharedPreferences localSharedPreferences;
     do
     {
       return 7;
-      localSharedPreferences = this.a.b.getApp().getSharedPreferences("com.tencent.mobileqq_preferences", 0);
-    } while (!localSharedPreferences.getBoolean("updateShortcutIcon7.6.8.3615", true));
-    QQUtils.a(this.a.b, "sid");
-    localSharedPreferences.edit().putBoolean("updateShortcutIcon7.6.8.3615", false).commit();
+      localSharedPreferences = this.a.app.getApp().getSharedPreferences("com.tencent.mobileqq_preferences", 0);
+    } while (!localSharedPreferences.getBoolean("updateShortcutIcon8.2.6.4370", true));
+    bahj.a(this.a.app, "sid");
+    localSharedPreferences.edit().putBoolean("updateShortcutIcon8.2.6.4370", false).commit();
     return 7;
   }
 }

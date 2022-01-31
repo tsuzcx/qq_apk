@@ -11,7 +11,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class member_lbs$NeighbourInfo
-  extends MessageMicro
+  extends MessageMicro<NeighbourInfo>
 {
   public static final int DOUBLE_DISTANCE_FIELD_NUMBER = 4;
   public static final int INT64_LATITUDE_FIELD_NUMBER = 2;
@@ -37,7 +37,7 @@ public final class member_lbs$NeighbourInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     tencent.im.lbs.member_lbs.NeighbourInfo
  * JD-Core Version:    0.7.0.1
  */

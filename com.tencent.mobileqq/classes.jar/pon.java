@@ -1,27 +1,15 @@
-import android.text.TextUtils;
-import com.squareup.okhttp.Response;
-import com.tencent.component.network.downloader.DownloadResult;
-import com.tencent.component.network.downloader.DownloadResult.Content;
-import com.tencent.component.network.downloader.handler.ContentHandler;
-import com.tencent.component.network.utils.StringUtil;
-import org.apache.http.HttpResponse;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import java.util.List;
+import tencent.im.oidb.cmd0x68b.oidb_cmd0x68b.BackOffGroupInfo;
 
-public final class pon
-  implements ContentHandler
+public class pon
 {
-  public boolean a(DownloadResult paramDownloadResult, HttpResponse paramHttpResponse, Response paramResponse)
-  {
-    paramDownloadResult = paramDownloadResult.getContent().type;
-    if (TextUtils.isEmpty(paramDownloadResult)) {}
-    while (!StringUtil.a(paramDownloadResult, "image")) {
-      return false;
-    }
-    return true;
-  }
+  public List<oidb_cmd0x68b.BackOffGroupInfo> a;
+  public List<ArticleInfo> b;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     pon
  * JD-Core Version:    0.7.0.1
  */

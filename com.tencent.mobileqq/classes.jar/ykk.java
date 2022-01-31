@@ -1,22 +1,21 @@
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.ImageView;
 
-public class ykk
-  implements Runnable
+class ykk
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public ykk(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
+  ykk(ykf paramykf, ImageView paramImageView) {}
   
-  public void run()
+  public void onGlobalLayout()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoPlayActivity", 2, "mStartHidingRunnable run");
-    }
-    this.a.f();
+    this.jdField_a_of_type_AndroidWidgetImageView.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    yoi.a().a(this.jdField_a_of_type_AndroidWidgetImageView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ykk
  * JD-Core Version:    0.7.0.1
  */

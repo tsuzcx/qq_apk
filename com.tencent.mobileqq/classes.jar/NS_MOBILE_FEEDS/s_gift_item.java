@@ -9,7 +9,7 @@ import java.util.Map;
 public final class s_gift_item
   extends JceStruct
 {
-  static Map cache_gifturl = new HashMap();
+  static Map<Integer, String> cache_gifturl = new HashMap();
   public int actiontype;
   public String actionurl = "";
   public String giftbackid = "";
@@ -17,7 +17,7 @@ public final class s_gift_item
   public String giftid = "";
   public String giftname = "";
   public String gifttype = "";
-  public Map gifturl;
+  public Map<Integer, String> gifturl;
   public boolean istiming = true;
   public int moreflag;
   public String sendtime = "";
@@ -29,7 +29,7 @@ public final class s_gift_item
   
   public s_gift_item() {}
   
-  public s_gift_item(String paramString1, String paramString2, String paramString3, Map paramMap, String paramString4, String paramString5, int paramInt1, String paramString6, int paramInt2, boolean paramBoolean, String paramString7)
+  public s_gift_item(String paramString1, String paramString2, String paramString3, Map<Integer, String> paramMap, String paramString4, String paramString5, int paramInt1, String paramString6, int paramInt2, boolean paramBoolean, String paramString7)
   {
     this.giftname = paramString1;
     this.gifttype = paramString2;
@@ -92,7 +92,7 @@ public final class s_gift_item
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     NS_MOBILE_FEEDS.s_gift_item
  * JD-Core Version:    0.7.0.1
  */

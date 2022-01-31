@@ -1,54 +1,64 @@
-import android.content.SharedPreferences;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.recent.BannerManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.RegisterProxySvcPackObserver;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetCommentList;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetCommentList;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
 
 public class smr
-  extends RegisterProxySvcPackObserver
+  extends soh
 {
-  public smr(Conversation paramConversation) {}
+  int jdField_a_of_type_Int;
+  public final String a;
+  String b;
   
-  protected void a(int paramInt, long paramLong1, long paramLong2)
+  public smr(sml paramsml, String paramString, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.recent", 2, "onSelfPcOnlineStatusBanner int iState = " + paramInt + ", long clientType = " + paramLong1 + ", long appId" + paramLong2);
-    }
-    if (paramInt == 1)
+    this.jdField_a_of_type_JavaLangString = skt.a("StorySvc.get_comment_list");
+    this.b = paramString;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public soi a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspGetCommentList localRspGetCommentList = new qqstory_service.RspGetCommentList();
+    try
     {
-      if (paramLong1 == 77313L)
-      {
-        if (!this.a.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager.c)
-        {
-          SharedPreferences localSharedPreferences = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences("tim_pc_banner_shared_pre_" + this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), 0);
-          this.a.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager.d = localSharedPreferences.getBoolean("tim_pc_banner_switch", false);
-          this.a.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager.c = true;
-        }
-        if (this.a.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager.d) {
-          break label165;
-        }
-      }
-      label165:
-      while (this.a.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager.jdField_b_of_type_Boolean) {
-        return;
-      }
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager.a(9, 2);
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager.jdField_b_of_type_Long = paramLong1;
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager.a = paramLong2;
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager.a(-1, null);
-      ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800887F", "0X800887F", 0, 0, "", "", "", "");
-      return;
+      localRspGetCommentList.mergeFrom(paramArrayOfByte);
+      return new sms(this.jdField_a_of_type_Sml, localRspGetCommentList);
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager.b();
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager.jdField_b_of_type_Boolean = false;
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      urk.d("Q.qqstory:GetCommentListRequest", "" + paramArrayOfByte);
+    }
+    return null;
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqGetCommentList localReqGetCommentList = new qqstory_service.ReqGetCommentList();
+    localReqGetCommentList.vid.set(ByteStringMicro.copyFromUtf8(this.b));
+    localReqGetCommentList.latest_comment_id.set(this.jdField_a_of_type_Int);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.qqstory:GetCommentListRequest", 2, "getCommentListData by latest_comment_id: " + this.jdField_a_of_type_Int);
+    }
+    return localReqGetCommentList.toByteArray();
+  }
+  
+  public String toString()
+  {
+    return "GetCommentListRequest{ vid=" + this.b + ", startCommentID=" + this.jdField_a_of_type_Int + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     smr
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,32 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.model.MapParcelable;
+import mqq.os.MqqHandler;
 
-public final class ancc
-  implements Parcelable.Creator
+class ancc
+  implements aonc
 {
-  public MapParcelable a(Parcel paramParcel)
+  public MqqHandler a;
+  
+  public ancc(MqqHandler paramMqqHandler)
   {
-    return new MapParcelable(paramParcel.readHashMap(getClass().getClassLoader()));
+    this.a = paramMqqHandler;
   }
   
-  public MapParcelable[] a(int paramInt)
+  public void a(int paramInt, String paramString)
   {
-    return null;
+    if (this.a != null) {
+      this.a.sendMessageDelayed(this.a.obtainMessage(101, paramInt, 0, paramString), 1500L);
+    }
+  }
+  
+  public void a(Object paramObject)
+  {
+    if (this.a != null) {
+      this.a.sendEmptyMessageDelayed(100, 1500L);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ancc
  * JD-Core Version:    0.7.0.1
  */

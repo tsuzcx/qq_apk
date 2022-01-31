@@ -1,21 +1,34 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
-public final class akiz
-  implements Runnable
+public abstract class akiz
+  implements ajfe
 {
-  public akiz(String paramString) {}
+  public abstract void a(akrk paramakrk);
   
-  public void run()
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    QQToast localQQToast = QQToast.a(BaseApplicationImpl.getContext(), "debug:" + this.a, 1);
-    localQQToast.a();
-    localQQToast.a();
+    if (QLog.isColorLevel()) {
+      QLog.d("ARLBSObserver", 2, "type=" + paramInt + ", isSuccess=" + paramBoolean);
+    }
+    switch (paramInt)
+    {
+    default: 
+      return;
+    }
+    try
+    {
+      a((akrk)paramObject);
+      return;
+    }
+    catch (Exception paramObject)
+    {
+      a(new akrk());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     akiz
  * JD-Core Version:    0.7.0.1
  */

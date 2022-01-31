@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:gravity="center" android:id="@id/l6l" android:paddingLeft="@dimen/z9" android:paddingRight="@dimen/z9" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <View android:background="#ffe0e3e8" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginRight="@dimen/z8" android:layout_toLeftOf="@id/itf" android:layout_centerVertical="true" />
+        <TextView android:textSize="18.0dip" android:textColor="@color/bp" android:gravity="center" android:id="@id/itf" android:layout_width="wrap_content" android:layout_height="@dimen/avq" android:text="1999年" android:drawablePadding="@dimen/z9" android:layout_centerInParent="true" />
+        <View android:background="#ffe0e3e8" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="@dimen/z8" android:layout_toRightOf="@id/itf" android:layout_centerVertical="true" />
+    </RelativeLayout>
+</RelativeLayout>

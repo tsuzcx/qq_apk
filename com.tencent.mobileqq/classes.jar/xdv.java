@@ -1,42 +1,61 @@
-import android.view.SurfaceHolder;
-import android.view.SurfaceHolder.Callback;
-import com.tencent.mobileqq.activity.photo.PhotoPreviewActivity;
-import com.tencent.mobileqq.video.IMediaPlayer;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.mobileqq.webview.swift.WebViewFragment;
 
-public class xdv
-  implements SurfaceHolder.Callback
+class xdv
+  implements bbsh
 {
-  public xdv(PhotoPreviewActivity paramPhotoPreviewActivity) {}
+  xdv(xdt paramxdt, String paramString) {}
   
-  public void surfaceChanged(SurfaceHolder paramSurfaceHolder, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void surfaceCreated(SurfaceHolder paramSurfaceHolder)
+  public void a(BaseResp paramBaseResp)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PhotoPreviewActivity", 2, "surfaceCreated ");
-    }
-    if ((this.a.q == 1) && (this.a.p > 0))
+    if ((this.jdField_a_of_type_Xdt.o == null) || (!this.jdField_a_of_type_Xdt.o.equals(paramBaseResp.transaction))) {}
+    int i;
+    String str1;
+    String str2;
+    String str3;
+    for (;;)
     {
-      this.a.a(this.a.p);
-      this.a.p = 0;
-      this.a.q = 0;
+      return;
+      BaseApplicationImpl.getContext();
+      switch (paramBaseResp.errCode)
+      {
+      case -2: 
+      case -1: 
+      default: 
+        vvp.a(1, 2131653595);
+        return;
+      }
+      vvp.a(2, 2131653612);
+      if ((this.jdField_a_of_type_Xdt.a instanceof bazk))
+      {
+        paramBaseResp = ((bazk)this.jdField_a_of_type_Xdt.a).b();
+        if (this.jdField_a_of_type_Xdt.e == 1) {}
+        for (i = 1009; paramBaseResp != null; i = 1004)
+        {
+          str1 = paramBaseResp.k;
+          str2 = paramBaseResp.j;
+          str3 = AccountDetailActivity.a(paramBaseResp.h);
+          String str4 = paramBaseResp.l;
+          if ((str4 == null) || ("".equals(str4))) {
+            break label200;
+          }
+          ndn.a(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005B07", "0X8005B07", i, 0, str4, str1, paramBaseResp.h, str3, false);
+          return;
+        }
+      }
     }
-  }
-  
-  public void surfaceDestroyed(SurfaceHolder paramSurfaceHolder)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PhotoPreviewActivity", 2, "surfaceDestroyed ");
+    label200:
+    if (this.jdField_a_of_type_Xdt.e == 1) {
+      i = 1003;
     }
-    if (this.a.a != null) {
-      this.a.a.c();
-    }
+    ndn.a(null, "P_CliOper", "Pb_account_lifeservice", "", "0X80059DC", "0X80059DC", i, 0, str2, str1, this.jdField_a_of_type_JavaLangString, str3, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     xdv
  * JD-Core Version:    0.7.0.1
  */

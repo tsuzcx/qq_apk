@@ -1,69 +1,99 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import android.view.animation.TranslateAnimation;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.ChatHistoryForC2C;
-import com.tencent.mobileqq.activity.messagesearch.C2CMessageSearchDialog;
-import com.tencent.mobileqq.app.MessageRoamManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Calendar;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-public class sfw
-  implements DialogInterface.OnDismissListener
+public class sfw<T>
+  implements sfv<T>
 {
-  public sfw(ChatHistoryForC2C paramChatHistoryForC2C, View paramView1, int paramInt, View paramView2, TranslateAnimation paramTranslateAnimation) {}
+  private List<T> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+  private final sfu<T> jdField_a_of_type_Sfu;
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public sfw(sfu<T> paramsfu)
   {
-    this.jdField_a_of_type_AndroidViewView.offsetTopAndBottom(-this.jdField_a_of_type_Int);
-    this.b.setVisibility(0);
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryForC2C.a != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryForC2C.a.setVisibility(0);
-    }
-    this.jdField_a_of_type_AndroidViewView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation);
-    Object localObject = (C2CMessageSearchDialog)paramDialogInterface;
-    boolean bool = ((C2CMessageSearchDialog)localObject).a();
-    int i = ((C2CMessageSearchDialog)localObject).a();
-    paramDialogInterface = (MessageRoamManager)this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryForC2C.app.getManager(91);
-    if (QLog.isColorLevel()) {
-      QLog.i("ChatHistoryForC2C", 2, "onDismiss, recordCount : " + i + ",showRoamFlag" + paramDialogInterface.d());
-    }
-    localObject = ((C2CMessageSearchDialog)localObject).a();
-    if (localObject != null)
+    this.jdField_a_of_type_Sfu = paramsfu;
+    this.jdField_a_of_type_Sfu.a(this);
+  }
+  
+  /* Error */
+  public T a()
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_0
+    //   3: getfield 30	sfw:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean	Ljava/util/concurrent/atomic/AtomicBoolean;
+    //   6: invokevirtual 45	java/util/concurrent/atomic/AtomicBoolean:get	()Z
+    //   9: ifne +17 -> 26
+    //   12: aload_0
+    //   13: getfield 23	sfw:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   16: invokeinterface 51 1 0
+    //   21: istore_1
+    //   22: iload_1
+    //   23: ifne +9 -> 32
+    //   26: aconst_null
+    //   27: astore_2
+    //   28: aload_0
+    //   29: monitorexit
+    //   30: aload_2
+    //   31: areturn
+    //   32: aload_0
+    //   33: getfield 23	sfw:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   36: iconst_0
+    //   37: invokeinterface 55 2 0
+    //   42: astore_2
+    //   43: goto -15 -> 28
+    //   46: astore_2
+    //   47: aload_0
+    //   48: monitorexit
+    //   49: aload_2
+    //   50: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	51	0	this	sfw
+    //   21	2	1	i	int
+    //   27	16	2	localObject1	Object
+    //   46	4	2	localObject2	Object
+    // Exception table:
+    //   from	to	target	type
+    //   2	22	46	finally
+    //   32	43	46	finally
+  }
+  
+  public void a()
+  {
+    try
     {
-      Calendar localCalendar1 = Calendar.getInstance();
-      localCalendar1.setTimeInMillis(((MessageRecord)localObject).time * 1000L);
-      localCalendar1.set(11, 0);
-      localCalendar1.set(12, 0);
-      localCalendar1.set(13, 0);
-      localCalendar1.set(14, 0);
-      Calendar localCalendar2 = paramDialogInterface.c();
-      if ((localCalendar2 != null) && (!localCalendar1.after(localCalendar2))) {
-        break label251;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("ChatHistoryForC2C", 2, "search message's date beyond the dateline, should rebuild the dateline");
-      }
-    }
-    while (bool)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryForC2C.leftView.setText(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryForC2C.getString(2131433712));
+      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+      this.jdField_a_of_type_Sfu.c();
       return;
-      label251:
-      paramDialogInterface.a((MessageRecord)localObject);
     }
-    paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryForC2C.getIntent().getExtras().getString("leftViewText");
-    this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryForC2C.leftView.setText(paramDialogInterface);
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public void a(List<T> paramList)
+  {
+    if (paramList != null) {}
+    try
+    {
+      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+      this.jdField_a_of_type_Sfu.a();
+      return;
+    }
+    finally
+    {
+      paramList = finally;
+      throw paramList;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     sfw
  * JD-Core Version:    0.7.0.1
  */

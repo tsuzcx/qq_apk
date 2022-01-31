@@ -1,37 +1,21 @@
-import android.os.Message;
-import com.tencent.util.WeakReferenceHandler;
-import dov.com.qq.im.capture.music.QIMMusicConfigManager.GetSingleMusicInfoCallback;
-import dov.com.qq.im.capture.view.MusicFragmentProviderView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity;
 
 public class anxm
-  implements QIMMusicConfigManager.GetSingleMusicInfoCallback
+  implements View.OnClickListener
 {
-  public anxm(MusicFragmentProviderView paramMusicFragmentProviderView) {}
+  public anxm(FilePreviewActivity paramFilePreviewActivity) {}
   
-  public void a(boolean paramBoolean, Object paramObject)
+  public void onClick(View paramView)
   {
-    Message localMessage;
-    if (this.a.a != null)
-    {
-      localMessage = this.a.a.obtainMessage();
-      if (!paramBoolean) {
-        break label61;
-      }
-    }
-    label61:
-    for (int i = 1;; i = 0)
-    {
-      localMessage.arg1 = i;
-      localMessage.obj = paramObject;
-      localMessage.what = 7;
-      this.a.a.sendMessage(localMessage);
-      return;
-    }
+    awqx.b(this.a.app, "dc00898", "", "", "0X8009065", "0X8009065", 0, 0, "", "", "", "");
+    FilePreviewActivity.a(this.a, axea.a(this.a.app, FilePreviewActivity.a(this.a), this.a, "<FileAssistant>FilePreviewActivity", this.a.getString(2131654242), true));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     anxm
  * JD-Core Version:    0.7.0.1
  */

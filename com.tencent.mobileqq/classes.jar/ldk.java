@@ -1,29 +1,45 @@
-import com.tencent.biz.pubaccount.readinjoy.ReadInJoyRainAnimationController;
-import com.tencent.biz.pubaccount.readinjoy.view.RainView.AnimationEndListener;
-import java.lang.ref.WeakReference;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.VideoController;
+import com.tencent.av.gaudio.GaInviteActivity;
 
 public class ldk
-  implements RainView.AnimationEndListener
+  implements DialogInterface.OnClickListener
 {
-  private WeakReference a;
+  int jdField_a_of_type_Int;
   
-  public ldk(ReadInJoyRainAnimationController paramReadInJoyRainAnimationController)
+  public ldk(GaInviteActivity paramGaInviteActivity, int paramInt)
   {
-    this.a = new WeakReference(paramReadInJoyRainAnimationController);
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ReadInJoyRainAnimationController localReadInJoyRainAnimationController = (ReadInJoyRainAnimationController)this.a.get();
-    if ((localReadInJoyRainAnimationController == null) || (!localReadInJoyRainAnimationController.b())) {
-      return;
+    switch (this.jdField_a_of_type_Int)
+    {
     }
-    ReadInJoyRainAnimationController.a(localReadInJoyRainAnimationController).sendEmptyMessage(1);
+    for (;;)
+    {
+      paramDialogInterface.dismiss();
+      return;
+      if (this.jdField_a_of_type_ComTencentAvGaudioGaInviteActivity.a.l()) {
+        this.jdField_a_of_type_ComTencentAvGaudioGaInviteActivity.a.h(true);
+      }
+      for (;;)
+      {
+        this.jdField_a_of_type_ComTencentAvGaudioGaInviteActivity.d();
+        break;
+        if (this.jdField_a_of_type_ComTencentAvGaudioGaInviteActivity.a.e) {
+          this.jdField_a_of_type_ComTencentAvGaudioGaInviteActivity.a.m();
+        }
+      }
+      this.jdField_a_of_type_ComTencentAvGaudioGaInviteActivity.finish();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     ldk
  * JD-Core Version:    0.7.0.1
  */

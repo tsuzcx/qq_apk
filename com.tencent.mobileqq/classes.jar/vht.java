@@ -1,42 +1,29 @@
-import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
-import com.tencent.mobileqq.activity.aio.OnLongClickAndTouchListener;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.item.PicItemBuilder;
-import com.tencent.mobileqq.activity.aio.item.PicItemBuilder.Holder;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.mobileqq.lightReply.LightReplyMenuManager;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.peak.PeakUtils;
-import mqq.os.MqqHandler;
+import java.io.File;
+import java.util.Comparator;
 
-public class vht
-  implements Runnable
+public final class vht
+  implements Comparator<File>
 {
-  public vht(PicItemBuilder paramPicItemBuilder, MessageForPic paramMessageForPic, BaseChatItemLayout paramBaseChatItemLayout, OnLongClickAndTouchListener paramOnLongClickAndTouchListener, PicItemBuilder.Holder paramHolder) {}
-  
-  public void run()
+  public int a(File paramFile1, File paramFile2)
   {
-    try
-    {
-      LightReplyMenuManager localLightReplyMenuManager = LightReplyMenuManager.a();
-      if ((!this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.isSend()) && (!this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.isDui) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPicItemBuilder.a.a == 1) && (localLightReplyMenuManager != null) && (localLightReplyMenuManager.d()) && (localLightReplyMenuManager.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic)) && (!PeakUtils.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.imageType))) {}
-      for (boolean bool = true;; bool = false)
-      {
-        ThreadManager.getUIHandler().post(new vhu(this, bool));
-        return;
-      }
-      return;
+    long l = paramFile1.lastModified() - paramFile2.lastModified();
+    if (l > 0L) {
+      return -1;
     }
-    catch (Exception localException)
-    {
-      QLog.e("PicItemBuilder", 1, "checkIsGIF exception :", localException);
+    if (l == 0L) {
+      return 0;
     }
+    return 1;
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vht
  * JD-Core Version:    0.7.0.1
  */

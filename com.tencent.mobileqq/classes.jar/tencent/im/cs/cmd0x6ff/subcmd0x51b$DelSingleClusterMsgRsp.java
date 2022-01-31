@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBEnumField;
 import com.tencent.mobileqq.pb.PBField;
 
 public final class subcmd0x51b$DelSingleClusterMsgRsp
-  extends MessageMicro
+  extends MessageMicro<DelSingleClusterMsgRsp>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_error_msg = PBField.initBytes(ByteStringMicro.copyFromUtf8(""));
@@ -22,7 +22,7 @@ public final class subcmd0x51b$DelSingleClusterMsgRsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     tencent.im.cs.cmd0x6ff.subcmd0x51b.DelSingleClusterMsgRsp
  * JD-Core Version:    0.7.0.1
  */

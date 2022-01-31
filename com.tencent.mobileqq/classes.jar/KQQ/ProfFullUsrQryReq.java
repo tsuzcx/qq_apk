@@ -8,18 +8,18 @@ import java.util.ArrayList;
 public final class ProfFullUsrQryReq
   extends JceStruct
 {
-  static ArrayList cache_vFriendUin;
+  static ArrayList<Long> cache_vFriendUin;
   public int iAppId;
   public int iGetTagFlag = -1;
   public int iReloadFlag;
   public int iRetIncomPlete;
   public String strSessionKey = "";
   public long usruin;
-  public ArrayList vFriendUin;
+  public ArrayList<Long> vFriendUin;
   
   public ProfFullUsrQryReq() {}
   
-  public ProfFullUsrQryReq(int paramInt1, String paramString, long paramLong, ArrayList paramArrayList, int paramInt2, int paramInt3, int paramInt4)
+  public ProfFullUsrQryReq(int paramInt1, String paramString, long paramLong, ArrayList<Long> paramArrayList, int paramInt2, int paramInt3, int paramInt4)
   {
     this.iAppId = paramInt1;
     this.strSessionKey = paramString;
@@ -61,7 +61,7 @@ public final class ProfFullUsrQryReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     KQQ.ProfFullUsrQryReq
  * JD-Core Version:    0.7.0.1
  */

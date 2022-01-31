@@ -1,46 +1,35 @@
-import android.text.TextUtils;
-import android.widget.TextView;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
+import android.view.View;
 
 class roh
-  implements Runnable
+  implements begw
 {
-  roh(rog paramrog, String paramString) {}
+  roh(rog paramrog, rof paramrof, int paramInt, begr parambegr) {}
   
-  public void run()
+  public void OnClick(View paramView, int paramInt)
   {
-    TextView localTextView;
-    if (AddFriendVerifyActivity.b(this.jdField_a_of_type_Rog.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity).isShown())
+    switch (paramInt)
     {
-      localTextView = AddFriendVerifyActivity.b(this.jdField_a_of_type_Rog.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity);
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_Rog.jdField_a_of_type_JavaLangString)) {
-        break label91;
-      }
-      str = this.jdField_a_of_type_JavaLangString;
-      localTextView.setText(str);
-      if (AppSetting.b)
-      {
-        localTextView = AddFriendVerifyActivity.b(this.jdField_a_of_type_Rog.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity);
-        if (!TextUtils.isEmpty(this.jdField_a_of_type_Rog.jdField_a_of_type_JavaLangString)) {
-          break label102;
-        }
-      }
-    }
-    label91:
-    label102:
-    for (String str = this.jdField_a_of_type_JavaLangString;; str = this.jdField_a_of_type_Rog.jdField_a_of_type_JavaLangString)
-    {
-      localTextView.setContentDescription(str);
+    default: 
+      this.jdField_a_of_type_Begr.dismiss();
       return;
-      str = this.jdField_a_of_type_Rog.jdField_a_of_type_JavaLangString;
+    }
+    rog.a(this.jdField_a_of_type_Rog, this.jdField_a_of_type_Rof);
+    paramInt = this.jdField_a_of_type_Rof.b;
+    int i = this.jdField_a_of_type_Rof.jdField_a_of_type_Int;
+    if (this.jdField_a_of_type_Rof.jdField_a_of_type_Int != 1) {
+      paramInt = 0;
+    }
+    for (;;)
+    {
+      long l = rol.a().a(this.jdField_a_of_type_Rof);
+      awqx.b(rog.a(this.jdField_a_of_type_Rog), "dc01160", "Pb_account_lifeservice", "" + this.jdField_a_of_type_Rof.jdField_a_of_type_JavaLangString, "0X80067F2", "0X80067F2", 0, 0, "" + (this.jdField_a_of_type_Int + 1), "" + l, "" + i, "" + paramInt);
       break;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     roh
  * JD-Core Version:    0.7.0.1
  */

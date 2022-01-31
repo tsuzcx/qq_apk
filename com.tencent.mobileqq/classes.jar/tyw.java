@@ -1,29 +1,34 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.SubAccountUgActivity;
-import com.tencent.mobileqq.subaccount.SubAccountAssistantForward;
-import com.tencent.mobileqq.subaccount.SubAccountControll;
-import com.tencent.util.Pair;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-class tyw
-  implements DialogInterface.OnClickListener
+public class tyw
+  extends QQUIEventReceiver<QQStoryShareGroupProfileActivity, tna>
 {
-  tyw(tyv paramtyv, SubAccountControll paramSubAccountControll, Pair paramPair) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public tyw(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity)
   {
-    this.jdField_a_of_type_ComTencentMobileqqSubaccountSubAccountControll.a((String)this.jdField_a_of_type_ComTencentUtilPair.first, ((Integer)this.jdField_a_of_type_ComTencentUtilPair.second).intValue(), true);
-    if (!SubAccountControll.a(this.jdField_a_of_type_Tyv.a.app))
+    super(paramQQStoryShareGroupProfileActivity);
+  }
+  
+  public void a(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, @NonNull tna paramtna)
+  {
+    if ((paramQQStoryShareGroupProfileActivity.a().equals(paramtna.jdField_a_of_type_JavaLangString)) && ((paramtna.jdField_a_of_type_Tjs instanceof tkd)))
     {
-      this.jdField_a_of_type_Tyv.a.setTitle("");
-      SubAccountAssistantForward.a(this.jdField_a_of_type_Tyv.a.app, this.jdField_a_of_type_Tyv.a, null);
+      paramtna = ((tkd)paramtna.jdField_a_of_type_Tjs).a;
+      if (paramtna != null) {
+        paramQQStoryShareGroupProfileActivity.a(paramtna.jdField_a_of_type_JavaLangString);
+      }
     }
-    this.jdField_a_of_type_Tyv.a.finish();
+  }
+  
+  public Class acceptEventClass()
+  {
+    return tna.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tyw
  * JD-Core Version:    0.7.0.1
  */

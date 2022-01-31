@@ -1,17 +1,18 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
+import ajjy;
+import anah;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.text.TextUtils;
+import awqx;
+import azyk;
+import bacm;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.activity.photo.PhotoUtils;
-import com.tencent.mobileqq.emosm.DataFactory;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.util.ProfileCardUtil;
-import com.tencent.mobileqq.utils.ImageUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Map;
 import org.json.JSONException;
@@ -30,7 +31,7 @@ public class AvatarPendantUiPlugin
   void OnActivityResume()
   {
     super.OnActivityResume();
-    this.activity.setTitle("挂件");
+    this.activity.setTitle(ajjy.a(2131635083));
   }
   
   public String decodeUrl(String paramString)
@@ -43,7 +44,7 @@ public class AvatarPendantUiPlugin
       paramString = null;
       return paramString;
     }
-    String str = paramString.replace("[client]", "androidQQ").replace("[version]", "7.6.8.3615").replace("[system]", Build.VERSION.RELEASE).replace("[device]", Build.DEVICE);
+    String str = paramString.replace("[client]", "androidQQ").replace("[version]", "8.2.6.4370").replace("[system]", Build.VERSION.RELEASE).replace("[device]", Build.DEVICE);
     Intent localIntent = super.getInfoIntent();
     if (localIntent.getBooleanExtra("key_update_flag", false)) {}
     for (paramString = "1";; paramString = "0")
@@ -58,7 +59,7 @@ public class AvatarPendantUiPlugin
     }
   }
   
-  protected boolean excuteEvent(String paramString, long paramLong, Map paramMap)
+  protected boolean excuteEvent(String paramString, long paramLong, Map<String, Object> paramMap)
   {
     if ((paramLong == 8589934605L) && (paramMap != null))
     {
@@ -73,7 +74,7 @@ public class AvatarPendantUiPlugin
           }
           paramMap = new Bundle();
           paramMap.putString("path", paramString);
-          paramString = DataFactory.a("changeAvatar", sCallbackId, sJsHandler.getIPCResponseKey(), paramMap);
+          paramString = anah.a("changeAvatar", sCallbackId, sJsHandler.getIPCResponseKey(), paramMap);
           paramMap = new JSONObject();
           try
           {
@@ -102,10 +103,10 @@ public class AvatarPendantUiPlugin
     return 512L;
   }
   
-  protected boolean handleEvent(String paramString, long paramLong, Map paramMap)
+  public boolean handleEvent(String paramString, long paramLong, Map<String, Object> paramMap)
   {
     if ((paramLong == 32L) && (!TextUtils.isEmpty(paramString)) && (paramString.contains("_bid=160"))) {
-      ReportController.b(null, "CliOper", "", "", "PendantMarket", "StartLoad", 0, 0, "", "", "", "");
+      awqx.b(null, "CliOper", "", "", "PendantMarket", "StartLoad", 0, 0, "", "", "", "");
     }
     return super.handleEvent(paramString, paramLong, paramMap);
   }
@@ -123,12 +124,12 @@ public class AvatarPendantUiPlugin
         if (sUploadPhotoUri == null) {
           break label394;
         }
-        paramIntent = ImageUtil.b(this.activity, sUploadPhotoUri);
-        paramInt1 = Math.min(482, ProfileCardUtil.a(this.activity));
+        paramIntent = bacm.b(this.activity, sUploadPhotoUri);
+        paramInt1 = Math.min(482, azyk.a(this.activity));
         localObject = new Intent();
         ((Intent)localObject).putExtra("keyFromPendantPhoto", true);
         ((Intent)localObject).putExtra("Business_Origin", 100);
-        PhotoUtils.a((Intent)localObject, this.activity, QQBrowserActivity.class.getName(), paramInt1, paramInt1, 640, 640, paramIntent, ProfileCardUtil.a());
+        PhotoUtils.a((Intent)localObject, this.activity, QQBrowserActivity.class.getName(), paramInt1, paramInt1, 1080, 1080, paramIntent, azyk.a());
         sUploadPhotoUri = null;
         return true;
       }
@@ -186,7 +187,7 @@ public class AvatarPendantUiPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.AvatarPendantUiPlugin
  * JD-Core Version:    0.7.0.1
  */

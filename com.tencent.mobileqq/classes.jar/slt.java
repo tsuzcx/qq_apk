@@ -1,23 +1,30 @@
-import android.app.Dialog;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.ErrorInfo;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 
-class slt
-  implements Runnable
+public class slt
+  extends slu
 {
-  slt(sls paramsls, String paramString1, String paramString2, String paramString3) {}
+  public String a;
+  public boolean a;
   
-  public void run()
+  public slt(qqstory_struct.ErrorInfo paramErrorInfo, PBUInt32Field paramPBUInt32Field, PBBytesField paramPBBytesField)
   {
-    slu localslu = new slu(this);
-    this.jdField_a_of_type_Sls.a.a = DialogUtil.a(this.jdField_a_of_type_Sls.a.a(), 230, this.b, this.c, "退出登录", "立即验证", localslu, localslu);
-    this.jdField_a_of_type_Sls.a.a.setCancelable(false);
-    this.jdField_a_of_type_Sls.a.a.show();
+    super(paramErrorInfo);
+    if (paramPBUInt32Field.get() == 1) {}
+    for (;;)
+    {
+      this.jdField_a_of_type_Boolean = bool;
+      this.jdField_a_of_type_JavaLangString = paramPBBytesField.get().toStringUtf8();
+      return;
+      bool = false;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     slt
  * JD-Core Version:    0.7.0.1
  */

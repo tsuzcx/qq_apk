@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.vashealth;
 
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.unique;
+import atmo;
+import atoc;
 
 public class TracePathData
-  extends Entity
+  extends atmo
 {
   public static final String TABLE_NAME = "TracePathData";
   public double distance;
   public long endTime;
   public int isStop;
-  @unique
+  @atoc
   public long startTime;
   public int stepsGoal;
   public int totalSteps;
@@ -26,7 +26,7 @@ public class TracePathData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.mobileqq.vashealth.TracePathData
  * JD-Core Version:    0.7.0.1
  */

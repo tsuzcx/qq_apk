@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class submsgtype0xb1$MsgBody
-  extends MessageMicro
+  extends MessageMicro<MsgBody>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34 }, new String[] { "uint32_notify_type", "invite_info", "univite_info", "deal_info" }, new Object[] { Integer.valueOf(0), null, null, null }, MsgBody.class);
   public submsgtype0xb1.DealInviteInfo deal_info = new submsgtype0xb1.DealInviteInfo();

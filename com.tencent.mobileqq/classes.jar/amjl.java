@@ -1,51 +1,11 @@
-import android.view.View;
-import android.widget.ListAdapter;
-import com.tencent.widget.HorizontalListView;
-
 public class amjl
-  extends amjs
-  implements Runnable
 {
-  private amjl(HorizontalListView paramHorizontalListView)
-  {
-    super(paramHorizontalListView, null);
-  }
-  
-  public void run()
-  {
-    boolean bool2 = false;
-    boolean bool1;
-    if (this.a.c()) {
-      bool1 = ((View)this.a.getParent()).performLongClick();
-    }
-    while (bool1)
-    {
-      this.a.p = -1;
-      HorizontalListView.a(this.a);
-      return;
-      int i = HorizontalListView.b(this.a);
-      View localView = this.a.getChildAt(i - this.a.getFirstVisiblePosition());
-      bool1 = bool2;
-      if (localView != null)
-      {
-        i = HorizontalListView.b(this.a);
-        long l = this.a.a.getItemId(HorizontalListView.b(this.a));
-        bool1 = bool2;
-        if (a())
-        {
-          bool1 = bool2;
-          if (!this.a.b) {
-            bool1 = this.a.a(localView, i, l);
-          }
-        }
-      }
-    }
-    this.a.p = 2;
-  }
+  public String a = "https://club.vip.qq.com/profile/music?_proxy=1";
+  public String b = "https://club.vip.qq.com/profile/music/player?_wv=131072&_fv=0&_proxy=1";
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amjl
  * JD-Core Version:    0.7.0.1
  */

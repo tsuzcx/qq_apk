@@ -1,37 +1,165 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.struct.TagInfo;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyVideoTagSelectionFragment;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.AdapterView.OnItemClickListener;
+import com.tencent.av.ui.funchat.record.QavRecordReporter.1;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
 public class mct
-  implements AdapterView.OnItemClickListener
 {
-  public mct(ReadInJoyVideoTagSelectionFragment paramReadInJoyVideoTagSelectionFragment) {}
+  private static int jdField_a_of_type_Int;
+  private static long jdField_a_of_type_Long;
+  private static Throwable jdField_a_of_type_JavaLangThrowable;
+  private static boolean jdField_a_of_type_Boolean;
+  private static int jdField_b_of_type_Int;
+  private static long jdField_b_of_type_Long;
+  private static int c;
   
-  public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public static void a()
   {
-    paramAdapterView = paramAdapterView.getItemAtPosition(paramInt);
-    if ((paramAdapterView != null) && ((paramAdapterView instanceof TagInfo)))
-    {
-      if (ReadInJoyVideoTagSelectionFragment.a(this.a).a()) {
-        break label72;
-      }
-      if ((!ReadInJoyVideoTagSelectionFragment.a(this.a).a((TagInfo)paramAdapterView)) && (!ReadInJoyVideoTagSelectionFragment.a(this.a).c())) {
-        ReadInJoyVideoTagSelectionFragment.a(this.a).a();
-      }
+    jdField_a_of_type_Int = 0;
+    jdField_a_of_type_Long = System.currentTimeMillis();
+    jdField_b_of_type_Long = -1L;
+    jdField_b_of_type_Int = 0;
+    jdField_a_of_type_Boolean = false;
+    c = 0;
+    jdField_a_of_type_JavaLangThrowable = null;
+  }
+  
+  public static void a(int paramInt1, int paramInt2, int paramInt3, long paramLong)
+  {
+    long l1 = System.currentTimeMillis();
+    long l2 = jdField_a_of_type_Long;
+    long l3 = jdField_b_of_type_Long;
+    int i = jdField_a_of_type_Int;
+    int j = jdField_b_of_type_Int;
+    if (QLog.isColorLevel()) {
+      QLog.i("QavRecordReporter", 2, "onRecordEnd cores=" + paramInt1 + ", fqc=" + paramInt2 + ", start=" + l2 + ", end=" + l1 + ", frames=" + i + ", stopType=" + paramInt3 + ", mp4Start=" + l3 + ", mp4Frames=" + j);
     }
-    label72:
-    while (ReadInJoyVideoTagSelectionFragment.b(this.a).c()) {
+    ThreadManager.post(new QavRecordReporter.1(paramInt2, i, l1, l2, j, l3, paramLong, paramInt1, paramInt3), 5, null, false);
+  }
+  
+  public static void a(int paramInt, Throwable paramThrowable)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("QavRecordReporter", 2, "onError " + paramInt);
+    }
+    jdField_a_of_type_Boolean = true;
+    c = paramInt;
+    jdField_a_of_type_JavaLangThrowable = paramThrowable;
+  }
+  
+  public static void a(long paramLong)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("QavRecordReporter", 2, "reportConvertPcmCostTime cost=" + paramLong);
+    }
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("device_model", babp.d());
+    localHashMap.put("api", babp.e());
+    localHashMap.put("manufacture", babp.h());
+    awrn localawrn = awrn.a(BaseApplicationImpl.getContext());
+    if (!jdField_a_of_type_Boolean) {}
+    for (boolean bool = true;; bool = false)
+    {
+      localawrn.a("", "av_record_convert_pcm_cost", bool, paramLong / 1000L, 0L, localHashMap, "", false);
       return;
     }
-    ReadInJoyVideoTagSelectionFragment.b(this.a).a();
+  }
+  
+  public static void a(String paramString)
+  {
+    awqx.b(null, "CliOper", "", "", paramString, paramString, 0, 0, "", "", "", "");
+  }
+  
+  public static void a(boolean paramBoolean, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("QavRecordReporter", 2, "reportPCMSuccess success=" + paramBoolean + ", errcode=" + paramInt);
+    }
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("param_FailCode", String.valueOf(paramInt));
+    awrn.a(BaseApplicationImpl.getContext()).a("", "av_record_convert_pcm_success", paramBoolean, 0L, 0L, localHashMap, "", false);
+  }
+  
+  public static void b()
+  {
+    jdField_a_of_type_Int += 1;
+  }
+  
+  public static void c()
+  {
+    if (jdField_b_of_type_Long < 0L) {
+      jdField_b_of_type_Long = System.currentTimeMillis();
+    }
+    jdField_b_of_type_Int += 1;
+  }
+  
+  public static void d()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("QavRecordReporter", 2, "reportEnd");
+    }
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("param_FailCode", String.valueOf(c));
+    localHashMap.put("device_model", babp.d());
+    localHashMap.put("api", babp.e());
+    localHashMap.put("manufacture", babp.h());
+    localHashMap.put("throwable", String.valueOf(jdField_a_of_type_JavaLangThrowable));
+    jdField_a_of_type_JavaLangThrowable = null;
+    if (QLog.isColorLevel()) {
+      QLog.i("QavRecordReporter", 2, "reportEnd params=" + localHashMap);
+    }
+    awrn localawrn = awrn.a(BaseApplicationImpl.getContext());
+    if (!jdField_a_of_type_Boolean) {}
+    for (boolean bool = true;; bool = false)
+    {
+      localawrn.a("", "av_record_report_end", bool, 0L, 0L, localHashMap, "", false);
+      return;
+    }
+  }
+  
+  public static void e()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("QavRecordReporter", 2, "onAudioTrackInitFail");
+    }
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("device_model", babp.d());
+    localHashMap.put("api", babp.e());
+    localHashMap.put("manufacture", babp.h());
+    if (QLog.isColorLevel()) {
+      QLog.i("QavRecordReporter", 2, "onAudioTrackInitFail  params=" + localHashMap);
+    }
+    awrn localawrn = awrn.a(BaseApplicationImpl.getContext());
+    if (!jdField_a_of_type_Boolean) {}
+    for (boolean bool = true;; bool = false)
+    {
+      localawrn.a("", "av_record_audio_fail", bool, 0L, 0L, localHashMap, "", false);
+      return;
+    }
+  }
+  
+  public static void f()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("QavRecordReporter", 2, "reportConvertPcmTimeout");
+    }
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("device_model", babp.d());
+    localHashMap.put("api", babp.e());
+    localHashMap.put("manufacture", babp.h());
+    awrn localawrn = awrn.a(BaseApplicationImpl.getContext());
+    if (!jdField_a_of_type_Boolean) {}
+    for (boolean bool = true;; bool = false)
+    {
+      localawrn.a("", "av_record_convert_pcm_timeout", bool, 0L, 0L, localHashMap, "", false);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     mct
  * JD-Core Version:    0.7.0.1
  */

@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class Doutu$GetHotPicReq
-  extends MessageMicro
+  extends MessageMicro<GetHotPicReq>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_pic_md5 = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -26,7 +26,7 @@ public final class Doutu$GetHotPicReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     tencent.im.cs.doutu.Doutu.GetHotPicReq
  * JD-Core Version:    0.7.0.1
  */

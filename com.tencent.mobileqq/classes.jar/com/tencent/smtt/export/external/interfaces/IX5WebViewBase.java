@@ -2,7 +2,6 @@ package com.tencent.smtt.export.external.interfaces;
 
 import android.graphics.Bitmap;
 import android.graphics.Picture;
-import android.graphics.Point;
 import android.net.http.SslCertificate;
 import android.os.Bundle;
 import android.os.Message;
@@ -81,7 +80,7 @@ public abstract interface IX5WebViewBase
   
   public abstract Bitmap getFavicon();
   
-  public abstract HitTestResult getHitTestResult();
+  public abstract IX5WebViewBase.HitTestResult getHitTestResult();
   
   public abstract String[] getHttpAuthUsernamePassword(String paramString1, String paramString2);
   
@@ -176,7 +175,7 @@ public abstract interface IX5WebViewBase
   
   public abstract void setDownloadListener(DownloadListener paramDownloadListener);
   
-  public abstract void setFindListener(FindListener paramFindListener);
+  public abstract void setFindListener(IX5WebViewBase.FindListener paramFindListener);
   
   public abstract void setHorizontalScrollbarOverlay(boolean paramBoolean);
   
@@ -189,7 +188,7 @@ public abstract interface IX5WebViewBase
   
   public abstract void setNetworkAvailable(boolean paramBoolean);
   
-  public abstract void setPictureListener(PictureListener paramPictureListener);
+  public abstract void setPictureListener(IX5WebViewBase.PictureListener paramPictureListener);
   
   public abstract void setVerticalScrollbarOverlay(boolean paramBoolean);
   
@@ -205,203 +204,10 @@ public abstract interface IX5WebViewBase
   public abstract boolean zoomIn();
   
   public abstract boolean zoomOut();
-  
-  public static abstract interface FindListener
-  {
-    public abstract void onFindResultReceived(int paramInt1, int paramInt2, boolean paramBoolean);
-  }
-  
-  public static class HitTestResult
-  {
-    @Deprecated
-    public static final int ANCHOR_TYPE = 1;
-    public static final int BUTTON_TYPE = 10;
-    public static final int EDIT_TEXT_TYPE = 9;
-    public static final int EMAIL_TYPE = 4;
-    public static final int GEO_TYPE = 3;
-    @Deprecated
-    public static final int IMAGE_ANCHOR_TYPE = 6;
-    public static final int IMAGE_TYPE = 5;
-    public static final int PHONE_TYPE = 2;
-    public static final int SRC_ANCHOR_TYPE = 7;
-    public static final int SRC_IMAGE_ANCHOR_TYPE = 8;
-    public static final int UNKNOWN_TYPE = 0;
-    private Object mData;
-    private String mExtra;
-    private boolean mIsFromSinglePress = false;
-    private Point mPoint;
-    private int mType = 0;
-    
-    protected Bitmap getBitmapData()
-    {
-      return null;
-    }
-    
-    public Object getData()
-    {
-      return this.mData;
-    }
-    
-    public String getExtra()
-    {
-      return this.mExtra;
-    }
-    
-    public Point getHitTestPoint()
-    {
-      return new Point(this.mPoint);
-    }
-    
-    public int getType()
-    {
-      return this.mType;
-    }
-    
-    public boolean isFromSinglePress()
-    {
-      return this.mIsFromSinglePress;
-    }
-    
-    public void setData(Object paramObject)
-    {
-      this.mData = paramObject;
-    }
-    
-    public void setExtra(String paramString)
-    {
-      this.mExtra = paramString;
-    }
-    
-    public void setHitTestPoint(Point paramPoint)
-    {
-      this.mPoint = paramPoint;
-    }
-    
-    public void setIsFromSinglePress(boolean paramBoolean)
-    {
-      this.mIsFromSinglePress = paramBoolean;
-    }
-    
-    public void setType(int paramInt)
-    {
-      this.mType = paramInt;
-    }
-    
-    public class AnchorData
-    {
-      public String mAnchorTitle;
-      public String mAnchorUrl;
-      
-      public AnchorData() {}
-    }
-    
-    public class EditableData
-    {
-      public String mEditableText;
-      public boolean mIsPassword;
-      
-      public EditableData() {}
-    }
-    
-    public class ImageAnchorData
-    {
-      public String mAHref;
-      public Bitmap mBmp;
-      public String mPicUrl;
-      public long mRawDataSize;
-      
-      public ImageAnchorData() {}
-      
-      public Bitmap getBitmap()
-      {
-        return IX5WebViewBase.HitTestResult.this.getBitmapData();
-      }
-    }
-    
-    public class ImageData
-    {
-      public Bitmap mBmp;
-      public int mImgHeight;
-      public int mImgWidth;
-      public String mPicUrl;
-      public long mRawDataSize;
-      
-      public ImageData() {}
-      
-      public Bitmap getBitmap()
-      {
-        return IX5WebViewBase.HitTestResult.this.getBitmapData();
-      }
-    }
-  }
-  
-  public static class ImageInfo
-  {
-    public boolean mIsGif;
-    public String mPicUrl;
-    public long mRawDataSize;
-    
-    public long getPicSize()
-    {
-      return this.mRawDataSize;
-    }
-    
-    public String getPicUrl()
-    {
-      return this.mPicUrl;
-    }
-    
-    public boolean isGif()
-    {
-      return this.mIsGif;
-    }
-  }
-  
-  @Deprecated
-  public static abstract interface PictureListener
-  {
-    @Deprecated
-    public abstract void onNewPicture(IX5WebViewBase paramIX5WebViewBase, Picture paramPicture, boolean paramBoolean);
-    
-    public abstract void onNewPictureIfHaveContent(IX5WebViewBase paramIX5WebViewBase, Picture paramPicture);
-  }
-  
-  public static class WebViewTransport
-  {
-    private IX5WebViewBase mWebview;
-    
-    public IX5WebViewBase getWebView()
-    {
-      try
-      {
-        IX5WebViewBase localIX5WebViewBase = this.mWebview;
-        return localIX5WebViewBase;
-      }
-      finally
-      {
-        localObject = finally;
-        throw localObject;
-      }
-    }
-    
-    public void setWebView(IX5WebViewBase paramIX5WebViewBase)
-    {
-      try
-      {
-        this.mWebview = paramIX5WebViewBase;
-        return;
-      }
-      finally
-      {
-        paramIX5WebViewBase = finally;
-        throw paramIX5WebViewBase;
-      }
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.smtt.export.external.interfaces.IX5WebViewBase
  * JD-Core Version:    0.7.0.1
  */

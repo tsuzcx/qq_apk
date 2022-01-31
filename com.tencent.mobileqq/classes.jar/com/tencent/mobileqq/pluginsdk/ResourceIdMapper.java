@@ -11,36 +11,9 @@ public abstract class ResourceIdMapper
   public static final int RES_ID_ANIM_RIGHT_IN = 3;
   public static final int RES_ID_ANIM_RIGHT_OUT = 6;
   public static final int RES_ID_STYLE_BOTTOM_IN_OUT = 8;
-  public static final ResourceIdMapperFactory sFactory = new ResourceIdMapperFactory();
+  public static final ResourceIdMapper.ResourceIdMapperFactory sFactory = new ResourceIdMapper.ResourceIdMapperFactory();
   
   public abstract int getHostResourceId(int paramInt);
-  
-  public static class ResourceIdMapperFactory
-  {
-    public ResourceIdMapper getInstance(String paramString)
-    {
-      try
-      {
-        paramString = (ResourceIdMapper)Class.forName(paramString).newInstance();
-        return paramString;
-      }
-      catch (InstantiationException paramString)
-      {
-        paramString.printStackTrace();
-        return null;
-      }
-      catch (IllegalAccessException paramString)
-      {
-        paramString.printStackTrace();
-        return null;
-      }
-      catch (ClassNotFoundException paramString)
-      {
-        paramString.printStackTrace();
-      }
-      return null;
-    }
-  }
 }
 
 

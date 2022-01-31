@@ -10,7 +10,7 @@ import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class member_lbs$RspBody
-  extends MessageMicro
+  extends MessageMicro<RspBody>
 {
   public static final int BOOL_SHOW_TIPS_FIELD_NUMBER = 6;
   public static final int MSG_LOCATION_FIELD_NUMBER = 3;
@@ -27,7 +27,7 @@ public final class member_lbs$RspBody
   public member_lbs.Location msg_location = new member_lbs.Location();
   public member_lbs.MemsDistance msg_mems_distance = new member_lbs.MemsDistance();
   public member_lbs.NeighbourNumber msg_neighbour_number = new member_lbs.NeighbourNumber();
-  public final PBRepeatMessageField rpt_msg_neighbours_info = PBField.initRepeatMessage(member_lbs.NeighbourInfo.class);
+  public final PBRepeatMessageField<member_lbs.NeighbourInfo> rpt_msg_neighbours_info = PBField.initRepeatMessage(member_lbs.NeighbourInfo.class);
   public final PBBytesField str_result_info = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField str_tips_native_url = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField str_tips_web_url = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -45,7 +45,7 @@ public final class member_lbs$RspBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     tencent.im.lbs.member_lbs.RspBody
  * JD-Core Version:    0.7.0.1
  */

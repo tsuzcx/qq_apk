@@ -8,11 +8,11 @@ import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.mobileqq.pb.PBStringField;
 
 public final class AudioTransClientInfo$InfoC2SCreateSessionReq
-  extends MessageMicro
+  extends MessageMicro<InfoC2SCreateSessionReq>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18 }, new String[] { "enum_business_type", "rpt_member_list" }, new Object[] { Integer.valueOf(1), "" }, InfoC2SCreateSessionReq.class);
   public final PBEnumField enum_business_type = PBField.initEnum(1);
-  public final PBRepeatField rpt_member_list = PBField.initRepeat(PBStringField.__repeatHelper__);
+  public final PBRepeatField<String> rpt_member_list = PBField.initRepeat(PBStringField.__repeatHelper__);
 }
 
 

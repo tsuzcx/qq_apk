@@ -1,49 +1,26 @@
-import com.tencent.mobileqq.activity.contacts.adapter.ContactsDeviceAdapter;
-import com.tencent.mobileqq.activity.contacts.fragment.DeviceFragment;
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.app.MessageObserver;
+import android.support.v7.widget.RecyclerView;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 
-public class wsn
-  extends MessageObserver
+class wsn
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public wsn(DeviceFragment paramDeviceFragment) {}
+  wsn(wsj paramwsj) {}
   
-  protected void a(int paramInt1, int paramInt2)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (this.a.a == null) {
-      return;
-    }
-    DeviceFragment localDeviceFragment = this.a;
-    if (paramInt1 != 0) {}
-    for (boolean bool = true;; bool = false)
+    paramCompoundButton = wsj.c(this.a);
+    if (paramBoolean) {}
+    for (int i = 0;; i = 8)
     {
-      localDeviceFragment.c = bool;
-      this.a.a.c();
-      this.a.a.notifyDataSetChanged();
-      return;
-    }
-  }
-  
-  protected void c(int paramInt1, int paramInt2)
-  {
-    if (this.a.a == null) {
-      return;
-    }
-    DeviceFragment localDeviceFragment = this.a;
-    if (paramInt1 != 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      localDeviceFragment.d = bool;
-      this.a.a.d();
-      this.a.a.a(this.a.d, AppConstants.z);
-      this.a.a.notifyDataSetChanged();
+      paramCompoundButton.setVisibility(i);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wsn
  * JD-Core Version:    0.7.0.1
  */

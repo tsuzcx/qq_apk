@@ -1,19 +1,19 @@
-import com.tencent.biz.pubaccount.readinjoy.biu.ReadInJoyDeliverBiuActivity;
+import android.graphics.Bitmap;
+import com.tencent.av.random.RandomWebProtocol;
 
-class liw
-  implements Runnable
+public class liw
+  extends liu
 {
-  liw(liv paramliv) {}
+  public Bitmap a;
   
-  public void run()
+  public liw(RandomWebProtocol paramRandomWebProtocol)
   {
-    ReadInJoyDeliverBiuActivity.d(this.a.a);
-    ReadInJoyDeliverBiuActivity.e(this.a.a);
+    this.a = -100;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     liw
  * JD-Core Version:    0.7.0.1
  */

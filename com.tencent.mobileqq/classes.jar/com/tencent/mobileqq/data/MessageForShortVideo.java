@@ -1,27 +1,34 @@
 package com.tencent.mobileqq.data;
 
-import accq;
+import ajjy;
+import amtc;
 import android.annotation.TargetApi;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
+import awav;
+import awej;
+import bbmh;
 import com.qq.taf.jce.HexUtil;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBoolField;
 import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.pic.LoggerInterface;
-import com.tencent.mobileqq.service.message.MessageConstants;
-import com.tencent.mobileqq.shortvideo.ShortVideoDownloadInfo;
 import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import com.tencent.mobileqq.widget.ProgressPieDrawable;
 import localpb.richMsg.RichMsg.VideoFile;
+import tencent.im.msg.hummer.resv.videoFile.ResvAttr;
+import tencent.im.msg.hummer.servtype.hummer_commelem.MsgElemInfo_servtype27;
+import tencent.im.msg.im_msg_body.CommonElem;
+import tencent.im.msg.im_msg_body.Elem;
+import tencent.im.msg.im_msg_body.RichText;
+import tencent.im.msg.im_msg_body.VideoFile;
 
 public class MessageForShortVideo
   extends MessageForRichText
-  implements Parcelable, LoggerInterface
+  implements Parcelable
 {
   public static final int BUSI_TYPE_MULTI_FORWARD_VIDEO = 1010;
   public static final int BUSI_TYPE_PUBACCOUNT_PERM_VIDEO = 1009;
@@ -29,7 +36,7 @@ public class MessageForShortVideo
   public static final int BUSI_TYPE_SHORT_VIDEO = 1;
   public static final int BUSI_TYPE_SHORT_VIDEO_PTV = 2;
   public static final int BUSI_TYPE_VIDEO = 0;
-  public static final Parcelable.Creator CREATOR = new accq();
+  public static final Parcelable.Creator<MessageForShortVideo> CREATOR = new amtc();
   public static final int EXTRA_FLAG_FORWARD = 2;
   public static final int EXTRA_FLAG_UPLOAD = 1;
   public static final int FORWARD_CHAT_TYPE_DISCUS = 2;
@@ -57,16 +64,19 @@ public class MessageForShortVideo
   public String fileSource;
   public int fileType;
   public int fileWidth;
+  public int forwardID;
   public int fromChatType = -1;
   public String hotVideoIconUrl = "";
   public String hotVideoSubIconUrl = "";
   public String hotVideoTitle = "";
   public String hotVideoUrl = "";
   public boolean isAllowAutoDown = true;
+  public boolean isPause;
+  public boolean isStoryVideo;
   public long lastModified;
   public String mLocalMd5;
   public boolean mPreUpload;
-  public ProgressPieDrawable mProgressPie;
+  public bbmh mProgressPie;
   public Runnable mShowProgressTask;
   public String mThumbFilePath;
   public String mVideoFileSourceDir;
@@ -77,11 +87,13 @@ public class MessageForShortVideo
   public Runnable progressTask;
   public int redBagStat;
   public int redBagType;
+  public boolean sendRawVideo;
   public String shortVideoId = "";
   public int specialVideoType;
   public int subBusiType;
   public boolean supportProgressive;
   public boolean syncToStory;
+  public String templateId = "";
   public int thumbFileSize;
   public int thumbHeight;
   public String thumbMD5;
@@ -97,6 +109,7 @@ public class MessageForShortVideo
   public int videoFileSize;
   public int videoFileStatus;
   public int videoFileTime;
+  public int videoKandianType;
   
   private String formatToPeople(int paramInt)
   {
@@ -142,7 +155,7 @@ public class MessageForShortVideo
   public boolean checkForward()
   {
     if (this.istroop == 9501) {}
-    while ((isSendFromLocal()) && (((this.uiOperatorFlag == 2) && ((this.videoFileStatus == 5002) || (this.videoFileStatus == 5001))) || (this.videoFileStatus == 998) || (this.videoFileStatus == 1005) || (this.extraflag == 32768))) {
+    while ((isSendFromLocal()) && (((this.uiOperatorFlag == 2) && ((this.videoFileStatus == 5002) || (this.videoFileStatus == 5001))) || (this.videoFileStatus == 998) || (this.videoFileStatus == 1005) || (this.extraflag == 32768) || ((this.videoFileStatus == 1004) && (this.busiType == 0)))) {
       return false;
     }
     return true;
@@ -171,23 +184,20 @@ public class MessageForShortVideo
         continue;
         String str2 = "";
         continue;
-        label596:
         str2 = "";
         continue;
-        label602:
         str2 = "";
         continue;
-        label608:
         str2 = "";
         continue;
-        label614:
         i = 0;
         continue;
-        label619:
         str2 = "";
+        continue;
+        str2 = "";
+        continue;
+        this.syncToStory = false;
       }
-      label625:
-      this.syncToStory = false;
     }
     if (i != 0)
     {
@@ -218,6 +228,7 @@ public class MessageForShortVideo
       this.transferedSize = localVideoFile.uint32_transfered_size.get();
       this.subBusiType = localVideoFile.uint32_sub_busi_type.get();
       this.videoAttr = localVideoFile.uint32_video_attr.get();
+      this.videoKandianType = localVideoFile.uint32_long_video_kandian_type.get();
       this.binarySet = localVideoFile.uint32_video_binary_set.get();
       this.mediacodecEncode = localVideoFile.bool_is_mediacodec_encode.get();
       if (localVideoFile.bytes_hotvideo_icon.has())
@@ -225,41 +236,48 @@ public class MessageForShortVideo
         str1 = localVideoFile.bytes_hotvideo_icon.get().toStringUtf8();
         this.hotVideoIconUrl = str1;
         if (!localVideoFile.bytes_hotvideo_title.has()) {
-          break label596;
+          break label661;
         }
         str1 = localVideoFile.bytes_hotvideo_title.get().toStringUtf8();
         this.hotVideoTitle = str1;
         if (!localVideoFile.bytes_hotvideo_url.has()) {
-          break label602;
+          break label667;
         }
         str1 = localVideoFile.bytes_hotvideo_url.get().toStringUtf8();
         this.hotVideoUrl = str1;
         if (!localVideoFile.bytes_hotvideo_icon_sub.has()) {
-          break label608;
+          break label673;
         }
         str1 = localVideoFile.bytes_hotvideo_icon_sub.get().toStringUtf8();
         this.hotVideoSubIconUrl = str1;
         if (!localVideoFile.uint32_special_video_type.has()) {
-          break label614;
+          break label679;
         }
         i = localVideoFile.uint32_special_video_type.get();
         this.specialVideoType = i;
         this.msgTailType = localVideoFile.uint32_msg_tail_type.get();
         this.redBagType = localVideoFile.uint32_red_envelope_type.get();
         if (!localVideoFile.bytes_shortVideoId.has()) {
-          break label619;
+          break label684;
         }
         str1 = localVideoFile.bytes_shortVideoId.get().toStringUtf8();
         this.shortVideoId = str1;
         this.redBagStat = localVideoFile.red_envelope_pay_stat.get();
+        this.isStoryVideo = localVideoFile.bool_story_video_send_to_recent.get();
+        if (!localVideoFile.bytes_camera_video_templateid.has()) {
+          break label690;
+        }
+        str1 = localVideoFile.bytes_camera_video_templateid.get().toStringUtf8();
+        this.templateId = str1;
       }
     }
     else
     {
-      if (!"1".equals(getExtInfoFromExtStr(MessageConstants.o))) {
-        break label625;
+      if (!"1".equals(getExtInfoFromExtStr(awav.n))) {
+        break label696;
       }
       this.syncToStory = true;
+      this.sendRawVideo = "1".equals(getExtInfoFromExtStr(awav.z));
       return;
     }
   }
@@ -275,22 +293,22 @@ public class MessageForShortVideo
     return this.msgData;
   }
   
-  public ShortVideoDownloadInfo getDownloadInfo(int paramInt)
+  public awej getDownloadInfo(int paramInt)
   {
-    ShortVideoDownloadInfo localShortVideoDownloadInfo = new ShortVideoDownloadInfo();
-    localShortVideoDownloadInfo.jdField_a_of_type_Int = paramInt;
-    localShortVideoDownloadInfo.jdField_a_of_type_Long = this.uniseq;
-    localShortVideoDownloadInfo.jdField_b_of_type_Int = this.istroop;
-    localShortVideoDownloadInfo.jdField_b_of_type_JavaLangString = this.selfuin;
-    localShortVideoDownloadInfo.jdField_c_of_type_JavaLangString = this.frienduin;
-    localShortVideoDownloadInfo.jdField_d_of_type_JavaLangString = this.senderuin;
-    localShortVideoDownloadInfo.jdField_a_of_type_JavaLangString = this.uuid;
-    localShortVideoDownloadInfo.e = this.md5;
-    localShortVideoDownloadInfo.jdField_c_of_type_Int = this.videoFileTime;
-    localShortVideoDownloadInfo.jdField_d_of_type_Int = this.videoFileFormat;
-    localShortVideoDownloadInfo.jdField_c_of_type_Int = this.videoFileTime;
-    localShortVideoDownloadInfo.g = this.thumbMD5;
-    return localShortVideoDownloadInfo;
+    awej localawej = new awej();
+    localawej.jdField_a_of_type_Int = paramInt;
+    localawej.jdField_a_of_type_Long = this.uniseq;
+    localawej.jdField_b_of_type_Int = this.istroop;
+    localawej.jdField_b_of_type_JavaLangString = this.selfuin;
+    localawej.jdField_c_of_type_JavaLangString = this.frienduin;
+    localawej.jdField_d_of_type_JavaLangString = this.senderuin;
+    localawej.jdField_a_of_type_JavaLangString = this.uuid;
+    localawej.e = this.md5;
+    localawej.jdField_c_of_type_Int = this.videoFileTime;
+    localawej.jdField_d_of_type_Int = this.videoFileFormat;
+    localawej.jdField_c_of_type_Int = this.videoFileTime;
+    localawej.g = this.thumbMD5;
+    return localawej;
   }
   
   public String getMd5()
@@ -299,6 +317,25 @@ public class MessageForShortVideo
       return this.md5;
     }
     return this.mLocalMd5;
+  }
+  
+  public im_msg_body.RichText getRichText()
+  {
+    im_msg_body.RichText localRichText = null;
+    if ((this instanceof MessageForLightVideo)) {
+      localRichText = parseLightVideo(this);
+    }
+    do
+    {
+      return localRichText;
+      if (this.busiType == 0) {
+        return parseMessageForVideo(this);
+      }
+      if (this.busiType == 1) {
+        return parseMessageForVideo(this);
+      }
+    } while (this.busiType != 2);
+    return parseMessageForVideo(this);
   }
   
   public RichMsg.VideoFile getSerialPB()
@@ -312,21 +349,21 @@ public class MessageForShortVideo
       localPBBytesField.set(ByteStringMicro.copyFromUtf8(str));
       localPBBytesField = localVideoFile.bytes_file_md5;
       if (this.md5 == null) {
-        break label561;
+        break label597;
       }
       str = this.md5;
       label55:
       localPBBytesField.set(ByteStringMicro.copyFrom(HexUtil.hexStr2Bytes(str)));
       localPBBytesField = localVideoFile.bytes_local_file_md5;
       if (this.mLocalMd5 == null) {
-        break label567;
+        break label603;
       }
       str = this.mLocalMd5;
       label83:
       localPBBytesField.set(ByteStringMicro.copyFrom(HexUtil.hexStr2Bytes(str)));
       localPBBytesField = localVideoFile.bytes_file_uuid;
       if (this.uuid == null) {
-        break label573;
+        break label609;
       }
       str = this.uuid;
       label111:
@@ -341,14 +378,14 @@ public class MessageForShortVideo
       localVideoFile.uint32_file_type.set(this.fileType);
       localPBBytesField = localVideoFile.bytes_thumb_file_md5;
       if (this.thumbMD5 == null) {
-        break label579;
+        break label615;
       }
       str = this.thumbMD5;
       label224:
       localPBBytesField.set(ByteStringMicro.copyFrom(HexUtil.hexStr2Bytes(str)));
       localPBBytesField = localVideoFile.bytes_source;
       if (this.fileSource == null) {
-        break label585;
+        break label621;
       }
       str = this.fileSource;
       label252:
@@ -361,15 +398,15 @@ public class MessageForShortVideo
       localVideoFile.uin32_uiOperatorFlag.set(this.uiOperatorFlag);
       localPBBytesField = localVideoFile.bytes_video_file_source_dir;
       if (this.mVideoFileSourceDir == null) {
-        break label591;
+        break label627;
       }
     }
-    label561:
-    label567:
-    label573:
-    label579:
-    label585:
-    label591:
+    label597:
+    label603:
+    label609:
+    label615:
+    label621:
+    label627:
     for (String str = this.mVideoFileSourceDir;; str = "")
     {
       localPBBytesField.set(ByteStringMicro.copyFromUtf8(str));
@@ -379,6 +416,7 @@ public class MessageForShortVideo
       localVideoFile.uint32_transfered_size.set(this.transferedSize);
       localVideoFile.uint32_sub_busi_type.set(this.subBusiType);
       localVideoFile.uint32_video_attr.set(this.videoAttr);
+      localVideoFile.uint32_long_video_kandian_type.set(this.videoKandianType);
       localVideoFile.uint32_video_binary_set.set(this.binarySet);
       localVideoFile.bool_is_mediacodec_encode.set(this.mediacodecEncode);
       localVideoFile.bytes_hotvideo_title.set(ByteStringMicro.copyFromUtf8(this.hotVideoTitle));
@@ -390,6 +428,8 @@ public class MessageForShortVideo
       localVideoFile.uint32_red_envelope_type.set(this.redBagType);
       localVideoFile.bytes_shortVideoId.set(ByteStringMicro.copyFromUtf8(this.shortVideoId));
       localVideoFile.red_envelope_pay_stat.set(this.redBagStat);
+      localVideoFile.bool_story_video_send_to_recent.set(this.isStoryVideo);
+      localVideoFile.bytes_camera_video_templateid.set(ByteStringMicro.copyFromUtf8(this.templateId));
       return localVideoFile;
       str = "";
       break;
@@ -409,9 +449,14 @@ public class MessageForShortVideo
   public String getSummaryMsg()
   {
     if (TextUtils.isEmpty(this.msg)) {
-      return "[短视频]";
+      return ajjy.a(2131640828);
     }
     return this.msg;
+  }
+  
+  public boolean isCancelStatus()
+  {
+    return this.videoFileStatus == 1004;
   }
   
   public boolean isSupportReply()
@@ -424,12 +469,72 @@ public class MessageForShortVideo
     return false;
   }
   
-  protected void postRead()
+  public im_msg_body.RichText parseLightVideo(MessageForShortVideo paramMessageForShortVideo)
+  {
+    im_msg_body.RichText localRichText = new im_msg_body.RichText();
+    im_msg_body.Elem localElem = new im_msg_body.Elem();
+    im_msg_body.CommonElem localCommonElem = new im_msg_body.CommonElem();
+    hummer_commelem.MsgElemInfo_servtype27 localMsgElemInfo_servtype27 = new hummer_commelem.MsgElemInfo_servtype27();
+    paramMessageForShortVideo = parseMsgBodyVideoFile(paramMessageForShortVideo);
+    localMsgElemInfo_servtype27.video_file.set(paramMessageForShortVideo);
+    localCommonElem.bytes_pb_elem.set(ByteStringMicro.copyFrom(localMsgElemInfo_servtype27.toByteArray()));
+    localCommonElem.uint32_service_type.set(27);
+    localCommonElem.uint32_business_type.set(1);
+    localElem.common_elem.set(localCommonElem);
+    localRichText.elems.add(localElem);
+    return localRichText;
+  }
+  
+  public im_msg_body.RichText parseMessageForVideo(MessageForShortVideo paramMessageForShortVideo)
+  {
+    im_msg_body.RichText localRichText = new im_msg_body.RichText();
+    im_msg_body.Elem localElem = new im_msg_body.Elem();
+    paramMessageForShortVideo = parseMsgBodyVideoFile(paramMessageForShortVideo);
+    localElem.video_file.set(paramMessageForShortVideo);
+    localRichText.elems.add(localElem);
+    return localRichText;
+  }
+  
+  public im_msg_body.VideoFile parseMsgBodyVideoFile(MessageForShortVideo paramMessageForShortVideo)
+  {
+    im_msg_body.VideoFile localVideoFile = new im_msg_body.VideoFile();
+    localVideoFile.bytes_file_name.set(ByteStringMicro.copyFromUtf8(paramMessageForShortVideo.videoFileName));
+    localVideoFile.bytes_file_md5.set(ByteStringMicro.copyFrom(HexUtil.hexStr2Bytes(paramMessageForShortVideo.md5)));
+    localVideoFile.bytes_file_uuid.set(ByteStringMicro.copyFromUtf8(paramMessageForShortVideo.uuid));
+    localVideoFile.uint32_file_format.set(paramMessageForShortVideo.videoFileFormat);
+    localVideoFile.uint32_file_size.set(paramMessageForShortVideo.videoFileSize);
+    localVideoFile.uint32_file_time.set(paramMessageForShortVideo.videoFileTime);
+    localVideoFile.uint32_thumb_width.set(paramMessageForShortVideo.thumbWidth);
+    localVideoFile.uint32_thumb_height.set(paramMessageForShortVideo.thumbHeight);
+    localVideoFile.bytes_thumb_file_md5.set(ByteStringMicro.copyFrom(HexUtil.hexStr2Bytes(paramMessageForShortVideo.thumbMD5)));
+    localVideoFile.bytes_source.set(ByteStringMicro.copyFromUtf8(paramMessageForShortVideo.fileSource));
+    localVideoFile.uint32_thumb_file_size.set(paramMessageForShortVideo.thumbFileSize);
+    localVideoFile.uint32_busi_type.set(paramMessageForShortVideo.busiType);
+    localVideoFile.uint32_from_chat_type.set(paramMessageForShortVideo.fromChatType);
+    localVideoFile.uint32_to_chat_type.set(paramMessageForShortVideo.toChatType);
+    localVideoFile.bool_support_progressive.set(paramMessageForShortVideo.supportProgressive);
+    localVideoFile.uint32_file_width.set(paramMessageForShortVideo.fileWidth);
+    localVideoFile.uint32_file_height.set(paramMessageForShortVideo.fileHeight);
+    localVideoFile.uint32_sub_busi_type.set(paramMessageForShortVideo.subBusiType);
+    localVideoFile.uint32_video_attr.set(paramMessageForShortVideo.videoAttr);
+    videoFile.ResvAttr localResvAttr = new videoFile.ResvAttr();
+    localResvAttr.uint32_msg_tail_type.set(paramMessageForShortVideo.msgTailType);
+    localResvAttr.bytes_hotvideo_icon.set(ByteStringMicro.copyFromUtf8(paramMessageForShortVideo.hotVideoIconUrl));
+    localResvAttr.bytes_hotvideo_title.set(ByteStringMicro.copyFromUtf8(paramMessageForShortVideo.hotVideoTitle));
+    localResvAttr.bytes_hotvideo_url.set(ByteStringMicro.copyFromUtf8(paramMessageForShortVideo.hotVideoUrl));
+    localResvAttr.bytes_hotvideo_icon_sub.set(ByteStringMicro.copyFromUtf8(paramMessageForShortVideo.hotVideoSubIconUrl));
+    localResvAttr.uint32_special_video_type.set(paramMessageForShortVideo.specialVideoType);
+    localResvAttr.uint32_long_video_kandian_type.set(paramMessageForShortVideo.videoKandianType);
+    localVideoFile.bytes_pb_reserve.set(ByteStringMicro.copyFrom(localResvAttr.toByteArray()));
+    return localVideoFile;
+  }
+  
+  public void postRead()
   {
     parse();
   }
   
-  protected void prewrite()
+  public void prewrite()
   {
     serial();
   }
@@ -482,6 +587,7 @@ public class MessageForShortVideo
     localStringBuilder.append("\n |-").append("transferedSize:").append(this.transferedSize);
     localStringBuilder.append("\n |-").append("subBusiType:").append(this.subBusiType);
     localStringBuilder.append("\n |-").append("videoAttr:").append(this.videoAttr);
+    localStringBuilder.append("\n |-").append("videoKandianType:").append(this.videoKandianType);
     localStringBuilder.append("\n |-").append("binarySet:").append(this.binarySet);
     localStringBuilder.append("\n |-").append("mediacodecEncode:").append(this.mediacodecEncode);
     localStringBuilder.append("\n |-").append("hotVideoIconUrl:").append(this.hotVideoIconUrl);
@@ -493,6 +599,9 @@ public class MessageForShortVideo
     localStringBuilder.append("\n |-").append("redbagType").append(this.redBagType);
     localStringBuilder.append("\n |-").append("shortVideoId").append(this.shortVideoId);
     localStringBuilder.append("\n |-").append("redBagStat").append(this.redBagStat);
+    localStringBuilder.append("\n |-").append("sendRawVideo").append(this.sendRawVideo);
+    localStringBuilder.append("\n |-").append("isStoryVideo").append(this.isStoryVideo);
+    localStringBuilder.append("\n |-").append("templateId").append(this.templateId);
     return localStringBuilder.toString();
   }
   
@@ -542,7 +651,7 @@ public class MessageForShortVideo
       paramParcel.writeInt(this.videoAttr);
       paramParcel.writeInt(this.binarySet);
       if (!this.mediacodecEncode) {
-        break label373;
+        break label404;
       }
       paramInt = 1;
       label274:
@@ -557,19 +666,30 @@ public class MessageForShortVideo
       paramParcel.writeString(this.shortVideoId);
       paramParcel.writeInt(this.redBagStat);
       if (!this.syncToStory) {
-        break label378;
+        break label409;
+      }
+      paramInt = 1;
+      label361:
+      paramParcel.writeByte((byte)paramInt);
+      paramParcel.writeInt(this.videoKandianType);
+      if (!this.sendRawVideo) {
+        break label414;
       }
     }
-    label373:
-    label378:
+    label404:
+    label409:
+    label414:
     for (paramInt = i;; paramInt = 0)
     {
       paramParcel.writeByte((byte)paramInt);
+      paramParcel.writeString(this.templateId);
       return;
       paramInt = 0;
       break;
       paramInt = 0;
       break label274;
+      paramInt = 0;
+      break label361;
     }
   }
 }

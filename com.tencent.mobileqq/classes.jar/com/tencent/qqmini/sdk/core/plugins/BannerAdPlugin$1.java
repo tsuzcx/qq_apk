@@ -1,0 +1,43 @@
+package com.tencent.qqmini.sdk.core.plugins;
+
+import android.os.Bundle;
+import bdcz;
+import bdfz;
+import bdnw;
+import bdyj;
+import com.tencent.qqmini.sdk.core.proxy.AdProxy;
+import com.tencent.qqmini.sdk.core.proxy.AdProxy.AbsBannerAdView;
+import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
+
+class BannerAdPlugin$1
+  implements Runnable
+{
+  BannerAdPlugin$1(BannerAdPlugin paramBannerAdPlugin, String paramString, bdyj parambdyj, bdfz parambdfz, Bundle paramBundle) {}
+  
+  public void run()
+  {
+    if (((AdProxy)ProxyManager.get(AdProxy.class) == null) || (BannerAdPlugin.access$000(this.this$0) == null)) {
+      bdnw.b("BannerAdPlugin", "start create, null");
+    }
+    do
+    {
+      return;
+      BannerAdPlugin.access$102(this.this$0, ((AdProxy)ProxyManager.get(AdProxy.class)).createBannerAdView(this.this$0.mMiniAppContext.a(), this.val$appid, this.val$adPosInfo.a, Math.round(BannerAdPlugin.access$000(this.this$0).f * BannerAdPlugin.access$200(this.this$0)), Math.round(BannerAdPlugin.access$000(this.this$0).g * BannerAdPlugin.access$200(this.this$0)), new BannerAdPlugin.1.1(this), this.val$ext));
+    } while (BannerAdPlugin.access$100(this.this$0) == null);
+    try
+    {
+      BannerAdPlugin.access$100(this.this$0).loadAD();
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      bdnw.b("BannerAdPlugin", "loadAd error", localThrowable);
+    }
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+ * Qualified Name:     com.tencent.qqmini.sdk.core.plugins.BannerAdPlugin.1
+ * JD-Core Version:    0.7.0.1
+ */

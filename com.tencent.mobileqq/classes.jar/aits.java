@@ -1,22 +1,28 @@
-import com.tencent.mobileqq.highway.netprobe.WeakNetCallback;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.mobileqq.utils.QQUtils;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.HashMap;
+import com.tencent.mobileqq.apollo.ApolloTextureView;
+import com.tencent.mobileqq.apollo.store.ApolloGuestsStateActivity;
+import com.tencent.qphone.base.util.QLog;
 
-public final class aits
-  implements WeakNetCallback
+public class aits
+  implements aiij
 {
-  private StatisticCollector a = StatisticCollector.a(BaseApplication.getContext());
+  public aits(ApolloGuestsStateActivity paramApolloGuestsStateActivity) {}
   
-  public void onResultOverflow(HashMap paramHashMap)
+  public void a(int paramInt1, int paramInt2, String paramString)
   {
-    this.a.a(QQUtils.a(), "actWeaknetProbe", true, 0L, paramHashMap.size(), paramHashMap, "");
+    if (this.a.a != null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloGuestsStateActivity", 2, "apolloguestActivity stop loop");
+      }
+      this.a.a.getRenderImpl().a(0L);
+    }
   }
+  
+  public void a(int paramInt, String paramString) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aits
  * JD-Core Version:    0.7.0.1
  */

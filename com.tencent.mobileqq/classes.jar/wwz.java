@@ -1,37 +1,89 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.view.View;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.messagesearch.MessageSearchDialog;
-import com.tencent.mobileqq.activity.messagesearch.SearchHistoryAdapter;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
 
 public class wwz
-  implements TextWatcher
+  extends alzl<wwy>
 {
-  public wwz(MessageSearchDialog paramMessageSearchDialog) {}
-  
-  public void afterTextChanged(Editable paramEditable)
+  private void a(String paramString1, String paramString2)
   {
-    paramEditable = this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString().trim();
-    if (this.a.b) {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchSearchHistoryAdapter.a(paramEditable);
-    }
-    this.a.b = true;
-    if (paramEditable.length() == 0)
+    QLog.d("Q.videostory.config.VSEntranceWidgetProcessor", 2, "onUpdate() apply new widget config");
+    if (!TextUtils.isEmpty(paramString2))
     {
-      this.a.findViewById(2131368325).setVisibility(8);
-      return;
+      wwt.a().a("KEY_BOOLEAN_APPLY_WIDGET_CONFIG", Boolean.valueOf(true));
+      wwt.a().a("KEY_VS_ENTRANCE_WIDGET_MD5", paramString1);
+      wwt.a().a("KEY_VS_ENTRANCE_WIDGET_CONTENT", paramString2);
     }
-    this.a.findViewById(2131368325).setVisibility(0);
   }
   
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  public int a()
+  {
+    return 474;
+  }
   
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  public Class<wwy> a()
+  {
+    return wwy.class;
+  }
+  
+  @NonNull
+  public wwy a(int paramInt)
+  {
+    return new wwy();
+  }
+  
+  @Nullable
+  public wwy a(alzs[] paramArrayOfalzs)
+  {
+    if ((paramArrayOfalzs != null) && (paramArrayOfalzs.length > 0))
+    {
+      QLog.i("Q.videostory.config.VSEntranceWidgetProcessor", 2, "onParsed " + paramArrayOfalzs[0].a);
+      wwy localwwy = wwy.a(paramArrayOfalzs[0].a);
+      if (localwwy == null)
+      {
+        QLog.e("Q.videostory.config.VSEntranceWidgetProcessor", 2, "onParsed error!");
+        return null;
+      }
+      String str = (String)wwt.a().a("KEY_VS_ENTRANCE_WIDGET_MD5", "");
+      if ((!TextUtils.isEmpty(localwwy.b())) && (!localwwy.b().equals(str)))
+      {
+        wxj.a().a(localwwy);
+        a(localwwy.b(), paramArrayOfalzs[0].a);
+      }
+      return localwwy;
+    }
+    QLog.e("Q.videostory.config.VSEntranceWidgetProcessor", 2, "onParsed conf content is null!");
+    return null;
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(wwy paramwwy)
+  {
+    if (paramwwy != null) {
+      QLog.i("Q.videostory.config.VSEntranceWidgetProcessor", 2, "onUpdate:" + paramwwy.toString());
+    }
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wwz
  * JD-Core Version:    0.7.0.1
  */

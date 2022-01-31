@@ -7,10 +7,10 @@ import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class UserFollowStatus$UserFollowStatusReq
-  extends MessageMicro
+  extends MessageMicro<UserFollowStatusReq>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16 }, new String[] { "uin", "dst_uin_list" }, new Object[] { Long.valueOf(0L), Long.valueOf(0L) }, UserFollowStatusReq.class);
-  public final PBRepeatField dst_uin_list = PBField.initRepeat(PBUInt64Field.__repeatHelper__);
+  public final PBRepeatField<Long> dst_uin_list = PBField.initRepeat(PBUInt64Field.__repeatHelper__);
   public final PBUInt64Field uin = PBField.initUInt64(0L);
 }
 
